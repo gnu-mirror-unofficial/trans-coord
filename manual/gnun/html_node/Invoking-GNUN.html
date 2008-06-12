@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+<title>Invoking GNUN - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Usage.html#Usage" title="Usage">
+<link rel="next" href="Main-Variables.html#Main-Variables" title="Main Variables">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Invoking-GNUN"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Main-Variables.html#Main-Variables">Main Variables</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Usage.html#Usage">Usage</a>
+<hr>
+</div>
+
+<h3 class="section">2.1 Invoking GNUN</h3>
+
+<p><a name="index-invoking-1"></a><a name="index-triggering_002c-build-2"></a>
+The central part of <acronym>GNU</acronym>nited Nations is a makefile; actually
+a <samp><span class="file">GNUmakefile</span></samp> since it heavily relies on features and
+extensions available in <acronym>GNU</acronym> Make.  Thus, invoking a build
+consists of typing <samp><span class="command">make</span></samp> on the command line, or within cron. 
+If you are deploying the software on a non-GNU machine, probably
+<acronym>GNU</acronym> Make is installed and available as <samp><span class="command">gmake</span></samp>.  If
+not, you should seriously consider installing it, since as far as we
+know, the build will fail otherwise.  See
+<a href="http://www.gnu.org/software/make">http://www.gnu.org/software/make</a> for information how to
+download and install <acronym>GNU</acronym> Make.
+
+   <p>If you don't specify a target, <samp><span class="command">make</span></samp> by default builds the
+target <code>all</code>, which in this case is to rebuild all translations
+that are not up-to-date.  However, there are special targets that do not
+depend on the standard <code>all</code> target, which can be built by
+<code>make </code><var>target</var>.  Some of the variables in the next section
+apply to them, and some do not.
+
+<ul class="menu">
+<li><a accesskey="1" href="Runtime-Variables.html#Runtime-Variables">Runtime Variables</a>:    Variables to control the build process. 
+<li><a accesskey="2" href="Special-Targets.html#Special-Targets">Special Targets</a>:      Targets that are not built by default. 
+</ul>
+
+   </body></html>
+

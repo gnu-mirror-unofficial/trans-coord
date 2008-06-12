@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+<title>validate-html-notify - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Scripts.html#Scripts" title="Scripts">
+<link rel="prev" href="mailfail.html#mailfail" title="mailfail">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="validate-html-notify"></a>
+<a name="validate_002dhtml_002dnotify"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="mailfail.html#mailfail">mailfail</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Scripts.html#Scripts">Scripts</a>
+<hr>
+</div>
+
+<h4 class="subsection">3.1.4 The <samp><span class="command">validate-html-notify</span></samp> Script</h4>
+
+<p>This script is a wrapper around <samp><span class="command">validate-html</span></samp>
+(see <a href="validate_002dhtml.html#validate_002dhtml">validate-html</a>); it is necessary because it is hard to capture
+the output of the program from a program that itself captures the output
+of another program that it runs.
+
+   <p>Usage:
+
+<pre class="example">     validate-html-notify [--dry-run] RCPT FILE
+</pre>
+     <dl>
+<dt><samp><span class="option">--dry-run</span></samp><dd>Does not actually send the message, just like <samp><span class="command">mailfail</span></samp>.
+
+     <br><dt><samp><span class="option">RCPT</span></samp><dd>The recipient of the message.
+
+     <br><dt><samp><span class="option">FILE</span></samp><dd>The HTML file that has to be validated for compliance with the
+<acronym>W3C</acronym> standard. 
+</dl>
+
+   <p>The subject of the message is hardcoded in the script, since this
+wrapper has a specific task and cannot be used to invoke an arbitrary
+command&mdash;use <samp><span class="command">mailfail</span></samp> for that.  See <a href="mailfail.html#mailfail">mailfail</a>.
+
+   </body></html>
+

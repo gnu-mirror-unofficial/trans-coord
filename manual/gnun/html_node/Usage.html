@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+<title>Usage - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Introduction.html#Introduction" title="Introduction">
+<link rel="next" href="Internals.html#Internals" title="Internals">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Usage"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Internals.html#Internals">Internals</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Introduction.html#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">2 General Usage</h2>
+
+<div align="right">If anything may go wrong, it will definitely go wrong.
+                                                 <p>&mdash;Murphy's Law
+
+                                              <p>Murphy is an optimist.
+                                               <p>&mdash;O'Rielly's Law
+</div>
+
+   <pre class="sp">
+
+</pre>
+
+<acronym>GNUN</acronym> currently consists of a few makefiles, scripts and
+optional <samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp> files, intended to contain
+article-independent but team-specific information.  They are designed to
+reside in the <samp><span class="file">server/gnun</span></samp> directory, but this may change.  In all
+examples in this manual, &ldquo;invoking&rdquo; means executing on the command
+line <code>make -C server/gnun [</code><var>target</var><code>]
+[</code><var>variable</var><code>=</code><var>value</var><code> ...]</code> while the working directory is the
+root in the `www' web repository.  For the purpose of brevity, we will
+refer to the above command as simply <samp><span class="command">make</span></samp>, which is equivalent
+to <code>cd server/gnun ; make</code>.  It is desirable never to invoke
+<samp><span class="command">make</span></samp> with the <samp><span class="option">-k</span></samp> (<samp><span class="option">--keep-going</span></samp>) option,
+because an eventual error in only one make recipe might create a mess in
+many articles, both original and translated.  Do this with caution, and
+generally only when debugging in a safe environment.
+
+   <p>The build process is intended to be invoked by a cron job, although
+manual intervention to a certain degree is possible.
+
+<ul class="menu">
+<li><a accesskey="1" href="Invoking-GNUN.html#Invoking-GNUN">Invoking GNUN</a>:        How to trigger a (re)build. 
+<li><a accesskey="2" href="Main-Variables.html#Main-Variables">Main Variables</a>:       Specifying what to build. 
+<li><a accesskey="3" href="PO-Files.html#PO-Files">PO Files</a>:             The gentle art of editing PO files. 
+<li><a accesskey="4" href="Webmaster-Tips.html#Webmaster-Tips">Webmaster Tips</a>:       The webmaster's guide to GNUnited Nations'
+                          galaxy. 
+</ul>
+
+   </body></html>
+

@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+<title>generic.LANG.html - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="PO-Files.html#PO-Files" title="PO Files">
+<link rel="prev" href="PO-Tips.html#PO-Tips" title="PO Tips">
+<link rel="next" href="PO-Files-and-Team.html#PO-Files-and-Team" title="PO Files and Team">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="generic.LANG.html"></a>
+<a name="generic_002eLANG_002ehtml"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="PO-Files-and-Team.html#PO-Files-and-Team">PO Files and Team</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="PO-Tips.html#PO-Tips">PO Tips</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
+<hr>
+</div>
+
+<h4 class="subsection">2.3.5 The <samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp> file</h4>
+
+<p><a name="index-team-information-56"></a><a name="index-generic-notice_002c-translations-57"></a>
+The files <samp><span class="file">server/gnun/generic.</span><var>lang</var><span class="file">.html</span></samp> are special: if
+no such file exists for your language, an empty file will be created
+(and added to the repository if specified <code>VCS=yes</code>).  This file
+is optional, and should contain a short message in your native
+language, ideally providing more information about the translation
+team or where to report bugs.  For example:
+
+<pre class="example">     &lt;p&gt;To join the Fooish translation team, see &lt;a
+     href="http://gnu.org/server/standards/translations/www-foo"&gt;the
+     Foo team homepage&lt;/a&gt;.&lt;/p&gt;
+</pre>
+   <p>The contents of <samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp> is injected right after
+the translators' credits, if any, and before the timestamp.  It should
+be valid XHTML markup.
+
+   <p>When you modify this file, for example, adding a message to the
+existing empty file or changing a URL, such modification will affect
+<em>all</em> articles of the language <var>lang</var> in
+<samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp>.  The next time a build occurs, all
+translations of the language code <var>lang</var> (i.e. all
+<samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp>, including the homepage), will be modified to
+include the contents of this special file.
+
+   </body></html>
+

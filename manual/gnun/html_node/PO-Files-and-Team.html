@@ -1,0 +1,131 @@
+<html lang="en">
+<head>
+<title>PO Files and Team - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="PO-Files.html#PO-Files" title="PO Files">
+<link rel="prev" href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml" title="generic.LANG.html">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="PO-Files-and-Team"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml">generic.LANG.html</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
+<hr>
+</div>
+
+<h4 class="subsection">2.3.6 Maintaining Translations in Your Team's Repository</h4>
+
+<p><a name="index-project-repository-58"></a><a name="index-repository_002c-translation-project-59"></a><a name="index-team-maintenance-60"></a>
+<acronym>GNUN</acronym> operates on the &ldquo;official&rdquo; Web repository of the
+Savannah project `www', where normally only the coordinators of
+translation teams have write access.  However, all translation teams
+have their own projects, so it is possible to take advantage of Savannah
+as a hosting facility to make the team work more comfortable.
+
+   <p>The PO files provide an excellent and natural way to review each other's
+translations, because the translation appears right below the original
+message.  Mutual reviews and proof-reading of translations is a crucial
+part of the process.  Furthermore, team work is great for the community
+spirit; automating some of the operations also result in more time for
+all members to concentrate on the important tasks.
+
+   <p>The file <samp><span class="file">gnun/server/gnun/GNUmakefile.team</span></samp> in the Sources
+repository of the `trans-coord' project is a template, aimed for all
+translation teams who wish to use their own project's repository as a
+place to keep their draft translations, until they ripe and are ready
+to be installed officially.
+
+   <p><a name="index-team-workflow-61"></a>The following diagram illustrates a typical workflow&mdash;it is applicable
+for small, medium and large teams:
+
+<pre class="example">     +----------+                   +-------------------+
+     | ``www''  |                   |   ``www-LANG''    |
+     |   Web    |------&gt;----&gt;-------|Sources repository |
+     |repository|  automatic merge  +-------------------+
+     +----------+                         |    |     |
+          |                               |    |     `-- Member A
+          +------------&lt;----&lt;-------------'    |
+                       Leader                  `---Member B
+</pre>
+   <p>All members and the team leader(s) commit in their project's
+repository&mdash;when a translation is ready, the leader checks it in in the
+official `www' repository.  If an original article changes,
+a build could be invoked to synchronize (i.e. merge) the changes and
+optionally automatically commit them so that the draft PO files are
+updated.  A translator would then normally update the PO file, and
+commit it again in the project's Sources repository, from where the
+coordinator will pick it up and install it in `www'.
+
+   <p>To take advantage of this semi-automation, rename this template
+<samp><span class="file">GNUmakefile.team</span></samp> as <samp><span class="file">GNUmakefile</span></samp> and install it in the root
+of your project's Sources repository.  Then create directories and
+sub-directories exactly as they are in `www'.  Do not create the
+<samp><span class="file">/po</span></samp> sub-directories; they are redundant here.  Instead, install
+the PO files in the normal locations where the corresponding
+<samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> resides in `www', for example:
+
+<pre class="example">     Root
+       |
+       |--GNUmakefile
+       |--home.<var>lang</var>.po
+       |--...
+       |--gnu
+       |   |
+       |   |
+       |   +--linux-and-gnu.<var>lang</var>.po
+       |   +--manifesto.<var>lang</var>.po
+       |   +--...
+       |
+       |
+       +--philosophy
+       |     |
+       |     |
+       |     +--free-sw.<var>lang</var>.po
+       |     +--not-ipr.<var>lang</var>.po
+       |     +--open-source-misses-the-point.<var>lang</var>.po
+       |     +--...
+       |
+       +--...
+</pre>
+   <p>The next sections explain how to adopt the makefile for your team and
+how to invoke a &ldquo;build&rdquo;.
+
+<ul class="menu">
+<li><a accesskey="1" href="GNUmakefile_002eteam-Variables.html#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a>
+<li><a accesskey="2" href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a>
+</ul>
+
+   </body></html>
+

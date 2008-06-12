@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+<title>Runtime Variables - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Invoking-GNUN.html#Invoking-GNUN" title="Invoking GNUN">
+<link rel="next" href="Special-Targets.html#Special-Targets" title="Special Targets">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Runtime-Variables"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Special-Targets.html#Special-Targets">Special Targets</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Invoking-GNUN.html#Invoking-GNUN">Invoking GNUN</a>
+<hr>
+</div>
+
+<h4 class="subsection">2.1.1 Variables to Control the Build Process</h4>
+
+<p><a name="index-variables-3"></a><a name="index-variable_002c-behavior-4"></a>
+The build process has several modes of operation, and they all relate to
+the handling of files that are to be added to the repository or
+performing certain sanity checks at build time.  The variables are
+specified on the command line, after <samp><span class="command">make</span></samp>, in the form
+<code>VARIABLE=value</code>, e.g. <code>make VCS=yes</code>.  In the future,
+additional features will be implemented in a similar fashion.
+
+     
+<a name="index-VCS-5"></a>
+<a name="index-CVS-6"></a>
+<dl><dt>&lsquo;<samp><span class="samp">VCS=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>
+Do not add any files to the repository.  This is the default.  You may
+as well omit to define <code>VCS</code> entirely; there is no special code
+that expects assigning the value `no'.
+
+     <br><dt>&lsquo;<samp><span class="samp">VCS=yes</span></samp>&rsquo;<dd>Automatically add any new files in the repository.  These are any POT
+files, if they are generated for the first time, and the translated
+articles (<samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp>) in HTML format.  In addition, if
+there is no <samp><span class="file">server/gnun/generic.</span><var>lang</var><span class="file">.html</span></samp> file for the
+specific language an article is being generated, an empty file will be
+added.  Finally, any missing PO and their HTML counterparts of the
+server templates will be added, computed on the basis of the
+<code>template-files</code> variable.
+
+     <br><dt>&lsquo;<samp><span class="samp">VCS=always</span></samp>&rsquo;<dd>Because <acronym>GNU</acronym> Make considers the targets up-to-date after a
+successful build, if it was performed with no VCS interaction, the
+important newly created files will not be added (and committed when you
+do <code>cvs commit</code>) in the repository.  Assigning this value enables
+additional check and forcefully adds all files.  Use it sparingly, since
+it is very slow and generally less reliable.
+
+     <p><a name="index-VALIDATE-7"></a><a name="index-validation-8"></a><a name="index-sanity-checks-9"></a><br><dt>&lsquo;<samp><span class="samp">VALIDATE=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Does not perform validation of the HTML articles and PO files.  This
+is the default, and not defining this variable has the same effect.
+
+     <br><dt>&lsquo;<samp><span class="samp">VALIDATE=yes</span></samp>&rsquo;<dd>Validates all original articles before generating the POTs, to ensure
+that the ultimate source is valid XHMTL.  Also, validates all
+generated translations in HTML format and all PO files.  It is highly
+recommended to run the build this way, even if it is a bit tedious to
+fix the errors that are reported as a result of enforcing validation.
+
+     <p><a name="index-NOTIFY-10"></a><a name="index-mail_002c-notifications-11"></a><br><dt>&lsquo;<samp><span class="samp">NOTIFY=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Do not send email notifications about errors.  This is the default.
+
+     <br><dt>&lsquo;<samp><span class="samp">NOTIFY=yes</span></samp>&rsquo;<dd>If an error occurs, send a mail with a meaningful subject and the
+error message as body to the concerned party.  The variables
+<code>devel-addr</code>, <code>web-addr</code> and <code>transl-addr</code> control the
+recipients; normally they should be set to the <acronym>GNUN</acronym>
+maintainers, webmasters and translators accordingly.
+
+     <p><a name="index-VERBOSE-12"></a><a name="index-output_002c-detailed-13"></a><br><dt>&lsquo;<samp><span class="samp">VERBOSE=yes</span></samp>&rsquo;<dd>If defined, the value of the variables <code>templates-translated</code>,
+<code>home-translated</code>, <code>ALL_POTS</code> and <code>articles-translated</code>
+will be printed to the standard output.  This is off by default, but
+recommended in general since it will show a bug in the computation of
+the basic variables.
+
+     <p><a name="index-TEAM-14"></a><a name="index-variable_002c-team-15"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team which articles need to be checked for
+completeness.  This variable is applicable only for the <code>report</code>
+target, and is mandatory for it.  See <a href="report.html#report">report</a>.
+
+   </dl>
+
+   <p>Note that <code>VCS=yes,always</code> is a valid combination: because POT
+files of the server templates are not handled by <code>always</code>,
+running the build this way will commit any newly added files as
+specified in <code>TEMPLATE_LINGUAS</code> and will perform additional check
+at the end, <code>cvs add</code>-ing all necessary files.
+
+   <p>When validation is enabled (i.e. with <code>VALIDATE=yes</code>), the
+original English articles are validated first, before any commands
+that generate the other files, and <samp><span class="command">make</span></samp> exits with an error
+on the first encountered article.  This is done on purpose, to prevent
+the propagation of an eventual error in the markup of the original
+article to all translations.
+
+   <p>By contrast, validation of the translated <samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> is
+performed after it is generated and if <code>VCS=yes</code> the article will
+be committed in the repository.  The build will fail again and further
+processing of the remaining articles will not be performed, but this
+particular translation will be installed.  The translator has time
+until the next run to fix the error&mdash;usually by modifying the
+corresponding <samp><span class="file">.</span><var>lang</var><span class="file">.po</span></samp> file.
+
+   <p>If notification is enabled (<code>NOTIFY=yes</code>), and the build system
+encounters errors (mostly when validating articles), email messages
+will be sent to the party that is expected to fix the error.  The
+subject of the messages always include the problematic article, for
+example:
+
+<pre class="example">     Subject: [GNUN Error] gnu/gnu.fa.html is not valid XHTML
+</pre>
+   </body></html>
+

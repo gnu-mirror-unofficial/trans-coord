@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+<title>Migrating - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="PO-Files.html#PO-Files" title="PO Files">
+<link rel="prev" href="New-Translation.html#New-Translation" title="New Translation">
+<link rel="next" href="GNU-News.html#GNU-News" title="GNU News">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Migrating"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="GNU-News.html#GNU-News">GNU News</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="New-Translation.html#New-Translation">New Translation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
+<hr>
+</div>
+
+<h4 class="subsection">2.3.2 Transforming existing translation in PO format</h4>
+
+<p><a name="index-migration_002c-translations-49"></a><a name="index-conversion-of-existing-translations-50"></a>
+Migrating an existing translation to a PO file format is basically
+editing the header as described in the previous section, and
+populating each of the messages by copying the already translated text
+and/or markup from the existing translation in HTML format in the
+relevant message.
+
+   <p>Typically, you will visit <samp><span class="file">po/foo.</span><var>lang</var><span class="file">.po</span></samp> (in PO mode) and
+<samp><span class="file">foo.</span><var>lang</var><span class="file">.html</span></samp> (in HTML mode) in another buffer.  Then you
+can copy a paragraph or an element from the latter and yank it in the
+relevant message in the former.  Be extra careful, since this is the
+time to check <em>precisely</em> that the translation corresponds to the
+original.  Further changes will be reflected, but if your &ldquo;initial&rdquo;
+PO file is not a 100% match, that would not necessarily mean that it
+is an improvement.  Since it is very easy to do this kind of check,
+because the relevant <code>msgid</code> and <code>msgstr</code> appear one above
+the other in the same buffer (or the similar concept in other PO
+editors), please <em>do</em> perform this initial sanity check even if
+you are confident that the translation you have been yanking strings
+from is a completely up-to-date translation.
+
+   <p>There is no need to delete the existing HTML translation,
+<acronym>GNUN</acronym> will automatically overwrite it.  The only thing a
+translator should do is to commit the PO file in the repository.
+
+   <p>When an essay has been translated by several people through the years,
+it is important that this information is recorded and reflected in the
+PO file.  In the future, special targets may be added to enable the
+<acronym>FSF</acronym> to check who translated a particular article, and when.
+
+   <p>A recommended way to do this is as follows:
+
+<pre class="example">     # French translation of http://www.gnu.org/philosophy/bsd.html
+     # Copyright (C) 2006, 2007, 2008 Free Software Foundation, Inc.
+     # This file is distributed under the same license as the gnu.org article.
+     # C&eacute;dric Corazza &lt;cedric.corazza@wanadoo.fr&gt;, 2006, 2008.
+     # Jer&ocirc;me Dominguez &lt;taz@gnu.org&gt;, 2007.
+</pre>
+   <p>In this example, it is clear that C&eacute;dric made the initial
+translation, Jer&ocirc;me made some changes in 2007, and the original
+translator returned in 2008 and continued maintaining it.
+
+   </body></html>
+

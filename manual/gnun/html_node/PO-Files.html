@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+<title>PO Files - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Usage.html#Usage" title="Usage">
+<link rel="prev" href="Main-Variables.html#Main-Variables" title="Main Variables">
+<link rel="next" href="Webmaster-Tips.html#Webmaster-Tips" title="Webmaster Tips">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="PO-Files"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Webmaster-Tips.html#Webmaster-Tips">Webmaster Tips</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Main-Variables.html#Main-Variables">Main Variables</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Usage.html#Usage">Usage</a>
+<hr>
+</div>
+
+<h3 class="section">2.3 Working with PO Files</h3>
+
+<p><a name="index-PO_002c-editing-34"></a>
+We anticipate that some gnu.org translators will find this format odd
+or inconvenient, if they never happened to work with PO files before. 
+Don't worry, you will soon get accustomed to it.  It is the
+established format for translations in the Free World, and you should
+have no problems if you have translated software before.
+
+   <p>The most efficient way to edit a PO file is using a specialized PO
+editor, because each of them represents and treats gettext messages in
+a consistent and predictable way.  It is possible to edit a PO file
+with an ordinary plain text editor, but extra effort would be
+necessary to make it valid.  Here is a list of widely used PO editors:
+
+     
+<a name="index-PO-editors-35"></a>
+<ul><li>PO mode.  We recommend using <acronym>GNU</acronym> Emacs in PO mode, because
+Emacs is the program that is suitable for performing any task when it
+comes to maintaining the <acronym>GNU</acronym> Project's website.  Provided
+that you have <acronym>GNU</acronym> gettext installed, any <samp><span class="file">.po</span></samp> file you
+visit should automatically switch to PO mode.  You can enable/disable
+it by <code>M-x po-mode &lt;RET&gt;</code>.  On some <acronym>GNU</acronym>/Linux
+distros such as gNewSense, PO mode is available in a separate package,
+<code>gettext-el</code>. See <a href="http://www.gnu.org/software/gettext">http://www.gnu.org/software/gettext</a>.
+
+     <li>gTranslator&mdash;the <acronym>GNOME</acronym> PO editor.  Has some known bugs, but
+they shouldn't affect gnu.org translations as formulas that express
+plural forms are not used.  See
+<a href="http://gtranslator.sourceforge.net">http://gtranslator.sourceforge.net</a>.
+
+     <li>KBabel&mdash;likewise for <acronym>KDE</acronym>.  See
+<a href="http://kbabel.kde.org">http://kbabel.kde.org</a>.
+
+     <li>Poedit&mdash;another editor that is based on the <code>wxWidgets</code>
+toolkit.  See <a href="http://www.poedit.net">http://www.poedit.net</a>. 
+</ul>
+
+<ul class="menu">
+<li><a accesskey="1" href="New-Translation.html#New-Translation">New Translation</a>:      How to start a new translation. 
+<li><a accesskey="2" href="Migrating.html#Migrating">Migrating</a>:            How to migrate an existing translation to a PO
+                          format under <acronym>GNUN</acronym>'s control. 
+<li><a accesskey="3" href="GNU-News.html#GNU-News">GNU News</a>:             How to handle ``whatsnew'' (a.k.a. ``gnunews''). 
+<li><a accesskey="4" href="PO-Tips.html#PO-Tips">PO Tips</a>:              Tips and hints for translators. 
+<li><a accesskey="5" href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml">generic.LANG.html</a>:    Specifying information that will propagate in
+                          every translation in a certain language. 
+<li><a accesskey="6" href="PO-Files-and-Team.html#PO-Files-and-Team">PO Files and Team</a>:    How to maintain translations in the team's
+                          repository. 
+</ul>
+
+   </body></html>
+

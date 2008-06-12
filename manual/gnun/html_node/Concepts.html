@@ -1,0 +1,192 @@
+<html lang="en">
+<head>
+<title>Concepts - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Introduction.html#Introduction" title="Introduction">
+<link rel="prev" href="Overview.html#Overview" title="Overview">
+<link rel="next" href="Advantages.html#Advantages" title="Advantages">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Concepts"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Advantages.html#Advantages">Advantages</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Overview.html#Overview">Overview</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Introduction.html#Introduction">Introduction</a>
+<hr>
+</div>
+
+<h3 class="section">1.2 What <acronym>GNU</acronym>nited Nations is and Should be</h3>
+
+<p>The basic concept behind <acronym>GNUN</acronym> is that localization of HTML
+articles is similar to localization of computer
+programs<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>.  In
+articles, like in programs, not every string is considered
+translatable, so translatable strings must be identified first, and
+then collected in a file (called &ldquo;PO template&rdquo;) for translation. 
+Articles, like programs, tend to change in time, but not every change
+in the sources calls for a translation update.  Sometimes the change
+does not affect the translatable strings, but sometimes it does.  So,
+translators must have means to identify those changes and apply the
+appropriate updates to the translation.
+
+   <p>The <acronym>GNU</acronym> <code>gettext</code> package already provides the needed
+infrastructure for maintaining translations using PO files. 
+See <a href="../gettext/index.html#Top">Introduction</a>, for a basic
+overview.  <acronym>GNU</acronym>nited Nations fills the gaps to apply this
+infrastructure to articles in <a href="http://gnu.org">http://gnu.org</a> web
+site.<a rel="footnote" href="#fn-2" name="fnd-2"><sup>2</sup></a>
+
+   <p>The following diagram summarizes the relation between the files
+handled by <acronym>GNUN</acronym>.  It is followed by somewhat detailed
+explanations, which you should read while keeping an eye on the
+diagram.  Having a clear understanding of these interrelations will
+surely help translators and web maintainers.
+
+<pre class="example">     .---&lt;--- * Original ARTICLE.html
+     |
+     |   .---&gt; ARTICLE.pot ---&gt; * ARTICLE.LANG.po ---&gt;---.
+     `---+                                               |
+         `---&gt;---.   .------&lt;----------------------------'
+                 |   |
+                 |   `---.
+                 |       +---&gt; Translated ARTICLE.LANG.html
+                 `-------'
+</pre>
+   <p>The indication &lsquo;<samp><span class="samp">*</span></samp>&rsquo; appears in two places in this picture, and
+means that the corresponding file is intended to be edited by humans. 
+The author or web maintainer edits the original
+<samp><var>article</var><span class="file">.html</span></samp>, and translators edit
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>.  All other files are regenerated
+by <acronym>GNUN</acronym> and any manual changes on them will be lost on the
+next run.
+
+   <p>Arrows denote dependency relation between files, where a change in one
+file will affect the other.  Those automatic changes will be applied by
+running &lsquo;<samp><span class="samp">make -C server/gnun</span></samp>&rsquo;.  This is the primary way to invoke
+<acronym>GNUN</acronym>, since it is implemented as a set of recipes for
+<acronym>GNU</acronym> <code>make</code>.
+
+   <p>First, <acronym>GNUN</acronym> extracts all translatable strings from the
+original English article <samp><var>article</var><span class="file">.html</span></samp> into
+<samp><var>article</var><span class="file">.pot</span></samp>.  The resulted file is suitable for
+manipulation with the various <acronym>GNU</acronym> &lsquo;<samp><span class="samp">gettext</span></samp>&rsquo; utilities. 
+It contains all original article strings and all translations are set
+to empty.  The letter <code>t</code> in <samp><span class="file">.pot</span></samp> marks this as a Template
+PO file, not yet oriented towards any particular language.
+
+   <p>The first time though, there is no <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>
+yet, so a translator must manually copy <samp><var>article</var><span class="file">.pot</span></samp> to
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>, where <var>lang</var> represents the
+target language.  See <a href="New-Translation.html#New-Translation">New Translation</a>, for details.
+
+   <p>Then comes the initial translation of messages in
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>.  Translation in itself is a whole
+matter, whose complexity far overwhelms the level of this manual. 
+Nevertheless, a few hints are given in some other chapter of this
+manual.
+
+   <p>You may use any compatible PO editor to add translated messages into
+the PO file.  See <a href="../gettext/Editing.html#Editing">Editing</a>,
+for more information.
+
+   <p>When the PO file actually exists (hopefully populated with initial
+translations), <acronym>GNUN</acronym> generates
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> file.  It takes its structure
+from the original <samp><var>article</var><span class="file">.html</span></samp>, but all translatable
+strings are replaced with their translations specified in
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>.
+
+   <p>Original articles sometimes change.  A new paragraph is being added or
+a tiny change in the wording is introduced.  Also, some articles are
+dynamic in nature, like ones containing news entries or a list of
+other articles.  If the original article changes, <acronym>GNUN</acronym> will
+automatically rebuild <samp><var>article</var><span class="file">.pot</span></samp>, and will merge the
+changes to <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>.  Any outdated
+translations will be marked as fuzzy, any new strings will be added
+with empty translations, waiting to be translated.  In the same run
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> will be rebuilt so the relevant
+strings in the translation will be substituted with the original
+English text, until the translation teams update them in
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>.
+
+   <p>Those changes in the original article that do not affect the
+translatable strings will not lead to changes in
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>.  Thus, no actions from translators
+will be needed.  <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> will be
+automatically regenerated to reflect the changes.
+
+<!-- FIXME: The following paragraphs should go to a separate section -->
+<!-- that explains those details like exact paths in www, diagram with -->
+<!-- the basic directory layout, additional files like .translinks, etc. -->
+   <p>The POT for every article under <acronym>GNUN</acronym>'s control is kept in
+the `www' repository under a special directory <samp><span class="file">po/</span></samp>, which is a
+sub-directory of the relevant directory in the `www' tree.  So, for
+&lt;<code>http://www.gnu.org/philosophy/free-sw.html</code>&gt; that is
+<samp><span class="file">philosophy/po/</span></samp>.  Except <samp><span class="file">free-sw.pot</span></samp>, this directory
+holds the canonical source of every translation, like
+<samp><span class="file">free-sw.bg.po</span></samp>, <samp><span class="file">free-sw.ca.po</span></samp>, etc.
+
+   <p>Several additional features are implemented, like automatic update of
+the list of the available translations.  For example, if a new
+translation is added and the list of translations in
+<samp><span class="file">free-sw.html</span></samp> is updated, all translated
+<samp><span class="file">free-sw.</span><var>lang</var><span class="file">.html</span></samp> will be regenerated.  This saves a lot
+of tedious, repetitive work.  There is a basic infrastructure to
+&ldquo;inject&rdquo; general information about a translation team&mdash;like a note
+how to contact the team, or how to report a bug/suggestion for
+improvement.  Translators' credits are also handled, as well as
+translators' notes, if any.
+
+   <p><acronym>GNUN</acronym> can be extended, and new features will certainly be
+added.  The <samp><span class="file">TODO</span></samp> file currently lists some of them, but new
+ideas pop up quite often.  The plan is to make a solid foundation and
+develop front-ends&mdash;a web front-end, possibly based on Pootle, a
+statistics facility, probably a wiki compiler, and more.
+
+   <div class="footnote">
+<hr>
+<h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> Actually, it is much more closer to localization of
+software documentation, where typically strings (also known as
+&ldquo;messages&rdquo; in gettext's context) are longer than strings in
+programs.  Nevertheless, all points raised still apply.</p>
+
+   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> The process of converting HTML to PO and the other way
+around is performed using po4a (&ldquo;po for anything&rdquo;), see
+<a href="http://po4a.alioth.debian.org">http://po4a.alioth.debian.org</a>.</p>
+
+   <hr></div>
+
+   </body></html>
+

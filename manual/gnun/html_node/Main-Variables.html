@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+<title>Main Variables - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Usage.html#Usage" title="Usage">
+<link rel="prev" href="Invoking-GNUN.html#Invoking-GNUN" title="Invoking GNUN">
+<link rel="next" href="PO-Files.html#PO-Files" title="PO Files">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Main-Variables"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="PO-Files.html#PO-Files">PO Files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Invoking-GNUN.html#Invoking-GNUN">Invoking GNUN</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Usage.html#Usage">Usage</a>
+<hr>
+</div>
+
+<h3 class="section">2.2 Defining Articles to be Built</h3>
+
+<p><a name="index-variables-19"></a><a name="index-gnun_002emk-20"></a>
+The file <samp><span class="file">gnun.mk</span></samp> contains variable definitions, based on which
+almost all other important variables are computed.  In other words,
+the variables defined in that file directly affect the overall
+behavior of the build process.
+
+   <p>There are two types of variables, which are specifically separated in
+order to make translators' life easier: variables that translators are
+free to modify and variables that are modified by the web-translators
+staff<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>, ideally after performing some local
+tests.  A translation team leader should update only
+<code>TEMPLATE_LINGUAS</code> and <code>HOME_LINGUAS</code>; everything else is
+supposed to be built automagically, without manual intervention.  If
+not, that is a bug that should be reported and fixed.
+
+     
+<a name="index-TEMPLATE_005fLINGUAS-21"></a>
+<a name="index-templates_002c-defining-22"></a>
+<a name="index-defining-templates-23"></a>
+<dl><dt>&lsquo;<samp><span class="samp">TEMPLATE_LINGUAS</span></samp>&rsquo;<dd>Add here your language code <em>if and only if</em> you have all the
+server templates translated, and have committed
+<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp> and
+<samp><span class="file">server/po/footer-text.</span><var>lang</var><span class="file">.po</span></samp>, as well as the templates
+that are not under <acronym>GNUN</acronym>'s control, like
+<samp><span class="file">server/header.</span><var>lang</var><span class="file">.html</span></samp> and
+<samp><span class="file">server/footer.</span><var>lang</var><span class="file">.html</span></samp>.
+
+     <p><a name="index-HOME_005fLINGUAS-24"></a><a name="index-homepage_002c-defining-25"></a><a name="index-defining-homepage-26"></a><br><dt>&lsquo;<samp><span class="samp">HOME_LINGUAS</span></samp>&rsquo;<dd>Add your language code if you have already committed
+<samp><span class="file">po/home.</span><var>lang</var><span class="file">.po</span></samp>, that way the homepage for your language
+will be built.  It is not acceptable to have your language code
+defined in this variable, but not in <code>TEMPLATE_LINGUAS</code>.
+
+     <p><a name="index-ROOT-27"></a><a name="index-articles-in-root-directory_002c-defining-28"></a><a name="index-defining-articles-in-the-root-dir-29"></a><br><dt>&lsquo;<samp><span class="samp">ROOT</span></samp>&rsquo;<dd>Add here articles that are in the server root, like
+<samp><span class="file">keepingup.html</span></samp> and <samp><span class="file">provide.html</span></samp>.  Always write only the
+basename of the article, i.e. if you add these two articles, the value
+of <code>ROOT</code> should be <code>keepingup provide</code>.  This is true for
+all the variables that expect values in the form of article names.
+
+     <p><a name="index-ALL_005fDIRS-30"></a><a name="index-directories_002c-defining-31"></a><a name="index-defining-directories-32"></a><br><dt>&lsquo;<samp><span class="samp">ALL_DIRS</span></samp>&rsquo;<dd>The list of directories containing articles, like <samp><span class="file">philosophy</span></samp>,
+<samp><span class="file">gnu</span></samp>, <samp><span class="file">licenses</span></samp>, etc.
+
+     <p><a name="index-POT-generation_002c-articles-33"></a><br><dt>&lsquo;<samp><span class="samp">gnu</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">philosophy</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...directory...</span></samp>&rsquo;<dd>A space-separated list of basenames for articles residing in
+<var>directory</var>, for which POTs will be generated and updated when the
+original article changes.  If an article is missing here, there is no
+way its translations to be maintained via <acronym>GNUN</acronym>. 
+</dl>
+
+   <div class="footnote">
+<hr>
+<h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> Only because presumably, they are more familiar with
+<acronym>GNU</acronym>nited Nations' internals.  From a purely technical point
+of view, there is no difference.</p>
+
+   <hr></div>
+
+   </body></html>
+

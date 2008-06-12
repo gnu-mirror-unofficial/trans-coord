@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+<title>PO Tips - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="PO-Files.html#PO-Files" title="PO Files">
+<link rel="prev" href="GNU-News.html#GNU-News" title="GNU News">
+<link rel="next" href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml" title="generic.LANG.html">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="PO-Tips"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml">generic.LANG.html</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="GNU-News.html#GNU-News">GNU News</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
+<hr>
+</div>
+
+<h4 class="subsection">2.3.4 Useful Hints For Editing PO Files</h4>
+
+<p><a name="index-tips_002c-translators-54"></a><a name="index-recommendations_002c-PO-files-55"></a>
+This section contains additional explanations, some in the form of
+advices and recommendations; not all of them are strictly related to
+PO files editing.
+
+     <ul>
+<li>When you install a new translation of an article (that is different
+from a server template or the homepage), all you need to do is to add
+your PO file in the appropriate <samp><span class="file">/po</span></samp> sub-directory and add a
+link to it in the translations list of the original
+<samp><var>article</var><span class="file">.html</span></samp>.  Use only HTML entities for any non-ASCII
+characters and follow the established scheme.  If language names in
+your native language are not capitalized (unlike for example in
+English or German), you should <em>not</em> capitalize the name of your
+language.
+
+     <p>In the next build, your <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> will be
+built and the link to it will propagate to all translations, provided
+that they are under <acronym>GNUN</acronym>'s control.
+
+     <li>If you don't feel comfortable editing <samp><span class="file">gnun.mk</span></samp>, do not worry. 
+Someone from the <acronym>GNUN</acronym> maintainers will notice and will amend
+<code>TEMPLATE_LINGUAS</code> or <code>HOME_LINGUAS</code> for you, as
+appropriate.
+
+     <li>Dealing with obsolete strings.  Elements which are removed from the
+original articles appear in the PO files as &ldquo;obsolete&rdquo; strings&mdash;the
+translation is not lost, but they are marked in a special way at the
+end of the PO file.  You don't have to update a PO file if it contains
+obsolete strings&mdash;do this only if it has &ldquo;fuzzy&rdquo; or
+&ldquo;untranslated&rdquo;, and of course when you want to improve the existing
+translated ones.  Sometimes these obsolete strings are useful, and
+they can save time.  For example, if you anticipate that the deleted
+text may reappear some time in the future, you can preserve the string
+and hopefully it would be marked as &ldquo;fuzzy&rdquo; when this happens. 
+Failing that, you can still copy it and yank it at the appropriate
+place.
+
+     <li>You can add comments to every message in a PO file&mdash;for example if
+you want to remember that you have to do something, or to remind you
+why this particular message is translated in a special way.  These
+comments do not appear in the generated HTML source.
+
+     <li>Sometimes, especially when the original message contains many links,
+it is easier to copy it to <code>msgstr</code> and edit the latter by
+translating the English text.  In PO mode, this is done by <kbd>C-j</kbd>. 
+This is useful also for large chunks of text in <code>&lt;pre&gt;</code> elements,
+which normally you would want to preserve verbatim.
+
+     <li>To reduce the load on the webmasters RT queue, please replace
+<a href="mailto:webmasters@gnu.org">webmasters@gnu.org</a> in the standard footer with
+<a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>.
+
+     <li>If you translate &ldquo;Free Software Foundation, Inc.&rdquo; in your native
+language in the copyright notice, then please prepend the English name
+to the <code>&lt;address&gt;</code>; otherwise it looks awkward in most
+languages.  Example:
+
+     <pre class="example">          # type: Content of: &lt;div&gt;&lt;address&gt;
+          #: ../../gnu/po/gnu.proto:85
+          msgid "51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA"
+          msgstr ""
+          "Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, "
+          "Boston, MA 02110-1301, USA"
+</pre>
+     <li>There is absolutely no reason to use HTML entities in translations as a
+replacement for common non-ASCII characters.  They are harder to write
+and serve no purpose.
+
+     <li>Wrapping of <code>msgstr</code> using <kbd>M-q</kbd> in Emacs (or other means) is
+considered harmful.  It is best to leave <acronym>GNUN</acronym> (or more
+precisely, Po4a) to do the wrapping&mdash;that way all generated HTML
+translations will have predictable results.  This will help tremendously
+for the conversion to other formats, like Texinfo.  Also, note that not
+all elements are wrapped by default, so deliberately wrapping the text
+inside the <code>msgstr</code> could lead to an invalid page or a page that is
+valid, but is rendered incorrectly by the web browser. 
+</ul>
+
+   </body></html>
+

@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+<title>Notes Slot - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="New-Translation.html#New-Translation" title="New Translation">
+<link rel="next" href="Credits-Slot.html#Credits-Slot" title="Credits Slot">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Notes-Slot"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Credits-Slot.html#Credits-Slot">Credits Slot</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="New-Translation.html#New-Translation">New Translation</a>
+<hr>
+</div>
+
+<h5 class="subsubsection">2.3.1.1 The Special Slot for Translator's Notes</h5>
+
+<p><a name="index-notes_002c-translators-45"></a><a name="index-translators_0027-notes-46"></a>
+Sometimes it is necessary to complement the translation of an essay
+with translator's notes.  The special message <code>*GNUN-SLOT:
+TRANSLATOR'S NOTES*</code> is designed to serve this purpose.  If your
+translation doesn't have notes, you should &ldquo;translate&rdquo; the
+<code>msgstr</code> as a space (&lt;SPC&gt;)&mdash;otherwise the text of the
+<code>msgid</code> will appear in the HTML translation, which is not what
+you want.  Here is an example how to use translators' notes in a PO
+file:
+
+<pre class="example">     # type: Content of: &lt;p&gt;
+     #: ../../philosophy/po/free-sw.proto:22
+     msgid ""
+     "To understand the concept, you should think of &lt;q&gt;free&lt;/q&gt; "
+     "as in &lt;q&gt;free speech,&lt;/q&gt; not as in &lt;q&gt;free beer.&lt;/q&gt;"
+     msgstr ""
+     "Translated message, where you want to clarify beer&lt;sup&gt;&lt;a "
+     "href=\"#TransNote1\"&gt;1&lt;/a&gt;&lt;/sup&gt;, presumably because the "
+     "expression in your language is different"
+     ...
+     ...
+     # type: Content of: &lt;div&gt;
+     #. TRANSLATORS: Use space (SPC) as msgstr if you don't have notes.
+     #: ../../philosophy/po/free-sw.proto:274
+     msgid "*GNUN-SLOT: TRANSLATOR'S NOTES*"
+     msgstr ""
+     "&lt;b&gt;Translator's notes&lt;/b&gt;:\n"
+     "&lt;ol&gt;\n"
+     "&lt;li id=\"TransNote1\"&gt;Note clarifying the text.&lt;/li&gt;\n"
+     "&lt;/ol&gt;\n"
+</pre>
+   <p>Certainly, everything in the <code>msgstr</code>s should be in your native
+language; we use English here in order the example to be understood by
+everyone.  If you have more notes, each subsequent one should be with
+incremented number, i.e. `TransNote2', `TransNote3', etc. and you have
+to add them as more <code>&lt;li&gt;</code> elements accordingly.
+
+   <p>Do not worry about the <code>\n</code> character&mdash;it is inserted
+automatically when you press &lt;RET&gt;.  It is not compulsory that
+notes start on a new line, this is the recommended way simply because
+it is easier to edit them.
+
+   <p>It is important to follow this specification, because notes will look
+consistently in all languages and will be clearly distinguishable from
+authors' footnotes, if any.  Furthermore, it would be easier to define
+a special <acronym>CSS</acronym> class for them, and also to convert the
+translations in other formats such as Texinfo&mdash;when these features
+are implemented.
+
+   </body></html>
+

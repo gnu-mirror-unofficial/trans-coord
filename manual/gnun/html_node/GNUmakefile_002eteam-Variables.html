@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+<title>GNUmakefile.team Variables - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="PO-Files-and-Team.html#PO-Files-and-Team" title="PO Files and Team">
+<link rel="next" href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron" title="GNUmakefile.team and Cron">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="GNUmakefile.team-Variables"></a>
+<a name="GNUmakefile_002eteam-Variables"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files-and-Team.html#PO-Files-and-Team">PO Files and Team</a>
+<hr>
+</div>
+
+<h5 class="subsubsection">2.3.6.1 Adopting <samp><span class="file">GNUmakefile.team</span></samp> For a Specific Team</h5>
+
+<p>To adjust the makefile for your team, you need to edit two variables.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">TEAM</span></samp>&rsquo;<dd>Set this to the language code, like <code>bg</code> or <code>pt-br</code>.
+
+     <br><dt>&lsquo;<samp><span class="samp">wwwdir</span></samp>&rsquo;<dd>The relative path to the working copy of the master `www' repository. 
+So if you have checked out your project's Sources repository at
+<samp><span class="file">~/projects/www-</span><var>lang</var></samp> and the `www' Web repository at
+<samp><span class="file">~/projects/www</span></samp>, the value of <code>wwwdir</code> should be
+<code>../www/</code>.  Note the slash at the end, it is important. 
+</dl>
+
+   <p>Technically speaking, two variants of one language sharing the same
+project and repository (such as <code>zh-cn</code> and <code>zh-tw</code>) are not
+supported&mdash;patches welcome.  As a workaround, there could be two
+directories with two <samp><span class="file">GNUmakefile</span></samp>s and each directory having its
+own tree.
+
+   <p>Some variables are specified on the command line, and alter the behavior
+of the build process.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">VERBOSE=yes</span></samp>&rsquo;<dd>Print more information from <samp><span class="command">cvs</span></samp> and <samp><span class="command">msgmerge</span></samp>; off by
+default.  Note that <code>VERBOSE</code> can be defined to any string, it will
+have the same effect.
+
+     <br><dt>&lsquo;<samp><span class="samp">VCS=yes</span></samp>&rsquo;<dd>Update both `www' and `www-<var>lang</var>' repositories, then commit the
+merged PO files in the latter repository.  By default, there is no CVS
+interaction. 
+</dl>
+
+<h5 class="unnumberedsubsubsec">Targets in <samp><span class="file">GNUmakefile.team</span></samp></h5>
+
+     <dl>
+<dt><code>update</code><dd>Updates the repositories.  Does nothing unless <code>VCS=yes</code>.
+
+     <br><dt><code>sync</code><dd>Merges all available PO files from the corresponding POT in `www'.
+
+     <br><dt><code>report</code><dd>Verifies which translations are complete, and prints a list (with
+statistics) of those that need to be updated. 
+</dl>
+
+   <p><code>make VCS=yes</code> is the recommended command to be run periodically. 
+To check the status of the translations, run <code>make report</code>.
+
+   <p>Feel free to replace all strings with equivalents in your native
+language and of course&mdash;do not hesitate to extend this file and modify
+it as much as you like.  For example, useful extra functionality would
+be a target that will check which files have not yet been committed in
+the official repository, or which files have to be updated there
+(i.e. they were updated by the team members but not installed by the
+coordinator).  Either way, if you come up with something interesting, it
+would be nice to send a message to <a href="mailto:trans-coord-devel@gnu.org">trans-coord-devel@gnu.org</a>,
+so that <samp><span class="file">GNUmakefile.team</span></samp> gets updated for all teams' benefit.
+
+   </body></html>
+

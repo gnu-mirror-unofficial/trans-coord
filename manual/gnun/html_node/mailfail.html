@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+<title>mailfail - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Scripts.html#Scripts" title="Scripts">
+<link rel="prev" href="validate_002dhtml.html#validate_002dhtml" title="validate-html">
+<link rel="next" href="validate_002dhtml_002dnotify.html#validate_002dhtml_002dnotify" title="validate-html-notify">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="mailfail"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="validate_002dhtml_002dnotify.html#validate_002dhtml_002dnotify">validate-html-notify</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="validate_002dhtml.html#validate_002dhtml">validate-html</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Scripts.html#Scripts">Scripts</a>
+<hr>
+</div>
+
+<h4 class="subsection">3.1.3 The <samp><span class="command">mailfail</span></samp> Script</h4>
+
+<p><a name="index-mail_002c-notifications-70"></a>
+This is a helper script that runs a command, and mails the output of
+that command in case it exits with a non-zero exit status. 
+<samp><span class="command">mailfail</span></samp> depends on <acronym>GNU</acronym> Mailutils, or a compatible
+implementation, such as BSD's mailx.
+
+   <p>Usage:
+
+<pre class="example">     mailfail [--dry-run] RCPT SUBJECT CMD [ARG ...]
+</pre>
+   <p>The <samp><span class="command">mailfail</span></samp> script accepts the following options:
+
+     <dl>
+<dt><samp><span class="option">--dry-run</span></samp><dd>Does not send the email message.
+
+     <br><dt><samp><span class="option">RCPT</span></samp><dd>The recipient of the message in a valid format, like
+<code>someone@somehost.org</code>.
+
+     <br><dt><samp><span class="option">SUBJECT</span></samp><dd>The subject of the message; if it is longer than a word you should
+guard it with quotes.
+
+     <br><dt><samp><span class="option">CMD</span></samp><dd>The command you want to run and send a mail in case it fails.
+
+     <br><dt><samp><span class="option">ARG...</span></samp><dd>The arguments of <code>CMD</code>, if any. 
+</dl>
+
+   <p>Here is a typical example, similar to the way it is used in
+<acronym>GNUN</acronym>:
+
+<pre class="example">     mailfail translators@example.org "Bad PO" msgfmt -cv -o /dev/null bg.po
+</pre>
+   <p>This will check the validity of <samp><span class="file">bg.po</span></samp> with the <samp><span class="command">msgfmt</span></samp>
+program and in case there are errors, a message will be sent to the
+specified address with `Bad PO' as subject and the error output from
+<samp><span class="command">msgfmt</span></samp> as body.
+
+   <p><samp><span class="command">mailfail</span></samp> inherits the exit status of the command being run. 
+If an argument is missing, the usage information is printed to the
+standard output and the exit code is 1.
+
+   </body></html>
+

@@ -1,0 +1,2381 @@
+<html lang="en">
+<head>
+<title>GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled "GNU Free Documentation License."
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">GNUnited Nations Manual</h1>
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">GNUnited Nations</a>
+<li><a name="toc_Introduction" href="#Introduction">1 Introduction to <acronym>GNU</acronym>nited Nations</a>
+<ul>
+<li><a href="#Overview">1.1 Why <acronym>GNUN</acronym> is Being Developed</a>
+<li><a href="#Concepts">1.2 What <acronym>GNU</acronym>nited Nations is and Should be</a>
+<li><a href="#Advantages">1.3 Major Advantages of <acronym>GNUN</acronym></a>
+<li><a href="#Disadvantages">1.4 Known Bugs and Limitations</a>
+</li></ul>
+<li><a name="toc_Usage" href="#Usage">2 General Usage</a>
+<ul>
+<li><a href="#Invoking-GNUN">2.1 Invoking GNUN</a>
+<ul>
+<li><a href="#Runtime-Variables">2.1.1 Variables to Control the Build Process</a>
+<li><a href="#Special-Targets">2.1.2 Targets Specified on the Command Line</a>
+<ul>
+<li><a href="#sync">2.1.2.1 The <code>sync</code> target</a>
+<li><a href="#report">2.1.2.2 The <code>report</code> target</a>
+<li><a href="#clean">2.1.2.3 The <code>clean</code> target</a>
+<li><a href="#distclean">2.1.2.4 The <code>distclean</code> target</a>
+</li></ul>
+</li></ul>
+<li><a href="#Main-Variables">2.2 Defining Articles to be Built</a>
+<li><a href="#PO-Files">2.3 Working with PO Files</a>
+<ul>
+<li><a href="#New-Translation">2.3.1 Starting a New Translation</a>
+<ul>
+<li><a href="#Notes-Slot">2.3.1.1 The Special Slot for Translator's Notes</a>
+<li><a href="#Credits-Slot">2.3.1.2 The Special Slot for Translator's Credits</a>
+</li></ul>
+<li><a href="#Migrating">2.3.2 Transforming existing translation in PO format</a>
+<li><a href="#GNU-News">2.3.3 Special Handling For <acronym>GNU</acronym> News</a>
+<li><a href="#PO-Tips">2.3.4 Useful Hints For Editing PO Files</a>
+<li><a href="#generic_002eLANG_002ehtml">2.3.5 The <samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp> file</a>
+<li><a href="#PO-Files-and-Team">2.3.6 Maintaining Translations in Your Team's Repository</a>
+<ul>
+<li><a href="#GNUmakefile_002eteam-Variables">2.3.6.1 Adopting <samp><span class="file">GNUmakefile.team</span></samp> For a Specific Team</a>
+<li><a href="#GNUmakefile_002eteam-Variables">Targets in <samp><span class="file">GNUmakefile.team</span></samp></a>
+<li><a href="#GNUmakefile_002eteam-and-Cron">2.3.6.2 Automatic Synchronization and Status Reports</a>
+</li></ul>
+</li></ul>
+<li><a href="#Webmaster-Tips">2.4 Tips and Hints for Webmasters</a>
+</li></ul>
+<li><a name="toc_Internals" href="#Internals">3 Unexciting Information for <acronym>GNUN</acronym>'s Operation</a>
+<ul>
+<li><a href="#Scripts">3.1 Internally Used Scripts</a>
+<ul>
+<li><a href="#make_002dprototype">3.1.1 The <samp><span class="command">make-prototype</span></samp> Script</a>
+<li><a href="#validate_002dhtml">3.1.2 The <samp><span class="command">validate-html</span></samp> Script</a>
+<li><a href="#mailfail">3.1.3 The <samp><span class="command">mailfail</span></samp> Script</a>
+<li><a href="#validate_002dhtml_002dnotify">3.1.4 The <samp><span class="command">validate-html-notify</span></samp> Script</a>
+</li></ul>
+<li><a href="#Rules">3.2 How The Recipes Work</a>
+</li></ul>
+<li><a name="toc_Bugs" href="#Bugs">4 Reporting Bugs</a>
+<li><a name="toc_Copying-This-Manual" href="#Copying-This-Manual">Appendix A GNU Free Documentation License</a>
+<li><a name="toc_Index" href="#Index">Index</a>
+</li></ul>
+</div>
+
+
+
+<div class="node">
+<p><hr>
+<a name="Top"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">GNUnited Nations</h2>
+
+<p>This manual is for <acronym>GNU</acronym>nited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.<br>
+Last updated on 12.06.2008.
+   <pre class="sp">
+
+</pre>
+Copyright &copy; 2008 Free Software Foundation, Inc.
+
+   <blockquote>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the <acronym>GNU</acronym> Free Documentation License,
+Version 1.2 or any later version published by the Free Software
+Foundation; with no Invariant Sections, no Front-Cover Texts, and no
+Back-Cover Texts.  A copy of the license is included in the section
+entitled &ldquo;<acronym>GNU</acronym> Free Documentation License.&rdquo;
+</blockquote>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Introduction">Introduction</a>:         Overview of GNUnited Nations. 
+<li><a accesskey="2" href="#Usage">Usage</a>:                Basic usage, invocation and tips. 
+<li><a accesskey="3" href="#Internals">Internals</a>:            Dive into <acronym>GNUN</acronym>. 
+<li><a accesskey="4" href="#Bugs">Bugs</a>:                 How to report bugs. 
+<li><a accesskey="5" href="#Index">Index</a>
+<li><a accesskey="6" href="#Copying-This-Manual">Copying This Manual</a>:  The GNU Free Documentation License. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Introduction"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Usage">Usage</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Introduction to <acronym>GNU</acronym>nited Nations</h2>
+
+<p><acronym>GNU</acronym>nited Nations (abbreviated <acronym>GNUN</acronym>) is a
+collection of makefiles and scripts that are supposed to make the life
+of <a href="http://gnu.org">http://gnu.org</a> translators easier.  Although it is
+specifically developed for the <acronym>GNU</acronym> Project's website, it
+could be customized, at least in theory, to fit the needs of other
+internationalized sites.  <acronym>GNUN</acronym> is in early stage of
+development, but if it proves useful, and if there is sufficient
+interest (and time), it is possible to develop a robust configuration
+interface that would be appropriate for general usage.
+
+   <p>It is vitally important to understand that <acronym>GNUN</acronym> is
+<em>not</em> a silver bullet that solves all problems.  If we have to be
+honest, deploying <acronym>GNUN</acronym> in fact even does create some
+(see <a href="#Disadvantages">Disadvantages</a>).
+
+   <p><acronym>GNU</acronym>nited Nations is free software, available under the
+<acronym>GNU</acronym> General Public License.
+
+   <p>This manual is organized in way that is suitable both for translators
+and <acronym>GNU</acronym> Web Translation managers (plus eventually interested
+<acronym>GNU</acronym> Webmasters, if any).  It may also serve as an
+introductory material and reference for new <acronym>GNUN</acronym> developers
+and contributors.  Hopefully, it might be useful to people who
+customize and adopt the software for a third party site or for their
+own needs.  Feel free to skip sections or entire chapters if they are
+irrelevant for your intended usage.
+
+   <p>This manual is free documentation, and you can modify and redistribute
+it under the terms of the <acronym>GNU</acronym> Free Documentation License. 
+See <a href="#Copying-This-Manual">GNU Free Documentation License</a>.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Overview">Overview</a>:             What is <acronym>GNUN</acronym> and why is necessary? 
+<li><a accesskey="2" href="#Concepts">Concepts</a>:             Basic concepts and goals. 
+<li><a accesskey="3" href="#Advantages">Advantages</a>:           The goodness <acronym>GNUN</acronym> brings. 
+<li><a accesskey="4" href="#Disadvantages">Disadvantages</a>:        Staying on firm ground. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Overview"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Concepts">Concepts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
+
+</div>
+
+<h3 class="section">1.1 Why <acronym>GNUN</acronym> is Being Developed</h3>
+
+<p>The <acronym>GNU</acronym> Project's website, <a href="http://www.gnu.org">http://www.gnu.org</a>, has
+become considerably large over the years.  Maintaining it requires
+significant effort, and sometimes a new web standard is developed
+faster than the time required to migrate all articles to the next
+widely adopted one.
+
+   <p>When it comes to internationalization, the problems are so many that
+it is hard to enumerate them.  It has become apparent that maintaining
+translations up-to-date is a major undertaking, involving tedious
+skimming through commit logs, reviewing diffs and other medieval
+techniques to catch up.  Some translation teams have developed their
+own sets of scripts, but so far there has been no universal solution.
+
+   <p>This unpleasant situation, combined with rapid and incompatible
+design changes, have lead some teams to neglect the important work of
+keeping their translation in line with the changing original
+articles.  As a consequence, the <acronym>GNU</acronym> Project is facing the
+problem of maintaining them in suboptimal ways, in order to keep the
+information updated.
+
+   <p>The reasons for developing <acronym>GNU</acronym>nited Nations are very similar
+to those that lead to the inception of <acronym>GNU</acronym> gettext, or
+<acronym>GNOME</acronym> Documentation Utilities (<code>gnome-doc-utils</code>) some
+years later.
+
+<div class="node">
+<p><hr>
+<a name="Concepts"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Advantages">Advantages</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Overview">Overview</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
+
+</div>
+
+<h3 class="section">1.2 What <acronym>GNU</acronym>nited Nations is and Should be</h3>
+
+<p>The basic concept behind <acronym>GNUN</acronym> is that localization of HTML
+articles is similar to localization of computer
+programs<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>.  In
+articles, like in programs, not every string is considered
+translatable, so translatable strings must be identified first, and
+then collected in a file (called &ldquo;PO template&rdquo;) for translation. 
+Articles, like programs, tend to change in time, but not every change
+in the sources calls for a translation update.  Sometimes the change
+does not affect the translatable strings, but sometimes it does.  So,
+translators must have means to identify those changes and apply the
+appropriate updates to the translation.
+
+   <p>The <acronym>GNU</acronym> <code>gettext</code> package already provides the needed
+infrastructure for maintaining translations using PO files. 
+See <a href="gettext.html#Top">Introduction</a>, for a basic
+overview.  <acronym>GNU</acronym>nited Nations fills the gaps to apply this
+infrastructure to articles in <a href="http://gnu.org">http://gnu.org</a> web
+site.<a rel="footnote" href="#fn-2" name="fnd-2"><sup>2</sup></a>
+
+   <p>The following diagram summarizes the relation between the files
+handled by <acronym>GNUN</acronym>.  It is followed by somewhat detailed
+explanations, which you should read while keeping an eye on the
+diagram.  Having a clear understanding of these interrelations will
+surely help translators and web maintainers.
+
+<pre class="example">     .---&lt;--- * Original ARTICLE.html
+     |
+     |   .---&gt; ARTICLE.pot ---&gt; * ARTICLE.LANG.po ---&gt;---.
+     `---+                                               |
+         `---&gt;---.   .------&lt;----------------------------'
+                 |   |
+                 |   `---.
+                 |       +---&gt; Translated ARTICLE.LANG.html
+                 `-------'
+</pre>
+   <p>The indication &lsquo;<samp><span class="samp">*</span></samp>&rsquo; appears in two places in this picture, and
+means that the corresponding file is intended to be edited by humans. 
+The author or web maintainer edits the original
+<samp><var>article</var><span class="file">.html</span></samp>, and translators edit
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>.  All other files are regenerated
+by <acronym>GNUN</acronym> and any manual changes on them will be lost on the
+next run.
+
+   <p>Arrows denote dependency relation between files, where a change in one
+file will affect the other.  Those automatic changes will be applied by
+running &lsquo;<samp><span class="samp">make -C server/gnun</span></samp>&rsquo;.  This is the primary way to invoke
+<acronym>GNUN</acronym>, since it is implemented as a set of recipes for
+<acronym>GNU</acronym> <code>make</code>.
+
+   <p>First, <acronym>GNUN</acronym> extracts all translatable strings from the
+original English article <samp><var>article</var><span class="file">.html</span></samp> into
+<samp><var>article</var><span class="file">.pot</span></samp>.  The resulted file is suitable for
+manipulation with the various <acronym>GNU</acronym> &lsquo;<samp><span class="samp">gettext</span></samp>&rsquo; utilities. 
+It contains all original article strings and all translations are set
+to empty.  The letter <code>t</code> in <samp><span class="file">.pot</span></samp> marks this as a Template
+PO file, not yet oriented towards any particular language.
+
+   <p>The first time though, there is no <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>
+yet, so a translator must manually copy <samp><var>article</var><span class="file">.pot</span></samp> to
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>, where <var>lang</var> represents the
+target language.  See <a href="#New-Translation">New Translation</a>, for details.
+
+   <p>Then comes the initial translation of messages in
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>.  Translation in itself is a whole
+matter, whose complexity far overwhelms the level of this manual. 
+Nevertheless, a few hints are given in some other chapter of this
+manual.
+
+   <p>You may use any compatible PO editor to add translated messages into
+the PO file.  See <a href="gettext.html#Editing">Editing</a>,
+for more information.
+
+   <p>When the PO file actually exists (hopefully populated with initial
+translations), <acronym>GNUN</acronym> generates
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> file.  It takes its structure
+from the original <samp><var>article</var><span class="file">.html</span></samp>, but all translatable
+strings are replaced with their translations specified in
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>.
+
+   <p>Original articles sometimes change.  A new paragraph is being added or
+a tiny change in the wording is introduced.  Also, some articles are
+dynamic in nature, like ones containing news entries or a list of
+other articles.  If the original article changes, <acronym>GNUN</acronym> will
+automatically rebuild <samp><var>article</var><span class="file">.pot</span></samp>, and will merge the
+changes to <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>.  Any outdated
+translations will be marked as fuzzy, any new strings will be added
+with empty translations, waiting to be translated.  In the same run
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> will be rebuilt so the relevant
+strings in the translation will be substituted with the original
+English text, until the translation teams update them in
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>.
+
+   <p>Those changes in the original article that do not affect the
+translatable strings will not lead to changes in
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>.  Thus, no actions from translators
+will be needed.  <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> will be
+automatically regenerated to reflect the changes.
+
+<!-- FIXME: The following paragraphs should go to a separate section -->
+<!-- that explains those details like exact paths in www, diagram with -->
+<!-- the basic directory layout, additional files like .translinks, etc. -->
+   <p>The POT for every article under <acronym>GNUN</acronym>'s control is kept in
+the `www' repository under a special directory <samp><span class="file">po/</span></samp>, which is a
+sub-directory of the relevant directory in the `www' tree.  So, for
+&lt;<code>http://www.gnu.org/philosophy/free-sw.html</code>&gt; that is
+<samp><span class="file">philosophy/po/</span></samp>.  Except <samp><span class="file">free-sw.pot</span></samp>, this directory
+holds the canonical source of every translation, like
+<samp><span class="file">free-sw.bg.po</span></samp>, <samp><span class="file">free-sw.ca.po</span></samp>, etc.
+
+   <p>Several additional features are implemented, like automatic update of
+the list of the available translations.  For example, if a new
+translation is added and the list of translations in
+<samp><span class="file">free-sw.html</span></samp> is updated, all translated
+<samp><span class="file">free-sw.</span><var>lang</var><span class="file">.html</span></samp> will be regenerated.  This saves a lot
+of tedious, repetitive work.  There is a basic infrastructure to
+&ldquo;inject&rdquo; general information about a translation team&mdash;like a note
+how to contact the team, or how to report a bug/suggestion for
+improvement.  Translators' credits are also handled, as well as
+translators' notes, if any.
+
+   <p><acronym>GNUN</acronym> can be extended, and new features will certainly be
+added.  The <samp><span class="file">TODO</span></samp> file currently lists some of them, but new
+ideas pop up quite often.  The plan is to make a solid foundation and
+develop front-ends&mdash;a web front-end, possibly based on Pootle, a
+statistics facility, probably a wiki compiler, and more.
+
+<div class="node">
+<p><hr>
+<a name="Advantages"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Disadvantages">Disadvantages</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Concepts">Concepts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
+
+</div>
+
+<h3 class="section">1.3 Major Advantages of <acronym>GNUN</acronym></h3>
+
+<p>Here is a simple list of situations where we hope this suite would
+prove to be useful.
+
+     <ul>
+<li>Automatic rebuild of all translations when the original article
+changes.  This is the most important feature, as it prevents
+accumulation of seriously outdated translations.
+
+     <li>Global update of the whole site.  Apply the previous point to the web
+server templates (under <samp><span class="file">server/</span></samp> in the `www' repository).  A
+single change to such a file will affect literally <em>all</em>
+articles, translated or not.
+
+     <li>Urgent notices.  Sometimes an &ldquo;urgent&rdquo; notice is added by the
+webmasters, which should appear on all pages.  Typically this is about
+an event where urgent action is needed, although often it is only
+relevant to a single country or even a particular city.  Such a notice
+will propagate to all pages, and translators may choose whether to
+translate it or not.  For example, the Urdu translation team may
+conclude that there are only a few Urdu speakers in Massachusetts, to
+participate in an event that will happen in Boston, so translating the
+&ldquo;urgent&rdquo; notice may not be very &ldquo;urgent&rdquo; for Urdu.  However, such
+notice will appear in all translated pages and people who usually read
+gnu.org pages in their native language will see it, so they can take
+action as necessary.  When the notice is removed, often in a week or
+two, it will disappear without translators' intervention, whether they
+translated it or not.
+
+     <li>Simplification of the translation process&mdash;lots of errors and typos
+come from the fact that translators basically have to duplicate the
+whole HTML markup of the original.  The PO files eliminate most of the
+basic markup, which is where most of the validation errors come from.
+
+     <li>Markup consistency site-wide&mdash;it would be substantially easier to
+update the site to a future standard, because translations will
+naturally follow the changes in the original articles.  This also
+means that translation teams do not have to undergo the boring process
+of converting their articles to the new <acronym>SSI</acronym>-based layout;
+this will be done automatically.
+
+     <li>Easy updates by translators.  Modified paragraphs, links, etc. will
+appear as &ldquo;fuzzy&rdquo; strings in the PO files, newly added ones will
+appear as &ldquo;untranslated&rdquo;, and deleted will appear as &ldquo;obsolete&rdquo;. 
+It is substantially easier to update a PO file, where a keystroke
+takes you to the part that needs updating, whatever it may be.
+
+     <li>Reporting and statistics.  Since the basis is standard PO files, which
+are the canonical source of the translations, it is easy to manipulate
+them and extract useful information. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Disadvantages"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Advantages">Advantages</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
+
+</div>
+
+<h3 class="section">1.4 Known Bugs and Limitations</h3>
+
+<p>As it happens in real life, we don't wear pink glasses and are aware
+of certain limitations and annoyances of this semi-automatic system.
+
+     <ul>
+<li>Often it is hard to figure out where precisely a change was made.  A
+change in one single word in a long paragraph of the HTML article will
+lead to the whole of it being marked as &ldquo;fuzzy&rdquo; in the PO files.  So
+don't unsubscribe from <a href="mailto:www-commits@gnu.org">www-commits@gnu.org</a> yet, and be
+prepared to check the CVS history of the original article.
+
+     <li>We plan to invoke a build once a day, because doing it more often will
+potentially generate more messages to the mailing list in the form of
+commit notifications.  This has its drawback, since translators will
+have to wait for a day until their PO files are updated, and another
+day for the <samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> articles to get generated, after
+they commit the updated POs. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Usage"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Internals">Internals</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 General Usage</h2>
+
+<div align="right">If anything may go wrong, it will definitely go wrong.
+                                                 <p>&mdash;Murphy's Law
+
+                                              <p>Murphy is an optimist.
+                                               <p>&mdash;O'Rielly's Law
+</div>
+
+   <pre class="sp">
+
+</pre>
+
+<acronym>GNUN</acronym> currently consists of a few makefiles, scripts and
+optional <samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp> files, intended to contain
+article-independent but team-specific information.  They are designed to
+reside in the <samp><span class="file">server/gnun</span></samp> directory, but this may change.  In all
+examples in this manual, &ldquo;invoking&rdquo; means executing on the command
+line <code>make -C server/gnun [</code><var>target</var><code>]
+[</code><var>variable</var><code>=</code><var>value</var><code> ...]</code> while the working directory is the
+root in the `www' web repository.  For the purpose of brevity, we will
+refer to the above command as simply <samp><span class="command">make</span></samp>, which is equivalent
+to <code>cd server/gnun ; make</code>.  It is desirable never to invoke
+<samp><span class="command">make</span></samp> with the <samp><span class="option">-k</span></samp> (<samp><span class="option">--keep-going</span></samp>) option,
+because an eventual error in only one make recipe might create a mess in
+many articles, both original and translated.  Do this with caution, and
+generally only when debugging in a safe environment.
+
+   <p>The build process is intended to be invoked by a cron job, although
+manual intervention to a certain degree is possible.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Invoking-GNUN">Invoking GNUN</a>:        How to trigger a (re)build. 
+<li><a accesskey="2" href="#Main-Variables">Main Variables</a>:       Specifying what to build. 
+<li><a accesskey="3" href="#PO-Files">PO Files</a>:             The gentle art of editing PO files. 
+<li><a accesskey="4" href="#Webmaster-Tips">Webmaster Tips</a>:       The webmaster's guide to GNUnited Nations'
+                          galaxy. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Invoking-GNUN"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Main-Variables">Main Variables</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
+
+</div>
+
+<h3 class="section">2.1 Invoking GNUN</h3>
+
+<p><a name="index-invoking-1"></a><a name="index-triggering_002c-build-2"></a>
+The central part of <acronym>GNU</acronym>nited Nations is a makefile; actually
+a <samp><span class="file">GNUmakefile</span></samp> since it heavily relies on features and
+extensions available in <acronym>GNU</acronym> Make.  Thus, invoking a build
+consists of typing <samp><span class="command">make</span></samp> on the command line, or within cron. 
+If you are deploying the software on a non-GNU machine, probably
+<acronym>GNU</acronym> Make is installed and available as <samp><span class="command">gmake</span></samp>.  If
+not, you should seriously consider installing it, since as far as we
+know, the build will fail otherwise.  See
+<a href="http://www.gnu.org/software/make">http://www.gnu.org/software/make</a> for information how to
+download and install <acronym>GNU</acronym> Make.
+
+   <p>If you don't specify a target, <samp><span class="command">make</span></samp> by default builds the
+target <code>all</code>, which in this case is to rebuild all translations
+that are not up-to-date.  However, there are special targets that do not
+depend on the standard <code>all</code> target, which can be built by
+<code>make </code><var>target</var>.  Some of the variables in the next section
+apply to them, and some do not.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Runtime-Variables">Runtime Variables</a>:    Variables to control the build process. 
+<li><a accesskey="2" href="#Special-Targets">Special Targets</a>:      Targets that are not built by default. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Runtime-Variables"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Special-Targets">Special Targets</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-GNUN">Invoking GNUN</a>
+
+</div>
+
+<h4 class="subsection">2.1.1 Variables to Control the Build Process</h4>
+
+<p><a name="index-variables-3"></a><a name="index-variable_002c-behavior-4"></a>
+The build process has several modes of operation, and they all relate to
+the handling of files that are to be added to the repository or
+performing certain sanity checks at build time.  The variables are
+specified on the command line, after <samp><span class="command">make</span></samp>, in the form
+<code>VARIABLE=value</code>, e.g. <code>make VCS=yes</code>.  In the future,
+additional features will be implemented in a similar fashion.
+
+     
+<a name="index-VCS-5"></a>
+<a name="index-CVS-6"></a>
+<dl><dt>&lsquo;<samp><span class="samp">VCS=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>
+Do not add any files to the repository.  This is the default.  You may
+as well omit to define <code>VCS</code> entirely; there is no special code
+that expects assigning the value `no'.
+
+     <br><dt>&lsquo;<samp><span class="samp">VCS=yes</span></samp>&rsquo;<dd>Automatically add any new files in the repository.  These are any POT
+files, if they are generated for the first time, and the translated
+articles (<samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp>) in HTML format.  In addition, if
+there is no <samp><span class="file">server/gnun/generic.</span><var>lang</var><span class="file">.html</span></samp> file for the
+specific language an article is being generated, an empty file will be
+added.  Finally, any missing PO and their HTML counterparts of the
+server templates will be added, computed on the basis of the
+<code>template-files</code> variable.
+
+     <br><dt>&lsquo;<samp><span class="samp">VCS=always</span></samp>&rsquo;<dd>Because <acronym>GNU</acronym> Make considers the targets up-to-date after a
+successful build, if it was performed with no VCS interaction, the
+important newly created files will not be added (and committed when you
+do <code>cvs commit</code>) in the repository.  Assigning this value enables
+additional check and forcefully adds all files.  Use it sparingly, since
+it is very slow and generally less reliable.
+
+     <p><a name="index-VALIDATE-7"></a><a name="index-validation-8"></a><a name="index-sanity-checks-9"></a><br><dt>&lsquo;<samp><span class="samp">VALIDATE=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Does not perform validation of the HTML articles and PO files.  This
+is the default, and not defining this variable has the same effect.
+
+     <br><dt>&lsquo;<samp><span class="samp">VALIDATE=yes</span></samp>&rsquo;<dd>Validates all original articles before generating the POTs, to ensure
+that the ultimate source is valid XHMTL.  Also, validates all
+generated translations in HTML format and all PO files.  It is highly
+recommended to run the build this way, even if it is a bit tedious to
+fix the errors that are reported as a result of enforcing validation.
+
+     <p><a name="index-NOTIFY-10"></a><a name="index-mail_002c-notifications-11"></a><br><dt>&lsquo;<samp><span class="samp">NOTIFY=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Do not send email notifications about errors.  This is the default.
+
+     <br><dt>&lsquo;<samp><span class="samp">NOTIFY=yes</span></samp>&rsquo;<dd>If an error occurs, send a mail with a meaningful subject and the
+error message as body to the concerned party.  The variables
+<code>devel-addr</code>, <code>web-addr</code> and <code>transl-addr</code> control the
+recipients; normally they should be set to the <acronym>GNUN</acronym>
+maintainers, webmasters and translators accordingly.
+
+     <p><a name="index-VERBOSE-12"></a><a name="index-output_002c-detailed-13"></a><br><dt>&lsquo;<samp><span class="samp">VERBOSE=yes</span></samp>&rsquo;<dd>If defined, the value of the variables <code>templates-translated</code>,
+<code>home-translated</code>, <code>ALL_POTS</code> and <code>articles-translated</code>
+will be printed to the standard output.  This is off by default, but
+recommended in general since it will show a bug in the computation of
+the basic variables.
+
+     <p><a name="index-TEAM-14"></a><a name="index-variable_002c-team-15"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team which articles need to be checked for
+completeness.  This variable is applicable only for the <code>report</code>
+target, and is mandatory for it.  See <a href="#report">report</a>.
+
+   </dl>
+
+   <p>Note that <code>VCS=yes,always</code> is a valid combination: because POT
+files of the server templates are not handled by <code>always</code>,
+running the build this way will commit any newly added files as
+specified in <code>TEMPLATE_LINGUAS</code> and will perform additional check
+at the end, <code>cvs add</code>-ing all necessary files.
+
+   <p>When validation is enabled (i.e. with <code>VALIDATE=yes</code>), the
+original English articles are validated first, before any commands
+that generate the other files, and <samp><span class="command">make</span></samp> exits with an error
+on the first encountered article.  This is done on purpose, to prevent
+the propagation of an eventual error in the markup of the original
+article to all translations.
+
+   <p>By contrast, validation of the translated <samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> is
+performed after it is generated and if <code>VCS=yes</code> the article will
+be committed in the repository.  The build will fail again and further
+processing of the remaining articles will not be performed, but this
+particular translation will be installed.  The translator has time
+until the next run to fix the error&mdash;usually by modifying the
+corresponding <samp><span class="file">.</span><var>lang</var><span class="file">.po</span></samp> file.
+
+   <p>If notification is enabled (<code>NOTIFY=yes</code>), and the build system
+encounters errors (mostly when validating articles), email messages
+will be sent to the party that is expected to fix the error.  The
+subject of the messages always include the problematic article, for
+example:
+
+<pre class="example">     Subject: [GNUN Error] gnu/gnu.fa.html is not valid XHTML
+</pre>
+   <div class="node">
+<p><hr>
+<a name="Special-Targets"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Runtime-Variables">Runtime Variables</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-GNUN">Invoking GNUN</a>
+
+</div>
+
+<h4 class="subsection">2.1.2 Targets Specified on the Command Line</h4>
+
+<p>Some targets are not built by default, because they are only useful
+under certain circumstances.  Think of them like semi-automated
+commands or canned command sequences that are more complicated, and
+more importantly, whose arguments are variables computed at the time
+<samp><span class="command">make</span></samp> reads the makefiles&mdash;the filesets they affect are
+specific and already defined, one way or another.
+
+<ul class="menu">
+<li><a accesskey="1" href="#sync">sync</a>
+<li><a accesskey="2" href="#report">report</a>
+<li><a accesskey="3" href="#clean">clean</a>
+<li><a accesskey="4" href="#distclean">distclean</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="sync"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#report">report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
+
+</div>
+
+<h5 class="subsubsection">2.1.2.1 The <code>sync</code> target</h5>
+
+<p><a name="index-synchronization_002c-repository-16"></a>
+The <code>sync</code> target has a simple task: synchronize the
+<em>original English</em> articles from a canonical repository, like
+`www'.  It is very important that such synchronization happens,
+because it is desirable to develop the software and add more features
+in a testbed, while the `official instance' operates on the official
+repository in a predictable way.
+
+   <p>It is recommended that you `build' the <code>sync</code> target from a cron
+job, some time before the general build occurs.  That way,
+prerequisites (e.g. original <samp><span class="file">.html</span></samp> articles) will be updated
+from the canonical repository and the subsequent <samp><span class="command">make</span></samp>
+invocation, possibly run by cron as well, will update all
+translations.
+
+   <p>The <code>VCS</code> variable affects the behavior: if it is defined to
+`yes' then the synchronized files are committed to the `testing'
+repository, i.e. the <var>destination</var>.  In addition, if a file meant
+to be synchronized disappeared from the <var>source</var>, a warning mail
+will be sent to the address defined in the <code>devel-addr</code> variable
+(defined only in <samp><span class="file">GNUmakefile</span></samp>).  The build will continue without
+failure, and will sync and commit all other files, but will send the
+same email message again if the file is still present in the
+<code>files-to-sync</code> variable during a subsequent invocation.
+
+   <p>In addition, <code>sync</code> synchronizes all &ldquo;verbatim&rdquo; server
+templates that are not under <acronym>GNUN</acronym>'s control, such as
+<samp><span class="file">server/header.html</span></samp>, <samp><span class="file">server/footer.html</span></samp> and their
+translations, as defined in the <code>verbatim-templates</code> variable. 
+This is important, as these files may change in the master repository,
+while the validation of the html files in the development repository
+will be performed with the old templates expanded, thus making this
+specific test more or less bogus.
+
+   <p><code>VCS=always</code> has no effect on this target, as well as
+<code>VALIDATE</code>.
+
+<div class="node">
+<p><hr>
+<a name="report"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#clean">clean</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#sync">sync</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
+
+</div>
+
+<h5 class="subsubsection">2.1.2.2 The <code>report</code> target</h5>
+
+<p><a name="index-reporting-17"></a><a name="index-status_002c-translations-18"></a>
+This target exists solely for convenience to translators, enabling them
+to check which articles are not 100% translated and have to be updated. 
+The way to check this is by running <code>make report TEAM=</code><var>lang</var>,
+where <var>lang</var> is the language code, as usual.  Thus, to check all
+French translations, one would run
+
+<pre class="example">     make report TEAM=fr
+</pre>
+   <p><strong>Caution:</strong> This target checks only the PO files; if there are
+translations that are maintained in the old-fashioned way, they are
+not reported since there is no reasonable way to check if they are
+up-to-date.  In fact, this is one of the main reasons GNUN is being
+developed, if you recall.
+
+<div class="node">
+<p><hr>
+<a name="clean"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#distclean">distclean</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#report">report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
+
+</div>
+
+<h5 class="subsubsection">2.1.2.3 The <code>clean</code> target</h5>
+
+<p>Not implemented yet.
+
+<div class="node">
+<p><hr>
+<a name="distclean"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#clean">clean</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
+
+</div>
+
+<h5 class="subsubsection">2.1.2.4 The <code>distclean</code> target</h5>
+
+<p>Not implemented yet.
+
+<div class="node">
+<p><hr>
+<a name="Main-Variables"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#PO-Files">PO Files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Invoking-GNUN">Invoking GNUN</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
+
+</div>
+
+<h3 class="section">2.2 Defining Articles to be Built</h3>
+
+<p><a name="index-variables-19"></a><a name="index-gnun_002emk-20"></a>
+The file <samp><span class="file">gnun.mk</span></samp> contains variable definitions, based on which
+almost all other important variables are computed.  In other words,
+the variables defined in that file directly affect the overall
+behavior of the build process.
+
+   <p>There are two types of variables, which are specifically separated in
+order to make translators' life easier: variables that translators are
+free to modify and variables that are modified by the web-translators
+staff<a rel="footnote" href="#fn-3" name="fnd-3"><sup>3</sup></a>, ideally after performing some local
+tests.  A translation team leader should update only
+<code>TEMPLATE_LINGUAS</code> and <code>HOME_LINGUAS</code>; everything else is
+supposed to be built automagically, without manual intervention.  If
+not, that is a bug that should be reported and fixed.
+
+     
+<a name="index-TEMPLATE_005fLINGUAS-21"></a>
+<a name="index-templates_002c-defining-22"></a>
+<a name="index-defining-templates-23"></a>
+<dl><dt>&lsquo;<samp><span class="samp">TEMPLATE_LINGUAS</span></samp>&rsquo;<dd>Add here your language code <em>if and only if</em> you have all the
+server templates translated, and have committed
+<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp> and
+<samp><span class="file">server/po/footer-text.</span><var>lang</var><span class="file">.po</span></samp>, as well as the templates
+that are not under <acronym>GNUN</acronym>'s control, like
+<samp><span class="file">server/header.</span><var>lang</var><span class="file">.html</span></samp> and
+<samp><span class="file">server/footer.</span><var>lang</var><span class="file">.html</span></samp>.
+
+     <p><a name="index-HOME_005fLINGUAS-24"></a><a name="index-homepage_002c-defining-25"></a><a name="index-defining-homepage-26"></a><br><dt>&lsquo;<samp><span class="samp">HOME_LINGUAS</span></samp>&rsquo;<dd>Add your language code if you have already committed
+<samp><span class="file">po/home.</span><var>lang</var><span class="file">.po</span></samp>, that way the homepage for your language
+will be built.  It is not acceptable to have your language code
+defined in this variable, but not in <code>TEMPLATE_LINGUAS</code>.
+
+     <p><a name="index-ROOT-27"></a><a name="index-articles-in-root-directory_002c-defining-28"></a><a name="index-defining-articles-in-the-root-dir-29"></a><br><dt>&lsquo;<samp><span class="samp">ROOT</span></samp>&rsquo;<dd>Add here articles that are in the server root, like
+<samp><span class="file">keepingup.html</span></samp> and <samp><span class="file">provide.html</span></samp>.  Always write only the
+basename of the article, i.e. if you add these two articles, the value
+of <code>ROOT</code> should be <code>keepingup provide</code>.  This is true for
+all the variables that expect values in the form of article names.
+
+     <p><a name="index-ALL_005fDIRS-30"></a><a name="index-directories_002c-defining-31"></a><a name="index-defining-directories-32"></a><br><dt>&lsquo;<samp><span class="samp">ALL_DIRS</span></samp>&rsquo;<dd>The list of directories containing articles, like <samp><span class="file">philosophy</span></samp>,
+<samp><span class="file">gnu</span></samp>, <samp><span class="file">licenses</span></samp>, etc.
+
+     <p><a name="index-POT-generation_002c-articles-33"></a><br><dt>&lsquo;<samp><span class="samp">gnu</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">philosophy</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...directory...</span></samp>&rsquo;<dd>A space-separated list of basenames for articles residing in
+<var>directory</var>, for which POTs will be generated and updated when the
+original article changes.  If an article is missing here, there is no
+way its translations to be maintained via <acronym>GNUN</acronym>. 
+</dl>
+
+<div class="node">
+<p><hr>
+<a name="PO-Files"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Webmaster-Tips">Webmaster Tips</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Main-Variables">Main Variables</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
+
+</div>
+
+<h3 class="section">2.3 Working with PO Files</h3>
+
+<p><a name="index-PO_002c-editing-34"></a>
+We anticipate that some gnu.org translators will find this format odd
+or inconvenient, if they never happened to work with PO files before. 
+Don't worry, you will soon get accustomed to it.  It is the
+established format for translations in the Free World, and you should
+have no problems if you have translated software before.
+
+   <p>The most efficient way to edit a PO file is using a specialized PO
+editor, because each of them represents and treats gettext messages in
+a consistent and predictable way.  It is possible to edit a PO file
+with an ordinary plain text editor, but extra effort would be
+necessary to make it valid.  Here is a list of widely used PO editors:
+
+     
+<a name="index-PO-editors-35"></a>
+<ul><li>PO mode.  We recommend using <acronym>GNU</acronym> Emacs in PO mode, because
+Emacs is the program that is suitable for performing any task when it
+comes to maintaining the <acronym>GNU</acronym> Project's website.  Provided
+that you have <acronym>GNU</acronym> gettext installed, any <samp><span class="file">.po</span></samp> file you
+visit should automatically switch to PO mode.  You can enable/disable
+it by <code>M-x po-mode &lt;RET&gt;</code>.  On some <acronym>GNU</acronym>/Linux
+distros such as gNewSense, PO mode is available in a separate package,
+<code>gettext-el</code>. See <a href="http://www.gnu.org/software/gettext">http://www.gnu.org/software/gettext</a>.
+
+     <li>gTranslator&mdash;the <acronym>GNOME</acronym> PO editor.  Has some known bugs, but
+they shouldn't affect gnu.org translations as formulas that express
+plural forms are not used.  See
+<a href="http://gtranslator.sourceforge.net">http://gtranslator.sourceforge.net</a>.
+
+     <li>KBabel&mdash;likewise for <acronym>KDE</acronym>.  See
+<a href="http://kbabel.kde.org">http://kbabel.kde.org</a>.
+
+     <li>Poedit&mdash;another editor that is based on the <code>wxWidgets</code>
+toolkit.  See <a href="http://www.poedit.net">http://www.poedit.net</a>. 
+</ul>
+
+<ul class="menu">
+<li><a accesskey="1" href="#New-Translation">New Translation</a>:      How to start a new translation. 
+<li><a accesskey="2" href="#Migrating">Migrating</a>:            How to migrate an existing translation to a PO
+                          format under <acronym>GNUN</acronym>'s control. 
+<li><a accesskey="3" href="#GNU-News">GNU News</a>:             How to handle ``whatsnew'' (a.k.a. ``gnunews''). 
+<li><a accesskey="4" href="#PO-Tips">PO Tips</a>:              Tips and hints for translators. 
+<li><a accesskey="5" href="#generic_002eLANG_002ehtml">generic.LANG.html</a>:    Specifying information that will propagate in
+                          every translation in a certain language. 
+<li><a accesskey="6" href="#PO-Files-and-Team">PO Files and Team</a>:    How to maintain translations in the team's
+                          repository. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="New-Translation"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Migrating">Migrating</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
+
+</div>
+
+<h4 class="subsection">2.3.1 Starting a New Translation</h4>
+
+<p><a name="index-translation_002c-new-36"></a><a name="index-new-translation-37"></a>
+To start a new translation, the easiest way is to copy the existing POT
+as <samp><span class="file">article.</span><var>lang</var><span class="file">.po</span></samp>, where <var>lang</var> is your language code. 
+For example, to prepare for a new translation of the essay
+<a href="http://www.gnu.org/philosophy/free-sw.html">http://www.gnu.org/philosophy/free-sw.html</a>, you can simply do
+<code>cd philosophy/po ; cp free-sw.pot free-sw.</code><var>lang</var><code>.po</code> and then
+edit the latter.  If <samp><span class="file">free-sw.pot</span></samp> does not exist it is because
+either the article is not yet &ldquo;templated&rdquo; (i.e. migrated to the new
+style), or the <acronym>GNUN</acronym> maintainers have not yet added it to the
+value of the appropriate variable in <samp><span class="file">server/gnun/gnun.mk</span></samp>.  In
+that case, just ask them to do the necessary in order the POT to be
+generated.
+
+   <p>You could also use the <samp><span class="command">msginit</span></samp> utility that would populate
+the PO file header with the right information, provided your
+environment is set up correctly.  See <a href="gettext.html#msginit-Invocation">msginit Invocation</a>.
+
+   <p>The PO file header as generated usually looks like this:
+
+<pre class="example">     # SOME DESCRIPTIVE TITLE
+     # Copyright (C) YEAR Free Software Foundation, Inc.
+     # This file is distributed under the same license as the PACKAGE package.
+     # FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, YEAR.
+     #
+     #, fuzzy
+     msgid ""
+     msgstr ""
+     "Project-Id-Version: PACKAGE VERSION\n"
+     "POT-Creation-Date: 2008-02-06 16:25-0500\n"
+     "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+     "Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt;\n"
+     "Language-Team: LANGUAGE &lt;LL@li.org&gt;\n"
+     "MIME-Version: 1.0\n"
+     "Content-Type: text/plain; charset=CHARSET\n"
+     "Content-Transfer-Encoding: ENCODING"
+</pre>
+   <p>You have to edit the header to match the already established
+conventions, and the rules for gnu.org translations.  For reference,
+here is a list with all fields explained:
+
+   <p><a name="index-PO-headers-38"></a>
+     <dl>
+<dt>&lsquo;<samp><span class="samp">Project-Id-Version</span></samp>&rsquo;<dd>Add here the filename of the original article, without the
+sub-directory, like &ldquo;banner.html&rdquo; or &ldquo;free-sw.html&rdquo;.
+
+     <br><dt>&lsquo;<samp><span class="samp">POT-Creation-Date</span></samp>&rsquo;<dd>Do not edit this field, it is already set when the POT is created.
+
+     <br><dt>&lsquo;<samp><span class="samp">PO-Revision-Date</span></samp>&rsquo;<dd>Likewise, do not edit.  This field is automatically filled in when you
+save the file with any decent PO editor.
+
+     <br><dt>&lsquo;<samp><span class="samp">Last-Translator</span></samp>&rsquo;<dd>The name and email address of the last translator who have edited the
+translation.  Pay attention that normally this is the name of a member
+of your team, it can be the translation team leader if he/she was the
+person who updated the translation.  For example:
+
+     <pre class="example">          Elvis Parsley &lt;king@grassland.com&gt;
+</pre>
+     <br><dt>&lsquo;<samp><span class="samp">Language-Team</span></samp>&rsquo;<dd>This field should contain the mailing list on which the translation
+team can be reached&mdash;sometimes this is the alias
+<a href="mailto:web-translators-LANG@gnu.org">web-translators-LANG@gnu.org</a>, but in some cases it is a
+separate, non-<acronym>GNU</acronym> list.  It could be a URL of the team's
+homepage, provided that it contains contact details.  Example:
+
+     <pre class="example">          French &lt;trad-gnu@april.org&gt;
+</pre>
+     <br><dt>&lsquo;<samp><span class="samp">MIME-Version</span></samp>&rsquo;<dd>Leave it like it is.
+
+     <br><dt>&lsquo;<samp><span class="samp">Content-Type</span></samp>&rsquo;<dd>Usually this is <code>text/plain; charset=UTF-8</code>; change the charset
+accordingly.
+
+     <br><dt>&lsquo;<samp><span class="samp">Content-Transfer-Encoding</span></samp>&rsquo;<dd>Set this to <code>8bit</code>. 
+</dl>
+
+   <p>Here is an example of a properly edited header:
+
+<pre class="example">     # Bulgarian translation of http://www.gnu.org/philosophy/free-sw.html
+     # Copyright (C) 2008 Free Software Foundation, Inc.
+     # This file is distributed under the same license as the gnu.org article.
+     # Yavor Doganov &lt;yavor@gnu.org&gt;, 2008.
+     #
+     msgid ""
+     msgstr ""
+     "Project-Id-Version: free-sw.html\n"
+     "POT-Creation-Date: 2008-02-06 16:25-0500\n"
+     "PO-Revision-Date: 2008-02-09 15:23+0200\n"
+     "Last-Translator: Yavor Doganov &lt;yavor@gnu.org&gt;\n"
+     "Language-Team: Bulgarian &lt;dict@fsa-bg.org&gt;\n"
+     "MIME-Version: 1.0\n"
+     "Content-Type: text/plain; charset=UTF-8\n"
+     "Content-Transfer-Encoding: 8-bit"
+</pre>
+   <p>Notice the absence of the &ldquo;fuzzy&rdquo; marker; you should &ldquo;unfuzzy&rdquo; the
+header after entering the necessary information (this is done by
+simply pressing &lt;TAB&gt; in PO mode).
+
+   <p>There are some special messages that appear in the POT and PO:
+
+     
+<a name="index-notes_002c-translators-39"></a>
+<a name="index-translators_0027-notes-40"></a>
+<dl><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S NOTES*</span></samp>&rsquo;<dd>This is for translator's notes that are injected in the resulting
+translation.  See <a href="#Notes-Slot">Notes Slot</a>, for more information.  If your
+translation does not have notes, you <em>must</em> translate this as a
+space, that is, &lt;SPC&gt;.
+
+     <p><a name="index-credits_002c-translators-41"></a><a name="index-translators_0027-credits-42"></a><br><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S CREDITS*</span></samp>&rsquo;<dd>This is again optional, and should contain the name (and address) of
+the person who made the translation.  &ldquo;Translate&rdquo; this string as a
+space (&lt;SPC&gt;) if you do not want your name to appear there. 
+See <a href="#Credits-Slot">Credits Slot</a>. 
+</dl>
+
+   <p><a name="index-wrapping-long-lines-43"></a><a name="index-long-lines_002c-wrap-44"></a>Most of the PO editors do not wrap long lines that inevitably appear in
+<code>msgstr</code>'s.  If that happens, long lines make reading subsequent
+diffs harder, and are generally annoying for most people.  If this issue
+bothers you, you can &ldquo;normalize&rdquo; the already finished PO translation
+by executing on the command line <code>cat </code><var>file</var><code>.po | msgcat - -o
+</code><var>file</var><code>.po</code>, before installing it in the repository.  Either way, the
+build system will treat it is a valid PO file.
+
+   <p>For those lucky Emacs users, here is a code snippet that you can put
+in your <samp><span class="file">.emacs</span></samp>; doing <kbd>M-x po-wrap</kbd> while in PO mode will
+wrap all long lines:
+
+<pre class="lisp">     (defun po-wrap ()
+       "Filter current po-mode buffer through `msgcat' tool to wrap all lines."
+       (interactive)
+       (if (eq major-mode 'po-mode)
+           (let ((tmp-file (make-temp-file "po-wrap."))
+     	    (tmp-buf (generate-new-buffer "*temp*")))
+     	(unwind-protect
+     	    (progn
+     	      (write-region (point-min) (point-max) tmp-file nil 1)
+     	      (if (zerop
+     		   (call-process
+     		    "msgcat" nil tmp-buf t (shell-quote-argument tmp-file)))
+     		  (let ((saved (point))
+     			(inhibit-read-only t))
+     		    (delete-region (point-min) (point-max))
+     		    (insert-buffer tmp-buf)
+     		    (goto-char (min saved (point-max))))
+     		(with-current-buffer tmp-buf
+     		  (error (buffer-string)))))
+     	  (kill-buffer tmp-buf)
+     	  (delete-file tmp-file)))))
+</pre>
+   <p>It is highly desirable that you check if the PO file you finished
+translating (or editing) is valid, before committing it.  This is done
+by running <code>msgfmt -cv -o /dev/null </code><var>file</var> or by simply
+pressing <kbd>V</kbd> in PO mode.  The build system automatically verifies
+each PO file when invoked with <code>VALIDATE=yes</code>, but you won't get a
+warm and fuzzy feeling if a stupid typo you made halts the whole update
+of all translations.  Such things happen to everyone, so it is a good
+practice to check before you actually commit.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Notes-Slot">Notes Slot</a>:           How to handle translator's notes. 
+<li><a accesskey="2" href="#Credits-Slot">Credits Slot</a>:         Translator's credits. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Notes-Slot"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Credits-Slot">Credits Slot</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#New-Translation">New Translation</a>
+
+</div>
+
+<h5 class="subsubsection">2.3.1.1 The Special Slot for Translator's Notes</h5>
+
+<p><a name="index-notes_002c-translators-45"></a><a name="index-translators_0027-notes-46"></a>
+Sometimes it is necessary to complement the translation of an essay
+with translator's notes.  The special message <code>*GNUN-SLOT:
+TRANSLATOR'S NOTES*</code> is designed to serve this purpose.  If your
+translation doesn't have notes, you should &ldquo;translate&rdquo; the
+<code>msgstr</code> as a space (&lt;SPC&gt;)&mdash;otherwise the text of the
+<code>msgid</code> will appear in the HTML translation, which is not what
+you want.  Here is an example how to use translators' notes in a PO
+file:
+
+<pre class="example">     # type: Content of: &lt;p&gt;
+     #: ../../philosophy/po/free-sw.proto:22
+     msgid ""
+     "To understand the concept, you should think of &lt;q&gt;free&lt;/q&gt; "
+     "as in &lt;q&gt;free speech,&lt;/q&gt; not as in &lt;q&gt;free beer.&lt;/q&gt;"
+     msgstr ""
+     "Translated message, where you want to clarify beer&lt;sup&gt;&lt;a "
+     "href=\"#TransNote1\"&gt;1&lt;/a&gt;&lt;/sup&gt;, presumably because the "
+     "expression in your language is different"
+     ...
+     ...
+     # type: Content of: &lt;div&gt;
+     #. TRANSLATORS: Use space (SPC) as msgstr if you don't have notes.
+     #: ../../philosophy/po/free-sw.proto:274
+     msgid "*GNUN-SLOT: TRANSLATOR'S NOTES*"
+     msgstr ""
+     "&lt;b&gt;Translator's notes&lt;/b&gt;:\n"
+     "&lt;ol&gt;\n"
+     "&lt;li id=\"TransNote1\"&gt;Note clarifying the text.&lt;/li&gt;\n"
+     "&lt;/ol&gt;\n"
+</pre>
+   <p>Certainly, everything in the <code>msgstr</code>s should be in your native
+language; we use English here in order the example to be understood by
+everyone.  If you have more notes, each subsequent one should be with
+incremented number, i.e. `TransNote2', `TransNote3', etc. and you have
+to add them as more <code>&lt;li&gt;</code> elements accordingly.
+
+   <p>Do not worry about the <code>\n</code> character&mdash;it is inserted
+automatically when you press &lt;RET&gt;.  It is not compulsory that
+notes start on a new line, this is the recommended way simply because
+it is easier to edit them.
+
+   <p>It is important to follow this specification, because notes will look
+consistently in all languages and will be clearly distinguishable from
+authors' footnotes, if any.  Furthermore, it would be easier to define
+a special <acronym>CSS</acronym> class for them, and also to convert the
+translations in other formats such as Texinfo&mdash;when these features
+are implemented.
+
+<div class="node">
+<p><hr>
+<a name="Credits-Slot"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Notes-Slot">Notes Slot</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#New-Translation">New Translation</a>
+
+</div>
+
+<h5 class="subsubsection">2.3.1.2 The Special Slot for Translator's Credits</h5>
+
+<p><a name="index-credits_002c-translators-47"></a><a name="index-translators_0027-credits-48"></a>
+Most of the translators usually put their name under the translation,
+in the &ldquo;footer&rdquo; area.  This is entirely acceptable, since some
+readers prefer to send buggestions directly to the translator.  Also,
+giving credit where credit is due is a natural thing.
+
+   <p>Like the previous slot, you should &ldquo;translate&rdquo; it as a &lt;SPC&gt; if
+you don't want your name to appear there.
+
+   <p>Here is an example of the recommended way to specify credits:
+
+<pre class="example">     &lt;b&gt;Traduction&lt;/b&gt;: Benjamin Drieu
+     &lt;a href="mailto:foo@example.org"&gt;&amp;lt;foo@example.org&amp;gt;&lt;/a&gt;,
+     2007, 2008.
+</pre>
+   <p>It is highly desirable to use this form, but you may omit the email
+address or add the homepage of the translator, provided that the
+translation team leader ensures that it constantly meets the linking
+criteria for gnu.org.  Please follow the <acronym>FSF</acronym> HTML Style
+Sheet when adding <acronym>URI</acronym>s or other information.
+
+<div class="node">
+<p><hr>
+<a name="Migrating"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#GNU-News">GNU News</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#New-Translation">New Translation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
+
+</div>
+
+<h4 class="subsection">2.3.2 Transforming existing translation in PO format</h4>
+
+<p><a name="index-migration_002c-translations-49"></a><a name="index-conversion-of-existing-translations-50"></a>
+Migrating an existing translation to a PO file format is basically
+editing the header as described in the previous section, and
+populating each of the messages by copying the already translated text
+and/or markup from the existing translation in HTML format in the
+relevant message.
+
+   <p>Typically, you will visit <samp><span class="file">po/foo.</span><var>lang</var><span class="file">.po</span></samp> (in PO mode) and
+<samp><span class="file">foo.</span><var>lang</var><span class="file">.html</span></samp> (in HTML mode) in another buffer.  Then you
+can copy a paragraph or an element from the latter and yank it in the
+relevant message in the former.  Be extra careful, since this is the
+time to check <em>precisely</em> that the translation corresponds to the
+original.  Further changes will be reflected, but if your &ldquo;initial&rdquo;
+PO file is not a 100% match, that would not necessarily mean that it
+is an improvement.  Since it is very easy to do this kind of check,
+because the relevant <code>msgid</code> and <code>msgstr</code> appear one above
+the other in the same buffer (or the similar concept in other PO
+editors), please <em>do</em> perform this initial sanity check even if
+you are confident that the translation you have been yanking strings
+from is a completely up-to-date translation.
+
+   <p>There is no need to delete the existing HTML translation,
+<acronym>GNUN</acronym> will automatically overwrite it.  The only thing a
+translator should do is to commit the PO file in the repository.
+
+   <p>When an essay has been translated by several people through the years,
+it is important that this information is recorded and reflected in the
+PO file.  In the future, special targets may be added to enable the
+<acronym>FSF</acronym> to check who translated a particular article, and when.
+
+   <p>A recommended way to do this is as follows:
+
+<pre class="example">     # French translation of http://www.gnu.org/philosophy/bsd.html
+     # Copyright (C) 2006, 2007, 2008 Free Software Foundation, Inc.
+     # This file is distributed under the same license as the gnu.org article.
+     # C&eacute;dric Corazza &lt;cedric.corazza@wanadoo.fr&gt;, 2006, 2008.
+     # Jer&ocirc;me Dominguez &lt;taz@gnu.org&gt;, 2007.
+</pre>
+   <p>In this example, it is clear that C&eacute;dric made the initial
+translation, Jer&ocirc;me made some changes in 2007, and the original
+translator returned in 2008 and continued maintaining it.
+
+<div class="node">
+<p><hr>
+<a name="GNU-News"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#PO-Tips">PO Tips</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Migrating">Migrating</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
+
+</div>
+
+<h4 class="subsection">2.3.3 Special Handling For <acronym>GNU</acronym> News</h4>
+
+<p><a name="index-gnunews-51"></a><a name="index-whatsnew-52"></a><a name="index-gnusflashes-53"></a>
+The <acronym>GNU</acronym> website has infrastructure for supporting &ldquo;What's
+New&rdquo;, also known as &ldquo;<acronym>GNU</acronym> News&rdquo;&mdash;see
+<a href="http://www.gnu.org/server/standards/README.webmastering.html#polnews">http://www.gnu.org/server/standards/README.webmastering.html#polnews</a>
+for details.  Entries are added in a special plain text file,
+<samp><span class="file">server/whatsnew.txt</span></samp> and are used to build
+<samp><span class="file">server/whatsnew.include</span></samp> and <samp><span class="file">gnusflashes.include</span></samp>.  The
+former is used by <samp><span class="file">server/whatsnew.html</span></samp>, while the latter is
+included in the homepage.
+
+   <p><acronym>GNUN</acronym> has rules for building <samp><span class="file">whatsnew.pot</span></samp>, which
+contains all necessary strings for
+<samp><span class="file">server/whatsnew.</span><var>lang</var><span class="file">.html</span></samp>,
+<samp><span class="file">server/whatsnew.</span><var>lang</var><span class="file">.include</span></samp> and
+<samp><span class="file">gnusflashes.</span><var>lang</var><span class="file">.include</span></samp>.  There is nothing unusual in this
+POT file, so it should be translated like any other.  When you commit
+<samp><span class="file">whatsnew.</span><var>lang</var><span class="file">.po</span></samp>, it will be used to generate all three
+localized files.  In addition, if there is a homepage for this language,
+it will be rebuilt when <samp><span class="file">gnusflashes.</span><var>lang</var><span class="file">.include</span></samp> is
+generated for the first time in order the translated homepage to include
+it instead of <samp><span class="file">gnusflashes.include</span></samp>.
+
+   <p>Note that localized <acronym>RSS</acronym> feeds are not supported on purpose, as
+it would be annoying for subscribers if new items appear in English and
+then once again translated.
+
+<div class="node">
+<p><hr>
+<a name="PO-Tips"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#generic_002eLANG_002ehtml">generic.LANG.html</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#GNU-News">GNU News</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
+
+</div>
+
+<h4 class="subsection">2.3.4 Useful Hints For Editing PO Files</h4>
+
+<p><a name="index-tips_002c-translators-54"></a><a name="index-recommendations_002c-PO-files-55"></a>
+This section contains additional explanations, some in the form of
+advices and recommendations; not all of them are strictly related to
+PO files editing.
+
+     <ul>
+<li>When you install a new translation of an article (that is different
+from a server template or the homepage), all you need to do is to add
+your PO file in the appropriate <samp><span class="file">/po</span></samp> sub-directory and add a
+link to it in the translations list of the original
+<samp><var>article</var><span class="file">.html</span></samp>.  Use only HTML entities for any non-ASCII
+characters and follow the established scheme.  If language names in
+your native language are not capitalized (unlike for example in
+English or German), you should <em>not</em> capitalize the name of your
+language.
+
+     <p>In the next build, your <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> will be
+built and the link to it will propagate to all translations, provided
+that they are under <acronym>GNUN</acronym>'s control.
+
+     <li>If you don't feel comfortable editing <samp><span class="file">gnun.mk</span></samp>, do not worry. 
+Someone from the <acronym>GNUN</acronym> maintainers will notice and will amend
+<code>TEMPLATE_LINGUAS</code> or <code>HOME_LINGUAS</code> for you, as
+appropriate.
+
+     <li>Dealing with obsolete strings.  Elements which are removed from the
+original articles appear in the PO files as &ldquo;obsolete&rdquo; strings&mdash;the
+translation is not lost, but they are marked in a special way at the
+end of the PO file.  You don't have to update a PO file if it contains
+obsolete strings&mdash;do this only if it has &ldquo;fuzzy&rdquo; or
+&ldquo;untranslated&rdquo;, and of course when you want to improve the existing
+translated ones.  Sometimes these obsolete strings are useful, and
+they can save time.  For example, if you anticipate that the deleted
+text may reappear some time in the future, you can preserve the string
+and hopefully it would be marked as &ldquo;fuzzy&rdquo; when this happens. 
+Failing that, you can still copy it and yank it at the appropriate
+place.
+
+     <li>You can add comments to every message in a PO file&mdash;for example if
+you want to remember that you have to do something, or to remind you
+why this particular message is translated in a special way.  These
+comments do not appear in the generated HTML source.
+
+     <li>Sometimes, especially when the original message contains many links,
+it is easier to copy it to <code>msgstr</code> and edit the latter by
+translating the English text.  In PO mode, this is done by <kbd>C-j</kbd>. 
+This is useful also for large chunks of text in <code>&lt;pre&gt;</code> elements,
+which normally you would want to preserve verbatim.
+
+     <li>To reduce the load on the webmasters RT queue, please replace
+<a href="mailto:webmasters@gnu.org">webmasters@gnu.org</a> in the standard footer with
+<a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>.
+
+     <li>If you translate &ldquo;Free Software Foundation, Inc.&rdquo; in your native
+language in the copyright notice, then please prepend the English name
+to the <code>&lt;address&gt;</code>; otherwise it looks awkward in most
+languages.  Example:
+
+     <pre class="example">          # type: Content of: &lt;div&gt;&lt;address&gt;
+          #: ../../gnu/po/gnu.proto:85
+          msgid "51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA"
+          msgstr ""
+          "Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, "
+          "Boston, MA 02110-1301, USA"
+</pre>
+     <li>There is absolutely no reason to use HTML entities in translations as a
+replacement for common non-ASCII characters.  They are harder to write
+and serve no purpose.
+
+     <li>Wrapping of <code>msgstr</code> using <kbd>M-q</kbd> in Emacs (or other means) is
+considered harmful.  It is best to leave <acronym>GNUN</acronym> (or more
+precisely, Po4a) to do the wrapping&mdash;that way all generated HTML
+translations will have predictable results.  This will help tremendously
+for the conversion to other formats, like Texinfo.  Also, note that not
+all elements are wrapped by default, so deliberately wrapping the text
+inside the <code>msgstr</code> could lead to an invalid page or a page that is
+valid, but is rendered incorrectly by the web browser. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="generic.LANG.html"></a>
+<a name="generic_002eLANG_002ehtml"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#PO-Files-and-Team">PO Files and Team</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#PO-Tips">PO Tips</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
+
+</div>
+
+<h4 class="subsection">2.3.5 The <samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp> file</h4>
+
+<p><a name="index-team-information-56"></a><a name="index-generic-notice_002c-translations-57"></a>
+The files <samp><span class="file">server/gnun/generic.</span><var>lang</var><span class="file">.html</span></samp> are special: if
+no such file exists for your language, an empty file will be created
+(and added to the repository if specified <code>VCS=yes</code>).  This file
+is optional, and should contain a short message in your native
+language, ideally providing more information about the translation
+team or where to report bugs.  For example:
+
+<pre class="example">     &lt;p&gt;To join the Fooish translation team, see &lt;a
+     href="http://gnu.org/server/standards/translations/www-foo"&gt;the
+     Foo team homepage&lt;/a&gt;.&lt;/p&gt;
+</pre>
+   <p>The contents of <samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp> is injected right after
+the translators' credits, if any, and before the timestamp.  It should
+be valid XHTML markup.
+
+   <p>When you modify this file, for example, adding a message to the
+existing empty file or changing a URL, such modification will affect
+<em>all</em> articles of the language <var>lang</var> in
+<samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp>.  The next time a build occurs, all
+translations of the language code <var>lang</var> (i.e. all
+<samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp>, including the homepage), will be modified to
+include the contents of this special file.
+
+<div class="node">
+<p><hr>
+<a name="PO-Files-and-Team"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#generic_002eLANG_002ehtml">generic.LANG.html</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
+
+</div>
+
+<h4 class="subsection">2.3.6 Maintaining Translations in Your Team's Repository</h4>
+
+<p><a name="index-project-repository-58"></a><a name="index-repository_002c-translation-project-59"></a><a name="index-team-maintenance-60"></a>
+<acronym>GNUN</acronym> operates on the &ldquo;official&rdquo; Web repository of the
+Savannah project `www', where normally only the coordinators of
+translation teams have write access.  However, all translation teams
+have their own projects, so it is possible to take advantage of Savannah
+as a hosting facility to make the team work more comfortable.
+
+   <p>The PO files provide an excellent and natural way to review each other's
+translations, because the translation appears right below the original
+message.  Mutual reviews and proof-reading of translations is a crucial
+part of the process.  Furthermore, team work is great for the community
+spirit; automating some of the operations also result in more time for
+all members to concentrate on the important tasks.
+
+   <p>The file <samp><span class="file">gnun/server/gnun/GNUmakefile.team</span></samp> in the Sources
+repository of the `trans-coord' project is a template, aimed for all
+translation teams who wish to use their own project's repository as a
+place to keep their draft translations, until they ripe and are ready
+to be installed officially.
+
+   <p><a name="index-team-workflow-61"></a>The following diagram illustrates a typical workflow&mdash;it is applicable
+for small, medium and large teams:
+
+<pre class="example">     +----------+                   +-------------------+
+     | ``www''  |                   |   ``www-LANG''    |
+     |   Web    |------&gt;----&gt;-------|Sources repository |
+     |repository|  automatic merge  +-------------------+
+     +----------+                         |    |     |
+          |                               |    |     `-- Member A
+          +------------&lt;----&lt;-------------'    |
+                       Leader                  `---Member B
+</pre>
+   <p>All members and the team leader(s) commit in their project's
+repository&mdash;when a translation is ready, the leader checks it in in the
+official `www' repository.  If an original article changes,
+a build could be invoked to synchronize (i.e. merge) the changes and
+optionally automatically commit them so that the draft PO files are
+updated.  A translator would then normally update the PO file, and
+commit it again in the project's Sources repository, from where the
+coordinator will pick it up and install it in `www'.
+
+   <p>To take advantage of this semi-automation, rename this template
+<samp><span class="file">GNUmakefile.team</span></samp> as <samp><span class="file">GNUmakefile</span></samp> and install it in the root
+of your project's Sources repository.  Then create directories and
+sub-directories exactly as they are in `www'.  Do not create the
+<samp><span class="file">/po</span></samp> sub-directories; they are redundant here.  Instead, install
+the PO files in the normal locations where the corresponding
+<samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> resides in `www', for example:
+
+<pre class="example">     Root
+       |
+       |--GNUmakefile
+       |--home.<var>lang</var>.po
+       |--...
+       |--gnu
+       |   |
+       |   |
+       |   +--linux-and-gnu.<var>lang</var>.po
+       |   +--manifesto.<var>lang</var>.po
+       |   +--...
+       |
+       |
+       +--philosophy
+       |     |
+       |     |
+       |     +--free-sw.<var>lang</var>.po
+       |     +--not-ipr.<var>lang</var>.po
+       |     +--open-source-misses-the-point.<var>lang</var>.po
+       |     +--...
+       |
+       +--...
+</pre>
+   <p>The next sections explain how to adopt the makefile for your team and
+how to invoke a &ldquo;build&rdquo;.
+
+<ul class="menu">
+<li><a accesskey="1" href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a>
+<li><a accesskey="2" href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="GNUmakefile.team-Variables"></a>
+<a name="GNUmakefile_002eteam-Variables"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files-and-Team">PO Files and Team</a>
+
+</div>
+
+<h5 class="subsubsection">2.3.6.1 Adopting <samp><span class="file">GNUmakefile.team</span></samp> For a Specific Team</h5>
+
+<p>To adjust the makefile for your team, you need to edit two variables.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">TEAM</span></samp>&rsquo;<dd>Set this to the language code, like <code>bg</code> or <code>pt-br</code>.
+
+     <br><dt>&lsquo;<samp><span class="samp">wwwdir</span></samp>&rsquo;<dd>The relative path to the working copy of the master `www' repository. 
+So if you have checked out your project's Sources repository at
+<samp><span class="file">~/projects/www-</span><var>lang</var></samp> and the `www' Web repository at
+<samp><span class="file">~/projects/www</span></samp>, the value of <code>wwwdir</code> should be
+<code>../www/</code>.  Note the slash at the end, it is important. 
+</dl>
+
+   <p>Technically speaking, two variants of one language sharing the same
+project and repository (such as <code>zh-cn</code> and <code>zh-tw</code>) are not
+supported&mdash;patches welcome.  As a workaround, there could be two
+directories with two <samp><span class="file">GNUmakefile</span></samp>s and each directory having its
+own tree.
+
+   <p>Some variables are specified on the command line, and alter the behavior
+of the build process.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">VERBOSE=yes</span></samp>&rsquo;<dd>Print more information from <samp><span class="command">cvs</span></samp> and <samp><span class="command">msgmerge</span></samp>; off by
+default.  Note that <code>VERBOSE</code> can be defined to any string, it will
+have the same effect.
+
+     <br><dt>&lsquo;<samp><span class="samp">VCS=yes</span></samp>&rsquo;<dd>Update both `www' and `www-<var>lang</var>' repositories, then commit the
+merged PO files in the latter repository.  By default, there is no CVS
+interaction. 
+</dl>
+
+<h5 class="unnumberedsubsubsec">Targets in <samp><span class="file">GNUmakefile.team</span></samp></h5>
+
+     <dl>
+<dt><code>update</code><dd>Updates the repositories.  Does nothing unless <code>VCS=yes</code>.
+
+     <br><dt><code>sync</code><dd>Merges all available PO files from the corresponding POT in `www'.
+
+     <br><dt><code>report</code><dd>Verifies which translations are complete, and prints a list (with
+statistics) of those that need to be updated. 
+</dl>
+
+   <p><code>make VCS=yes</code> is the recommended command to be run periodically. 
+To check the status of the translations, run <code>make report</code>.
+
+   <p>Feel free to replace all strings with equivalents in your native
+language and of course&mdash;do not hesitate to extend this file and modify
+it as much as you like.  For example, useful extra functionality would
+be a target that will check which files have not yet been committed in
+the official repository, or which files have to be updated there
+(i.e. they were updated by the team members but not installed by the
+coordinator).  Either way, if you come up with something interesting, it
+would be nice to send a message to <a href="mailto:trans-coord-devel@gnu.org">trans-coord-devel@gnu.org</a>,
+so that <samp><span class="file">GNUmakefile.team</span></samp> gets updated for all teams' benefit.
+
+<div class="node">
+<p><hr>
+<a name="GNUmakefile.team-and-Cron"></a>
+<a name="GNUmakefile_002eteam-and-Cron"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files-and-Team">PO Files and Team</a>
+
+</div>
+
+<h5 class="subsubsection">2.3.6.2 Automatic Synchronization and Status Reports</h5>
+
+<p><a name="index-team-maintenance_002c-cron-62"></a><a name="index-cron_002c-team-maintenance-63"></a>
+It is convenient to invoke such synchronization automatically, for
+example once every day.  If you have enabled commit notifications for
+the project's repository, any new changes will be visible for
+subscribers.  Here is an example crontab entry:
+
+<pre class="example">     # m h  dom mon dow   command
+     @daily              cd $HOME/projects/www-<var>lang</var> ; make VCS=yes
+</pre>
+   <p>It is not necessary the job to be run on the team leader's machine,
+since all team members have write access to their project repository.
+
+   <p>If desired, you could set up another job to report the status of the
+translations weekly or fortnightly, for example:
+
+<pre class="example">     # m h  dom mon dow   command
+     @weekly             cd $HOME/projects/www-<var>lang</var> ; \
+                            make report | mail -s "Weekly statistics" \
+                            www-<var>lang</var>-list@gnu.org
+</pre>
+   <p><strong>Caution:</strong> Most cron implementations do not allow the character
+`\' as a line continuation character&mdash;the example shown is made that
+way for better readability.
+
+<div class="node">
+<p><hr>
+<a name="Webmaster-Tips"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#PO-Files">PO Files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
+
+</div>
+
+<h3 class="section">2.4 Tips and Hints for Webmasters</h3>
+
+<p><a name="index-tips_002c-webmasters-64"></a><a name="index-webmaster-tips-65"></a>
+This section contains some tips and general recommendations for
+webmasters in no particular order&mdash;it is not mandatory to follow them,
+but doing so will make translators' lives substantially easier.
+
+   <p>First and foremost, respect translators' work&mdash;it is ungrateful and
+hard, undoubtedly much harder than translation of programs.  It is
+important to have as many and as better as possible translations, and
+you don't have to make titanic efforts to help.
+
+   <p>If you plan to edit a certain page extensively, please do so within the
+period between two adjacent <acronym>GNUN</acronym> builds&mdash;i.e. within a day. 
+That way, the POT will be regenerated only once, and translators who are
+quick to update it immediately won't be disappointed if it changes again
+in the next run.
+
+   <p>Use <em>only</em> US-ASCII characters and HTML entities for the others. 
+This is required because the English text in the articles serves as a
+replacement of the translation when the latter is not complete.  So if
+you use, say, the character &eacute; (e-acute) directly in an English
+page&mdash;which is UTF-8 as declared in <samp><span class="file">server/header.html</span></samp>, it
+will appear broken on those translated pages who use a different
+encoding.  This specific advice is pretty much mandatory&mdash;the build
+fails if the original article contains such characters&mdash;but we are
+ready to fix any errors a webmaster makes.
+
+   <p>The script <samp><span class="command">validate-html</span></samp> is useful for webmasters who want to
+verify if their (potentially intrusive) changes result in a valid
+markup.  It is recommended to make a symlink somewhere in your
+<samp><span class="env">PATH</span></samp> (like <samp><span class="file">~/bin</span></samp>)&mdash;that way you will automatically use the
+latest version, provided that you regularly update your working copy. 
+Before committing your changes, you can check if it is valid by running
+
+<pre class="example">     validate-html philosophy/not-ipr.html
+</pre>
+   <p>See <a href="#validate_002dhtml">validate-html</a>, for more information.
+
+<!-- Emacs Lisp code goes here... -->
+   <p>If you want a comment to be visible for translators, place it
+<em>inside</em> the element, for example:
+
+<pre class="example">     &lt;p&gt;
+     &lt;!--TRANSLATORS: Note that foo is bar in this context.--&gt;
+     The fooish bar mumbles bazzling.
+     &lt;/p&gt;
+</pre>
+   <p>This will result in:
+
+<pre class="example">     # type: Content of: &lt;p&gt;
+     #. TRANSLATORS: Note that foo is bar in this context.
+     #: ../../foo/po/article.proto:126
+     msgid "The fooish bar mumbles bazzling."
+     msgstr ""
+</pre>
+   <p>As per the established convention, start the comment with
+<code>TRANSLATORS:</code> to catch their attention, and do not add a space
+after the beginning of the HTML comment (<code>&lt;!--</code>), since this will
+unnecessarily indent the comment in the POT.
+
+   <p><strong>Warning:</strong> Any structural diversion from
+<samp><span class="file">boilerplate.html</span></samp> in a specific article is likely to result in
+errors from <acronym>GNUN</acronym>.  Any unexpected updates to the server
+templates (such as changing the entire look &amp; feel of the site) will
+most probably break <em>all</em> translations under <acronym>GNUN</acronym>'s
+control.  Of course, this does not mean that such changes should not
+happen&mdash;only that they must be applied in our sandbox first, to
+ensure a smooth transition.
+
+<div class="node">
+<p><hr>
+<a name="Internals"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Bugs">Bugs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Usage">Usage</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 Unexciting Information for <acronym>GNUN</acronym>'s Operation</h2>
+
+<p>This chapter might be of interest probably only to people who would
+have special interest in the software, plan to enhance it or develop a
+front-end.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Scripts">Scripts</a>:       Helper scripts. 
+<li><a accesskey="2" href="#Rules">Rules</a>:         The knotty rules explained. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Scripts"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Rules">Rules</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Internals">Internals</a>
+
+</div>
+
+<h3 class="section">3.1 Internally Used Scripts</h3>
+
+<p>For the time being there are several helper scripts, used internally
+as commands with certain arguments in the makefile rules.  They can be
+invoked separately, as stand-alone programs, and sometimes they are
+useful on their own.
+
+<ul class="menu">
+<li><a accesskey="1" href="#make_002dprototype">make-prototype</a>
+<li><a accesskey="2" href="#validate_002dhtml">validate-html</a>
+<li><a accesskey="3" href="#mailfail">mailfail</a>
+<li><a accesskey="4" href="#validate_002dhtml_002dnotify">validate-html-notify</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="make-prototype"></a>
+<a name="make_002dprototype"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#validate_002dhtml">validate-html</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scripts">Scripts</a>
+
+</div>
+
+<h4 class="subsection">3.1.1 The <samp><span class="command">make-prototype</span></samp> Script</h4>
+
+<p><a name="index-POT-generation-66"></a><a name="index-prototype-generation-67"></a><a name="index-generation_002c-POT_002c-_002eproto-68"></a>
+This is a Guile script which makes the &ldquo;prototype&rdquo; file,
+<samp><span class="file">foo.</span><var>lang</var><span class="file">.proto</span></samp>, from which the POT is generated. 
+<acronym>GNUN</acronym> is designed in such a way, because it would be no big
+improvement if links to other translations ended up in the POT&mdash;it
+would mean that translators would have to manually update their PO
+file when a new translation is added.
+
+   <p>In addition, <samp><span class="command">make-prototype</span></samp> guards the timestamp (the
+$<!-- /@w -->Date$ RCS keyword) in order the timestamp of the translation to
+be updated <em>only</em> when there are actual changes, being automatic
+or not.
+
+   <p>Finally, <samp><span class="command">make-prototype</span></samp> &ldquo;injects&rdquo; the artificial elements
+`*GNUN-SLOT: TRANSLATOR'S NOTES*' and `*GNUN-SLOT: TRANSLATOR'S
+CREDITS*', thanks to which it is possible to insert the name of the
+translator and translator's notes, if necessary.  See <a href="#New-Translation">New Translation</a>.
+
+   <p>Here are the options that <samp><span class="command">make-prototype</span></samp> accepts:
+
+     <dl>
+<dt><samp><span class="option">--article</span></samp><dd>Process the input file as an article.  This is the default.
+
+     <br><dt><samp><span class="option">--home</span></samp><dd>Process the input article as a homepage.  Specify this when you want
+to create a <samp><span class="file">.proto</span></samp> file for a homepage.
+
+     <br><dt><samp><span class="option">-i</span></samp><dt><samp><span class="option">--input=</span><var>file</var></samp><dd>Input file, which can be a common article (essay) or a homepage.
+
+     <br><dt><samp><span class="option">-g</span></samp><dt><samp><span class="option">--generic=</span><var>file</var></samp><dd>Common notes for a translation team; this is the
+<samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp> file.  See <a href="#generic_002eLANG_002ehtml">generic.LANG.html</a>.
+
+     <br><dt><samp><span class="option">-o</span></samp><dt><samp><span class="option">--output=</span><var>file</var></samp><dd>The file where to write the output of the script.
+
+     <br><dt><samp><span class="option">-t</span></samp><dt><samp><span class="option">--translinks=</span><var>file</var></samp><dd>The file containing the translation links.  This makes sense only for
+articles, since the homepage has its own <samp><span class="file">translations.include</span></samp>
+which gets included via an <acronym>SSI</acronym> directive. 
+<!-- FIXME: This should be improved, it is not clear. -->
+
+     <br><dt><samp><span class="option">--version</span></samp><dd>Print copyright and version information on the standard output.
+
+     <br><dt><samp><span class="option">--help</span></samp><dd>Print usage information on stdout. 
+</dl>
+
+<div class="node">
+<p><hr>
+<a name="validate-html"></a>
+<a name="validate_002dhtml"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#mailfail">mailfail</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#make_002dprototype">make-prototype</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scripts">Scripts</a>
+
+</div>
+
+<h4 class="subsection">3.1.2 The <samp><span class="command">validate-html</span></samp> Script</h4>
+
+<p><a name="index-validation_002c-XHTML-69"></a>
+This is a Bash script whose purpose is to &ldquo;validate&rdquo; both the
+original and translated articles to make sure that they conform to the
+respective <acronym>W3C</acronym> standard.  Sometimes webmasters make
+mistakes, and translators too, so this tool is useful to catch errors
+of that kind.
+
+   <p><acronym>GNUN</acronym> enforces XHTML validation at build time if invoked with
+<code>VALIDATE=yes</code>.
+
+   <p>The script expects only one <var>file</var> as an argument and will exit
+with an error if it is not specified (which might be the case when an
+automatic variable is not expanded properly due to a bug in the
+makefile).
+
+<div class="node">
+<p><hr>
+<a name="mailfail"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#validate_002dhtml_002dnotify">validate-html-notify</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#validate_002dhtml">validate-html</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scripts">Scripts</a>
+
+</div>
+
+<h4 class="subsection">3.1.3 The <samp><span class="command">mailfail</span></samp> Script</h4>
+
+<p><a name="index-mail_002c-notifications-70"></a>
+This is a helper script that runs a command, and mails the output of
+that command in case it exits with a non-zero exit status. 
+<samp><span class="command">mailfail</span></samp> depends on <acronym>GNU</acronym> Mailutils, or a compatible
+implementation, such as BSD's mailx.
+
+   <p>Usage:
+
+<pre class="example">     mailfail [--dry-run] RCPT SUBJECT CMD [ARG ...]
+</pre>
+   <p>The <samp><span class="command">mailfail</span></samp> script accepts the following options:
+
+     <dl>
+<dt><samp><span class="option">--dry-run</span></samp><dd>Does not send the email message.
+
+     <br><dt><samp><span class="option">RCPT</span></samp><dd>The recipient of the message in a valid format, like
+<code>someone@somehost.org</code>.
+
+     <br><dt><samp><span class="option">SUBJECT</span></samp><dd>The subject of the message; if it is longer than a word you should
+guard it with quotes.
+
+     <br><dt><samp><span class="option">CMD</span></samp><dd>The command you want to run and send a mail in case it fails.
+
+     <br><dt><samp><span class="option">ARG...</span></samp><dd>The arguments of <code>CMD</code>, if any. 
+</dl>
+
+   <p>Here is a typical example, similar to the way it is used in
+<acronym>GNUN</acronym>:
+
+<pre class="example">     mailfail translators@example.org "Bad PO" msgfmt -cv -o /dev/null bg.po
+</pre>
+   <p>This will check the validity of <samp><span class="file">bg.po</span></samp> with the <samp><span class="command">msgfmt</span></samp>
+program and in case there are errors, a message will be sent to the
+specified address with `Bad PO' as subject and the error output from
+<samp><span class="command">msgfmt</span></samp> as body.
+
+   <p><samp><span class="command">mailfail</span></samp> inherits the exit status of the command being run. 
+If an argument is missing, the usage information is printed to the
+standard output and the exit code is 1.
+
+<div class="node">
+<p><hr>
+<a name="validate-html-notify"></a>
+<a name="validate_002dhtml_002dnotify"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#mailfail">mailfail</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scripts">Scripts</a>
+
+</div>
+
+<h4 class="subsection">3.1.4 The <samp><span class="command">validate-html-notify</span></samp> Script</h4>
+
+<p>This script is a wrapper around <samp><span class="command">validate-html</span></samp>
+(see <a href="#validate_002dhtml">validate-html</a>); it is necessary because it is hard to capture
+the output of the program from a program that itself captures the output
+of another program that it runs.
+
+   <p>Usage:
+
+<pre class="example">     validate-html-notify [--dry-run] RCPT FILE
+</pre>
+     <dl>
+<dt><samp><span class="option">--dry-run</span></samp><dd>Does not actually send the message, just like <samp><span class="command">mailfail</span></samp>.
+
+     <br><dt><samp><span class="option">RCPT</span></samp><dd>The recipient of the message.
+
+     <br><dt><samp><span class="option">FILE</span></samp><dd>The HTML file that has to be validated for compliance with the
+<acronym>W3C</acronym> standard. 
+</dl>
+
+   <p>The subject of the message is hardcoded in the script, since this
+wrapper has a specific task and cannot be used to invoke an arbitrary
+command&mdash;use <samp><span class="command">mailfail</span></samp> for that.  See <a href="#mailfail">mailfail</a>.
+
+<div class="node">
+<p><hr>
+<a name="Rules"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Scripts">Scripts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Internals">Internals</a>
+
+</div>
+
+<h3 class="section">3.2 How The Recipes Work</h3>
+
+<p>Read the source code, then please tell us :-)
+
+<div class="node">
+<p><hr>
+<a name="Bugs"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Index">Index</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Internals">Internals</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">4 Reporting Bugs</h2>
+
+<p><a name="index-bugs_002c-reporting-71"></a><a name="index-reporting-bugs-72"></a>
+<acronym>GNU</acronym>nited Nations, like any other software, is not bug free. 
+There are some known bugs and annoyances, which are listed in the
+<samp><span class="file">TODO</span></samp> file, but it is absolutely certain that there are more
+which we know nothing about.
+
+   <p>If you encounter a bug, or if you have suggestions of any kind, please
+do not hesitate to report them at <a href="mailto:trans-coord-devel@gnu.org">trans-coord-devel@gnu.org</a>
+or
+<a href="https://savannah.gnu.org/bugs/?func=additem&amp;group=trans-coord">https://savannah.gnu.org/bugs/?func=additem&amp;group=trans-coord</a>,
+category <code>-- GNUnited Nations --</code>.
+
+<div class="node">
+<p><hr>
+<a name="Copying-This-Manual"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Index">Index</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="appendix">Appendix A GNU Free Documentation License</h2>
+
+<!-- The GNU Free Documentation License. -->
+<div align="center">Version 1.2, November 2002</div>
+
+<!-- This file is intended to be included within another document, -->
+<!-- hence no sectioning command or @node. -->
+<pre class="display">     Copyright &copy; 2000,2001,2002 Free Software Foundation, Inc.
+     51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA
+     
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+</pre>
+     <ol type=1 start=0>
+<li>PREAMBLE
+
+     <p>The purpose of this License is to make a manual, textbook, or other
+functional and useful document <dfn>free</dfn> in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially. 
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.
+
+     <p>This License is a kind of &ldquo;copyleft&rdquo;, which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the GNU General Public License, which is a copyleft
+license designed for free software.
+
+     <p>We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+
+     <li>APPLICABILITY AND DEFINITIONS
+
+     <p>This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The &ldquo;Document&rdquo;, below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as &ldquo;you&rdquo;.  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.
+
+     <p>A &ldquo;Modified Version&rdquo; of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+
+     <p>A &ldquo;Secondary Section&rdquo; is a named appendix or a front-matter section
+of the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document's overall
+subject (or to related matters) and contains nothing that could fall
+directly within that overall subject.  (Thus, if the Document is in
+part a textbook of mathematics, a Secondary Section may not explain
+any mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+
+     <p>The &ldquo;Invariant Sections&rdquo; are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.
+
+     <p>The &ldquo;Cover Texts&rdquo; are certain short passages of text that are listed,
+as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+the Document is released under this License.  A Front-Cover Text may
+be at most 5 words, and a Back-Cover Text may be at most 25 words.
+
+     <p>A &ldquo;Transparent&rdquo; copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent. 
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not &ldquo;Transparent&rdquo; is called &ldquo;Opaque&rdquo;.
+
+     <p>Examples of suitable formats for Transparent copies include plain
+<span class="sc">ascii</span> without markup, Texinfo input format, LaTeX input
+format, <acronym>SGML</acronym> or <acronym>XML</acronym> using a publicly available
+<acronym>DTD</acronym>, and standard-conforming simple <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> designed for human modification.  Examples
+of transparent image formats include <acronym>PNG</acronym>, <acronym>XCF</acronym> and
+<acronym>JPG</acronym>.  Opaque formats include proprietary formats that can be
+read and edited only by proprietary word processors, <acronym>SGML</acronym> or
+<acronym>XML</acronym> for which the <acronym>DTD</acronym> and/or processing tools are
+not generally available, and the machine-generated <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> produced by some word processors for
+output purposes only.
+
+     <p>The &ldquo;Title Page&rdquo; means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, &ldquo;Title Page&rdquo; means
+the text near the most prominent appearance of the work's title,
+preceding the beginning of the body of the text.
+
+     <p>A section &ldquo;Entitled XYZ&rdquo; means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, &ldquo;Endorsements&rdquo;, or &ldquo;History&rdquo;.)  To &ldquo;Preserve the Title&rdquo;
+of such a section when you modify the Document means that it remains a
+section &ldquo;Entitled XYZ&rdquo; according to this definition.
+
+     <p>The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.
+
+     <li>VERBATIM COPYING
+
+     <p>You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no other
+conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+
+     <p>You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+
+     <li>COPYING IN QUANTITY
+
+     <p>If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document's license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition. 
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+
+     <p>If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+
+     <p>If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material. 
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+
+     <p>It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to give
+them a chance to provide you with an updated version of the Document.
+
+     <li>MODIFICATIONS
+
+     <p>You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+
+          <ol type=A start=1>
+<li>Use in the Title Page (and on the covers, if any) a title distinct
+from that of the Document, and from those of previous versions
+(which should, if there were any, be listed in the History section
+of the Document).  You may use the same title as a previous version
+if the original publisher of that version gives permission.
+
+          <li>List on the Title Page, as authors, one or more persons or entities
+responsible for authorship of the modifications in the Modified
+Version, together with at least five of the principal authors of the
+Document (all of its principal authors, if it has fewer than five),
+unless they release you from this requirement.
+
+          <li>State on the Title page the name of the publisher of the
+Modified Version, as the publisher.
+
+          <li>Preserve all the copyright notices of the Document.
+
+          <li>Add an appropriate copyright notice for your modifications
+adjacent to the other copyright notices.
+
+          <li>Include, immediately after the copyright notices, a license notice
+giving the public permission to use the Modified Version under the
+terms of this License, in the form shown in the Addendum below.
+
+          <li>Preserve in that license notice the full lists of Invariant Sections
+and required Cover Texts given in the Document's license notice.
+
+          <li>Include an unaltered copy of this License.
+
+          <li>Preserve the section Entitled &ldquo;History&rdquo;, Preserve its Title, and add
+to it an item stating at least the title, year, new authors, and
+publisher of the Modified Version as given on the Title Page.  If
+there is no section Entitled &ldquo;History&rdquo; in the Document, create one
+stating the title, year, authors, and publisher of the Document as
+given on its Title Page, then add an item describing the Modified
+Version as stated in the previous sentence.
+
+          <li>Preserve the network location, if any, given in the Document for
+public access to a Transparent copy of the Document, and likewise
+the network locations given in the Document for previous versions
+it was based on.  These may be placed in the &ldquo;History&rdquo; section. 
+You may omit a network location for a work that was published at
+least four years before the Document itself, or if the original
+publisher of the version it refers to gives permission.
+
+          <li>For any section Entitled &ldquo;Acknowledgements&rdquo; or &ldquo;Dedications&rdquo;, Preserve
+the Title of the section, and preserve in the section all the
+substance and tone of each of the contributor acknowledgements and/or
+dedications given therein.
+
+          <li>Preserve all the Invariant Sections of the Document,
+unaltered in their text and in their titles.  Section numbers
+or the equivalent are not considered part of the section titles.
+
+          <li>Delete any section Entitled &ldquo;Endorsements&rdquo;.  Such a section
+may not be included in the Modified Version.
+
+          <li>Do not retitle any existing section to be Entitled &ldquo;Endorsements&rdquo; or
+to conflict in title with any Invariant Section.
+
+          <li>Preserve any Warranty Disclaimers.
+          </ol>
+
+     <p>If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version's license notice. 
+These titles must be distinct from any other section titles.
+
+     <p>You may add a section Entitled &ldquo;Endorsements&rdquo;, provided it contains
+nothing but endorsements of your Modified Version by various
+parties&mdash;for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+
+     <p>You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+
+     <p>The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+
+     <li>COMBINING DOCUMENTS
+
+     <p>You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.
+
+     <p>The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number. 
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+
+     <p>In the combination, you must combine any sections Entitled &ldquo;History&rdquo;
+in the various original documents, forming one section Entitled
+&ldquo;History&rdquo;; likewise combine any sections Entitled &ldquo;Acknowledgements&rdquo;,
+and any sections Entitled &ldquo;Dedications&rdquo;.  You must delete all
+sections Entitled &ldquo;Endorsements.&rdquo;
+
+     <li>COLLECTIONS OF DOCUMENTS
+
+     <p>You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of this
+License in the various documents with a single copy that is included in
+the collection, provided that you follow the rules of this License for
+verbatim copying of each of the documents in all other respects.
+
+     <p>You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of this
+License into the extracted document, and follow this License in all
+other respects regarding verbatim copying of that document.
+
+     <li>AGGREGATION WITH INDEPENDENT WORKS
+
+     <p>A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an &ldquo;aggregate&rdquo; if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation's users beyond what the individual works permit. 
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+
+     <p>If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document's Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form. 
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.
+
+     <li>TRANSLATION
+
+     <p>Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4. 
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.
+
+     <p>If a section in the Document is Entitled &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, or &ldquo;History&rdquo;, the requirement (section 4) to Preserve
+its Title (section 1) will typically require changing the actual
+title.
+
+     <li>TERMINATION
+
+     <p>You may not copy, modify, sublicense, or distribute the Document except
+as expressly provided for under this License.  Any other attempt to
+copy, modify, sublicense or distribute the Document is void, and will
+automatically terminate your rights under this License.  However,
+parties who have received copies, or rights, from you under this
+License will not have their licenses terminated so long as such
+parties remain in full compliance.
+
+     <li>FUTURE REVISIONS OF THIS LICENSE
+
+     <p>The Free Software Foundation may publish new, revised versions
+of the GNU Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+<a href="http://www.gnu.org/copyleft/">http://www.gnu.org/copyleft/</a>.
+
+     <p>Each version of the License is given a distinguishing version number. 
+If the Document specifies that a particular numbered version of this
+License &ldquo;or any later version&rdquo; applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.
+        </ol>
+
+<h3 class="heading">ADDENDUM: How to use this License for your documents</h3>
+
+<p>To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and
+license notices just after the title page:
+
+<pre class="smallexample">       Copyright (C)  <var>year</var>  <var>your name</var>.
+       Permission is granted to copy, distribute and/or modify this document
+       under the terms of the GNU Free Documentation License, Version 1.2
+       or any later version published by the Free Software Foundation;
+       with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+       Texts.  A copy of the license is included in the section entitled ``GNU
+       Free Documentation License''.
+</pre>
+   <p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the &ldquo;with<small class="dots">...</small>Texts.&rdquo; line with this:
+
+<pre class="smallexample">         with the Invariant Sections being <var>list their titles</var>, with
+         the Front-Cover Texts being <var>list</var>, and with the Back-Cover Texts
+         being <var>list</var>.
+</pre>
+   <p>If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+
+   <p>If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License,
+to permit their use in free software.
+
+<!-- Local Variables: -->
+<!-- ispell-local-pdict: "ispell-dict" -->
+<!-- End: -->
+<div class="node">
+<p><hr>
+<a name="Index"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Copying-This-Manual">Copying This Manual</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Bugs">Bugs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="unnumbered">Index</h2>
+
+<ul class="index-cp" compact>
+<li><a href="#index-ALL_005fDIRS-30">ALL_DIRS</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-articles-in-root-directory_002c-defining-28">articles in root directory, defining</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-bugs_002c-reporting-71">bugs, reporting</a>: <a href="#Bugs">Bugs</a></li>
+<li><a href="#index-conversion-of-existing-translations-50">conversion of existing translations</a>: <a href="#Migrating">Migrating</a></li>
+<li><a href="#index-credits_002c-translators-47">credits, translators</a>: <a href="#Credits-Slot">Credits Slot</a></li>
+<li><a href="#index-credits_002c-translators-41">credits, translators</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-cron_002c-team-maintenance-63">cron, team maintenance</a>: <a href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a></li>
+<li><a href="#index-CVS-6">CVS</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-defining-articles-in-the-root-dir-29">defining articles in the root dir</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-defining-directories-32">defining directories</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-defining-homepage-26">defining homepage</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-defining-templates-23">defining templates</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-directories_002c-defining-31">directories, defining</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-generation_002c-POT_002c-_002eproto-68">generation, POT, .proto</a>: <a href="#make_002dprototype">make-prototype</a></li>
+<li><a href="#index-generic-notice_002c-translations-57">generic notice, translations</a>: <a href="#generic_002eLANG_002ehtml">generic.LANG.html</a></li>
+<li><a href="#index-gnun_002emk-20">gnun.mk</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-gnunews-51">gnunews</a>: <a href="#GNU-News">GNU News</a></li>
+<li><a href="#index-gnusflashes-53">gnusflashes</a>: <a href="#GNU-News">GNU News</a></li>
+<li><a href="#index-HOME_005fLINGUAS-24">HOME_LINGUAS</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-homepage_002c-defining-25">homepage, defining</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-invoking-1">invoking</a>: <a href="#Invoking-GNUN">Invoking GNUN</a></li>
+<li><a href="#index-long-lines_002c-wrap-44">long lines, wrap</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-mail_002c-notifications-70">mail, notifications</a>: <a href="#mailfail">mailfail</a></li>
+<li><a href="#index-mail_002c-notifications-11">mail, notifications</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-migration_002c-translations-49">migration, translations</a>: <a href="#Migrating">Migrating</a></li>
+<li><a href="#index-new-translation-37">new translation</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-notes_002c-translators-45">notes, translators</a>: <a href="#Notes-Slot">Notes Slot</a></li>
+<li><a href="#index-notes_002c-translators-39">notes, translators</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-NOTIFY-10">NOTIFY</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-output_002c-detailed-13">output, detailed</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-PO-editors-35">PO editors</a>: <a href="#PO-Files">PO Files</a></li>
+<li><a href="#index-PO-headers-38">PO headers</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-PO_002c-editing-34">PO, editing</a>: <a href="#PO-Files">PO Files</a></li>
+<li><a href="#index-POT-generation-66">POT generation</a>: <a href="#make_002dprototype">make-prototype</a></li>
+<li><a href="#index-POT-generation_002c-articles-33">POT generation, articles</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-project-repository-58">project repository</a>: <a href="#PO-Files-and-Team">PO Files and Team</a></li>
+<li><a href="#index-prototype-generation-67">prototype generation</a>: <a href="#make_002dprototype">make-prototype</a></li>
+<li><a href="#index-recommendations_002c-PO-files-55">recommendations, PO files</a>: <a href="#PO-Tips">PO Tips</a></li>
+<li><a href="#index-reporting-17">reporting</a>: <a href="#report">report</a></li>
+<li><a href="#index-reporting-bugs-72">reporting bugs</a>: <a href="#Bugs">Bugs</a></li>
+<li><a href="#index-repository_002c-translation-project-59">repository, translation project</a>: <a href="#PO-Files-and-Team">PO Files and Team</a></li>
+<li><a href="#index-ROOT-27">ROOT</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-sanity-checks-9">sanity checks</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-status_002c-translations-18">status, translations</a>: <a href="#report">report</a></li>
+<li><a href="#index-synchronization_002c-repository-16">synchronization, repository</a>: <a href="#sync">sync</a></li>
+<li><a href="#index-TEAM-14">TEAM</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-team-information-56">team information</a>: <a href="#generic_002eLANG_002ehtml">generic.LANG.html</a></li>
+<li><a href="#index-team-maintenance-60">team maintenance</a>: <a href="#PO-Files-and-Team">PO Files and Team</a></li>
+<li><a href="#index-team-maintenance_002c-cron-62">team maintenance, cron</a>: <a href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a></li>
+<li><a href="#index-team-workflow-61">team workflow</a>: <a href="#PO-Files-and-Team">PO Files and Team</a></li>
+<li><a href="#index-TEMPLATE_005fLINGUAS-21">TEMPLATE_LINGUAS</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-templates_002c-defining-22">templates, defining</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-tips_002c-translators-54">tips, translators</a>: <a href="#PO-Tips">PO Tips</a></li>
+<li><a href="#index-tips_002c-webmasters-64">tips, webmasters</a>: <a href="#Webmaster-Tips">Webmaster Tips</a></li>
+<li><a href="#index-translation_002c-new-36">translation, new</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-translators_0027-credits-48">translators' credits</a>: <a href="#Credits-Slot">Credits Slot</a></li>
+<li><a href="#index-translators_0027-credits-42">translators' credits</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-translators_0027-notes-46">translators' notes</a>: <a href="#Notes-Slot">Notes Slot</a></li>
+<li><a href="#index-translators_0027-notes-40">translators' notes</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-triggering_002c-build-2">triggering, build</a>: <a href="#Invoking-GNUN">Invoking GNUN</a></li>
+<li><a href="#index-VALIDATE-7">VALIDATE</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-validation-8">validation</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-validation_002c-XHTML-69">validation, XHTML</a>: <a href="#validate_002dhtml">validate-html</a></li>
+<li><a href="#index-variable_002c-behavior-4">variable, behavior</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-variable_002c-team-15">variable, team</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-variables-19">variables</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-variables-3">variables</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-VCS-5">VCS</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-VERBOSE-12">VERBOSE</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-webmaster-tips-65">webmaster tips</a>: <a href="#Webmaster-Tips">Webmaster Tips</a></li>
+<li><a href="#index-whatsnew-52">whatsnew</a>: <a href="#GNU-News">GNU News</a></li>
+<li><a href="#index-wrapping-long-lines-43">wrapping long lines</a>: <a href="#New-Translation">New Translation</a></li>
+   </ul><div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> Actually, it is much more closer to localization of
+software documentation, where typically strings (also known as
+&ldquo;messages&rdquo; in gettext's context) are longer than strings in
+programs.  Nevertheless, all points raised still apply.</p>
+
+   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> The process of converting HTML to PO and the other way
+around is performed using po4a (&ldquo;po for anything&rdquo;), see
+<a href="http://po4a.alioth.debian.org">http://po4a.alioth.debian.org</a>.</p>
+
+   <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> Only because presumably, they are more familiar with
+<acronym>GNU</acronym>nited Nations' internals.  From a purely technical point
+of view, there is no difference.</p>
+
+   <hr></div>
+
+</body></html>
+

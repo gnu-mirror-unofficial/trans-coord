@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+<title>validate-html - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Scripts.html#Scripts" title="Scripts">
+<link rel="prev" href="make_002dprototype.html#make_002dprototype" title="make-prototype">
+<link rel="next" href="mailfail.html#mailfail" title="mailfail">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="validate-html"></a>
+<a name="validate_002dhtml"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="mailfail.html#mailfail">mailfail</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="make_002dprototype.html#make_002dprototype">make-prototype</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Scripts.html#Scripts">Scripts</a>
+<hr>
+</div>
+
+<h4 class="subsection">3.1.2 The <samp><span class="command">validate-html</span></samp> Script</h4>
+
+<p><a name="index-validation_002c-XHTML-69"></a>
+This is a Bash script whose purpose is to &ldquo;validate&rdquo; both the
+original and translated articles to make sure that they conform to the
+respective <acronym>W3C</acronym> standard.  Sometimes webmasters make
+mistakes, and translators too, so this tool is useful to catch errors
+of that kind.
+
+   <p><acronym>GNUN</acronym> enforces XHTML validation at build time if invoked with
+<code>VALIDATE=yes</code>.
+
+   <p>The script expects only one <var>file</var> as an argument and will exit
+with an error if it is not specified (which might be the case when an
+automatic variable is not expanded properly due to a bug in the
+makefile).
+
+   </body></html>
+

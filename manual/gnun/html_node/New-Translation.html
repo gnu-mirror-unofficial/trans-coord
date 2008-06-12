@@ -1,0 +1,210 @@
+<html lang="en">
+<head>
+<title>New Translation - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="PO-Files.html#PO-Files" title="PO Files">
+<link rel="next" href="Migrating.html#Migrating" title="Migrating">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="New-Translation"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Migrating.html#Migrating">Migrating</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
+<hr>
+</div>
+
+<h4 class="subsection">2.3.1 Starting a New Translation</h4>
+
+<p><a name="index-translation_002c-new-36"></a><a name="index-new-translation-37"></a>
+To start a new translation, the easiest way is to copy the existing POT
+as <samp><span class="file">article.</span><var>lang</var><span class="file">.po</span></samp>, where <var>lang</var> is your language code. 
+For example, to prepare for a new translation of the essay
+<a href="http://www.gnu.org/philosophy/free-sw.html">http://www.gnu.org/philosophy/free-sw.html</a>, you can simply do
+<code>cd philosophy/po ; cp free-sw.pot free-sw.</code><var>lang</var><code>.po</code> and then
+edit the latter.  If <samp><span class="file">free-sw.pot</span></samp> does not exist it is because
+either the article is not yet &ldquo;templated&rdquo; (i.e. migrated to the new
+style), or the <acronym>GNUN</acronym> maintainers have not yet added it to the
+value of the appropriate variable in <samp><span class="file">server/gnun/gnun.mk</span></samp>.  In
+that case, just ask them to do the necessary in order the POT to be
+generated.
+
+   <p>You could also use the <samp><span class="command">msginit</span></samp> utility that would populate
+the PO file header with the right information, provided your
+environment is set up correctly.  See <a href="../gettext/msginit-Invocation.html#msginit-Invocation">msginit Invocation</a>.
+
+   <p>The PO file header as generated usually looks like this:
+
+<pre class="example">     # SOME DESCRIPTIVE TITLE
+     # Copyright (C) YEAR Free Software Foundation, Inc.
+     # This file is distributed under the same license as the PACKAGE package.
+     # FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, YEAR.
+     #
+     #, fuzzy
+     msgid ""
+     msgstr ""
+     "Project-Id-Version: PACKAGE VERSION\n"
+     "POT-Creation-Date: 2008-02-06 16:25-0500\n"
+     "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+     "Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt;\n"
+     "Language-Team: LANGUAGE &lt;LL@li.org&gt;\n"
+     "MIME-Version: 1.0\n"
+     "Content-Type: text/plain; charset=CHARSET\n"
+     "Content-Transfer-Encoding: ENCODING"
+</pre>
+   <p>You have to edit the header to match the already established
+conventions, and the rules for gnu.org translations.  For reference,
+here is a list with all fields explained:
+
+   <p><a name="index-PO-headers-38"></a>
+     <dl>
+<dt>&lsquo;<samp><span class="samp">Project-Id-Version</span></samp>&rsquo;<dd>Add here the filename of the original article, without the
+sub-directory, like &ldquo;banner.html&rdquo; or &ldquo;free-sw.html&rdquo;.
+
+     <br><dt>&lsquo;<samp><span class="samp">POT-Creation-Date</span></samp>&rsquo;<dd>Do not edit this field, it is already set when the POT is created.
+
+     <br><dt>&lsquo;<samp><span class="samp">PO-Revision-Date</span></samp>&rsquo;<dd>Likewise, do not edit.  This field is automatically filled in when you
+save the file with any decent PO editor.
+
+     <br><dt>&lsquo;<samp><span class="samp">Last-Translator</span></samp>&rsquo;<dd>The name and email address of the last translator who have edited the
+translation.  Pay attention that normally this is the name of a member
+of your team, it can be the translation team leader if he/she was the
+person who updated the translation.  For example:
+
+     <pre class="example">          Elvis Parsley &lt;king@grassland.com&gt;
+</pre>
+     <br><dt>&lsquo;<samp><span class="samp">Language-Team</span></samp>&rsquo;<dd>This field should contain the mailing list on which the translation
+team can be reached&mdash;sometimes this is the alias
+<a href="mailto:web-translators-LANG@gnu.org">web-translators-LANG@gnu.org</a>, but in some cases it is a
+separate, non-<acronym>GNU</acronym> list.  It could be a URL of the team's
+homepage, provided that it contains contact details.  Example:
+
+     <pre class="example">          French &lt;trad-gnu@april.org&gt;
+</pre>
+     <br><dt>&lsquo;<samp><span class="samp">MIME-Version</span></samp>&rsquo;<dd>Leave it like it is.
+
+     <br><dt>&lsquo;<samp><span class="samp">Content-Type</span></samp>&rsquo;<dd>Usually this is <code>text/plain; charset=UTF-8</code>; change the charset
+accordingly.
+
+     <br><dt>&lsquo;<samp><span class="samp">Content-Transfer-Encoding</span></samp>&rsquo;<dd>Set this to <code>8bit</code>. 
+</dl>
+
+   <p>Here is an example of a properly edited header:
+
+<pre class="example">     # Bulgarian translation of http://www.gnu.org/philosophy/free-sw.html
+     # Copyright (C) 2008 Free Software Foundation, Inc.
+     # This file is distributed under the same license as the gnu.org article.
+     # Yavor Doganov &lt;yavor@gnu.org&gt;, 2008.
+     #
+     msgid ""
+     msgstr ""
+     "Project-Id-Version: free-sw.html\n"
+     "POT-Creation-Date: 2008-02-06 16:25-0500\n"
+     "PO-Revision-Date: 2008-02-09 15:23+0200\n"
+     "Last-Translator: Yavor Doganov &lt;yavor@gnu.org&gt;\n"
+     "Language-Team: Bulgarian &lt;dict@fsa-bg.org&gt;\n"
+     "MIME-Version: 1.0\n"
+     "Content-Type: text/plain; charset=UTF-8\n"
+     "Content-Transfer-Encoding: 8-bit"
+</pre>
+   <p>Notice the absence of the &ldquo;fuzzy&rdquo; marker; you should &ldquo;unfuzzy&rdquo; the
+header after entering the necessary information (this is done by
+simply pressing &lt;TAB&gt; in PO mode).
+
+   <p>There are some special messages that appear in the POT and PO:
+
+     
+<a name="index-notes_002c-translators-39"></a>
+<a name="index-translators_0027-notes-40"></a>
+<dl><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S NOTES*</span></samp>&rsquo;<dd>This is for translator's notes that are injected in the resulting
+translation.  See <a href="Notes-Slot.html#Notes-Slot">Notes Slot</a>, for more information.  If your
+translation does not have notes, you <em>must</em> translate this as a
+space, that is, &lt;SPC&gt;.
+
+     <p><a name="index-credits_002c-translators-41"></a><a name="index-translators_0027-credits-42"></a><br><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S CREDITS*</span></samp>&rsquo;<dd>This is again optional, and should contain the name (and address) of
+the person who made the translation.  &ldquo;Translate&rdquo; this string as a
+space (&lt;SPC&gt;) if you do not want your name to appear there. 
+See <a href="Credits-Slot.html#Credits-Slot">Credits Slot</a>. 
+</dl>
+
+   <p><a name="index-wrapping-long-lines-43"></a><a name="index-long-lines_002c-wrap-44"></a>Most of the PO editors do not wrap long lines that inevitably appear in
+<code>msgstr</code>'s.  If that happens, long lines make reading subsequent
+diffs harder, and are generally annoying for most people.  If this issue
+bothers you, you can &ldquo;normalize&rdquo; the already finished PO translation
+by executing on the command line <code>cat </code><var>file</var><code>.po | msgcat - -o
+</code><var>file</var><code>.po</code>, before installing it in the repository.  Either way, the
+build system will treat it is a valid PO file.
+
+   <p>For those lucky Emacs users, here is a code snippet that you can put
+in your <samp><span class="file">.emacs</span></samp>; doing <kbd>M-x po-wrap</kbd> while in PO mode will
+wrap all long lines:
+
+<pre class="lisp">     (defun po-wrap ()
+       "Filter current po-mode buffer through `msgcat' tool to wrap all lines."
+       (interactive)
+       (if (eq major-mode 'po-mode)
+           (let ((tmp-file (make-temp-file "po-wrap."))
+     	    (tmp-buf (generate-new-buffer "*temp*")))
+     	(unwind-protect
+     	    (progn
+     	      (write-region (point-min) (point-max) tmp-file nil 1)
+     	      (if (zerop
+     		   (call-process
+     		    "msgcat" nil tmp-buf t (shell-quote-argument tmp-file)))
+     		  (let ((saved (point))
+     			(inhibit-read-only t))
+     		    (delete-region (point-min) (point-max))
+     		    (insert-buffer tmp-buf)
+     		    (goto-char (min saved (point-max))))
+     		(with-current-buffer tmp-buf
+     		  (error (buffer-string)))))
+     	  (kill-buffer tmp-buf)
+     	  (delete-file tmp-file)))))
+</pre>
+   <p>It is highly desirable that you check if the PO file you finished
+translating (or editing) is valid, before committing it.  This is done
+by running <code>msgfmt -cv -o /dev/null </code><var>file</var> or by simply
+pressing <kbd>V</kbd> in PO mode.  The build system automatically verifies
+each PO file when invoked with <code>VALIDATE=yes</code>, but you won't get a
+warm and fuzzy feeling if a stupid typo you made halts the whole update
+of all translations.  Such things happen to everyone, so it is a good
+practice to check before you actually commit.
+
+<ul class="menu">
+<li><a accesskey="1" href="Notes-Slot.html#Notes-Slot">Notes Slot</a>:           How to handle translator's notes. 
+<li><a accesskey="2" href="Credits-Slot.html#Credits-Slot">Credits Slot</a>:         Translator's credits. 
+</ul>
+
+   </body></html>
+

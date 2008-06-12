@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+<title>sync - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Special-Targets.html#Special-Targets" title="Special Targets">
+<link rel="next" href="report.html#report" title="report">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 12.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="sync"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="report.html#report">report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">Special Targets</a>
+<hr>
+</div>
+
+<h5 class="subsubsection">2.1.2.1 The <code>sync</code> target</h5>
+
+<p><a name="index-synchronization_002c-repository-16"></a>
+The <code>sync</code> target has a simple task: synchronize the
+<em>original English</em> articles from a canonical repository, like
+`www'.  It is very important that such synchronization happens,
+because it is desirable to develop the software and add more features
+in a testbed, while the `official instance' operates on the official
+repository in a predictable way.
+
+   <p>It is recommended that you `build' the <code>sync</code> target from a cron
+job, some time before the general build occurs.  That way,
+prerequisites (e.g. original <samp><span class="file">.html</span></samp> articles) will be updated
+from the canonical repository and the subsequent <samp><span class="command">make</span></samp>
+invocation, possibly run by cron as well, will update all
+translations.
+
+   <p>The <code>VCS</code> variable affects the behavior: if it is defined to
+`yes' then the synchronized files are committed to the `testing'
+repository, i.e. the <var>destination</var>.  In addition, if a file meant
+to be synchronized disappeared from the <var>source</var>, a warning mail
+will be sent to the address defined in the <code>devel-addr</code> variable
+(defined only in <samp><span class="file">GNUmakefile</span></samp>).  The build will continue without
+failure, and will sync and commit all other files, but will send the
+same email message again if the file is still present in the
+<code>files-to-sync</code> variable during a subsequent invocation.
+
+   <p>In addition, <code>sync</code> synchronizes all &ldquo;verbatim&rdquo; server
+templates that are not under <acronym>GNUN</acronym>'s control, such as
+<samp><span class="file">server/header.html</span></samp>, <samp><span class="file">server/footer.html</span></samp> and their
+translations, as defined in the <code>verbatim-templates</code> variable. 
+This is important, as these files may change in the master repository,
+while the validation of the html files in the development repository
+will be performed with the old templates expanded, thus making this
+specific test more or less bogus.
+
+   <p><code>VCS=always</code> has no effect on this target, as well as
+<code>VALIDATE</code>.
+
+   </body></html>
+
