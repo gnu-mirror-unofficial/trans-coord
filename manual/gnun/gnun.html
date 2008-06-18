@@ -10,7 +10,7 @@
 This manual is for GNUnited Nations, a suite for maintaining
 translations of www.gnu.org essays and other articles.
 
-Last updated on 12.06.2008.
+Last updated on 18.06.2008.
 
    Copyright (C) 2008 Free Software Foundation, Inc.
 
@@ -56,8 +56,9 @@ Last updated on 12.06.2008.
 <ul>
 <li><a href="#sync">2.1.2.1 The <code>sync</code> target</a>
 <li><a href="#report">2.1.2.2 The <code>report</code> target</a>
-<li><a href="#clean">2.1.2.3 The <code>clean</code> target</a>
-<li><a href="#distclean">2.1.2.4 The <code>distclean</code> target</a>
+<li><a href="#triggers">2.1.2.3 The <code>triggers</code> target</a>
+<li><a href="#clean">2.1.2.4 The <code>clean</code> target</a>
+<li><a href="#distclean">2.1.2.5 The <code>distclean</code> target</a>
 </li></ul>
 </li></ul>
 <li><a href="#Main-Variables">2.2 Defining Articles to be Built</a>
@@ -112,7 +113,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 
 <p>This manual is for <acronym>GNU</acronym>nited Nations, a suite for maintaining
 translations of www.gnu.org essays and other articles.<br>
-Last updated on 12.06.2008.
+Last updated on 18.06.2008.
    <pre class="sp">
 
 </pre>
@@ -649,8 +650,9 @@ specific and already defined, one way or another.
 <ul class="menu">
 <li><a accesskey="1" href="#sync">sync</a>
 <li><a accesskey="2" href="#report">report</a>
-<li><a accesskey="3" href="#clean">clean</a>
-<li><a accesskey="4" href="#distclean">distclean</a>
+<li><a accesskey="3" href="#triggers">triggers</a>
+<li><a accesskey="4" href="#clean">clean</a>
+<li><a accesskey="5" href="#distclean">distclean</a>
 </ul>
 
 <div class="node">
@@ -703,7 +705,7 @@ specific test more or less bogus.
 <div class="node">
 <p><hr>
 <a name="report"></a>
-Next:&nbsp;<a rel="next" accesskey="n" href="#clean">clean</a>,
+Next:&nbsp;<a rel="next" accesskey="n" href="#triggers">triggers</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#sync">sync</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
 
@@ -728,14 +730,60 @@ developed, if you recall.
 
 <div class="node">
 <p><hr>
-<a name="clean"></a>
-Next:&nbsp;<a rel="next" accesskey="n" href="#distclean">distclean</a>,
+<a name="triggers"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#clean">clean</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#report">report</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
 
 </div>
 
-<h5 class="subsubsection">2.1.2.3 The <code>clean</code> target</h5>
+<h5 class="subsubsection">2.1.2.3 The <code>triggers</code> target</h5>
+
+<p>This is a special target intended to be run by the automatic build
+after the main build and <em>after</em> <code>cvs commit</code>.
+
+   <p>When a <acronym>GNUN</acronym> build completes and some translations fail at the
+XHTML validation stage, the result is checked in the repository, as
+explained earlier (see <a href="#Runtime-Variables">Runtime Variables</a>).  Thus, CVS updates the
+$<!-- /@w -->Date$ RCS keyword (or any other keywords, for that matter) and
+resets the file(s) timestamp.  Next time <samp><span class="command">make</span></samp> is invoked, the
+target appears newer than the prerequisite so no rebuild is triggered. 
+The purpose of the <code>triggers</code> target is to &ldquo;save&rdquo; the information
+of the faulty targets during the main build, and to touch their
+prerequisites in order such invalid articles not to remain online
+unnoticed.
+
+   <p>The <code>triggers</code> target currently executes the files named
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html.hook</span></samp> in the <samp><span class="file">server/gnun</span></samp>
+directory&mdash;these files are created during the main build and each of
+them contains the command to update the timestamp of the prerequisite
+based on the timestamp of the target that must be rebult.  Finally, it
+deletes all those <samp><span class="file">*.hook</span></samp> files.
+
+   <p>To summarize, for effective operation <acronym>GNUN</acronym> should be invoked
+automatically as <code>make ; cvs commit -m ... ; make triggers</code>. 
+To illustrate this, here is a concrete example showing the official job
+running at fencepost.gnu.org:
+
+<pre class="example">     25 16 * * *  cd $HOME/projects/www ; cvs -q update &amp;&gt;/dev/null ; \
+                    make -C server/gnun VCS=yes VALIDATE=yes NOTIFY=yes \
+                    VERBOSE=yes ; cvs commit -m \
+                    "Automatic update by GNUnited Nations." ; \
+                    make -C server/gnun triggers
+</pre>
+   <p>In the future, this target may be extended further to do other useful
+things that should be &ldquo;triggered&rdquo; after the main build.
+
+<div class="node">
+<p><hr>
+<a name="clean"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#distclean">distclean</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#triggers">triggers</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
+
+</div>
+
+<h5 class="subsubsection">2.1.2.4 The <code>clean</code> target</h5>
 
 <p>Not implemented yet.
 
@@ -747,7 +795,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
 
 </div>
 
-<h5 class="subsubsection">2.1.2.4 The <code>distclean</code> target</h5>
+<h5 class="subsubsection">2.1.2.5 The <code>distclean</code> target</h5>
 
 <p>Not implemented yet.
 

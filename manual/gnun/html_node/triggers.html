@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+<title>triggers - GNUnited Nations Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Special-Targets.html#Special-Targets" title="Special Targets">
+<link rel="prev" href="report.html#report" title="report">
+<link rel="next" href="clean.html#clean" title="clean">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNUnited Nations, a suite for maintaining
+translations of www.gnu.org essays and other articles.
+
+Last updated on 18.06.2008.
+
+   Copyright (C) 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="triggers"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="clean.html#clean">clean</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="report.html#report">report</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">Special Targets</a>
+<hr>
+</div>
+
+<h5 class="subsubsection">2.1.2.3 The <code>triggers</code> target</h5>
+
+<p>This is a special target intended to be run by the automatic build
+after the main build and <em>after</em> <code>cvs commit</code>.
+
+   <p>When a <acronym>GNUN</acronym> build completes and some translations fail at the
+XHTML validation stage, the result is checked in the repository, as
+explained earlier (see <a href="Runtime-Variables.html#Runtime-Variables">Runtime Variables</a>).  Thus, CVS updates the
+$<!-- /@w -->Date$ RCS keyword (or any other keywords, for that matter) and
+resets the file(s) timestamp.  Next time <samp><span class="command">make</span></samp> is invoked, the
+target appears newer than the prerequisite so no rebuild is triggered. 
+The purpose of the <code>triggers</code> target is to &ldquo;save&rdquo; the information
+of the faulty targets during the main build, and to touch their
+prerequisites in order such invalid articles not to remain online
+unnoticed.
+
+   <p>The <code>triggers</code> target currently executes the files named
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html.hook</span></samp> in the <samp><span class="file">server/gnun</span></samp>
+directory&mdash;these files are created during the main build and each of
+them contains the command to update the timestamp of the prerequisite
+based on the timestamp of the target that must be rebult.  Finally, it
+deletes all those <samp><span class="file">*.hook</span></samp> files.
+
+   <p>To summarize, for effective operation <acronym>GNUN</acronym> should be invoked
+automatically as <code>make ; cvs commit -m ... ; make triggers</code>. 
+To illustrate this, here is a concrete example showing the official job
+running at fencepost.gnu.org:
+
+<pre class="example">     25 16 * * *  cd $HOME/projects/www ; cvs -q update &amp;&gt;/dev/null ; \
+                    make -C server/gnun VCS=yes VALIDATE=yes NOTIFY=yes \
+                    VERBOSE=yes ; cvs commit -m \
+                    "Automatic update by GNUnited Nations." ; \
+                    make -C server/gnun triggers
+</pre>
+   <p>In the future, this target may be extended further to do other useful
+things that should be &ldquo;triggered&rdquo; after the main build.
+
+   </body></html>
+
