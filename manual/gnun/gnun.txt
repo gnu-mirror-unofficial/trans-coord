@@ -47,7 +47,7 @@ GNUnited Nations
 
 This manual is for GNUnited Nations, a suite for maintaining
 translations of www.gnu.org essays and other articles.
-Last updated on 18.06.2008.
+Last updated on 31.07.2008.
 
    Copyright (C) 2008 Free Software Foundation, Inc.
 
@@ -422,6 +422,18 @@ features will be implemented in a similar fashion.
      recommended in general since it will show a bug in the computation
      of the basic variables.
 
+`GRACE=DAYS'
+     If defined, ordinary articles that have fuzzy strings and are not
+     older than DAYS will not be regenerated.  This functionality is
+     implemented specifically to prevent gratuitous replacement of
+     translated strings with the English text when there are only minor
+     formatting changes in the original.  The translator has time (the
+     "grace" period as defined in this variable) to review the changes
+     and unfuzzy the strings, while keeping the online translation
+     intact.  Note that this variable has no effect on the homepage,
+     the server templates, gnunews and all articles defined in the
+     variable `no-grace-articles'.
+
 `TEAM=LANG'
      The translation team which articles need to be checked for
      completeness.  This variable is applicable only for the `report'
@@ -549,7 +561,7 @@ running at fencepost.gnu.org:
 
      25 16 * * *  cd $HOME/projects/www ; cvs -q update &>/dev/null ; \
                     make -C server/gnun VCS=yes VALIDATE=yes NOTIFY=yes \
-                    VERBOSE=yes ; cvs commit -m \
+                    VERBOSE=yes GRACE=30 ; cvs commit -m \
                     "Automatic update by GNUnited Nations." ; \
                     make -C server/gnun triggers
 
@@ -1892,75 +1904,79 @@ permit their use in free software.
 Index
 *****
 
-ALL_DIRS:                                      See 2.2.      (line  605)
-articles in root directory, defining:          See 2.2.      (line  598)
-bugs, reporting:                               See 4.        (line 1453)
-conversion of existing translations:           See 2.3.2.    (line  891)
-credits, translators <1>:                      See 2.3.1.2.  (line  868)
-credits, translators:                          See 2.3.1.    (line  767)
-cron, team maintenance:                        See 2.3.6.2.  (line 1200)
+ALL_DIRS:                                      See 2.2.      (line  617)
+articles in root directory, defining:          See 2.2.      (line  610)
+bugs, reporting:                               See 4.        (line 1465)
+conversion of existing translations:           See 2.3.2.    (line  903)
+credits, translators <1>:                      See 2.3.1.2.  (line  880)
+credits, translators:                          See 2.3.1.    (line  779)
+cron, team maintenance:                        See 2.3.6.2.  (line 1212)
 CVS:                                           See 2.1.1.    (line  369)
-defining articles in the root dir:             See 2.2.      (line  598)
-defining directories:                          See 2.2.      (line  605)
-defining homepage:                             See 2.2.      (line  592)
-defining templates:                            See 2.2.      (line  585)
-directories, defining:                         See 2.2.      (line  605)
-generation, POT, .proto:                       See 3.1.1.    (line 1309)
-generic notice, translations:                  See 2.3.5.    (line 1038)
-gnun.mk:                                       See 2.2.      (line  572)
-gnunews:                                       See 2.3.3.    (line  935)
-gnusflashes:                                   See 2.3.3.    (line  935)
-HOME_LINGUAS:                                  See 2.2.      (line  592)
-homepage, defining:                            See 2.2.      (line  592)
+deferred generation of articles:               See 2.1.1.    (line  425)
+defining articles in the root dir:             See 2.2.      (line  610)
+defining directories:                          See 2.2.      (line  617)
+defining homepage:                             See 2.2.      (line  604)
+defining templates:                            See 2.2.      (line  597)
+directories, defining:                         See 2.2.      (line  617)
+fuzzy strings:                                 See 2.1.1.    (line  425)
+generation, POT, .proto:                       See 3.1.1.    (line 1321)
+generic notice, translations:                  See 2.3.5.    (line 1050)
+gnun.mk:                                       See 2.2.      (line  584)
+gnunews:                                       See 2.3.3.    (line  947)
+gnusflashes:                                   See 2.3.3.    (line  947)
+GRACE:                                         See 2.1.1.    (line  425)
+grace period:                                  See 2.1.1.    (line  425)
+HOME_LINGUAS:                                  See 2.2.      (line  604)
+homepage, defining:                            See 2.2.      (line  604)
 invoking:                                      See 2.1.      (line  343)
-long lines, wrap:                              See 2.3.1.    (line  773)
-mail, notifications <1>:                       See 3.1.3.    (line 1378)
+long lines, wrap:                              See 2.3.1.    (line  785)
+mail, notifications <1>:                       See 3.1.3.    (line 1390)
 mail, notifications:                           See 2.1.1.    (line  407)
-migration, translations:                       See 2.3.2.    (line  891)
-new translation:                               See 2.3.1.    (line  660)
-notes, translators <1>:                        See 2.3.1.1.  (line  819)
-notes, translators:                            See 2.3.1.    (line  761)
+migration, translations:                       See 2.3.2.    (line  903)
+new translation:                               See 2.3.1.    (line  672)
+notes, translators <1>:                        See 2.3.1.1.  (line  831)
+notes, translators:                            See 2.3.1.    (line  773)
 NOTIFY:                                        See 2.1.1.    (line  407)
 output, detailed:                              See 2.1.1.    (line  418)
-PO editors:                                    See 2.3.      (line  638)
-PO headers:                                    See 2.3.1.    (line  699)
-PO, editing:                                   See 2.3.      (line  626)
-POT generation:                                See 3.1.1.    (line 1309)
-POT generation, articles:                      See 2.2.      (line  609)
-project repository:                            See 2.3.6.    (line 1063)
-prototype generation:                          See 3.1.1.    (line 1309)
-recommendations, PO files:                     See 2.3.4.    (line  960)
-reporting:                                     See 2.1.2.2.  (line  508)
-reporting bugs:                                See 4.        (line 1453)
-repository, translation project:               See 2.3.6.    (line 1063)
-ROOT:                                          See 2.2.      (line  598)
+PO editors:                                    See 2.3.      (line  650)
+PO headers:                                    See 2.3.1.    (line  711)
+PO, editing:                                   See 2.3.      (line  638)
+POT generation:                                See 3.1.1.    (line 1321)
+POT generation, articles:                      See 2.2.      (line  621)
+project repository:                            See 2.3.6.    (line 1075)
+prototype generation:                          See 3.1.1.    (line 1321)
+recommendations, PO files:                     See 2.3.4.    (line  972)
+reporting:                                     See 2.1.2.2.  (line  520)
+reporting bugs:                                See 4.        (line 1465)
+repository, translation project:               See 2.3.6.    (line 1075)
+ROOT:                                          See 2.2.      (line  610)
 sanity checks:                                 See 2.1.1.    (line  393)
-status, translations:                          See 2.1.2.2.  (line  508)
-synchronization, repository:                   See 2.1.2.1.  (line  473)
-TEAM:                                          See 2.1.1.    (line  425)
-team information:                              See 2.3.5.    (line 1038)
-team maintenance:                              See 2.3.6.    (line 1063)
-team maintenance, cron:                        See 2.3.6.2.  (line 1200)
-team workflow:                                 See 2.3.6.    (line 1082)
-TEMPLATE_LINGUAS:                              See 2.2.      (line  585)
-templates, defining:                           See 2.2.      (line  585)
-tips, translators:                             See 2.3.4.    (line  960)
-tips, webmasters:                              See 2.4.      (line 1226)
-translation, new:                              See 2.3.1.    (line  660)
-translators' credits <1>:                      See 2.3.1.2.  (line  868)
-translators' credits:                          See 2.3.1.    (line  767)
-translators' notes <1>:                        See 2.3.1.1.  (line  819)
-translators' notes:                            See 2.3.1.    (line  761)
+status, translations:                          See 2.1.2.2.  (line  520)
+synchronization, repository:                   See 2.1.2.1.  (line  485)
+TEAM:                                          See 2.1.1.    (line  437)
+team information:                              See 2.3.5.    (line 1050)
+team maintenance:                              See 2.3.6.    (line 1075)
+team maintenance, cron:                        See 2.3.6.2.  (line 1212)
+team workflow:                                 See 2.3.6.    (line 1094)
+TEMPLATE_LINGUAS:                              See 2.2.      (line  597)
+templates, defining:                           See 2.2.      (line  597)
+tips, translators:                             See 2.3.4.    (line  972)
+tips, webmasters:                              See 2.4.      (line 1238)
+translation, new:                              See 2.3.1.    (line  672)
+translators' credits <1>:                      See 2.3.1.2.  (line  880)
+translators' credits:                          See 2.3.1.    (line  779)
+translators' notes <1>:                        See 2.3.1.1.  (line  831)
+translators' notes:                            See 2.3.1.    (line  773)
 triggering, build:                             See 2.1.      (line  343)
 VALIDATE:                                      See 2.1.1.    (line  393)
 validation:                                    See 2.1.1.    (line  393)
-validation, XHTML:                             See 3.1.2.    (line 1362)
+validation, XHTML:                             See 3.1.2.    (line 1374)
 variable, behavior:                            See 2.1.1.    (line  362)
-variable, team:                                See 2.1.1.    (line  425)
-variables <1>:                                 See 2.2.      (line  572)
+variable, team:                                See 2.1.1.    (line  437)
+variables <1>:                                 See 2.2.      (line  584)
 variables:                                     See 2.1.1.    (line  362)
 VCS:                                           See 2.1.1.    (line  369)
 VERBOSE:                                       See 2.1.1.    (line  418)
-webmaster tips:                                See 2.4.      (line 1226)
-whatsnew:                                      See 2.3.3.    (line  935)
-wrapping long lines:                           See 2.3.1.    (line  773)
+webmaster tips:                                See 2.4.      (line 1238)
+whatsnew:                                      See 2.3.3.    (line  947)
+wrapping long lines:                           See 2.3.1.    (line  785)

@@ -12,7 +12,7 @@
 This manual is for GNUnited Nations, a suite for maintaining
 translations of www.gnu.org essays and other articles.
 
-Last updated on 18.06.2008.
+Last updated on 31.07.2008.
 
    Copyright (C) 2008 Free Software Foundation, Inc.
 
@@ -102,7 +102,17 @@ will be printed to the standard output.  This is off by default, but
 recommended in general since it will show a bug in the computation of
 the basic variables.
 
-     <p><a name="index-TEAM-14"></a><a name="index-variable_002c-team-15"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team which articles need to be checked for
+     <p><a name="index-GRACE-14"></a><a name="index-fuzzy-strings-15"></a><a name="index-grace-period-16"></a><a name="index-deferred-generation-of-articles-17"></a><br><dt>&lsquo;<samp><span class="samp">GRACE=</span><var>days</var></samp>&rsquo;<dd>If defined, ordinary articles that have fuzzy strings and are not older
+than <var>days</var> will not be regenerated.  This functionality is
+implemented specifically to prevent gratuitous replacement of translated
+strings with the English text when there are only minor formatting
+changes in the original.  The translator has time (the &ldquo;grace&rdquo; period
+as defined in this variable) to review the changes and unfuzzy the
+strings, while keeping the online translation intact.  Note that this
+variable has no effect on the homepage, the server templates, gnunews
+and all articles defined in the variable <code>no-grace-articles</code>.
+
+     <p><a name="index-TEAM-18"></a><a name="index-variable_002c-team-19"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team which articles need to be checked for
 completeness.  This variable is applicable only for the <code>report</code>
 target, and is mandatory for it.  See <a href="report.html#report">report</a>.
 

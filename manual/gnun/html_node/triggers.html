@@ -13,7 +13,7 @@
 This manual is for GNUnited Nations, a suite for maintaining
 translations of www.gnu.org essays and other articles.
 
-Last updated on 18.06.2008.
+Last updated on 31.07.2008.
 
    Copyright (C) 2008 Free Software Foundation, Inc.
 
@@ -77,7 +77,7 @@ running at fencepost.gnu.org:
 
 <pre class="example">     25 16 * * *  cd $HOME/projects/www ; cvs -q update &amp;&gt;/dev/null ; \
                     make -C server/gnun VCS=yes VALIDATE=yes NOTIFY=yes \
-                    VERBOSE=yes ; cvs commit -m \
+                    VERBOSE=yes GRACE=30 ; cvs commit -m \
                     "Automatic update by GNUnited Nations." ; \
                     make -C server/gnun triggers
 </pre>
