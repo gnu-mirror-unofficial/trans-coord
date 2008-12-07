@@ -1,24 +1,25 @@
 <html lang="en">
 <head>
-<title>Notes Slot - GNUnited Nations Manual</title>
+<title>Notes Slot - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="GNUnited Nations Manual">
+<meta name="description" content="GNUnited Nations">
 <meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="New-Translation.html#New-Translation" title="New Translation">
 <link rel="next" href="Credits-Slot.html#Credits-Slot" title="Credits Slot">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual is for GNUnited Nations, a suite for maintaining
-translations of www.gnu.org essays and other articles.
+This manual (updated 6 December 2008) is for GNUnited Nations
+(version 0.1),
+a suite for maintaining translations of www.gnu.org essays and other
+articles.
 
-Last updated on 21.08.2008.
 
-   Copyright (C) 2008 Free Software Foundation, Inc.
+Copyright (C) 2008 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
-     Version 1.2 or any later version published by the Free Software
+     Version 1.3 or any later version published by the Free Software
      Foundation; with no Invariant Sections, no Front-Cover Texts, and
      no Back-Cover Texts.  A copy of the license is included in the
      section entitled ``GNU Free Documentation License.''
@@ -58,7 +59,6 @@ you want.  Here is an example how to use translators' notes in a PO
 file:
 
 <pre class="example">     # type: Content of: &lt;p&gt;
-     #: ../../philosophy/po/free-sw.proto:22
      msgid ""
      "To understand the concept, you should think of &lt;q&gt;free&lt;/q&gt; "
      "as in &lt;q&gt;free speech,&lt;/q&gt; not as in &lt;q&gt;free beer.&lt;/q&gt;"
@@ -70,7 +70,6 @@ file:
      ...
      # type: Content of: &lt;div&gt;
      #. TRANSLATORS: Use space (SPC) as msgstr if you don't have notes.
-     #: ../../philosophy/po/free-sw.proto:274
      msgid "*GNUN-SLOT: TRANSLATOR'S NOTES*"
      msgstr ""
      "&lt;b&gt;Translator's notes&lt;/b&gt;:\n"
@@ -81,8 +80,8 @@ file:
    <p>Certainly, everything in the <code>msgstr</code>s should be in your native
 language; we use English here in order the example to be understood by
 everyone.  If you have more notes, each subsequent one should be with
-incremented number, i.e. `TransNote2', `TransNote3', etc. and you have
-to add them as more <code>&lt;li&gt;</code> elements accordingly.
+incremented number, i.e. &lsquo;<samp><span class="samp">TransNote2</span></samp>&rsquo;, &lsquo;<samp><span class="samp">TransNote3</span></samp>&rsquo;, etc. and
+you have to add them as more <code>&lt;li&gt;</code> elements accordingly.
 
    <p>Do not worry about the <code>\n</code> character&mdash;it is inserted
 automatically when you press &lt;RET&gt;.  It is not compulsory that

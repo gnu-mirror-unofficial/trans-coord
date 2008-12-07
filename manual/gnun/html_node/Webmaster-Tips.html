@@ -1,24 +1,25 @@
 <html lang="en">
 <head>
-<title>Webmaster Tips - GNUnited Nations Manual</title>
+<title>Webmaster Tips - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="GNUnited Nations Manual">
+<meta name="description" content="GNUnited Nations">
 <meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Usage.html#Usage" title="Usage">
 <link rel="prev" href="PO-Files.html#PO-Files" title="PO Files">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual is for GNUnited Nations, a suite for maintaining
-translations of www.gnu.org essays and other articles.
+This manual (updated 6 December 2008) is for GNUnited Nations
+(version 0.1),
+a suite for maintaining translations of www.gnu.org essays and other
+articles.
 
-Last updated on 21.08.2008.
 
-   Copyright (C) 2008 Free Software Foundation, Inc.
+Copyright (C) 2008 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
-     Version 1.2 or any later version published by the Free Software
+     Version 1.3 or any later version published by the Free Software
      Foundation; with no Invariant Sections, no Front-Cover Texts, and
      no Back-Cover Texts.  A copy of the license is included in the
      section entitled ``GNU Free Documentation License.''
@@ -73,16 +74,14 @@ encoding.  This specific advice is pretty much mandatory&mdash;the build
 fails if the original article contains such characters&mdash;but we are
 ready to fix any errors a webmaster makes.
 
-   <p>The script <samp><span class="command">validate-html</span></samp> is useful for webmasters who want to
-verify if their (potentially intrusive) changes result in a valid
-markup.  It is recommended to make a symlink somewhere in your
-<samp><span class="env">PATH</span></samp> (like <samp><span class="file">~/bin</span></samp>)&mdash;that way you will automatically use the
-latest version, provided that you regularly update your working copy. 
-Before committing your changes, you can check if it is valid by running
+   <p>The script <samp><span class="command">gnun-validate-html</span></samp> is useful for webmasters who
+want to verify if their (potentially intrusive) changes result in a
+valid markup.  Before committing your changes, you can check if it is
+valid by running
 
-<pre class="example">     validate-html philosophy/not-ipr.html
+<pre class="example">     gnun-validate-html philosophy/not-ipr.html
 </pre>
-   <p>See <a href="validate_002dhtml.html#validate_002dhtml">validate-html</a>, for more information.
+   <p>See <a href="gnun_002dvalidate_002dhtml.html#gnun_002dvalidate_002dhtml">gnun-validate-html</a>, for more information.
 
 <!-- Emacs Lisp code goes here... -->
    <p>If you want a comment to be visible for translators, place it
@@ -97,7 +96,6 @@ Before committing your changes, you can check if it is valid by running
 
 <pre class="example">     # type: Content of: &lt;p&gt;
      #. TRANSLATORS: Note that foo is bar in this context.
-     #: ../../foo/po/article.proto:126
      msgid "The fooish bar mumbles bazzling."
      msgstr ""
 </pre>

@@ -33,7 +33,7 @@ GNUnited Nations
 3 Unexciting Information for GNUN's Operation
   3.1 Internally Used Scripts
     3.1.1 The `make-prototype' Script
-    3.1.2 The `validate-html' Script
+    3.1.2 The `gnun-validate-html' Script
     3.1.3 The `mailfail' Script
     3.1.4 The `validate-html-notify' Script
   3.2 How The Recipes Work
@@ -45,15 +45,15 @@ Index
 GNUnited Nations
 ****************
 
-This manual is for GNUnited Nations, a suite for maintaining
-translations of www.gnu.org essays and other articles.
-Last updated on 21.08.2008.
+This manual (updated 6 December 2008) is for GNUnited Nations (version
+0.1), a suite for maintaining translations of www.gnu.org essays and
+other articles.
 
-   Copyright (C) 2008 Free Software Foundation, Inc.
+Copyright (C) 2008 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
-     Version 1.2 or any later version published by the Free Software
+     Version 1.3 or any later version published by the Free Software
      Foundation; with no Invariant Sections, no Front-Cover Texts, and
      no Back-Cover Texts.  A copy of the license is included in the
      section entitled "GNU Free Documentation License."
@@ -417,10 +417,10 @@ features will be implemented in a similar fashion.
 
 `VERBOSE=yes'
      If defined, the value of the variables `templates-translated',
-     `home-translated', `ALL_POTS' and `articles-translated' will be
-     printed to the standard output.  This is off by default, but
-     recommended in general since it will show a bug in the computation
-     of the basic variables.
+     `home-translated', `ALL_POTS', `articles-translated' and `gnunews'
+     will be printed to the standard output.  This is off by default,
+     but recommended in general since it will show a bug in the
+     computation of the basic variables.
 
 `GRACE=DAYS'
      If defined, ordinary articles that have fuzzy strings and are not
@@ -551,19 +551,19 @@ invalid articles not to remain online unnoticed.
 `ARTICLE.LANG.html.hook' in the `server/gnun' directory--these files
 are created during the main build and each of them contains the command
 to update the timestamp of the prerequisite based on the timestamp of
-the target that must be rebult.  Finally, it deletes all those `*.hook'
-files.
+the target that must be rebuilt.  Finally, it deletes all those
+`*.hook' files.
 
    To summarize, for effective operation GNUN should be invoked
 automatically as `make ; cvs commit -m ... ; make triggers'.  To
 illustrate this, here is a concrete example showing the official job
 running at fencepost.gnu.org:
 
-     25 16 * * *  cd $HOME/projects/www ; cvs -q update &>/dev/null ; \
-                    make -C server/gnun VCS=yes VALIDATE=yes NOTIFY=yes \
-                    VERBOSE=yes GRACE=30 ; cvs commit -m \
-                    "Automatic update by GNUnited Nations." ; \
-                    make -C server/gnun triggers
+     25 4,16 * * *  cd $HOME/projects/www ; cvs -q update &>/dev/null ; \
+                      make -C server/gnun VCS=yes VALIDATE=yes NOTIFY=yes \
+                      VERBOSE=yes GRACE=30 ; cvs commit -m \
+                      "Automatic update by GNUnited Nations." ; \
+                      make -C server/gnun triggers
 
    In the future, this target may be extended further to do other useful
 things that should be "triggered" after the main build.
@@ -840,7 +840,6 @@ translation, which is not what you want.  Here is an example how to use
 translators' notes in a PO file:
 
      # type: Content of: <p>
-     #: ../../philosophy/po/free-sw.proto:22
      msgid ""
      "To understand the concept, you should think of <q>free</q> "
      "as in <q>free speech,</q> not as in <q>free beer.</q>"
@@ -852,7 +851,6 @@ translators' notes in a PO file:
      ...
      # type: Content of: <div>
      #. TRANSLATORS: Use space (SPC) as msgstr if you don't have notes.
-     #: ../../philosophy/po/free-sw.proto:274
      msgid "*GNUN-SLOT: TRANSLATOR'S NOTES*"
      msgstr ""
      "<b>Translator's notes</b>:\n"
@@ -1028,7 +1026,6 @@ files editing.
      languages.  Example:
 
           # type: Content of: <div><address>
-          #: ../../gnu/po/gnu.proto:85
           msgid "51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA"
           msgstr ""
           "Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, "
@@ -1088,11 +1085,10 @@ a crucial part of the process.  Furthermore, team work is great for the
 community spirit; automating some of the operations also result in more
 time for all members to concentrate on the important tasks.
 
-   The file `gnun/server/gnun/GNUmakefile.team' in the Sources
-repository of the `trans-coord' project is a template, aimed for all
-translation teams who wish to use their own project's repository as a
-place to keep their draft translations, until they ripe and are ready
-to be installed officially.
+   The file `GNUmakefile.team' in the `gnun' package is a template,
+aimed for all translation teams who wish to use their own project's
+repository as a place to keep their draft translations, until they ripe
+and are ready to be installed officially.
 
    The following diagram illustrates a typical workflow--it is
 applicable for small, medium and large teams:
@@ -1206,7 +1202,7 @@ be a target that will check which files have not yet been committed in
 the official repository, or which files have to be updated there (i.e.
 they were updated by the team members but not installed by the
 coordinator).  Either way, if you come up with something interesting, it
-would be nice to send a message to <trans-coord-devel@gnu.org>, so that
+would be nice to send a message to <bug-gnun@gnu.org>, so that
 `GNUmakefile.team' gets updated for all teams' benefit.
 
 2.3.6.2 Automatic Synchronization and Status Reports
@@ -1263,16 +1259,14 @@ This specific advice is pretty much mandatory--the build fails if the
 original article contains such characters--but we are ready to fix any
 errors a webmaster makes.
 
-   The script `validate-html' is useful for webmasters who want to
+   The script `gnun-validate-html' is useful for webmasters who want to
 verify if their (potentially intrusive) changes result in a valid
-markup.  It is recommended to make a symlink somewhere in your `PATH'
-(like `~/bin')--that way you will automatically use the latest version,
-provided that you regularly update your working copy.  Before
-committing your changes, you can check if it is valid by running
+markup.  Before committing your changes, you can check if it is valid
+by running
 
-     validate-html philosophy/not-ipr.html
+     gnun-validate-html philosophy/not-ipr.html
 
-   *Note validate-html::, for more information.
+   *Note gnun-validate-html::, for more information.
 
    If you want a comment to be visible for translators, place it
 _inside_ the element, for example:
@@ -1286,7 +1280,6 @@ _inside_ the element, for example:
 
      # type: Content of: <p>
      #. TRANSLATORS: Note that foo is bar in this context.
-     #: ../../foo/po/article.proto:126
      msgid "The fooish bar mumbles bazzling."
      msgstr ""
 
@@ -1371,8 +1364,8 @@ Translation::.
 `--help'
      Print usage information on stdout.
 
-3.1.2 The `validate-html' Script
---------------------------------
+3.1.2 The `gnun-validate-html' Script
+-------------------------------------
 
 This is a Bash script whose purpose is to "validate" both the original
 and translated articles to make sure that they conform to the
@@ -1434,10 +1427,10 @@ output and the exit code is 1.
 3.1.4 The `validate-html-notify' Script
 ---------------------------------------
 
-This script is a wrapper around `validate-html' (*note
-validate-html::); it is necessary because it is hard to capture the
-output of the program from a program that itself captures the output of
-another program that it runs.
+This script is a wrapper around `gnun-validate-html' (*note
+gnun-validate-html::); it is necessary because it is hard to capture
+the output of the program from a program that itself captures the
+output of another program that it runs.
 
    Usage:
 
@@ -1471,17 +1464,16 @@ but it is absolutely certain that there are more which we know nothing
 about.
 
    If you encounter a bug, or if you have suggestions of any kind,
-please do not hesitate to report them at <trans-coord-devel@gnu.org> or
-`https://savannah.gnu.org/bugs/?func=additem&group=trans-coord',
-category `-- GNUnited Nations --'.
+please do not hesitate to report them at <bug-gnun@gnu.org> or
+`https://savannah.gnu.org/bugs/?group=gnun'.
 
 Appendix A GNU Free Documentation License
 *****************************************
 
-                      Version 1.2, November 2002
+                     Version 1.3, 3 November 2008
 
-     Copyright (C) 2000,2001,2002 Free Software Foundation, Inc.
-     51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA
+     Copyright (C) 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+     `http://fsf.org/'
 
      Everyone is permitted to copy and distribute verbatim copies
      of this license document, but changing it is not allowed.
@@ -1582,6 +1574,9 @@ Appendix A GNU Free Documentation License
      works in formats which do not have any title page as such, "Title
      Page" means the text near the most prominent appearance of the
      work's title, preceding the beginning of the body of the text.
+
+     The "publisher" means any person or entity that distributes copies
+     of the Document to the public.
 
      A section "Entitled XYZ" means a named subunit of the Document
      whose title either is precisely XYZ or contains XYZ in parentheses
@@ -1848,12 +1843,29 @@ Appendix A GNU Free Documentation License
   9. TERMINATION
 
      You may not copy, modify, sublicense, or distribute the Document
-     except as expressly provided for under this License.  Any other
-     attempt to copy, modify, sublicense or distribute the Document is
-     void, and will automatically terminate your rights under this
-     License.  However, parties who have received copies, or rights,
-     from you under this License will not have their licenses
-     terminated so long as such parties remain in full compliance.
+     except as expressly provided under this License.  Any attempt
+     otherwise to copy, modify, sublicense, or distribute it is void,
+     and will automatically terminate your rights under this License.
+
+     However, if you cease all violation of this License, then your
+     license from a particular copyright holder is reinstated (a)
+     provisionally, unless and until the copyright holder explicitly
+     and finally terminates your license, and (b) permanently, if the
+     copyright holder fails to notify you of the violation by some
+     reasonable means prior to 60 days after the cessation.
+
+     Moreover, your license from a particular copyright holder is
+     reinstated permanently if the copyright holder notifies you of the
+     violation by some reasonable means, this is the first time you have
+     received notice of violation of this License (for any work) from
+     that copyright holder, and you cure the violation prior to 30 days
+     after your receipt of the notice.
+
+     Termination of your rights under this section does not terminate
+     the licenses of parties who have received copies or rights from
+     you under this License.  If your rights have been terminated and
+     not permanently reinstated, receipt of a copy of some or all of
+     the same material does not give you any rights to use it.
 
  10. FUTURE REVISIONS OF THIS LICENSE
 
@@ -1871,7 +1883,41 @@ Appendix A GNU Free Documentation License
      published (not as a draft) by the Free Software Foundation.  If
      the Document does not specify a version number of this License,
      you may choose any version ever published (not as a draft) by the
-     Free Software Foundation.
+     Free Software Foundation.  If the Document specifies that a proxy
+     can decide which future versions of this License can be used, that
+     proxy's public statement of acceptance of a version permanently
+     authorizes you to choose that version for the Document.
+
+ 11. RELICENSING
+
+     "Massive Multiauthor Collaboration Site" (or "MMC Site") means any
+     World Wide Web server that publishes copyrightable works and also
+     provides prominent facilities for anybody to edit those works.  A
+     public wiki that anybody can edit is an example of such a server.
+     A "Massive Multiauthor Collaboration" (or "MMC") contained in the
+     site means any set of copyrightable works thus published on the MMC
+     site.
+
+     "CC-BY-SA" means the Creative Commons Attribution-Share Alike 3.0
+     license published by Creative Commons Corporation, a not-for-profit
+     corporation with a principal place of business in San Francisco,
+     California, as well as future copyleft versions of that license
+     published by that same organization.
+
+     "Incorporate" means to publish or republish a Document, in whole or
+     in part, as part of another Document.
+
+     An MMC is "eligible for relicensing" if it is licensed under this
+     License, and if all works that were first published under this
+     License somewhere other than this MMC, and subsequently
+     incorporated in whole or in part into the MMC, (1) had no cover
+     texts or invariant sections, and (2) were thus incorporated prior
+     to November 1, 2008.
+
+     The operator of an MMC Site may republish an MMC contained in the
+     site under CC-BY-SA on the same site at any time before August 1,
+     2009, provided the MMC is eligible for relicensing.
+
 
 ADDENDUM: How to use this License for your documents
 ====================================================
@@ -1882,7 +1928,7 @@ notices just after the title page:
 
        Copyright (C)  YEAR  YOUR NAME.
        Permission is granted to copy, distribute and/or modify this document
-       under the terms of the GNU Free Documentation License, Version 1.2
+       under the terms of the GNU Free Documentation License, Version 1.3
        or any later version published by the Free Software Foundation;
        with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
        Texts.  A copy of the license is included in the section entitled ``GNU
@@ -1909,11 +1955,11 @@ Index
 
 ALL_DIRS:                                      See 2.2.      (line  617)
 articles in root directory, defining:          See 2.2.      (line  610)
-bugs, reporting:                               See 4.        (line 1468)
-conversion of existing translations:           See 2.3.2.    (line  906)
-credits, translators <1>:                      See 2.3.1.2.  (line  883)
+bugs, reporting:                               See 4.        (line 1461)
+conversion of existing translations:           See 2.3.2.    (line  904)
+credits, translators <1>:                      See 2.3.1.2.  (line  881)
 credits, translators:                          See 2.3.1.    (line  782)
-cron, team maintenance:                        See 2.3.6.2.  (line 1215)
+cron, team maintenance:                        See 2.3.6.2.  (line 1211)
 CVS:                                           See 2.1.1.    (line  369)
 deferred generation of articles:               See 2.1.1.    (line  425)
 defining articles in the root dir:             See 2.2.      (line  610)
@@ -1922,20 +1968,20 @@ defining homepage:                             See 2.2.      (line  604)
 defining templates:                            See 2.2.      (line  597)
 directories, defining:                         See 2.2.      (line  617)
 fuzzy strings:                                 See 2.1.1.    (line  425)
-generation, POT, .proto:                       See 3.1.1.    (line 1324)
-generic notice, translations:                  See 2.3.5.    (line 1053)
+generation, POT, .proto:                       See 3.1.1.    (line 1317)
+generic notice, translations:                  See 2.3.5.    (line 1050)
 gnun.mk:                                       See 2.2.      (line  584)
-gnunews:                                       See 2.3.3.    (line  950)
-gnusflashes:                                   See 2.3.3.    (line  950)
+gnunews:                                       See 2.3.3.    (line  948)
+gnusflashes:                                   See 2.3.3.    (line  948)
 GRACE:                                         See 2.1.1.    (line  425)
 grace period:                                  See 2.1.1.    (line  425)
 HOME_LINGUAS:                                  See 2.2.      (line  604)
 homepage, defining:                            See 2.2.      (line  604)
 invoking:                                      See 2.1.      (line  343)
 long lines, wrap:                              See 2.3.1.    (line  788)
-mail, notifications <1>:                       See 3.1.3.    (line 1393)
+mail, notifications <1>:                       See 3.1.3.    (line 1386)
 mail, notifications:                           See 2.1.1.    (line  407)
-migration, translations:                       See 2.3.2.    (line  906)
+migration, translations:                       See 2.3.2.    (line  904)
 new translation:                               See 2.3.1.    (line  675)
 notes, translators <1>:                        See 2.3.1.1.  (line  834)
 notes, translators:                            See 2.3.1.    (line  776)
@@ -1944,42 +1990,42 @@ output, detailed:                              See 2.1.1.    (line  418)
 PO editors:                                    See 2.3.      (line  650)
 PO headers:                                    See 2.3.1.    (line  714)
 PO, editing:                                   See 2.3.      (line  638)
-POT generation:                                See 3.1.1.    (line 1324)
+POT generation:                                See 3.1.1.    (line 1317)
 POT generation, articles:                      See 2.2.      (line  621)
-project repository:                            See 2.3.6.    (line 1078)
-prototype generation:                          See 3.1.1.    (line 1324)
-recommendations, PO files:                     See 2.3.4.    (line  975)
+project repository:                            See 2.3.6.    (line 1075)
+prototype generation:                          See 3.1.1.    (line 1317)
+recommendations, PO files:                     See 2.3.4.    (line  973)
 reporting:                                     See 2.1.2.2.  (line  520)
-reporting bugs:                                See 4.        (line 1468)
-repository, translation project:               See 2.3.6.    (line 1078)
+reporting bugs:                                See 4.        (line 1461)
+repository, translation project:               See 2.3.6.    (line 1075)
 ROOT:                                          See 2.2.      (line  610)
 sanity checks:                                 See 2.1.1.    (line  393)
 status, translations:                          See 2.1.2.2.  (line  520)
 synchronization, repository:                   See 2.1.2.1.  (line  485)
 TEAM:                                          See 2.1.1.    (line  437)
-team information:                              See 2.3.5.    (line 1053)
-team maintenance:                              See 2.3.6.    (line 1078)
-team maintenance, cron:                        See 2.3.6.2.  (line 1215)
-team workflow:                                 See 2.3.6.    (line 1097)
+team information:                              See 2.3.5.    (line 1050)
+team maintenance:                              See 2.3.6.    (line 1075)
+team maintenance, cron:                        See 2.3.6.2.  (line 1211)
+team workflow:                                 See 2.3.6.    (line 1093)
 TEMPLATE_LINGUAS:                              See 2.2.      (line  597)
 templates, defining:                           See 2.2.      (line  597)
-tips, translators:                             See 2.3.4.    (line  975)
-tips, webmasters:                              See 2.4.      (line 1241)
+tips, translators:                             See 2.3.4.    (line  973)
+tips, webmasters:                              See 2.4.      (line 1237)
 translation, new:                              See 2.3.1.    (line  675)
-translators' credits <1>:                      See 2.3.1.2.  (line  883)
+translators' credits <1>:                      See 2.3.1.2.  (line  881)
 translators' credits:                          See 2.3.1.    (line  782)
 translators' notes <1>:                        See 2.3.1.1.  (line  834)
 translators' notes:                            See 2.3.1.    (line  776)
 triggering, build:                             See 2.1.      (line  343)
 VALIDATE:                                      See 2.1.1.    (line  393)
 validation:                                    See 2.1.1.    (line  393)
-validation, XHTML:                             See 3.1.2.    (line 1377)
+validation, XHTML:                             See 3.1.2.    (line 1370)
 variable, behavior:                            See 2.1.1.    (line  362)
 variable, team:                                See 2.1.1.    (line  437)
 variables <1>:                                 See 2.2.      (line  584)
 variables:                                     See 2.1.1.    (line  362)
 VCS:                                           See 2.1.1.    (line  369)
 VERBOSE:                                       See 2.1.1.    (line  418)
-webmaster tips:                                See 2.4.      (line 1241)
-whatsnew:                                      See 2.3.3.    (line  950)
+webmaster tips:                                See 2.4.      (line 1237)
+whatsnew:                                      See 2.3.3.    (line  948)
 wrapping long lines:                           See 2.3.1.    (line  788)
