@@ -1,0 +1,214 @@
+<html lang="en">
+<head>
+<title>New Team - GNU Web Translators Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Web Translators Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Leaders.html#Leaders" title="Leaders">
+<link rel="next" href="Managing.html#Managing" title="Managing">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is a guide for the GNU Web Translators.
+
+Last updated on 13.02.2009, for GNUnited Nations
+version 0.2.
+
+   Copyright (C) 2009 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="New-Team"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Managing.html#Managing">Managing</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Leaders.html#Leaders">Leaders</a>
+<hr>
+</div>
+
+<h3 class="section">3.1 How To Form A New Team</h3>
+
+<p>Establishing a new team is not hard, but a certain procedure ought to be
+followed.  The most important thing to realize is that this is somewhat
+a long-term engagement that requires a lot of spare time, communication
+and technical skills, and devotion.  The only &ldquo;bonus&rdquo; team leaders
+have is more work and more responsibilities.
+
+   <p>You should read most of the philosophy-related articles and <em>all</em>
+the documentation related to the translation process before you decide
+to form a new team, or take over an orphaned team.  Once you have the
+internal feeling that having a gnu.org translation team for your
+language is a must, and you are the one for this job, follow these
+steps:
+
+     <ol type=1 start=1>
+<li>If you do not have a Savannah account, register at
+<a href="https://savannah.gnu.org/account/register.php">https://savannah.gnu.org/account/register.php</a>.  Write access
+to the repository and project membership is handled via Savannah, so you
+would need an account in any case.
+
+     <li>Checkout a complete working copy of the CVS Web repository as described
+at <a href="https://savannah.gnu.org/cvs/?group=www">https://savannah.gnu.org/cvs/?group=www</a>.  If you still
+don't have a Savannah account or if you have registered one, but are not
+yet member of any Savannah project, refer to the instructions under
+&ldquo;Anonymous CVS Access&rdquo;.  If you are already a member of (any) Savannah
+project, you can proceed with &ldquo;Project Member CVS Access via SSH&rdquo;,
+although you will still lack permission to commit (later, when it is
+granted, you can use the same working copy).
+
+     <p>Examine the layout and structure of the repository.  Basically, it is
+mapped to the URL locations, more or less.  Take a look at the most
+important materials to translate under <samp><span class="file">/philosophy</span></samp>, <samp><span class="file">/gnu</span></samp>,
+<samp><span class="file">/copyleft</span></samp> and <samp><span class="file">/licenses</span></samp> directories just to get a
+rough estimate about the amount of work involved.  If you are still not
+scared and determined to go on further, excellent.
+
+     <p>As you have probably observed, every directory that contains
+translatable articles has a <samp><span class="file">/po</span></samp> sub-directory, which is where the
+new canonical source format of the translations is stored.
+
+     <li>Assuming you have already read the <acronym>GNUN</acronym> manual entirely (as
+recommended in the beginning of this section), check if your language
+code is present in the variable <code>TEMPLATE_LINGUAS</code> at
+<samp><span class="file">server/gnun/gnun.mk</span></samp>.  If it is not, the first thing to do is to
+translate and submit to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> the files
+<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp> and
+<samp><span class="file">server/po/footer-text.</span><var>lang</var><span class="file">.po</span></samp>, together with your first
+message stating that you would like to establish a new team.  See <a href="../gnun/New-Translation.html#New-Translation">New Translation</a>.
+
+          <ul>
+<li>The language code (<var>lang</var>) should be the ISO 639-1 code of the
+language, for example &lsquo;<samp><span class="samp">hy</span></samp>&rsquo; for Armenian or &lsquo;<samp><span class="samp">el</span></samp>&rsquo; for Greek.  If
+there is no such code, use the ISO 639-2 one&mdash;e.g. &lsquo;<samp><span class="samp">mai</span></samp>&rsquo; for
+Maithili.  If the language is a variant such as Brazilian Portuguese or
+Simplified Chinese, use small caps and a dash&mdash;&lsquo;<samp><span class="samp">pt-br</span></samp>&rsquo; and
+&lsquo;<samp><span class="samp">zh-cn</span></samp>&rsquo; instead of &lsquo;<samp><span class="samp">pt_BR</span></samp>&rsquo; and &lsquo;<samp><span class="samp">zh_CN</span></samp>&rsquo;.
+
+          <li>The PO file header and initial comments should be completed as
+documented.
+
+          <li>Do not use HTML entities for non-ASCII characters as in the English
+original.  They are harder to type and read.  So, if there is
+&lsquo;<samp><span class="samp">&amp;uuml;</span></samp>&rsquo; and this is a character from the alphabet of your
+language, just write it as &lsquo;<samp><span class="samp">&uuml;</span></samp>&rsquo; directly. 
+</ul>
+
+     <li>Any prospective team leader should submit a few translations first. 
+This is a process of pointing errors and omissions (which are expected
+and natural); it's an important thing to do as the leader is going to
+carry out these checks on her own, once the team is approved.  If there
+are existing translations that are not yet in PO format, the best thing
+to do is to migrate one or two.  You can use <samp><span class="command">find</span></samp> to find out
+what's already in the repository, for example:
+
+     <pre class="example">          find -name \*.<var>lang</var>.html
+</pre>
+     <li>Submit at least two translations of your own.  We maintain a list with
+priority articles at
+<a href="http://www.gnu.org/server/standards/translations/priorities.html">http://www.gnu.org/server/standards/translations/priorities.html</a>,
+although it is probably hard to start with one of them.  Choose whatever
+you wish, provided it is an essay and not an auxiliary page.  Avoid
+translating the homepage or <samp><span class="file">whatsnew.html</span></samp>&mdash;they are moving
+targets and keeping up would be only a distraction for both parties in
+the process.  As usual, send the completed translation to
+<a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>.
+
+     <li>The Translation Managers will review your translations, and eventually
+comment on them (mostly technical details if there is no one among them
+speaking your language).  Depending on the case, it might be required to
+submit a corrected file.  In any event, please take into account the
+remarks in future work.
+
+     <li>Once the Translation Managers determine that you are doing well and
+about to complete the process, they will send you the standard
+questionnaire for new team leaders.  It is relevantly short and it
+shouldn't take more than 10-30 minutes to complete.  This questionnaire
+is important, as we consider it crucial any translation team
+co-ordinator to have a good understanding of the philosophy of the free
+software movement.  It is not unusual energetic people who complete all
+technical steps without trouble to fail here.
+
+     <li>If all goes well, you will receive a response inviting you to apply for
+a new translation project at Savannah.  The project name should be
+&lsquo;<samp><span class="samp">www-</span><var>lang</var></samp>&rsquo; where <var>lang</var> is, unsurprisingly, the language
+code.  If such a project already exists, this step will be skipped and
+you'll be made an administrator of the project.  To register the
+project, go to <a href="https://savannah.gnu.org/register/">https://savannah.gnu.org/register/</a> and make sure
+you fill in the required fields.  The &ldquo;Group type&rdquo; should be
+&lsquo;<samp><span class="samp">www.gnu.org translation team</span></samp>&rsquo;, and &ldquo;Project
+license&rdquo;&mdash;&lsquo;<samp><span class="samp">WebSite Only</span></samp>&rsquo;.
+
+     <p><strong>Pay attention:</strong> This step is a formality.  You should proceed
+with the project registration only when you have been asked by
+<a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> to do so.  Otherwise, the submission
+may appear in the task list of the Savannah Hackers for a fairly long
+time, which is troublesome.
+
+     <li>When the project is approved, the team information will be added to the
+list at <samp><span class="file">README.translations.html</span></samp>, you will become a member of the
+&lsquo;<samp><span class="samp">www</span></samp>&rsquo; project (thus granting you CVS write access to the whole
+repository&mdash;so be careful) and the &lsquo;<samp><span class="samp">trans-coord</span></samp>&rsquo; project.  You'll
+also be subscribed to the following mailing lists:
+
+          <ul>
+<li>www-commits
+
+          <li>trans-coord-discuss
+</ul>
+
+     <p>You'll have to request subscription to &lsquo;<samp><span class="samp">www-discuss</span></samp>&rsquo;
+yourself&mdash;this list is managed by the <acronym>GNU</acronym> Webmasters, but all
+team leaders are required to subscribe in order to receive important
+site-wide announcements.
+        </ol>
+
+   <p>The whole process should not take more than two weeks or maximum a
+month&mdash;if this period turns out to be longer, it is an indication that
+you do not have the required time and resources for this job, or
+web-translators are badly lagging behind and do not process the requests
+with the expected pace.
+
+   <p>Applications for new teams are sometimes processed in
+parallel<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>&mdash;the
+most suitable candidate is chosen in this case.  This is, undoubtedly,
+based on a subjective judgment made by the Translation Managers, and
+many factors are important.
+
+   <p>The procedure for taking over an orphaned team is the same.  Once
+completed, you will be made an admin of the respective
+&lsquo;<samp><span class="samp">www-</span><var>lang</var></samp>&rsquo; Savannah project, or if it doesn't exist, invited
+to apply for registration.  Do not automatically remove old members just
+because you are starting &ldquo;afresh&rdquo;&mdash;some of them might want to
+continue to contribute.  Contact them privately, explaining that you're
+the new appointed team co-ordinator, and ask them if they would be
+willing to continue their involvement in the team.
+
+   <div class="footnote">
+<hr>
+<h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> In general, we try to avoid this and direct all new
+volunteers to the person who is already carrying out the process&mdash;this
+is also a verification if she can cooperate easily with others.</p>
+
+   <hr></div>
+
+   </body></html>
+

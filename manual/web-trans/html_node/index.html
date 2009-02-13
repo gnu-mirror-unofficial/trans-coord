@@ -1,0 +1,147 @@
+<html lang="en">
+<head>
+<title>GNU Web Translators Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Web Translators Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is a guide for the GNU Web Translators.
+
+Last updated on 13.02.2009, for GNUnited Nations
+version 0.2.
+
+   Copyright (C) 2009 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled "GNU Free Documentation License."
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">GNU Web Translators Manual</h1>
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="index.html#Top">GNU Web Translators Manual</a>
+<li><a name="toc_Introduction" href="Introduction.html#Introduction">1 Introduction</a>
+<li><a name="toc_Members" href="Members.html#Members">2 Team Members</a>
+<ul>
+<li><a href="Joining.html#Joining">2.1 Joining A Team</a>
+<li><a href="Submitting.html#Submitting">2.2 How To Submit a Translation</a>
+<ul>
+<li><a href="Submitting-as-PO.html#Submitting-as-PO">2.2.1 How To Submit a Translation in PO Format</a>
+<li><a href="Submitting-as-Plain-Text.html#Submitting-as-Plain-Text">2.2.2 How To Submit a Translation as Plain Text</a>
+</li></ul>
+<li><a href="Leaving-A-Team.html#Leaving-A-Team">2.3 Leaving A Team</a>
+</li></ul>
+<li><a name="toc_Leaders" href="Leaders.html#Leaders">3 Team Co-ordinators</a>
+<ul>
+<li><a href="New-Team.html#New-Team">3.1 How To Form A New Team</a>
+<li><a href="Managing.html#Managing">3.2 The Gentle Art of Managing A Translation Team</a>
+<ul>
+<li><a href="Review.html#Review">3.2.1 Peer Review</a>
+<ul>
+<li><a href="Tracking-Tasks.html#Tracking-Tasks">3.2.1.1 How To Track Tasks and Bugs Using Savannah</a>
+<li><a href="Unreviewed-Translations.html#Unreviewed-Translations">3.2.1.2 How To Proceed With Unreviewed Translations</a>
+</li></ul>
+<li><a href="Commits.html#Commits">3.2.2 CVS Commits And Best Practices</a>
+<li><a href="Savannah.html#Savannah">3.2.3 Taking Advantage of Savannah</a>
+<ul>
+<li><a href="Savannah-Members.html#Savannah-Members">3.2.3.1 Managing Members</a>
+<li><a href="Savannah-Homepage.html#Savannah-Homepage">3.2.3.2 Homepage of The Team</a>
+<li><a href="Savannah-Support.html#Savannah-Support">3.2.3.3 Support Tracker</a>
+<li><a href="Savannah-Tasks.html#Savannah-Tasks">3.2.3.4 Tasks Tracker</a>
+<li><a href="Savannah-Bugs.html#Savannah-Bugs">3.2.3.5 Bugs Tracker</a>
+<li><a href="Savannah-Patch.html#Savannah-Patch">3.2.3.6 Patch Tracker</a>
+<li><a href="Savannah-News.html#Savannah-News">3.2.3.7 News Tracker</a>
+<li><a href="Savannah-Mailing-Lists.html#Savannah-Mailing-Lists">3.2.3.8 Managing Mailing Lists</a>
+<li><a href="Savannah-VCS.html#Savannah-VCS">3.2.3.9 Version Control Systems</a>
+</li></ul>
+<li><a href="Co_002dleaders.html#Co_002dleaders">3.2.4 Promoting Members As Co-leaders</a>
+</li></ul>
+<li><a href="Reports.html#Reports">3.3 Reporting Team Status</a>
+<li><a href="Stepping-Down.html#Stepping-Down">3.4 How To Retire Painlessly</a>
+</li></ul>
+<li><a name="toc_Translation-Managers" href="Translation-Managers.html#Translation-Managers">4 &lsquo;<samp><span class="samp">trans-coord</span></samp>&rsquo; Admins</a>
+<li><a name="toc_Translation-Tips" href="Translation-Tips.html#Translation-Tips">5 Details About The Translation Process</a>
+<ul>
+<li><a href="Migrating.html#Migrating">5.1 Migration To The New Style</a>
+<li><a href="SSI.html#SSI">5.2 Summary of SSI <code>#include</code>s</a>
+<li><a href="CSS.html#CSS">5.3 How To Use Custom CSS</a>
+<ul>
+<li><a href="topbanner.html#topbanner">5.3.1 Localizing The <samp><span class="file">topbanner</span></samp> Image</a>
+<li><a href="RTL.html#RTL">5.3.2 Specific Issues Related to RTL</a>
+</li></ul>
+<li><a href="Priorities.html#Priorities">5.4 What To Translate</a>
+<li><a href="Capitalization.html#Capitalization">5.5 When To CAPITALIZE</a>
+<li><a href="Terminology.html#Terminology">5.6 Language-specific Terminology</a>
+</li></ul>
+<li><a name="toc_Summary" href="Summary.html#Summary">6 Overview Of The Translation Process</a>
+<ul>
+<li><a href="Mailing-Lists.html#Mailing-Lists">6.1 Related Mailing Lists</a>
+<li><a href="Savannah-Projects.html#Savannah-Projects">6.2 Savannah Projects Membership</a>
+</li></ul>
+<li><a name="toc_Copying-This-Manual" href="Copying-This-Manual.html#Copying-This-Manual">Appendix A GNU Free Documentation License</a>
+</li></ul>
+</div>
+
+
+
+<div class="node">
+<p>
+<a name="Top"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Introduction.html#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="../index.html#dir">(dir)</a>
+<hr>
+</div>
+
+<h2 class="unnumbered">GNU Web Translators Manual</h2>
+
+<p>This manual is a guide for the <acronym>GNU</acronym> Web Translators.<br>
+Last updated on 13.02.2009, for <acronym>GNU</acronym>nited Nations
+version 0.2.
+   <pre class="sp">
+
+</pre>
+Copyright &copy; 2009 Free Software Foundation, Inc.
+
+   <blockquote>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the <acronym>GNU</acronym> Free Documentation License,
+Version 1.3 or any later version published by the Free Software
+Foundation; with no Invariant Sections, no Front-Cover Texts, and no
+Back-Cover Texts.  A copy of the license is included in the section
+entitled &ldquo;<acronym>GNU</acronym> Free Documentation License.&rdquo;
+</blockquote>
+
+<ul class="menu">
+<li><a accesskey="1" href="Introduction.html#Introduction">Introduction</a>:          Begin of the journey. 
+<li><a accesskey="2" href="Members.html#Members">Members</a>:               Information for translation team members. 
+<li><a accesskey="3" href="Leaders.html#Leaders">Leaders</a>:               Guidelines and procedures for team leaders. 
+<li><a accesskey="4" href="Translation-Managers.html#Translation-Managers">Translation Managers</a>:  Responsibilities of the GNU Web Translation
+                           co-ordinators. 
+<li><a accesskey="5" href="Translation-Tips.html#Translation-Tips">Translation Tips</a>:      Explanation of some non-obvious things. 
+<li><a accesskey="6" href="Summary.html#Summary">Summary</a>:               Overview. 
+<!-- * Index:: -->
+<li><a accesskey="7" href="Copying-This-Manual.html#Copying-This-Manual">Copying This Manual</a>:   The GNU Free Documentation License. 
+</ul>
+
+   </body></html>
+

@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+<title>Commits - GNU Web Translators Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Web Translators Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Managing.html#Managing" title="Managing">
+<link rel="prev" href="Review.html#Review" title="Review">
+<link rel="next" href="Savannah.html#Savannah" title="Savannah">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is a guide for the GNU Web Translators.
+
+Last updated on 13.02.2009, for GNUnited Nations
+version 0.2.
+
+   Copyright (C) 2009 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Commits"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Savannah.html#Savannah">Savannah</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Review.html#Review">Review</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Managing.html#Managing">Managing</a>
+<hr>
+</div>
+
+<h4 class="subsection">3.2.2 CVS Commits And Best Practices</h4>
+
+<p>As all team leaders have write access to the CVS repository of the
+&lsquo;<samp><span class="samp">www</span></samp>&rsquo; project, this technically means that they are able to modify
+every single file in it, and also those of the Web CVS repositories of
+other projects at Savannah.  This vote of confidence should never be
+abused&mdash;the only files team co-ordinators should add/update are those
+relevant to their translation work.  It is OK to fix an obvious typo in
+an original article; for anything else please report to
+<a href="mailto:webmasters@gnu.org">webmasters@gnu.org</a>.
+
+   <p>If you wish to volunteer as webmaster and help with generic webmaster
+work and RT tickets, that is perfectly fine&mdash;please follow the
+established (by the <acronym>GNU</acronym> Webmasters) procedure.  If you are
+approved, you can modify such pages wearing your &ldquo;webmaster's hat&rdquo;.
+
+   <p>If a particular page has issues with the markup which create problems
+for your language, please inform <a href="mailto:trans-coord-discuss@gnu.org">trans-coord-discuss@gnu.org</a>. 
+For general issues that affect more articles, or for severe problems,
+please write to <a href="mailto:www-discuss@gnu.org">www-discuss@gnu.org</a>.
+
+   <p>It is recommended to read the entire CVS manual at least once, for a
+basic understanding of how this VCS works.  See <a href="../cvs/index.html#Top">Concurrent Versions System</a>.  It is not
+necessary to become an expert&mdash;the &lsquo;<samp><span class="samp">www</span></samp>&rsquo; project does not use
+complex features like tags, vendor branches, merging, etc. as they are
+not very useful for a live website.
+
+   <p>However, you'd probably have to learn how to use CVS for effective
+work&mdash;to extract information from the history, review diffs and
+specific changes, synchronize with the working repository of the team
+(if any), adding/removing files, etc.
+
+   <p>If you make changes that affect more than one file but the change is
+coherent, please do it as a single commit.  This will generate only one
+message to <a href="mailto:www-commits@gnu.org">www-commits@gnu.org</a>, which is better than 5 messages
+for 5 files about semantically the same change.  Always write commit
+logs in English<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>, providing a short
+description of the change.  If you modify a file that is not an article
+but a script or part of software (such as <samp><span class="file">server/gnun/gnun.mk</span></samp>),
+it would be nice to follow the GNU Coding Standards and describe the
+change precisely.  For example, do not write:
+
+<pre class="example">     Added support for Nepali.
+</pre>
+   <p>or
+
+<pre class="example">     Yay!  First commit of the Panjabi homepage!
+</pre>
+   <p>Instead, write the log as follows:
+
+<pre class="example">     (TEMPLATE_LINGUAS): Add `ne'.
+</pre>
+   <p>and
+
+<pre class="example">     (HOME_LINGUAS): Add `pa'.
+</pre>
+   <p>This makes it easier for others to search for a particular change in the
+history.
+
+   <p>If you add a binary file (for example, <samp><span class="file">.png</span></samp>), do it with
+<code>cvs commit -kb </code><var>file</var>.  This turns off keyword substitution,
+which prevents RCS keywords like &lsquo;<samp><span class="samp">$<!-- /@w -->Id$</span></samp>&rsquo; to get expanded,
+subsequently corrupting the file.  See <a href="../cvs/Substitution-Modes.html#Substitution-Modes">Substitution Modes</a>.  More importantly, using <samp><span class="option">-kb</span></samp>
+prevents corruption of the binary when people using CVS clients under
+Windoze checkout, modify the file, and then commit it with messed EOLs. 
+(Unfortunately there are still committers using non-free operating
+systems&mdash;we cannot dictate what OS people use, but we can at least try
+to prevent damage.)
+
+   <p>Although not absolutely compulsory, it is recommended that every team
+leader subscribes to <a href="mailto:www-commits@gnu.org">www-commits@gnu.org</a>.  It is useful to
+examine the diffs of your own messages, if you miss something while
+inspecting the diff before the commit.  In any case, a team leader
+should be subscribed to that list to avoid his own commit messages to be
+moderated.  If you absolutely do not desire receiving all traffic, just
+disable mail delivery in Mailman's user interface.
+
+   <div class="footnote">
+<hr>
+<h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> This advice is applicable for the &lsquo;<samp><span class="samp">www</span></samp>&rsquo;
+repository only&mdash;feel free to write logs in your native language when
+committing in your project's Sources repository.</p>
+
+   <hr></div>
+
+   </body></html>
+

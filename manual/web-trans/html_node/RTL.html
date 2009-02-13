@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+<title>RTL - GNU Web Translators Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Web Translators Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="CSS.html#CSS" title="CSS">
+<link rel="prev" href="topbanner.html#topbanner" title="topbanner">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is a guide for the GNU Web Translators.
+
+Last updated on 13.02.2009, for GNUnited Nations
+version 0.2.
+
+   Copyright (C) 2009 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="RTL"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="topbanner.html#topbanner">topbanner</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="CSS.html#CSS">CSS</a>
+<hr>
+</div>
+
+<h4 class="subsection">5.3.2 Specific Issues Related to RTL</h4>
+
+<p>Unfortunately, the <a href="http://gnu.org">http://gnu.org</a> website does not have excellent
+support for RTL (right-to-left) languages, although best efforts are
+made.  If your language is in this category, make sure to:
+
+     <ul>
+<li>Set the attribute <code>dir="rtl"</code> in the <code>html</code> element at
+<samp><span class="file">server/header.</span><var>lang</var><span class="file">.html</span></samp>.
+
+     <li>You <em>must</em> have a custom CSS to override some of the pre-defined
+values.  See <samp><span class="file">style.ar.css</span></samp> and <samp><span class="file">style.fa.css</span></samp> to understand
+how these two languages solve some of the problems.  See <a href="CSS.html#CSS">CSS</a>. 
+</ul>
+
+   <p><strong>Important:</strong> Some articles contain their own <code>&lt;style&gt;</code>
+redefinitions, or style attributes in the form <code>&lt;p
+style="..."&gt;</code>.  In such situations, it is quite possible that the
+general language-specific CSS does not help, and the translation of this
+specific article does not look correct.  Please write to
+<a href="mailto:trans-coord-discuss@gnu.org">trans-coord-discuss@gnu.org</a>; if you have a working solution
+that works for both cases&mdash;so much the better.  For general issues that
+affect your language and require a general solution, write to
+<a href="mailto:www-discuss@gnu.org">www-discuss@gnu.org</a> or <a href="mailto:webmasters@gnu.org">webmasters@gnu.org</a>, precisely
+describing the problem.
+
+   </body></html>
+

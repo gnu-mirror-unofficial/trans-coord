@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+<title>topbanner - GNU Web Translators Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Web Translators Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="CSS.html#CSS" title="CSS">
+<link rel="next" href="RTL.html#RTL" title="RTL">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is a guide for the GNU Web Translators.
+
+Last updated on 13.02.2009, for GNUnited Nations
+version 0.2.
+
+   Copyright (C) 2009 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="topbanner"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="RTL.html#RTL">RTL</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="CSS.html#CSS">CSS</a>
+<hr>
+</div>
+
+<h4 class="subsection">5.3.1 Localizing The <samp><span class="file">topbanner</span></samp> Image</h4>
+
+<p>If you'd like the nice gnu image to be localized (i.e. &ldquo;GNU Operating
+System&rdquo; to appear in your native language, here are the steps:
+
+     <ol type=1 start=1>
+<li>Copy <samp><span class="file">graphics/topbanner.svg</span></samp> as
+<samp><span class="file">graphics/topbanner.</span><var>lang</var><span class="file">.svg</span></samp> where <var>lang</var> is the
+language code, as usual.  Edit the file with Inkscape or with a plain
+text editor such as GNU Emacs, translating &ldquo;GNU Operating System&rdquo;. 
+Then with Inkscape, save the file as
+<samp><span class="file">graphics/topbanner.</span><var>lang</var><span class="file">.png</span></samp> (File -&gt; Export Bitmap<small class="dots">...</small>). 
+Then open the PNG image with the GIMP and flatten it (Image -&gt; Flatten
+Image).  Don't forget to save and <code>cvs add</code> the files<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>.
+
+     <li>Create a <samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp> at the toplevel directory, if it
+doesn't exist already.  Normally, you would need only one line in it,
+namely:
+
+     <pre class="example">          #logo{background:url(/graphics/topbanner.<var>lang</var>.png) no-repeat;}
+</pre>
+     <li>If not done already for other reasons, update
+<samp><span class="file">banner.</span><var>lang</var><span class="file">.po</span></samp> to include the language specific
+<samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp>.  See <a href="CSS.html#CSS">CSS</a>.
+        </ol>
+
+   <p>If you feel uncomfortable manipulating images&mdash;don't despair!  Send a
+plea for help to <a href="mailto:trans-coord-discuss@gnu.org">trans-coord-discuss@gnu.org</a>, some people would
+be happy to help you.  Failing that, write to
+<a href="mailto:www-discuss@gnu.org">www-discuss@gnu.org</a>.
+
+   <div class="footnote">
+<hr>
+<h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> This
+advice applies to all new files, of course.</p>
+
+   <hr></div>
+
+   </body></html>
+

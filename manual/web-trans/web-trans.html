@@ -1,0 +1,2301 @@
+<html lang="en">
+<head>
+<title>GNU Web Translators Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Web Translators Manual">
+<meta name="generator" content="makeinfo 4.11">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is a guide for the GNU Web Translators.
+
+Last updated on 13.02.2009, for GNUnited Nations
+version 0.2.
+
+   Copyright (C) 2009 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled "GNU Free Documentation License."
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">GNU Web Translators Manual</h1>
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">GNU Web Translators Manual</a>
+<li><a name="toc_Introduction" href="#Introduction">1 Introduction</a>
+<li><a name="toc_Members" href="#Members">2 Team Members</a>
+<ul>
+<li><a href="#Joining">2.1 Joining A Team</a>
+<li><a href="#Submitting">2.2 How To Submit a Translation</a>
+<ul>
+<li><a href="#Submitting-as-PO">2.2.1 How To Submit a Translation in PO Format</a>
+<li><a href="#Submitting-as-Plain-Text">2.2.2 How To Submit a Translation as Plain Text</a>
+</li></ul>
+<li><a href="#Leaving-A-Team">2.3 Leaving A Team</a>
+</li></ul>
+<li><a name="toc_Leaders" href="#Leaders">3 Team Co-ordinators</a>
+<ul>
+<li><a href="#New-Team">3.1 How To Form A New Team</a>
+<li><a href="#Managing">3.2 The Gentle Art of Managing A Translation Team</a>
+<ul>
+<li><a href="#Review">3.2.1 Peer Review</a>
+<ul>
+<li><a href="#Tracking-Tasks">3.2.1.1 How To Track Tasks and Bugs Using Savannah</a>
+<li><a href="#Unreviewed-Translations">3.2.1.2 How To Proceed With Unreviewed Translations</a>
+</li></ul>
+<li><a href="#Commits">3.2.2 CVS Commits And Best Practices</a>
+<li><a href="#Savannah">3.2.3 Taking Advantage of Savannah</a>
+<ul>
+<li><a href="#Savannah-Members">3.2.3.1 Managing Members</a>
+<li><a href="#Savannah-Homepage">3.2.3.2 Homepage of The Team</a>
+<li><a href="#Savannah-Support">3.2.3.3 Support Tracker</a>
+<li><a href="#Savannah-Tasks">3.2.3.4 Tasks Tracker</a>
+<li><a href="#Savannah-Bugs">3.2.3.5 Bugs Tracker</a>
+<li><a href="#Savannah-Patch">3.2.3.6 Patch Tracker</a>
+<li><a href="#Savannah-News">3.2.3.7 News Tracker</a>
+<li><a href="#Savannah-Mailing-Lists">3.2.3.8 Managing Mailing Lists</a>
+<li><a href="#Savannah-VCS">3.2.3.9 Version Control Systems</a>
+</li></ul>
+<li><a href="#Co_002dleaders">3.2.4 Promoting Members As Co-leaders</a>
+</li></ul>
+<li><a href="#Reports">3.3 Reporting Team Status</a>
+<li><a href="#Stepping-Down">3.4 How To Retire Painlessly</a>
+</li></ul>
+<li><a name="toc_Translation-Managers" href="#Translation-Managers">4 &lsquo;<samp><span class="samp">trans-coord</span></samp>&rsquo; Admins</a>
+<li><a name="toc_Translation-Tips" href="#Translation-Tips">5 Details About The Translation Process</a>
+<ul>
+<li><a href="#Migrating">5.1 Migration To The New Style</a>
+<li><a href="#SSI">5.2 Summary of SSI <code>#include</code>s</a>
+<li><a href="#CSS">5.3 How To Use Custom CSS</a>
+<ul>
+<li><a href="#topbanner">5.3.1 Localizing The <samp><span class="file">topbanner</span></samp> Image</a>
+<li><a href="#RTL">5.3.2 Specific Issues Related to RTL</a>
+</li></ul>
+<li><a href="#Priorities">5.4 What To Translate</a>
+<li><a href="#Capitalization">5.5 When To CAPITALIZE</a>
+<li><a href="#Terminology">5.6 Language-specific Terminology</a>
+</li></ul>
+<li><a name="toc_Summary" href="#Summary">6 Overview Of The Translation Process</a>
+<ul>
+<li><a href="#Mailing-Lists">6.1 Related Mailing Lists</a>
+<li><a href="#Savannah-Projects">6.2 Savannah Projects Membership</a>
+</li></ul>
+<li><a name="toc_Copying-This-Manual" href="#Copying-This-Manual">Appendix A GNU Free Documentation License</a>
+</li></ul>
+</div>
+
+
+
+<div class="node">
+<p><hr>
+<a name="Top"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">GNU Web Translators Manual</h2>
+
+<p>This manual is a guide for the <acronym>GNU</acronym> Web Translators.<br>
+Last updated on 13.02.2009, for <acronym>GNU</acronym>nited Nations
+version 0.2.
+   <pre class="sp">
+
+</pre>
+Copyright &copy; 2009 Free Software Foundation, Inc.
+
+   <blockquote>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the <acronym>GNU</acronym> Free Documentation License,
+Version 1.3 or any later version published by the Free Software
+Foundation; with no Invariant Sections, no Front-Cover Texts, and no
+Back-Cover Texts.  A copy of the license is included in the section
+entitled &ldquo;<acronym>GNU</acronym> Free Documentation License.&rdquo;
+</blockquote>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Introduction">Introduction</a>:          Begin of the journey. 
+<li><a accesskey="2" href="#Members">Members</a>:               Information for translation team members. 
+<li><a accesskey="3" href="#Leaders">Leaders</a>:               Guidelines and procedures for team leaders. 
+<li><a accesskey="4" href="#Translation-Managers">Translation Managers</a>:  Responsibilities of the GNU Web Translation
+                           co-ordinators. 
+<li><a accesskey="5" href="#Translation-Tips">Translation Tips</a>:      Explanation of some non-obvious things. 
+<li><a accesskey="6" href="#Summary">Summary</a>:               Overview. 
+<!-- * Index:: -->
+<li><a accesskey="7" href="#Copying-This-Manual">Copying This Manual</a>:   The GNU Free Documentation License. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Introduction"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Members">Members</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Introduction</h2>
+
+<p>This manual is an attempt to describe in detail the process of
+translating www.gnu.org articles&mdash;how to join a team, or start a new
+one, the responsibilities of the team members and leaders, as well as
+some peculiarities of the <acronym>GNU</acronym> Project's website when it comes
+to localization.
+
+   <p>The <acronym>GNU</acronym> website contains hundreds of documents, most of them
+philosophical articles (essays) and technical documents which need to be
+translated to make them available to a broader audience.  This is
+especially important for the philosophy-related materials, as many
+people do not speak English and even those that do usually prefer to
+read such articles in their native language.  Dealing with the task of
+translating a website this large is a hard job, and too often people
+volunteering as translators get frustrated or lose interest in keeping
+up with that work.  Reading this manual, and the related <acronym>GNUN</acronym>
+manual (see <a href="gnun.html#Top">GNUnited Nations</a>), is just the tip of the iceberg.  This is not meant to
+discourage any potential volunteer; rather, we prefer to be honest and
+to give preliminary estimation of the work/responsibility involved&mdash;if
+you feel you are not in a position to help you may move on to a smaller
+project before going through all procedures.
+
+   <p>It is important to realize that being a <acronym>GNU</acronym> Web Translator is
+a hard job at all levels, but your help is much appreciated and is
+invaluable contribution to the society.  While there are many people who
+contribute to our community by writing free software (and their number
+is constantly increasing), the ones actively engaged in teaching others
+to appreciate and defend their freedom are only a few.  Consequently and
+rather unfortunately, there are not so many volunteers willing to
+maintain on the long term translations of the various essays that
+describe the fundamental values of the free software movement.
+
+   <p>Translators of the <a href="http://gnu.org">http://gnu.org</a> website are organized in
+language teams.  Each team has one or more co-ordinators, who are
+responsible for the respective team.  The co-ordinators participate in
+the Savannah &lsquo;<samp><span class="samp">trans-coord</span></samp>&rsquo; organizational project, which is managed
+by the <acronym>GNU</acronym> Web Translation Managers.  The manual is organized
+in chapters that follow the organizational structure of the whole
+translation project.
+
+   <p>If you wish to join a translation team or contribute a translation or
+two, see <a href="#Members">Members</a>.  If your intention is to form a translation
+team, see <a href="#Leaders">Leaders</a>.  The chapter about the &lsquo;<samp><span class="samp">trans-coord</span></samp>&rsquo;
+administrators (a.k.a. <dfn><acronym>GNU</acronym> Translation Managers</dfn>)
+describes all the responsibilities and procedures involved in performing
+this duty.  See <a href="#Translation-Managers">Translation Managers</a>.
+
+<div class="node">
+<p><hr>
+<a name="Members"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Leaders">Leaders</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Team Members</h2>
+
+<p>Being a team member means to co-operate with a group of other people,
+working under the co-ordinatorship of the appointed team leader. 
+Usually, this involves translating articles and reviewing/proof-reading
+other people's translations, participating in discussions about
+terminology issues, and sometimes performing clean-up tasks.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Joining">Joining</a>:              How to join a translation team. 
+<li><a accesskey="2" href="#Submitting">Submitting</a>:           Submitting a translation when there is no team. 
+<li><a accesskey="3" href="#Leaving-A-Team">Leaving A Team</a>:       Leave when you have to. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Joining"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Submitting">Submitting</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Members">Members</a>
+
+</div>
+
+<h3 class="section">2.1 Joining A Team</h3>
+
+<p>To join a team, please first look at the existing teams at
+<a href="http://www.gnu.org/server/standards/README.translations.html#TranslationsUnderway">http://www.gnu.org/server/standards/README.translations.html#TranslationsUnderway</a>. 
+Chances are that there is already an established team.  If there is no
+team listed for your language, this means that:
+
+     <ul>
+<li>There is no team established and there are no translations to this
+language.
+
+     <li>Some translations were submitted by occasional contributors, but no team
+has ever been formed.
+
+     <li>The page is not updated to reflect the current situation (this shouldn't
+happen, but it's a possibility anyway). 
+</ul>
+
+   <p>If the team is marked as <dfn>orphaned</dfn>, there is no problem: you can
+still submit your translation to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>
+(see <a href="#Submitting">Submitting</a>).  In case you want to establish a new translation
+team or become a co-ordinator of an existing one, please refer to the
+next chapter, see <a href="#Leaders">Leaders</a>.
+
+   <p>Contacting the team is best done via Savannah&mdash;each translation team
+has its own project, named &lsquo;<samp><span class="samp">www-</span><var>lang</var></samp>&rsquo;, with the project page
+being
+&lt;<code>https://savannah.gnu.org/projects/www-</code><var>lang</var>&gt;. 
+Usually teams have mailing lists, either on Savannah or on some external
+site.  Some teams have homepages,
+&lt;<code>http://gnu.org/server/standards/translations/</code><var>lang</var>&gt;
+with additional contact details and procedures for team members.
+
+   <p>You could also write directly to the team leader via the Savannah
+interface&mdash;that way you request will be recorded by Savannah and can be
+tracked or completed when the membership is approved.
+
+   <p>The actual process of submitting translations for review varies from
+team to team, as teams have certain liberties to organize themselves as
+they see fit.  Thus, this manual does not make any attempt to cover that
+aspect&mdash;please refer to the team-specific documentation (if any) or ask
+the co-ordinator.
+
+   <p>Certainly, it is not mandatory to be an active team member to contribute
+a translation or two.  If you feel that you don't have the time to
+participate actively, that is fine; you can still send your translation
+to the team.  No contributions should be rejected.
+
+   <p>If you do not hear from the team within a reasonable time frame (say,
+two weeks), please write to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>.
+
+   <p>For general information about the translation process,
+see <a href="#Translation-Tips">Translation Tips</a>.
+
+<div class="node">
+<p><hr>
+<a name="Submitting"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Leaving-A-Team">Leaving A Team</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Joining">Joining</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Members">Members</a>
+
+</div>
+
+<h3 class="section">2.2 How To Submit a Translation</h3>
+
+<p>Everyone can still submit translations even if there is no translation
+team formed.  There are two ways to do that&mdash;following the existing
+procedures, which is the preferred way, and sending it as plain text,
+which means more work for a limited group of volunteers (the Translation
+Managers) to convert the translation in <samp><span class="file">.po</span></samp> format.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Submitting-as-PO">Submitting as PO</a>
+<li><a accesskey="2" href="#Submitting-as-Plain-Text">Submitting as Plain Text</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Submitting-as-PO"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Submitting-as-Plain-Text">Submitting as Plain Text</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Submitting">Submitting</a>
+
+</div>
+
+<h4 class="subsection">2.2.1 How To Submit a Translation in PO Format</h4>
+
+<p>All translations<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a> are maintained via <acronym>GNUN</acronym> (see
+<a href="http://www.gnu.org/software/gnun/">http://www.gnu.org/software/gnun/</a>), which significantly eases
+maintenance and avoids the unpleasant situation where a translation is
+lagging behind the original.  See <a href="gnun.html#Advantages">Advantages</a>.
+
+   <p>As of September 2008 all new translations at gnu.org are installed in
+<samp><span class="file">.po</span></samp> format, and the <samp><span class="file">.html</span></samp> is generated automatically. 
+Here are the steps to produce and submit such a translation:
+
+     <ul>
+<li>Make a checkout of the CVS Web repository of the &lsquo;<samp><span class="samp">www</span></samp>&rsquo; Savannah
+project.  You can find generic instructions at
+<a href="https://savannah.gnu.org/cvs/?group=www">https://savannah.gnu.org/cvs/?group=www</a>.  All updates to the
+website are done as commits in the repository, so you would need an
+up-to-date working copy.  Anonymous access works under any
+circumstances, i.e. it is not mandatory to have a registered account at
+Savannah to use it.  You can also check out only a specific directory,
+for example:
+
+     <pre class="example">          cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/web/www co www/gnu
+</pre>
+     <p>This command will fetch only the <samp><span class="file">/gnu</span></samp> directory&mdash;in other words,
+all articles at <a href="http://gnu.org/gnu">http://gnu.org/gnu</a>.
+
+     <li>Assuming you already know the article you want to translate, you have to
+create an empty <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp> file and then
+translate all messages with a PO editor.  See <a href="gnun.html#New-Translation">New Translation</a>.  For an almost complete list of PO
+editors, see <a href="gnun.html#PO-Files">PO Files</a>.
+
+     <li>When you are pleased with the translation, check that the PO file is
+valid and submit it to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>, attached to
+your message.  The web-translators will review (to the best of their
+ability) the translation and will install it in the repository.
+
+     <li>In order <acronym>GNUN</acronym> to be able to generate (and subsequently update)
+a gettextized translation, the language should have the server templates
+available as PO files.  These templates are short, and translating them
+shouldn't take much time.  If the language code is present in the
+<code>TEMPLATE_LINGUAS</code> variable at <samp><span class="file">server/gnun/gnun.mk</span></samp>, then you
+don't have to do anything.  If not, the required files are
+<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp> and
+<samp><span class="file">server/po/footer-text.</span><var>lang</var><span class="file">.po</span></samp>&mdash;you can translate and
+submit them in the usual way, together with the translation of the
+essay.
+
+     <p>If you don't want to translate the templates for whatever reason&mdash;do
+not worry, the web-translators will install empty templates (which means
+the English strings will be used). 
+</ul>
+
+   <p>It is quite possible that there will be errors or typos, so once you are
+informed that the translation is online, check it carefully and if
+necessary, resubmit the PO file with corrections.  Do not forget to run
+<code>cvs update</code> first and edit the updated <samp><span class="file">.po</span></samp> file from the
+repository&mdash;most probably the Translation Managers have already made
+some modifications to it, usually to fix validation errors and to
+complete the PO file header.
+
+<div class="node">
+<p><hr>
+<a name="Submitting-as-Plain-Text"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Submitting-as-PO">Submitting as PO</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Submitting">Submitting</a>
+
+</div>
+
+<h4 class="subsection">2.2.2 How To Submit a Translation as Plain Text</h4>
+
+<p>If you feel the procedure described in the previous section is too
+burdensome and unfeasible for you to follow, you can still submit a
+translation in plain text.  It will be manually converted to PO file by
+the <acronym>GNU</acronym> Web Translation Managers, which can be tricky
+sometimes, and naturally, means more work for them and slower processing
+of your request.
+
+   <p>You should <em>never</em> translate the HTML markup&mdash;i.e. <em>do not</em>
+use the &ldquo;View Source&rdquo; functionality of your browser to translate the
+raw HTML.  Most of it is irrelevant, and automatically inherited from
+the markup of the original article.  Simply save your translation in a
+plain text file (<samp><span class="file">.txt</span></samp>), preferably in UTF-8 encoding.  You can
+use any decent text editor for that&mdash;Emacs, Vim, gEdit, Kate,
+OpenOffice.org (the file should be saved as <samp><span class="file">.txt</span></samp>, not
+<samp><span class="file">.odt</span></samp>), etc.
+
+   <p>Translate the title, the blue heading (if it differs slightly from the
+title) and the body of the article upto the link &lsquo;<samp><span class="samp">back to top</span></samp>&rsquo;. 
+For example, for <a href="http://www.gnu.org/philosophy/free-sw.html">http://www.gnu.org/philosophy/free-sw.html</a>
+that would be:
+
+<pre class="example">     The Free Software Definition - GNU Project - Free Software Foundation (FSF)
+     
+     We maintain this free software definition...
+     ...
+     ...If you would like to review the complete list of changes, you can
+     do so on our cvsweb interface.
+</pre>
+   <p>Since web-translators do not speak all languages, it is essential to
+mark somehow any inner markup, because very often it is hard to figure
+out what translated text should be enclosed inside <code>&lt;em&gt;</code> or
+<code>&lt;a&gt;</code> elements, to name a few.  The easiest way to do this is just
+to use the corresponding HTML markup, although anything else is
+suitable.  For example, here is how to indicate that the link &ldquo;History
+section&rdquo; at the first paragraph of the same article should correspond
+to &ldquo;secci&oacute;n historial&rdquo; in the translation:
+
+<pre class="example">     Si quisiera revisar los cambios que hemos hecho, por favor vea la
+     {secci&oacute;n historial} m&aacute;s abajo para m&aacute;s informaci&oacute;n.
+</pre>
+   <p>It is not necessary to include the value of the <code>href</code> attribute,
+as it is already known.
+
+   <p>If you wish your name to appear in the footer as a translator of the
+article, please also provide a translation of &lsquo;<samp><span class="samp">Translation:
+</span><var>your name in your native language</var></samp>&rsquo; or &lsquo;<samp><span class="samp">Translated by:
+</span><var>your name in your native language</var></samp>&rsquo;, as you prefer.  Please also
+state if you wish your email address to be published (some readers
+prefer to send suggestions directly to the translator, but we certainly
+do not require that translators must publish their address).
+
+   <p>Finally, send the translation to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>,
+either inline or as an attachment to your message.  Once online, please
+check for any errors or omissions that may have resulted from the
+conversion process, and report them back.
+
+<div class="node">
+<p><hr>
+<a name="Leaving-A-Team"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Submitting">Submitting</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Members">Members</a>
+
+</div>
+
+<h3 class="section">2.3 Leaving A Team</h3>
+
+<p>When you realize that you don't have time or can't devote sufficient
+resources to perform the tasks anymore, it is prudent to inform the
+translation team co-ordinator and possibly all the rest of the
+team-mates.  The team leader should always have a rough estimation about
+the available translators, even though there are no reliable means to
+establish that.  Your announcement that you are stepping down
+(temporarily or permanently) may help her in this regard.
+
+<div class="node">
+<p><hr>
+<a name="Leaders"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Translation-Managers">Translation Managers</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Members">Members</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 Team Co-ordinators</h2>
+
+<p>A gnu.org translation team leader is the person who is ultimately
+responsible for organizing and managing the team, including, but not
+limited to, having the final say on contributed translations and
+exercising levels of control as she sees fit.
+
+   <p>A prospective team co-ordinator should have perfect understanding of the
+GNU Philosophy and the various issues the free software movement set out
+to solve.  Energy and time are always needed, as well as certain
+communication skills.
+
+   <p>However, a team leader is not a dictator (for life); every action and/or
+decision taken should have its justification and should stem from the
+goals of the project at large.  Inefficient or inoperative leaders are
+replaced, if necessary.
+
+<ul class="menu">
+<li><a accesskey="1" href="#New-Team">New Team</a>:             Procedures to establish a new team. 
+<li><a accesskey="2" href="#Managing">Managing</a>:             General guidelines how to manage a team. 
+<li><a accesskey="3" href="#Reports">Reports</a>:              Reporting team status and activity. 
+<li><a accesskey="4" href="#Stepping-Down">Stepping Down</a>:        Orphaning the team and finding a replacement. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="New-Team"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Managing">Managing</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Leaders">Leaders</a>
+
+</div>
+
+<h3 class="section">3.1 How To Form A New Team</h3>
+
+<p>Establishing a new team is not hard, but a certain procedure ought to be
+followed.  The most important thing to realize is that this is somewhat
+a long-term engagement that requires a lot of spare time, communication
+and technical skills, and devotion.  The only &ldquo;bonus&rdquo; team leaders
+have is more work and more responsibilities.
+
+   <p>You should read most of the philosophy-related articles and <em>all</em>
+the documentation related to the translation process before you decide
+to form a new team, or take over an orphaned team.  Once you have the
+internal feeling that having a gnu.org translation team for your
+language is a must, and you are the one for this job, follow these
+steps:
+
+     <ol type=1 start=1>
+<li>If you do not have a Savannah account, register at
+<a href="https://savannah.gnu.org/account/register.php">https://savannah.gnu.org/account/register.php</a>.  Write access
+to the repository and project membership is handled via Savannah, so you
+would need an account in any case.
+
+     <li>Checkout a complete working copy of the CVS Web repository as described
+at <a href="https://savannah.gnu.org/cvs/?group=www">https://savannah.gnu.org/cvs/?group=www</a>.  If you still
+don't have a Savannah account or if you have registered one, but are not
+yet member of any Savannah project, refer to the instructions under
+&ldquo;Anonymous CVS Access&rdquo;.  If you are already a member of (any) Savannah
+project, you can proceed with &ldquo;Project Member CVS Access via SSH&rdquo;,
+although you will still lack permission to commit (later, when it is
+granted, you can use the same working copy).
+
+     <p>Examine the layout and structure of the repository.  Basically, it is
+mapped to the URL locations, more or less.  Take a look at the most
+important materials to translate under <samp><span class="file">/philosophy</span></samp>, <samp><span class="file">/gnu</span></samp>,
+<samp><span class="file">/copyleft</span></samp> and <samp><span class="file">/licenses</span></samp> directories just to get a
+rough estimate about the amount of work involved.  If you are still not
+scared and determined to go on further, excellent.
+
+     <p>As you have probably observed, every directory that contains
+translatable articles has a <samp><span class="file">/po</span></samp> sub-directory, which is where the
+new canonical source format of the translations is stored.
+
+     <li>Assuming you have already read the <acronym>GNUN</acronym> manual entirely (as
+recommended in the beginning of this section), check if your language
+code is present in the variable <code>TEMPLATE_LINGUAS</code> at
+<samp><span class="file">server/gnun/gnun.mk</span></samp>.  If it is not, the first thing to do is to
+translate and submit to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> the files
+<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp> and
+<samp><span class="file">server/po/footer-text.</span><var>lang</var><span class="file">.po</span></samp>, together with your first
+message stating that you would like to establish a new team.  See <a href="gnun.html#New-Translation">New Translation</a>.
+
+          <ul>
+<li>The language code (<var>lang</var>) should be the ISO 639-1 code of the
+language, for example &lsquo;<samp><span class="samp">hy</span></samp>&rsquo; for Armenian or &lsquo;<samp><span class="samp">el</span></samp>&rsquo; for Greek.  If
+there is no such code, use the ISO 639-2 one&mdash;e.g. &lsquo;<samp><span class="samp">mai</span></samp>&rsquo; for
+Maithili.  If the language is a variant such as Brazilian Portuguese or
+Simplified Chinese, use small caps and a dash&mdash;&lsquo;<samp><span class="samp">pt-br</span></samp>&rsquo; and
+&lsquo;<samp><span class="samp">zh-cn</span></samp>&rsquo; instead of &lsquo;<samp><span class="samp">pt_BR</span></samp>&rsquo; and &lsquo;<samp><span class="samp">zh_CN</span></samp>&rsquo;.
+
+          <li>The PO file header and initial comments should be completed as
+documented.
+
+          <li>Do not use HTML entities for non-ASCII characters as in the English
+original.  They are harder to type and read.  So, if there is
+&lsquo;<samp><span class="samp">&amp;uuml;</span></samp>&rsquo; and this is a character from the alphabet of your
+language, just write it as &lsquo;<samp><span class="samp">&uuml;</span></samp>&rsquo; directly. 
+</ul>
+
+     <li>Any prospective team leader should submit a few translations first. 
+This is a process of pointing errors and omissions (which are expected
+and natural); it's an important thing to do as the leader is going to
+carry out these checks on her own, once the team is approved.  If there
+are existing translations that are not yet in PO format, the best thing
+to do is to migrate one or two.  You can use <samp><span class="command">find</span></samp> to find out
+what's already in the repository, for example:
+
+     <pre class="example">          find -name \*.<var>lang</var>.html
+</pre>
+     <li>Submit at least two translations of your own.  We maintain a list with
+priority articles at
+<a href="http://www.gnu.org/server/standards/translations/priorities.html">http://www.gnu.org/server/standards/translations/priorities.html</a>,
+although it is probably hard to start with one of them.  Choose whatever
+you wish, provided it is an essay and not an auxiliary page.  Avoid
+translating the homepage or <samp><span class="file">whatsnew.html</span></samp>&mdash;they are moving
+targets and keeping up would be only a distraction for both parties in
+the process.  As usual, send the completed translation to
+<a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>.
+
+     <li>The Translation Managers will review your translations, and eventually
+comment on them (mostly technical details if there is no one among them
+speaking your language).  Depending on the case, it might be required to
+submit a corrected file.  In any event, please take into account the
+remarks in future work.
+
+     <li>Once the Translation Managers determine that you are doing well and
+about to complete the process, they will send you the standard
+questionnaire for new team leaders.  It is relevantly short and it
+shouldn't take more than 10-30 minutes to complete.  This questionnaire
+is important, as we consider it crucial any translation team
+co-ordinator to have a good understanding of the philosophy of the free
+software movement.  It is not unusual energetic people who complete all
+technical steps without trouble to fail here.
+
+     <li>If all goes well, you will receive a response inviting you to apply for
+a new translation project at Savannah.  The project name should be
+&lsquo;<samp><span class="samp">www-</span><var>lang</var></samp>&rsquo; where <var>lang</var> is, unsurprisingly, the language
+code.  If such a project already exists, this step will be skipped and
+you'll be made an administrator of the project.  To register the
+project, go to <a href="https://savannah.gnu.org/register/">https://savannah.gnu.org/register/</a> and make sure
+you fill in the required fields.  The &ldquo;Group type&rdquo; should be
+&lsquo;<samp><span class="samp">www.gnu.org translation team</span></samp>&rsquo;, and &ldquo;Project
+license&rdquo;&mdash;&lsquo;<samp><span class="samp">WebSite Only</span></samp>&rsquo;.
+
+     <p><strong>Pay attention:</strong> This step is a formality.  You should proceed
+with the project registration only when you have been asked by
+<a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> to do so.  Otherwise, the submission
+may appear in the task list of the Savannah Hackers for a fairly long
+time, which is troublesome.
+
+     <li>When the project is approved, the team information will be added to the
+list at <samp><span class="file">README.translations.html</span></samp>, you will become a member of the
+&lsquo;<samp><span class="samp">www</span></samp>&rsquo; project (thus granting you CVS write access to the whole
+repository&mdash;so be careful) and the &lsquo;<samp><span class="samp">trans-coord</span></samp>&rsquo; project.  You'll
+also be subscribed to the following mailing lists:
+
+          <ul>
+<li>www-commits
+
+          <li>trans-coord-discuss
+</ul>
+
+     <p>You'll have to request subscription to &lsquo;<samp><span class="samp">www-discuss</span></samp>&rsquo;
+yourself&mdash;this list is managed by the <acronym>GNU</acronym> Webmasters, but all
+team leaders are required to subscribe in order to receive important
+site-wide announcements.
+        </ol>
+
+   <p>The whole process should not take more than two weeks or maximum a
+month&mdash;if this period turns out to be longer, it is an indication that
+you do not have the required time and resources for this job, or
+web-translators are badly lagging behind and do not process the requests
+with the expected pace.
+
+   <p>Applications for new teams are sometimes processed in
+parallel<a rel="footnote" href="#fn-2" name="fnd-2"><sup>2</sup></a>&mdash;the
+most suitable candidate is chosen in this case.  This is, undoubtedly,
+based on a subjective judgment made by the Translation Managers, and
+many factors are important.
+
+   <p>The procedure for taking over an orphaned team is the same.  Once
+completed, you will be made an admin of the respective
+&lsquo;<samp><span class="samp">www-</span><var>lang</var></samp>&rsquo; Savannah project, or if it doesn't exist, invited
+to apply for registration.  Do not automatically remove old members just
+because you are starting &ldquo;afresh&rdquo;&mdash;some of them might want to
+continue to contribute.  Contact them privately, explaining that you're
+the new appointed team co-ordinator, and ask them if they would be
+willing to continue their involvement in the team.
+
+<div class="node">
+<p><hr>
+<a name="Managing"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Reports">Reports</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#New-Team">New Team</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Leaders">Leaders</a>
+
+</div>
+
+<h3 class="section">3.2 The Gentle Art of Managing A Translation Team</h3>
+
+<p>It is not our ambition to describe all activities involved in managing a
+team&mdash;it's very likely that you will encounter new problems, take care
+of tasks nobody else is aware of, or invent new techniques and
+approaches in your quest to keep things running.  Managing a team is a
+hard task on all counts: communication with others, recruiting
+volunteers (and keeping them as long as possible), defending certain
+decisions, leading discussions about terminology issues, handling
+personal conflicts within the team, technical skills when
+reviewing/merging/syncing translations, etc.  The list goes on and on.
+
+   <p>This manual can only summarize some of the most common issues and
+<em>suggest</em> ways to deal with them.  It is up to the team leader to
+establish the precise team procedures and practices.
+
+   <p>The <a href="mailto:trans-coord-discuss@gnu.org">trans-coord-discuss@gnu.org</a> mailing list was specifically
+created to discuss issues that leaders encounter while managing the
+teams, and for general organizational work.  Feel free to discuss
+anything related to the translation process there.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Review">Review</a>:               The importance of peer review. 
+<li><a accesskey="2" href="#Commits">Commits</a>:              What to modify, and how. 
+<li><a accesskey="3" href="#Savannah">Savannah</a>:             Using Savannah resources. 
+<li><a accesskey="4" href="#Co_002dleaders">Co-leaders</a>:           Promoting co-leaders, when necessary. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Review"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Commits">Commits</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing">Managing</a>
+
+</div>
+
+<h4 class="subsection">3.2.1 Peer Review</h4>
+
+<p>First and foremost, find at least one person for peer review.  You will
+review her translations, and she will review yours (at least in the
+beginning).  Being a team leader does not mean that you cannot make
+mistakes; everyone does.  The mutual review (especially if done by a
+larger group) is crucial for the quality of the translation process. 
+Too many errors are just missed (especially if they are obvious) when
+the translator does a final review of her own translation.
+
+   <p>It is good to establish a practice: Do not commit officially (i.e. in
+&lsquo;<samp><span class="samp">www</span></samp>&rsquo;, which will appear online at <a href="http://gnu.org">http://gnu.org</a>
+immediately) a translation that is not yet reviewed by someone else who
+is not the translator.  Always perform a final review yourself even if
+the translation has been checked by another member of the team.  In
+other words, every translation installed at gnu.org should pass through
+your hands (read: eyes).
+
+   <p>One common technique for performing such reviews is to use a mailing
+list&mdash;the translator sends the new translation and participants comment
+on specific parts, quoting them appropriately.  The benefit of this
+approach is that it is straightforward, but the drawback is that there
+is no automatic &ldquo;record&rdquo; about the conclusion of the specific
+discussion (or sub-thread) and sometimes such discussions easily
+digress, making it even harder to come up with a solution.
+
+   <p>Another way is to use Savannah's built-in trackers (the &lsquo;<samp><span class="samp">Tasks</span></samp>&rsquo; and
+&lsquo;<samp><span class="samp">Bugs</span></samp>&rsquo; trackers, specifically).  This is further explained in the
+next section, see <a href="#Tracking-Tasks">Tracking Tasks</a>.  One way or another, you should
+create some kind of review process.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Tracking-Tasks">Tracking Tasks</a>:               Using Savannah to track tasks and bugs. 
+<li><a accesskey="2" href="#Unreviewed-Translations">Unreviewed Translations</a>:      What to do with translations that are
+                                  not reviewed. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Tracking-Tasks"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Unreviewed-Translations">Unreviewed Translations</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Review">Review</a>
+
+</div>
+
+<h5 class="subsubsection">3.2.1.1 How To Track Tasks and Bugs Using Savannah</h5>
+
+<p>The team leader has to make sure that prospective translations are
+reviewed, that they do not contain obvious errors and/or confusing
+expressions and that they match the spirit and intention of the original
+essay.  However, many teams tend to suffer from a specific problem: team
+members rely on the leader to make these extensive reviews. That is
+fine, as far as it goes, and the leader should always review
+translations before installing them in the repository&mdash;but it is nearly
+impossible (especially for a large team) to rely on a single person for
+such tasks.  Team co-ordinators often do not manage to make such reviews
+in time, resulting in frustration among the team members and generally
+slowing the translation process.
+
+   <p>A solution to this specific problem is to distribute the load among more
+people.  For example: Member D makes a translation of <samp><span class="file">foo.html</span></samp>
+and uploads <samp><span class="file">foo.</span><var>lang</var><span class="file">.po</span></samp> in the translation project's
+repository at Savannah, marking the relevant task as &ldquo;Ready for Test&rdquo;
+(of course, the equivalent is sending a message with the attached
+translation to the team's mailing list, or similar).  Then Member A, B
+and C (or only A and B if C is currently busy) review it independently
+and post comments/suggestions/errors in the bug tracker.  Discussion
+goes on between them and D, problems are rectified and finally the
+leader (who may happen to be one of A, B, C, D) makes a final review. 
+It is easier to make the final review when most of the issues are
+already fixed in previous revisions.  Finally, the translation is
+published.  The result is better quality of the translation (since more
+people looked at it) and the whole burden does not fall solely on the
+shoulders of the leader.  You can also set up an internal formal rule:
+If a member makes a translation, he has to review another one (or two)
+as well.
+
+   <p>Some translations can take a fairly long time&mdash;the typical example is a
+complicated essay or a transcript of a speech.  It is best to avoid
+duplicate work by indicating, or better&mdash;recording, that someone is
+working on this specific article.  The &lsquo;<samp><span class="samp">Tasks</span></samp>&rsquo; tracker is suitable
+for this purpose.
+
+   <p>It is prudent to discuss the most convenient naming scheme and practice
+among team members, and publish the convention and/or rules at the
+team's homepage.  Note that you can create <dfn>Custom Fields</dfn> in the
+trackers, and resolved bugs can be searched based on these custom
+values.
+
+   <p>Thus, a possible straightforward way to manage these tasks is:
+
+     <ul>
+<li>If someone starts working on a new translation, she creates a new task
+with a &lsquo;<samp><span class="samp">Subject</span></samp>&rsquo; indicating the article, for example simply
+&lsquo;<samp><span class="samp">philosophy/bsd.html</span></samp>&rsquo; and assigns it to herself.
+
+     <li>When the translation is finished and ready for review, the translator
+changes the &lsquo;<samp><span class="samp">Status</span></samp>&rsquo; to &ldquo;Ready For Test&rdquo;.
+
+     <li>Other members review it, and open bugs relevant to one specific problem. 
+It is usually better not to conflate two different issues together&mdash;it
+makes them harder to discuss, and hard to track them by severity.  Some
+are grammatical errors, some are fundamental ones that change the whole
+meaning, some are simply suggestions for improvement.  It helps if the
+project admin creates new Category fields for every article, for
+instance &lsquo;<samp><span class="samp">gnu/gnu-history.</span><var>lang</var><span class="samp">.html</span></samp>&rsquo;,
+&lsquo;<samp><span class="samp">philosophy/microsoft.</span><var>lang</var><span class="samp">.html</span></samp>&rsquo;&mdash;it would enable
+functionality like &ldquo;Show me all bugs ever reported against this
+translation&rdquo;, which is useful.
+
+     <li>Once the bugs (or at least the important bugs) are fixed, the team
+leader can make the final review and install the translation in the
+official repository, marking the task as &lsquo;<samp><span class="samp">Done</span></samp>&rsquo;.  Bugs that are not
+resolved should remain opened, naturally. 
+</ul>
+
+   <p>Of course, teams can choose to manage these things using external
+resources and eventually other bug (or issue) tracking systems. 
+Whatever you decide, please make sure that bugs can be reported using
+free software only, and that the software providing that service is
+free.  It makes an extremely bad impression if a reader has to report a
+problem about a gnu.org translation via non-free hosting platforms like
+SourceForge or Launchpad.
+
+   <p>If you use a certain facility (i.e. a bug tracking system) to manage
+bugs in translations, it is best to take advantage of
+<samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp> and advertise it on every page. 
+See <a href="gnun.html#generic_002eLANG_002ehtml">generic.LANG.html</a>, for
+details.
+
+<div class="node">
+<p><hr>
+<a name="Unreviewed-Translations"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Tracking-Tasks">Tracking Tasks</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Review">Review</a>
+
+</div>
+
+<h5 class="subsubsection">3.2.1.2 How To Proceed With Unreviewed Translations</h5>
+
+<p>Sometimes a translation (typically your own) is not reviewed by anyone
+else for a fairly long time.  This is unfortunate, but there is no
+reason to keep it in draft state forever.  If nobody reviewed it for a
+substantially long period (like 3 or 4 months), commit it as it is. 
+Readers may report bugs as well (and they do!).
+
+   <p>It is important to record somehow that this published translation still
+lacks appropriate review.  If the suggestion in the previous section is
+implemented, it would mean leaving the relevant task &lsquo;<samp><span class="samp">Open</span></samp>&rsquo; and
+&lsquo;<samp><span class="samp">Ready For Test</span></samp>&rsquo; despite the translation being officially online. 
+You may also add a comment to the PO file.
+
+<div class="node">
+<p><hr>
+<a name="Commits"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah">Savannah</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Review">Review</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing">Managing</a>
+
+</div>
+
+<h4 class="subsection">3.2.2 CVS Commits And Best Practices</h4>
+
+<p>As all team leaders have write access to the CVS repository of the
+&lsquo;<samp><span class="samp">www</span></samp>&rsquo; project, this technically means that they are able to modify
+every single file in it, and also those of the Web CVS repositories of
+other projects at Savannah.  This vote of confidence should never be
+abused&mdash;the only files team co-ordinators should add/update are those
+relevant to their translation work.  It is OK to fix an obvious typo in
+an original article; for anything else please report to
+<a href="mailto:webmasters@gnu.org">webmasters@gnu.org</a>.
+
+   <p>If you wish to volunteer as webmaster and help with generic webmaster
+work and RT tickets, that is perfectly fine&mdash;please follow the
+established (by the <acronym>GNU</acronym> Webmasters) procedure.  If you are
+approved, you can modify such pages wearing your &ldquo;webmaster's hat&rdquo;.
+
+   <p>If a particular page has issues with the markup which create problems
+for your language, please inform <a href="mailto:trans-coord-discuss@gnu.org">trans-coord-discuss@gnu.org</a>. 
+For general issues that affect more articles, or for severe problems,
+please write to <a href="mailto:www-discuss@gnu.org">www-discuss@gnu.org</a>.
+
+   <p>It is recommended to read the entire CVS manual at least once, for a
+basic understanding of how this VCS works.  See <a href="cvs.html#Top">Concurrent Versions System</a>.  It is not
+necessary to become an expert&mdash;the &lsquo;<samp><span class="samp">www</span></samp>&rsquo; project does not use
+complex features like tags, vendor branches, merging, etc. as they are
+not very useful for a live website.
+
+   <p>However, you'd probably have to learn how to use CVS for effective
+work&mdash;to extract information from the history, review diffs and
+specific changes, synchronize with the working repository of the team
+(if any), adding/removing files, etc.
+
+   <p>If you make changes that affect more than one file but the change is
+coherent, please do it as a single commit.  This will generate only one
+message to <a href="mailto:www-commits@gnu.org">www-commits@gnu.org</a>, which is better than 5 messages
+for 5 files about semantically the same change.  Always write commit
+logs in English<a rel="footnote" href="#fn-3" name="fnd-3"><sup>3</sup></a>, providing a short
+description of the change.  If you modify a file that is not an article
+but a script or part of software (such as <samp><span class="file">server/gnun/gnun.mk</span></samp>),
+it would be nice to follow the GNU Coding Standards and describe the
+change precisely.  For example, do not write:
+
+<pre class="example">     Added support for Nepali.
+</pre>
+   <p>or
+
+<pre class="example">     Yay!  First commit of the Panjabi homepage!
+</pre>
+   <p>Instead, write the log as follows:
+
+<pre class="example">     (TEMPLATE_LINGUAS): Add `ne'.
+</pre>
+   <p>and
+
+<pre class="example">     (HOME_LINGUAS): Add `pa'.
+</pre>
+   <p>This makes it easier for others to search for a particular change in the
+history.
+
+   <p>If you add a binary file (for example, <samp><span class="file">.png</span></samp>), do it with
+<code>cvs commit -kb </code><var>file</var>.  This turns off keyword substitution,
+which prevents RCS keywords like &lsquo;<samp><span class="samp">$<!-- /@w -->Id$</span></samp>&rsquo; to get expanded,
+subsequently corrupting the file.  See <a href="cvs.html#Substitution-Modes">Substitution Modes</a>.  More importantly, using <samp><span class="option">-kb</span></samp>
+prevents corruption of the binary when people using CVS clients under
+Windoze checkout, modify the file, and then commit it with messed EOLs. 
+(Unfortunately there are still committers using non-free operating
+systems&mdash;we cannot dictate what OS people use, but we can at least try
+to prevent damage.)
+
+   <p>Although not absolutely compulsory, it is recommended that every team
+leader subscribes to <a href="mailto:www-commits@gnu.org">www-commits@gnu.org</a>.  It is useful to
+examine the diffs of your own messages, if you miss something while
+inspecting the diff before the commit.  In any case, a team leader
+should be subscribed to that list to avoid his own commit messages to be
+moderated.  If you absolutely do not desire receiving all traffic, just
+disable mail delivery in Mailman's user interface.
+
+<div class="node">
+<p><hr>
+<a name="Savannah"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Co_002dleaders">Co-leaders</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Commits">Commits</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing">Managing</a>
+
+</div>
+
+<h4 class="subsection">3.2.3 Taking Advantage of Savannah</h4>
+
+<p>Every translation team should have a project in Savannah.  There are
+some teams that use their own resources outside from Savannah; although
+there's no obligation to use Savannah for team work, the need for a
+Savannah project for each language is obvious: it's a standard way to
+find information for translation teams and their contacts.
+
+   <p>Using external hosting facilities is sometimes justified&mdash;for example,
+some languages have a single mailing list for all free software-related
+translations, where all translators co-operate.  Others have already
+established repositories and/or bug tracking systems where usual
+contributors already have access.  Some team members prefer to work
+within the established infrastructure of a broad translation team (for
+whatever reason), and this is entirely acceptable.  However, it is
+important to remember that regardless of the technical resources which a
+team decides to use, the responsibility of the team co-ordinator remains
+the same.
+
+   <p>Those teams that are using Savannah have a broad variety of tools at
+hand: team membership management, documents, trackers (bugs, tasks and
+support), alerts, CVS (and any other VCS that Savannah supports), home
+pages, mailing lists, etc.  How each team uses these resources is up to
+the team itself, but it often turns out to choose Savannah for nearly
+all of the team activities, as it requires almost zero work; the
+Savannah Hackers are happy to support us.
+
+   <p>Whatever you (in your capacity as a team leader) decide, please do it
+with caution: some organizational decisions may become ineffective as
+time goes by, and some may not scale well when the team grows.  If the
+team is young and has a couple of members, it is better to refrain from
+such decision and discuss them with all the members when their number
+grows.  Two or three people do not need a rocket platform or complex
+wizardry to do their work.
+
+   <p>The next sections contain suggestions about how a team can use the
+facilities provided by Savannah.  It is not mandatory to follow them,
+they are just suggestions.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Savannah-Members">Savannah Members</a>
+<li><a accesskey="2" href="#Savannah-Homepage">Savannah Homepage</a>
+<li><a accesskey="3" href="#Savannah-Support">Savannah Support</a>
+<li><a accesskey="4" href="#Savannah-Tasks">Savannah Tasks</a>
+<li><a accesskey="5" href="#Savannah-Bugs">Savannah Bugs</a>
+<li><a accesskey="6" href="#Savannah-Patch">Savannah Patch</a>
+<li><a accesskey="7" href="#Savannah-News">Savannah News</a>
+<li><a accesskey="8" href="#Savannah-Mailing-Lists">Savannah Mailing Lists</a>
+<li><a accesskey="9" href="#Savannah-VCS">Savannah VCS</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Savannah-Members"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Homepage">Savannah Homepage</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
+
+</div>
+
+<h5 class="subsubsection">3.2.3.1 Managing Members</h5>
+
+<p>You should add active translators as members of the translation team,
+and remove them when they leave.  Team members should have access to all
+of the project's resources, and tracking their number is one of the ways
+for web-translators to determine the status of the team.
+
+   <p>It is OK if a particular contributor wants to translate an article or
+two and does not want to be engaged with the team on a long-term basis. 
+In such situations, there is no need to add her as a member.
+
+   <p>It is a good idea to mark inactive members, for example if there is no
+interaction (bug reports, new translations, updates to existing
+translations, proof-reading) for at least six months.  You can do that
+by unmarking the &lsquo;<samp><span class="samp">On Duty</span></samp>&rsquo; checkbox for the respective project
+member under &lsquo;<samp><span class="samp">Set Permissions</span></samp>&rsquo;.  Inactive members have absolutely
+the same rights as active ones&mdash;the only exception is that they don't
+count for the total number of members, and they appear separately on
+&lsquo;<samp><span class="samp">View Members</span></samp>&rsquo;.
+
+<div class="node">
+<p><hr>
+<a name="Savannah-Homepage"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Support">Savannah Support</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Members">Savannah Members</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
+
+</div>
+
+<h5 class="subsubsection">3.2.3.2 Homepage of The Team</h5>
+
+<p>Every Savannah project has a Web repository, which is, for technical and
+historical reasons, only CVS.  By default it is mapped to
+&lt;<code>http://www.gnu.org/server/standards/translations/</code><var>lang</var>&gt;;
+to add files to it first make a checkout, following the instructions at
+&lt;<code>https://savannah.gnu.org/cvs/?group=www-</code><var>lang</var>&gt;.
+
+   <p>It is recommended to describe all team-specific procedures, if there are
+any.  That way, you can point potential team members to the
+corresponding page containing these instructions, instead of repeatedly
+explaining every volunteer separately.
+
+   <p>All team-specific pages should follow the usual linking criteria (see
+<a href="http://gnu.org/server/standards/README.webmastering.html#pollinking">http://gnu.org/server/standards/README.webmastering.html#pollinking</a>
+and the FSF HTML Style Sheet
+Guidelines&mdash;<a href="http://gnu.org/server/fsf-html-style-sheet.html">http://gnu.org/server/fsf-html-style-sheet.html</a>).
+
+   <p>For historical reasons, team-specific materials were available in the
+&lsquo;<samp><span class="samp">www</span></samp>&rsquo; repository, under ad-hoc locations as <samp><span class="file">/spanish</span></samp>,
+<samp><span class="file">/wwwsr</span></samp>, etc.  These locations are deprecated, and the contents
+will be moved without warning to <samp><span class="file">/graveyard</span></samp> in the
+&lsquo;<samp><span class="samp">trans-coord</span></samp>&rsquo; <em>Sources</em> repository, following the original
+&lsquo;<samp><span class="samp">www</span></samp>&rsquo; layout (that is, if there were any sub-directories, they will
+be retained).
+
+<div class="node">
+<p><hr>
+<a name="Savannah-Support"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Tasks">Savannah Tasks</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Homepage">Savannah Homepage</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
+
+</div>
+
+<h5 class="subsubsection">3.2.3.3 Support Tracker</h5>
+
+<p>This tracker is supposed to be related to things about the <em>project
+management</em> itself, i.e. project members may report here missing
+functionality and/or features that requires the project admin(s)'s
+action.  Do not use it for anything else as it quickly becomes
+confusing.  It is OK to disable it if the team is small.
+
+<div class="node">
+<p><hr>
+<a name="Savannah-Tasks"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Bugs">Savannah Bugs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Support">Savannah Support</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
+
+</div>
+
+<h5 class="subsubsection">3.2.3.4 Tasks Tracker</h5>
+
+<p>This is a way to manage all sorts of tasks.  They appear in the personal
+Savannah page of the assignee, so it is difficult to miss them out.  It
+is possible to use this tracker to &ldquo;announce&rdquo; to the team members that
+a specific article should be translated.  The one who volunteers may
+assign the task to herself.
+
+   <p>Teams may use this tracker to avoid duplicate work, by declaring that
+they intend to work on a specific translation.
+
+   <p>Feel free to organize the &lsquo;<samp><span class="samp">Tasks</span></samp>&rsquo; management as you see fit.
+
+<div class="node">
+<p><hr>
+<a name="Savannah-Bugs"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Patch">Savannah Patch</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Tasks">Savannah Tasks</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
+
+</div>
+
+<h5 class="subsubsection">3.2.3.5 Bugs Tracker</h5>
+
+<p>The &lsquo;<samp><span class="samp">Bugs</span></samp>&rsquo; tracker is designed for tracking bugs.  You can use for
+several purposes:
+
+     <ul>
+<li>Suggest readers to report bugs there.
+
+     <li>Use it for all kinds of internal team tasks.
+
+     <li>Forward bugs reported against <var>lang</var> translations in the
+&lsquo;<samp><span class="samp">trans-coord</span></samp>&rsquo; project and assign them to the specific maintainer
+(who is supposed to be a &lsquo;<samp><span class="samp">www-</span><var>lang</var></samp>&rsquo; project member), if you
+have such policy. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Savannah-Patch"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-News">Savannah News</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Bugs">Savannah Bugs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
+
+</div>
+
+<h5 class="subsubsection">3.2.3.6 Patch Tracker</h5>
+
+<p>This tracker doesn't make much sense for translation projects, as the
+original on which the translation is based is volatile and the
+translation <dfn>patch</dfn> is 100% guaranteed not to apply cleanly very
+soon after it is submitted.  Even ignoring this detail, this specific
+feature is slowly marching towards complete deprecation, as there are
+much better ways to submit patches nowadays.
+
+   <p>You should disable this feature, as it causes only confusion.
+
+<div class="node">
+<p><hr>
+<a name="Savannah-News"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Mailing-Lists">Savannah Mailing Lists</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Patch">Savannah Patch</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
+
+</div>
+
+<h5 class="subsubsection">3.2.3.7 News Tracker</h5>
+
+<p>That is a way to inform newcomers and interested people (who visit the
+project page from time to time, or subscribe to the &lsquo;<samp><span class="samp">News</span></samp>&rsquo; RSS
+feed) about a major change or event within the project.
+
+   <p>You can also setup news entries to be sent to a mailing list (that's
+possible for the other trackers as well).
+
+   <p>The purpose of this feature is informational&mdash;if members need to know
+about an important change (in practices, procedures, etc.), it is
+perfectly OK to announce it here.  Some teams use it to announce new
+translations, which is also fine.
+
+<div class="node">
+<p><hr>
+<a name="Savannah-Mailing-Lists"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-VCS">Savannah VCS</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-News">Savannah News</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
+
+</div>
+
+<h5 class="subsubsection">3.2.3.8 Managing Mailing Lists</h5>
+
+<p>You can create new mailing lists via the Savannah interface.  However,
+this should be done after some thought.  If the project membership is
+low (&lt;= 10 members), there is no need to create more than one mailing
+list.  If there is a general translation list common for all translators
+of the language (i.e. GNOME, GNUstep, KDE, and free software in
+general), there is no reason at all to create a list at Savannah.
+
+   <p>You can redirect all messages generated by the trackers to any list
+(including those that are not on GNU servers).
+
+<div class="node">
+<p><hr>
+<a name="Savannah-VCS"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Mailing-Lists">Savannah Mailing Lists</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
+
+</div>
+
+<h5 class="subsubsection">3.2.3.9 Version Control Systems</h5>
+
+<p>An easy way to keep up with changes in the original articles and to
+manage continuous contributions is to keep all translations in the
+translation project's Sources repository.  That way, it is easy to edit
+draft translations and install them in &lsquo;<samp><span class="samp">www</span></samp>&rsquo; only when they're
+ready.  It is also convenient to update the translation (merge any
+changes from the original) while it is still under review.
+
+   <p>See <a href="gnun.html#PO-Files-and-Team">PO Files and Team</a>, for
+more information.
+
+   <p><strong>Remember:</strong> A choice of a particular VCS is a sensitive
+matter&mdash;some modern ones provide compelling features, but they also
+bump the barrier for participation higher.  The VCS is supposed to ease
+collaborative maintenance&mdash;if it eases only you, project members just
+won't use so that won't be a net win.
+
+<div class="node">
+<p><hr>
+<a name="Co-leaders"></a>
+<a name="Co_002dleaders"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah">Savannah</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing">Managing</a>
+
+</div>
+
+<h4 class="subsection">3.2.4 Promoting Members As Co-leaders</h4>
+
+<p>When the team grows large and it becomes hard for a single person to
+manage, there is no problem to add another (or even another two) people
+to help.  Note that a subsequently appointed team co-ordinator is not
+simply a <dfn>committer</dfn> with write access to the &lsquo;<samp><span class="samp">www</span></samp>&rsquo; repository;
+she has full responsibilities just like a single leader, although the
+latter still remains the primary contact for the team.
+
+   <p>If you'd like another person to act as a co-leader and help you with the
+management tasks, send a message to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>
+with her name and Savannah account.  She has to be already a member of
+&lsquo;<samp><span class="samp">www-</span><var>lang</var></samp>&rsquo;.
+
+   <p>The procedure for co-leaders is a simplified version of the one for a
+new team or taking over an existing team.  See <a href="#New-Team">New Team</a>.
+
+   <p>To remove co-ordinators, please write to
+<a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> with details and rationale for the
+removal.  Do not edit <samp><span class="file">README.translations.html</span></samp> yourself; this is
+a final formality step to be performed by the Translation Managers.
+
+<div class="node">
+<p><hr>
+<a name="Reports"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Stepping-Down">Stepping Down</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Managing">Managing</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Leaders">Leaders</a>
+
+</div>
+
+<h3 class="section">3.3 Reporting Team Status</h3>
+
+<p>Team leaders must send an annual report about the status of the team.  A
+good report should include:
+
+     <ul>
+<li>General information about the team's accomplishments during the past
+year, like:
+
+          <ul>
+<li>A list of new translations.
+
+          <li>New members since the last report.
+
+          <li>Current active members.
+
+          <li>Solved problems and other issues, if any.  (Usual bug reports and other
+improvements/fixes to the existing translations do not count as
+<dfn>problems</dfn> in this sense.) 
+</ul>
+
+     <li>Current problems (technical or social), conflicts, and ideas for sorting
+them out.
+
+     <li>Anything else you consider important or worth mentioning. 
+</ul>
+
+   <p>The best time to send a report is near the end of the year, for example
+November.  In any case, please do not send it later than December 15th,
+as the Translation Manager has to prepare a general report to the FSF,
+and it is better if it takes into account the reports of the team
+leaders.
+
+   <p>If there is no sensitive information in the report and you feel like
+sharing it, you can send it to <a href="mailto:trans-coord-discuss@gnu.org">trans-coord-discuss@gnu.org</a>
+(which is still a private mailing list).  That way, other list readers
+may help with suggestions how to solve a particular issue.  Informing
+each other about the progress improves the community spirit.
+
+   <p>If you do not wish to share some information that is in the report,
+please send it to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>.
+
+<div class="node">
+<p><hr>
+<a name="Stepping-Down"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Reports">Reports</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Leaders">Leaders</a>
+
+</div>
+
+<h3 class="section">3.4 How To Retire Painlessly</h3>
+
+<p>When you feel you don't have the energy to manage the team successfully,
+or perhaps you start losing motivation, please inform
+<a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>.  It would be substantially easier if
+you try to find a replacement or recommend a specific person&mdash;we will
+try to find someone in any case, but your judgment is important and it
+will be considered with priority.
+
+   <p>An excellent way to step down is to do it with a &ldquo;plan&rdquo;&mdash;suggest the
+person you consider capable of doing the job as co-leader
+(see <a href="#Co_002dleaders">Co-leaders</a>) and retire completely when she is absolutely ready
+to proceed without your further help and advice.
+
+<div class="node">
+<p><hr>
+<a name="Translation-Managers"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Translation-Tips">Translation Tips</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Leaders">Leaders</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">4 &lsquo;<samp><span class="samp">trans-coord</span></samp>&rsquo; Admins</h2>
+
+<p>This chapter is not yet written.  The current admins know what to do,
+hopefully.
+
+<div class="node">
+<p><hr>
+<a name="Translation-Tips"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Summary">Summary</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Translation-Managers">Translation Managers</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">5 Details About The Translation Process</h2>
+
+<p>The purpose of this chapter is to summarize some odd and not so obvious
+details about specific parts of the gnu.org website.  Most of them
+become well known as time goes by; however, practice shows that it is
+difficult to figure them out at once.
+
+   <p>Some limitations and oddities are just historical remnants from old
+habits and previous incarnations of old (inefficient) translation and
+webmastering processes.  Others are outright deficiencies
+(i.e. &ldquo;bugs&rdquo;), but no one has stepped in to correct them so far.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Migrating">Migrating</a>:            How to migrate to the new style. 
+<li><a accesskey="2" href="#SSI">SSI</a>:                  Overview of SSI #include directives. 
+<li><a accesskey="3" href="#CSS">CSS</a>:                  General advice how to use CSS. 
+<li><a accesskey="4" href="#Priorities">Priorities</a>:           What to translate as a priority. 
+<li><a accesskey="5" href="#Capitalization">Capitalization</a>:       To CAPITALIZE or not? 
+<li><a accesskey="6" href="#Terminology">Terminology</a>:          Dealing with terminology issues. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Migrating"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#SSI">SSI</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
+
+</div>
+
+<h3 class="section">5.1 Migration To The New Style</h3>
+
+<p>Migration to the new style should be straightforward, and this is one of
+the problems <acronym>GNUN</acronym> set out to solve.  If you have to migrate
+old-style translations, see <a href="gnun.html#Migrating">Migrating</a>.  If the old translation is HTML 2.0 (or 3.2), you still have to
+take care about the inner markup.  Overall, it is substantially easier
+than doing all of it manually.
+
+   <p>Subsequent migrations to newer (X)HTML standards and newer look and feel
+of the website are supposed to happen semi-automatically, although this
+manual will be updated as needed.
+
+<div class="node">
+<p><hr>
+<a name="SSI"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CSS">CSS</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Migrating">Migrating</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
+
+</div>
+
+<h3 class="section">5.2 Summary of SSI <code>#include</code>s</h3>
+
+<p>The GNU Project's website uses <acronym>SSI</acronym> (Server Side Includes) to
+manage some common parts that are the same in many of the articles. 
+With the help of <acronym>GNUN</acronym> their handling should be behind the
+scenes, but for some of them manual intervention is needed.  Here is a
+(possibly incomplete) list of the <code>#include</code>'s used:
+
+     <dl>
+<dt><samp><span class="file">server/banner.html</span></samp><dd>This is the file containing the menus, the FSF widget, and any visible
+announcements made from time to time.  If a string gets &ldquo;fuzzy&rdquo; or
+&ldquo;new&rdquo; here, it will appear in English in all translations, until
+<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp> is updated.  Note that some
+validation errors originate from an error in
+<samp><span class="file">server/banner.</span><var>lang</var><span class="file">.html</span></samp>.
+
+     <br><dt><samp><span class="file">server/footer-text.html</span></samp><dd>This is a very short file currently containing the &ldquo;back to top&rdquo; link. 
+Also translatable via <acronym>GNUN</acronym>.
+
+     <br><dt><samp><span class="file">server/header.html</span></samp><dd>The declaration that is included in literally every file.  It is
+maintained manually, as it does not make much sense to put it under
+<acronym>GNUN</acronym>'s control (there are no translatable strings).  Remember
+to specify the proper <code>xml:lang</code> and <code>lang</code> attributes, and
+for RTL languages, the <code>dir</code> attribute.  For example, the file
+<samp><span class="file">header.ar.html</span></samp> should contain this line:
+
+     <pre class="example">          &lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" lang="ar"
+                dir="rtl"&gt;
+</pre>
+     <br><dt><samp><span class="file">server/footer.html</span></samp><dd>This is a very short and simple file (at least at the time of writing),
+containing another <code>#include</code> directive.  It is maintained
+manually, so just add <var>lang</var> to the filename, in order the localized
+<samp><span class="file">footer-text.</span><var>lang</var><span class="file">.html</span></samp> to be included.
+
+     <br><dt><samp><span class="file">translations.include</span></samp><dd>The list of translations for the homepage (and only the homepage).  It
+is maintained manually; in order the link to a translation to appear on
+all of the homepages, it has to be present here.
+
+     <br><dt><samp><span class="file">gnusflashes.include</span></samp><dd>A portion of the most recent 3 news items from
+<samp><span class="file">server/whatsnew.html</span></samp>, generated automatically.  If your language
+does not have <samp><span class="file">server/po/whatsnew.</span><var>lang</var><span class="file">.po</span></samp>, this file will be
+used.  Otherwise, if there is an existing localized homepage and you
+commit <samp><span class="file">whatsnew.</span><var>lang</var><span class="file">.po</span></samp>, the homepage will be rebuilt to
+include the translated <samp><span class="file">gnusflashes.</span><var>lang</var><span class="file">.include</span></samp>.
+
+     <br><dt><samp><span class="file">server/whatsnew.include</span></samp><dd>Generated automatically, this file is included from
+<samp><span class="file">server/whatsnew.html</span></samp>.  Translations are built automatically, and
+the localized <samp><span class="file">gnusflashes.include</span></samp> is derived from it.
+
+     <br><dt><samp><span class="file">licenses/gpl-3.0-body.html</span></samp><br><dt><samp><span class="file">licenses/fdl-1.3-body.html</span></samp><br><dt><samp><span class="file">...</span></samp><dd>Some of the licenses have the text of the license itself separated in
+another file.  This serves two purposes: 1) to provide a &ldquo;standalone&rdquo;
+HTML version of the license without the gnu.org style; 2) to prevent
+strings sneaking in the <samp><span class="file">.pot</span></samp> files, as licenses have only
+unofficial translations, hosted elsewhere.  Nothing special should be
+done about these SSI directives; the files generated by <acronym>GNUN</acronym>
+include them verbatim as they should not be translated.
+
+     <br><dt><samp><span class="file">server/sidebar*.html</span></samp><dd>These files are deprecated&mdash;they are remnants from an older design that
+lived shortly in the middle between the old classic design and the
+current one.  If all translations are successfully migrated and none of
+them includes such files, you should delete them.  You can use
+<samp><span class="command">grep</span></samp> to check this. 
+</dl>
+
+   <p>The files <samp><span class="file">header.html</span></samp>, <samp><span class="file">banner.html</span></samp>, <samp><span class="file">footer.html</span></samp> and
+<samp><span class="file">footer-text.html</span></samp> in the <samp><span class="file">server</span></samp> sub-directory are what
+webmasters call &ldquo;the server templates&rdquo;.  These files are included in
+almost every article, translated or not.  They are somewhat important,
+as an error made in translating them propagates everywhere.  The server
+templates, the homepages, and whatsnew (a.k.a. &ldquo;GNU News&rdquo;) are being
+rebuilt by <acronym>GNUN</acronym> whenever there is a change in the original
+English files; the <code>GRACE</code> variable has no effect for them. 
+See <a href="gnun.html#Runtime-Variables">Runtime Variables</a>.
+
+<div class="node">
+<p><hr>
+<a name="CSS"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Priorities">Priorities</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#SSI">SSI</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
+
+</div>
+
+<h3 class="section">5.3 How To Use Custom CSS</h3>
+
+<p>The file <samp><span class="file">style.css</span></samp> gets included in almost all the English
+articles.  It includes two other files, which form the actual CSS style
+used.  However, this style is seldom right for translations&mdash;many
+languages have much longer expressions, and that is natural.  To include
+your own CSS, create a file <samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp> and add it
+<em>after</em> the original <samp><span class="file">style.css</span></samp> in your
+<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp>, i.e.
+
+<pre class="example">     # type: style
+     msgid "@import url('/style.css');"
+     msgstr ""
+     "@import url('/style.css');\n"
+     "@import url('/style.bg.css');"
+</pre>
+   <p>Override only what is necessary and looks broken in your language; do
+not invent your own style.  This is important for the consistency of the
+gnu.org website.  A typical language-specific
+<samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp> file looks like this:
+
+<pre class="example">     .inner { max-width: 65em; }
+     
+     #logo{background:url(/graphics/topbanner.bg.png) no-repeat;}
+     #fssbox {font-size: 50%;}
+</pre>
+   <p>This widens the menu and the area where the articles are displayed
+(because the menu entries are <em>much</em> longer than the English
+equivalents when translated), includes a localized logo, and makes the
+font size for the FSF widget twice smaller (because in this language,
+the translations are almost twice longer and displayed truncated, which
+is undesirable).
+
+   <p>When creating your own <samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp>, don't forget to
+include the license notice from the <samp><span class="file">style.css</span></samp>, with a short
+comment.
+
+<ul class="menu">
+<li><a accesskey="1" href="#topbanner">topbanner</a>:            How to localize the topbanner image. 
+<li><a accesskey="2" href="#RTL">RTL</a>:                  Special notes about RTL languages. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="topbanner"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#RTL">RTL</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CSS">CSS</a>
+
+</div>
+
+<h4 class="subsection">5.3.1 Localizing The <samp><span class="file">topbanner</span></samp> Image</h4>
+
+<p>If you'd like the nice gnu image to be localized (i.e. &ldquo;GNU Operating
+System&rdquo; to appear in your native language, here are the steps:
+
+     <ol type=1 start=1>
+<li>Copy <samp><span class="file">graphics/topbanner.svg</span></samp> as
+<samp><span class="file">graphics/topbanner.</span><var>lang</var><span class="file">.svg</span></samp> where <var>lang</var> is the
+language code, as usual.  Edit the file with Inkscape or with a plain
+text editor such as GNU Emacs, translating &ldquo;GNU Operating System&rdquo;. 
+Then with Inkscape, save the file as
+<samp><span class="file">graphics/topbanner.</span><var>lang</var><span class="file">.png</span></samp> (File -&gt; Export Bitmap<small class="dots">...</small>). 
+Then open the PNG image with the GIMP and flatten it (Image -&gt; Flatten
+Image).  Don't forget to save and <code>cvs add</code> the files<a rel="footnote" href="#fn-4" name="fnd-4"><sup>4</sup></a>.
+
+     <li>Create a <samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp> at the toplevel directory, if it
+doesn't exist already.  Normally, you would need only one line in it,
+namely:
+
+     <pre class="example">          #logo{background:url(/graphics/topbanner.<var>lang</var>.png) no-repeat;}
+</pre>
+     <li>If not done already for other reasons, update
+<samp><span class="file">banner.</span><var>lang</var><span class="file">.po</span></samp> to include the language specific
+<samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp>.  See <a href="#CSS">CSS</a>.
+        </ol>
+
+   <p>If you feel uncomfortable manipulating images&mdash;don't despair!  Send a
+plea for help to <a href="mailto:trans-coord-discuss@gnu.org">trans-coord-discuss@gnu.org</a>, some people would
+be happy to help you.  Failing that, write to
+<a href="mailto:www-discuss@gnu.org">www-discuss@gnu.org</a>.
+
+<div class="node">
+<p><hr>
+<a name="RTL"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#topbanner">topbanner</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CSS">CSS</a>
+
+</div>
+
+<h4 class="subsection">5.3.2 Specific Issues Related to RTL</h4>
+
+<p>Unfortunately, the <a href="http://gnu.org">http://gnu.org</a> website does not have excellent
+support for RTL (right-to-left) languages, although best efforts are
+made.  If your language is in this category, make sure to:
+
+     <ul>
+<li>Set the attribute <code>dir="rtl"</code> in the <code>html</code> element at
+<samp><span class="file">server/header.</span><var>lang</var><span class="file">.html</span></samp>.
+
+     <li>You <em>must</em> have a custom CSS to override some of the pre-defined
+values.  See <samp><span class="file">style.ar.css</span></samp> and <samp><span class="file">style.fa.css</span></samp> to understand
+how these two languages solve some of the problems.  See <a href="#CSS">CSS</a>. 
+</ul>
+
+   <p><strong>Important:</strong> Some articles contain their own <code>&lt;style&gt;</code>
+redefinitions, or style attributes in the form <code>&lt;p
+style="..."&gt;</code>.  In such situations, it is quite possible that the
+general language-specific CSS does not help, and the translation of this
+specific article does not look correct.  Please write to
+<a href="mailto:trans-coord-discuss@gnu.org">trans-coord-discuss@gnu.org</a>; if you have a working solution
+that works for both cases&mdash;so much the better.  For general issues that
+affect your language and require a general solution, write to
+<a href="mailto:www-discuss@gnu.org">www-discuss@gnu.org</a> or <a href="mailto:webmasters@gnu.org">webmasters@gnu.org</a>, precisely
+describing the problem.
+
+<div class="node">
+<p><hr>
+<a name="Priorities"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Capitalization">Capitalization</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CSS">CSS</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
+
+</div>
+
+<h3 class="section">5.4 What To Translate</h3>
+
+<p>The article
+<a href="http://www.gnu.org/server/standards/translations/priorities.html">http://www.gnu.org/server/standards/translations/priorities.html</a>
+lists the most important essays to translate.  In general, articles in
+the directories <samp><span class="file">philosophy</span></samp>, <samp><span class="file">gnu</span></samp>, <samp><span class="file">copyleft</span></samp> and
+<samp><span class="file">licenses</span></samp> are important.  The others may be deferred for a time
+when a team completes most of the important translations, or they can be
+translated as a &ldquo;rest&rdquo;&ndash;in translators' parlance this means doing
+something in between which is typically easier to handle.
+
+   <p><em>Do not</em> translate articles under these directories:
+
+     <dl>
+<dt><samp><span class="file">software/</span><var>pkg</var><span class="file">/</span></samp><dd>These pages are maintained by the respective <var>pkg</var> maintainers. 
+<acronym>GNUN</acronym> does not support them for the time being, as they reside
+in separate repositories.  The procedures for contributing translations
+of such articles are not yet settled.
+
+     <br><dt><samp><span class="file">brave-gnu-world</span></samp><dd>The Brave GNU World initiative has been abandoned long time ago, and
+it's in a separate repository&mdash;thus not supported by the automatic
+<acronym>GNUN</acronym> build job.
+
+     <br><dt><samp><span class="file">home.shtml</span></samp><dd>There is not problem to translate this page, but don't make the mistake
+to pick it up as your first translation.  It is modified often,
+sometimes intensively, and only active team members should take that
+road.
+
+     <br><dt><samp><span class="file">server/whatsnew.html</span></samp><dd>This is &ldquo;What's New&rdquo;, also known as &ldquo;GNU's Flashes&rdquo;, also known as
+&ldquo;GNU News&rdquo;.  Translate it only if the team has sufficient manpower to
+catch up&mdash;new entries appear immediately on the homepages.  You might
+want to subscribe to <a href="mailto:trans-coord-news@gnu.org">trans-coord-news@gnu.org</a> in case you
+maintain localized &lsquo;<samp><span class="samp">gnunews</span></samp>&rsquo;. 
+</dl>
+
+<div class="node">
+<p><hr>
+<a name="Capitalization"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Terminology">Terminology</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Priorities">Priorities</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
+
+</div>
+
+<h3 class="section">5.5 When To CAPITALIZE</h3>
+
+<p>The English language has strict rules for capitalization of titles,
+chapters, acronym expansions and the like.  They do not make sense for
+many other languages, but unfortunately, many translators
+<em>erroneously duplicate</em> the capitalization in their translation.
+
+   <p>Examples for common (and correct) English capitalization is the title of
+the article &ldquo;Why Software Should Be Free&rdquo; or &ldquo;Free Software
+Foundation&rdquo; (FSF).  However, in languages that do not have such grammar
+rules it is wrong to write &ldquo;Dlaczego Oprogramowanie Powinno By&acute;c
+Wolne&rdquo; (Polish) or &ldquo;Fondation Pour Le Logiciel Libre&rdquo; (French).
+
+   <p>Another prominent and widely spread mistake is to write your own
+language with a capital letter in the <code>translations-list</code> when
+languages are written beginning with a small letter according to your
+own rules.  In other words, it is right to write &lsquo;<samp><span class="samp">English</span></samp>&rsquo; or
+&lsquo;<samp><span class="samp">Deutsch</span></samp>&rsquo; (because in English and German languages are
+capitalized), but not &lsquo;<samp><span class="samp">Fran&ccedil;ais</span></samp>&rsquo; or &lsquo;<samp><span class="samp">Portugu&ecirc;s</span></samp>&rsquo;&mdash;write
+them as &lsquo;<samp><span class="samp">fran&ccedil;ais</span></samp>&rsquo; or &lsquo;<samp><span class="samp">portugu&ecirc;s</span></samp>&rsquo;, respectively.
+
+<div class="node">
+<p><hr>
+<a name="Terminology"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Capitalization">Capitalization</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
+
+</div>
+
+<h3 class="section">5.6 Language-specific Terminology</h3>
+
+<p>This is a very important topic, not yet covered by this manual.
+
+<div class="node">
+<p><hr>
+<a name="Summary"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Copying-This-Manual">Copying This Manual</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Translation-Tips">Translation Tips</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">6 Overview Of The Translation Process</h2>
+
+<p>In general, it is expected that all participants in the translation
+process apply common sense for all of the decisions (important or not)
+they are going to take in their capacity as a manager, team leader, or
+contributing member.  Certainly, many decisions are not easy, and
+require some thought.
+
+   <p>This manual is a work in progress&mdash;it is not set in stone, and it will
+never be finished&mdash;the ultimate goal is to constantly improve the
+translation process, and as a consequence, the documentation.  Every
+participant in the process should be free to suggest modifications to
+the current procedures and suggestions how to improve the current state
+of affairs.  Ideally, they should be accompanied with patches to the
+Texinfo source, but that's not mandatory.  In any event, please write to
+<a href="mailto:trans-coord-discuss@gnu.org">trans-coord-discuss@gnu.org</a>&mdash;the goal of this list is
+precisely to discuss improvements of  the translation process.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Mailing-Lists">Mailing Lists</a>:       Summary of mailing lists. 
+<li><a accesskey="2" href="#Savannah-Projects">Savannah Projects</a>:   Projects' membership. 
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Mailing-Lists"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Projects">Savannah Projects</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Summary">Summary</a>
+
+</div>
+
+<h3 class="section">6.1 Related Mailing Lists</h3>
+
+<p>Here is a short summary of the mailing lists relevant to the translation
+process, and a brief description about how they relate to the various
+participants in the process.
+
+     <dl>
+<dt><a href="mailto:www-discuss@gnu.org">www-discuss@gnu.org</a><dd>The basic discussion list of the <acronym>GNU</acronym> Webmasters.  All team
+leaders are required to subscribe.
+
+     <p>This is a private mailing list.
+
+     <br><dt><a href="mailto:www-commits@gnu.org">www-commits@gnu.org</a><dd>Commits to the &lsquo;<samp><span class="samp">www</span></samp>&rsquo; repository are sent here.  All Translation
+Managers are required to subscribe.  It is strongly recommended that
+team leaders subscribe&mdash;in any case they should, and mail delivery can
+be disabled personally.
+
+     <p>This is a public mailing list, so everyone can subscribe and review the
+archives.  The &lsquo;<samp><span class="samp">www</span></samp>&rsquo; CVS repository is also public.
+
+     <br><dt><a href="mailto:trans-coord-discuss@gnu.org">trans-coord-discuss@gnu.org</a><dd>The main discussion list for the <acronym>GNU</acronym> Web Translators.  Team
+leaders must subscribe, as errors from <acronym>GNUN</acronym> are mailed here. 
+Team members are welcome to join as well, provided they are already
+members of &lsquo;<samp><span class="samp">www-</span><var>lang</var></samp>&rsquo;. If they want to subscribe with a
+different email address, a verification from the team leader is
+required.
+
+     <p>This is a private mailing list, although there is no absolute reason for
+that.  It may become public in the future.
+
+     <br><dt><a href="mailto:trans-coord-news@gnu.org">trans-coord-news@gnu.org</a><dd>This is a list for notifications about gnunews and <acronym>GNU</acronym>nited
+Nations releases.  It is not mandatory to subscribe to it, although the
+traffic is very low.  If you want to track only <acronym>GNUN</acronym> release
+announcements, subscribe to the &lsquo;<samp><span class="samp">gnun</span></samp>&rsquo; keyword via Mailman's user
+interface.  In the near future, there will be automatic announcements
+for newly available English articles and translations.
+
+     <p>This is a public mailing list.
+
+     <br><dt><a href="mailto:trans-coord-devel@gnu.org">trans-coord-devel@gnu.org</a><dd>All development of <acronym>GNUN</acronym> happens here.  Most of the traffic is
+build logs from the various <acronym>GNUN</acronym> automatic builds, so it is
+not a very pleasant thing to be subscribed, especially if you are not
+interested in its internals.  However, everyone can use the web archives
+to check the log why a particular article was not built at expected.
+
+     <p>This is a public list, and <a href="mailto:bug-gnun@gnu.org">bug-gnun@gnu.org</a> is an alias. 
+</dl>
+
+<div class="node">
+<p><hr>
+<a name="Savannah-Projects"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mailing-Lists">Mailing Lists</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Summary">Summary</a>
+
+</div>
+
+<h3 class="section">6.2 Savannah Projects Membership</h3>
+
+<p>Participants in the www.gnu.org translations process normally have to be
+members of the following Savannah projects, depending on the case:
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">www</span></samp>&rsquo;<dd>The main project which hosts the &lsquo;<samp><span class="samp">gnu.org</span></samp>&rsquo; Web repository. 
+Administrators are the Chief Webmaster, entrusted webmasters and the
+Translation Manager (in order to approve leader's applications).  All
+team leaders (and co-leaders) should be members of this project.
+
+     <p>Note that this project has no direct relationship with translators,
+although anything happening in &lsquo;<samp><span class="samp">www</span></samp>&rsquo; directly affects them.  The
+&lsquo;<samp><span class="samp">www</span></samp>&rsquo; project is managed separately and has a different (entirely
+unrelated) process for approving contributors.
+
+     <br><dt>&lsquo;<samp><span class="samp">trans-coord</span></samp>&rsquo;<dd>An organizational project especially created for coordination and
+improvement of the translation process.  All team leaders are required
+to be members, as bugs reported to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> are
+often redirected to the &lsquo;<samp><span class="samp">trans-coord</span></samp>&rsquo; &lsquo;<samp><span class="samp">Bugs</span></samp>&rsquo; tracker.
+
+     <p>The admins of this project are the <acronym>GNU</acronym> Web Translation
+Managers.
+
+     <br><dt>&lsquo;<samp><span class="samp">www-</span><var>lang</var></samp>&rsquo;<dd>All translation team leaders of the language <var>lang</var> should be
+members of the project &lsquo;<samp><span class="samp">www-</span><var>lang</var></samp>&rsquo;.  The admins of the project
+are the team leader and the co-leaders, if any. 
+</dl>
+
+<div class="node">
+<p><hr>
+<a name="Copying-This-Manual"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Summary">Summary</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="appendix">Appendix A GNU Free Documentation License</h2>
+
+<!-- The GNU Free Documentation License. -->
+<div align="center">Version 1.3, 3 November 2008</div>
+
+<!-- This file is intended to be included within another document, -->
+<!-- hence no sectioning command or @node. -->
+<pre class="display">     Copyright &copy; 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+     <a href="http://fsf.org/">http://fsf.org/</a>
+     
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+</pre>
+     <ol type=1 start=0>
+<li>PREAMBLE
+
+     <p>The purpose of this License is to make a manual, textbook, or other
+functional and useful document <dfn>free</dfn> in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially. 
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.
+
+     <p>This License is a kind of &ldquo;copyleft&rdquo;, which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the GNU General Public License, which is a copyleft
+license designed for free software.
+
+     <p>We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+
+     <li>APPLICABILITY AND DEFINITIONS
+
+     <p>This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The &ldquo;Document&rdquo;, below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as &ldquo;you&rdquo;.  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.
+
+     <p>A &ldquo;Modified Version&rdquo; of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+
+     <p>A &ldquo;Secondary Section&rdquo; is a named appendix or a front-matter section
+of the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document's overall
+subject (or to related matters) and contains nothing that could fall
+directly within that overall subject.  (Thus, if the Document is in
+part a textbook of mathematics, a Secondary Section may not explain
+any mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+
+     <p>The &ldquo;Invariant Sections&rdquo; are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.
+
+     <p>The &ldquo;Cover Texts&rdquo; are certain short passages of text that are listed,
+as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+the Document is released under this License.  A Front-Cover Text may
+be at most 5 words, and a Back-Cover Text may be at most 25 words.
+
+     <p>A &ldquo;Transparent&rdquo; copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent. 
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not &ldquo;Transparent&rdquo; is called &ldquo;Opaque&rdquo;.
+
+     <p>Examples of suitable formats for Transparent copies include plain
+<span class="sc">ascii</span> without markup, Texinfo input format, LaTeX input
+format, <acronym>SGML</acronym> or <acronym>XML</acronym> using a publicly available
+<acronym>DTD</acronym>, and standard-conforming simple <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> designed for human modification.  Examples
+of transparent image formats include <acronym>PNG</acronym>, <acronym>XCF</acronym> and
+<acronym>JPG</acronym>.  Opaque formats include proprietary formats that can be
+read and edited only by proprietary word processors, <acronym>SGML</acronym> or
+<acronym>XML</acronym> for which the <acronym>DTD</acronym> and/or processing tools are
+not generally available, and the machine-generated <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> produced by some word processors for
+output purposes only.
+
+     <p>The &ldquo;Title Page&rdquo; means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, &ldquo;Title Page&rdquo; means
+the text near the most prominent appearance of the work's title,
+preceding the beginning of the body of the text.
+
+     <p>The &ldquo;publisher&rdquo; means any person or entity that distributes copies
+of the Document to the public.
+
+     <p>A section &ldquo;Entitled XYZ&rdquo; means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, &ldquo;Endorsements&rdquo;, or &ldquo;History&rdquo;.)  To &ldquo;Preserve the Title&rdquo;
+of such a section when you modify the Document means that it remains a
+section &ldquo;Entitled XYZ&rdquo; according to this definition.
+
+     <p>The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.
+
+     <li>VERBATIM COPYING
+
+     <p>You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no other
+conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+
+     <p>You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+
+     <li>COPYING IN QUANTITY
+
+     <p>If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document's license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition. 
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+
+     <p>If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+
+     <p>If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material. 
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+
+     <p>It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to give
+them a chance to provide you with an updated version of the Document.
+
+     <li>MODIFICATIONS
+
+     <p>You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+
+          <ol type=A start=1>
+<li>Use in the Title Page (and on the covers, if any) a title distinct
+from that of the Document, and from those of previous versions
+(which should, if there were any, be listed in the History section
+of the Document).  You may use the same title as a previous version
+if the original publisher of that version gives permission.
+
+          <li>List on the Title Page, as authors, one or more persons or entities
+responsible for authorship of the modifications in the Modified
+Version, together with at least five of the principal authors of the
+Document (all of its principal authors, if it has fewer than five),
+unless they release you from this requirement.
+
+          <li>State on the Title page the name of the publisher of the
+Modified Version, as the publisher.
+
+          <li>Preserve all the copyright notices of the Document.
+
+          <li>Add an appropriate copyright notice for your modifications
+adjacent to the other copyright notices.
+
+          <li>Include, immediately after the copyright notices, a license notice
+giving the public permission to use the Modified Version under the
+terms of this License, in the form shown in the Addendum below.
+
+          <li>Preserve in that license notice the full lists of Invariant Sections
+and required Cover Texts given in the Document's license notice.
+
+          <li>Include an unaltered copy of this License.
+
+          <li>Preserve the section Entitled &ldquo;History&rdquo;, Preserve its Title, and add
+to it an item stating at least the title, year, new authors, and
+publisher of the Modified Version as given on the Title Page.  If
+there is no section Entitled &ldquo;History&rdquo; in the Document, create one
+stating the title, year, authors, and publisher of the Document as
+given on its Title Page, then add an item describing the Modified
+Version as stated in the previous sentence.
+
+          <li>Preserve the network location, if any, given in the Document for
+public access to a Transparent copy of the Document, and likewise
+the network locations given in the Document for previous versions
+it was based on.  These may be placed in the &ldquo;History&rdquo; section. 
+You may omit a network location for a work that was published at
+least four years before the Document itself, or if the original
+publisher of the version it refers to gives permission.
+
+          <li>For any section Entitled &ldquo;Acknowledgements&rdquo; or &ldquo;Dedications&rdquo;, Preserve
+the Title of the section, and preserve in the section all the
+substance and tone of each of the contributor acknowledgements and/or
+dedications given therein.
+
+          <li>Preserve all the Invariant Sections of the Document,
+unaltered in their text and in their titles.  Section numbers
+or the equivalent are not considered part of the section titles.
+
+          <li>Delete any section Entitled &ldquo;Endorsements&rdquo;.  Such a section
+may not be included in the Modified Version.
+
+          <li>Do not retitle any existing section to be Entitled &ldquo;Endorsements&rdquo; or
+to conflict in title with any Invariant Section.
+
+          <li>Preserve any Warranty Disclaimers.
+          </ol>
+
+     <p>If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version's license notice. 
+These titles must be distinct from any other section titles.
+
+     <p>You may add a section Entitled &ldquo;Endorsements&rdquo;, provided it contains
+nothing but endorsements of your Modified Version by various
+parties&mdash;for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+
+     <p>You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+
+     <p>The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+
+     <li>COMBINING DOCUMENTS
+
+     <p>You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.
+
+     <p>The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number. 
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+
+     <p>In the combination, you must combine any sections Entitled &ldquo;History&rdquo;
+in the various original documents, forming one section Entitled
+&ldquo;History&rdquo;; likewise combine any sections Entitled &ldquo;Acknowledgements&rdquo;,
+and any sections Entitled &ldquo;Dedications&rdquo;.  You must delete all
+sections Entitled &ldquo;Endorsements.&rdquo;
+
+     <li>COLLECTIONS OF DOCUMENTS
+
+     <p>You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of this
+License in the various documents with a single copy that is included in
+the collection, provided that you follow the rules of this License for
+verbatim copying of each of the documents in all other respects.
+
+     <p>You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of this
+License into the extracted document, and follow this License in all
+other respects regarding verbatim copying of that document.
+
+     <li>AGGREGATION WITH INDEPENDENT WORKS
+
+     <p>A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an &ldquo;aggregate&rdquo; if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation's users beyond what the individual works permit. 
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+
+     <p>If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document's Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form. 
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.
+
+     <li>TRANSLATION
+
+     <p>Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4. 
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.
+
+     <p>If a section in the Document is Entitled &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, or &ldquo;History&rdquo;, the requirement (section 4) to Preserve
+its Title (section 1) will typically require changing the actual
+title.
+
+     <li>TERMINATION
+
+     <p>You may not copy, modify, sublicense, or distribute the Document
+except as expressly provided under this License.  Any attempt
+otherwise to copy, modify, sublicense, or distribute it is void, and
+will automatically terminate your rights under this License.
+
+     <p>However, if you cease all violation of this License, then your license
+from a particular copyright holder is reinstated (a) provisionally,
+unless and until the copyright holder explicitly and finally
+terminates your license, and (b) permanently, if the copyright holder
+fails to notify you of the violation by some reasonable means prior to
+60 days after the cessation.
+
+     <p>Moreover, your license from a particular copyright holder is
+reinstated permanently if the copyright holder notifies you of the
+violation by some reasonable means, this is the first time you have
+received notice of violation of this License (for any work) from that
+copyright holder, and you cure the violation prior to 30 days after
+your receipt of the notice.
+
+     <p>Termination of your rights under this section does not terminate the
+licenses of parties who have received copies or rights from you under
+this License.  If your rights have been terminated and not permanently
+reinstated, receipt of a copy of some or all of the same material does
+not give you any rights to use it.
+
+     <li>FUTURE REVISIONS OF THIS LICENSE
+
+     <p>The Free Software Foundation may publish new, revised versions
+of the GNU Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+<a href="http://www.gnu.org/copyleft/">http://www.gnu.org/copyleft/</a>.
+
+     <p>Each version of the License is given a distinguishing version number. 
+If the Document specifies that a particular numbered version of this
+License &ldquo;or any later version&rdquo; applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.  If the Document
+specifies that a proxy can decide which future versions of this
+License can be used, that proxy's public statement of acceptance of a
+version permanently authorizes you to choose that version for the
+Document.
+
+     <li>RELICENSING
+
+     <p>&ldquo;Massive Multiauthor Collaboration Site&rdquo; (or &ldquo;MMC Site&rdquo;) means any
+World Wide Web server that publishes copyrightable works and also
+provides prominent facilities for anybody to edit those works.  A
+public wiki that anybody can edit is an example of such a server.  A
+&ldquo;Massive Multiauthor Collaboration&rdquo; (or &ldquo;MMC&rdquo;) contained in the
+site means any set of copyrightable works thus published on the MMC
+site.
+
+     <p>&ldquo;CC-BY-SA&rdquo; means the Creative Commons Attribution-Share Alike 3.0
+license published by Creative Commons Corporation, a not-for-profit
+corporation with a principal place of business in San Francisco,
+California, as well as future copyleft versions of that license
+published by that same organization.
+
+     <p>&ldquo;Incorporate&rdquo; means to publish or republish a Document, in whole or
+in part, as part of another Document.
+
+     <p>An MMC is &ldquo;eligible for relicensing&rdquo; if it is licensed under this
+License, and if all works that were first published under this License
+somewhere other than this MMC, and subsequently incorporated in whole
+or in part into the MMC, (1) had no cover texts or invariant sections,
+and (2) were thus incorporated prior to November 1, 2008.
+
+     <p>The operator of an MMC Site may republish an MMC contained in the site
+under CC-BY-SA on the same site at any time before August 1, 2009,
+provided the MMC is eligible for relicensing.
+
+        </ol>
+
+<h3 class="heading">ADDENDUM: How to use this License for your documents</h3>
+
+<p>To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and
+license notices just after the title page:
+
+<pre class="smallexample">       Copyright (C)  <var>year</var>  <var>your name</var>.
+       Permission is granted to copy, distribute and/or modify this document
+       under the terms of the GNU Free Documentation License, Version 1.3
+       or any later version published by the Free Software Foundation;
+       with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+       Texts.  A copy of the license is included in the section entitled ``GNU
+       Free Documentation License''.
+</pre>
+   <p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the &ldquo;with<small class="dots">...</small>Texts.&rdquo; line with this:
+
+<pre class="smallexample">         with the Invariant Sections being <var>list their titles</var>, with
+         the Front-Cover Texts being <var>list</var>, and with the Back-Cover Texts
+         being <var>list</var>.
+</pre>
+   <p>If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+
+   <p>If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License,
+to permit their use in free software.
+
+<!-- Local Variables: -->
+<!-- ispell-local-pdict: "ispell-dict" -->
+<!-- End: -->
+   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> Well&mdash;not really, but the goal is to maintain
+all of them.</p>
+
+   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> In general, we try to avoid this and direct all new
+volunteers to the person who is already carrying out the process&mdash;this
+is also a verification if she can cooperate easily with others.</p>
+
+   <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> This advice is applicable for the &lsquo;<samp><span class="samp">www</span></samp>&rsquo;
+repository only&mdash;feel free to write logs in your native language when
+committing in your project's Sources repository.</p>
+
+   <p class="footnote"><small>[<a name="fn-4" href="#fnd-4">4</a>]</small> This
+advice applies to all new files, of course.</p>
+
+   <hr></div>
+
+</body></html>
+
