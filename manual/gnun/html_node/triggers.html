@@ -10,13 +10,13 @@
 <link rel="next" href="clean.html#clean" title="clean">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 6 December 2008) is for GNUnited Nations
-(version 0.1),
+This manual (updated 29 January 2009) is for GNUnited Nations
+(version 0.2),
 a suite for maintaining translations of www.gnu.org essays and other
 articles.
 
 
-Copyright (C) 2008 Free Software Foundation, Inc.
+Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -77,7 +77,7 @@ To illustrate this, here is a concrete example showing the official job
 running at fencepost.gnu.org:
 
 <pre class="example">     25 4,16 * * *  cd $HOME/projects/www ; cvs -q update &amp;&gt;/dev/null ; \
-                      make -C server/gnun VCS=yes VALIDATE=yes NOTIFY=yes \
+                      make -j4 -C server/gnun VCS=yes VALIDATE=yes NOTIFY=yes \
                       VERBOSE=yes GRACE=30 ; cvs commit -m \
                       "Automatic update by GNUnited Nations." ; \
                       make -C server/gnun triggers

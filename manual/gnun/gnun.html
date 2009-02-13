@@ -7,13 +7,13 @@
 <link title="Top" rel="top" href="#Top">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 6 December 2008) is for GNUnited Nations
-(version 0.1),
+This manual (updated 29 January 2009) is for GNUnited Nations
+(version 0.2),
 a suite for maintaining translations of www.gnu.org essays and other
 articles.
 
 
-Copyright (C) 2008 Free Software Foundation, Inc.
+Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -112,14 +112,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 
 <h2 class="unnumbered">GNUnited Nations</h2>
 
-<p>This manual (updated 6 December 2008) is for <acronym>GNU</acronym>nited Nations
-(version 0.1),
+<p>This manual (updated 29 January 2009) is for <acronym>GNU</acronym>nited Nations
+(version 0.2),
 a suite for maintaining translations of www.gnu.org essays and other
 articles.<br>
    <pre class="sp">
 
 </pre>
-Copyright &copy; 2008 Free Software Foundation, Inc.
+Copyright &copy; 2008, 2009 Free Software Foundation, Inc.
 
    <blockquote>
 Permission is granted to copy, distribute and/or modify this document
@@ -442,12 +442,13 @@ lead to the whole of it being marked as &ldquo;fuzzy&rdquo; in the PO files.  So
 don't unsubscribe from <a href="mailto:www-commits@gnu.org">www-commits@gnu.org</a> yet, and be
 prepared to check the CVS history of the original article.
 
-     <li>We plan to invoke a build once a day, because doing it more often will
-potentially generate more messages to the mailing list in the form of
-commit notifications.  This has its drawback, since translators will
-have to wait for a day until their PO files are updated, and another
-day for the <samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> articles to get generated, after
-they commit the updated POs. 
+     <li>The official build is invoked twice daily, because doing it more often
+will potentially generate more messages to the mailing list in the form
+of commit notifications.  This has its drawback, since translators have
+to wait 12 hours until their PO files are updated, and another period
+for the <samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> articles to get generated, after they
+commit the updated POs.  Additionally, any errors interrupt the build so
+they have to be fixed before the next articles are processed. 
 </ul>
 
 <div class="node">
@@ -509,16 +510,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
 <h3 class="section">2.1 Invoking GNUN</h3>
 
 <p><a name="index-invoking-1"></a><a name="index-triggering_002c-build-2"></a>
-The central part of <acronym>GNU</acronym>nited Nations is a makefile; actually
-a <samp><span class="file">GNUmakefile</span></samp> since it heavily relies on features and
-extensions available in <acronym>GNU</acronym> Make.  Thus, invoking a build
-consists of typing <samp><span class="command">make</span></samp> on the command line, or within cron. 
-If you are deploying the software on a non-GNU machine, probably
-<acronym>GNU</acronym> Make is installed and available as <samp><span class="command">gmake</span></samp>.  If
-not, you should seriously consider installing it, since as far as we
-know, the build will fail otherwise.  See
-<a href="http://www.gnu.org/software/make">http://www.gnu.org/software/make</a> for information how to
-download and install <acronym>GNU</acronym> Make.
+The central part of <acronym>GNU</acronym>nited Nations is a makefile; actually a
+<samp><span class="file">GNUmakefile</span></samp> since it heavily relies on features and extensions
+available in <acronym>GNU</acronym> Make.  Thus, invoking a build consists of
+typing <samp><span class="command">make</span></samp> on the command line, or within cron.  If you are
+deploying the software on a non-GNU machine, probably <acronym>GNU</acronym> Make
+is installed and available as <samp><span class="command">gmake</span></samp> or <samp><span class="command">gnumake</span></samp>.  If
+not, you should consider installing it, since the build will fail
+otherwise.  See <a href="http://www.gnu.org/software/make">http://www.gnu.org/software/make</a> for information
+how to download and install <acronym>GNU</acronym> Make.
 
    <p>If you don't specify a target, <samp><span class="command">make</span></samp> by default builds the
 target <code>all</code>, which in this case is to rebuild all translations
@@ -778,7 +778,7 @@ To illustrate this, here is a concrete example showing the official job
 running at fencepost.gnu.org:
 
 <pre class="example">     25 4,16 * * *  cd $HOME/projects/www ; cvs -q update &amp;&gt;/dev/null ; \
-                      make -C server/gnun VCS=yes VALIDATE=yes NOTIFY=yes \
+                      make -j4 -C server/gnun VCS=yes VALIDATE=yes NOTIFY=yes \
                       VERBOSE=yes GRACE=30 ; cvs commit -m \
                       "Automatic update by GNUnited Nations." ; \
                       make -C server/gnun triggers
@@ -841,12 +841,13 @@ not, that is a bug that should be reported and fixed.
 <a name="index-TEMPLATE_005fLINGUAS-25"></a>
 <a name="index-templates_002c-defining-26"></a>
 <a name="index-defining-templates-27"></a>
-<dl><dt>&lsquo;<samp><span class="samp">TEMPLATE_LINGUAS</span></samp>&rsquo;<dd>Add here your language code <em>if and only if</em> you have all the
-server templates translated, and have committed
+<dl><dt>&lsquo;<samp><span class="samp">TEMPLATE_LINGUAS</span></samp>&rsquo;<dd>A space-separated list with languages.  Add here your language code
+<em>if and only if</em> you have all the <acronym>SSI</acronym> templates
+translated, and have already committed in the repository both
 <samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp> and
 <samp><span class="file">server/po/footer-text.</span><var>lang</var><span class="file">.po</span></samp>, as well as the templates
-that are not under <acronym>GNUN</acronym>'s control, like
-<samp><span class="file">server/header.</span><var>lang</var><span class="file">.html</span></samp> and
+that are not under <acronym>GNUN</acronym>'s control and are translated manually,
+like <samp><span class="file">server/header.</span><var>lang</var><span class="file">.html</span></samp> and
 <samp><span class="file">server/footer.</span><var>lang</var><span class="file">.html</span></samp>.
 
      <p><a name="index-HOME_005fLINGUAS-28"></a><a name="index-homepage_002c-defining-29"></a><a name="index-defining-homepage-30"></a><br><dt>&lsquo;<samp><span class="samp">HOME_LINGUAS</span></samp>&rsquo;<dd>Add your language code if you have already committed
@@ -912,12 +913,13 @@ plural forms are not used.  See
      <li>KBabel&mdash;likewise for <acronym>KDE</acronym>.  See
 <a href="http://kbabel.kde.org">http://kbabel.kde.org</a>.
 
-     <li>Poedit&mdash;another editor that is based on the <code>wxWidgets</code>
-toolkit.  See <a href="http://www.poedit.net">http://www.poedit.net</a>.
+     <li>Poedit&mdash;another popular editor that is based on the <code>wxWidgets</code>
+graphical toolkit.  See <a href="http://www.poedit.net">http://www.poedit.net</a>.
 
      <li><!-- @heresy -->
 <!-- Please forgive them, they don't know what they are doing... -->
-po.vim&mdash;ftplugin for the Vim editor.  See
+po.vim&mdash;ftplugin for the Vim editor.  The best option for people who
+use Vim as their editor.  See
 <a href="http://www.vim.org/scripts/script.php?script_id=695">http://www.vim.org/scripts/script.php?script_id=695</a>. 
 <!-- @end heresy -->
 </ul>
@@ -1059,7 +1061,7 @@ See <a href="#Credits-Slot">Credits Slot</a>.
 <code>msgstr</code>'s.  If that happens, long lines make reading subsequent
 diffs harder, and are generally annoying for most people.  If this issue
 bothers you, you can &ldquo;normalize&rdquo; the already finished PO translation
-by executing on the command line <code>cat </code><var>file</var><code>.po | msgcat - -o
+by executing on the command line <code>msgcat -o </code><var>file</var><code>.po
 </code><var>file</var><code>.po</code>, before installing it in the repository.  Either way, the
 build system will treat it is a valid PO file.
 
@@ -1265,8 +1267,8 @@ for details.  Entries are added in a special plain text file,
 former is used by <samp><span class="file">server/whatsnew.html</span></samp>, while the latter is
 included in the homepage.
 
-   <p><acronym>GNUN</acronym> has rules for building <samp><span class="file">whatsnew.pot</span></samp>, which
-contains all necessary strings for
+   <p><acronym>GNUN</acronym> has additional rules for building <samp><span class="file">whatsnew.pot</span></samp>,
+which contains a combination of all necessary strings for
 <samp><span class="file">server/whatsnew.</span><var>lang</var><span class="file">.html</span></samp>,
 <samp><span class="file">server/whatsnew.</span><var>lang</var><span class="file">.include</span></samp> and
 <samp><span class="file">gnusflashes.</span><var>lang</var><span class="file">.include</span></samp>.  There is nothing unusual in this
@@ -1528,13 +1530,15 @@ own tree.
 of the build process.
 
      <dl>
-<dt>&lsquo;<samp><span class="samp">VERBOSE=yes</span></samp>&rsquo;<dd>Print more information from <samp><span class="command">cvs</span></samp> and <samp><span class="command">msgmerge</span></samp>; off by
-default.  Note that <code>VERBOSE</code> can be defined to any string, it will
-have the same effect.
+<dt>&lsquo;<samp><span class="samp">VERBOSE=yes</span></samp>&rsquo;<dd>Print more information from <samp><span class="command">cvs</span></samp>, <samp><span class="command">svn</span></samp> and
+<samp><span class="command">msgmerge</span></samp>; off by default.  Note that <code>VERBOSE</code> can be
+defined to any string, it will have the same effect.
 
      <br><dt>&lsquo;<samp><span class="samp">VCS=yes</span></samp>&rsquo;<dd>Update both `www' and `www-<var>lang</var>' repositories, then commit the
-merged PO files in the latter repository.  By default, there is no CVS
-interaction. 
+merged PO files in the latter repository.  By default, there is no VCS
+interaction.  The VCS of the translation project repository is
+determined automatically; currently only CVS and Subversion repositories
+are supported. 
 </dl>
 
 <h5 class="unnumberedsubsubsec">Targets in <samp><span class="file">GNUmakefile.team</span></samp></h5>

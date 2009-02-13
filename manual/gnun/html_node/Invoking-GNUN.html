@@ -9,13 +9,13 @@
 <link rel="next" href="Main-Variables.html#Main-Variables" title="Main Variables">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 6 December 2008) is for GNUnited Nations
-(version 0.1),
+This manual (updated 29 January 2009) is for GNUnited Nations
+(version 0.2),
 a suite for maintaining translations of www.gnu.org essays and other
 articles.
 
 
-Copyright (C) 2008 Free Software Foundation, Inc.
+Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -49,16 +49,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Usage.html#Usage">Usage</a>
 <h3 class="section">2.1 Invoking GNUN</h3>
 
 <p><a name="index-invoking-1"></a><a name="index-triggering_002c-build-2"></a>
-The central part of <acronym>GNU</acronym>nited Nations is a makefile; actually
-a <samp><span class="file">GNUmakefile</span></samp> since it heavily relies on features and
-extensions available in <acronym>GNU</acronym> Make.  Thus, invoking a build
-consists of typing <samp><span class="command">make</span></samp> on the command line, or within cron. 
-If you are deploying the software on a non-GNU machine, probably
-<acronym>GNU</acronym> Make is installed and available as <samp><span class="command">gmake</span></samp>.  If
-not, you should seriously consider installing it, since as far as we
-know, the build will fail otherwise.  See
-<a href="http://www.gnu.org/software/make">http://www.gnu.org/software/make</a> for information how to
-download and install <acronym>GNU</acronym> Make.
+The central part of <acronym>GNU</acronym>nited Nations is a makefile; actually a
+<samp><span class="file">GNUmakefile</span></samp> since it heavily relies on features and extensions
+available in <acronym>GNU</acronym> Make.  Thus, invoking a build consists of
+typing <samp><span class="command">make</span></samp> on the command line, or within cron.  If you are
+deploying the software on a non-GNU machine, probably <acronym>GNU</acronym> Make
+is installed and available as <samp><span class="command">gmake</span></samp> or <samp><span class="command">gnumake</span></samp>.  If
+not, you should consider installing it, since the build will fail
+otherwise.  See <a href="http://www.gnu.org/software/make">http://www.gnu.org/software/make</a> for information
+how to download and install <acronym>GNU</acronym> Make.
 
    <p>If you don't specify a target, <samp><span class="command">make</span></samp> by default builds the
 target <code>all</code>, which in this case is to rebuild all translations
