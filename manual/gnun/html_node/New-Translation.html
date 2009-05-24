@@ -3,14 +3,14 @@
 <title>New Translation - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.11">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="PO-Files.html#PO-Files" title="PO Files">
 <link rel="next" href="Migrating.html#Migrating" title="Migrating">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 29 January 2009) is for GNUnited Nations
-(version 0.2),
+This manual (updated 23 May 2009) is for GNUnited Nations
+(version 0.3),
 a suite for maintaining translations of www.gnu.org essays and other
 articles.
 
@@ -39,8 +39,8 @@ Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<p>
 <a name="New-Translation"></a>
+<p>
 Next:&nbsp;<a rel="next" accesskey="n" href="Migrating.html#Migrating">Migrating</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
 <hr>
@@ -82,7 +82,7 @@ environment is set up correctly.  See <a href="../gettext/msginit-Invocation.htm
      "Language-Team: LANGUAGE &lt;LL@li.org&gt;\n"
      "MIME-Version: 1.0\n"
      "Content-Type: text/plain; charset=CHARSET\n"
-     "Content-Transfer-Encoding: ENCODING"
+     "Content-Transfer-Encoding: ENCODING\n"
 </pre>
    <p>You have to edit the header to match the already established
 conventions, and the rules for gnu.org translations.  For reference,
@@ -118,7 +118,10 @@ homepage, provided that it contains contact details.  Example:
      <br><dt>&lsquo;<samp><span class="samp">Content-Type</span></samp>&rsquo;<dd>Usually this is <code>text/plain; charset=UTF-8</code>; change the charset
 accordingly.
 
-     <br><dt>&lsquo;<samp><span class="samp">Content-Transfer-Encoding</span></samp>&rsquo;<dd>Set this to <code>8bit</code>. 
+     <br><dt>&lsquo;<samp><span class="samp">Content-Transfer-Encoding</span></samp>&rsquo;<dd>Set this to <code>8bit</code>.  Note that the PO file header ends with this
+field, and it should contain a newline (&lsquo;<samp><span class="samp">\n</span></samp>&rsquo;).  Unfortunately, some
+PO editors remove the newline, which causes an unnecessary revision when
+the file is automatically modified by <acronym>GNUN</acronym>'s rules. 
 </dl>
 
    <p>Here is an example of a properly edited header:
@@ -137,7 +140,7 @@ accordingly.
      "Language-Team: Bulgarian &lt;dict@fsa-bg.org&gt;\n"
      "MIME-Version: 1.0\n"
      "Content-Type: text/plain; charset=UTF-8\n"
-     "Content-Transfer-Encoding: 8-bit"
+     "Content-Transfer-Encoding: 8-bit\n"
 </pre>
    <p>Notice the absence of the &ldquo;fuzzy&rdquo; marker; you should &ldquo;unfuzzy&rdquo; the
 header after entering the necessary information (this is done by

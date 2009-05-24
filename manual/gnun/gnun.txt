@@ -45,8 +45,8 @@ Index
 GNUnited Nations
 ****************
 
-This manual (updated 29 January 2009) is for GNUnited Nations (version
-0.2), a suite for maintaining translations of www.gnu.org essays and
+This manual (updated 23 May 2009) is for GNUnited Nations (version
+0.3), a suite for maintaining translations of www.gnu.org essays and
 other articles.
 
 Copyright (C) 2008, 2009 Free Software Foundation, Inc.
@@ -660,15 +660,20 @@ to make it valid.  Here is a list of widely used PO editors:
      PO mode is available in a separate package, `gettext-el'. See
      `http://www.gnu.org/software/gettext'.
 
-   * gTranslator--the GNOME PO editor.  Has some known bugs, but they
-     shouldn't affect gnu.org translations as formulas that express
-     plural forms are not used.  See
+   * gTranslator--the GNOME PO editor.  See
      `http://gtranslator.sourceforge.net'.
 
-   * KBabel--likewise for KDE.  See `http://kbabel.kde.org'.
+   * Lokalize--the KDE 4 editor.  See
+     `http://userbase.kde.org/Lokalize'.
+
+   * KBabel--the KDE 3 editor.  See `http://kbabel.kde.org'.
 
    * Poedit--another popular editor that is based on the `wxWidgets'
      graphical toolkit.  See `http://www.poedit.net'.
+
+   * Virtaal--a relevantly new editor that supports also the XLIFF
+     format and uses the Translate Toolkit API.  See
+     `http://translate.sourceforge.net/wiki/virtaal'.
 
    * po.vim--ftplugin for the Vim editor.  The best option for people
      who use Vim as their editor.  See
@@ -710,7 +715,7 @@ Invocation.
      "Language-Team: LANGUAGE <LL@li.org>\n"
      "MIME-Version: 1.0\n"
      "Content-Type: text/plain; charset=CHARSET\n"
-     "Content-Transfer-Encoding: ENCODING"
+     "Content-Transfer-Encoding: ENCODING\n"
 
    You have to edit the header to match the already established
 conventions, and the rules for gnu.org translations.  For reference,
@@ -752,7 +757,10 @@ here is a list with all fields explained:
      accordingly.
 
 `Content-Transfer-Encoding'
-     Set this to `8bit'.
+     Set this to `8bit'.  Note that the PO file header ends with this
+     field, and it should contain a newline (`\n').  Unfortunately, some
+     PO editors remove the newline, which causes an unnecessary
+     revision when the file is automatically modified by GNUN's rules.
 
    Here is an example of a properly edited header:
 
@@ -770,7 +778,7 @@ here is a list with all fields explained:
      "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
      "MIME-Version: 1.0\n"
      "Content-Type: text/plain; charset=UTF-8\n"
-     "Content-Transfer-Encoding: 8-bit"
+     "Content-Transfer-Encoding: 8-bit\n"
 
    Notice the absence of the "fuzzy" marker; you should "unfuzzy" the
 header after entering the necessary information (this is done by simply
@@ -1184,8 +1192,13 @@ behavior of the build process.
      Update both `www' and `www-LANG' repositories, then commit the
      merged PO files in the latter repository.  By default, there is no
      VCS interaction.  The VCS of the translation project repository is
-     determined automatically; currently only CVS and Subversion
-     repositories are supported.
+     determined automatically; currently only CVS, Subversion and GNU
+     Arch repositories are supported.
+
+     *Caution:* The makefile rule will commit all local changes, not
+     only those that resulted from running `msgmerge'.  Thus, it is
+     better to use a separate working copy dedicated solely for this
+     purpose.
 
 Targets in `GNUmakefile.team'
 .............................
@@ -1963,11 +1976,11 @@ Index
 
 ALL_DIRS:                                      See 2.2.      (line  621)
 articles in root directory, defining:          See 2.2.      (line  614)
-bugs, reporting:                               See 4.        (line 1469)
-conversion of existing translations:           See 2.3.2.    (line  909)
-credits, translators <1>:                      See 2.3.1.2.  (line  886)
-credits, translators:                          See 2.3.1.    (line  787)
-cron, team maintenance:                        See 2.3.6.2.  (line 1219)
+bugs, reporting:                               See 4.        (line 1482)
+conversion of existing translations:           See 2.3.2.    (line  917)
+credits, translators <1>:                      See 2.3.1.2.  (line  894)
+credits, translators:                          See 2.3.1.    (line  795)
+cron, team maintenance:                        See 2.3.6.2.  (line 1232)
 CVS:                                           See 2.1.1.    (line  371)
 deferred generation of articles:               See 2.1.1.    (line  427)
 defining articles in the root dir:             See 2.2.      (line  614)
@@ -1976,64 +1989,64 @@ defining homepage:                             See 2.2.      (line  608)
 defining templates:                            See 2.2.      (line  599)
 directories, defining:                         See 2.2.      (line  621)
 fuzzy strings:                                 See 2.1.1.    (line  427)
-generation, POT, .proto:                       See 3.1.1.    (line 1325)
-generic notice, translations:                  See 2.3.5.    (line 1056)
+generation, POT, .proto:                       See 3.1.1.    (line 1338)
+generic notice, translations:                  See 2.3.5.    (line 1064)
 gnun.mk:                                       See 2.2.      (line  586)
-gnunews:                                       See 2.3.3.    (line  953)
-gnusflashes:                                   See 2.3.3.    (line  953)
+gnunews:                                       See 2.3.3.    (line  961)
+gnusflashes:                                   See 2.3.3.    (line  961)
 GRACE:                                         See 2.1.1.    (line  427)
 grace period:                                  See 2.1.1.    (line  427)
 HOME_LINGUAS:                                  See 2.2.      (line  608)
 homepage, defining:                            See 2.2.      (line  608)
 invoking:                                      See 2.1.      (line  345)
-long lines, wrap:                              See 2.3.1.    (line  793)
-mail, notifications <1>:                       See 3.1.3.    (line 1394)
+long lines, wrap:                              See 2.3.1.    (line  801)
+mail, notifications <1>:                       See 3.1.3.    (line 1407)
 mail, notifications:                           See 2.1.1.    (line  409)
-migration, translations:                       See 2.3.2.    (line  909)
-new translation:                               See 2.3.1.    (line  680)
-notes, translators <1>:                        See 2.3.1.1.  (line  839)
-notes, translators:                            See 2.3.1.    (line  781)
+migration, translations:                       See 2.3.2.    (line  917)
+new translation:                               See 2.3.1.    (line  685)
+notes, translators <1>:                        See 2.3.1.1.  (line  847)
+notes, translators:                            See 2.3.1.    (line  789)
 NOTIFY:                                        See 2.1.1.    (line  409)
 output, detailed:                              See 2.1.1.    (line  420)
 PO editors:                                    See 2.3.      (line  654)
-PO headers:                                    See 2.3.1.    (line  719)
+PO headers:                                    See 2.3.1.    (line  724)
 PO, editing:                                   See 2.3.      (line  642)
-POT generation:                                See 3.1.1.    (line 1325)
+POT generation:                                See 3.1.1.    (line 1338)
 POT generation, articles:                      See 2.2.      (line  625)
-project repository:                            See 2.3.6.    (line 1081)
-prototype generation:                          See 3.1.1.    (line 1325)
-recommendations, PO files:                     See 2.3.4.    (line  979)
+project repository:                            See 2.3.6.    (line 1089)
+prototype generation:                          See 3.1.1.    (line 1338)
+recommendations, PO files:                     See 2.3.4.    (line  987)
 reporting:                                     See 2.1.2.2.  (line  522)
-reporting bugs:                                See 4.        (line 1469)
-repository, translation project:               See 2.3.6.    (line 1081)
+reporting bugs:                                See 4.        (line 1482)
+repository, translation project:               See 2.3.6.    (line 1089)
 ROOT:                                          See 2.2.      (line  614)
 sanity checks:                                 See 2.1.1.    (line  395)
 status, translations:                          See 2.1.2.2.  (line  522)
 synchronization, repository:                   See 2.1.2.1.  (line  487)
 TEAM:                                          See 2.1.1.    (line  439)
-team information:                              See 2.3.5.    (line 1056)
-team maintenance:                              See 2.3.6.    (line 1081)
-team maintenance, cron:                        See 2.3.6.2.  (line 1219)
-team workflow:                                 See 2.3.6.    (line 1099)
+team information:                              See 2.3.5.    (line 1064)
+team maintenance:                              See 2.3.6.    (line 1089)
+team maintenance, cron:                        See 2.3.6.2.  (line 1232)
+team workflow:                                 See 2.3.6.    (line 1107)
 TEMPLATE_LINGUAS:                              See 2.2.      (line  599)
 templates, defining:                           See 2.2.      (line  599)
-tips, translators:                             See 2.3.4.    (line  979)
-tips, webmasters:                              See 2.4.      (line 1245)
-translation, new:                              See 2.3.1.    (line  680)
-translators' credits <1>:                      See 2.3.1.2.  (line  886)
-translators' credits:                          See 2.3.1.    (line  787)
-translators' notes <1>:                        See 2.3.1.1.  (line  839)
-translators' notes:                            See 2.3.1.    (line  781)
+tips, translators:                             See 2.3.4.    (line  987)
+tips, webmasters:                              See 2.4.      (line 1258)
+translation, new:                              See 2.3.1.    (line  685)
+translators' credits <1>:                      See 2.3.1.2.  (line  894)
+translators' credits:                          See 2.3.1.    (line  795)
+translators' notes <1>:                        See 2.3.1.1.  (line  847)
+translators' notes:                            See 2.3.1.    (line  789)
 triggering, build:                             See 2.1.      (line  345)
 VALIDATE:                                      See 2.1.1.    (line  395)
 validation:                                    See 2.1.1.    (line  395)
-validation, XHTML:                             See 3.1.2.    (line 1378)
+validation, XHTML:                             See 3.1.2.    (line 1391)
 variable, behavior:                            See 2.1.1.    (line  364)
 variable, team:                                See 2.1.1.    (line  439)
 variables <1>:                                 See 2.2.      (line  586)
 variables:                                     See 2.1.1.    (line  364)
 VCS:                                           See 2.1.1.    (line  371)
 VERBOSE:                                       See 2.1.1.    (line  420)
-webmaster tips:                                See 2.4.      (line 1245)
-whatsnew:                                      See 2.3.3.    (line  953)
-wrapping long lines:                           See 2.3.1.    (line  793)
+webmaster tips:                                See 2.4.      (line 1258)
+whatsnew:                                      See 2.3.3.    (line  961)
+wrapping long lines:                           See 2.3.1.    (line  801)

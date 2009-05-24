@@ -49,7 +49,7 @@ GNU Web Translators Manual
 **************************
 
 This manual is a guide for the GNU Web Translators.
-Last updated on 13.02.2009, for GNUnited Nations version 0.2.
+Last updated on 26.04.2009, for GNUnited Nations version 0.3.
 
    Copyright (C) 2009 Free Software Foundation, Inc.
 
@@ -364,9 +364,9 @@ steps:
      Examine the layout and structure of the repository.  Basically, it
      is mapped to the URL locations, more or less.  Take a look at the
      most important materials to translate under `/philosophy', `/gnu',
-     `/copyleft' and `/licenses' directories just to get a rough
-     estimate about the amount of work involved.  If you are still not
-     scared and determined to go on further, excellent.
+     `/ditros', `/copyleft' and `/licenses' directories just to get a
+     rough estimate about the amount of work involved.  If you are
+     still not scared and determined to go on further, excellent.
 
      As you have probably observed, every directory that contains
      translatable articles has a `/po' sub-directory, which is where the
@@ -442,7 +442,8 @@ steps:
      the project, go to `https://savannah.gnu.org/register/' and make
      sure you fill in the required fields.  The "Group type" should be
      `www.gnu.org translation team', and "Project license"--`WebSite
-     Only'.
+     Only'.  In the "Tarball URL" field enter a bogus URL such as
+     `http://gnu.org'.
 
      *Pay attention:* This step is a formality.  You should proceed
      with the project registration only when you have been asked by
