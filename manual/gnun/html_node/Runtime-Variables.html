@@ -3,14 +3,14 @@
 <title>Runtime Variables - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.13">
+<meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Invoking-GNUN.html#Invoking-GNUN" title="Invoking GNUN">
 <link rel="next" href="Special-Targets.html#Special-Targets" title="Special Targets">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 23 May 2009) is for GNUnited Nations
-(version 0.3),
+This manual (updated 1 August 2009) is for GNUnited Nations
+(version 0.3.1),
 a suite for maintaining translations of www.gnu.org essays and other
 articles.
 
@@ -39,8 +39,8 @@ Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<a name="Runtime-Variables"></a>
 <p>
+<a name="Runtime-Variables"></a>
 Next:&nbsp;<a rel="next" accesskey="n" href="Special-Targets.html#Special-Targets">Special Targets</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Invoking-GNUN.html#Invoking-GNUN">Invoking GNUN</a>
 <hr>
@@ -88,6 +88,12 @@ that the ultimate source is valid XHMTL.  Also, validates all
 generated translations in HTML format and all PO files.  It is highly
 recommended to run the build this way, even if it is a bit tedious to
 fix the errors that are reported as a result of enforcing validation.
+
+     <p>Articles defined in the variable <code>no-validate-articles</code> are never
+checked for HTML validity.  Its purpose is to skip validation of HTML 5
+articles, until the command-line validation tools are updated to parse
+files that comply with this new standard.  Use it sparingly, since this
+may lead to other errors.
 
      <p><a name="index-NOTIFY-10"></a><a name="index-mail_002c-notifications-11"></a><br><dt>&lsquo;<samp><span class="samp">NOTIFY=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Do not send email notifications about errors.  This is the default.
 

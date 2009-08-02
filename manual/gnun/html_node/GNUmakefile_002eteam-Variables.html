@@ -3,14 +3,14 @@
 <title>GNUmakefile.team Variables - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.13">
+<meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="PO-Files-and-Team.html#PO-Files-and-Team" title="PO Files and Team">
 <link rel="next" href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron" title="GNUmakefile.team and Cron">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 23 May 2009) is for GNUnited Nations
-(version 0.3),
+This manual (updated 1 August 2009) is for GNUnited Nations
+(version 0.3.1),
 a suite for maintaining translations of www.gnu.org essays and other
 articles.
 
@@ -39,9 +39,9 @@ Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 </head>
 <body>
 <div class="node">
+<p>
 <a name="GNUmakefile.team-Variables"></a>
 <a name="GNUmakefile_002eteam-Variables"></a>
-<p>
 Next:&nbsp;<a rel="next" accesskey="n" href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files-and-Team.html#PO-Files-and-Team">PO Files and Team</a>
 <hr>
@@ -78,8 +78,8 @@ defined to any string, it will have the same effect.
      <br><dt>&lsquo;<samp><span class="samp">VCS=yes</span></samp>&rsquo;<dd>Update both `www' and `www-<var>lang</var>' repositories, then commit the
 merged PO files in the latter repository.  By default, there is no VCS
 interaction.  The VCS of the translation project repository is
-determined automatically; currently only CVS, Subversion and
-<acronym>GNU</acronym> Arch repositories are supported.
+determined automatically; currently only CVS, Subversion, <acronym>GNU</acronym>
+Bzr and <acronym>GNU</acronym> Arch repositories are supported.
 
      <p><strong>Caution:</strong> The makefile rule will commit all local changes, not
 only those that resulted from running <samp><span class="command">msgmerge</span></samp>.  Thus, it is

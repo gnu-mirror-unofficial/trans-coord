@@ -3,7 +3,7 @@
 <title>Savannah VCS - GNU Web Translators Manual</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNU Web Translators Manual">
-<meta name="generator" content="makeinfo 4.13">
+<meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Savannah.html#Savannah" title="Savannah">
 <link rel="prev" href="Savannah-Mailing-Lists.html#Savannah-Mailing-Lists" title="Savannah Mailing Lists">
@@ -11,8 +11,8 @@
 <!--
 This manual is a guide for the GNU Web Translators.
 
-Last updated on 26.04.2009, for GNUnited Nations
-version 0.3.
+Last updated on 28.07.2009, for GNUnited Nations
+version 0.3.1.
 
    Copyright (C) 2009 Free Software Foundation, Inc.
 
@@ -38,8 +38,8 @@ version 0.3.
 </head>
 <body>
 <div class="node">
-<a name="Savannah-VCS"></a>
 <p>
+<a name="Savannah-VCS"></a>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="Savannah-Mailing-Lists.html#Savannah-Mailing-Lists">Savannah Mailing Lists</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Savannah.html#Savannah">Savannah</a>
 <hr>
@@ -62,6 +62,37 @@ matter&mdash;some modern ones provide compelling features, but they also
 bump the barrier for participation higher.  The VCS is supposed to ease
 collaborative maintenance&mdash;if it eases only you, project members just
 won't use so that won't be a net win.
+
+<h5 class="subsubheading">Web-based Systems</h5>
+
+<p>An alternative way to maintain translations is to use one of the
+existing online editors.  There are plans to install a web-based system
+for managing <samp><span class="file">.po</span></samp> files at Savannah, including online editing and
+statistics.  Until it happens, teams who wish to use this functionality
+may setup such a server on a host of their own, or use one of the
+existing free hosting platforms such as Launchpad
+(<a href="http://translations.launchpad.net">http://translations.launchpad.net</a>).
+
+   <p>Here is a short and probably incomplete list of such systems:
+
+     <ul>
+<li>Pootle&mdash;<a href="http://translate.sourceforge.net/wiki/pootle">http://translate.sourceforge.net/wiki/pootle</a>
+
+     <li>Vertaal&mdash;<a href="http://code.google.com/p/vertaal">http://code.google.com/p/vertaal</a>
+
+     <li>Narro&mdash;<a href="http://code.google.com/p/narro">http://code.google.com/p/narro</a>
+
+     <li>Launchpad&mdash;<a href="https://dev.launchpad.net">https://dev.launchpad.net</a>
+
+   </ul>
+
+   <p>If you decide to use such a system, please make sure that no
+translations are published in HTML format there.
+
+   <p>Note that to keep the <samp><span class="file">.pot</span></samp> files regularly updated (assuming such
+a web-based system runs <samp><span class="command">msgmerge</span></samp> automatically), you'll have
+to take care of the one-way regular sync from the &lsquo;<samp><span class="samp">www</span></samp>&rsquo; CVS
+repository.
 
    </body></html>
 
