@@ -1,12 +1,12 @@
 <html lang="en">
 <head>
-<title>Scripts - GNUnited Nations</title>
+<title>gnun-clear-previous - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Internals.html#Internals" title="Internals">
-<link rel="next" href="Rules.html#Rules" title="Rules">
+<link rel="up" href="Scripts.html#Scripts" title="Scripts">
+<link rel="prev" href="validate_002dhtml_002dnotify.html#validate_002dhtml_002dnotify" title="validate-html-notify">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (updated 10 November 2009) is for GNUnited Nations
@@ -39,30 +39,35 @@ Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<a name="Scripts"></a>
+<a name="gnun-clear-previous"></a>
+<a name="gnun_002dclear_002dprevious"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Rules.html#Rules">Rules</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Internals.html#Internals">Internals</a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="validate_002dhtml_002dnotify.html#validate_002dhtml_002dnotify">validate-html-notify</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Scripts.html#Scripts">Scripts</a>
 <hr>
 </div>
 
-<h3 class="section">3.1 Internally Used Scripts</h3>
+<h4 class="subsection">3.1.5 The <samp><span class="command">gnun-clear-previous</span></samp> Script</h4>
 
-<p>For the time being there are several helper scripts, used internally
-as commands with certain arguments in the makefile rules.  They can be
-invoked separately, as stand-alone programs, and sometimes they are
-useful on their own.
+<p><a name="index-previous_002c-manipulating-PO-files-77"></a>
+This simple script is not used internally in <acronym>GNUN</acronym>.  It is
+merely for convenience only, for those who find it hard to remember the
+various &lsquo;<samp><span class="samp">gettext</span></samp>&rsquo; tools and their options.
 
-   <p>The <samp><span class="command">gnun-clear-previous</span></samp> script is an exception&mdash;it is not
-used in <acronym>GNUN</acronym>'s rules at all.
+   <p><samp><span class="command">gnun-clear-previous</span></samp> deletes the <dfn>previous</dfn> messages in a
+PO file, which is a good thing to do after the corresponding translation
+is updated and the <dfn>fuzzy</dfn> marker removed.  It can also be used to
+wrap long lines in PO files.
 
-<ul class="menu">
-<li><a accesskey="1" href="make_002dprototype.html#make_002dprototype">make-prototype</a>
-<li><a accesskey="2" href="gnun_002dvalidate_002dhtml.html#gnun_002dvalidate_002dhtml">gnun-validate-html</a>
-<li><a accesskey="3" href="mailfail.html#mailfail">mailfail</a>
-<li><a accesskey="4" href="validate_002dhtml_002dnotify.html#validate_002dhtml_002dnotify">validate-html-notify</a>
-<li><a accesskey="5" href="gnun_002dclear_002dprevious.html#gnun_002dclear_002dprevious">gnun-clear-previous</a>
-</ul>
+   <p>Usage:
+
+<pre class="example">     gnun-clear-previous FILE
+</pre>
+     <dl>
+<dt><samp><span class="option">--version</span></samp><dd>Print copyright and version information on the standard output.
+
+     <br><dt><samp><span class="option">--help</span></samp><dd>Print usage information on stdout. 
+</dl>
 
    </body></html>
 

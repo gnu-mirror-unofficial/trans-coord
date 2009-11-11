@@ -3,15 +3,15 @@
 <title>triggers - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.11">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Special-Targets.html#Special-Targets" title="Special Targets">
 <link rel="prev" href="report.html#report" title="report">
 <link rel="next" href="clean.html#clean" title="clean">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 1 August 2009) is for GNUnited Nations
-(version 0.3.1),
+This manual (updated 10 November 2009) is for GNUnited Nations
+(version 0.4),
 a suite for maintaining translations of www.gnu.org essays and other
 articles.
 
@@ -40,8 +40,8 @@ Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<p>
 <a name="triggers"></a>
+<p>
 Next:&nbsp;<a rel="next" accesskey="n" href="clean.html#clean">clean</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="report.html#report">report</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">Special Targets</a>
@@ -50,9 +50,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">S
 
 <h5 class="subsubsection">2.1.2.3 The <code>triggers</code> target</h5>
 
-<p>This is a special target intended to be run by the automatic build
-after the main build and <em>after</em> <code>cvs commit</code>.
+<p>This is a special target intended to be run by the automatic build after
+the main build and <em>after</em> <code>cvs|svn commit</code>.
 
+<!-- FIXME: Check how Subversion behaves with keywords and update the -->
+<!-- paragraph below. -->
    <p>When a <acronym>GNUN</acronym> build completes and some translations fail at the
 XHTML validation stage, the result is checked in the repository, as
 explained earlier (see <a href="Runtime-Variables.html#Runtime-Variables">Runtime Variables</a>).  Thus, CVS updates the
@@ -72,9 +74,9 @@ based on the timestamp of the target that must be rebuilt.  Finally, it
 deletes all those <samp><span class="file">*.hook</span></samp> files.
 
    <p>To summarize, for effective operation <acronym>GNUN</acronym> should be invoked
-automatically as <code>make ; cvs commit -m ... ; make triggers</code>. 
-To illustrate this, here is a concrete example showing the official job
-running at fencepost.gnu.org:
+automatically as <code>make ; cvs|svn commit -m ... ; make
+triggers</code>.  To illustrate this, here is a concrete example showing the
+official job running at fencepost.gnu.org:
 
 <pre class="example">     25 4,16 * * *  cd $HOME/projects/www ; cvs -q update &amp;&gt;/dev/null ; \
                       make -j4 -C server/gnun VCS=yes VALIDATE=yes NOTIFY=yes \

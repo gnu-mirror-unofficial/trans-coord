@@ -3,14 +3,14 @@
 <title>Webmaster Tips - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.11">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Usage.html#Usage" title="Usage">
 <link rel="prev" href="PO-Files.html#PO-Files" title="PO Files">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 1 August 2009) is for GNUnited Nations
-(version 0.3.1),
+This manual (updated 10 November 2009) is for GNUnited Nations
+(version 0.4),
 a suite for maintaining translations of www.gnu.org essays and other
 articles.
 
@@ -39,8 +39,8 @@ Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<p>
 <a name="Webmaster-Tips"></a>
+<p>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="PO-Files.html#PO-Files">PO Files</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Usage.html#Usage">Usage</a>
 <hr>
@@ -48,7 +48,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Usage.html#Usage">Usage</a>
 
 <h3 class="section">2.4 Tips and Hints for Webmasters</h3>
 
-<p><a name="index-tips_002c-webmasters-68"></a><a name="index-webmaster-tips-69"></a>
+<p><a name="index-tips_002c-webmasters-70"></a><a name="index-webmaster-tips-71"></a>
 This section contains some tips and general recommendations for
 webmasters in no particular order&mdash;it is not mandatory to follow them,
 but doing so will make translators' lives substantially easier.
@@ -68,8 +68,8 @@ in the next run.
 This is required because the English text in the articles serves as a
 replacement of the translation when the latter is not complete.  So if
 you use, say, the character &eacute; (e-acute) directly in an English
-page&mdash;which is UTF-8 as declared in <samp><span class="file">server/header.html</span></samp>, it
-will appear broken on those translated pages who use a different
+page&mdash;which is UTF-8 as declared in <samp><span class="file">server/head-include-1.html</span></samp>,
+it will appear broken on those translated pages who use a different
 encoding.  This specific advice is pretty much mandatory&mdash;the build
 fails if the original article contains such characters&mdash;but we are
 ready to fix any errors a webmaster makes.

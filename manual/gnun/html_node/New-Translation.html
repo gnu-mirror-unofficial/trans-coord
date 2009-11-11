@@ -3,14 +3,14 @@
 <title>New Translation - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.11">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="PO-Files.html#PO-Files" title="PO Files">
 <link rel="next" href="Migrating.html#Migrating" title="Migrating">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 1 August 2009) is for GNUnited Nations
-(version 0.3.1),
+This manual (updated 10 November 2009) is for GNUnited Nations
+(version 0.4),
 a suite for maintaining translations of www.gnu.org essays and other
 articles.
 
@@ -39,8 +39,8 @@ Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<p>
 <a name="New-Translation"></a>
+<p>
 Next:&nbsp;<a rel="next" accesskey="n" href="Migrating.html#Migrating">Migrating</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
 <hr>
@@ -48,7 +48,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
 
 <h4 class="subsection">2.3.1 Starting a New Translation</h4>
 
-<p><a name="index-translation_002c-new-40"></a><a name="index-new-translation-41"></a>
+<p><a name="index-translation_002c-new-42"></a><a name="index-new-translation-43"></a>
 To start a new translation, the easiest way is to copy the existing POT
 as <samp><span class="file">article.</span><var>lang</var><span class="file">.po</span></samp>, where <var>lang</var> is your language code. 
 For example, to prepare for a new translation of the essay
@@ -88,10 +88,10 @@ environment is set up correctly.  See <a href="../gettext/msginit-Invocation.htm
 conventions, and the rules for gnu.org translations.  For reference,
 here is a list with all fields explained:
 
-   <p><a name="index-PO-headers-42"></a>
+   <p><a name="index-PO-headers-44"></a>
      <dl>
 <dt>&lsquo;<samp><span class="samp">Project-Id-Version</span></samp>&rsquo;<dd>Add here the filename of the original article, without the
-sub-directory, like &ldquo;banner.html&rdquo; or &ldquo;free-sw.html&rdquo;.
+sub-directory, like &ldquo;body-include-1.html&rdquo; or &ldquo;free-sw.html&rdquo;.
 
      <br><dt>&lsquo;<samp><span class="samp">POT-Creation-Date</span></samp>&rsquo;<dd>Do not edit this field, it is already set when the POT is created.
 
@@ -149,20 +149,20 @@ simply pressing &lt;TAB&gt; in PO mode).
    <p>There are some special messages that appear in the POT and PO:
 
      
-<a name="index-notes_002c-translators-43"></a>
-<a name="index-translators_0027-notes-44"></a>
+<a name="index-notes_002c-translators-45"></a>
+<a name="index-translators_0027-notes-46"></a>
 <dl><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S NOTES*</span></samp>&rsquo;<dd>This is for translator's notes that are injected in the resulting
 translation.  See <a href="Notes-Slot.html#Notes-Slot">Notes Slot</a>, for more information.  If your
 translation does not have notes, you <em>must</em> translate this as a
 space, that is, &lt;SPC&gt;.
 
-     <p><a name="index-credits_002c-translators-45"></a><a name="index-translators_0027-credits-46"></a><br><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S CREDITS*</span></samp>&rsquo;<dd>This is again optional, and should contain the name (and address) of
+     <p><a name="index-credits_002c-translators-47"></a><a name="index-translators_0027-credits-48"></a><br><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S CREDITS*</span></samp>&rsquo;<dd>This is again optional, and should contain the name (and address) of
 the person who made the translation.  &ldquo;Translate&rdquo; this string as a
 space (&lt;SPC&gt;) if you do not want your name to appear there. 
 See <a href="Credits-Slot.html#Credits-Slot">Credits Slot</a>. 
 </dl>
 
-   <p><a name="index-wrapping-long-lines-47"></a><a name="index-long-lines_002c-wrap-48"></a>Most of the PO editors do not wrap long lines that inevitably appear in
+   <p><a name="index-wrapping-long-lines-49"></a><a name="index-long-lines_002c-wrap-50"></a>Most of the PO editors do not wrap long lines that inevitably appear in
 <code>msgstr</code>'s.  If that happens, long lines make reading subsequent
 diffs harder, and are generally annoying for most people.  If this issue
 bothers you, you can &ldquo;normalize&rdquo; the already finished PO translation

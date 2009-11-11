@@ -49,7 +49,7 @@ GNU Web Translators Manual
 **************************
 
 This manual is a guide for the GNU Web Translators.
-Last updated on 28.07.2009, for GNUnited Nations version 0.3.1.
+Last updated on 10.11.2009, for GNUnited Nations version 0.4.
 
    Copyright (C) 2009 Free Software Foundation, Inc.
 
@@ -222,8 +222,10 @@ steps to produce and submit such a translation:
      templates available as PO files.  These templates are short, and
      translating them shouldn't take much time.  If the language code
      is present in the `TEMPLATE_LINGUAS' variable at
-     `server/gnun/gnun.mk', then you don't have to do anything.  If
-     not, the required files are `server/po/banner.LANG.po' and
+     `server/gnun/gnun.mk', then you don't have to do anything.  If it
+     is not, the required files are `server/po/head-include-2.LANG.po',
+     `server/po/body-include-1.LANG.po',
+     `server/po/body-include-2.LANG.po' and
      `server/po/footer-text.LANG.po'--you can translate and submit them
      in the usual way, together with the translation of the essay.
 
@@ -376,11 +378,12 @@ steps:
      recommended in the beginning of this section), check if your
      language code is present in the variable `TEMPLATE_LINGUAS' at
      `server/gnun/gnun.mk'.  If it is not, the first thing to do is to
-     translate and submit to <web-translators@gnu.org> the files
-     `server/po/banner.LANG.po' and `server/po/footer-text.LANG.po',
-     together with your first message stating that you would like to
-     establish a new team.  *Note New Translation: (gnun)New
-     Translation.
+     translate and submit to <web-translators@gnu.org> the following
+     files (all in the `server/po/' directory):
+     `head-include-2.LANG.po', `body-include-1.LANG.po',
+     `body-include-2.LANG.po' and `footer-text.LANG.po', together with
+     your first message stating that you would like to establish a new
+     team.  *Note New Translation: (gnun)New Translation.
 
         - The language code (LANG) should be the ISO 639-1 code of the
           language, for example `hy' for Armenian or `el' for Greek.  If
@@ -1059,12 +1062,20 @@ of them manual intervention is needed.  Here is a (possibly incomplete)
 list of the `#include''s used:
 
 `server/banner.html'
+     This file contains only `#include' directives, so the
+     "translation" should be identical, with filenames modified to have
+     the LANG extension.
+
+`server/body-include-1.html'
+     Contains the top menu with useful "skip to" links.
+
+`server/body-include-2.html'
      This is the file containing the menus, the FSF widget, and any
      visible announcements made from time to time.  If a string gets
      "fuzzy" or "new" here, it will appear in English in all
-     translations, until `server/po/banner.LANG.po' is updated.  Note
-     that some validation errors originate from an error in
-     `server/banner.LANG.html'.
+     translations, until `server/po/body-include-2.LANG.po' is updated.
+     Note that some validation errors originate from an error in
+     `server/body-include-2.LANG.html' or some other template file.
 
 `server/footer-text.html'
      This is a very short file currently containing the "back to top"
@@ -1080,6 +1091,18 @@ list of the `#include''s used:
 
           <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" lang="ar"
                 dir="rtl">
+
+`server/head-include-1.html'
+     This file (included from `server/header.html') is very important:
+     the encoding is defined here.  Note that it is applicable for all
+     translations, so it is not possible to have different articles in
+     different encodings.  Even if a specific PO file is deliberately
+     encoded in another encoding, the generated HTML will contain the
+     encoding declared in the `<meta>' element at
+     `server/head-include-1.LANG.html', so browsers will obey it.
+
+`server/head-include-2.html'
+     Imports the standard CSS, which can be overriden.  *Note CSS::.
 
 `server/footer.html'
      This is a very short and simple file (at least at the time of
@@ -1126,15 +1149,16 @@ list of the `#include''s used:
      migrated and none of them includes such files, you should delete
      them.  You can use `grep' to check this.
 
-   The files `header.html', `banner.html', `footer.html' and
-`footer-text.html' in the `server' sub-directory are what webmasters
-call "the server templates".  These files are included in almost every
-article, translated or not.  They are somewhat important, as an error
-made in translating them propagates everywhere.  The server templates,
-the homepages, and whatsnew (a.k.a. "GNU News") are being rebuilt by
-GNUN whenever there is a change in the original English files; the
-`GRACE' variable has no effect for them.  *Note Runtime Variables:
-(gnun)Runtime Variables.
+   The files `header.html', `head-include-1.html',
+`head-include-2.html', `banner.html', `body-include-1.html',
+`body-include-2.html', `footer.html' and `footer-text.html' in the
+`server' sub-directory are what webmasters call "the server templates".
+These files are included in almost every article, translated or not.
+They are somewhat important, as an error made in translating them
+propagates everywhere.  The server templates, the homepages, and
+whatsnew (a.k.a. "GNU News") are being rebuilt by GNUN whenever there
+is a change in the original English files; the `GRACE' variable has no
+effect for them.  *Note Runtime Variables: (gnun)Runtime Variables.
 
 5.3 How To Use Custom CSS
 =========================
@@ -1144,7 +1168,7 @@ It includes two other files, which form the actual CSS style used.
 However, this style is seldom right for translations--many languages
 have much longer expressions, and that is natural.  To include your own
 CSS, create a file `style.LANG.css' and add it _after_ the original
-`style.css' in your `server/po/banner.LANG.po', i.e.
+`style.css' in your `server/po/head-include-2.LANG.po', i.e.
 
      # type: style
      msgid "@import url('/style.css');"
@@ -1192,8 +1216,9 @@ System" to appear in your native language, here are the steps:
 
           #logo{background:url(/graphics/topbanner.LANG.png) no-repeat;}
 
-  3. If not done already for other reasons, update `banner.LANG.po' to
-     include the language specific `style.LANG.css'.  *Note CSS::.
+  3. If not done already for other reasons, update
+     `head-include-2.LANG.po' to include the language specific
+     `style.LANG.css'.  *Note CSS::.
 
    If you feel uncomfortable manipulating images--don't despair!  Send a
 plea for help to <trans-coord-discuss@gnu.org>, some people would be

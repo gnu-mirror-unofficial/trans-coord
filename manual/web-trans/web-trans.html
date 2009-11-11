@@ -3,14 +3,14 @@
 <title>GNU Web Translators Manual</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNU Web Translators Manual">
-<meta name="generator" content="makeinfo 4.11">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="top" href="#Top">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual is a guide for the GNU Web Translators.
 
-Last updated on 28.07.2009, for GNUnited Nations
-version 0.3.1.
+Last updated on 10.11.2009, for GNUnited Nations
+version 0.4.
 
    Copyright (C) 2009 Free Software Foundation, Inc.
 
@@ -105,8 +105,8 @@ version 0.3.1.
 
 
 <div class="node">
-<p><hr>
 <a name="Top"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Introduction">Introduction</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 
@@ -115,8 +115,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 <h2 class="unnumbered">GNU Web Translators Manual</h2>
 
 <p>This manual is a guide for the <acronym>GNU</acronym> Web Translators.<br>
-Last updated on 28.07.2009, for <acronym>GNU</acronym>nited Nations
-version 0.3.1.
+Last updated on 10.11.2009, for <acronym>GNU</acronym>nited Nations
+version 0.4.
    <pre class="sp">
 
 </pre>
@@ -144,8 +144,8 @@ entitled &ldquo;<acronym>GNU</acronym> Free Documentation License.&rdquo;
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Introduction"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Members">Members</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
@@ -201,8 +201,8 @@ describes all the responsibilities and procedures involved in performing
 this duty.  See <a href="#Translation-Managers">Translation Managers</a>.
 
 <div class="node">
-<p><hr>
 <a name="Members"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Leaders">Leaders</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Introduction">Introduction</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
@@ -224,8 +224,8 @@ terminology issues, and sometimes performing clean-up tasks.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Joining"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Submitting">Submitting</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Members">Members</a>
 
@@ -286,8 +286,8 @@ two weeks), please write to <a href="mailto:web-translators@gnu.org">web-transla
 see <a href="#Translation-Tips">Translation Tips</a>.
 
 <div class="node">
-<p><hr>
 <a name="Submitting"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Leaving-A-Team">Leaving A Team</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Joining">Joining</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Members">Members</a>
@@ -308,8 +308,8 @@ Managers) to convert the translation in <samp><span class="file">.po</span></sam
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Submitting-as-PO"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Submitting-as-Plain-Text">Submitting as Plain Text</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Submitting">Submitting</a>
 
@@ -356,8 +356,10 @@ a gettextized translation, the language should have the server templates
 available as PO files.  These templates are short, and translating them
 shouldn't take much time.  If the language code is present in the
 <code>TEMPLATE_LINGUAS</code> variable at <samp><span class="file">server/gnun/gnun.mk</span></samp>, then you
-don't have to do anything.  If not, the required files are
-<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp> and
+don't have to do anything.  If it is not, the required files are
+<samp><span class="file">server/po/head-include-2.</span><var>lang</var><span class="file">.po</span></samp>,
+<samp><span class="file">server/po/body-include-1.</span><var>lang</var><span class="file">.po</span></samp>,
+<samp><span class="file">server/po/body-include-2.</span><var>lang</var><span class="file">.po</span></samp> and
 <samp><span class="file">server/po/footer-text.</span><var>lang</var><span class="file">.po</span></samp>&mdash;you can translate and
 submit them in the usual way, together with the translation of the
 essay.
@@ -376,8 +378,8 @@ some modifications to it, usually to fix validation errors and to
 complete the PO file header.
 
 <div class="node">
-<p><hr>
 <a name="Submitting-as-Plain-Text"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Submitting-as-PO">Submitting as PO</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Submitting">Submitting</a>
 
@@ -442,8 +444,8 @@ check for any errors or omissions that may have resulted from the
 conversion process, and report them back.
 
 <div class="node">
-<p><hr>
 <a name="Leaving-A-Team"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Submitting">Submitting</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Members">Members</a>
 
@@ -460,8 +462,8 @@ establish that.  Your announcement that you are stepping down
 (temporarily or permanently) may help her in this regard.
 
 <div class="node">
-<p><hr>
 <a name="Leaders"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Translation-Managers">Translation Managers</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Members">Members</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
@@ -493,8 +495,8 @@ replaced, if necessary.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="New-Team"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Managing">Managing</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Leaders">Leaders</a>
 
@@ -545,10 +547,12 @@ new canonical source format of the translations is stored.
 recommended in the beginning of this section), check if your language
 code is present in the variable <code>TEMPLATE_LINGUAS</code> at
 <samp><span class="file">server/gnun/gnun.mk</span></samp>.  If it is not, the first thing to do is to
-translate and submit to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> the files
-<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp> and
-<samp><span class="file">server/po/footer-text.</span><var>lang</var><span class="file">.po</span></samp>, together with your first
-message stating that you would like to establish a new team.  See <a href="gnun.html#New-Translation">New Translation</a>.
+translate and submit to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> the following
+files (all in the <samp><span class="file">server/po/</span></samp> directory):
+<samp><span class="file">head-include-2.</span><var>lang</var><span class="file">.po</span></samp>,
+<samp><span class="file">body-include-1.</span><var>lang</var><span class="file">.po</span></samp>, <samp><span class="file">body-include-2.</span><var>lang</var><span class="file">.po</span></samp>
+and <samp><span class="file">footer-text.</span><var>lang</var><span class="file">.po</span></samp>, together with your first message
+stating that you would like to establish a new team.  See <a href="gnun.html#New-Translation">New Translation</a>.
 
           <ul>
 <li>The language code (<var>lang</var>) should be the ISO 639-1 code of the
@@ -659,8 +663,8 @@ the new appointed team co-ordinator, and ask them if they would be
 willing to continue their involvement in the team.
 
 <div class="node">
-<p><hr>
 <a name="Managing"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Reports">Reports</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#New-Team">New Team</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Leaders">Leaders</a>
@@ -696,8 +700,8 @@ anything related to the translation process there.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Review"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Commits">Commits</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Managing">Managing</a>
 
@@ -741,8 +745,8 @@ create some kind of review process.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Tracking-Tasks"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Unreviewed-Translations">Unreviewed Translations</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Review">Review</a>
 
@@ -834,8 +838,8 @@ See <a href="gnun.html#generic_002eLANG_002ehtml">generic.LANG.html</a>, for
 details.
 
 <div class="node">
-<p><hr>
 <a name="Unreviewed-Translations"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Tracking-Tasks">Tracking Tasks</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Review">Review</a>
 
@@ -856,8 +860,8 @@ implemented, it would mean leaving the relevant task &lsquo;<samp><span class="s
 You may also add a comment to the PO file.
 
 <div class="node">
-<p><hr>
 <a name="Commits"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah">Savannah</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Review">Review</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Managing">Managing</a>
@@ -942,8 +946,8 @@ moderated.  If you absolutely do not desire receiving all traffic, just
 disable mail delivery in Mailman's user interface.
 
 <div class="node">
-<p><hr>
 <a name="Savannah"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Co_002dleaders">Co-leaders</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Commits">Commits</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Managing">Managing</a>
@@ -1002,8 +1006,8 @@ they are just suggestions.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Savannah-Members"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Homepage">Savannah Homepage</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
 
@@ -1030,8 +1034,8 @@ count for the total number of members, and they appear separately on
 &lsquo;<samp><span class="samp">View Members</span></samp>&rsquo;.
 
 <div class="node">
-<p><hr>
 <a name="Savannah-Homepage"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Support">Savannah Support</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Members">Savannah Members</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
@@ -1065,8 +1069,8 @@ will be moved without warning to <samp><span class="file">/graveyard</span></sam
 be retained).
 
 <div class="node">
-<p><hr>
 <a name="Savannah-Support"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Tasks">Savannah Tasks</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Homepage">Savannah Homepage</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
@@ -1082,8 +1086,8 @@ action.  Do not use it for anything else as it quickly becomes
 confusing.  It is OK to disable it if the team is small.
 
 <div class="node">
-<p><hr>
 <a name="Savannah-Tasks"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Bugs">Savannah Bugs</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Support">Savannah Support</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
@@ -1104,8 +1108,8 @@ they intend to work on a specific translation.
    <p>Feel free to organize the &lsquo;<samp><span class="samp">Tasks</span></samp>&rsquo; management as you see fit.
 
 <div class="node">
-<p><hr>
 <a name="Savannah-Bugs"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Patch">Savannah Patch</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Tasks">Savannah Tasks</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
@@ -1129,8 +1133,8 @@ have such policy.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Savannah-Patch"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-News">Savannah News</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Bugs">Savannah Bugs</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
@@ -1149,8 +1153,8 @@ much better ways to submit patches nowadays.
    <p>You should disable this feature, as it causes only confusion.
 
 <div class="node">
-<p><hr>
 <a name="Savannah-News"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Mailing-Lists">Savannah Mailing Lists</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Patch">Savannah Patch</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
@@ -1172,8 +1176,8 @@ perfectly OK to announce it here.  Some teams use it to announce new
 translations, which is also fine.
 
 <div class="node">
-<p><hr>
 <a name="Savannah-Mailing-Lists"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-VCS">Savannah VCS</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-News">Savannah News</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
@@ -1193,8 +1197,8 @@ general), there is no reason at all to create a list at Savannah.
 (including those that are not on GNU servers).
 
 <div class="node">
-<p><hr>
 <a name="Savannah-VCS"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah-Mailing-Lists">Savannah Mailing Lists</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Savannah">Savannah</a>
 
@@ -1250,9 +1254,9 @@ to take care of the one-way regular sync from the &lsquo;<samp><span class="samp
 repository.
 
 <div class="node">
-<p><hr>
 <a name="Co-leaders"></a>
 <a name="Co_002dleaders"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Savannah">Savannah</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Managing">Managing</a>
 
@@ -1281,8 +1285,8 @@ removal.  Do not edit <samp><span class="file">README.translations.html</span></
 a final formality step to be performed by the Translation Managers.
 
 <div class="node">
-<p><hr>
 <a name="Reports"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Stepping-Down">Stepping Down</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Managing">Managing</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Leaders">Leaders</a>
@@ -1332,8 +1336,8 @@ each other about the progress improves the community spirit.
 please send it to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>.
 
 <div class="node">
-<p><hr>
 <a name="Stepping-Down"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Reports">Reports</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Leaders">Leaders</a>
 
@@ -1354,8 +1358,8 @@ person you consider capable of doing the job as co-leader
 to proceed without your further help and advice.
 
 <div class="node">
-<p><hr>
 <a name="Translation-Managers"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Translation-Tips">Translation Tips</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Leaders">Leaders</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
@@ -1368,8 +1372,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 hopefully.
 
 <div class="node">
-<p><hr>
 <a name="Translation-Tips"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Summary">Summary</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Translation-Managers">Translation Managers</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
@@ -1398,8 +1402,8 @@ webmastering processes.  Others are outright deficiencies
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Migrating"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#SSI">SSI</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
 
@@ -1418,8 +1422,8 @@ of the website are supposed to happen semi-automatically, although this
 manual will be updated as needed.
 
 <div class="node">
-<p><hr>
 <a name="SSI"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#CSS">CSS</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Migrating">Migrating</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
@@ -1435,12 +1439,19 @@ scenes, but for some of them manual intervention is needed.  Here is a
 (possibly incomplete) list of the <code>#include</code>'s used:
 
      <dl>
-<dt><samp><span class="file">server/banner.html</span></samp><dd>This is the file containing the menus, the FSF widget, and any visible
+<dt><samp><span class="file">server/banner.html</span></samp><dd>This file contains only <code>#include</code> directives, so the
+&ldquo;translation&rdquo; should be identical, with filenames modified to have the
+<var>lang</var> extension.
+
+     <br><dt><samp><span class="file">server/body-include-1.html</span></samp><dd>Contains the top menu with useful &ldquo;skip to&rdquo; links.
+
+     <br><dt><samp><span class="file">server/body-include-2.html</span></samp><dd>This is the file containing the menus, the FSF widget, and any visible
 announcements made from time to time.  If a string gets &ldquo;fuzzy&rdquo; or
 &ldquo;new&rdquo; here, it will appear in English in all translations, until
-<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp> is updated.  Note that some
-validation errors originate from an error in
-<samp><span class="file">server/banner.</span><var>lang</var><span class="file">.html</span></samp>.
+<samp><span class="file">server/po/body-include-2.</span><var>lang</var><span class="file">.po</span></samp> is updated.  Note that
+some validation errors originate from an error in
+<samp><span class="file">server/body-include-2.</span><var>lang</var><span class="file">.html</span></samp> or some other template
+file.
 
      <br><dt><samp><span class="file">server/footer-text.html</span></samp><dd>This is a very short file currently containing the &ldquo;back to top&rdquo; link. 
 Also translatable via <acronym>GNUN</acronym>.
@@ -1455,6 +1466,16 @@ for RTL languages, the <code>dir</code> attribute.  For example, the file
      <pre class="example">          &lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" lang="ar"
                 dir="rtl"&gt;
 </pre>
+     <br><dt><samp><span class="file">server/head-include-1.html</span></samp><dd>This file (included from <samp><span class="file">server/header.html</span></samp>) is very important:
+the encoding is defined here.  Note that it is applicable for all
+translations, so it is not possible to have different articles in
+different encodings.  Even if a specific PO file is deliberately encoded
+in another encoding, the generated HTML will contain the encoding
+declared in the <code>&lt;meta&gt;</code> element at
+<samp><span class="file">server/head-include-1.</span><var>lang</var><span class="file">.html</span></samp>, so browsers will obey it.
+
+     <br><dt><samp><span class="file">server/head-include-2.html</span></samp><dd>Imports the standard CSS, which can be overriden.  See <a href="#CSS">CSS</a>.
+
      <br><dt><samp><span class="file">server/footer.html</span></samp><dd>This is a very short and simple file (at least at the time of writing),
 containing another <code>#include</code> directive.  It is maintained
 manually, so just add <var>lang</var> to the filename, in order the localized
@@ -1490,19 +1511,21 @@ them includes such files, you should delete them.  You can use
 <samp><span class="command">grep</span></samp> to check this. 
 </dl>
 
-   <p>The files <samp><span class="file">header.html</span></samp>, <samp><span class="file">banner.html</span></samp>, <samp><span class="file">footer.html</span></samp> and
-<samp><span class="file">footer-text.html</span></samp> in the <samp><span class="file">server</span></samp> sub-directory are what
-webmasters call &ldquo;the server templates&rdquo;.  These files are included in
-almost every article, translated or not.  They are somewhat important,
-as an error made in translating them propagates everywhere.  The server
-templates, the homepages, and whatsnew (a.k.a. &ldquo;GNU News&rdquo;) are being
-rebuilt by <acronym>GNUN</acronym> whenever there is a change in the original
-English files; the <code>GRACE</code> variable has no effect for them. 
-See <a href="gnun.html#Runtime-Variables">Runtime Variables</a>.
+   <p>The files <samp><span class="file">header.html</span></samp>, <samp><span class="file">head-include-1.html</span></samp>,
+<samp><span class="file">head-include-2.html</span></samp>, <samp><span class="file">banner.html</span></samp>,
+<samp><span class="file">body-include-1.html</span></samp>, <samp><span class="file">body-include-2.html</span></samp>,
+<samp><span class="file">footer.html</span></samp> and <samp><span class="file">footer-text.html</span></samp> in the <samp><span class="file">server</span></samp>
+sub-directory are what webmasters call &ldquo;the server templates&rdquo;.  These
+files are included in almost every article, translated or not.  They are
+somewhat important, as an error made in translating them propagates
+everywhere.  The server templates, the homepages, and whatsnew
+(a.k.a. &ldquo;GNU News&rdquo;) are being rebuilt by <acronym>GNUN</acronym> whenever there
+is a change in the original English files; the <code>GRACE</code> variable has
+no effect for them.  See <a href="gnun.html#Runtime-Variables">Runtime Variables</a>.
 
 <div class="node">
-<p><hr>
 <a name="CSS"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Priorities">Priorities</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#SSI">SSI</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
@@ -1517,7 +1540,7 @@ used.  However, this style is seldom right for translations&mdash;many
 languages have much longer expressions, and that is natural.  To include
 your own CSS, create a file <samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp> and add it
 <em>after</em> the original <samp><span class="file">style.css</span></samp> in your
-<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp>, i.e.
+<samp><span class="file">server/po/head-include-2.</span><var>lang</var><span class="file">.po</span></samp>, i.e.
 
 <pre class="example">     # type: style
      msgid "@import url('/style.css');"
@@ -1552,8 +1575,8 @@ comment.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="topbanner"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#RTL">RTL</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#CSS">CSS</a>
 
@@ -1581,7 +1604,7 @@ namely:
      <pre class="example">          #logo{background:url(/graphics/topbanner.<var>lang</var>.png) no-repeat;}
 </pre>
      <li>If not done already for other reasons, update
-<samp><span class="file">banner.</span><var>lang</var><span class="file">.po</span></samp> to include the language specific
+<samp><span class="file">head-include-2.</span><var>lang</var><span class="file">.po</span></samp> to include the language specific
 <samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp>.  See <a href="#CSS">CSS</a>.
         </ol>
 
@@ -1591,8 +1614,8 @@ be happy to help you.  Failing that, write to
 <a href="mailto:www-discuss@gnu.org">www-discuss@gnu.org</a>.
 
 <div class="node">
-<p><hr>
 <a name="RTL"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#topbanner">topbanner</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#CSS">CSS</a>
 
@@ -1625,8 +1648,8 @@ affect your language and require a general solution, write to
 describing the problem.
 
 <div class="node">
-<p><hr>
 <a name="Priorities"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Capitalization">Capitalization</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#CSS">CSS</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
@@ -1669,8 +1692,8 @@ maintain localized &lsquo;<samp><span class="samp">gnunews</span></samp>&rsquo;.
 </dl>
 
 <div class="node">
-<p><hr>
 <a name="Capitalization"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Terminology">Terminology</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Priorities">Priorities</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
@@ -1699,8 +1722,8 @@ capitalized), but not &lsquo;<samp><span class="samp">Fran&ccedil;ais</span></sa
 them as &lsquo;<samp><span class="samp">fran&ccedil;ais</span></samp>&rsquo; or &lsquo;<samp><span class="samp">portugu&ecirc;s</span></samp>&rsquo;, respectively.
 
 <div class="node">
-<p><hr>
 <a name="Terminology"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Capitalization">Capitalization</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
 
@@ -1711,8 +1734,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Translation-Tips">Translation Tips</a>
 <p>This is a very important topic, not yet covered by this manual.
 
 <div class="node">
-<p><hr>
 <a name="Summary"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Copying-This-Manual">Copying This Manual</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Translation-Tips">Translation Tips</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
@@ -1743,8 +1766,8 @@ precisely to discuss improvements of  the translation process.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Mailing-Lists"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Savannah-Projects">Savannah Projects</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Summary">Summary</a>
 
@@ -1806,8 +1829,8 @@ particular article was not built at expected.
 </dl>
 
 <div class="node">
-<p><hr>
 <a name="Savannah-Projects"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mailing-Lists">Mailing Lists</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Summary">Summary</a>
 
@@ -1843,8 +1866,8 @@ are the team leader and the co-leaders, if any.
 </dl>
 
 <div class="node">
-<p><hr>
 <a name="Copying-This-Manual"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Summary">Summary</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 

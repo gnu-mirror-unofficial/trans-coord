@@ -36,6 +36,7 @@ GNUnited Nations
     3.1.2 The `gnun-validate-html' Script
     3.1.3 The `mailfail' Script
     3.1.4 The `validate-html-notify' Script
+    3.1.5 The `gnun-clear-previous' Script
   3.2 How The Recipes Work
 4 Reporting Bugs
 Appendix A GNU Free Documentation License
@@ -45,8 +46,8 @@ Index
 GNUnited Nations
 ****************
 
-This manual (updated 1 August 2009) is for GNUnited Nations (version
-0.3.1), a suite for maintaining translations of www.gnu.org essays and
+This manual (updated 10 November 2009) is for GNUnited Nations (version
+0.4), a suite for maintaining translations of www.gnu.org essays and
 other articles.
 
 Copyright (C) 2008, 2009 Free Software Foundation, Inc.
@@ -375,22 +376,23 @@ features will be implemented in a similar fashion.
      that expects assigning the value `no'.
 
 `VCS=yes'
-     Automatically add any new files in the repository.  These are any
-     POT files, if they are generated for the first time, and the
-     translated articles (`.LANG.html') in HTML format.  In addition, if
-     there is no `server/gnun/generic.LANG.html' file for the specific
-     language an article is being generated, an empty file will be
-     added.  Finally, any missing PO and their HTML counterparts of the
-     server templates will be added, computed on the basis of the
-     `template-files' variable.
+     Automatically add any new files in the repository (CVS or
+     Subversion--the repository type is auto-determined at build time).
+     These are any POT files, if they are generated for the first time,
+     and the translated articles (`.LANG.html') in HTML format.  In
+     addition, if there is no `server/gnun/generic.LANG.html' file for
+     the specific language an article is being generated, an empty file
+     will be added.  Finally, any missing PO and their HTML
+     counterparts of the server templates will be added, computed on
+     the basis of the `template-files' variable.
 
 `VCS=always'
      Because GNU Make considers the targets up-to-date after a
      successful build, if it was performed with no VCS interaction, the
      important newly created files will not be added (and committed
-     when you do `cvs commit') in the repository.  Assigning this value
-     enables additional check and forcefully adds all files.  Use it
-     sparingly, since it is very slow and generally less reliable.
+     when you do `cvs|svn commit') in the repository.  Assigning this
+     value enables additional check and forcefully adds all files.  Use
+     it sparingly, since it is very slow and generally less reliable.
 
 `VALIDATE=no'
 `...'
@@ -451,8 +453,8 @@ features will be implemented in a similar fashion.
    Note that `VCS=yes,always' is a valid combination: because POT files
 of the server templates are not handled by `always', running the build
 this way will commit any newly added files as specified in
-`TEMPLATE_LINGUAS' and will perform additional check at the end, `cvs
-add'-ing all necessary files.
+`TEMPLATE_LINGUAS' and will perform additional check at the end,
+`cvs|svn add'-ing all necessary files.
 
    When validation is enabled (i.e. with `VALIDATE=yes'), the original
 English articles are validated first, before any commands that generate
@@ -514,11 +516,12 @@ invocation.
 
    In addition, `sync' synchronizes all "verbatim" server templates
 that are not under GNUN's control, such as `server/header.html',
-`server/footer.html' and their translations, as defined in the
-`verbatim-templates' variable.  This is important, as these files may
-change in the master repository, while the validation of the html files
-in the development repository will be performed with the old templates
-expanded, thus making this specific test more or less bogus.
+`server/banner.html', `server/footer.html' and their translations, as
+defined in the `verbatim-templates' variable.  This is important, as
+these files may change in the master repository, while the validation
+of the html files in the development repository will be performed with
+the old templates expanded, thus making this specific test more or less
+bogus.
 
    `VCS=always' has no effect on this target, as well as `VALIDATE'.
 
@@ -542,8 +545,8 @@ developed, if you recall.
 2.1.2.3 The `triggers' target
 .............................
 
-This is a special target intended to be run by the automatic build
-after the main build and _after_ `cvs commit'.
+This is a special target intended to be run by the automatic build after
+the main build and _after_ `cvs|svn commit'.
 
    When a GNUN build completes and some translations fail at the XHTML
 validation stage, the result is checked in the repository, as explained
@@ -563,7 +566,7 @@ the target that must be rebuilt.  Finally, it deletes all those
 `*.hook' files.
 
    To summarize, for effective operation GNUN should be invoked
-automatically as `make ; cvs commit -m ... ; make triggers'.  To
+automatically as `make ; cvs|svn commit -m ... ; make triggers'.  To
 illustrate this, here is a concrete example showing the official job
 running at fencepost.gnu.org:
 
@@ -605,10 +608,13 @@ intervention.  If not, that is a bug that should be reported and fixed.
 `TEMPLATE_LINGUAS'
      A space-separated list with languages.  Add here your language code
      _if and only if_ you have all the SSI templates translated, and
-     have already committed in the repository both
-     `server/po/banner.LANG.po' and `server/po/footer-text.LANG.po', as
-     well as the templates that are not under GNUN's control and are
-     translated manually, like `server/header.LANG.html' and
+     have already committed in the repository all these template files:
+     `server/po/head-include-1.LANG.po',
+     `server/po/body-include-1.LANG.po',
+     `server/po/body-include-2.LANG.po',
+     `server/po/footer-text.LANG.po', as well as the templates that are
+     not under GNUN's control and are translated manually, like
+     `server/header.LANG.html', `server/banner.LANG.html' and
      `server/footer.LANG.html'.
 
 `HOME_LINGUAS'
@@ -732,7 +738,7 @@ here is a list with all fields explained:
 
 `Project-Id-Version'
      Add here the filename of the original article, without the
-     sub-directory, like "banner.html" or "free-sw.html".
+     sub-directory, like "body-include-1.html" or "free-sw.html".
 
 `POT-Creation-Date'
      Do not edit this field, it is already set when the POT is created.
@@ -1177,11 +1183,12 @@ To adjust the makefile for your team, you need to edit two variables.
      Set this to the language code, like `bg' or `pt-br'.
 
 `wwwdir'
-     The relative path to the working copy of the master `www'
-     repository.  So if you have checked out your project's Sources
-     repository at `~/projects/www-LANG' and the `www' Web repository at
-     `~/projects/www', the value of `wwwdir' should be `../www/'.  Note
-     the slash at the end, it is important.
+     The relative or absolute path to the working copy of the master
+     `www' repository.  So if you have checked out your project's
+     Sources repository at `~/projects/www-LANG' and the `www' Web
+     repository at `~/projects/www', the value of `wwwdir' should be
+     `../www/' or `/home/USER/projects/www/'.  Note the slash at the
+     end, it is important.
 
    Technically speaking, two variants of one language sharing the same
 project and repository (such as `zh-cn' and `zh-tw') are not
@@ -1201,8 +1208,8 @@ behavior of the build process.
      Update both `www' and `www-LANG' repositories, then commit the
      merged PO files in the latter repository.  By default, there is no
      VCS interaction.  The VCS of the translation project repository is
-     determined automatically; currently only CVS, Subversion, GNU Bzr
-     and GNU Arch repositories are supported.
+     determined automatically; currently only CVS, Subversion, GNU Bzr,
+     GNU Arch and Mercurial (Hg) repositories are supported.
 
      *Caution:* The makefile rule will commit all local changes, not
      only those that resulted from running `msgmerge'.  Thus, it is
@@ -1283,11 +1290,11 @@ in the next run.
 This is required because the English text in the articles serves as a
 replacement of the translation when the latter is not complete.  So if
 you use, say, the character e' (e-acute) directly in an English
-page--which is UTF-8 as declared in `server/header.html', it will
-appear broken on those translated pages who use a different encoding.
-This specific advice is pretty much mandatory--the build fails if the
-original article contains such characters--but we are ready to fix any
-errors a webmaster makes.
+page--which is UTF-8 as declared in `server/head-include-1.html', it
+will appear broken on those translated pages who use a different
+encoding.  This specific advice is pretty much mandatory--the build
+fails if the original article contains such characters--but we are
+ready to fix any errors a webmaster makes.
 
    The script `gnun-validate-html' is useful for webmasters who want to
 verify if their (potentially intrusive) changes result in a valid
@@ -1340,6 +1347,9 @@ For the time being there are several helper scripts, used internally as
 commands with certain arguments in the makefile rules.  They can be
 invoked separately, as stand-alone programs, and sometimes they are
 useful on their own.
+
+   The `gnun-clear-previous' script is an exception--it is not used in
+GNUN's rules at all.
 
 3.1.1 The `make-prototype' Script
 ---------------------------------
@@ -1479,6 +1489,28 @@ output of another program that it runs.
    The subject of the message is hardcoded in the script, since this
 wrapper has a specific task and cannot be used to invoke an arbitrary
 command--use `mailfail' for that.  *Note mailfail::.
+
+3.1.5 The `gnun-clear-previous' Script
+--------------------------------------
+
+This simple script is not used internally in GNUN.  It is merely for
+convenience only, for those who find it hard to remember the various
+`gettext' tools and their options.
+
+   `gnun-clear-previous' deletes the "previous" messages in a PO file,
+which is a good thing to do after the corresponding translation is
+updated and the "fuzzy" marker removed.  It can also be used to wrap
+long lines in PO files.
+
+   Usage:
+
+     gnun-clear-previous FILE
+
+`--version'
+     Print copyright and version information on the standard output.
+
+`--help'
+     Print usage information on stdout.
 
 3.2 How The Recipes Work
 ========================
@@ -1983,79 +2015,82 @@ permit their use in free software.
 Index
 *****
 
-ALL_DIRS:                                      See 2.2.      (line  627)
-articles in root directory, defining:          See 2.2.      (line  620)
-bugs, reporting:                               See 4.        (line 1491)
-conversion of existing translations:           See 2.3.2.    (line  926)
-credits, translators <1>:                      See 2.3.1.2.  (line  903)
-credits, translators:                          See 2.3.1.    (line  804)
-cron, team maintenance:                        See 2.3.6.2.  (line 1241)
-CVS:                                           See 2.1.1.    (line  371)
-deferred generation of articles:               See 2.1.1.    (line  433)
-defining articles in the root dir:             See 2.2.      (line  620)
-defining directories:                          See 2.2.      (line  627)
-defining homepage:                             See 2.2.      (line  614)
-defining templates:                            See 2.2.      (line  605)
-directories, defining:                         See 2.2.      (line  627)
-fuzzy strings:                                 See 2.1.1.    (line  433)
-generation, POT, .proto:                       See 3.1.1.    (line 1347)
-generic notice, translations:                  See 2.3.5.    (line 1073)
-gnun.mk:                                       See 2.2.      (line  592)
-gnunews:                                       See 2.3.3.    (line  970)
-gnusflashes:                                   See 2.3.3.    (line  970)
-GRACE:                                         See 2.1.1.    (line  433)
-grace period:                                  See 2.1.1.    (line  433)
-HOME_LINGUAS:                                  See 2.2.      (line  614)
-homepage, defining:                            See 2.2.      (line  614)
-invoking:                                      See 2.1.      (line  345)
-long lines, wrap:                              See 2.3.1.    (line  810)
-mail, notifications <1>:                       See 3.1.3.    (line 1416)
-mail, notifications:                           See 2.1.1.    (line  415)
-migration, translations:                       See 2.3.2.    (line  926)
-new translation:                               See 2.3.1.    (line  694)
-notes, translators <1>:                        See 2.3.1.1.  (line  856)
-notes, translators:                            See 2.3.1.    (line  798)
-NOTIFY:                                        See 2.1.1.    (line  415)
-output, detailed:                              See 2.1.1.    (line  426)
-PO editors:                                    See 2.3.      (line  660)
-PO headers:                                    See 2.3.1.    (line  733)
-PO, editing:                                   See 2.3.      (line  648)
-POT generation:                                See 3.1.1.    (line 1347)
-POT generation, articles:                      See 2.2.      (line  631)
-project repository:                            See 2.3.6.    (line 1098)
-prototype generation:                          See 3.1.1.    (line 1347)
-recommendations, PO files:                     See 2.3.4.    (line  996)
-reporting:                                     See 2.1.2.2.  (line  528)
-reporting bugs:                                See 4.        (line 1491)
-repository, translation project:               See 2.3.6.    (line 1098)
-ROOT:                                          See 2.2.      (line  620)
-sanity checks:                                 See 2.1.1.    (line  395)
-status, translations:                          See 2.1.2.2.  (line  528)
-synchronization, repository:                   See 2.1.2.1.  (line  493)
-TEAM:                                          See 2.1.1.    (line  445)
-team information:                              See 2.3.5.    (line 1073)
-team maintenance:                              See 2.3.6.    (line 1098)
-team maintenance, cron:                        See 2.3.6.2.  (line 1241)
-team workflow:                                 See 2.3.6.    (line 1116)
-TEMPLATE_LINGUAS:                              See 2.2.      (line  605)
-templates, defining:                           See 2.2.      (line  605)
-tips, translators:                             See 2.3.4.    (line  996)
-tips, webmasters:                              See 2.4.      (line 1267)
-translation, new:                              See 2.3.1.    (line  694)
-translators' credits <1>:                      See 2.3.1.2.  (line  903)
-translators' credits:                          See 2.3.1.    (line  804)
-translators' notes <1>:                        See 2.3.1.1.  (line  856)
-translators' notes:                            See 2.3.1.    (line  798)
-triggering, build:                             See 2.1.      (line  345)
-VALIDATE:                                      See 2.1.1.    (line  395)
-validation:                                    See 2.1.1.    (line  395)
-validation, XHTML:                             See 3.1.2.    (line 1400)
-variable, behavior:                            See 2.1.1.    (line  364)
-variable, team:                                See 2.1.1.    (line  445)
-variables <1>:                                 See 2.2.      (line  592)
-variables:                                     See 2.1.1.    (line  364)
-VCS:                                           See 2.1.1.    (line  371)
-VERBOSE:                                       See 2.1.1.    (line  426)
-webmaster tips:                                See 2.4.      (line 1267)
-whatsnew:                                      See 2.3.3.    (line  970)
-wrapping long lines:                           See 2.3.1.    (line  810)
+ALL_DIRS:                                      See 2.2.      (line  633)
+articles in root directory, defining:          See 2.2.      (line  626)
+bugs, reporting:                               See 4.        (line 1523)
+conversion of existing translations:           See 2.3.2.    (line  932)
+credits, translators <1>:                      See 2.3.1.2.  (line  909)
+credits, translators:                          See 2.3.1.    (line  810)
+cron, team maintenance:                        See 2.3.6.2.  (line 1248)
+CVS:                                           See 2.1.1.    (line  372)
+deferred generation of articles:               See 2.1.1.    (line  435)
+defining articles in the root dir:             See 2.2.      (line  626)
+defining directories:                          See 2.2.      (line  633)
+defining homepage:                             See 2.2.      (line  620)
+defining templates:                            See 2.2.      (line  608)
+directories, defining:                         See 2.2.      (line  633)
+fuzzy strings:                                 See 2.1.1.    (line  435)
+generation, POT, .proto:                       See 3.1.1.    (line 1357)
+generic notice, translations:                  See 2.3.5.    (line 1079)
+gnun.mk:                                       See 2.2.      (line  595)
+gnunews:                                       See 2.3.3.    (line  976)
+gnusflashes:                                   See 2.3.3.    (line  976)
+GRACE:                                         See 2.1.1.    (line  435)
+grace period:                                  See 2.1.1.    (line  435)
+HOME_LINGUAS:                                  See 2.2.      (line  620)
+homepage, defining:                            See 2.2.      (line  620)
+invoking:                                      See 2.1.      (line  346)
+long lines, wrap:                              See 2.3.1.    (line  816)
+mail, notifications <1>:                       See 3.1.3.    (line 1426)
+mail, notifications:                           See 2.1.1.    (line  417)
+migration, translations:                       See 2.3.2.    (line  932)
+new translation:                               See 2.3.1.    (line  700)
+notes, translators <1>:                        See 2.3.1.1.  (line  862)
+notes, translators:                            See 2.3.1.    (line  804)
+NOTIFY:                                        See 2.1.1.    (line  417)
+output, detailed:                              See 2.1.1.    (line  428)
+PO editors:                                    See 2.3.      (line  666)
+PO headers:                                    See 2.3.1.    (line  739)
+PO, editing:                                   See 2.3.      (line  654)
+POT generation:                                See 3.1.1.    (line 1357)
+POT generation, articles:                      See 2.2.      (line  637)
+previous, manipulating PO files:               See 3.1.5.    (line 1496)
+project repository:                            See 2.3.6.    (line 1104)
+prototype generation:                          See 3.1.1.    (line 1357)
+recommendations, PO files:                     See 2.3.4.    (line 1002)
+reporting:                                     See 2.1.2.2.  (line  531)
+reporting bugs:                                See 4.        (line 1523)
+repository, translation project:               See 2.3.6.    (line 1104)
+ROOT:                                          See 2.2.      (line  626)
+sanity checks:                                 See 2.1.1.    (line  397)
+status, translations:                          See 2.1.2.2.  (line  531)
+Subversion:                                    See 2.1.1.    (line  372)
+SVN:                                           See 2.1.1.    (line  372)
+synchronization, repository:                   See 2.1.2.1.  (line  495)
+TEAM:                                          See 2.1.1.    (line  447)
+team information:                              See 2.3.5.    (line 1079)
+team maintenance:                              See 2.3.6.    (line 1104)
+team maintenance, cron:                        See 2.3.6.2.  (line 1248)
+team workflow:                                 See 2.3.6.    (line 1122)
+TEMPLATE_LINGUAS:                              See 2.2.      (line  608)
+templates, defining:                           See 2.2.      (line  608)
+tips, translators:                             See 2.3.4.    (line 1002)
+tips, webmasters:                              See 2.4.      (line 1274)
+translation, new:                              See 2.3.1.    (line  700)
+translators' credits <1>:                      See 2.3.1.2.  (line  909)
+translators' credits:                          See 2.3.1.    (line  810)
+translators' notes <1>:                        See 2.3.1.1.  (line  862)
+translators' notes:                            See 2.3.1.    (line  804)
+triggering, build:                             See 2.1.      (line  346)
+VALIDATE:                                      See 2.1.1.    (line  397)
+validation:                                    See 2.1.1.    (line  397)
+validation, XHTML:                             See 3.1.2.    (line 1410)
+variable, behavior:                            See 2.1.1.    (line  365)
+variable, team:                                See 2.1.1.    (line  447)
+variables <1>:                                 See 2.2.      (line  595)
+variables:                                     See 2.1.1.    (line  365)
+VCS:                                           See 2.1.1.    (line  372)
+VERBOSE:                                       See 2.1.1.    (line  428)
+webmaster tips:                                See 2.4.      (line 1274)
+whatsnew:                                      See 2.3.3.    (line  976)
+wrapping long lines:                           See 2.3.1.    (line  816)

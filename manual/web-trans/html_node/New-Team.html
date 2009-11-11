@@ -3,7 +3,7 @@
 <title>New Team - GNU Web Translators Manual</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNU Web Translators Manual">
-<meta name="generator" content="makeinfo 4.11">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Leaders.html#Leaders" title="Leaders">
 <link rel="next" href="Managing.html#Managing" title="Managing">
@@ -11,8 +11,8 @@
 <!--
 This manual is a guide for the GNU Web Translators.
 
-Last updated on 28.07.2009, for GNUnited Nations
-version 0.3.1.
+Last updated on 10.11.2009, for GNUnited Nations
+version 0.4.
 
    Copyright (C) 2009 Free Software Foundation, Inc.
 
@@ -38,8 +38,8 @@ version 0.3.1.
 </head>
 <body>
 <div class="node">
-<p>
 <a name="New-Team"></a>
+<p>
 Next:&nbsp;<a rel="next" accesskey="n" href="Managing.html#Managing">Managing</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Leaders.html#Leaders">Leaders</a>
 <hr>
@@ -90,10 +90,12 @@ new canonical source format of the translations is stored.
 recommended in the beginning of this section), check if your language
 code is present in the variable <code>TEMPLATE_LINGUAS</code> at
 <samp><span class="file">server/gnun/gnun.mk</span></samp>.  If it is not, the first thing to do is to
-translate and submit to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> the files
-<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp> and
-<samp><span class="file">server/po/footer-text.</span><var>lang</var><span class="file">.po</span></samp>, together with your first
-message stating that you would like to establish a new team.  See <a href="../gnun/New-Translation.html#New-Translation">New Translation</a>.
+translate and submit to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> the following
+files (all in the <samp><span class="file">server/po/</span></samp> directory):
+<samp><span class="file">head-include-2.</span><var>lang</var><span class="file">.po</span></samp>,
+<samp><span class="file">body-include-1.</span><var>lang</var><span class="file">.po</span></samp>, <samp><span class="file">body-include-2.</span><var>lang</var><span class="file">.po</span></samp>
+and <samp><span class="file">footer-text.</span><var>lang</var><span class="file">.po</span></samp>, together with your first message
+stating that you would like to establish a new team.  See <a href="../gnun/New-Translation.html#New-Translation">New Translation</a>.
 
           <ul>
 <li>The language code (<var>lang</var>) should be the ISO 639-1 code of the

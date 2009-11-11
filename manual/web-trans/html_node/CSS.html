@@ -3,7 +3,7 @@
 <title>CSS - GNU Web Translators Manual</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNU Web Translators Manual">
-<meta name="generator" content="makeinfo 4.11">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Translation-Tips.html#Translation-Tips" title="Translation Tips">
 <link rel="prev" href="SSI.html#SSI" title="SSI">
@@ -12,8 +12,8 @@
 <!--
 This manual is a guide for the GNU Web Translators.
 
-Last updated on 28.07.2009, for GNUnited Nations
-version 0.3.1.
+Last updated on 10.11.2009, for GNUnited Nations
+version 0.4.
 
    Copyright (C) 2009 Free Software Foundation, Inc.
 
@@ -39,8 +39,8 @@ version 0.3.1.
 </head>
 <body>
 <div class="node">
-<p>
 <a name="CSS"></a>
+<p>
 Next:&nbsp;<a rel="next" accesskey="n" href="Priorities.html#Priorities">Priorities</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="SSI.html#SSI">SSI</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Translation-Tips.html#Translation-Tips">Translation Tips</a>
@@ -55,7 +55,7 @@ used.  However, this style is seldom right for translations&mdash;many
 languages have much longer expressions, and that is natural.  To include
 your own CSS, create a file <samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp> and add it
 <em>after</em> the original <samp><span class="file">style.css</span></samp> in your
-<samp><span class="file">server/po/banner.</span><var>lang</var><span class="file">.po</span></samp>, i.e.
+<samp><span class="file">server/po/head-include-2.</span><var>lang</var><span class="file">.po</span></samp>, i.e.
 
 <pre class="example">     # type: style
      msgid "@import url('/style.css');"
