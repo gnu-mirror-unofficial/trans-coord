@@ -3,20 +3,20 @@
 <title>triggers - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.13">
+<meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Special-Targets.html#Special-Targets" title="Special Targets">
 <link rel="prev" href="report.html#report" title="report">
 <link rel="next" href="clean.html#clean" title="clean">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 10 November 2009) is for GNUnited Nations
-(version 0.4),
-a suite for maintaining translations of www.gnu.org essays and other
-articles.
+This manual (updated 2 July 2011) is for GNUnited Nations (version
+0.4), a suite for maintaining translations of www.gnu.org
+essays and other articles.
 
 
-Copyright (C) 2008, 2009 Free Software Foundation, Inc.
+Copyright (C) 2008, 2009, 2010, 2011 Free Software Foundation,
+Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -40,8 +40,8 @@ Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<a name="triggers"></a>
 <p>
+<a name="triggers"></a>
 Next:&nbsp;<a rel="next" accesskey="n" href="clean.html#clean">clean</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="report.html#report">report</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">Special Targets</a>
@@ -51,18 +51,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">S
 <h5 class="subsubsection">2.1.2.3 The <code>triggers</code> target</h5>
 
 <p>This is a special target intended to be run by the automatic build after
-the main build and <em>after</em> <code>cvs|svn commit</code>.
+the main build and <em>after</em> <code>cvs|svn|bzr commit</code>.
 
 <!-- FIXME: Check how Subversion behaves with keywords and update the -->
 <!-- paragraph below. -->
-   <p>When a <acronym>GNUN</acronym> build completes and some translations fail at the
-XHTML validation stage, the result is checked in the repository, as
-explained earlier (see <a href="Runtime-Variables.html#Runtime-Variables">Runtime Variables</a>).  Thus, CVS updates the
-$<!-- /@w -->Date$ RCS keyword (or any other keywords, for that matter) and
-resets the file(s) timestamp.  Next time <samp><span class="command">make</span></samp> is invoked, the
-target appears newer than the prerequisite so no rebuild is triggered. 
-The purpose of the <code>triggers</code> target is to &ldquo;save&rdquo; the information
-of the faulty targets during the main build, and to touch their
+   <p>When a GNUN build completes and some translations fail at the XHTML
+validation stage, the result is checked in the repository, as explained
+earlier (see <a href="Runtime-Variables.html#Runtime-Variables">Runtime Variables</a>).  Thus, CVS updates the $<!-- /@w -->Date$
+RCS keyword (or any other keywords, for that matter) and resets the
+file(s) timestamp.  Next time <samp><span class="command">make</span></samp> is invoked, the target
+appears newer than the prerequisite so no rebuild is triggered.  The
+purpose of the <code>triggers</code> target is to &ldquo;save&rdquo; the information of
+the faulty targets during the main build, and to touch their
 prerequisites in order such invalid articles not to remain online
 unnoticed.
 
@@ -73,17 +73,41 @@ them contains the command to update the timestamp of the prerequisite
 based on the timestamp of the target that must be rebuilt.  Finally, it
 deletes all those <samp><span class="file">*.hook</span></samp> files.
 
-   <p>To summarize, for effective operation <acronym>GNUN</acronym> should be invoked
-automatically as <code>make ; cvs|svn commit -m ... ; make
+   <p>In addition, this is the rule that takes care of actually sending the
+announcements if <code>ANNOUNCE=yes</code>.  Since it is a completely valid
+scenario to have a new translation which is initially invalid XHTML, the
+canned command sequence for announcements is recorded in
+<samp><span class="file">*.hook-ann</span></samp> files, and they are treated by <code>triggers</code> in a
+different way.  A newly added <samp><span class="file">.</span><var>lang</var><span class="file">.po</span></samp> file may be invalid,
+in which case GNUN will commit an empty <samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp>
+file&mdash;it is not appropriate to announce it as a new translation as it
+is an empty file completely useless for the general public.  The
+<code>triggers</code> rule detects this case, and postpones the announcement
+to the next build attempt, when the generated HTML translation is
+supposed to be human-readable.
+
+   <p>To summarize, for effective operation GNUN should be invoked
+automatically as <code>make ; cvs|svn|bzr commit -m ... ; make
 triggers</code>.  To illustrate this, here is a concrete example showing the
 official job running at fencepost.gnu.org:
 
-<pre class="example">     25 4,16 * * *  cd $HOME/projects/www ; cvs -q update &amp;&gt;/dev/null ; \
-                      make -j4 -C server/gnun VCS=yes VALIDATE=yes NOTIFY=yes \
-                      VERBOSE=yes GRACE=30 ; cvs commit -m \
-                      "Automatic update by GNUnited Nations." ; \
-                      make -C server/gnun triggers
+<pre class="example">     25 4,12,20 * * *  cd $HOME/projects/www ; cvs -q update &amp;&gt;/dev/null; \
+                         make -j4 -C server/gnun VCS=yes VALIDATE=yes; \
+                         NOTIFY=yes VERBOSE=yes GRACE=30; ANNOUNCE=yes; \
+                         cvs commit -m \
+                         "Automatic update by GNUnited Nations."; \
+                         make -C server/gnun triggers
 </pre>
+   <p>The above example is for CVS; if the underlying repository is
+Subversion, they need to be amended accordingly.  If it is GNU Bzr,
+remember to add a <samp><span class="command">bzr push</span></samp> after commit (in the usual
+scenario), otherwise changes will be committed only locally.  Since a
+distributed Version Control System can be used in multiple (sometimes
+radically different) ways, this step cannot be anticipated and therefore
+cannot be automated.  Adding the <samp><span class="command">push</span></samp> command in the makefile
+rules would not work if a so called &ldquo;bound branch&rdquo; is used, for
+instance.
+
    <p>In the future, this target may be extended further to do other useful
 things that should be &ldquo;triggered&rdquo; after the main build.
 

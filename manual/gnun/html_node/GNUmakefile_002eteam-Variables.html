@@ -3,19 +3,19 @@
 <title>GNUmakefile.team Variables - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.13">
+<meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="PO-Files-and-Team.html#PO-Files-and-Team" title="PO Files and Team">
 <link rel="next" href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron" title="GNUmakefile.team and Cron">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 10 November 2009) is for GNUnited Nations
-(version 0.4),
-a suite for maintaining translations of www.gnu.org essays and other
-articles.
+This manual (updated 2 July 2011) is for GNUnited Nations (version
+0.4), a suite for maintaining translations of www.gnu.org
+essays and other articles.
 
 
-Copyright (C) 2008, 2009 Free Software Foundation, Inc.
+Copyright (C) 2008, 2009, 2010, 2011 Free Software Foundation,
+Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -39,9 +39,9 @@ Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 </head>
 <body>
 <div class="node">
+<p>
 <a name="GNUmakefile.team-Variables"></a>
 <a name="GNUmakefile_002eteam-Variables"></a>
-<p>
 Next:&nbsp;<a rel="next" accesskey="n" href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files-and-Team.html#PO-Files-and-Team">PO Files and Team</a>
 <hr>
@@ -76,11 +76,11 @@ of the build process.
 <samp><span class="command">msgmerge</span></samp>; off by default.  Note that <code>VERBOSE</code> can be
 defined to any string, it will have the same effect.
 
-     <br><dt>&lsquo;<samp><span class="samp">VCS=yes</span></samp>&rsquo;<dd>Update both `www' and `www-<var>lang</var>' repositories, then commit the
-merged PO files in the latter repository.  By default, there is no VCS
-interaction.  The VCS of the translation project repository is
-determined automatically; currently only CVS, Subversion, <acronym>GNU</acronym>
-Bzr, <acronym>GNU</acronym> Arch and Mercurial (Hg) repositories are supported.
+     <br><dt>&lsquo;<samp><span class="samp">VCS=yes</span></samp>&rsquo;<dd>Update both &lsquo;<samp><span class="samp">www</span></samp>&rsquo; and &lsquo;<samp><span class="samp">www-</span><var>lang</var></samp>&rsquo; repositories, then
+commit the merged PO files in the latter repository.  By default, there
+is no VCS interaction.  The VCS of the translation project repository is
+determined automatically; currently only CVS, Subversion, GNU Bzr, Git,
+Mercurial (Hg) and GNU Arch repositories are supported.
 
      <p><strong>Caution:</strong> The makefile rule will commit all local changes, not
 only those that resulted from running <samp><span class="command">msgmerge</span></samp>.  Thus, it is
@@ -93,10 +93,68 @@ purpose.
      <dl>
 <dt><code>update</code><dd>Updates the repositories.  Does nothing unless <code>VCS=yes</code>.
 
-     <br><dt><code>sync</code><dd>Merges all available PO files from the corresponding POT in `www'.
+     <br><dt><code>sync</code><dd>Merges all available PO files from the corresponding POT in <dfn>www</dfn>. 
+If a POT is missing in the master repository (usually, because it was
+deleted when the original article was either split, renamed or deleted),
+a warning is printed for the corresponding file and no merging occurs
+for it.
 
      <br><dt><code>report</code><dd>Verifies which translations are complete, and prints a list (with
-statistics) of those that need to be updated. 
+statistics) of those that need to be updated.
+
+     <br><dt><code>format</code><dd>A convenience rule to rewrap all files upto the standard length.  Most
+PO editors leave the <code>msgstr</code> as a single long line after it has
+been edited, but GNUN will automatically rewrap the file to the standard
+line length when it is processed.  Wrapping long lines in PO files is a
+good pracice as it avoids unnecessary revisions.
+
+     <p>This rule checks for all translations that have lines longer than 80,
+and runs <samp><span class="command">msgcat</span></samp> accordingly to reformat them.  For that
+reason, it is recommended that you wrap all long lines in the comment
+fields (e.g. the file header, including the copyright statement, and any
+other comments for specific messages), because <code>make format</code> will
+unnecessarily invoke <samp><span class="command">msgcat</span></samp> for any file that has a longer
+line, wherever it may occur.
+
+     <br><dt><code>publish</code><dd>The <code>publish</code> rule's task is to copy all modified files to the
+official <dfn>www</dfn> repository.  It depends on the <code>format</code> target
+to ensure that all files are rewrapped to the standard line length
+limit, but deliberately does not depend on <code>sync VCS=yes</code>. 
+Usually, one would run <code>make publish</code> when one or a bunch of PO
+files are in a satisfactory condition to be published, and this rule is
+just a convenience to avoid multiple manual <samp><span class="command">cp</span></samp> invocations. 
+As a rule of thumb, before running this rule it is sane to run
+<code>sync</code> and correct any <dfn>fuzzy</dfn> messages and other problems, if
+necessary.
+
+     <p>The <code>publish</code> rule does not depend on <code>sync</code> explicitly,
+because that would be a nuisance for offline operations and basically
+unnecessary when the committer is fairly confident that there are no
+changes to (re-)merge.  A hard dependency on <code>sync</code> would slow down
+the operation considerably.
+
+     <p>As usual, when committing to the official repository, it is always a
+good practice to examine the output of <samp><span class="command">cvs diff</span></samp>.
+
+     <p>Invoking <code>make publish</code> prints warnings and does not actually copy
+the affected file if the sub-directory in &ldquo;www&rdquo; is non-existent or the
+corresponding <samp><span class="file">.pot</span></samp> is missing.
+
+     <p>Typically, after an editing session (whether it involves actual editing
+or just merging contributions from team members), one would do:
+
+     <pre class="example">          $ make sync VCS=yes
+          $ make publish
+          $ cd <var>wwwdir</var>
+          $ cvs up
+          (Add all new translations, if any.)
+            $ cvs add <var>file</var> ...
+          $ cvs diff
+          $ cvs commit -m "Some descriptive message."
+</pre>
+     <br><dt><code>clean</code><dd>Deletes all backup and auto-generated files that some PO editors leave
+behind, namely&mdash;<samp><var>file</var><span class="file">.po~</span></samp>, <samp><var>file</var><span class="file">.po.bak</span></samp> and
+<samp><var>file</var><span class="file">.mo</span></samp>. 
 </dl>
 
    <p><code>make VCS=yes</code> is the recommended command to be run periodically. 

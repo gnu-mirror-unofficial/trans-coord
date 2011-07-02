@@ -3,19 +3,19 @@
 <title>sync - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.13">
+<meta name="generator" content="makeinfo 4.11">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Special-Targets.html#Special-Targets" title="Special Targets">
 <link rel="next" href="report.html#report" title="report">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 10 November 2009) is for GNUnited Nations
-(version 0.4),
-a suite for maintaining translations of www.gnu.org essays and other
-articles.
+This manual (updated 2 July 2011) is for GNUnited Nations (version
+0.4), a suite for maintaining translations of www.gnu.org
+essays and other articles.
 
 
-Copyright (C) 2008, 2009 Free Software Foundation, Inc.
+Copyright (C) 2008, 2009, 2010, 2011 Free Software Foundation,
+Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -39,8 +39,8 @@ Copyright (C) 2008, 2009 Free Software Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<a name="sync"></a>
 <p>
+<a name="sync"></a>
 Next:&nbsp;<a rel="next" accesskey="n" href="report.html#report">report</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">Special Targets</a>
 <hr>
@@ -48,7 +48,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">S
 
 <h5 class="subsubsection">2.1.2.1 The <code>sync</code> target</h5>
 
-<p><a name="index-synchronization_002c-repository-22"></a>
+<p><a name="index-synchronization_002c-repository-27"></a>
 The <code>sync</code> target has a simple task: synchronize the
 <em>original English</em> articles from a canonical repository, like
 `www'.  It is very important that such synchronization happens,
@@ -74,13 +74,13 @@ same email message again if the file is still present in the
 <code>files-to-sync</code> variable during a subsequent invocation.
 
    <p>In addition, <code>sync</code> synchronizes all &ldquo;verbatim&rdquo; server templates
-that are not under <acronym>GNUN</acronym>'s control, such as
-<samp><span class="file">server/header.html</span></samp>, <samp><span class="file">server/banner.html</span></samp>,
-<samp><span class="file">server/footer.html</span></samp> and their translations, as defined in the
-<code>verbatim-templates</code> variable.  This is important, as these files
-may change in the master repository, while the validation of the html
-files in the development repository will be performed with the old
-templates expanded, thus making this specific test more or less bogus.
+that are not under GNUN's control, such as <samp><span class="file">server/header.html</span></samp>,
+<samp><span class="file">server/banner.html</span></samp>, <samp><span class="file">server/footer.html</span></samp> and their
+translations, as defined in the <code>verbatim-templates</code> variable. 
+This is important, as these files may change in the master repository,
+while the validation of the html files in the development repository
+will be performed with the old templates expanded, thus making this
+specific test more or less bogus.
 
    <p><code>VCS=always</code> has no effect on this target, as well as
 <code>VALIDATE</code>.
