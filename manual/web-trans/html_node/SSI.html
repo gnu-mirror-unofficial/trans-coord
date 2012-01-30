@@ -11,11 +11,11 @@
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual is a guide for the GNU Web Translators.
+Last updated on
+30.01.2012, for GNUnited Nations version 0.5.
 
-Last updated on 10.11.2009, for GNUnited Nations
-version 0.4.
-
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010, 2011, 2012 Free Software
+Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -49,11 +49,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Translation-Tips.html#Translation-Tips"
 
 <h3 class="section">5.2 Summary of SSI <code>#include</code>s</h3>
 
-<p>The GNU Project's website uses <acronym>SSI</acronym> (Server Side Includes) to
-manage some common parts that are the same in many of the articles. 
-With the help of <acronym>GNUN</acronym> their handling should be behind the
-scenes, but for some of them manual intervention is needed.  Here is a
-(possibly incomplete) list of the <code>#include</code>'s used:
+<p>The GNU Project's website uses SSI (Server Side Includes) to manage some
+common parts that are the same in many of the articles.  With the help
+of GNUN their handling should be behind the scenes, but for some of them
+manual intervention is needed.  Here is a (possibly incomplete) list of
+the <code>#include</code>'s used:
 
      <dl>
 <dt><samp><span class="file">server/banner.html</span></samp><dd>This file contains only <code>#include</code> directives, so the
@@ -71,13 +71,13 @@ some validation errors originate from an error in
 file.
 
      <br><dt><samp><span class="file">server/footer-text.html</span></samp><dd>This is a very short file currently containing the &ldquo;back to top&rdquo; link. 
-Also translatable via <acronym>GNUN</acronym>.
+Also translatable via GNUN.
 
      <br><dt><samp><span class="file">server/header.html</span></samp><dd>The declaration that is included in literally every file.  It is
 maintained manually, as it does not make much sense to put it under
-<acronym>GNUN</acronym>'s control (there are no translatable strings).  Remember
-to specify the proper <code>xml:lang</code> and <code>lang</code> attributes, and
-for RTL languages, the <code>dir</code> attribute.  For example, the file
+GNUN's control (there are no translatable strings).  Remember to specify
+the proper <code>xml:lang</code> and <code>lang</code> attributes, and for RTL
+languages, the <code>dir</code> attribute.  For example, the file
 <samp><span class="file">header.ar.html</span></samp> should contain this line:
 
      <pre class="example">          &lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" lang="ar"
@@ -91,12 +91,33 @@ in another encoding, the generated HTML will contain the encoding
 declared in the <code>&lt;meta&gt;</code> element at
 <samp><span class="file">server/head-include-1.</span><var>lang</var><span class="file">.html</span></samp>, so browsers will obey it.
 
+     <p>The encoding should be UTF-8.  This is required because the English text
+in the articles serves as a replacement of the translation when the latter
+is not complete, and because all translated pages share automatically
+generated lists of translations.
+
+     <br><dt><samp><span class="file">server/html5-header.html</span></samp><dd>This file is included in newer pages using some entities introduced
+in HTML5 draft.  We have to distinguish those pages since some features
+of HTML4 were rejected in HTML5, and our old pages don't validate
+as HTML5.
+
+     <br><dt><samp><span class="file">server/html5-head-include-1.html</span></samp><dd>Likewise, this file replaces head-include-1.html for HTML5 pages.
+
      <br><dt><samp><span class="file">server/head-include-2.html</span></samp><dd>Imports the standard CSS, which can be overriden.  See <a href="CSS.html#CSS">CSS</a>.
 
      <br><dt><samp><span class="file">server/footer.html</span></samp><dd>This is a very short and simple file (at least at the time of writing),
 containing another <code>#include</code> directive.  It is maintained
 manually, so just add <var>lang</var> to the filename, in order the localized
 <samp><span class="file">footer-text.</span><var>lang</var><span class="file">.html</span></samp> to be included.
+
+     <br><dt><samp><span class="file">server/outdated.html</span></samp><dd>This file is automatically included in outdated translations.  It
+contains respective message with links to the English file and
+to a generated difference of the current revision of the English
+file against the most recent revision that has a complete translation. 
+It is only included in articles affected by &ldquo;grace period&rdquo; because
+in those cases the outdated passages are replaced with English text,
+and it is evident without any notices that there is no complete
+and up to date translation.
 
      <br><dt><samp><span class="file">translations.include</span></samp><dd>The list of translations for the homepage (and only the homepage).  It
 is maintained manually; in order the link to a translation to appear on
@@ -118,8 +139,8 @@ another file.  This serves two purposes: 1) to provide a &ldquo;standalone&rdquo
 HTML version of the license without the gnu.org style; 2) to prevent
 strings sneaking in the <samp><span class="file">.pot</span></samp> files, as licenses have only
 unofficial translations, hosted elsewhere.  Nothing special should be
-done about these SSI directives; the files generated by <acronym>GNUN</acronym>
-include them verbatim as they should not be translated.
+done about these SSI directives; the files generated by GNUN include
+them verbatim as they should not be translated.
 
      <br><dt><samp><span class="file">server/sidebar*.html</span></samp><dd>These files are deprecated&mdash;they are remnants from an older design that
 lived shortly in the middle between the old classic design and the
@@ -128,17 +149,29 @@ them includes such files, you should delete them.  You can use
 <samp><span class="command">grep</span></samp> to check this. 
 </dl>
 
-   <p>The files <samp><span class="file">header.html</span></samp>, <samp><span class="file">head-include-1.html</span></samp>,
-<samp><span class="file">head-include-2.html</span></samp>, <samp><span class="file">banner.html</span></samp>,
-<samp><span class="file">body-include-1.html</span></samp>, <samp><span class="file">body-include-2.html</span></samp>,
-<samp><span class="file">footer.html</span></samp> and <samp><span class="file">footer-text.html</span></samp> in the <samp><span class="file">server</span></samp>
-sub-directory are what webmasters call &ldquo;the server templates&rdquo;.  These
-files are included in almost every article, translated or not.  They are
-somewhat important, as an error made in translating them propagates
-everywhere.  The server templates, the homepages, and whatsnew
-(a.k.a. &ldquo;GNU News&rdquo;) are being rebuilt by <acronym>GNUN</acronym> whenever there
-is a change in the original English files; the <code>GRACE</code> variable has
-no effect for them.  See <a href="../gnun/Runtime-Variables.html#Runtime-Variables">Runtime Variables</a>.
+   <p>The files
+
+<!-- Use @itemize to avoid `underfull \hbox' warnings from TeX. -->
+     <ul>
+<li><samp><span class="file">header.html</span></samp>
+<li><samp><span class="file">head-include-1.html</span></samp>
+<li><samp><span class="file">html5-header.html</span></samp>
+<li><samp><span class="file">html5-head-include-1.html</span></samp>
+<li><samp><span class="file">head-include-2.html</span></samp>
+<li><samp><span class="file">banner.html</span></samp>
+<li><samp><span class="file">body-include-1.html</span></samp>
+<li><samp><span class="file">body-include-2.html</span></samp>
+<li><samp><span class="file">footer.html</span></samp>
+<li><samp><span class="file">footer-text.html</span></samp>
+</ul>
+
+   <p>in the <samp><span class="file">server</span></samp> sub-directory are what webmasters call &ldquo;the
+server templates&rdquo;.  These files are included in almost every article,
+translated or not.  They are somewhat important, as an error made in
+translating them propagates everywhere.  The server templates, the
+homepages, and whatsnew (a.k.a. &ldquo;GNU News&rdquo;) are being rebuilt by
+GNUN whenever there is a change in the original English files; the
+<code>GRACE</code> variable has no effect for them.  See <a href="../gnun/Runtime-Variables.html#Runtime-Variables">Runtime Variables</a>.
 
    </body></html>
 

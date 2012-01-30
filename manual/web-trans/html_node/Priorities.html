@@ -11,11 +11,11 @@
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual is a guide for the GNU Web Translators.
+Last updated on
+30.01.2012, for GNUnited Nations version 0.5.
 
-Last updated on 10.11.2009, for GNUnited Nations
-version 0.4.
-
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010, 2011, 2012 Free Software
+Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -52,25 +52,42 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Translation-Tips.html#Translation-Tips"
 <p>The article
 <a href="http://www.gnu.org/server/standards/translations/priorities.html">http://www.gnu.org/server/standards/translations/priorities.html</a>
 lists the most important essays to translate.  In general, articles in
-the directories <samp><span class="file">philosophy</span></samp>, <samp><span class="file">gnu</span></samp>, <samp><span class="file">copyleft</span></samp> and
-<samp><span class="file">licenses</span></samp> are important.  The others may be deferred for a time
-when a team completes most of the important translations, or they can be
-translated as a &ldquo;rest&rdquo;&ndash;in translators' parlance this means doing
-something in between which is typically easier to handle.
+the directories <samp><span class="file">philosophy</span></samp>, <samp><span class="file">gnu</span></samp>, <samp><span class="file">distros</span></samp>,
+<samp><span class="file">copyleft</span></samp> and <samp><span class="file">licenses</span></samp> are important.  The others may be
+deferred for a time when a team completes most of the important
+translations, or they can be translated as a &ldquo;rest&rdquo;&ndash;in translators'
+parlance this means doing something in between which is typically easier
+to handle.
+
+   <p>It is very important to keep existing translations up-to-date with the
+respective English originals.  This task should be higher priority than
+translating new articles.  GNUN's <code>report</code> rule can help you to
+identify precisely which articles need updating; see <a href="../gnun/report.html#report">report</a>.  There is a monthly cronjob which
+sends a verbose output to each team&mdash;by default, the address(es) used
+is the Savannah account(s) of the admin(s) of the specific translation
+project.  If you want them changed, please write to
+<a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>.
+
+   <p>It is strongly recommended translation teams to attempt to recruit
+native English speakers in order to improve their translation process. 
+Translators sometimes misunderstand English idioms and expressions, and
+as a result, they translate them incorrectly or in ways that are
+suboptimal and confusing.  These errors are trivial to discover for the
+native English speaker.
 
    <p><em>Do not</em> translate articles under these directories:
 
      <dl>
 <dt><samp><span class="file">software/</span><var>pkg</var><span class="file">/</span></samp><dd>These pages are maintained by the respective <var>pkg</var> maintainers. 
-<acronym>GNUN</acronym> does not support them for the time being, as they reside
-in separate repositories.  The procedures for contributing translations
-of such articles are not yet settled.
+GNUN does not support them for the time being, as they reside in
+separate repositories.  The procedures for contributing translations of
+such articles are not yet settled.
 
      <br><dt><samp><span class="file">brave-gnu-world</span></samp><dd>The Brave GNU World initiative has been abandoned long time ago, and
-it's in a separate repository&mdash;thus not supported by the automatic
-<acronym>GNUN</acronym> build job.
+it's in a separate repository&mdash;thus not supported by the automatic GNUN
+build job.
 
-     <br><dt><samp><span class="file">home.shtml</span></samp><dd>There is not problem to translate this page, but don't make the mistake
+     <br><dt><samp><span class="file">home.html</span></samp><dd>There is not problem to translate this page, but don't make the mistake
 to pick it up as your first translation.  It is modified often,
 sometimes intensively, and only active team members should take that
 road.

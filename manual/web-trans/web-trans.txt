@@ -38,7 +38,8 @@ GNU Web Translators Manual
     5.3.2 Specific Issues Related to RTL
   5.4 What To Translate
   5.5 When To CAPITALIZE
-  5.6 Language-specific Terminology
+  5.6 Distribution Terms
+  5.7 Language-specific Terminology
 6 Overview Of The Translation Process
   6.1 Related Mailing Lists
   6.2 Savannah Projects Membership
@@ -49,9 +50,9 @@ GNU Web Translators Manual
 **************************
 
 This manual is a guide for the GNU Web Translators.
-Last updated on 10.11.2009, for GNUnited Nations version 0.4.
+Last updated on 30.01.2012, for GNUnited Nations version 0.5.
 
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010, 2011, 2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -87,10 +88,10 @@ procedures.
 
    It is important to realize that being a GNU Web Translator is a hard
 job at all levels, but your help is much appreciated and is invaluable
-contribution to the society.  While there are many people who
-contribute to our community by writing free software (and their number
-is constantly increasing), the ones actively engaged in teaching others
-to appreciate and defend their freedom are only a few.  Consequently and
+contribution to the society.  While there are many people who contribute
+to our community by writing free software (and their number is
+constantly increasing), the ones actively engaged in teaching others to
+appreciate and defend their freedom are only a few.  Consequently and
 rather unfortunately, there are not so many volunteers willing to
 maintain on the long term translations of the various essays that
 describe the fundamental values of the free software movement.
@@ -145,9 +146,10 @@ chapter, *note Leaders::.
    Contacting the team is best done via Savannah--each translation team
 has its own project, named `www-LANG', with the project page being
 <https://savannah.gnu.org/projects/www-LANG>.  Usually teams have
-mailing lists, either on Savannah or on some external site.  Some teams
-have homepages, <http://gnu.org/server/standards/translations/LANG>
-with additional contact details and procedures for team members.
+mailing lists, typically in the form <www-LANG-...@gnu.org>.  Some
+teams have homepages,
+<http://gnu.org/server/standards/translations/LANG> with additional
+contact details and procedures for team members.
 
    You could also write directly to the team leader via the Savannah
 interface--that way you request will be recorded by Savannah and can be
@@ -228,6 +230,9 @@ steps to produce and submit such a translation:
      `server/po/body-include-2.LANG.po' and
      `server/po/footer-text.LANG.po'--you can translate and submit them
      in the usual way, together with the translation of the essay.
+
+     Additional templates are defined via the EXTRA-TEMPLATES variable
+     in `server/gnun/gnun.mk'.
 
      If you don't want to translate the templates for whatever
      reason--do not worry, the web-translators will install empty
@@ -366,7 +371,7 @@ steps:
      Examine the layout and structure of the repository.  Basically, it
      is mapped to the URL locations, more or less.  Take a look at the
      most important materials to translate under `/philosophy', `/gnu',
-     `/ditros', `/copyleft' and `/licenses' directories just to get a
+     `/distros', `/copyleft' and `/licenses' directories just to get a
      rough estimate about the amount of work involved.  If you are
      still not scared and determined to go on further, excellent.
 
@@ -660,8 +665,8 @@ an original article; for anything else please report to
 
    If you wish to volunteer as webmaster and help with generic webmaster
 work and RT tickets, that is perfectly fine--please follow the
-established (by the GNU Webmasters) procedure.  If you are approved,
-you can modify such pages wearing your "webmaster's hat".
+established (by the GNU Webmasters) procedure.  If you are approved, you
+can modify such pages wearing your "webmaster's hat".
 
    If a particular page has issues with the markup which create problems
 for your language, please inform <trans-coord-discuss@gnu.org>.  For
@@ -738,24 +743,29 @@ there's no obligation to use Savannah for team work, the need for a
 Savannah project for each language is obvious: it's a standard way to
 find information for translation teams and their contacts.
 
-   Using external hosting facilities is sometimes justified--for
-example, some languages have a single mailing list for all free
-software-related translations, where all translators co-operate.
-Others have already established repositories and/or bug tracking
+   Using external hosting facilities may seem justified sometimes.  Some
+teams may have already established repositories and/or bug tracking
 systems where usual contributors already have access.  Some team
 members prefer to work within the established infrastructure of a broad
-translation team (for whatever reason), and this is entirely
-acceptable.  However, it is important to remember that regardless of
-the technical resources which a team decides to use, the responsibility
-of the team co-ordinator remains the same.
+translation team (for whatever reason), but this is discouraged.  It is
+required that every team has a mailing list at Savannah (*note Savannah
+Mailing Lists::), because it is easier to pass its management to the
+new co-ordinator when the old one steps down, and it helps to keep the
+archives at one place for future members of the team.  Likewise, it is
+better to use Savannah for the team's repository and bugs/tasks, but
+this is not mandatory.
+
+   However, it is important to remember that regardless of the technical
+resources which a team decides to use, the responsibility of the team
+co-ordinator remains the same.
 
    Those teams that are using Savannah have a broad variety of tools at
 hand: team membership management, documents, trackers (bugs, tasks and
 support), alerts, CVS (and any other VCS that Savannah supports), home
-pages, mailing lists, etc.  How each team uses these resources is up to
-the team itself, but it often turns out to choose Savannah for nearly
-all of the team activities, as it requires almost zero work; the
-Savannah Hackers are happy to support us.
+pages, etc.  How each team uses these resources is up to the team
+itself, but it often turns out to choose Savannah for nearly all of the
+team activities, as it requires almost zero work; the Savannah Hackers
+are happy to support us.
 
    Whatever you (in your capacity as a team leader) decide, please do it
 with caution: some organizational decisions may become ineffective as
@@ -884,15 +894,21 @@ translations, which is also fine.
 3.2.3.8 Managing Mailing Lists
 ..............................
 
-You can create new mailing lists via the Savannah interface.  However,
-this should be done after some thought.  If the project membership is
-low (<= 10 members), there is no need to create more than one mailing
-list.  If there is a general translation list common for all translators
-of the language (i.e. GNOME, GNUstep, KDE, and free software in
-general), there is no reason at all to create a list at Savannah.
+Every team should have a mailing list on lists.gnu.org and use it for
+internal communications.  All active translators should be on the list.
+The list owner should be the co-ordinator of the team.  The name of the
+list should begin with `www-LANG-'.
 
-   You can redirect all messages generated by the trackers to any list
-(including those that are not on GNU servers).
+   The list will make it possible for the GNU project to contact the
+team when the co-ordinator disappears; its archive will also give
+access to the history for new translators.
+
+   You can create new mailing lists via the Savannah interface.
+However, this should be done after some thought.  If the project
+membership is low (<= 10 members), there is no need to create more than
+one mailing list.
+
+   You can redirect all messages generated by the trackers to any list.
 
 3.2.3.9 Version Control Systems
 ...............................
@@ -1055,11 +1071,11 @@ this manual will be updated as needed.
 5.2 Summary of SSI `#include's
 ==============================
 
-The GNU Project's website uses SSI (Server Side Includes) to manage
-some common parts that are the same in many of the articles.  With the
-help of GNUN their handling should be behind the scenes, but for some
-of them manual intervention is needed.  Here is a (possibly incomplete)
-list of the `#include''s used:
+The GNU Project's website uses SSI (Server Side Includes) to manage some
+common parts that are the same in many of the articles.  With the help
+of GNUN their handling should be behind the scenes, but for some of them
+manual intervention is needed.  Here is a (possibly incomplete) list of
+the `#include''s used:
 
 `server/banner.html'
      This file contains only `#include' directives, so the
@@ -1101,6 +1117,21 @@ list of the `#include''s used:
      encoding declared in the `<meta>' element at
      `server/head-include-1.LANG.html', so browsers will obey it.
 
+     The encoding should be UTF-8.  This is required because the
+     English text in the articles serves as a replacement of the
+     translation when the latter is not complete, and because all
+     translated pages share automatically generated lists of
+     translations.
+
+`server/html5-header.html'
+     This file is included in newer pages using some entities introduced
+     in HTML5 draft.  We have to distinguish those pages since some
+     features of HTML4 were rejected in HTML5, and our old pages don't
+     validate as HTML5.
+
+`server/html5-head-include-1.html'
+     Likewise, this file replaces head-include-1.html for HTML5 pages.
+
 `server/head-include-2.html'
      Imports the standard CSS, which can be overriden.  *Note CSS::.
 
@@ -1109,6 +1140,16 @@ list of the `#include''s used:
      writing), containing another `#include' directive.  It is
      maintained manually, so just add LANG to the filename, in order
      the localized `footer-text.LANG.html' to be included.
+
+`server/outdated.html'
+     This file is automatically included in outdated translations.  It
+     contains respective message with links to the English file and to
+     a generated difference of the current revision of the English file
+     against the most recent revision that has a complete translation.
+     It is only included in articles affected by "grace period" because
+     in those cases the outdated passages are replaced with English
+     text, and it is evident without any notices that there is no
+     complete and up to date translation.
 
 `translations.include'
      The list of translations for the homepage (and only the homepage).
@@ -1149,16 +1190,36 @@ list of the `#include''s used:
      migrated and none of them includes such files, you should delete
      them.  You can use `grep' to check this.
 
-   The files `header.html', `head-include-1.html',
-`head-include-2.html', `banner.html', `body-include-1.html',
-`body-include-2.html', `footer.html' and `footer-text.html' in the
-`server' sub-directory are what webmasters call "the server templates".
-These files are included in almost every article, translated or not.
-They are somewhat important, as an error made in translating them
-propagates everywhere.  The server templates, the homepages, and
-whatsnew (a.k.a. "GNU News") are being rebuilt by GNUN whenever there
-is a change in the original English files; the `GRACE' variable has no
-effect for them.  *Note Runtime Variables: (gnun)Runtime Variables.
+   The files
+
+   - `header.html'
+
+   - `head-include-1.html'
+
+   - `html5-header.html'
+
+   - `html5-head-include-1.html'
+
+   - `head-include-2.html'
+
+   - `banner.html'
+
+   - `body-include-1.html'
+
+   - `body-include-2.html'
+
+   - `footer.html'
+
+   - `footer-text.html'
+
+   in the `server' sub-directory are what webmasters call "the server
+templates".  These files are included in almost every article,
+translated or not.  They are somewhat important, as an error made in
+translating them propagates everywhere.  The server templates, the
+homepages, and whatsnew (a.k.a. "GNU News") are being rebuilt by GNUN
+whenever there is a change in the original English files; the `GRACE'
+variable has no effect for them.  *Note Runtime Variables:
+(gnun)Runtime Variables.
 
 5.3 How To Use Custom CSS
 =========================
@@ -1195,6 +1256,14 @@ is undesirable).
 
    When creating your own `style.LANG.css', don't forget to include the
 license notice from the `style.css', with a short comment.
+
+   If using the default CSS style for translations does not give the
+expected good results, or there are other problems (significant or not)
+that obstruct reading and/or worsen the look from aesthetic point of
+view, please write to <webmasters@gnu.org> with a description of the
+issue.  If there are several unrelated problems, send separate messages
+with appropriate explanation (which may include a demonstration of the
+bug, such as a screenshot).
 
 5.3.1 Localizing The `topbanner' Image
 --------------------------------------
@@ -1247,11 +1316,10 @@ redefinitions, or style attributes in the form `<p style="...">'.  In
 such situations, it is quite possible that the general
 language-specific CSS does not help, and the translation of this
 specific article does not look correct.  Please write to
-<trans-coord-discuss@gnu.org>; if you have a working solution that
-works for both cases--so much the better.  For general issues that
-affect your language and require a general solution, write to
-<www-discuss@gnu.org> or <webmasters@gnu.org>, precisely describing the
-problem.
+<webmasters@gnu.org>; if you have a working solution that works for
+both cases--so much the better.  For general issues that affect your
+language and require a general solution, write to <webmasters@gnu.org>
+as well, precisely describing the problem.
 
 5.4 What To Translate
 =====================
@@ -1259,11 +1327,27 @@ problem.
 The article
 `http://www.gnu.org/server/standards/translations/priorities.html'
 lists the most important essays to translate.  In general, articles in
-the directories `philosophy', `gnu', `copyleft' and `licenses' are
-important.  The others may be deferred for a time when a team completes
-most of the important translations, or they can be translated as a
-"rest"-in translators' parlance this means doing something in between
-which is typically easier to handle.
+the directories `philosophy', `gnu', `distros', `copyleft' and
+`licenses' are important.  The others may be deferred for a time when a
+team completes most of the important translations, or they can be
+translated as a "rest"-in translators' parlance this means doing
+something in between which is typically easier to handle.
+
+   It is very important to keep existing translations up-to-date with
+the respective English originals.  This task should be higher priority
+than translating new articles.  GNUN's `report' rule can help you to
+identify precisely which articles need updating; *note report:
+(gnun)report.  There is a monthly cronjob which sends a verbose output
+to each team--by default, the address(es) used is the Savannah
+account(s) of the admin(s) of the specific translation project.  If you
+want them changed, please write to <web-translators@gnu.org>.
+
+   It is strongly recommended translation teams to attempt to recruit
+native English speakers in order to improve their translation process.
+Translators sometimes misunderstand English idioms and expressions, and
+as a result, they translate them incorrectly or in ways that are
+suboptimal and confusing.  These errors are trivial to discover for the
+native English speaker.
 
    _Do not_ translate articles under these directories:
 
@@ -1278,7 +1362,7 @@ which is typically easier to handle.
      and it's in a separate repository--thus not supported by the
      automatic GNUN build job.
 
-`home.shtml'
+`home.html'
      There is not problem to translate this page, but don't make the
      mistake to pick it up as your first translation.  It is modified
      often, sometimes intensively, and only active team members should
@@ -1294,10 +1378,12 @@ which is typically easier to handle.
 5.5 When To CAPITALIZE
 ======================
 
-The English language has strict rules for capitalization of titles,
-chapters, acronym expansions and the like.  They do not make sense for
-many other languages, but unfortunately, many translators _erroneously
-duplicate_ the capitalization in their translation.
+The English language has some rules for capitalization of titles,
+chapters, acronym expansions and the like.  These rules are neither
+strict nor uniform, although the gnu.org website strives to apply them
+consistently.  They do not make sense for many other languages, but
+unfortunately, many translators _erroneously duplicate_ the
+capitalization in their translation.
 
    Examples for common (and correct) English capitalization is the
 title of the article "Why Software Should Be Free" or "Free Software
@@ -1313,7 +1399,57 @@ own rules.  In other words, it is right to write `English' or `Deutsch'
 `Franc,ais' or `Portugue^s'--write them as `franc,ais' or `portugue^s',
 respectively.
 
-5.6 Language-specific Terminology
+5.6 Distribution Terms
+======================
+
+Most www.gnu.org articles are released under the terms of the Creative
+Commons Attribution-NoDerivs 3.0 United States license.  The exact HTML
+for English pages to use is:
+
+     This page is licensed under a <a rel="license"
+     href="http://creativecommons.org/licenses/by-nd/3.0/us/">Creative
+     Commons Attribution-NoDerivs 3.0 United States License</a>.
+
+   Pages in other languages should translate this notice, and should
+link to a translated version of the Creative Commons license "deed" if
+it's available.  Creative Commons provides standard text for this in
+all the languages they support, and we should use that wording whenever
+possible.  To do that, follow these steps:
+
+   * Check at the bottom of the English deed page to see the list of
+     languages they support.  Follow the link the language that you
+     want a translation for, if available.
+
+   * Follow the "Use this license for your own work" link near the
+     bottom of the translated deed page--it's in distinct yellow text.
+
+   * The textarea on that page provides standard HTML.  Note that we're
+     not using the graphic, just the text.
+
+
+   For example, here's the text they provide for German:
+
+     Dieses Werk bzw. Inhalt steht unter einer <a rel="license"
+     href="http://creativecommons.org/licenses/by-nd/3.0/us/deed.de">Creative
+     Commons Namensnennung-Keine Bearbeitung 3.0 Vereinigte Staaten von
+     Amerika Lizenz</a>.
+
+   Note that the link in this text is changed to point directly to the
+German language deed.  We should always link to a copy of the license
+deed that's in the same language as the page itself.
+
+   Pages in languages that aren't supported by CC should prepare their
+own translation, use it consistently throughout pages translated to that
+language, and link to the English language deed.
+
+   Note that translations should _not_ change the jurisdiction of the
+license; they should _always_ link to the CC BY-ND 3.0 _United States_
+license, and _not_ a different port like CC BY-ND 3.0 Japan.  This is
+because there are substantive differences between the way different
+ports handle moral rights issues, and we prefer the specific terms that
+are in the United States license.
+
+5.7 Language-specific Terminology
 =================================
 
 This is a very important topic, not yet covered by this manual.
@@ -1370,20 +1506,26 @@ participants in the process.
      reason for that.  It may become public in the future.
 
 <trans-coord-news@gnu.org>
-     This is a list for notifications about gnunews and GNUnited
-     Nations releases.  It is not mandatory to subscribe to it,
-     although the traffic is very low.  If you want to track only GNUN
-     release announcements, subscribe to the `gnun' topic via Mailman's
-     user interface.  Likewise, if you want to recieve only "What's New"
-     updates, subscribe to the `whatsnew' topic.  In the near future,
-     there will be automatic announcements for newly available English
-     articles and translations.
+     This is a list for notifications about gnunews and GNUnited Nations
+     releases.  It is not mandatory to subscribe to it, although the
+     traffic is very low.  If you want to track only GNUN release
+     announcements, subscribe to the `gnun' topic via Mailman's user
+     interface.  Likewise, if you want to recieve only "What's New"
+     updates, subscribe to the `whatsnew' topic.
+
+     Automatic announcements for new gnu.org translations (provided
+     they're handled by GNUN) are also delivered here.  There are
+     separate `LANG-ann' topics for every GNUN-aware language, so it is
+     a good idea to advertise this capability widely among your local
+     community.  For example, if a reader wants to be informed only
+     about new Spanish translations, she can just subscribe to the
+     `es-ann' mailing list topic.
 
      This is a public mailing list.
 
 <trans-coord-devel@gnu.org>
-     All development of GNUN happens here.  Commits to the
-     `trans-coord' repository are also sent to this list.
+     All development of GNUN happens here.  Commits to the `trans-coord'
+     repository are also sent to this list.
 
      This is a public list, and <bug-gnun@gnu.org> is an alias.
 
