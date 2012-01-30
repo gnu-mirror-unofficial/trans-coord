@@ -3,19 +3,19 @@
 <title>Disadvantages - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.11">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Introduction.html#Introduction" title="Introduction">
 <link rel="prev" href="Advantages.html#Advantages" title="Advantages">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 July 2011) is for GNUnited Nations (version
-0.4), a suite for maintaining translations of www.gnu.org
+This manual (updated 29 January 2012) is for GNUnited Nations (version
+0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
-Copyright (C) 2008, 2009, 2010, 2011 Free Software Foundation,
-Inc.
+Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software
+Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -39,8 +39,8 @@ Inc.
 </head>
 <body>
 <div class="node">
-<p>
 <a name="Disadvantages"></a>
+<p>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="Advantages.html#Advantages">Advantages</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Introduction.html#Introduction">Introduction</a>
 <hr>
@@ -52,13 +52,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Introduction.html#Introduction">Introdu
 of certain limitations and annoyances of this semi-automatic system.
 
      <ul>
-<li>Often it is hard to figure out where precisely a change was made.  A
-change in one single word in a long paragraph of the HTML article will
-lead to the whole of it being marked as &ldquo;fuzzy&rdquo; in the PO files.  So
-don't unsubscribe from <a href="mailto:www-commits@gnu.org">www-commits@gnu.org</a> yet, and be
-prepared to check the CVS history of the original article.
-
-     <li>The official build is invoked thrice daily, because doing it more often
+<li>The official build is invoked thrice daily<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>, because doing it more often
 will potentially generate more messages to the mailing list in the form
 of commit notifications.  This has its drawback, since translators have
 to wait 12 hours until their PO files are updated, and another period
@@ -66,6 +60,13 @@ for the <samp><span class="file">.</span><var>lang</var><span class="file">.html
 commit the updated POs.  Additionally, any errors interrupt the build so
 they have to be fixed before the next articles are processed. 
 </ul>
+
+   <div class="footnote">
+<hr>
+<h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> The &ldquo;no-grace&rdquo;
+items are rebuilt hourly.</p>
+
+   <hr></div>
 
    </body></html>
 

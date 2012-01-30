@@ -1,12 +1,13 @@
 <html lang="en">
 <head>
-<title>Internals - GNUnited Nations</title>
+<title>Comments for Translators - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Usage.html#Usage" title="Usage">
-<link rel="next" href="Bugs.html#Bugs" title="Bugs">
+<link rel="up" href="Webmaster-Tips.html#Webmaster-Tips" title="Webmaster Tips">
+<link rel="prev" href="Validation.html#Validation" title="Validation">
+<link rel="next" href="Modifying-Boilerplates.html#Modifying-Boilerplates" title="Modifying Boilerplates">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (updated 29 January 2012) is for GNUnited Nations (version
@@ -39,24 +40,38 @@ Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<a name="Internals"></a>
+<a name="Comments-for-Translators"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Bugs.html#Bugs">Bugs</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Usage.html#Usage">Usage</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Modifying-Boilerplates.html#Modifying-Boilerplates">Modifying Boilerplates</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Validation.html#Validation">Validation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Webmaster-Tips.html#Webmaster-Tips">Webmaster Tips</a>
 <hr>
 </div>
 
-<h2 class="chapter">3 Unexciting Information for GNUN's Operation</h2>
+<h4 class="subsection">2.4.2 Comments for Translators</h4>
 
-<p>This chapter might be of interest probably only to people who would have
-special interest in the software, plan to enhance it or develop a
-front-end.
+<p><a name="index-comments-for-translators-80"></a>
+<!-- Emacs Lisp code goes here... -->
 
-<ul class="menu">
-<li><a accesskey="1" href="Scripts.html#Scripts">Scripts</a>:       Helper scripts. 
-<li><a accesskey="2" href="Rules.html#Rules">Rules</a>:         The knotty rules explained. 
-</ul>
+   <p>If you want a comment to be visible for translators, place it
+<em>inside</em> the element, for example:
+
+<pre class="example">     &lt;p&gt;
+     &lt;!--TRANSLATORS: Note that foo is bar in this context.--&gt;
+     The fooish bar mumbles bazzling.
+     &lt;/p&gt;
+</pre>
+   <p>This will result in:
+
+<pre class="example">     # type: Content of: &lt;p&gt;
+     #. TRANSLATORS: Note that foo is bar in this context.
+     msgid "The fooish bar mumbles bazzling."
+     msgstr ""
+</pre>
+   <p>As per the established convention, start the comment with
+<code>TRANSLATORS:</code> to catch their attention, and do not add a space
+after the beginning of the HTML comment (<code>&lt;!--</code>), since this will
+unnecessarily indent the comment in the POT.
 
    </body></html>
 

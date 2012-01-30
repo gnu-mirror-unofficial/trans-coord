@@ -3,17 +3,17 @@
 <title>GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.11">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="top" href="#Top">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 July 2011) is for GNUnited Nations (version
-0.4), a suite for maintaining translations of www.gnu.org
+This manual (updated 29 January 2012) is for GNUnited Nations (version
+0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
-Copyright (C) 2008, 2009, 2010, 2011 Free Software Foundation,
-Inc.
+Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software
+Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -55,11 +55,13 @@ Inc.
 <li><a href="#Runtime-Variables">2.1.1 Variables to Control the Build Process</a>
 <li><a href="#Special-Targets">2.1.2 Targets Specified on the Command Line</a>
 <ul>
-<li><a href="#sync">2.1.2.1 The <code>sync</code> target</a>
-<li><a href="#report">2.1.2.2 The <code>report</code> target</a>
-<li><a href="#triggers">2.1.2.3 The <code>triggers</code> target</a>
-<li><a href="#clean">2.1.2.4 The <code>clean</code> target</a>
-<li><a href="#distclean">2.1.2.5 The <code>distclean</code> target</a>
+<li><a href="#no_002dgrace_002ditems">2.1.2.1 The <code>no-grace-items</code> target</a>
+<li><a href="#update_002dlocalized_002dURLs">2.1.2.2 The <code>update-localized-URLs</code> target</a>
+<li><a href="#sync">2.1.2.3 The <code>sync</code> target</a>
+<li><a href="#report">2.1.2.4 The <code>report</code> target</a>
+<li><a href="#triggers">2.1.2.5 The <code>triggers</code> target</a>
+<li><a href="#clean">2.1.2.6 The <code>clean</code> target</a>
+<li><a href="#distclean">2.1.2.7 The <code>distclean</code> target</a>
 </li></ul>
 </li></ul>
 <li><a href="#Main-Variables">2.2 Defining Articles to be Built</a>
@@ -74,24 +76,32 @@ Inc.
 <li><a href="#GNU-News">2.3.3 Special Handling For GNU News</a>
 <li><a href="#PO-Tips">2.3.4 Useful Hints For Editing PO Files</a>
 <li><a href="#generic_002eLANG_002ehtml">2.3.5 The <samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp> file</a>
-<li><a href="#PO-Files-and-Team">2.3.6 Maintaining Translations in Your Team's Repository</a>
+<li><a href="#languages_002etxt">2.3.6 The <samp><span class="file">languages.txt</span></samp> file</a>
+<li><a href="#PO-Files-and-Team">2.3.7 Maintaining Translations in Your Team's Repository</a>
 <ul>
-<li><a href="#GNUmakefile_002eteam-Variables">2.3.6.1 Adopting <samp><span class="file">GNUmakefile.team</span></samp> For a Specific Team</a>
+<li><a href="#GNUmakefile_002eteam-Variables">2.3.7.1 Adopting <samp><span class="file">GNUmakefile.team</span></samp> For a Specific Team</a>
 <li><a href="#GNUmakefile_002eteam-Variables">Targets in <samp><span class="file">GNUmakefile.team</span></samp></a>
-<li><a href="#GNUmakefile_002eteam-and-Cron">2.3.6.2 Automatic Synchronization and Status Reports</a>
+<li><a href="#GNUmakefile_002eteam-and-Cron">2.3.7.2 Automatic Synchronization and Status Reports</a>
 </li></ul>
 </li></ul>
 <li><a href="#Webmaster-Tips">2.4 Tips and Hints for Webmasters</a>
+<ul>
+<li><a href="#Validation">2.4.1 Validation</a>
+<li><a href="#Comments-for-Translators">2.4.2 Comments for Translators</a>
+<li><a href="#Modifying-Boilerplates">2.4.3 Modifying Boilerplates</a>
+<li><a href="#Localized-URLs">2.4.4 Localized URLs</a>
+</li></ul>
 </li></ul>
 <li><a name="toc_Internals" href="#Internals">3 Unexciting Information for GNUN's Operation</a>
 <ul>
 <li><a href="#Scripts">3.1 Internally Used Scripts</a>
 <ul>
 <li><a href="#make_002dprototype">3.1.1 The <samp><span class="command">make-prototype</span></samp> Script</a>
-<li><a href="#gnun_002dvalidate_002dhtml">3.1.2 The <samp><span class="command">gnun-validate-html</span></samp> Script</a>
-<li><a href="#mailfail">3.1.3 The <samp><span class="command">mailfail</span></samp> Script</a>
-<li><a href="#validate_002dhtml_002dnotify">3.1.4 The <samp><span class="command">validate-html-notify</span></samp> Script</a>
-<li><a href="#gnun_002dclear_002dprevious">3.1.5 The <samp><span class="command">gnun-clear-previous</span></samp> Script</a>
+<li><a href="#gnun_002dadd_002dfuzzy_002ddiff">3.1.2 The <samp><span class="command">gnun-add-fuzzy-diff</span></samp> Script</a>
+<li><a href="#gnun_002dvalidate_002dhtml">3.1.3 The <samp><span class="command">gnun-validate-html</span></samp> Script</a>
+<li><a href="#mailfail">3.1.4 The <samp><span class="command">mailfail</span></samp> Script</a>
+<li><a href="#validate_002dhtml_002dnotify">3.1.5 The <samp><span class="command">validate-html-notify</span></samp> Script</a>
+<li><a href="#gnun_002dclear_002dprevious">3.1.6 The <samp><span class="command">gnun-clear-previous</span></samp> Script</a>
 </li></ul>
 <li><a href="#Rules">3.2 How The Recipes Work</a>
 </li></ul>
@@ -104,8 +114,8 @@ Inc.
 
 
 <div class="node">
-<p><hr>
 <a name="Top"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Introduction">Introduction</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 
@@ -113,14 +123,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 
 <h2 class="unnumbered">GNUnited Nations</h2>
 
-<p>This manual (updated 2 July 2011) is for GNUnited Nations (version
-0.4), a suite for maintaining translations of www.gnu.org
+<p>This manual (updated 29 January 2012) is for GNUnited Nations (version
+0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.<br>
    <pre class="sp">
 
 </pre>
-Copyright &copy; 2008, 2009, 2010, 2011 Free Software Foundation,
-Inc.
+Copyright &copy; 2008, 2009, 2010, 2011, 2012 Free Software
+Foundation, Inc.
 
    <blockquote>
 Permission is granted to copy, distribute and/or modify this document
@@ -141,8 +151,8 @@ Documentation License.&rdquo;
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Introduction"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Usage">Usage</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
@@ -186,8 +196,8 @@ it under the terms of the GNU Free Documentation License.  See <a href="#Copying
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Overview"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Concepts">Concepts</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 
@@ -218,8 +228,8 @@ that lead to the inception of GNU gettext, or GNOME Documentation
 Utilities (<code>gnome-doc-utils</code>) some years later.
 
 <div class="node">
-<p><hr>
 <a name="Concepts"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Advantages">Advantages</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Overview">Overview</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
@@ -348,8 +358,8 @@ front-ends&mdash;a web front-end, possibly based on Pootle, a statistics
 facility, probably a wiki compiler, and more.
 
 <div class="node">
-<p><hr>
 <a name="Advantages"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Disadvantages">Disadvantages</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Concepts">Concepts</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
@@ -410,8 +420,8 @@ them and extract useful information.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Disadvantages"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Advantages">Advantages</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 
@@ -423,13 +433,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 of certain limitations and annoyances of this semi-automatic system.
 
      <ul>
-<li>Often it is hard to figure out where precisely a change was made.  A
-change in one single word in a long paragraph of the HTML article will
-lead to the whole of it being marked as &ldquo;fuzzy&rdquo; in the PO files.  So
-don't unsubscribe from <a href="mailto:www-commits@gnu.org">www-commits@gnu.org</a> yet, and be
-prepared to check the CVS history of the original article.
-
-     <li>The official build is invoked thrice daily, because doing it more often
+<li>The official build is invoked thrice daily<a rel="footnote" href="#fn-3" name="fnd-3"><sup>3</sup></a>, because doing it more often
 will potentially generate more messages to the mailing list in the form
 of commit notifications.  This has its drawback, since translators have
 to wait 12 hours until their PO files are updated, and another period
@@ -439,8 +443,8 @@ they have to be fixed before the next articles are processed.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Usage"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Internals">Internals</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Introduction">Introduction</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
@@ -487,8 +491,8 @@ manual intervention to a certain degree is possible.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Invoking-GNUN"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Main-Variables">Main Variables</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
 
@@ -543,8 +547,8 @@ a proper <samp><span class="file">gnun.mk</span></samp> is maintained in `www'.)
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Runtime-Variables"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Special-Targets">Special Targets</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-GNUN">Invoking GNUN</a>
 
@@ -574,7 +578,7 @@ that expects assigning the value `no'.
 
      <br><dt>&lsquo;<samp><span class="samp">VCS=yes</span></samp>&rsquo;<dd>Automatically add any new files in the repository (CVS, Subversion or
 GNU Bazaar&mdash;the repository type is auto-determined at build time,
-<samp><span class="command">bzr</span></samp> being a fallback).<a rel="footnote" href="#fn-3" name="fnd-3"><sup>3</sup></a> These are
+<samp><span class="command">bzr</span></samp> being a fallback).<a rel="footnote" href="#fn-4" name="fnd-4"><sup>4</sup></a> These are
 any POT files, if they are generated for the first time, and the
 translated articles (<samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp>) in HTML format.  In
 addition, if there is no <samp><span class="file">server/gnun/generic.</span><var>lang</var><span class="file">.html</span></samp> file
@@ -594,16 +598,17 @@ sparingly, since it is very slow and generally less reliable.
 is the default, and not defining this variable has the same effect.
 
      <br><dt>&lsquo;<samp><span class="samp">VALIDATE=yes</span></samp>&rsquo;<dd>Validates all original articles before generating the POTs, to ensure
-that the ultimate source is valid XHMTL.  Also, validates all
+that the ultimate source is valid (X)HMTL.  Also, validates all
 generated translations in HTML format and all PO files.  It is highly
 recommended to run the build this way, even if it is a bit tedious to
 fix the errors that are reported as a result of enforcing validation.
 
      <p>Articles defined in the variable <code>no-validate-articles</code> are never
-checked for HTML validity.  Its purpose is to skip validation of HTML 5
-articles, until the command-line validation tools are updated to parse
-files that comply with this new standard.  Use it sparingly, since this
-may lead to other errors.
+checked for HTML validity.  Its purpose was to skip validation of HTML
+5 articles, until the command-line validation tools are updated to
+parse files that comply with this new standard.  As of version 0.5
+GNUN supports HTML 5, so resorting to <code>no-validate-articles</code>
+should not be necessary.
 
      <p><a name="index-NOTIFY-15"></a><a name="index-mail_002c-notifications-16"></a><br><dt>&lsquo;<samp><span class="samp">NOTIFY=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Do not send email notifications about errors.  This is the default.
 
@@ -632,7 +637,7 @@ receive only traffic related to a specific language.  See <a href="web-trans.htm
 default, but recommended in general since it will show a bug in the
 computation of the basic variables.
 
-     <p><a name="index-GRACE-21"></a><a name="index-fuzzy-strings-22"></a><a name="index-grace-period-23"></a><a name="index-deferred-generation-of-articles-24"></a><br><dt>&lsquo;<samp><span class="samp">GRACE=</span><var>days</var></samp>&rsquo;<dd>If defined, ordinary articles that have fuzzy strings and are not older
+     <p><a name="index-GRACE-21"></a><a name="index-fuzzy-strings-22"></a><a name="index-grace-period-23"></a><a name="index-deferred-generation-of-articles-24"></a><a name="GRACE"></a><br><dt>&lsquo;<samp><span class="samp">GRACE=</span><var>days</var></samp>&rsquo;<dd>If defined, ordinary articles that have fuzzy strings and are not older
 than <var>days</var> will not be regenerated.  This functionality is
 implemented specifically to prevent gratuitous replacement of translated
 strings with the English text when there are only minor formatting
@@ -642,7 +647,16 @@ strings, while keeping the online translation intact.  Note that this
 variable has no effect on the homepage, the server templates, gnunews
 and all articles defined in the variable <code>no-grace-articles</code>.
 
-     <p><a name="index-TEAM-25"></a><a name="index-variable_002c-team-26"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team which articles need to be checked for
+     <p><a name="index-OUTDATED_002dGRACE-25"></a><br><dt>&lsquo;<samp><span class="samp">OUTDATED-GRACE=</span><var>days</var></samp>&rsquo;<dd>Grace period for the out-of-date notice.  When the variable
+<code>GRACE</code> is defined, <code>OUTDATED-GRACE</code> defaults to 60 days
+(see <a href="#GRACE">grace period</a>).  The out-of-date notice is a special
+text (<samp><span class="file">server/outdated.html</span></samp> in the `www' repository) that is
+inserted into every outdated translation when the period defined in
+this variable is over; its purpose is to inform the reader that the
+translation does not correspond to the original English article, which
+has been changed since the translation was last updated.
+
+     <p><a name="index-TEAM-26"></a><a name="index-variable_002c-team-27"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team which articles need to be checked for
 completeness.  This variable is applicable only for the <code>report</code>
 target, and is mandatory for it.  See <a href="#report">report</a>.
 
@@ -672,14 +686,14 @@ corresponding <samp><span class="file">.</span><var>lang</var><span class="file"
    <p>If notification is enabled (<code>NOTIFY=yes</code>), and the build system
 encounters errors (mostly when validating articles), email messages
 will be sent to the party that is expected to fix the error.  The
-subject of the messages always include the problematic article, for
+subject of the messages always includes the problematic article, for
 example:
 
 <pre class="example">     Subject: [GNUN Error] gnu/gnu.fa.html is not valid XHTML
 </pre>
    <div class="node">
-<p><hr>
 <a name="Special-Targets"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Runtime-Variables">Runtime Variables</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-GNUN">Invoking GNUN</a>
 
@@ -695,24 +709,65 @@ more importantly, whose arguments are variables computed at the time
 specific and already defined, one way or another.
 
 <ul class="menu">
-<li><a accesskey="1" href="#sync">sync</a>
-<li><a accesskey="2" href="#report">report</a>
-<li><a accesskey="3" href="#triggers">triggers</a>
-<li><a accesskey="4" href="#clean">clean</a>
-<li><a accesskey="5" href="#distclean">distclean</a>
+<li><a accesskey="1" href="#no_002dgrace_002ditems">no-grace-items</a>
+<li><a accesskey="2" href="#update_002dlocalized_002dURLs">update-localized-URLs</a>
+<li><a accesskey="3" href="#sync">sync</a>
+<li><a accesskey="4" href="#report">report</a>
+<li><a accesskey="5" href="#triggers">triggers</a>
+<li><a accesskey="6" href="#clean">clean</a>
+<li><a accesskey="7" href="#distclean">distclean</a>
 </ul>
 
 <div class="node">
+<a name="no-grace-items"></a>
+<a name="no_002dgrace_002ditems"></a>
 <p><hr>
-<a name="sync"></a>
-Next:&nbsp;<a rel="next" accesskey="n" href="#report">report</a>,
+Next:&nbsp;<a rel="next" accesskey="n" href="#update_002dlocalized_002dURLs">update-localized-URLs</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
 
 </div>
 
-<h5 class="subsubsection">2.1.2.1 The <code>sync</code> target</h5>
+<h5 class="subsubsection">2.1.2.1 The <code>no-grace-items</code> target</h5>
 
-<p><a name="index-synchronization_002c-repository-27"></a>
+<p>The <code>no-grace-items</code> target regenerates a limited set of articles
+that are not affected by the grace period, namely, the homepage, the
+server templates, gnunews, and all articles defined in the variable
+<code>no-grace-articles</code> (see <a href="#GRACE">grace period</a>).
+
+   <p>This target can be rebuilt more often than <code>all</code>; it is invoked
+hourly by the official GNUN cronjob.
+
+<div class="node">
+<a name="update-localized-URLs"></a>
+<a name="update_002dlocalized_002dURLs"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#sync">sync</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#no_002dgrace_002ditems">no-grace-items</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
+
+</div>
+
+<h5 class="subsubsection">2.1.2.2 The <code>update-localized-URLs</code> target</h5>
+
+<p>The <code>update-localized-URLs</code> target invokes a script that
+generates the <samp><span class="file">localized-urls.mk</span></samp> file.  This file includes the
+list of URLs that should be localized, it is extracted from special
+comments in the HTML source (see <a href="#Localized-URLs">Localized URLs</a>).
+
+   <p>This target is meant to be rebuilt nightly.
+
+<div class="node">
+<a name="sync"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#report">report</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#update_002dlocalized_002dURLs">update-localized-URLs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
+
+</div>
+
+<h5 class="subsubsection">2.1.2.3 The <code>sync</code> target</h5>
+
+<p><a name="index-synchronization_002c-repository-28"></a>
 The <code>sync</code> target has a simple task: synchronize the
 <em>original English</em> articles from a canonical repository, like
 `www'.  It is very important that such synchronization happens,
@@ -750,17 +805,17 @@ specific test more or less bogus.
 <code>VALIDATE</code>.
 
 <div class="node">
-<p><hr>
 <a name="report"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#triggers">triggers</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#sync">sync</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
 
 </div>
 
-<h5 class="subsubsection">2.1.2.2 The <code>report</code> target</h5>
+<h5 class="subsubsection">2.1.2.4 The <code>report</code> target</h5>
 
-<p><a name="index-reporting-28"></a><a name="index-status_002c-translations-29"></a>
+<p><a name="index-reporting-29"></a><a name="index-status_002c-translations-30"></a>
 This target exists solely for convenience to translators, enabling them
 to check which articles are not 100% translated and have to be updated. 
 The way to check this is by running <code>make report TEAM=</code><var>lang</var>,
@@ -776,15 +831,15 @@ up-to-date.  In fact, this is one of the main reasons GNUN is being
 developed, if you recall.
 
 <div class="node">
-<p><hr>
 <a name="triggers"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#clean">clean</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#report">report</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
 
 </div>
 
-<h5 class="subsubsection">2.1.2.3 The <code>triggers</code> target</h5>
+<h5 class="subsubsection">2.1.2.5 The <code>triggers</code> target</h5>
 
 <p>This is a special target intended to be run by the automatic build after
 the main build and <em>after</em> <code>cvs|svn|bzr commit</code>.
@@ -848,33 +903,33 @@ instance.
 things that should be &ldquo;triggered&rdquo; after the main build.
 
 <div class="node">
-<p><hr>
 <a name="clean"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#distclean">distclean</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#triggers">triggers</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
 
 </div>
 
-<h5 class="subsubsection">2.1.2.4 The <code>clean</code> target</h5>
+<h5 class="subsubsection">2.1.2.6 The <code>clean</code> target</h5>
 
 <p>Not implemented yet.
 
 <div class="node">
-<p><hr>
 <a name="distclean"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#clean">clean</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Special-Targets">Special Targets</a>
 
 </div>
 
-<h5 class="subsubsection">2.1.2.5 The <code>distclean</code> target</h5>
+<h5 class="subsubsection">2.1.2.7 The <code>distclean</code> target</h5>
 
 <p>Not implemented yet.
 
 <div class="node">
-<p><hr>
 <a name="Main-Variables"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#PO-Files">PO Files</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Invoking-GNUN">Invoking GNUN</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
@@ -883,7 +938,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
 
 <h3 class="section">2.2 Defining Articles to be Built</h3>
 
-<p><a name="index-variables-30"></a><a name="index-gnun_002emk-31"></a>
+<p><a name="index-variables-31"></a><a name="index-gnun_002emk-32"></a>
 The file <samp><span class="file">gnun.mk</span></samp> contains variable definitions, based on which
 almost all other important variables are computed.  In other words,
 the variables defined in that file directly affect the overall
@@ -892,51 +947,64 @@ behavior of the build process.
    <p>There are two types of variables, which are specifically separated in
 order to make translators' life easier: variables that translators are
 free to modify and variables that are modified by the web-translators
-staff<a rel="footnote" href="#fn-4" name="fnd-4"><sup>4</sup></a>, ideally after performing some local tests.  A
+staff<a rel="footnote" href="#fn-5" name="fnd-5"><sup>5</sup></a>, ideally after performing some local tests.  A
 translation team leader should update only <code>TEMPLATE_LINGUAS</code> and
 <code>HOME_LINGUAS</code>; everything else is supposed to be built
 automagically, without manual intervention.  If not, that is a bug that
 should be reported and fixed.
 
      
-<a name="index-TEMPLATE_005fLINGUAS-32"></a>
-<a name="index-templates_002c-defining-33"></a>
-<a name="index-defining-templates-34"></a>
+<a name="index-TEMPLATE_005fLINGUAS-33"></a>
+<a name="index-templates_002c-defining-34"></a>
+<a name="index-defining-templates-35"></a>
 <dl><dt>&lsquo;<samp><span class="samp">TEMPLATE_LINGUAS</span></samp>&rsquo;<dd>A space-separated list with languages.  Add here your language code
 <em>if and only if</em> you have all the SSI templates translated, and
-have already committed in the repository all these template files:
-<samp><span class="file">server/po/head-include-1.</span><var>lang</var><span class="file">.po</span></samp>,
-<samp><span class="file">server/po/body-include-1.</span><var>lang</var><span class="file">.po</span></samp>,
-<samp><span class="file">server/po/body-include-2.</span><var>lang</var><span class="file">.po</span></samp>,
-<samp><span class="file">server/po/footer-text.</span><var>lang</var><span class="file">.po</span></samp>, as well as the templates
-that are not under GNUN's control and are translated manually, like
-<samp><span class="file">server/header.</span><var>lang</var><span class="file">.html</span></samp>,
+have already committed all template files:
+
+          <ul>
+<li><samp><span class="file">server/po/head-include-1.</span><var>lang</var><span class="file">.po</span></samp>
+<li><samp><span class="file">server/po/html5-head-include-1.</span><var>lang</var><span class="file">.po</span></samp>
+<li><samp><span class="file">server/po/body-include-1.</span><var>lang</var><span class="file">.po</span></samp>
+<li><samp><span class="file">server/po/body-include-2.</span><var>lang</var><span class="file">.po</span></samp>
+<li><samp><span class="file">server/po/footer-text.</span><var>lang</var><span class="file">.po</span></samp>,
+</ul>
+
+     <p>as well as the templates that are not under GNUN's control and are
+translated manually, like <samp><span class="file">server/header.</span><var>lang</var><span class="file">.html</span></samp>,
+<samp><span class="file">server/html5-header.</span><var>lang</var><span class="file">.html</span></samp>,
 <samp><span class="file">server/banner.</span><var>lang</var><span class="file">.html</span></samp> and
 <samp><span class="file">server/footer.</span><var>lang</var><span class="file">.html</span></samp>.
 
-     <p><a name="index-HOME_005fLINGUAS-35"></a><a name="index-homepage_002c-defining-36"></a><a name="index-defining-homepage-37"></a><br><dt>&lsquo;<samp><span class="samp">HOME_LINGUAS</span></samp>&rsquo;<dd>Add your language code if you have already committed
+     <p>Additional templates can be defined via the <var>extra-templates</var>
+variable in <samp><span class="file">server/gnun/gnun.mk</span></samp>.
+
+     <p><a name="index-FUZZY_005fDIFF_005fLINGUAS-36"></a><a name="index-previous_002c-diff-37"></a><br><dt>&lsquo;<samp><span class="samp">FUZZY_DIFF_LINGUAS</span></samp>&rsquo;<dd>Add your language code here if you want GNUN to add differences to
+previous msgids in your PO files.  The differences are shown in
+<samp><span class="command">wdiff</span></samp> format.  See <a href="wdiff.html#wdiff">wdiff</a>, for more information.
+
+     <p><a name="index-HOME_005fLINGUAS-38"></a><a name="index-homepage_002c-defining-39"></a><a name="index-defining-homepage-40"></a><br><dt>&lsquo;<samp><span class="samp">HOME_LINGUAS</span></samp>&rsquo;<dd>Add your language code if you have already committed
 <samp><span class="file">po/home.</span><var>lang</var><span class="file">.po</span></samp>, that way the homepage for your language
 will be built.  It is not acceptable to have your language code
 defined in this variable, but not in <code>TEMPLATE_LINGUAS</code>.
 
-     <p><a name="index-ROOT-38"></a><a name="index-articles-in-root-directory_002c-defining-39"></a><a name="index-defining-articles-in-the-root-dir-40"></a><br><dt>&lsquo;<samp><span class="samp">ROOT</span></samp>&rsquo;<dd>Add here articles that are in the server root, like
+     <p><a name="index-ROOT-41"></a><a name="index-articles-in-root-directory_002c-defining-42"></a><a name="index-defining-articles-in-the-root-dir-43"></a><br><dt>&lsquo;<samp><span class="samp">ROOT</span></samp>&rsquo;<dd>Add here articles that are in the server root, like
 <samp><span class="file">keepingup.html</span></samp> and <samp><span class="file">provide.html</span></samp>.  Always write only the
 basename of the article, i.e. if you add these two articles, the value
 of <code>ROOT</code> should be <code>keepingup provide</code>.  This is true for
 all the variables that expect values in the form of article names.
 
-     <p><a name="index-ALL_005fDIRS-41"></a><a name="index-directories_002c-defining-42"></a><a name="index-defining-directories-43"></a><br><dt>&lsquo;<samp><span class="samp">ALL_DIRS</span></samp>&rsquo;<dd>The list of directories containing articles, like <samp><span class="file">philosophy</span></samp>,
+     <p><a name="index-ALL_005fDIRS-44"></a><a name="index-directories_002c-defining-45"></a><a name="index-defining-directories-46"></a><br><dt>&lsquo;<samp><span class="samp">ALL_DIRS</span></samp>&rsquo;<dd>The list of directories containing articles, like <samp><span class="file">philosophy</span></samp>,
 <samp><span class="file">gnu</span></samp>, <samp><span class="file">licenses</span></samp>, etc.
 
-     <p><a name="index-POT-generation_002c-articles-44"></a><br><dt>&lsquo;<samp><span class="samp">gnu</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">philosophy</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...directory...</span></samp>&rsquo;<dd>A space-separated list of basenames for articles residing in
+     <p><a name="index-POT-generation_002c-articles-47"></a><br><dt>&lsquo;<samp><span class="samp">gnu</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">philosophy</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...directory...</span></samp>&rsquo;<dd>A space-separated list of basenames for articles residing in
 <var>directory</var>, for which POTs will be generated and updated when the
 original article changes.  If an article is missing here, there is no
 way its translations to be maintained via GNUN. 
 </dl>
 
 <div class="node">
-<p><hr>
 <a name="PO-Files"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Webmaster-Tips">Webmaster Tips</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Main-Variables">Main Variables</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
@@ -945,7 +1013,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
 
 <h3 class="section">2.3 Working with PO Files</h3>
 
-<p><a name="index-PO_002c-editing-45"></a>
+<p><a name="index-PO_002c-editing-48"></a>
 We anticipate that some gnu.org translators will find this format odd
 or inconvenient, if they never happened to work with PO files before. 
 Don't worry, you will soon get accustomed to it.  It is the
@@ -959,7 +1027,7 @@ with an ordinary plain text editor, but extra effort would be
 necessary to make it valid.  Here is a list of widely used PO editors:
 
      
-<a name="index-PO-editors-46"></a>
+<a name="index-PO-editors-49"></a>
 <ul><li>PO mode.  We recommend using GNU Emacs in PO mode, because Emacs is the
 program that is suitable for performing any task when it comes to
 maintaining the GNU Project's website.  Provided that you have GNU
@@ -969,13 +1037,14 @@ switch to PO mode.  You can enable/disable it by <code>M-x po-mode
 available in a separate package, <code>gettext-el</code>. See
 <a href="http://www.gnu.org/software/gettext">http://www.gnu.org/software/gettext</a>.
 
-     <li>gTranslator&mdash;the GNOME PO editor.  See
-<a href="http://gtranslator.sourceforge.net">http://gtranslator.sourceforge.net</a>.
+     <li>Gtranslator&mdash;the GNOME PO editor.  See
+<a href="http://projects.gnome.org/gtranslator/">http://projects.gnome.org/gtranslator/</a>.
 
      <li>Lokalize&mdash;the KDE 4 editor.  See
 <a href="http://userbase.kde.org/Lokalize">http://userbase.kde.org/Lokalize</a>.
 
-     <li>KBabel&mdash;the KDE 3 editor.  See <a href="http://kbabel.kde.org">http://kbabel.kde.org</a>.
+     <li>KBabel&mdash;the KDE 3 editor.  No longer supported, but might be
+available on some old systems.
 
      <li>Poedit&mdash;another popular editor that is based on the <code>wxWidgets</code>
 graphical toolkit.  See <a href="http://www.poedit.net">http://www.poedit.net</a>.
@@ -1002,13 +1071,14 @@ use Vim as their editor.  See
 <li><a accesskey="4" href="#PO-Tips">PO Tips</a>:              Tips and hints for translators. 
 <li><a accesskey="5" href="#generic_002eLANG_002ehtml">generic.LANG.html</a>:    Specifying information that will propagate in
                           every translation in a certain language. 
-<li><a accesskey="6" href="#PO-Files-and-Team">PO Files and Team</a>:    How to maintain translations in the team's
+<li><a accesskey="6" href="#languages_002etxt">languages.txt</a>:        Specifying canonical names for languages. 
+<li><a accesskey="7" href="#PO-Files-and-Team">PO Files and Team</a>:    How to maintain translations in the team's
                           repository. 
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="New-Translation"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Migrating">Migrating</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
 
@@ -1016,7 +1086,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
 
 <h4 class="subsection">2.3.1 Starting a New Translation</h4>
 
-<p><a name="index-translation_002c-new-47"></a><a name="index-new-translation-48"></a>
+<p><a name="index-translation_002c-new-50"></a><a name="index-new-translation-51"></a>
 To start a new translation, the easiest way is to copy the existing POT
 as <samp><span class="file">article.</span><var>lang</var><span class="file">.po</span></samp>, where <var>lang</var> is your language code. 
 For example, to prepare for a new translation of the essay
@@ -1055,7 +1125,7 @@ environment is set up correctly.  See <a href="gettext.html#msginit-Invocation">
 conventions, and the rules for gnu.org translations.  For reference,
 here is a list with all fields explained:
 
-   <p><a name="index-PO-headers-49"></a>
+   <p><a name="index-PO-headers-52"></a>
      <dl>
 <dt>&lsquo;<samp><span class="samp">Project-Id-Version</span></samp>&rsquo;<dd>Add here the filename of the original article, without the
 sub-directory, like &ldquo;body-include-1.html&rdquo; or &ldquo;free-sw.html&rdquo;.
@@ -1072,13 +1142,11 @@ person who updated the translation.  For example:
 
      <pre class="example">          Elvis Parsley &lt;king@grassland.com&gt;
 </pre>
-     <br><dt>&lsquo;<samp><span class="samp">Language-Team</span></samp>&rsquo;<dd>This field should contain the mailing list on which the translation team
-can be reached&mdash;sometimes this is the alias
-<a href="mailto:web-translators-LANG@gnu.org">web-translators-LANG@gnu.org</a>, but in some cases it is a
-separate, non-GNU list.  It could be a URL of the team's homepage,
-provided that it contains contact details.  Example:
+     <br><dt>&lsquo;<samp><span class="samp">Language-Team</span></samp>&rsquo;<dd>This field should contain the mailing list on which the translation
+team can be reached&mdash;usually <a href="mailto:www-<var>lang</var>-...@gnu.org">www-<var>lang</var>-<small class="dots">...</small>@gnu.org</a>. 
+Example:
 
-     <pre class="example">          French &lt;trad-gnu@april.org&gt;
+     <pre class="example">          Czech &lt;www-cs-general@gnu.org&gt;
 </pre>
      <br><dt>&lsquo;<samp><span class="samp">MIME-Version</span></samp>&rsquo;<dd>Leave it like it is.
 
@@ -1104,7 +1172,7 @@ the file is automatically modified by GNUN's rules.
      "POT-Creation-Date: 2008-02-06 16:25-0500\n"
      "PO-Revision-Date: 2008-02-09 15:23+0200\n"
      "Last-Translator: Yavor Doganov &lt;yavor@gnu.org&gt;\n"
-     "Language-Team: Bulgarian &lt;dict@fsa-bg.org&gt;\n"
+     "Language-Team: Bulgarian &lt;www-bg-list@gnu.org&gt;\n"
      "MIME-Version: 1.0\n"
      "Content-Type: text/plain; charset=UTF-8\n"
      "Content-Transfer-Encoding: 8-bit\n"
@@ -1121,20 +1189,20 @@ rule (see <a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</
    <p>There are some special messages that appear in the POT and PO:
 
      
-<a name="index-notes_002c-translators-50"></a>
-<a name="index-translators_0027-notes-51"></a>
+<a name="index-notes_002c-translators-53"></a>
+<a name="index-translators_0027-notes-54"></a>
 <dl><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S NOTES*</span></samp>&rsquo;<dd>This is for translator's notes that are injected in the resulting
 translation.  See <a href="#Notes-Slot">Notes Slot</a>, for more information.  If your
 translation does not have notes, you <em>must</em> translate this as a
 space, that is, &lt;SPC&gt;.
 
-     <p><a name="index-credits_002c-translators-52"></a><a name="index-translators_0027-credits-53"></a><br><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S CREDITS*</span></samp>&rsquo;<dd>This is again optional, and should contain the name (and address) of
+     <p><a name="index-credits_002c-translators-55"></a><a name="index-translators_0027-credits-56"></a><br><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S CREDITS*</span></samp>&rsquo;<dd>This is again optional, and should contain the name (and address) of
 the person who made the translation.  &ldquo;Translate&rdquo; this string as a
 space (&lt;SPC&gt;) if you do not want your name to appear there. 
 See <a href="#Credits-Slot">Credits Slot</a>. 
 </dl>
 
-   <p><a name="index-wrapping-long-lines-54"></a><a name="index-long-lines_002c-wrap-55"></a>Most of the PO editors do not wrap long lines that inevitably appear in
+   <p><a name="index-wrapping-long-lines-57"></a><a name="index-long-lines_002c-wrap-58"></a>Most of the PO editors do not wrap long lines that inevitably appear in
 <code>msgstr</code>'s.  If that happens, long lines make reading subsequent
 diffs harder, and are generally annoying for most people.  If this issue
 bothers you, you can &ldquo;normalize&rdquo; the already finished PO translation
@@ -1183,8 +1251,8 @@ practice to check before you actually commit.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Notes-Slot"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Credits-Slot">Credits Slot</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#New-Translation">New Translation</a>
 
@@ -1192,7 +1260,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#New-Translation">New Translation</a>
 
 <h5 class="subsubsection">2.3.1.1 The Special Slot for Translator's Notes</h5>
 
-<p><a name="index-notes_002c-translators-56"></a><a name="index-translators_0027-notes-57"></a>
+<p><a name="index-notes_002c-translators-59"></a><a name="index-translators_0027-notes-60"></a>
 Sometimes it is necessary to complement the translation of an essay
 with translator's notes.  The special message <code>*GNUN-SLOT:
 TRANSLATOR'S NOTES*</code> is designed to serve this purpose.  If your
@@ -1240,8 +1308,8 @@ translations in other formats such as Texinfo&mdash;when these features
 are implemented.
 
 <div class="node">
-<p><hr>
 <a name="Credits-Slot"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Notes-Slot">Notes Slot</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#New-Translation">New Translation</a>
 
@@ -1249,7 +1317,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#New-Translation">New Translation</a>
 
 <h5 class="subsubsection">2.3.1.2 The Special Slot for Translator's Credits</h5>
 
-<p><a name="index-credits_002c-translators-58"></a><a name="index-translators_0027-credits-59"></a>
+<p><a name="index-credits_002c-translators-61"></a><a name="index-translators_0027-credits-62"></a>
 Most of the translators usually put their name under the translation,
 in the &ldquo;footer&rdquo; area.  This is entirely acceptable, since some
 readers prefer to send buggestions directly to the translator.  Also,
@@ -1271,8 +1339,8 @@ meets the linking criteria for gnu.org.  Please follow the FSF HTML
 Style Sheet when adding URIs or other information.
 
 <div class="node">
-<p><hr>
 <a name="Migrating"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#GNU-News">GNU News</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#New-Translation">New Translation</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
@@ -1281,7 +1349,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
 
 <h4 class="subsection">2.3.2 Transforming existing translation in PO format</h4>
 
-<p><a name="index-migration_002c-translations-60"></a><a name="index-conversion-of-existing-translations-61"></a>
+<p><a name="index-migration_002c-translations-63"></a><a name="index-conversion-of-existing-translations-64"></a>
 Migrating an existing translation to a PO file format is basically
 editing the header as described in the previous section, and
 populating each of the messages by copying the already translated text
@@ -1324,8 +1392,8 @@ translation, Jer&ocirc;me made some changes in 2007, and the original
 translator returned in 2008 and continued maintaining it.
 
 <div class="node">
-<p><hr>
 <a name="GNU-News"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#PO-Tips">PO Tips</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Migrating">Migrating</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
@@ -1334,12 +1402,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
 
 <h4 class="subsection">2.3.3 Special Handling For GNU News</h4>
 
-<p><a name="index-gnunews-62"></a><a name="index-whatsnew-63"></a><a name="index-gnusflashes-64"></a>
-The GNU website has infrastructure for supporting &ldquo;What's New&rdquo;, also
-known as &ldquo;GNU News&rdquo;&mdash;see
-<a href="http://www.gnu.org/server/standards/README.webmastering.html#polnews">http://www.gnu.org/server/standards/README.webmastering.html#polnews</a>
-for details.  Entries are added in a special plain text file,
-<samp><span class="file">server/whatsnew.txt</span></samp> and are used to build
+<p><a name="index-gnunews-65"></a><a name="index-whatsnew-66"></a><a name="index-gnusflashes-67"></a>
+<strong>Pay attention:</strong> The practice of news handling that is
+described here has been obsolete for some time now, as they are being
+fed automatically from Planet GNU (<a href="http://planet.gnu.org">http://planet.gnu.org</a>). 
+Nevertheless, the information below is accurate to the extent that the
+support for the old-fashioned way is still available.
+
+   <p>The GNU website has infrastructure for supporting &ldquo;What's New&rdquo;, also
+known as &ldquo;GNU News&rdquo;.  Entries are added in a special plain text
+file, <samp><span class="file">server/whatsnew.txt</span></samp> and are used to build
 <samp><span class="file">server/whatsnew.include</span></samp> and <samp><span class="file">gnusflashes.include</span></samp>.  The
 former is used by <samp><span class="file">server/whatsnew.html</span></samp>, while the latter is
 included in the homepage.
@@ -1361,8 +1433,8 @@ be annoying for subscribers if new items appear in English and then once
 again translated.
 
 <div class="node">
-<p><hr>
 <a name="PO-Tips"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#generic_002eLANG_002ehtml">generic.LANG.html</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#GNU-News">GNU News</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
@@ -1371,7 +1443,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
 
 <h4 class="subsection">2.3.4 Useful Hints For Editing PO Files</h4>
 
-<p><a name="index-tips_002c-translators-65"></a><a name="index-recommendations_002c-PO-files-66"></a>
+<p><a name="index-tips_002c-translators-68"></a><a name="index-recommendations_002c-PO-files-69"></a>
 This section contains additional explanations, some in the form of
 advices and recommendations; not all of them are strictly related to
 PO files editing.
@@ -1379,16 +1451,11 @@ PO files editing.
      <ul>
 <li>When you install a new translation of an article (that is different
 from a server template or the homepage), all you need to do is to add
-your PO file in the appropriate <samp><span class="file">/po</span></samp> sub-directory and add a
-link to it in the translations list of the original
-<samp><var>article</var><span class="file">.html</span></samp>.  Use only HTML entities for any non-ASCII
-characters and follow the established scheme.  If language names in
-your native language are not capitalized (unlike for example in
-English or German), you should <em>not</em> capitalize the name of your
-language.
+your PO file in the appropriate <samp><span class="file">/po</span></samp> sub-directory.
 
      <p>In the next build, your <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> will be
-built and the link to it will propagate to all translations, provided
+built and the link to it will be added to the original page
+and propagate to all translations, provided
 that they are under GNUN's control.
 
      <li>If you don't feel comfortable editing <samp><span class="file">gnun.mk</span></samp>, do not worry. 
@@ -1449,10 +1516,10 @@ is rendered incorrectly by the web browser.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="generic.LANG.html"></a>
 <a name="generic_002eLANG_002ehtml"></a>
-Next:&nbsp;<a rel="next" accesskey="n" href="#PO-Files-and-Team">PO Files and Team</a>,
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#languages_002etxt">languages.txt</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#PO-Tips">PO Tips</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
 
@@ -1460,7 +1527,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
 
 <h4 class="subsection">2.3.5 The <samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp> file</h4>
 
-<p><a name="index-team-information-67"></a><a name="index-generic-notice_002c-translations-68"></a>
+<p><a name="index-team-information-70"></a><a name="index-generic-notice_002c-translations-71"></a>
 The files <samp><span class="file">server/gnun/generic.</span><var>lang</var><span class="file">.html</span></samp> are special: if
 no such file exists for your language, an empty file will be created
 (and added to the repository if specified <code>VCS=yes</code>).  This file
@@ -1485,16 +1552,56 @@ translations of the language code <var>lang</var> (i.e. all
 include the contents of this special file.
 
 <div class="node">
+<a name="languages.txt"></a>
+<a name="languages_002etxt"></a>
 <p><hr>
-<a name="PO-Files-and-Team"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#PO-Files-and-Team">PO Files and Team</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#generic_002eLANG_002ehtml">generic.LANG.html</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
 
 </div>
 
-<h4 class="subsection">2.3.6 Maintaining Translations in Your Team's Repository</h4>
+<h4 class="subsection">2.3.6 The <samp><span class="file">languages.txt</span></samp> file</h4>
 
-<p><a name="index-project-repository-69"></a><a name="index-repository_002c-translation-project-70"></a><a name="index-team-maintenance-71"></a>
+<p>The file <samp><span class="file">server/gnun/languages.txt</span></samp> is used when generating
+lists of translations; those lists are subsequently included in all
+translations of the article.  Every line in the file is either a
+comment (when it begins with &ldquo;#&rdquo;) or a definition for a language.  A
+language is defined by three tab-separated fields.  The first field
+defines the language suffix; it is used in file names and in texts of
+the links.  The second field is the name of the language in English;
+it is used in HTML comments.  The third field defines the name of the
+language in that language itself; it is used in texts of the links,
+and it should be in UTF-8.  For example:
+
+<pre class="example">     de	German	Deutsch
+</pre>
+   <p>The generated list of translations may look like this:
+
+<pre class="example">     &lt;!-- begin translinks file --&gt;
+     &lt;div id="translations"&gt;
+     &lt;ul class="translations-list"&gt;
+     &lt;!-- German --&gt;
+     &lt;li&gt;&lt;a href="/distros/screenshot.de.html"&gt;Deutsch&lt;/a&gt;&amp;nbsp;[de]&lt;/li&gt;
+     &lt;!-- English --&gt;
+     &lt;li&gt;&lt;a href="/distros/screenshot.html"&gt;English&lt;/a&gt;&amp;nbsp;[en]&lt;/li&gt;
+     &lt;!-- Polish --&gt;
+     &lt;li&gt;&lt;a href="/distros/screenshot.pl.html"&gt;polski&lt;/a&gt;&amp;nbsp;[pl]&lt;/li&gt;
+     &lt;/ul&gt;
+     &lt;/div&gt; &lt;!-- id="translations" --&gt;
+     &lt;!-- end translinks file --&gt;
+</pre>
+   <div class="node">
+<a name="PO-Files-and-Team"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#languages_002etxt">languages.txt</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files">PO Files</a>
+
+</div>
+
+<h4 class="subsection">2.3.7 Maintaining Translations in Your Team's Repository</h4>
+
+<p><a name="index-project-repository-72"></a><a name="index-repository_002c-translation-project-73"></a><a name="index-team-maintenance-74"></a>
 GNUN operates on the &ldquo;official&rdquo; Web repository of the Savannah project
 `www', where normally only the coordinators of translation teams have
 write access.  However, all translation teams have their own projects,
@@ -1513,7 +1620,7 @@ template, aimed for all translation teams who wish to use their own
 project's repository as a place to keep their draft translations, until
 they ripe and are ready to be installed officially.
 
-   <p><a name="index-team-workflow-72"></a>The following diagram illustrates a typical workflow&mdash;it is applicable
+   <p><a name="index-team-workflow-75"></a>The following diagram illustrates a typical workflow&mdash;it is applicable
 for small, medium and large teams:
 
 <pre class="example">     +----------+                   +-------------------+
@@ -1574,15 +1681,15 @@ how to invoke a &ldquo;build&rdquo;.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="GNUmakefile.team-Variables"></a>
 <a name="GNUmakefile_002eteam-Variables"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files-and-Team">PO Files and Team</a>
 
 </div>
 
-<h5 class="subsubsection">2.3.6.1 Adopting <samp><span class="file">GNUmakefile.team</span></samp> For a Specific Team</h5>
+<h5 class="subsubsection">2.3.7.1 Adopting <samp><span class="file">GNUmakefile.team</span></samp> For a Specific Team</h5>
 
 <p>To adjust the makefile for your team, you need to edit two variables.
 
@@ -1706,17 +1813,17 @@ would be nice to send a message to <a href="mailto:bug-gnun@gnu.org">bug-gnun@gn
 <samp><span class="file">GNUmakefile.team</span></samp> gets updated for all teams' benefit.
 
 <div class="node">
-<p><hr>
 <a name="GNUmakefile.team-and-Cron"></a>
 <a name="GNUmakefile_002eteam-and-Cron"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#PO-Files-and-Team">PO Files and Team</a>
 
 </div>
 
-<h5 class="subsubsection">2.3.6.2 Automatic Synchronization and Status Reports</h5>
+<h5 class="subsubsection">2.3.7.2 Automatic Synchronization and Status Reports</h5>
 
-<p><a name="index-team-maintenance_002c-cron-73"></a><a name="index-cron_002c-team-maintenance-74"></a>
+<p><a name="index-team-maintenance_002c-cron-76"></a><a name="index-cron_002c-team-maintenance-77"></a>
 It is convenient to invoke such synchronization automatically, for
 example once every day.  If you have enabled commit notifications for
 the project's repository, any new changes will be visible for
@@ -1741,8 +1848,8 @@ translations weekly or fortnightly, for example:
 way for better readability.
 
 <div class="node">
-<p><hr>
 <a name="Webmaster-Tips"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#PO-Files">PO Files</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
 
@@ -1750,7 +1857,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
 
 <h3 class="section">2.4 Tips and Hints for Webmasters</h3>
 
-<p><a name="index-tips_002c-webmasters-75"></a><a name="index-webmaster-tips-76"></a>
+<p><a name="index-tips_002c-webmasters-78"></a><a name="index-webmaster-tips-79"></a>
 This section contains some tips and general recommendations for
 webmasters in no particular order&mdash;it is not mandatory to follow them,
 but doing so will make translators' lives substantially easier.
@@ -1766,26 +1873,47 @@ the POT will be regenerated only once, and translators who are quick to
 update it immediately won't be disappointed if it changes again in the
 next run.
 
-   <p>Use <em>only</em> US-ASCII characters and HTML entities for the others. 
-This is required because the English text in the articles serves as a
-replacement of the translation when the latter is not complete.  So if
-you use, say, the character &eacute; (e-acute) directly in an English
-page&mdash;which is UTF-8 as declared in <samp><span class="file">server/head-include-1.html</span></samp>,
-it will appear broken on those translated pages who use a different
-encoding.  This specific advice is pretty much mandatory&mdash;the build
-fails if the original article contains such characters&mdash;but we are
-ready to fix any errors a webmaster makes.
+<ul class="menu">
+<li><a accesskey="1" href="#Validation">Validation</a>:                 How to verify the documents. 
+<li><a accesskey="2" href="#Comments-for-Translators">Comments for Translators</a>:   Passing commens to translators. 
+<li><a accesskey="3" href="#Modifying-Boilerplates">Modifying Boilerplates</a>
+<li><a accesskey="4" href="#Localized-URLs">Localized URLs</a>:             Specifying URLs of diagrams
+                                to be transated. 
+</ul>
 
-   <p>The script <samp><span class="command">gnun-validate-html</span></samp> is useful for webmasters who
+<div class="node">
+<a name="Validation"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Comments-for-Translators">Comments for Translators</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Webmaster-Tips">Webmaster Tips</a>
+
+</div>
+
+<h4 class="subsection">2.4.1 Validation</h4>
+
+<p>The script <samp><span class="command">gnun-validate-html</span></samp> is useful for webmasters who
 want to verify if their (potentially intrusive) changes result in a
 valid markup.  Before committing your changes, you can check if it is
 valid by running
 
-<pre class="example">     gnun-validate-html philosophy/not-ipr.html
+<pre class="example">     gnun-validate-html --root . philosophy/not-ipr.html
 </pre>
    <p>See <a href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a>, for more information.
 
+<div class="node">
+<a name="Comments-for-Translators"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Modifying-Boilerplates">Modifying Boilerplates</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Validation">Validation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Webmaster-Tips">Webmaster Tips</a>
+
+</div>
+
+<h4 class="subsection">2.4.2 Comments for Translators</h4>
+
+<p><a name="index-comments-for-translators-80"></a>
 <!-- Emacs Lisp code goes here... -->
+
    <p>If you want a comment to be visible for translators, place it
 <em>inside</em> the element, for example:
 
@@ -1806,7 +1934,19 @@ valid by running
 after the beginning of the HTML comment (<code>&lt;!--</code>), since this will
 unnecessarily indent the comment in the POT.
 
-   <p><strong>Warning:</strong> Any structural diversion from <samp><span class="file">boilerplate.html</span></samp>
+<div class="node">
+<a name="Modifying-Boilerplates"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Localized-URLs">Localized URLs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Comments-for-Translators">Comments for Translators</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Webmaster-Tips">Webmaster Tips</a>
+
+</div>
+
+<h4 class="subsection">2.4.3 Modifying Boilerplates</h4>
+
+<p><a name="index-boilerplates-81"></a>
+<strong>Warning:</strong> Any structural diversion from <samp><span class="file">boilerplate.html</span></samp>
 in a specific article is likely to result in errors from GNUN.  Any
 unexpected updates to the server templates (such as changing the entire
 look &amp; feel of the site) will most probably break <em>all</em>
@@ -1815,8 +1955,42 @@ such changes should not happen&mdash;only that they must be applied in our
 sandbox first, to ensure a smooth transition.
 
 <div class="node">
+<a name="Localized-URLs"></a>
 <p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Modifying-Boilerplates">Modifying Boilerplates</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Webmaster-Tips">Webmaster Tips</a>
+
+</div>
+
+<h4 class="subsection">2.4.4 Localized URLs</h4>
+
+<p><a name="index-localized-URLs-82"></a>
+Some articles may contain diagrams or other images with English text
+that can and should be translated.  In order to make the translated
+versions appear in the respective translations, GNUN should be told
+what URLs need localization.  It can be done with HTML comments like
+
+<pre class="example">     &lt;!-- GNUN: localize URL /philosophy/category.png,
+      /licenses/template-diagram.png and /graphics/jesus-cartoon.jpg --&gt;
+</pre>
+   <p>(One trailing comma is removed; if the URL contains no dot, it is
+ignored; the URLs are separated with spaces.)
+
+   <p>Such comments will be extracted nightly and complied into per-article
+lists of URLs.
+
+   <p>After every build GNUN will check if the respective
+<samp><span class="file">philosophy/category.</span><var>lang</var><span class="file">.png</span></samp> and other files are present in
+the working copy and substitute the strings in the HTML file of the
+traslation.
+
+   <p>GNUN relies on URLs being absolute, starting from the root homepage
+as required in
+<a href="http://www.gnu.org/server/fsf-html-style-sheet.html#FilenameAndURLGuidelines">http://www.gnu.org/server/fsf-html-style-sheet.html#FilenameAndURLGuidelines</a>.
+
+<div class="node">
 <a name="Internals"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Bugs">Bugs</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Usage">Usage</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
@@ -1835,8 +2009,8 @@ front-end.
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="Scripts"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Rules">Rules</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Internals">Internals</a>
 
@@ -1854,24 +2028,25 @@ used in GNUN's rules at all.
 
 <ul class="menu">
 <li><a accesskey="1" href="#make_002dprototype">make-prototype</a>
-<li><a accesskey="2" href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a>
-<li><a accesskey="3" href="#mailfail">mailfail</a>
-<li><a accesskey="4" href="#validate_002dhtml_002dnotify">validate-html-notify</a>
-<li><a accesskey="5" href="#gnun_002dclear_002dprevious">gnun-clear-previous</a>
+<li><a accesskey="2" href="#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a>
+<li><a accesskey="3" href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a>
+<li><a accesskey="4" href="#mailfail">mailfail</a>
+<li><a accesskey="5" href="#validate_002dhtml_002dnotify">validate-html-notify</a>
+<li><a accesskey="6" href="#gnun_002dclear_002dprevious">gnun-clear-previous</a>
 </ul>
 
 <div class="node">
-<p><hr>
 <a name="make-prototype"></a>
 <a name="make_002dprototype"></a>
-Next:&nbsp;<a rel="next" accesskey="n" href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a>,
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Scripts">Scripts</a>
 
 </div>
 
 <h4 class="subsection">3.1.1 The <samp><span class="command">make-prototype</span></samp> Script</h4>
 
-<p><a name="index-POT-generation-77"></a><a name="index-prototype-generation-78"></a><a name="index-generation_002c-POT_002c-_002eproto-79"></a>
+<p><a name="index-POT-generation-83"></a><a name="index-prototype-generation-84"></a><a name="index-generation_002c-POT_002c-_002eproto-85"></a>
 This is a Guile script which makes the &ldquo;prototype&rdquo; file,
 <samp><span class="file">foo.</span><var>lang</var><span class="file">.proto</span></samp>, from which the POT is generated.  GNUN is
 designed in such a way, because it would be no big improvement if links
@@ -1892,7 +2067,10 @@ translator and translator's notes, if necessary.  See <a href="#New-Translation"
    <p>Here are the options that <samp><span class="command">make-prototype</span></samp> accepts:
 
      <dl>
-<dt><samp><span class="option">--article</span></samp><dd>Process the input file as an article.  This is the default.
+<dt><samp><span class="option">--article</span></samp><dd>Process the input file as an article.  This is the default.  As of
+version 0.5, this option is considered obsolete because the links to
+translations are handled by a special rule. 
+See <a href="#update_002dlocalized_002dURLs">update-localized-URLs</a>.
 
      <br><dt><samp><span class="option">--home</span></samp><dd>Process the input article as a homepage.  Specify this when you want
 to create a <samp><span class="file">.proto</span></samp> file for a homepage.
@@ -1915,18 +2093,47 @@ which gets included via an SSI directive.
 </dl>
 
 <div class="node">
+<a name="gnun-add-fuzzy-diff"></a>
+<a name="gnun_002dadd_002dfuzzy_002ddiff"></a>
 <p><hr>
-<a name="gnun-validate-html"></a>
-<a name="gnun_002dvalidate_002dhtml"></a>
-Next:&nbsp;<a rel="next" accesskey="n" href="#mailfail">mailfail</a>,
+Next:&nbsp;<a rel="next" accesskey="n" href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#make_002dprototype">make-prototype</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Scripts">Scripts</a>
 
 </div>
 
-<h4 class="subsection">3.1.2 The <samp><span class="command">gnun-validate-html</span></samp> Script</h4>
+<h4 class="subsection">3.1.2 The <samp><span class="command">gnun-add-fuzzy-diff</span></samp> Script</h4>
 
-<p><a name="index-validation_002c-XHTML-80"></a>
+<p><a name="index-previous_002c-diff-86"></a>
+This script adds comments with differences of current msgids against
+previous ones to fuzzy translations in a PO file.  To produce
+the differences <samp><span class="command">wdiff</span></samp> is used.  This may be useful to figure
+out what has changed.  In fact, it wraps around a <samp><span class="command">sed</span></samp> script
+used in GNUN internally.
+
+<pre class="example">     gnun-add-fuzzy-diff [OPTION...] [FILE]
+</pre>
+     <dl>
+<dt><samp><span class="option">-i</span></samp><dt><samp><span class="option">--in-place</span></samp><dd>Edit the file in place.
+
+     <br><dt><samp><span class="option">--version</span></samp><dd>Display copyright and version information and exit.
+
+     <br><dt><samp><span class="option">--help</span></samp><dd>Display usage information and exit
+</dl>
+
+<div class="node">
+<a name="gnun-validate-html"></a>
+<a name="gnun_002dvalidate_002dhtml"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#mailfail">mailfail</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Scripts">Scripts</a>
+
+</div>
+
+<h4 class="subsection">3.1.3 The <samp><span class="command">gnun-validate-html</span></samp> Script</h4>
+
+<p><a name="index-validation_002c-XHTML-87"></a>
 This is a Bash script whose purpose is to &ldquo;validate&rdquo; both the original
 and translated articles to make sure that they conform to the respective
 W3C standard.  Sometimes webmasters make mistakes, and translators too,
@@ -1935,23 +2142,29 @@ so this tool is useful to catch errors of that kind.
    <p>GNUN enforces XHTML validation at build time if invoked with
 <code>VALIDATE=yes</code>.
 
-   <p>The script expects only one <var>file</var> as an argument and will exit
+   <p>The script expects only one <var>file</var> as the last argument and will exit
 with an error if it is not specified (which might be the case when an
 automatic variable is not expanded properly due to a bug in the
 makefile).
 
+   <p>The top of the working directory can be specified through <code>--root</code>
+option; the default value is &ldquo;../..&rdquo;.
+
+   <p>As a side effect, the expanded HTML can be saved in a file specified
+through <code>--expand-to</code> option.
+
 <div class="node">
-<p><hr>
 <a name="mailfail"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#validate_002dhtml_002dnotify">validate-html-notify</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Scripts">Scripts</a>
 
 </div>
 
-<h4 class="subsection">3.1.3 The <samp><span class="command">mailfail</span></samp> Script</h4>
+<h4 class="subsection">3.1.4 The <samp><span class="command">mailfail</span></samp> Script</h4>
 
-<p><a name="index-mail_002c-notifications-81"></a>
+<p><a name="index-mail_002c-notifications-88"></a>
 This is a helper script that runs a command, and mails the output of
 that command in case it exits with a non-zero exit status. 
 <samp><span class="command">mailfail</span></samp> depends on GNU Mailutils, or a compatible
@@ -1991,16 +2204,16 @@ If an argument is missing, the usage information is printed to the
 standard output and the exit code is 1.
 
 <div class="node">
-<p><hr>
 <a name="validate-html-notify"></a>
 <a name="validate_002dhtml_002dnotify"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#gnun_002dclear_002dprevious">gnun-clear-previous</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#mailfail">mailfail</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Scripts">Scripts</a>
 
 </div>
 
-<h4 class="subsection">3.1.4 The <samp><span class="command">validate-html-notify</span></samp> Script</h4>
+<h4 class="subsection">3.1.5 The <samp><span class="command">validate-html-notify</span></samp> Script</h4>
 
 <p>This script is a wrapper around <samp><span class="command">gnun-validate-html</span></samp>
 (see <a href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a>); it is necessary because it is hard to
@@ -2025,17 +2238,17 @@ wrapper has a specific task and cannot be used to invoke an arbitrary
 command&mdash;use <samp><span class="command">mailfail</span></samp> for that.  See <a href="#mailfail">mailfail</a>.
 
 <div class="node">
-<p><hr>
 <a name="gnun-clear-previous"></a>
 <a name="gnun_002dclear_002dprevious"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#validate_002dhtml_002dnotify">validate-html-notify</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Scripts">Scripts</a>
 
 </div>
 
-<h4 class="subsection">3.1.5 The <samp><span class="command">gnun-clear-previous</span></samp> Script</h4>
+<h4 class="subsection">3.1.6 The <samp><span class="command">gnun-clear-previous</span></samp> Script</h4>
 
-<p><a name="index-previous_002c-manipulating-PO-files-82"></a>
+<p><a name="index-previous_002c-manipulating-PO-files-89"></a>
 This simple script is not used internally in GNUN.  It is merely for
 convenience only, for those who find it hard to remember the various
 &lsquo;<samp><span class="samp">gettext</span></samp>&rsquo; tools and their options.
@@ -2056,8 +2269,8 @@ wrap long lines in PO files.
 </dl>
 
 <div class="node">
-<p><hr>
 <a name="Rules"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Scripts">Scripts</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Internals">Internals</a>
 
@@ -2068,8 +2281,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Internals">Internals</a>
 <p>Read the source code, then please tell us :-)
 
 <div class="node">
-<p><hr>
 <a name="Bugs"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Index">Index</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Internals">Internals</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
@@ -2078,7 +2291,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">4 Reporting Bugs</h2>
 
-<p><a name="index-bugs_002c-reporting-83"></a><a name="index-reporting-bugs-84"></a>
+<p><a name="index-bugs_002c-reporting-90"></a><a name="index-reporting-bugs-91"></a>
 GNUnited Nations, like any other software, is not bug free.  There are
 some known bugs and annoyances, which are listed in the <samp><span class="file">TODO</span></samp>
 file, but it is absolutely certain that there are more which we know
@@ -2089,8 +2302,8 @@ do not hesitate to report them at <a href="mailto:bug-gnun@gnu.org">bug-gnun@gnu
 <a href="https://savannah.gnu.org/bugs/?group=gnun">https://savannah.gnu.org/bugs/?group=gnun</a>.
 
 <div class="node">
-<p><hr>
 <a name="Copying-This-Manual"></a>
+<p><hr>
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Index">Index</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
@@ -2565,8 +2778,8 @@ to permit their use in free software.
 <!-- ispell-local-pdict: "ispell-dict" -->
 <!-- End: -->
 <div class="node">
-<p><hr>
 <a name="Index"></a>
+<p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Copying-This-Manual">Copying This Manual</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Bugs">Bugs</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
@@ -2576,90 +2789,97 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <h2 class="unnumbered">Index</h2>
 
 <ul class="index-cp" compact>
-<li><a href="#index-ALL_005fDIRS-41">ALL_DIRS</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-ALL_005fDIRS-44">ALL_DIRS</a>: <a href="#Main-Variables">Main Variables</a></li>
 <li><a href="#index-announce-18">announce</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-articles-in-root-directory_002c-defining-39">articles in root directory, defining</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-articles-in-root-directory_002c-defining-42">articles in root directory, defining</a>: <a href="#Main-Variables">Main Variables</a></li>
 <li><a href="#index-Bazaar-10">Bazaar</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-bugs_002c-reporting-83">bugs, reporting</a>: <a href="#Bugs">Bugs</a></li>
+<li><a href="#index-boilerplates-81">boilerplates</a>: <a href="#Modifying-Boilerplates">Modifying Boilerplates</a></li>
+<li><a href="#index-bugs_002c-reporting-90">bugs, reporting</a>: <a href="#Bugs">Bugs</a></li>
 <li><a href="#index-bzr-11">bzr</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-conversion-of-existing-translations-61">conversion of existing translations</a>: <a href="#Migrating">Migrating</a></li>
-<li><a href="#index-credits_002c-translators-58">credits, translators</a>: <a href="#Credits-Slot">Credits Slot</a></li>
-<li><a href="#index-credits_002c-translators-52">credits, translators</a>: <a href="#New-Translation">New Translation</a></li>
-<li><a href="#index-cron_002c-team-maintenance-74">cron, team maintenance</a>: <a href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a></li>
+<li><a href="#index-comments-for-translators-80">comments for translators</a>: <a href="#Comments-for-Translators">Comments for Translators</a></li>
+<li><a href="#index-conversion-of-existing-translations-64">conversion of existing translations</a>: <a href="#Migrating">Migrating</a></li>
+<li><a href="#index-credits_002c-translators-61">credits, translators</a>: <a href="#Credits-Slot">Credits Slot</a></li>
+<li><a href="#index-credits_002c-translators-55">credits, translators</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-cron_002c-team-maintenance-77">cron, team maintenance</a>: <a href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a></li>
 <li><a href="#index-CVS-7">CVS</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
 <li><a href="#index-deferred-generation-of-articles-24">deferred generation of articles</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-defining-articles-in-the-root-dir-40">defining articles in the root dir</a>: <a href="#Main-Variables">Main Variables</a></li>
-<li><a href="#index-defining-directories-43">defining directories</a>: <a href="#Main-Variables">Main Variables</a></li>
-<li><a href="#index-defining-homepage-37">defining homepage</a>: <a href="#Main-Variables">Main Variables</a></li>
-<li><a href="#index-defining-templates-34">defining templates</a>: <a href="#Main-Variables">Main Variables</a></li>
-<li><a href="#index-directories_002c-defining-42">directories, defining</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-defining-articles-in-the-root-dir-43">defining articles in the root dir</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-defining-directories-46">defining directories</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-defining-homepage-40">defining homepage</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-defining-templates-35">defining templates</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-directories_002c-defining-45">directories, defining</a>: <a href="#Main-Variables">Main Variables</a></li>
 <li><a href="#index-fuzzy-strings-22">fuzzy strings</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-generation_002c-POT_002c-_002eproto-79">generation, POT, .proto</a>: <a href="#make_002dprototype">make-prototype</a></li>
-<li><a href="#index-generic-notice_002c-translations-68">generic notice, translations</a>: <a href="#generic_002eLANG_002ehtml">generic.LANG.html</a></li>
-<li><a href="#index-gnun_002emk-31">gnun.mk</a>: <a href="#Main-Variables">Main Variables</a></li>
-<li><a href="#index-gnunews-62">gnunews</a>: <a href="#GNU-News">GNU News</a></li>
-<li><a href="#index-gnusflashes-64">gnusflashes</a>: <a href="#GNU-News">GNU News</a></li>
+<li><a href="#index-FUZZY_005fDIFF_005fLINGUAS-36">FUZZY_DIFF_LINGUAS</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-generation_002c-POT_002c-_002eproto-85">generation, POT, .proto</a>: <a href="#make_002dprototype">make-prototype</a></li>
+<li><a href="#index-generic-notice_002c-translations-71">generic notice, translations</a>: <a href="#generic_002eLANG_002ehtml">generic.LANG.html</a></li>
+<li><a href="#index-gnun_002emk-32">gnun.mk</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-gnunews-65">gnunews</a>: <a href="#GNU-News">GNU News</a></li>
+<li><a href="#index-gnusflashes-67">gnusflashes</a>: <a href="#GNU-News">GNU News</a></li>
 <li><a href="#index-GRACE-21">GRACE</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
 <li><a href="#index-grace-period-23">grace period</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-HOME_005fLINGUAS-35">HOME_LINGUAS</a>: <a href="#Main-Variables">Main Variables</a></li>
-<li><a href="#index-homepage_002c-defining-36">homepage, defining</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-HOME_005fLINGUAS-38">HOME_LINGUAS</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-homepage_002c-defining-39">homepage, defining</a>: <a href="#Main-Variables">Main Variables</a></li>
 <li><a href="#index-invocation-2">invocation</a>: <a href="#Invoking-GNUN">Invoking GNUN</a></li>
 <li><a href="#index-invoking-1">invoking</a>: <a href="#Invoking-GNUN">Invoking GNUN</a></li>
-<li><a href="#index-long-lines_002c-wrap-55">long lines, wrap</a>: <a href="#New-Translation">New Translation</a></li>
-<li><a href="#index-mail_002c-notifications-81">mail, notifications</a>: <a href="#mailfail">mailfail</a></li>
+<li><a href="#index-localized-URLs-82">localized URLs</a>: <a href="#Localized-URLs">Localized URLs</a></li>
+<li><a href="#index-long-lines_002c-wrap-58">long lines, wrap</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-mail_002c-notifications-88">mail, notifications</a>: <a href="#mailfail">mailfail</a></li>
 <li><a href="#index-mail_002c-notifications-16">mail, notifications</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-migration_002c-translations-60">migration, translations</a>: <a href="#Migrating">Migrating</a></li>
-<li><a href="#index-new-translation-48">new translation</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-migration_002c-translations-63">migration, translations</a>: <a href="#Migrating">Migrating</a></li>
+<li><a href="#index-new-translation-51">new translation</a>: <a href="#New-Translation">New Translation</a></li>
 <li><a href="#index-new-translations_002c-notifications_002fannouncements-17">new translations, notifications/announcements</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-notes_002c-translators-56">notes, translators</a>: <a href="#Notes-Slot">Notes Slot</a></li>
-<li><a href="#index-notes_002c-translators-50">notes, translators</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-notes_002c-translators-59">notes, translators</a>: <a href="#Notes-Slot">Notes Slot</a></li>
+<li><a href="#index-notes_002c-translators-53">notes, translators</a>: <a href="#New-Translation">New Translation</a></li>
 <li><a href="#index-NOTIFY-15">NOTIFY</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-OUTDATED_002dGRACE-25">OUTDATED-GRACE</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
 <li><a href="#index-output_002c-detailed-20">output, detailed</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-PO-editors-46">PO editors</a>: <a href="#PO-Files">PO Files</a></li>
-<li><a href="#index-PO-headers-49">PO headers</a>: <a href="#New-Translation">New Translation</a></li>
-<li><a href="#index-PO_002c-editing-45">PO, editing</a>: <a href="#PO-Files">PO Files</a></li>
-<li><a href="#index-POT-generation-77">POT generation</a>: <a href="#make_002dprototype">make-prototype</a></li>
-<li><a href="#index-POT-generation_002c-articles-44">POT generation, articles</a>: <a href="#Main-Variables">Main Variables</a></li>
-<li><a href="#index-previous_002c-manipulating-PO-files-82">previous, manipulating PO files</a>: <a href="#gnun_002dclear_002dprevious">gnun-clear-previous</a></li>
-<li><a href="#index-project-repository-69">project repository</a>: <a href="#PO-Files-and-Team">PO Files and Team</a></li>
-<li><a href="#index-prototype-generation-78">prototype generation</a>: <a href="#make_002dprototype">make-prototype</a></li>
-<li><a href="#index-recommendations_002c-PO-files-66">recommendations, PO files</a>: <a href="#PO-Tips">PO Tips</a></li>
-<li><a href="#index-reporting-28">reporting</a>: <a href="#report">report</a></li>
-<li><a href="#index-reporting-bugs-84">reporting bugs</a>: <a href="#Bugs">Bugs</a></li>
-<li><a href="#index-repository_002c-translation-project-70">repository, translation project</a>: <a href="#PO-Files-and-Team">PO Files and Team</a></li>
-<li><a href="#index-ROOT-38">ROOT</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-PO-editors-49">PO editors</a>: <a href="#PO-Files">PO Files</a></li>
+<li><a href="#index-PO-headers-52">PO headers</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-PO_002c-editing-48">PO, editing</a>: <a href="#PO-Files">PO Files</a></li>
+<li><a href="#index-POT-generation-83">POT generation</a>: <a href="#make_002dprototype">make-prototype</a></li>
+<li><a href="#index-POT-generation_002c-articles-47">POT generation, articles</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-previous_002c-diff-86">previous, diff</a>: <a href="#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a></li>
+<li><a href="#index-previous_002c-diff-37">previous, diff</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-previous_002c-manipulating-PO-files-89">previous, manipulating PO files</a>: <a href="#gnun_002dclear_002dprevious">gnun-clear-previous</a></li>
+<li><a href="#index-project-repository-72">project repository</a>: <a href="#PO-Files-and-Team">PO Files and Team</a></li>
+<li><a href="#index-prototype-generation-84">prototype generation</a>: <a href="#make_002dprototype">make-prototype</a></li>
+<li><a href="#index-recommendations_002c-PO-files-69">recommendations, PO files</a>: <a href="#PO-Tips">PO Tips</a></li>
+<li><a href="#index-reporting-29">reporting</a>: <a href="#report">report</a></li>
+<li><a href="#index-reporting-bugs-91">reporting bugs</a>: <a href="#Bugs">Bugs</a></li>
+<li><a href="#index-repository_002c-translation-project-73">repository, translation project</a>: <a href="#PO-Files-and-Team">PO Files and Team</a></li>
+<li><a href="#index-ROOT-41">ROOT</a>: <a href="#Main-Variables">Main Variables</a></li>
 <li><a href="#index-sanity-checks-14">sanity checks</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-status_002c-translations-29">status, translations</a>: <a href="#report">report</a></li>
+<li><a href="#index-status_002c-translations-30">status, translations</a>: <a href="#report">report</a></li>
 <li><a href="#index-Subversion-8">Subversion</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
 <li><a href="#index-SVN-9">SVN</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-synchronization_002c-repository-27">synchronization, repository</a>: <a href="#sync">sync</a></li>
-<li><a href="#index-TEAM-25">TEAM</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-team-information-67">team information</a>: <a href="#generic_002eLANG_002ehtml">generic.LANG.html</a></li>
-<li><a href="#index-team-maintenance-71">team maintenance</a>: <a href="#PO-Files-and-Team">PO Files and Team</a></li>
-<li><a href="#index-team-maintenance_002c-cron-73">team maintenance, cron</a>: <a href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a></li>
-<li><a href="#index-team-workflow-72">team workflow</a>: <a href="#PO-Files-and-Team">PO Files and Team</a></li>
-<li><a href="#index-TEMPLATE_005fLINGUAS-32">TEMPLATE_LINGUAS</a>: <a href="#Main-Variables">Main Variables</a></li>
-<li><a href="#index-templates_002c-defining-33">templates, defining</a>: <a href="#Main-Variables">Main Variables</a></li>
-<li><a href="#index-tips_002c-translators-65">tips, translators</a>: <a href="#PO-Tips">PO Tips</a></li>
-<li><a href="#index-tips_002c-webmasters-75">tips, webmasters</a>: <a href="#Webmaster-Tips">Webmaster Tips</a></li>
-<li><a href="#index-translation_002c-new-47">translation, new</a>: <a href="#New-Translation">New Translation</a></li>
-<li><a href="#index-translators_0027-credits-59">translators' credits</a>: <a href="#Credits-Slot">Credits Slot</a></li>
-<li><a href="#index-translators_0027-credits-53">translators' credits</a>: <a href="#New-Translation">New Translation</a></li>
-<li><a href="#index-translators_0027-notes-57">translators' notes</a>: <a href="#Notes-Slot">Notes Slot</a></li>
-<li><a href="#index-translators_0027-notes-51">translators' notes</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-synchronization_002c-repository-28">synchronization, repository</a>: <a href="#sync">sync</a></li>
+<li><a href="#index-TEAM-26">TEAM</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-team-information-70">team information</a>: <a href="#generic_002eLANG_002ehtml">generic.LANG.html</a></li>
+<li><a href="#index-team-maintenance-74">team maintenance</a>: <a href="#PO-Files-and-Team">PO Files and Team</a></li>
+<li><a href="#index-team-maintenance_002c-cron-76">team maintenance, cron</a>: <a href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a></li>
+<li><a href="#index-team-workflow-75">team workflow</a>: <a href="#PO-Files-and-Team">PO Files and Team</a></li>
+<li><a href="#index-TEMPLATE_005fLINGUAS-33">TEMPLATE_LINGUAS</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-templates_002c-defining-34">templates, defining</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-tips_002c-translators-68">tips, translators</a>: <a href="#PO-Tips">PO Tips</a></li>
+<li><a href="#index-tips_002c-webmasters-78">tips, webmasters</a>: <a href="#Webmaster-Tips">Webmaster Tips</a></li>
+<li><a href="#index-translation_002c-new-50">translation, new</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-translators_0027-credits-62">translators' credits</a>: <a href="#Credits-Slot">Credits Slot</a></li>
+<li><a href="#index-translators_0027-credits-56">translators' credits</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-translators_0027-notes-60">translators' notes</a>: <a href="#Notes-Slot">Notes Slot</a></li>
+<li><a href="#index-translators_0027-notes-54">translators' notes</a>: <a href="#New-Translation">New Translation</a></li>
 <li><a href="#index-triggering_002c-build-3">triggering, build</a>: <a href="#Invoking-GNUN">Invoking GNUN</a></li>
 <li><a href="#index-VALIDATE-12">VALIDATE</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
 <li><a href="#index-validation-13">validation</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-validation_002c-XHTML-80">validation, XHTML</a>: <a href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a></li>
+<li><a href="#index-validation_002c-XHTML-87">validation, XHTML</a>: <a href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a></li>
 <li><a href="#index-variable_002c-behavior-5">variable, behavior</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-variable_002c-team-26">variable, team</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-variables-30">variables</a>: <a href="#Main-Variables">Main Variables</a></li>
+<li><a href="#index-variable_002c-team-27">variable, team</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
+<li><a href="#index-variables-31">variables</a>: <a href="#Main-Variables">Main Variables</a></li>
 <li><a href="#index-variables-4">variables</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
 <li><a href="#index-VCS-6">VCS</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
 <li><a href="#index-VERBOSE-19">VERBOSE</a>: <a href="#Runtime-Variables">Runtime Variables</a></li>
-<li><a href="#index-webmaster-tips-76">webmaster tips</a>: <a href="#Webmaster-Tips">Webmaster Tips</a></li>
-<li><a href="#index-whatsnew-63">whatsnew</a>: <a href="#GNU-News">GNU News</a></li>
-<li><a href="#index-wrapping-long-lines-54">wrapping long lines</a>: <a href="#New-Translation">New Translation</a></li>
+<li><a href="#index-webmaster-tips-79">webmaster tips</a>: <a href="#Webmaster-Tips">Webmaster Tips</a></li>
+<li><a href="#index-whatsnew-66">whatsnew</a>: <a href="#GNU-News">GNU News</a></li>
+<li><a href="#index-wrapping-long-lines-57">wrapping long lines</a>: <a href="#New-Translation">New Translation</a></li>
    </ul><div class="footnote">
 <hr>
 <a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> Actually, it is
@@ -2672,12 +2892,15 @@ apply.</p>
 HTML to PO and the other way around is performed using po4a (&ldquo;po for
 anything&rdquo;), see <a href="http://po4a.alioth.debian.org">http://po4a.alioth.debian.org</a>.</p>
 
-   <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> When GNU Bzr is used, files
+   <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> The &ldquo;no-grace&rdquo;
+items are rebuilt hourly.</p>
+
+   <p class="footnote"><small>[<a name="fn-4" href="#fnd-4">4</a>]</small> When GNU Bzr is used, files
 are added locally only; you need to take care to use <samp><span class="command">bzr push</span></samp>
 manually (or via cron) to take care of effectively adding them to the
 public repository.  See <a href="#triggers">triggers</a>, for a short explanation.</p>
 
-   <p class="footnote"><small>[<a name="fn-4" href="#fnd-4">4</a>]</small> Only because presumably, they are more familiar with
+   <p class="footnote"><small>[<a name="fn-5" href="#fnd-5">5</a>]</small> Only because presumably, they are more familiar with
 GNUnited Nations' internals.  From a purely technical point of view,
 there is no difference.</p>
 

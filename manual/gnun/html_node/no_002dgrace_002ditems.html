@@ -1,12 +1,12 @@
 <html lang="en">
 <head>
-<title>Internals - GNUnited Nations</title>
+<title>no-grace-items - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Usage.html#Usage" title="Usage">
-<link rel="next" href="Bugs.html#Bugs" title="Bugs">
+<link rel="up" href="Special-Targets.html#Special-Targets" title="Special Targets">
+<link rel="next" href="update_002dlocalized_002dURLs.html#update_002dlocalized_002dURLs" title="update-localized-URLs">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (updated 29 January 2012) is for GNUnited Nations (version
@@ -39,24 +39,23 @@ Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<a name="Internals"></a>
+<a name="no-grace-items"></a>
+<a name="no_002dgrace_002ditems"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Bugs.html#Bugs">Bugs</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Usage.html#Usage">Usage</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+Next:&nbsp;<a rel="next" accesskey="n" href="update_002dlocalized_002dURLs.html#update_002dlocalized_002dURLs">update-localized-URLs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">Special Targets</a>
 <hr>
 </div>
 
-<h2 class="chapter">3 Unexciting Information for GNUN's Operation</h2>
+<h5 class="subsubsection">2.1.2.1 The <code>no-grace-items</code> target</h5>
 
-<p>This chapter might be of interest probably only to people who would have
-special interest in the software, plan to enhance it or develop a
-front-end.
+<p>The <code>no-grace-items</code> target regenerates a limited set of articles
+that are not affected by the grace period, namely, the homepage, the
+server templates, gnunews, and all articles defined in the variable
+<code>no-grace-articles</code> (see <a href="GRACE.html#GRACE">grace period</a>).
 
-<ul class="menu">
-<li><a accesskey="1" href="Scripts.html#Scripts">Scripts</a>:       Helper scripts. 
-<li><a accesskey="2" href="Rules.html#Rules">Rules</a>:         The knotty rules explained. 
-</ul>
+   <p>This target can be rebuilt more often than <code>all</code>; it is invoked
+hourly by the official GNUN cronjob.
 
    </body></html>
 

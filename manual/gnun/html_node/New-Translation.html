@@ -3,19 +3,19 @@
 <title>New Translation - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.11">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="PO-Files.html#PO-Files" title="PO Files">
 <link rel="next" href="Migrating.html#Migrating" title="Migrating">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 July 2011) is for GNUnited Nations (version
-0.4), a suite for maintaining translations of www.gnu.org
+This manual (updated 29 January 2012) is for GNUnited Nations (version
+0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
-Copyright (C) 2008, 2009, 2010, 2011 Free Software Foundation,
-Inc.
+Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software
+Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -39,8 +39,8 @@ Inc.
 </head>
 <body>
 <div class="node">
-<p>
 <a name="New-Translation"></a>
+<p>
 Next:&nbsp;<a rel="next" accesskey="n" href="Migrating.html#Migrating">Migrating</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
 <hr>
@@ -48,7 +48,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
 
 <h4 class="subsection">2.3.1 Starting a New Translation</h4>
 
-<p><a name="index-translation_002c-new-47"></a><a name="index-new-translation-48"></a>
+<p><a name="index-translation_002c-new-50"></a><a name="index-new-translation-51"></a>
 To start a new translation, the easiest way is to copy the existing POT
 as <samp><span class="file">article.</span><var>lang</var><span class="file">.po</span></samp>, where <var>lang</var> is your language code. 
 For example, to prepare for a new translation of the essay
@@ -87,7 +87,7 @@ environment is set up correctly.  See <a href="../gettext/msginit-Invocation.htm
 conventions, and the rules for gnu.org translations.  For reference,
 here is a list with all fields explained:
 
-   <p><a name="index-PO-headers-49"></a>
+   <p><a name="index-PO-headers-52"></a>
      <dl>
 <dt>&lsquo;<samp><span class="samp">Project-Id-Version</span></samp>&rsquo;<dd>Add here the filename of the original article, without the
 sub-directory, like &ldquo;body-include-1.html&rdquo; or &ldquo;free-sw.html&rdquo;.
@@ -104,13 +104,11 @@ person who updated the translation.  For example:
 
      <pre class="example">          Elvis Parsley &lt;king@grassland.com&gt;
 </pre>
-     <br><dt>&lsquo;<samp><span class="samp">Language-Team</span></samp>&rsquo;<dd>This field should contain the mailing list on which the translation team
-can be reached&mdash;sometimes this is the alias
-<a href="mailto:web-translators-LANG@gnu.org">web-translators-LANG@gnu.org</a>, but in some cases it is a
-separate, non-GNU list.  It could be a URL of the team's homepage,
-provided that it contains contact details.  Example:
+     <br><dt>&lsquo;<samp><span class="samp">Language-Team</span></samp>&rsquo;<dd>This field should contain the mailing list on which the translation
+team can be reached&mdash;usually <a href="mailto:www-<var>lang</var>-...@gnu.org">www-<var>lang</var>-<small class="dots">...</small>@gnu.org</a>. 
+Example:
 
-     <pre class="example">          French &lt;trad-gnu@april.org&gt;
+     <pre class="example">          Czech &lt;www-cs-general@gnu.org&gt;
 </pre>
      <br><dt>&lsquo;<samp><span class="samp">MIME-Version</span></samp>&rsquo;<dd>Leave it like it is.
 
@@ -136,7 +134,7 @@ the file is automatically modified by GNUN's rules.
      "POT-Creation-Date: 2008-02-06 16:25-0500\n"
      "PO-Revision-Date: 2008-02-09 15:23+0200\n"
      "Last-Translator: Yavor Doganov &lt;yavor@gnu.org&gt;\n"
-     "Language-Team: Bulgarian &lt;dict@fsa-bg.org&gt;\n"
+     "Language-Team: Bulgarian &lt;www-bg-list@gnu.org&gt;\n"
      "MIME-Version: 1.0\n"
      "Content-Type: text/plain; charset=UTF-8\n"
      "Content-Transfer-Encoding: 8-bit\n"
@@ -153,20 +151,20 @@ rule (see <a href="GNUmakefile_002eteam-Variables.html#GNUmakefile_002eteam-Vari
    <p>There are some special messages that appear in the POT and PO:
 
      
-<a name="index-notes_002c-translators-50"></a>
-<a name="index-translators_0027-notes-51"></a>
+<a name="index-notes_002c-translators-53"></a>
+<a name="index-translators_0027-notes-54"></a>
 <dl><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S NOTES*</span></samp>&rsquo;<dd>This is for translator's notes that are injected in the resulting
 translation.  See <a href="Notes-Slot.html#Notes-Slot">Notes Slot</a>, for more information.  If your
 translation does not have notes, you <em>must</em> translate this as a
 space, that is, &lt;SPC&gt;.
 
-     <p><a name="index-credits_002c-translators-52"></a><a name="index-translators_0027-credits-53"></a><br><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S CREDITS*</span></samp>&rsquo;<dd>This is again optional, and should contain the name (and address) of
+     <p><a name="index-credits_002c-translators-55"></a><a name="index-translators_0027-credits-56"></a><br><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S CREDITS*</span></samp>&rsquo;<dd>This is again optional, and should contain the name (and address) of
 the person who made the translation.  &ldquo;Translate&rdquo; this string as a
 space (&lt;SPC&gt;) if you do not want your name to appear there. 
 See <a href="Credits-Slot.html#Credits-Slot">Credits Slot</a>. 
 </dl>
 
-   <p><a name="index-wrapping-long-lines-54"></a><a name="index-long-lines_002c-wrap-55"></a>Most of the PO editors do not wrap long lines that inevitably appear in
+   <p><a name="index-wrapping-long-lines-57"></a><a name="index-long-lines_002c-wrap-58"></a>Most of the PO editors do not wrap long lines that inevitably appear in
 <code>msgstr</code>'s.  If that happens, long lines make reading subsequent
 diffs harder, and are generally annoying for most people.  If this issue
 bothers you, you can &ldquo;normalize&rdquo; the already finished PO translation

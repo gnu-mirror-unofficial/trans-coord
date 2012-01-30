@@ -1,12 +1,13 @@
 <html lang="en">
 <head>
-<title>Internals - GNUnited Nations</title>
+<title>update-localized-URLs - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Usage.html#Usage" title="Usage">
-<link rel="next" href="Bugs.html#Bugs" title="Bugs">
+<link rel="up" href="Special-Targets.html#Special-Targets" title="Special Targets">
+<link rel="prev" href="no_002dgrace_002ditems.html#no_002dgrace_002ditems" title="no-grace-items">
+<link rel="next" href="sync.html#sync" title="sync">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (updated 29 January 2012) is for GNUnited Nations (version
@@ -39,24 +40,23 @@ Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<a name="Internals"></a>
+<a name="update-localized-URLs"></a>
+<a name="update_002dlocalized_002dURLs"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Bugs.html#Bugs">Bugs</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Usage.html#Usage">Usage</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+Next:&nbsp;<a rel="next" accesskey="n" href="sync.html#sync">sync</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="no_002dgrace_002ditems.html#no_002dgrace_002ditems">no-grace-items</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">Special Targets</a>
 <hr>
 </div>
 
-<h2 class="chapter">3 Unexciting Information for GNUN's Operation</h2>
+<h5 class="subsubsection">2.1.2.2 The <code>update-localized-URLs</code> target</h5>
 
-<p>This chapter might be of interest probably only to people who would have
-special interest in the software, plan to enhance it or develop a
-front-end.
+<p>The <code>update-localized-URLs</code> target invokes a script that
+generates the <samp><span class="file">localized-urls.mk</span></samp> file.  This file includes the
+list of URLs that should be localized, it is extracted from special
+comments in the HTML source (see <a href="Localized-URLs.html#Localized-URLs">Localized URLs</a>).
 
-<ul class="menu">
-<li><a accesskey="1" href="Scripts.html#Scripts">Scripts</a>:       Helper scripts. 
-<li><a accesskey="2" href="Rules.html#Rules">Rules</a>:         The knotty rules explained. 
-</ul>
+   <p>This target is meant to be rebuilt nightly.
 
    </body></html>
 

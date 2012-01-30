@@ -3,20 +3,20 @@
 <title>GNU News - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.11">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="PO-Files.html#PO-Files" title="PO Files">
 <link rel="prev" href="Migrating.html#Migrating" title="Migrating">
 <link rel="next" href="PO-Tips.html#PO-Tips" title="PO Tips">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 July 2011) is for GNUnited Nations (version
-0.4), a suite for maintaining translations of www.gnu.org
+This manual (updated 29 January 2012) is for GNUnited Nations (version
+0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
-Copyright (C) 2008, 2009, 2010, 2011 Free Software Foundation,
-Inc.
+Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software
+Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -40,8 +40,8 @@ Inc.
 </head>
 <body>
 <div class="node">
-<p>
 <a name="GNU-News"></a>
+<p>
 Next:&nbsp;<a rel="next" accesskey="n" href="PO-Tips.html#PO-Tips">PO Tips</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="Migrating.html#Migrating">Migrating</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
@@ -50,12 +50,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
 
 <h4 class="subsection">2.3.3 Special Handling For GNU News</h4>
 
-<p><a name="index-gnunews-62"></a><a name="index-whatsnew-63"></a><a name="index-gnusflashes-64"></a>
-The GNU website has infrastructure for supporting &ldquo;What's New&rdquo;, also
-known as &ldquo;GNU News&rdquo;&mdash;see
-<a href="http://www.gnu.org/server/standards/README.webmastering.html#polnews">http://www.gnu.org/server/standards/README.webmastering.html#polnews</a>
-for details.  Entries are added in a special plain text file,
-<samp><span class="file">server/whatsnew.txt</span></samp> and are used to build
+<p><a name="index-gnunews-65"></a><a name="index-whatsnew-66"></a><a name="index-gnusflashes-67"></a>
+<strong>Pay attention:</strong> The practice of news handling that is
+described here has been obsolete for some time now, as they are being
+fed automatically from Planet GNU (<a href="http://planet.gnu.org">http://planet.gnu.org</a>). 
+Nevertheless, the information below is accurate to the extent that the
+support for the old-fashioned way is still available.
+
+   <p>The GNU website has infrastructure for supporting &ldquo;What's New&rdquo;, also
+known as &ldquo;GNU News&rdquo;.  Entries are added in a special plain text
+file, <samp><span class="file">server/whatsnew.txt</span></samp> and are used to build
 <samp><span class="file">server/whatsnew.include</span></samp> and <samp><span class="file">gnusflashes.include</span></samp>.  The
 former is used by <samp><span class="file">server/whatsnew.html</span></samp>, while the latter is
 included in the homepage.

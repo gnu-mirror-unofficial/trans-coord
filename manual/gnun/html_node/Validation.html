@@ -1,12 +1,12 @@
 <html lang="en">
 <head>
-<title>Internals - GNUnited Nations</title>
+<title>Validation - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Usage.html#Usage" title="Usage">
-<link rel="next" href="Bugs.html#Bugs" title="Bugs">
+<link rel="up" href="Webmaster-Tips.html#Webmaster-Tips" title="Webmaster Tips">
+<link rel="next" href="Comments-for-Translators.html#Comments-for-Translators" title="Comments for Translators">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (updated 29 January 2012) is for GNUnited Nations (version
@@ -39,24 +39,23 @@ Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<a name="Internals"></a>
+<a name="Validation"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Bugs.html#Bugs">Bugs</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Usage.html#Usage">Usage</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Comments-for-Translators.html#Comments-for-Translators">Comments for Translators</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Webmaster-Tips.html#Webmaster-Tips">Webmaster Tips</a>
 <hr>
 </div>
 
-<h2 class="chapter">3 Unexciting Information for GNUN's Operation</h2>
+<h4 class="subsection">2.4.1 Validation</h4>
 
-<p>This chapter might be of interest probably only to people who would have
-special interest in the software, plan to enhance it or develop a
-front-end.
+<p>The script <samp><span class="command">gnun-validate-html</span></samp> is useful for webmasters who
+want to verify if their (potentially intrusive) changes result in a
+valid markup.  Before committing your changes, you can check if it is
+valid by running
 
-<ul class="menu">
-<li><a accesskey="1" href="Scripts.html#Scripts">Scripts</a>:       Helper scripts. 
-<li><a accesskey="2" href="Rules.html#Rules">Rules</a>:         The knotty rules explained. 
-</ul>
+<pre class="example">     gnun-validate-html --root . philosophy/not-ipr.html
+</pre>
+   <p>See <a href="gnun_002dvalidate_002dhtml.html#gnun_002dvalidate_002dhtml">gnun-validate-html</a>, for more information.
 
    </body></html>
 

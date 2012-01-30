@@ -3,19 +3,19 @@
 <title>Runtime Variables - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.11">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Invoking-GNUN.html#Invoking-GNUN" title="Invoking GNUN">
 <link rel="next" href="Special-Targets.html#Special-Targets" title="Special Targets">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 July 2011) is for GNUnited Nations (version
-0.4), a suite for maintaining translations of www.gnu.org
+This manual (updated 29 January 2012) is for GNUnited Nations (version
+0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
-Copyright (C) 2008, 2009, 2010, 2011 Free Software Foundation,
-Inc.
+Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software
+Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -39,8 +39,8 @@ Inc.
 </head>
 <body>
 <div class="node">
-<p>
 <a name="Runtime-Variables"></a>
+<p>
 Next:&nbsp;<a rel="next" accesskey="n" href="Special-Targets.html#Special-Targets">Special Targets</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Invoking-GNUN.html#Invoking-GNUN">Invoking GNUN</a>
 <hr>
@@ -90,16 +90,17 @@ sparingly, since it is very slow and generally less reliable.
 is the default, and not defining this variable has the same effect.
 
      <br><dt>&lsquo;<samp><span class="samp">VALIDATE=yes</span></samp>&rsquo;<dd>Validates all original articles before generating the POTs, to ensure
-that the ultimate source is valid XHMTL.  Also, validates all
+that the ultimate source is valid (X)HMTL.  Also, validates all
 generated translations in HTML format and all PO files.  It is highly
 recommended to run the build this way, even if it is a bit tedious to
 fix the errors that are reported as a result of enforcing validation.
 
      <p>Articles defined in the variable <code>no-validate-articles</code> are never
-checked for HTML validity.  Its purpose is to skip validation of HTML 5
-articles, until the command-line validation tools are updated to parse
-files that comply with this new standard.  Use it sparingly, since this
-may lead to other errors.
+checked for HTML validity.  Its purpose was to skip validation of HTML
+5 articles, until the command-line validation tools are updated to
+parse files that comply with this new standard.  As of version 0.5
+GNUN supports HTML 5, so resorting to <code>no-validate-articles</code>
+should not be necessary.
 
      <p><a name="index-NOTIFY-15"></a><a name="index-mail_002c-notifications-16"></a><br><dt>&lsquo;<samp><span class="samp">NOTIFY=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Do not send email notifications about errors.  This is the default.
 
@@ -128,7 +129,7 @@ receive only traffic related to a specific language.  See <a href="../web-trans/
 default, but recommended in general since it will show a bug in the
 computation of the basic variables.
 
-     <p><a name="index-GRACE-21"></a><a name="index-fuzzy-strings-22"></a><a name="index-grace-period-23"></a><a name="index-deferred-generation-of-articles-24"></a><br><dt>&lsquo;<samp><span class="samp">GRACE=</span><var>days</var></samp>&rsquo;<dd>If defined, ordinary articles that have fuzzy strings and are not older
+     <p><a name="index-GRACE-21"></a><a name="index-fuzzy-strings-22"></a><a name="index-grace-period-23"></a><a name="index-deferred-generation-of-articles-24"></a><a name="GRACE"></a><br><dt>&lsquo;<samp><span class="samp">GRACE=</span><var>days</var></samp>&rsquo;<dd>If defined, ordinary articles that have fuzzy strings and are not older
 than <var>days</var> will not be regenerated.  This functionality is
 implemented specifically to prevent gratuitous replacement of translated
 strings with the English text when there are only minor formatting
@@ -138,7 +139,16 @@ strings, while keeping the online translation intact.  Note that this
 variable has no effect on the homepage, the server templates, gnunews
 and all articles defined in the variable <code>no-grace-articles</code>.
 
-     <p><a name="index-TEAM-25"></a><a name="index-variable_002c-team-26"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team which articles need to be checked for
+     <p><a name="index-OUTDATED_002dGRACE-25"></a><br><dt>&lsquo;<samp><span class="samp">OUTDATED-GRACE=</span><var>days</var></samp>&rsquo;<dd>Grace period for the out-of-date notice.  When the variable
+<code>GRACE</code> is defined, <code>OUTDATED-GRACE</code> defaults to 60 days
+(see <a href="GRACE.html#GRACE">grace period</a>).  The out-of-date notice is a special
+text (<samp><span class="file">server/outdated.html</span></samp> in the `www' repository) that is
+inserted into every outdated translation when the period defined in
+this variable is over; its purpose is to inform the reader that the
+translation does not correspond to the original English article, which
+has been changed since the translation was last updated.
+
+     <p><a name="index-TEAM-26"></a><a name="index-variable_002c-team-27"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team which articles need to be checked for
 completeness.  This variable is applicable only for the <code>report</code>
 target, and is mandatory for it.  See <a href="report.html#report">report</a>.
 
@@ -168,7 +178,7 @@ corresponding <samp><span class="file">.</span><var>lang</var><span class="file"
    <p>If notification is enabled (<code>NOTIFY=yes</code>), and the build system
 encounters errors (mostly when validating articles), email messages
 will be sent to the party that is expected to fix the error.  The
-subject of the messages always include the problematic article, for
+subject of the messages always includes the problematic article, for
 example:
 
 <pre class="example">     Subject: [GNUN Error] gnu/gnu.fa.html is not valid XHTML

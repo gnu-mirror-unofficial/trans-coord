@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+<title>languages.txt - GNUnited Nations</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNUnited Nations">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="PO-Files.html#PO-Files" title="PO Files">
+<link rel="prev" href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml" title="generic.LANG.html">
+<link rel="next" href="PO-Files-and-Team.html#PO-Files-and-Team" title="PO Files and Team">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual (updated 29 January 2012) is for GNUnited Nations (version
+0.5), a suite for maintaining translations of www.gnu.org
+essays and other articles.
+
+
+Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software
+Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled ``GNU Free Documentation License.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="languages.txt"></a>
+<a name="languages_002etxt"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="PO-Files-and-Team.html#PO-Files-and-Team">PO Files and Team</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml">generic.LANG.html</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
+<hr>
+</div>
+
+<h4 class="subsection">2.3.6 The <samp><span class="file">languages.txt</span></samp> file</h4>
+
+<p>The file <samp><span class="file">server/gnun/languages.txt</span></samp> is used when generating
+lists of translations; those lists are subsequently included in all
+translations of the article.  Every line in the file is either a
+comment (when it begins with &ldquo;#&rdquo;) or a definition for a language.  A
+language is defined by three tab-separated fields.  The first field
+defines the language suffix; it is used in file names and in texts of
+the links.  The second field is the name of the language in English;
+it is used in HTML comments.  The third field defines the name of the
+language in that language itself; it is used in texts of the links,
+and it should be in UTF-8.  For example:
+
+<pre class="example">     de	German	Deutsch
+</pre>
+   <p>The generated list of translations may look like this:
+
+<pre class="example">     &lt;!-- begin translinks file --&gt;
+     &lt;div id="translations"&gt;
+     &lt;ul class="translations-list"&gt;
+     &lt;!-- German --&gt;
+     &lt;li&gt;&lt;a href="/distros/screenshot.de.html"&gt;Deutsch&lt;/a&gt;&amp;nbsp;[de]&lt;/li&gt;
+     &lt;!-- English --&gt;
+     &lt;li&gt;&lt;a href="/distros/screenshot.html"&gt;English&lt;/a&gt;&amp;nbsp;[en]&lt;/li&gt;
+     &lt;!-- Polish --&gt;
+     &lt;li&gt;&lt;a href="/distros/screenshot.pl.html"&gt;polski&lt;/a&gt;&amp;nbsp;[pl]&lt;/li&gt;
+     &lt;/ul&gt;
+     &lt;/div&gt; &lt;!-- id="translations" --&gt;
+     &lt;!-- end translinks file --&gt;
+</pre>
+   </body></html>
+
