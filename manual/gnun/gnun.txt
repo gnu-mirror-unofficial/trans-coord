@@ -32,6 +32,7 @@ GNUnited Nations
       2.3.7.1 Adopting `GNUmakefile.team' For a Specific Team
       Targets in `GNUmakefile.team'
       2.3.7.2 Automatic Synchronization and Status Reports
+    2.3.8 Using Compendia
   2.4 Tips and Hints for Webmasters
     2.4.1 Validation
     2.4.2 Comments for Translators
@@ -54,7 +55,7 @@ Index
 GNUnited Nations
 ****************
 
-This manual (updated 29 January 2012) is for GNUnited Nations (version
+This manual (updated 20 March 2012) is for GNUnited Nations (version
 0.5), a suite for maintaining translations of www.gnu.org essays and
 other articles.
 
@@ -186,6 +187,10 @@ details.
 Translation in itself is a whole matter, whose complexity far
 overwhelms the level of this manual.  Nevertheless, a few hints are
 given in some other chapter of this manual.
+
+   It is possible to make GNUN get translations for common strings from
+dedicated PO files, so called compendia.  *Note Compendia::, for more
+information.
 
    You may use any compatible PO editor to add translated messages into
 the PO file.  *Note Editing: (gettext)Editing, for more information.
@@ -533,7 +538,7 @@ will be sent to the party that is expected to fix the error.  The
 subject of the messages always includes the problematic article, for
 example:
 
-     Subject: [GNUN Error] gnu/gnu.fa.html is not valid XHTML
+     Subject: [GNUN Error] gnu/gnu.fa.html is not valid HTML
 
    ---------- Footnotes ----------
 
@@ -632,7 +637,7 @@ developed, if you recall.
 This is a special target intended to be run by the automatic build after
 the main build and _after_ `cvs|svn|bzr commit'.
 
-   When a GNUN build completes and some translations fail at the XHTML
+   When a GNUN build completes and some translations fail at the HTML
 validation stage, the result is checked in the repository, as explained
 earlier (*note Runtime Variables::).  Thus, CVS updates the $Date$ RCS
 keyword (or any other keywords, for that matter) and resets the file(s)
@@ -651,7 +656,7 @@ the target that must be rebuilt.  Finally, it deletes all those
 
    In addition, this is the rule that takes care of actually sending the
 announcements if `ANNOUNCE=yes'.  Since it is a completely valid
-scenario to have a new translation which is initially invalid XHTML, the
+scenario to have a new translation which is initially invalid HTML, the
 canned command sequence for announcements is recorded in `*.hook-ann'
 files, and they are treated by `triggers' in a different way.  A newly
 added `.LANG.po' file may be invalid, in which case GNUN will commit an
@@ -716,9 +721,7 @@ intervention.  If not, that is a bug that should be reported and fixed.
      _if and only if_ you have all the SSI templates translated, and
      have already committed all template files:
 
-        - `server/po/head-include-1.LANG.po'
-
-        - `server/po/html5-head-include-1.LANG.po'
+        - `server/po/head-include-2.LANG.po'
 
         - `server/po/body-include-1.LANG.po'
 
@@ -726,10 +729,13 @@ intervention.  If not, that is a bug that should be reported and fixed.
 
         - `server/po/footer-text.LANG.po',
 
+        - `server/po/outdated.LANG.po',
+
      as well as the templates that are not under GNUN's control and are
      translated manually, like `server/header.LANG.html',
-     `server/html5-header.LANG.html', `server/banner.LANG.html' and
-     `server/footer.LANG.html'.
+     `server/head-include-1.LANG.html', `server/html5-header.LANG.html',
+     `server/html5-head-include-1.LANG.html', `server/banner.LANG.html'
+     and `server/footer.LANG.html'.
 
      Additional templates can be defined via the EXTRA-TEMPLATES
      variable in `server/gnun/gnun.mk'.
@@ -812,7 +818,7 @@ to make it valid.  Here is a list of widely used PO editors:
 
    * po.vim--ftplugin for the Vim editor.  The best option for people
      who use Vim as their editor.  See
-     `http://www.vim.org/scripts/script.php?script_id=695'.
+     `http://www.vim.org/scripts/script.php?script_id=2530'.
 
    * Various web-based editors.  *Note Savannah VCS:
      (web-trans)Savannah VCS.
@@ -1212,7 +1218,7 @@ report bugs.  For example:
 
    The contents of `generic.LANG.html' is injected right after the
 translators' credits, if any, and before the timestamp.  It should be
-valid XHTML markup.
+valid HTML markup.
 
    When you modify this file, for example, adding a message to the
 existing empty file or changing a URL, such modification will affect
@@ -1484,6 +1490,43 @@ translations weekly or fortnightly, for example:
 as a line continuation character--the example shown is made that way
 for better readability.
 
+2.3.8 Using Compendia
+---------------------
+
+Compendium is a PO file including translations for common strings; it is
+used to fill other PO files.  *Note gettext: (gettext)Compendium.  One
+example of such common strings is the footer text about reporting bugs
+and sending inquiries: when a webmaster updates footer texts in an
+article, GNUN will use compendia to automatically fill the translations
+for the new version of the strings.
+
+   GNUN uses compendia located in `server/gnun/compendia' directory in
+the `www' web repository.  There are two kinds of compendia:
+`master.LANG.po' and `compendium.LANG.po'.
+
+   The first kind, `master.LANG.po', can be used to simultaneously
+update all occurrences of the translations of a given string.
+Translations from this file will override the translations from
+`ARTICLE.LANG.po'.  When `master.LANG.po' is updated, the translations
+will be rebuilt.  GNUN doesn't modify this kind of compendia.
+
+   The second kind, `compendium.LANG.po', is updated automatically.
+GNUN finds strings that repeat many times in POTs of articles and
+collects them in `compendium.pot'.  Then GNUN checks all available
+`ARTICLE.LANG.po' files for translations of those strings and generates
+`compendium.LANG.po'.  This file is also used to fill missing
+translations, but it doesn't override the translations from
+`ARTICLE.LANG.po', and the strings coming from `compendium.LANG.po' are
+always marked as "fuzzy".
+
+   When updating `compendium.pot', some strings should be excluded even
+though they repeat in the POT files many times, for instance, GNUN
+slots for translators' notes.  *Note Notes Slot::.  They are not real
+translations, this is why they are likely to be differrent for different
+articles.  In order to avoid including them in compendia, GNUN checks a
+specific file, `exclude.pot', and when that file contains the the
+string, it won't be added to `compendium.pot'.
+
 2.4 Tips and Hints for Webmasters
 =================================
 
@@ -1559,11 +1602,12 @@ what URLs need localization.  It can be done with HTML comments like
      <!-- GNUN: localize URL /philosophy/category.png,
       /licenses/template-diagram.png and /graphics/jesus-cartoon.jpg -->
 
-   (One trailing comma is removed; if the URL contains no dot, it is
-ignored; the URLs are separated with spaces.)
+   The URLs are separated with spaces.  One trailing comma at the end of
+every word is removed if present.  Words without a dot, such as `and',
+do not count as URLs; they are ignored.
 
-   Such comments will be extracted nightly and complied into per-article
-lists of URLs.
+   Such comments will be extracted nightly and compiled into per-article
+lists of URLs in `localized-urls.mk'.
 
    After every build GNUN will check if the respective
 `philosophy/category.LANG.png' and other files are present in the
@@ -1615,9 +1659,10 @@ Translation::.
 
 `--article'
      Process the input file as an article.  This is the default.  As of
-     version 0.5, this option is considered obsolete because the links
-     to translations are handled by a special rule.  *Note
-     update-localized-URLs::.
+     version 0.5, this option is considered obsolete because the lists
+     of translations are implemented as an automatically generated file
+     included via SSI directive just like the respective list is
+     included in the homepage.  *Note languages.txt::.
 
 `--home'
      Process the input article as a homepage.  Specify this when you
@@ -1635,12 +1680,6 @@ Translation::.
 `-o'
 `--output=FILE'
      The file where to write the output of the script.
-
-`-t'
-`--translinks=FILE'
-     The file containing the translation links.  This makes sense only
-     for articles, since the homepage has its own `translations.include'
-     which gets included via an SSI directive.
 
 `--version'
      Print copyright and version information on the standard output.
@@ -1673,11 +1712,11 @@ internally.
 -------------------------------------
 
 This is a Bash script whose purpose is to "validate" both the original
-and translated articles to make sure that they conform to the respective
-W3C standard.  Sometimes webmasters make mistakes, and translators too,
-so this tool is useful to catch errors of that kind.
+and translated articles to make sure that they conform to the
+respective W3C standard.  Sometimes webmasters make mistakes, and
+translators too, so this tool is useful to catch errors of that kind.
 
-   GNUN enforces XHTML validation at build time if invoked with
+   GNUN enforces HTML validation at build time if invoked with
 `VALIDATE=yes'.
 
    The script expects only one FILE as the last argument and will exit
@@ -2286,94 +2325,98 @@ permit their use in free software.
 Index
 *****
 
-ALL_DIRS:                                      See 2.2.      (line  755)
-announce:                                      See 2.1.1.    (line  461)
-articles in root directory, defining:          See 2.2.      (line  748)
-Bazaar:                                        See 2.1.1.    (line  400)
-boilerplates:                                  See 2.4.3.    (line 1543)
-bugs, reporting:                               See 4.        (line 1794)
-bzr:                                           See 2.1.1.    (line  400)
-comments for translators:                      See 2.4.2.    (line 1520)
-conversion of existing translations:           See 2.3.2.    (line 1057)
-credits, translators <1>:                      See 2.3.1.2.  (line 1034)
-credits, translators:                          See 2.3.1.    (line  935)
-cron, team maintenance:                        See 2.3.7.2.  (line 1464)
-CVS:                                           See 2.1.1.    (line  400)
-deferred generation of articles:               See 2.1.1.    (line  481)
-defining articles in the root dir:             See 2.2.      (line  748)
-defining directories:                          See 2.2.      (line  755)
-defining homepage:                             See 2.2.      (line  742)
-defining templates:                            See 2.2.      (line  714)
-directories, defining:                         See 2.2.      (line  755)
-fuzzy strings:                                 See 2.1.1.    (line  481)
-FUZZY_DIFF_LINGUAS:                            See 2.2.      (line  737)
-generation, POT, .proto:                       See 3.1.1.    (line 1598)
-generic notice, translations:                  See 2.3.5.    (line 1202)
-gnun.mk:                                       See 2.2.      (line  701)
-gnunews:                                       See 2.3.3.    (line 1101)
-gnusflashes:                                   See 2.3.3.    (line 1101)
-GRACE:                                         See 2.1.1.    (line  481)
-grace period:                                  See 2.1.1.    (line  481)
-HOME_LINGUAS:                                  See 2.2.      (line  742)
-homepage, defining:                            See 2.2.      (line  742)
-invocation:                                    See 2.1.      (line  352)
-invoking:                                      See 2.1.      (line  352)
-localized URLs:                                See 2.4.4.    (line 1554)
-long lines, wrap:                              See 2.3.1.    (line  941)
-mail, notifications <1>:                       See 3.1.4.    (line 1697)
-mail, notifications:                           See 2.1.1.    (line  448)
-migration, translations:                       See 2.3.2.    (line 1057)
-new translation:                               See 2.3.1.    (line  823)
-new translations, notifications/announcements: See 2.1.1.    (line  461)
-notes, translators <1>:                        See 2.3.1.1.  (line  987)
-notes, translators:                            See 2.3.1.    (line  929)
-NOTIFY:                                        See 2.1.1.    (line  448)
-OUTDATED-GRACE:                                See 2.1.1.    (line  493)
-output, detailed:                              See 2.1.1.    (line  474)
-PO editors:                                    See 2.3.      (line  788)
-PO headers:                                    See 2.3.1.    (line  862)
-PO, editing:                                   See 2.3.      (line  776)
-POT generation:                                See 3.1.1.    (line 1598)
-POT generation, articles:                      See 2.2.      (line  759)
-previous, diff <1>:                            See 3.1.2.    (line 1654)
-previous, diff:                                See 2.2.      (line  737)
-previous, manipulating PO files:               See 3.1.6.    (line 1767)
-project repository:                            See 2.3.7.    (line 1258)
-prototype generation:                          See 3.1.1.    (line 1598)
-recommendations, PO files:                     See 2.3.4.    (line 1131)
-reporting:                                     See 2.1.2.4.  (line  615)
-reporting bugs:                                See 4.        (line 1794)
-repository, translation project:               See 2.3.7.    (line 1258)
-ROOT:                                          See 2.2.      (line  748)
-sanity checks:                                 See 2.1.1.    (line  427)
-status, translations:                          See 2.1.2.4.  (line  615)
-Subversion:                                    See 2.1.1.    (line  400)
-SVN:                                           See 2.1.1.    (line  400)
-synchronization, repository:                   See 2.1.2.3.  (line  579)
-TEAM:                                          See 2.1.1.    (line  503)
-team information:                              See 2.3.5.    (line 1202)
-team maintenance:                              See 2.3.7.    (line 1258)
-team maintenance, cron:                        See 2.3.7.2.  (line 1464)
-team workflow:                                 See 2.3.7.    (line 1276)
-TEMPLATE_LINGUAS:                              See 2.2.      (line  714)
-templates, defining:                           See 2.2.      (line  714)
-tips, translators:                             See 2.3.4.    (line 1131)
-tips, webmasters:                              See 2.4.      (line 1490)
-translation, new:                              See 2.3.1.    (line  823)
-translators' credits <1>:                      See 2.3.1.2.  (line 1034)
-translators' credits:                          See 2.3.1.    (line  935)
-translators' notes <1>:                        See 2.3.1.1.  (line  987)
-translators' notes:                            See 2.3.1.    (line  929)
-triggering, build:                             See 2.1.      (line  352)
-VALIDATE:                                      See 2.1.1.    (line  427)
-validation:                                    See 2.1.1.    (line  427)
-validation, XHTML:                             See 3.1.3.    (line 1675)
-variable, behavior:                            See 2.1.1.    (line  393)
-variable, team:                                See 2.1.1.    (line  503)
-variables <1>:                                 See 2.2.      (line  701)
-variables:                                     See 2.1.1.    (line  393)
-VCS:                                           See 2.1.1.    (line  400)
-VERBOSE:                                       See 2.1.1.    (line  474)
-webmaster tips:                                See 2.4.      (line 1490)
-whatsnew:                                      See 2.3.3.    (line 1101)
-wrapping long lines:                           See 2.3.1.    (line  941)
+ALL_DIRS:                                      See 2.2.      (line  761)
+announce:                                      See 2.1.1.    (line  466)
+articles in root directory, defining:          See 2.2.      (line  754)
+Bazaar:                                        See 2.1.1.    (line  405)
+boilerplates:                                  See 2.4.3.    (line 1586)
+bugs, reporting:                               See 4.        (line 1833)
+bzr:                                           See 2.1.1.    (line  405)
+comments for translators:                      See 2.4.2.    (line 1563)
+compendia:                                     See 2.3.8.    (line 1496)
+compendium.pot:                                See 2.3.8.    (line 1496)
+conversion of existing translations:           See 2.3.2.    (line 1063)
+credits, translators <1>:                      See 2.3.1.2.  (line 1040)
+credits, translators:                          See 2.3.1.    (line  941)
+cron, team maintenance:                        See 2.3.7.2.  (line 1470)
+CVS:                                           See 2.1.1.    (line  405)
+deferred generation of articles:               See 2.1.1.    (line  486)
+defining articles in the root dir:             See 2.2.      (line  754)
+defining directories:                          See 2.2.      (line  761)
+defining homepage:                             See 2.2.      (line  748)
+defining templates:                            See 2.2.      (line  719)
+directories, defining:                         See 2.2.      (line  761)
+exclude.pot:                                   See 2.3.8.    (line 1496)
+fuzzy strings:                                 See 2.1.1.    (line  486)
+FUZZY_DIFF_LINGUAS:                            See 2.2.      (line  743)
+generation, POT, .proto:                       See 3.1.1.    (line 1642)
+generic notice, translations:                  See 2.3.5.    (line 1208)
+gnun.mk:                                       See 2.2.      (line  706)
+gnunews:                                       See 2.3.3.    (line 1107)
+gnusflashes:                                   See 2.3.3.    (line 1107)
+GRACE:                                         See 2.1.1.    (line  486)
+grace period:                                  See 2.1.1.    (line  486)
+HOME_LINGUAS:                                  See 2.2.      (line  748)
+homepage, defining:                            See 2.2.      (line  748)
+invocation:                                    See 2.1.      (line  357)
+invoking:                                      See 2.1.      (line  357)
+localized URLs:                                See 2.4.4.    (line 1597)
+long lines, wrap:                              See 2.3.1.    (line  947)
+mail, notifications <1>:                       See 3.1.4.    (line 1736)
+mail, notifications:                           See 2.1.1.    (line  453)
+migration, translations:                       See 2.3.2.    (line 1063)
+new translation:                               See 2.3.1.    (line  829)
+new translations, notifications/announcements: See 2.1.1.    (line  466)
+notes, translators <1>:                        See 2.3.1.1.  (line  993)
+notes, translators:                            See 2.3.1.    (line  935)
+NOTIFY:                                        See 2.1.1.    (line  453)
+OUTDATED-GRACE:                                See 2.1.1.    (line  498)
+output, detailed:                              See 2.1.1.    (line  479)
+PO editors:                                    See 2.3.      (line  794)
+PO headers:                                    See 2.3.1.    (line  868)
+PO, editing:                                   See 2.3.      (line  782)
+POT generation:                                See 3.1.1.    (line 1642)
+POT generation, articles:                      See 2.2.      (line  765)
+previous, diff <1>:                            See 3.1.2.    (line 1693)
+previous, diff:                                See 2.2.      (line  743)
+previous, manipulating PO files:               See 3.1.6.    (line 1806)
+project repository:                            See 2.3.7.    (line 1264)
+prototype generation:                          See 3.1.1.    (line 1642)
+recommendations, PO files:                     See 2.3.4.    (line 1137)
+reporting:                                     See 2.1.2.4.  (line  620)
+reporting bugs:                                See 4.        (line 1833)
+repository, translation project:               See 2.3.7.    (line 1264)
+ROOT:                                          See 2.2.      (line  754)
+sanity checks:                                 See 2.1.1.    (line  432)
+status, translations:                          See 2.1.2.4.  (line  620)
+Subversion:                                    See 2.1.1.    (line  405)
+SVN:                                           See 2.1.1.    (line  405)
+synchronization, repository:                   See 2.1.2.3.  (line  584)
+TEAM:                                          See 2.1.1.    (line  508)
+team information:                              See 2.3.5.    (line 1208)
+team maintenance:                              See 2.3.7.    (line 1264)
+team maintenance, cron:                        See 2.3.7.2.  (line 1470)
+team workflow:                                 See 2.3.7.    (line 1282)
+TEMPLATE_LINGUAS:                              See 2.2.      (line  719)
+templates, defining:                           See 2.2.      (line  719)
+tips, translators:                             See 2.3.4.    (line 1137)
+tips, webmasters:                              See 2.4.      (line 1533)
+translation memory:                            See 2.3.8.    (line 1496)
+translation, new:                              See 2.3.1.    (line  829)
+translators' credits <1>:                      See 2.3.1.2.  (line 1040)
+translators' credits:                          See 2.3.1.    (line  941)
+translators' notes <1>:                        See 2.3.1.1.  (line  993)
+translators' notes:                            See 2.3.1.    (line  935)
+triggering, build:                             See 2.1.      (line  357)
+VALIDATE:                                      See 2.1.1.    (line  432)
+validation:                                    See 2.1.1.    (line  432)
+validation, HTML, XHTML:                       See 3.1.3.    (line 1714)
+variable, behavior:                            See 2.1.1.    (line  398)
+variable, team:                                See 2.1.1.    (line  508)
+variables <1>:                                 See 2.2.      (line  706)
+variables:                                     See 2.1.1.    (line  398)
+VCS:                                           See 2.1.1.    (line  405)
+VERBOSE:                                       See 2.1.1.    (line  479)
+webmaster tips:                                See 2.4.      (line 1533)
+whatsnew:                                      See 2.3.3.    (line 1107)
+wrapping long lines:                           See 2.3.1.    (line  947)

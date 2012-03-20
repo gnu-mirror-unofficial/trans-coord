@@ -10,7 +10,7 @@
 <link rel="next" href="clean.html#clean" title="clean">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 29 January 2012) is for GNUnited Nations (version
+This manual (updated 20 March 2012) is for GNUnited Nations (version
 0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -55,16 +55,16 @@ the main build and <em>after</em> <code>cvs|svn|bzr commit</code>.
 
 <!-- FIXME: Check how Subversion behaves with keywords and update the -->
 <!-- paragraph below. -->
-   <p>When a GNUN build completes and some translations fail at the XHTML
-validation stage, the result is checked in the repository, as explained
-earlier (see <a href="Runtime-Variables.html#Runtime-Variables">Runtime Variables</a>).  Thus, CVS updates the $<!-- /@w -->Date$
-RCS keyword (or any other keywords, for that matter) and resets the
-file(s) timestamp.  Next time <samp><span class="command">make</span></samp> is invoked, the target
-appears newer than the prerequisite so no rebuild is triggered.  The
-purpose of the <code>triggers</code> target is to &ldquo;save&rdquo; the information of
-the faulty targets during the main build, and to touch their
-prerequisites in order such invalid articles not to remain online
-unnoticed.
+   <p>When a GNUN build completes and some translations fail at the HTML
+validation stage, the result is checked in the repository, as
+explained earlier (see <a href="Runtime-Variables.html#Runtime-Variables">Runtime Variables</a>).  Thus, CVS updates the
+$<!-- /@w -->Date$ RCS keyword (or any other keywords, for that matter) and
+resets the file(s) timestamp.  Next time <samp><span class="command">make</span></samp> is invoked,
+the target appears newer than the prerequisite so no rebuild is
+triggered.  The purpose of the <code>triggers</code> target is to &ldquo;save&rdquo;
+the information of the faulty targets during the main build, and to
+touch their prerequisites in order such invalid articles not to remain
+online unnoticed.
 
    <p>The <code>triggers</code> target currently executes the files named
 <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html.hook</span></samp> in the <samp><span class="file">server/gnun</span></samp>
@@ -75,16 +75,16 @@ deletes all those <samp><span class="file">*.hook</span></samp> files.
 
    <p>In addition, this is the rule that takes care of actually sending the
 announcements if <code>ANNOUNCE=yes</code>.  Since it is a completely valid
-scenario to have a new translation which is initially invalid XHTML, the
-canned command sequence for announcements is recorded in
+scenario to have a new translation which is initially invalid HTML,
+the canned command sequence for announcements is recorded in
 <samp><span class="file">*.hook-ann</span></samp> files, and they are treated by <code>triggers</code> in a
-different way.  A newly added <samp><span class="file">.</span><var>lang</var><span class="file">.po</span></samp> file may be invalid,
-in which case GNUN will commit an empty <samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp>
-file&mdash;it is not appropriate to announce it as a new translation as it
-is an empty file completely useless for the general public.  The
-<code>triggers</code> rule detects this case, and postpones the announcement
-to the next build attempt, when the generated HTML translation is
-supposed to be human-readable.
+different way.  A newly added <samp><span class="file">.</span><var>lang</var><span class="file">.po</span></samp> file may be
+invalid, in which case GNUN will commit an empty
+<samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> file&mdash;it is not appropriate to announce it as
+a new translation as it is an empty file completely useless for the
+general public.  The <code>triggers</code> rule detects this case, and
+postpones the announcement to the next build attempt, when the
+generated HTML translation is supposed to be human-readable.
 
    <p>To summarize, for effective operation GNUN should be invoked
 automatically as <code>make ; cvs|svn|bzr commit -m ... ; make

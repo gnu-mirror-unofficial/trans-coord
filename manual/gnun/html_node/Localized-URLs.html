@@ -9,7 +9,7 @@
 <link rel="prev" href="Modifying-Boilerplates.html#Modifying-Boilerplates" title="Modifying Boilerplates">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 29 January 2012) is for GNUnited Nations (version
+This manual (updated 20 March 2012) is for GNUnited Nations (version
 0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -48,7 +48,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Webmaster-Tips.html#Webmaster-Tips">Web
 
 <h4 class="subsection">2.4.4 Localized URLs</h4>
 
-<p><a name="index-localized-URLs-82"></a>
+<p><a name="index-localized-URLs-86"></a>
 Some articles may contain diagrams or other images with English text
 that can and should be translated.  In order to make the translated
 versions appear in the respective translations, GNUN should be told
@@ -57,11 +57,12 @@ what URLs need localization.  It can be done with HTML comments like
 <pre class="example">     &lt;!-- GNUN: localize URL /philosophy/category.png,
       /licenses/template-diagram.png and /graphics/jesus-cartoon.jpg --&gt;
 </pre>
-   <p>(One trailing comma is removed; if the URL contains no dot, it is
-ignored; the URLs are separated with spaces.)
+   <p>The URLs are separated with spaces.  One trailing comma at the end of
+every word is removed if present.  Words without a dot, such as `and',
+do not count as URLs; they are ignored.
 
-   <p>Such comments will be extracted nightly and complied into per-article
-lists of URLs.
+   <p>Such comments will be extracted nightly and compiled into per-article
+lists of URLs in <samp><span class="file">localized-urls.mk</span></samp>.
 
    <p>After every build GNUN will check if the respective
 <samp><span class="file">philosophy/category.</span><var>lang</var><span class="file">.png</span></samp> and other files are present in
