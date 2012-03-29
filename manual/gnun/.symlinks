@@ -1,6 +1,6 @@
 ../web-trans/web-trans.html web-trans.html
 ../web-trans/html_node web-trans
-/software/gettext/manual/gettext.html gettext.html
-/software/gettext/manual/html_node gettext
-/software/wdiff/manual/wdiff.html wdiff.html
-/software/wdiff/manual/html_node wdiff
+../../../gettext/manual/gettext.html gettext.html
+../../../gettext/manual/html_node gettext
+../../../wdiff/manual/wdiff.html wdiff.html
+../../../wdiff/manual/html_node wdiff
