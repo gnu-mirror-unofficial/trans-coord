@@ -1094,15 +1094,15 @@ up-to-date translation.
    There is also a semi-automatic way to produce an initial PO file.
 You checkout the revision of the English page, `foo.html', that
 corresponds to the latest revision of the translation, `foo.LANG.html'.
-Then you run `gnun-preconvert' which invokes `po4a-gettextize' (See
-*Note gnun-preconvert::.):
+Then you run `gnun-preconvert' which invokes `po4a-gettextize' (*Note
+gnun-preconvert::.):
 
      gnun-preconvert foo.lang.html foo.html
 
    If some passages in `foo.LANG.html' don't match the structure of
 `foo.html', error messages will be displayed.  Check them, adjust the
 files and try again.  When you succeed, the result will be written to
-foo.lang.po.  After that, run `gnun-merge-preconverted' (See *Note
+foo.lang.po.  After that, run `gnun-merge-preconverted' (*Note
 gnun-merge-preconverted::.):
 
      gnun-merge-preconverted -C compendium.lang.po foo.lang.po foo.pot
