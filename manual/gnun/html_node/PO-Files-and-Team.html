@@ -10,7 +10,7 @@
 <link rel="next" href="Compendia.html#Compendia" title="Compendia">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 20 March 2012) is for GNUnited Nations (version
+This manual (updated 2 June 2012) is for GNUnited Nations (version
 0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -50,7 +50,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
 
 <h4 class="subsection">2.3.7 Maintaining Translations in Your Team's Repository</h4>
 
-<p><a name="index-project-repository-72"></a><a name="index-repository_002c-translation-project-73"></a><a name="index-team-maintenance-74"></a>
+<p><a name="index-project-repository-77"></a><a name="index-repository_002c-translation-project-78"></a><a name="index-team-maintenance-79"></a><a name="index-GNUmakefile_002eteam-80"></a>
 GNUN operates on the &ldquo;official&rdquo; Web repository of the Savannah project
 `www', where normally only the coordinators of translation teams have
 write access.  However, all translation teams have their own projects,
@@ -69,7 +69,7 @@ template, aimed for all translation teams who wish to use their own
 project's repository as a place to keep their draft translations, until
 they ripe and are ready to be installed officially.
 
-   <p><a name="index-team-workflow-75"></a>The following diagram illustrates a typical workflow&mdash;it is applicable
+   <p><a name="index-team-workflow-81"></a>The following diagram illustrates a typical workflow&mdash;it is applicable
 for small, medium and large teams:
 
 <pre class="example">     +----------+                   +-------------------+
@@ -121,6 +121,9 @@ the PO files in the normal locations where the corresponding
        |
        +--...
 </pre>
+   <p><a name="index-priorities_002emk-82"></a>Add <samp><span class="file">priorities.mk</span></samp> in order to make the <code>report</code> target sort
+the files by priority.
+
    <p>The next sections explain how to adopt the makefile for your team and
 how to invoke a &ldquo;build&rdquo;.
 

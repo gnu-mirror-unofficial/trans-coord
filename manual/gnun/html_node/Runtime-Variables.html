@@ -9,7 +9,7 @@
 <link rel="next" href="Special-Targets.html#Special-Targets" title="Special Targets">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 20 March 2012) is for GNUnited Nations (version
+This manual (updated 2 June 2012) is for GNUnited Nations (version
 0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -48,7 +48,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Invoking-GNUN.html#Invoking-GNUN">Invok
 
 <h4 class="subsection">2.1.1 Variables to Control the Build Process</h4>
 
-<p><a name="index-variables-4"></a><a name="index-variable_002c-behavior-5"></a>
+<p><a name="index-variables-8"></a><a name="index-variable_002c-behavior-9"></a>
 The build process has several modes of operation, and they all relate to
 the handling of files that are to be added to the repository or
 performing certain sanity checks at build time.  The variables are
@@ -57,12 +57,12 @@ specified on the command line, after <samp><span class="command">make</span></sa
 additional features will be implemented in a similar fashion.
 
      
-<a name="index-VCS-6"></a>
-<a name="index-CVS-7"></a>
-<a name="index-Subversion-8"></a>
-<a name="index-SVN-9"></a>
-<a name="index-Bazaar-10"></a>
-<a name="index-bzr-11"></a>
+<a name="index-VCS-10"></a>
+<a name="index-CVS-11"></a>
+<a name="index-Subversion-12"></a>
+<a name="index-SVN-13"></a>
+<a name="index-Bazaar-14"></a>
+<a name="index-bzr-15"></a>
 <dl><dt>&lsquo;<samp><span class="samp">VCS=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>
 Do not add any files to the repository.  This is the default.  You may
 as well omit to define <code>VCS</code> entirely; there is no special code
@@ -86,7 +86,7 @@ created files will not be added (and committed when you do
 enables additional check and forcefully adds all files.  Use it
 sparingly, since it is very slow and generally less reliable.
 
-     <p><a name="index-VALIDATE-12"></a><a name="index-validation-13"></a><a name="index-sanity-checks-14"></a><br><dt>&lsquo;<samp><span class="samp">VALIDATE=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Does not perform validation of the HTML articles and PO files.  This
+     <p><a name="index-VALIDATE-16"></a><a name="index-validation-17"></a><a name="index-sanity-checks-18"></a><br><dt>&lsquo;<samp><span class="samp">VALIDATE=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Does not perform validation of the HTML articles and PO files.  This
 is the default, and not defining this variable has the same effect.
 
      <br><dt>&lsquo;<samp><span class="samp">VALIDATE=yes</span></samp>&rsquo;<dd>Validates all original articles before generating the POTs, to ensure
@@ -102,7 +102,7 @@ parse files that comply with this new standard.  As of version 0.5
 GNUN supports HTML 5, so resorting to <code>no-validate-articles</code>
 should not be necessary.
 
-     <p><a name="index-NOTIFY-15"></a><a name="index-mail_002c-notifications-16"></a><br><dt>&lsquo;<samp><span class="samp">NOTIFY=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Do not send email notifications about errors.  This is the default.
+     <p><a name="index-NOTIFY-19"></a><a name="index-mail_002c-notifications-20"></a><br><dt>&lsquo;<samp><span class="samp">NOTIFY=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Do not send email notifications about errors.  This is the default.
 
      <br><dt>&lsquo;<samp><span class="samp">NOTIFY=yes</span></samp>&rsquo;<dd>If an error occurs, send a mail with a meaningful subject and the error
 message as body to the concerned party.  The variables
@@ -112,7 +112,7 @@ webmasters and translators accordingly.  These variables are defined in
 the configuration file <samp><span class="file">gnun.conf</span></samp> and by default are set to
 <a href="mailto:bug-gnun@gnu.org">bug-gnun@gnu.org</a>.
 
-     <p><a name="index-new-translations_002c-notifications_002fannouncements-17"></a><a name="index-announce-18"></a><br><dt>&lsquo;<samp><span class="samp">ANNOUNCE=yes</span></samp>&rsquo;<dd>If defined, automatic announcements for new translations will be sent to
+     <p><a name="index-new-translations_002c-notifications_002fannouncements-21"></a><a name="index-announce-22"></a><br><dt>&lsquo;<samp><span class="samp">ANNOUNCE=yes</span></samp>&rsquo;<dd>If defined, automatic announcements for new translations will be sent to
 the address defined in the <code>ann-addr</code> variable (in
 <samp><span class="file">gnun.conf</span></samp>).  The email messages contain the translated article
 title as Subject, and the URL of the translation as its body.  For the
@@ -123,13 +123,13 @@ receive only traffic related to a specific language.  See <a href="../web-trans/
 
      <p>The default behavior is not to send such announcements.
 
-     <p><a name="index-VERBOSE-19"></a><a name="index-output_002c-detailed-20"></a><br><dt>&lsquo;<samp><span class="samp">VERBOSE=yes</span></samp>&rsquo;<dd>If defined, the value of the variables <code>templates-translated</code>,
+     <p><a name="index-VERBOSE-23"></a><a name="index-output_002c-detailed-24"></a><br><dt>&lsquo;<samp><span class="samp">VERBOSE=yes</span></samp>&rsquo;<dd>If defined, the value of the variables <code>templates-translated</code>,
 <code>home-translated</code>, <code>ALL_POTS</code>, <code>articles-translated</code> and
 <code>gnunews</code> will be printed to the standard output.  This is off by
 default, but recommended in general since it will show a bug in the
 computation of the basic variables.
 
-     <p><a name="index-GRACE-21"></a><a name="index-fuzzy-strings-22"></a><a name="index-grace-period-23"></a><a name="index-deferred-generation-of-articles-24"></a><a name="GRACE"></a><br><dt>&lsquo;<samp><span class="samp">GRACE=</span><var>days</var></samp>&rsquo;<dd>If defined, ordinary articles that have fuzzy strings and are not older
+     <p><a name="index-GRACE-25"></a><a name="index-fuzzy-strings-26"></a><a name="index-grace-period-27"></a><a name="index-deferred-generation-of-articles-28"></a><a name="GRACE"></a><br><dt>&lsquo;<samp><span class="samp">GRACE=</span><var>days</var></samp>&rsquo;<dd>If defined, ordinary articles that have fuzzy strings and are not older
 than <var>days</var> will not be regenerated.  This functionality is
 implemented specifically to prevent gratuitous replacement of translated
 strings with the English text when there are only minor formatting
@@ -139,7 +139,7 @@ strings, while keeping the online translation intact.  Note that this
 variable has no effect on the homepage, the server templates, gnunews
 and all articles defined in the variable <code>no-grace-articles</code>.
 
-     <p><a name="index-OUTDATED_002dGRACE-25"></a><br><dt>&lsquo;<samp><span class="samp">OUTDATED-GRACE=</span><var>days</var></samp>&rsquo;<dd>Grace period for the out-of-date notice.  When the variable
+     <p><a name="index-OUTDATED_002dGRACE-29"></a><br><dt>&lsquo;<samp><span class="samp">OUTDATED-GRACE=</span><var>days</var></samp>&rsquo;<dd>Grace period for the out-of-date notice.  When the variable
 <code>GRACE</code> is defined, <code>OUTDATED-GRACE</code> defaults to 60 days
 (see <a href="GRACE.html#GRACE">grace period</a>).  The out-of-date notice is a special
 text (<samp><span class="file">server/outdated.html</span></samp> in the `www' repository) that is
@@ -148,7 +148,7 @@ this variable is over; its purpose is to inform the reader that the
 translation does not correspond to the original English article, which
 has been changed since the translation was last updated.
 
-     <p><a name="index-TEAM-26"></a><a name="index-variable_002c-team-27"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team which articles need to be checked for
+     <p><a name="index-TEAM-30"></a><a name="index-variable_002c-team-31"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team which articles need to be checked for
 completeness.  This variable is applicable only for the <code>report</code>
 target, and is mandatory for it.  See <a href="report.html#report">report</a>.
 

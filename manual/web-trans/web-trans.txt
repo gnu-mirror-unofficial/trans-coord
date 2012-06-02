@@ -50,7 +50,7 @@ GNU Web Translators Manual
 **************************
 
 This manual is a guide for the GNU Web Translators.
-Last updated on 08.02.2012, for GNUnited Nations version 0.5.
+Last updated on 02.06.2012, for GNUnited Nations version 0.5.
 
    Copyright (C) 2009, 2010, 2011, 2012 Free Software Foundation, Inc.
 
@@ -1327,10 +1327,10 @@ as well, precisely describing the problem.
 The article
 `http://www.gnu.org/server/standards/translations/priorities.html'
 lists the most important essays to translate.  In general, articles in
-the directories `philosophy', `gnu', `distros', `copyleft' and
-`licenses' are important.  The others may be deferred for a time when a
-team completes most of the important translations, or they can be
-translated as a "rest"-in translators' parlance this means doing
+the directories `philosophy', `gnu', `education', `distros', `copyleft'
+and `licenses' are important.  The others may be deferred for a time
+when a team completes most of the important translations, or they can
+be translated as a "rest"-in translators' parlance this means doing
 something in between which is typically easier to handle.
 
    It is very important to keep existing translations up-to-date with
@@ -1427,20 +1427,24 @@ possible.  To do that, follow these steps:
      not using the graphic, just the text.
 
 
-   For example, here's the text they provide for German:
+   For example, here's the text they provide for Dutch:
 
-     Dieses Werk bzw. Inhalt steht unter einer <a rel="license"
-     href="http://creativecommons.org/licenses/by-nd/3.0/us/deed.de">Creative
-     Commons Namensnennung-Keine Bearbeitung 3.0 Vereinigte Staaten von
-     Amerika Lizenz</a>.
+     Dit werk is gelicenseerd onder een <a rel="license"
+     href="http://creativecommons.org/licenses/by-nd/3.0/us/deed.nl">
+     Creative Commons Naamsvermelding-GeenAfgeleideWerken 3.0 Verenigde
+     Staten licentie</a>
 
    Note that the link in this text is changed to point directly to the
-German language deed.  We should always link to a copy of the license
+Dutch language deed.  We should always link to a copy of the license
 deed that's in the same language as the page itself.
 
    Pages in languages that aren't supported by CC should prepare their
 own translation, use it consistently throughout pages translated to that
-language, and link to the English language deed.
+language, and link to the English language deed.  Also, please write
+your own translation when the translation provided by CC is not
+satisfactory for some reasons--for instance, as of May, 2012, their
+German translation uses "Content", which is a word to use with caution
+(see `http://www.gnu.org/philosophy/words-to-avoid.en.html#Content').
 
    Note that translations should _not_ change the jurisdiction of the
 license; they should _always_ link to the CC BY-ND 3.0 _United States_
@@ -1497,13 +1501,12 @@ participants in the process.
 
 <trans-coord-discuss@gnu.org>
      The main discussion list for the GNU Web Translators.  Team
-     leaders must subscribe, as errors from GNUN are mailed here.  Team
-     members are welcome to join as well, provided they are already
-     members of `www-LANG'. If they want to subscribe with a different
-     email address, a verification from the team leader is required.
+     leaders must subscribe, as errors from GNUN are mailed here.
+     Active team members are highly recommended to join as well,
+     because the changes in general policies for translations are also
+     announced and discussed here.
 
-     This is a private mailing list, although there is no absolute
-     reason for that.  It may become public in the future.
+     This is a private mailing list.
 
 <trans-coord-news@gnu.org>
      This is a list for notifications about gnunews and GNUnited Nations

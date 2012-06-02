@@ -1,13 +1,13 @@
 <html lang="en">
 <head>
-<title>gnun-add-fuzzy-diff - GNUnited Nations</title>
+<title>gnun-merge-preconverted - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Scripts.html#Scripts" title="Scripts">
-<link rel="prev" href="make_002dprototype.html#make_002dprototype" title="make-prototype">
-<link rel="next" href="gnun_002dpreconvert.html#gnun_002dpreconvert" title="gnun-preconvert">
+<link rel="prev" href="gnun_002dpreconvert.html#gnun_002dpreconvert" title="gnun-preconvert">
+<link rel="next" href="gnun_002dvalidate_002dhtml.html#gnun_002dvalidate_002dhtml" title="gnun-validate-html">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (updated 2 June 2012) is for GNUnited Nations (version
@@ -40,28 +40,28 @@ Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<a name="gnun-add-fuzzy-diff"></a>
-<a name="gnun_002dadd_002dfuzzy_002ddiff"></a>
+<a name="gnun-merge-preconverted"></a>
+<a name="gnun_002dmerge_002dpreconverted"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="gnun_002dpreconvert.html#gnun_002dpreconvert">gnun-preconvert</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="make_002dprototype.html#make_002dprototype">make-prototype</a>,
+Next:&nbsp;<a rel="next" accesskey="n" href="gnun_002dvalidate_002dhtml.html#gnun_002dvalidate_002dhtml">gnun-validate-html</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="gnun_002dpreconvert.html#gnun_002dpreconvert">gnun-preconvert</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Scripts.html#Scripts">Scripts</a>
 <hr>
 </div>
 
-<h4 class="subsection">3.1.2 The <samp><span class="command">gnun-add-fuzzy-diff</span></samp> Script</h4>
+<h4 class="subsection">3.1.4 The <samp><span class="command">gnun-merge-preconverted</span></samp> Script</h4>
 
-<p><a name="index-previous_002c-diff-97"></a>
-This script adds comments with differences of current msgids against
-previous ones to fuzzy translations in a PO file.  To produce
-the differences <samp><span class="command">wdiff</span></samp> is used.  This may be useful to figure
-out what has changed.  In fact, it wraps around a <samp><span class="command">sed</span></samp> script
-used in GNUN internally.
+<p><a name="index-migration_002c-translations-100"></a><a name="index-conversion-of-existing-translations-101"></a>
+This script takes <samp><span class="command">po4a-gettextize</span></samp> output, adds current msgids
+as &ldquo;previous&rdquo; values, merges the file with new POT, and adds
+differences against previous values like <samp><span class="command">gnun-add-fuzzy-diff</span></samp>
+does.
 
-<pre class="example">     gnun-add-fuzzy-diff [OPTION...] [FILE]
+<pre class="example">     gnun-merge-preconverted [OPTION...] PO POT
 </pre>
      <dl>
-<dt><samp><span class="option">-i</span></samp><dt><samp><span class="option">--in-place</span></samp><dd>Edit the file in place.
+<dt><samp><span class="option">-C</span></samp><dt><samp><span class="option">--compendium</span></samp><dd>Specify the compendium (if any).  This option can be used
+more than once to specify multiple compendia.
 
      <br><dt><samp><span class="option">--version</span></samp><dd>Display copyright and version information and exit.
 

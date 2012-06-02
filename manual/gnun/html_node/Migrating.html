@@ -10,7 +10,7 @@
 <link rel="next" href="GNU-News.html#GNU-News" title="GNU News">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 20 March 2012) is for GNUnited Nations (version
+This manual (updated 2 June 2012) is for GNUnited Nations (version
 0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -50,7 +50,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
 
 <h4 class="subsection">2.3.2 Transforming existing translation in PO format</h4>
 
-<p><a name="index-migration_002c-translations-63"></a><a name="index-conversion-of-existing-translations-64"></a>
+<p><a name="index-migration_002c-translations-68"></a><a name="index-conversion-of-existing-translations-69"></a>
 Migrating an existing translation to a PO file format is basically
 editing the header as described in the previous section, and
 populating each of the messages by copying the already translated text
@@ -70,6 +70,30 @@ the other in the same buffer (or the similar concept in other PO
 editors), please <em>do</em> perform this initial sanity check even if
 you are confident that the translation you have been yanking strings
 from is a completely up-to-date translation.
+
+   <p>There is also a semi-automatic way to produce an initial PO file.  You
+checkout the revision of the English page, <samp><span class="file">foo.html</span></samp>, that
+corresponds to the latest revision of the translation,
+<samp><span class="file">foo.</span><var>lang</var><span class="file">.html</span></samp>.  Then you run <samp><span class="command">gnun-preconvert</span></samp>
+which invokes <samp><span class="command">po4a-gettextize</span></samp> (See See <a href="gnun_002dpreconvert.html#gnun_002dpreconvert">gnun-preconvert</a>.):
+
+<pre class="example">     gnun-preconvert foo.lang.html foo.html
+</pre>
+   <p>If some passages in <samp><span class="file">foo.</span><var>lang</var><span class="file">.html</span></samp> don't match the structure
+of <samp><span class="file">foo.html</span></samp>, error messages will be displayed.  Check them,
+adjust the files and try again.  When you succeed, the result will be
+written to foo.lang.po.  After that, run
+<samp><span class="command">gnun-merge-preconverted</span></samp> (See See <a href="gnun_002dmerge_002dpreconverted.html#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a>.):
+
+<pre class="example">     gnun-merge-preconverted -C compendium.lang.po foo.lang.po foo.pot
+</pre>
+   <p>If you have no compendium, just omit the &ldquo;-C compendium.lang.po&rdquo; part.
+
+   <p>You get <samp><span class="file">foo.</span><var>lang</var><span class="file">.po</span></samp> where all messages are marked as
+&ldquo;fuzzy&rdquo; (unless you use a compendium); you still should make sure that
+the translations correspond to the original and remove those &ldquo;fuzzy&rdquo;
+marks.  The script adds differences against previous msgids to
+facilitate checking.
 
    <p>There is no need to delete the existing HTML translation, GNUN will
 automatically overwrite it.  The only thing a translator should do is to

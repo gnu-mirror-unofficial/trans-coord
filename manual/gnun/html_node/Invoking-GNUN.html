@@ -9,7 +9,7 @@
 <link rel="next" href="Main-Variables.html#Main-Variables" title="Main Variables">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 20 March 2012) is for GNUnited Nations (version
+This manual (updated 2 June 2012) is for GNUnited Nations (version
 0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -48,7 +48,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Usage.html#Usage">Usage</a>
 
 <h3 class="section">2.1 Invoking GNUN</h3>
 
-<p><a name="index-invoking-1"></a><a name="index-invocation-2"></a><a name="index-triggering_002c-build-3"></a>
+<p><a name="index-invoking-1"></a><a name="index-invocation-2"></a><a name="index-triggering_002c-build-3"></a><a name="index-GNUmakefile-4"></a>
 The central part of GNUnited Nations is a makefile; actually a
 <samp><span class="file">GNUmakefile</span></samp> since it heavily relies on features and extensions
 available in GNU Make.  Thus, invoking a build consists of typing
@@ -66,10 +66,14 @@ depend on the standard <code>all</code> target, which can be built by
 <code>make </code><var>target</var>.  Some of the variables in the next section
 apply to them, and some do not.
 
-   <p>Note that GNUN expects <samp><span class="file">GNUmakefile</span></samp>, <samp><span class="file">config.mk</span></samp> and
+   <p><a name="index-config_002emk-5"></a><a name="index-gnun_002emk-6"></a><a name="index-priorities_002emk-7"></a>Note that GNUN expects <samp><span class="file">GNUmakefile</span></samp>, <samp><span class="file">config.mk</span></samp> and
 <samp><span class="file">gnun.mk</span></samp> to be <em>present</em> under <samp><span class="file">server/gnun</span></samp> of the
 `www' web repository, otherwise <samp><span class="command">make</span></samp> has no way to know what
-and how should be built.  Since the location of the repository working
+and how should be built.  Another file, <samp><span class="file">priorities.mk</span></samp>, is
+expected to be present under <samp><span class="file">server/gnun</span></samp> in order to define
+the priorities when reporting about the outdated translations.  If
+absent, the <code>report</code> target will not sort the translations by
+priority.  Since the location of the repository working
 copy is strictly user-specific and cannot be determined in any way,
 <samp><span class="file">GNUmakefile</span></samp> and <samp><span class="file">config.mk</span></samp> must be copied there manually
 after the package installation.  For convenience, these files are

@@ -10,7 +10,7 @@
 <link rel="next" href="PO-Files.html#PO-Files" title="PO Files">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 20 March 2012) is for GNUnited Nations (version
+This manual (updated 2 June 2012) is for GNUnited Nations (version
 0.5), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -50,7 +50,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Usage.html#Usage">Usage</a>
 
 <h3 class="section">2.2 Defining Articles to be Built</h3>
 
-<p><a name="index-variables-31"></a><a name="index-gnun_002emk-32"></a>
+<p><a name="index-variables-36"></a><a name="index-gnun_002emk-37"></a>
 The file <samp><span class="file">gnun.mk</span></samp> contains variable definitions, based on which
 almost all other important variables are computed.  In other words,
 the variables defined in that file directly affect the overall
@@ -66,9 +66,9 @@ automagically, without manual intervention.  If not, that is a bug that
 should be reported and fixed.
 
      
-<a name="index-TEMPLATE_005fLINGUAS-33"></a>
-<a name="index-templates_002c-defining-34"></a>
-<a name="index-defining-templates-35"></a>
+<a name="index-TEMPLATE_005fLINGUAS-38"></a>
+<a name="index-templates_002c-defining-39"></a>
+<a name="index-defining-templates-40"></a>
 <dl><dt>&lsquo;<samp><span class="samp">TEMPLATE_LINGUAS</span></samp>&rsquo;<dd>A space-separated list with languages.  Add here your language code
 <em>if and only if</em> you have all the SSI templates translated, and
 have already committed all template files:
@@ -92,25 +92,25 @@ translated manually, like <samp><span class="file">server/header.</span><var>lan
      <p>Additional templates can be defined via the <var>extra-templates</var>
 variable in <samp><span class="file">server/gnun/gnun.mk</span></samp>.
 
-     <p><a name="index-FUZZY_005fDIFF_005fLINGUAS-36"></a><a name="index-previous_002c-diff-37"></a><br><dt>&lsquo;<samp><span class="samp">FUZZY_DIFF_LINGUAS</span></samp>&rsquo;<dd>Add your language code here if you want GNUN to add differences to
+     <p><a name="index-FUZZY_005fDIFF_005fLINGUAS-41"></a><a name="index-previous_002c-diff-42"></a><br><dt>&lsquo;<samp><span class="samp">FUZZY_DIFF_LINGUAS</span></samp>&rsquo;<dd>Add your language code here if you want GNUN to add differences to
 previous msgids in your PO files.  The differences are shown in
 <samp><span class="command">wdiff</span></samp> format.  See <a href="../wdiff/wdiff.html#wdiff">wdiff</a>, for more information.
 
-     <p><a name="index-HOME_005fLINGUAS-38"></a><a name="index-homepage_002c-defining-39"></a><a name="index-defining-homepage-40"></a><br><dt>&lsquo;<samp><span class="samp">HOME_LINGUAS</span></samp>&rsquo;<dd>Add your language code if you have already committed
+     <p><a name="index-HOME_005fLINGUAS-43"></a><a name="index-homepage_002c-defining-44"></a><a name="index-defining-homepage-45"></a><br><dt>&lsquo;<samp><span class="samp">HOME_LINGUAS</span></samp>&rsquo;<dd>Add your language code if you have already committed
 <samp><span class="file">po/home.</span><var>lang</var><span class="file">.po</span></samp>, that way the homepage for your language
 will be built.  It is not acceptable to have your language code
 defined in this variable, but not in <code>TEMPLATE_LINGUAS</code>.
 
-     <p><a name="index-ROOT-41"></a><a name="index-articles-in-root-directory_002c-defining-42"></a><a name="index-defining-articles-in-the-root-dir-43"></a><br><dt>&lsquo;<samp><span class="samp">ROOT</span></samp>&rsquo;<dd>Add here articles that are in the server root, like
+     <p><a name="index-ROOT-46"></a><a name="index-articles-in-root-directory_002c-defining-47"></a><a name="index-defining-articles-in-the-root-dir-48"></a><br><dt>&lsquo;<samp><span class="samp">ROOT</span></samp>&rsquo;<dd>Add here articles that are in the server root, like
 <samp><span class="file">keepingup.html</span></samp> and <samp><span class="file">provide.html</span></samp>.  Always write only the
 basename of the article, i.e. if you add these two articles, the value
 of <code>ROOT</code> should be <code>keepingup provide</code>.  This is true for
 all the variables that expect values in the form of article names.
 
-     <p><a name="index-ALL_005fDIRS-44"></a><a name="index-directories_002c-defining-45"></a><a name="index-defining-directories-46"></a><br><dt>&lsquo;<samp><span class="samp">ALL_DIRS</span></samp>&rsquo;<dd>The list of directories containing articles, like <samp><span class="file">philosophy</span></samp>,
+     <p><a name="index-ALL_005fDIRS-49"></a><a name="index-directories_002c-defining-50"></a><a name="index-defining-directories-51"></a><br><dt>&lsquo;<samp><span class="samp">ALL_DIRS</span></samp>&rsquo;<dd>The list of directories containing articles, like <samp><span class="file">philosophy</span></samp>,
 <samp><span class="file">gnu</span></samp>, <samp><span class="file">licenses</span></samp>, etc.
 
-     <p><a name="index-POT-generation_002c-articles-47"></a><br><dt>&lsquo;<samp><span class="samp">gnu</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">philosophy</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...directory...</span></samp>&rsquo;<dd>A space-separated list of basenames for articles residing in
+     <p><a name="index-POT-generation_002c-articles-52"></a><br><dt>&lsquo;<samp><span class="samp">gnu</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">philosophy</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...directory...</span></samp>&rsquo;<dd>A space-separated list of basenames for articles residing in
 <var>directory</var>, for which POTs will be generated and updated when the
 original article changes.  If an article is missing here, there is no
 way its translations to be maintained via GNUN. 
