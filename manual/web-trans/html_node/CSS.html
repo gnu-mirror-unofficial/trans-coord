@@ -49,19 +49,20 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Translation-Tips.html#Translation-Tips"
 
 <h3 class="section">5.3 How To Use Custom CSS</h3>
 
-<p>The file <samp><span class="file">style.css</span></samp> gets included in almost all the English
-articles.  It includes two other files, which form the actual CSS style
-used.  However, this style is seldom right for translations&mdash;many
-languages have much longer expressions, and that is natural.  To include
-your own CSS, create a file <samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp> and add it
-<em>after</em> the original <samp><span class="file">style.css</span></samp> in your
-<samp><span class="file">server/po/head-include-2.</span><var>lang</var><span class="file">.po</span></samp>, i.e.
+<p>CSS file <samp><span class="file">layout.css</span></samp> gets included (with three other CSS files)
+in almost all the English articles through
+<samp><span class="file">server/head-include-2.</span><var>lang</var><span class="file">.html</span></samp>.  However, sometimes this
+style isn't quite right for translations&mdash;many languages have much
+longer expressions, and that is natural.  To include your own CSS,
+create a file <samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp> and add it <em>after</em> the
+directive to include <samp><span class="file">server/head-include-2.</span><var>lang</var><span class="file">.html</span></samp> and
+<em>before</em> the closing <code>&lt;/head&gt;</code> tag in
+<samp><span class="file">server/banner.</span><var>lang</var><span class="file">.html</span></samp>, i.e.
 
-<pre class="example">     # type: style
-     msgid "@import url('/style.css');"
-     msgstr ""
-     "@import url('/style.css');\n"
-     "@import url('/style.bg.css');"
+<pre class="example">     &lt;!-- start of banner.bg.html --&gt;
+     &lt;!--#include virtual="/server/head-include-2.bg.html" --&gt;
+     &lt;link rel="stylesheet" href="/style.bg.css" media="screen" /&gt;
+     &lt;/head&gt;
 </pre>
    <p>Override only what is necessary and looks broken in your language; do
 not invent your own style.  This is important for the consistency of the
@@ -81,7 +82,7 @@ the translations are almost twice longer and displayed truncated, which
 is undesirable).
 
    <p>When creating your own <samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp>, don't forget to
-include the license notice from the <samp><span class="file">style.css</span></samp>, with a short
+include the license notice from the <samp><span class="file">layout.css</span></samp>, with a short
 comment.
 
    <p>If using the default CSS style for translations does not give the

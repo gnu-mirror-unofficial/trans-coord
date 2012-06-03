@@ -1224,18 +1224,19 @@ variable has no effect for them.  *Note Runtime Variables:
 5.3 How To Use Custom CSS
 =========================
 
-The file `style.css' gets included in almost all the English articles.
-It includes two other files, which form the actual CSS style used.
-However, this style is seldom right for translations--many languages
-have much longer expressions, and that is natural.  To include your own
-CSS, create a file `style.LANG.css' and add it _after_ the original
-`style.css' in your `server/po/head-include-2.LANG.po', i.e.
+CSS file `layout.css' gets included (with three other CSS files) in
+almost all the English articles through
+`server/head-include-2.LANG.html'.  However, sometimes this style isn't
+quite right for translations--many languages have much longer
+expressions, and that is natural.  To include your own CSS, create a
+file `style.LANG.css' and add it _after_ the directive to include
+`server/head-include-2.LANG.html' and _before_ the closing `</head>'
+tag in `server/banner.LANG.html', i.e.
 
-     # type: style
-     msgid "@import url('/style.css');"
-     msgstr ""
-     "@import url('/style.css');\n"
-     "@import url('/style.bg.css');"
+     <!-- start of banner.bg.html -->
+     <!--#include virtual="/server/head-include-2.bg.html" -->
+     <link rel="stylesheet" href="/style.bg.css" media="screen" />
+     </head>
 
    Override only what is necessary and looks broken in your language; do
 not invent your own style.  This is important for the consistency of the
@@ -1255,7 +1256,7 @@ the translations are almost twice longer and displayed truncated, which
 is undesirable).
 
    When creating your own `style.LANG.css', don't forget to include the
-license notice from the `style.css', with a short comment.
+license notice from the `layout.css', with a short comment.
 
    If using the default CSS style for translations does not give the
 expected good results, or there are other problems (significant or not)
@@ -1285,9 +1286,8 @@ System" to appear in your native language, here are the steps:
 
           #logo{background:url(/graphics/topbanner.LANG.png) no-repeat;}
 
-  3. If not done already for other reasons, update
-     `head-include-2.LANG.po' to include the language specific
-     `style.LANG.css'.  *Note CSS::.
+  3. If not done already for other reasons, update `banner.LANG.html'
+     to include the language specific `style.LANG.css'.  *Note CSS::.
 
    If you feel uncomfortable manipulating images--don't despair!  Send a
 plea for help to <trans-coord-discuss@gnu.org>, some people would be
