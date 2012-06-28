@@ -6,12 +6,12 @@
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Scripts.html#Scripts" title="Scripts">
-<link rel="prev" href="gnun_002dadd_002dfuzzy_002ddiff.html#gnun_002dadd_002dfuzzy_002ddiff" title="gnun-add-fuzzy-diff">
+<link rel="prev" href="gnun_002dinit_002dpo.html#gnun_002dinit_002dpo" title="gnun-init-po">
 <link rel="next" href="gnun_002dmerge_002dpreconverted.html#gnun_002dmerge_002dpreconverted" title="gnun-merge-preconverted">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -44,19 +44,19 @@ Foundation, Inc.
 <a name="gnun_002dpreconvert"></a>
 <p>
 Next:&nbsp;<a rel="next" accesskey="n" href="gnun_002dmerge_002dpreconverted.html#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="gnun_002dadd_002dfuzzy_002ddiff.html#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="gnun_002dinit_002dpo.html#gnun_002dinit_002dpo">gnun-init-po</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Scripts.html#Scripts">Scripts</a>
 <hr>
 </div>
 
-<h4 class="subsection">3.1.3 The <samp><span class="command">gnun-preconvert</span></samp> Script</h4>
+<h4 class="subsection">3.1.4 The <samp><span class="command">gnun-preconvert</span></samp> Script</h4>
 
-<p><a name="index-migration_002c-translations-98"></a><a name="index-conversion-of-existing-translations-99"></a>
+<p><a name="index-migration_002c-translations-102"></a><a name="index-conversion-of-existing-translations-103"></a>
 This script uses <samp><span class="command">po4a-gettextize</span></samp> to convert a translation
-from HTML to PO format
-(see <a href="http://po4a.alioth.debian.org/man/man7/po4a.7.php#lbAO">http://po4a.alioth.debian.org/man/man7/po4a.7.php#lbAO</a>). 
-If the conversion is successful, you can merge the result with new POT
-using <samp><span class="command">gnun-merge-preconverted</span></samp>.
+from HTML to PO format (see
+<a href="http://po4a.alioth.debian.org/man/man7/po4a.7.php#lbAO">http://po4a.alioth.debian.org/man/man7/po4a.7.php#lbAO</a>).  If
+the conversion is successful, you can merge the result with the new
+POT using <samp><span class="command">gnun-merge-preconverted</span></samp>.
 
 <pre class="example">     gnun-preconvert [OPTION...] TRANSLATION MASTER
 </pre>
@@ -65,7 +65,7 @@ using <samp><span class="command">gnun-merge-preconverted</span></samp>.
 
      <br><dt><samp><span class="option">--version</span></samp><dd>Display copyright and version information and exit.
 
-     <br><dt><samp><span class="option">--help</span></samp><dd>Display usage information and exit
+     <br><dt><samp><span class="option">--help</span></samp><dd>Display usage information and exit. 
 </dl>
 
    </body></html>

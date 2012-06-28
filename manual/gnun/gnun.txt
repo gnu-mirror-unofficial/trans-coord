@@ -11,25 +11,24 @@ GNUnited Nations
   2.1 Invoking GNUN
     2.1.1 Variables to Control the Build Process
     2.1.2 Targets Specified on the Command Line
-      2.1.2.1 The `no-grace-items' target
-      2.1.2.2 The `update-localized-URLs' target
-      2.1.2.3 The `sync' target
-      2.1.2.4 The `report' target
-      2.1.2.5 The `triggers' target
-      2.1.2.6 The `clean' target
-      2.1.2.7 The `distclean' target
+      2.1.2.1 The `no-grace-items' Target
+      2.1.2.2 The `update-localized-URLs' Target
+      2.1.2.3 The `sync' Target
+      2.1.2.4 The `report' Target
+      2.1.2.5 The `triggers' Target
+      2.1.2.6 The `validate-all' Target
   2.2 Defining Articles to be Built
   2.3 Working with PO Files
     2.3.1 Starting a New Translation
       2.3.1.1 The Special Slot for Translator's Notes
       2.3.1.2 The Special Slot for Translator's Credits
-    2.3.2 Transforming existing translation in PO format
-    2.3.3 Special Handling For GNU News
-    2.3.4 Useful Hints For Editing PO Files
-    2.3.5 The `generic.LANG.html' file
-    2.3.6 The `languages.txt' file
+    2.3.2 Transforming Existing Translation in PO Format
+    2.3.3 Special Handling for GNU News
+    2.3.4 Useful Hints for Editing PO Files
+    2.3.5 The `generic.LANG.html' File
+    2.3.6 The `languages.txt' File
     2.3.7 Maintaining Translations in Your Team's Repository
-      2.3.7.1 Adopting `GNUmakefile.team' For a Specific Team
+      2.3.7.1 Adopting `GNUmakefile.team' for a Specific Team
       Targets in `GNUmakefile.team'
       2.3.7.2 Automatic Synchronization and Status Reports
     2.3.8 Using Compendia
@@ -39,15 +38,16 @@ GNUnited Nations
     2.4.3 Modifying Boilerplates
     2.4.4 Localized URLs
 3 Unexciting Information for GNUN's Operation
-  3.1 Internally Used Scripts
+  3.1 GNUN Scripts
     3.1.1 The `make-prototype' Script
     3.1.2 The `gnun-add-fuzzy-diff' Script
-    3.1.3 The `gnun-preconvert' Script
-    3.1.4 The `gnun-merge-preconverted' Script
-    3.1.5 The `gnun-validate-html' Script
-    3.1.6 The `mailfail' Script
-    3.1.7 The `validate-html-notify' Script
-    3.1.8 The `gnun-clear-previous' Script
+    3.1.3 The `gnun-init-po' Script
+    3.1.4 The `gnun-preconvert' Script
+    3.1.5 The `gnun-merge-preconverted' Script
+    3.1.6 The `gnun-validate-html' Script
+    3.1.7 The `mailfail' Script
+    3.1.8 The `validate-html-notify' Script
+    3.1.9 The `gnun-clear-previous' Script
   3.2 How The Recipes Work
 4 Reporting Bugs
 Appendix A GNU Free Documentation License
@@ -57,8 +57,8 @@ Index
 GNUnited Nations
 ****************
 
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org essays and
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org essays and
 other articles.
 
 Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software Foundation,
@@ -228,19 +228,13 @@ every translation, like `free-sw.bg.po', `free-sw.ca.po', etc.
 
    Several additional features are implemented, like automatic update of
 the list of the available translations.  For example, if a new
-translation is added and the list of translations in `free-sw.html' is
-updated, all translated `free-sw.LANG.html' will be regenerated.  This
-saves a lot of tedious, repetitive work.  There is a basic
-infrastructure to "inject" general information about a translation
-team--like a note how to contact the team, or how to report a
-bug/suggestion for improvement.  Translators' credits are also handled,
-as well as translators' notes, if any.
-
-   GNUN can be extended, and new features will certainly be added.  The
-`TODO' file currently lists some of them, but new ideas pop up quite
-often.  The plan is to make a solid foundation and develop
-front-ends--a web front-end, possibly based on Pootle, a statistics
-facility, probably a wiki compiler, and more.
+`free-sw.ja.po' translation is added, the list of translations included
+in `free-sw.html' and all translated `free-sw.LANG.html' is updated.
+This saves a lot of tedious, repetitive work and eliminates a source of
+mistakes.  There is a basic infrastructure to "inject" general
+information about a translation team--like a note how to contact the
+team, or how to report a bug/suggestion for improvement.  Translators'
+credits are also handled, as well as translators' notes, if any.
 
    ---------- Footnotes ----------
 
@@ -284,6 +278,11 @@ prove to be useful.
      will disappear without translators' intervention, whether they
      translated it or not.
 
+   * HTML validation.  As a preliminary step, GNUN validates the English
+     pages before updating the POT files, and the regenerated
+     translations before committing them.  It often detects typos and
+     other errors in the markup.
+
    * Simplification of the translation process--lots of errors and typos
      come from the fact that translators basically have to duplicate the
      whole HTML markup of the original.  The PO files eliminate most of
@@ -316,7 +315,7 @@ certain limitations and annoyances of this semi-automatic system.
    * The official build is invoked thrice daily(1), because doing it
      more often will potentially generate more messages to the mailing
      list in the form of commit notifications.  This has its drawback,
-     since translators have to wait 12 hours until their PO files are
+     since translators have to wait 8 hours until their PO files are
      updated, and another period for the `.LANG.html' articles to get
      generated, after they commit the updated POs.  Additionally, any
      errors interrupt the build so they have to be fixed before the
@@ -342,13 +341,13 @@ team-specific information.  They are designed to reside in the
 `server/gnun' directory, but this may change.  In all examples in this
 manual, "invoking" means executing on the command line `make -C
 server/gnun [TARGET] [VARIABLE=VALUE ...]' while the working directory
-is the root in the `www' web repository.  For the purpose of brevity,
-we will refer to the above command as simply `make', which is equivalent
-to `cd server/gnun ; make'.  It is desirable never to invoke `make'
-with the `-k' (`--keep-going') option, because an eventual error in
-only one make recipe might create a mess in many articles, both
-original and translated.  Do this with caution, and generally only when
-debugging in a safe environment.
+is the root in the `www' web repository.  For the purpose of brevity, we
+will refer to the above command as simply `make', which is equivalent
+to `cd server/gnun; make'.  It is desirable never to invoke `make' with
+the `-k' (`--keep-going') option, because an eventual error in only one
+make recipe might create a mess in many articles, both original and
+translated.  Do this with caution, and generally only when debugging in
+a safe environment.
 
    The build process is intended to be invoked by a cron job, although
 manual intervention to a certain degree is possible.
@@ -507,11 +506,10 @@ features will be implemented in a similar fashion.
      (`server/outdated.html' in the `www' repository) that is inserted
      into every outdated translation when the period defined in this
      variable is over; its purpose is to inform the reader that the
-     translation does not correspond to the original English article,
-     which has been changed since the translation was last updated.
+     translation may not correspond to the original English article.
 
 `TEAM=LANG'
-     The translation team which articles need to be checked for
+     The translation team whose articles need to be checked for
      completeness.  This variable is applicable only for the `report'
      target, and is mandatory for it.  *Note report::.
 
@@ -529,13 +527,13 @@ encountered article.  This is done on purpose, to prevent the
 propagation of an eventual error in the markup of the original article
 to all translations.
 
-   By contrast, validation of the translated `.LANG.html' is performed
-after it is generated and if `VCS=yes' the article will be committed in
-the repository.  The build will fail again and further processing of
-the remaining articles will not be performed, but this particular
-translation will be installed.  The translator has time until the next
-run to fix the error--usually by modifying the corresponding `.LANG.po'
-file.
+   Validation of the translated `.LANG.html' is performed after it is
+preliminarily generated as a temporary file.  When no errors are found,
+the translation is updated; otherwise the real file is not changed (and
+it is not added if absent)--the build will fail and further processing
+of the remaining articles will not be performed.  The translator has
+time until the next run to fix the error--usually by modifying the
+corresponding `.LANG.po' file.
 
    If notification is enabled (`NOTIFY=yes'), and the build system
 encounters errors (mostly when validating articles), email messages
@@ -562,7 +560,7 @@ more importantly, whose arguments are variables computed at the time
 `make' reads the makefiles--the filesets they affect are specific and
 already defined, one way or another.
 
-2.1.2.1 The `no-grace-items' target
+2.1.2.1 The `no-grace-items' Target
 ...................................
 
 The `no-grace-items' target regenerates a limited set of articles that
@@ -571,9 +569,9 @@ templates, gnunews, and all articles defined in the variable
 `no-grace-articles' (*note grace period: GRACE.).
 
    This target can be rebuilt more often than `all'; it is invoked
-hourly by the official GNUN cronjob.
+hourly by the official GNUN cron job.
 
-2.1.2.2 The `update-localized-URLs' target
+2.1.2.2 The `update-localized-URLs' Target
 ..........................................
 
 The `update-localized-URLs' target invokes a script that generates the
@@ -583,7 +581,7 @@ source (*note Localized URLs::).
 
    This target is meant to be rebuilt nightly.
 
-2.1.2.3 The `sync' target
+2.1.2.3 The `sync' Target
 .........................
 
 The `sync' target has a simple task: synchronize the _original English_
@@ -602,24 +600,23 @@ by cron as well, will update all translations.
 then the synchronized files are committed to the `testing' repository,
 i.e. the DESTINATION.  In addition, if a file meant to be synchronized
 disappeared from the SOURCE, a warning mail will be sent to the address
-defined in the `devel-addr' variable (defined only in `GNUmakefile').
-The build will continue without failure, and will sync and commit all
-other files, but will send the same email message again if the file is
-still present in the `files-to-sync' variable during a subsequent
-invocation.
+defined in the `devel-addr' variable (defined in `gnun.conf').  The
+build will continue without failure, and will sync and commit all other
+files, but will send the same email message again if the file is still
+present in the `files-to-sync' variable during a subsequent invocation.
 
    In addition, `sync' synchronizes all "verbatim" server templates
 that are not under GNUN's control, such as `server/header.html',
 `server/banner.html', `server/footer.html' and their translations, as
 defined in the `verbatim-templates' variable.  This is important, as
 these files may change in the master repository, while the validation
-of the html files in the development repository will be performed with
+of the HTML files in the development repository will be performed with
 the old templates expanded, thus making this specific test more or less
 bogus.
 
    `VCS=always' has no effect on this target, as well as `VALIDATE'.
 
-2.1.2.4 The `report' target
+2.1.2.4 The `report' Target
 ...........................
 
 This target exists solely for convenience to translators, enabling them
@@ -642,21 +639,11 @@ IMPORTANT-ARTICLES for the second priority level, IMPORTANT-DIRECTORIES
 for the directories with important articles; all other translations are
 reported as less important.
 
-2.1.2.5 The `triggers' target
+2.1.2.5 The `triggers' Target
 .............................
 
 This is a special target intended to be run by the automatic build after
 the main build and _after_ `cvs|svn|bzr commit'.
-
-   When a GNUN build completes and some translations fail at the HTML
-validation stage, the result is checked in the repository, as explained
-earlier (*note Runtime Variables::).  Thus, CVS updates the $Date$ RCS
-keyword (or any other keywords, for that matter) and resets the file(s)
-timestamp.  Next time `make' is invoked, the target appears newer than
-the prerequisite so no rebuild is triggered.  The purpose of the
-`triggers' target is to "save" the information of the faulty targets
-during the main build, and to touch their prerequisites in order such
-invalid articles not to remain online unnoticed.
 
    The `triggers' target currently executes the files named
 `ARTICLE.LANG.html.hook' in the `server/gnun' directory--these files
@@ -665,26 +652,26 @@ to update the timestamp of the prerequisite based on the timestamp of
 the target that must be rebuilt.  Finally, it deletes all those
 `*.hook' files.
 
-   In addition, this is the rule that takes care of actually sending the
+   This is the rule that takes care of actually sending the
 announcements if `ANNOUNCE=yes'.  Since it is a completely valid
 scenario to have a new translation which is initially invalid HTML, the
 canned command sequence for announcements is recorded in `*.hook-ann'
 files, and they are treated by `triggers' in a different way.  A newly
-added `.LANG.po' file may be invalid, in which case GNUN will commit an
-empty `.LANG.html' file--it is not appropriate to announce it as a new
-translation as it is an empty file completely useless for the general
-public.  The `triggers' rule detects this case, and postpones the
-announcement to the next build attempt, when the generated HTML
-translation is supposed to be human-readable.
+added `.LANG.po' file may be invalid, in which case the HTML file is
+not added, and it is not appropriate to announce it as a new
+translation as it is completely useless for the general public.  The
+`triggers' rule detects this case, and postpones the announcement to
+the next build attempt, when the generated HTML translation is supposed
+to be human-readable.
 
    To summarize, for effective operation GNUN should be invoked
-automatically as `make ; cvs|svn|bzr commit -m ... ; make triggers'.
-To illustrate this, here is a concrete example showing the official job
+automatically as `make; cvs|svn|bzr commit -m ...; make triggers'.  To
+illustrate this, here is a concrete example showing the official job
 running at fencepost.gnu.org:
 
-     25 4,12,20 * * *  cd $HOME/projects/www ; cvs -q update &>/dev/null; \
-                         make -j4 -C server/gnun VCS=yes VALIDATE=yes; \
-                         NOTIFY=yes VERBOSE=yes GRACE=30; ANNOUNCE=yes; \
+     25 4,12,20 * * *  cd $HOME/projects/www; cvs -q update &>/dev/null; \
+                         make -j1 -C server/gnun VCS=yes VALIDATE=yes; \
+                         NOTIFY=yes VERBOSE=yes GRACE=5000; ANNOUNCE=yes; \
                          cvs commit -m \
                          "Automatic update by GNUnited Nations."; \
                          make -C server/gnun triggers
@@ -701,15 +688,14 @@ not work if a so called "bound branch" is used, for instance.
    In the future, this target may be extended further to do other useful
 things that should be "triggered" after the main build.
 
-2.1.2.6 The `clean' target
-..........................
+2.1.2.6 The `validate-all' Target
+.................................
 
-Not implemented yet.
+The `validate-all' target validates all HTML pages under GNUN's
+control.  It is needed because GNUN doesn't track dependencies on the
+included files, so errors in those included files could pass unnoticed.
 
-2.1.2.7 The `distclean' target
-..............................
-
-Not implemented yet.
+   This target is invoked once a day by the official GNUN cron job.
 
 2.2 Defining Articles to be Built
 =================================
@@ -723,9 +709,10 @@ the build process.
 order to make translators' life easier: variables that translators are
 free to modify and variables that are modified by the web-translators
 staff(1), ideally after performing some local tests.  A translation
-team leader should update only `TEMPLATE_LINGUAS' and `HOME_LINGUAS';
-everything else is supposed to be built automagically, without manual
-intervention.  If not, that is a bug that should be reported and fixed.
+team leader should update only `FUZZY_DIFF_LINGUAS', `TEMPLATE_LINGUAS'
+and `HOME_LINGUAS'; everything else is supposed to be built
+automagically, without manual intervention.  If not, that is a bug that
+should be reported and fixed.
 
 `TEMPLATE_LINGUAS'
      A space-separated list with languages.  Add here your language code
@@ -738,23 +725,33 @@ intervention.  If not, that is a bug that should be reported and fixed.
 
         - `server/po/body-include-2.LANG.po'
 
-        - `server/po/footer-text.LANG.po',
+        - `server/po/footer-text.LANG.po'
 
         - `server/po/outdated.LANG.po',
 
      as well as the templates that are not under GNUN's control and are
-     translated manually, like `server/header.LANG.html',
-     `server/head-include-1.LANG.html', `server/html5-header.LANG.html',
-     `server/html5-head-include-1.LANG.html', `server/banner.LANG.html'
-     and `server/footer.LANG.html'.
+     translated manually, like
+
+        - `server/header.LANG.html'
+
+        - `server/head-include-1.LANG.html'
+
+        - `server/html5-header.LANG.html'
+
+        - `server/html5-head-include-1.LANG.html'
+
+        - `server/banner.LANG.html'
+
+        - `server/footer.LANG.html'.
 
      Additional templates can be defined via the EXTRA-TEMPLATES
      variable in `server/gnun/gnun.mk'.
 
 `FUZZY_DIFF_LINGUAS'
      Add your language code here if you want GNUN to add differences to
-     previous msgids in your PO files.  The differences are shown in
-     `wdiff' format.  *Note wdiff: (wdiff)wdiff, for more information.
+     previous `msgid's in your PO files.  The differences are shown in
+     the default `wdiff' format.  *Note wdiff: (wdiff)wdiff, for more
+     information.
 
 `HOME_LINGUAS'
      Add your language code if you have already committed
@@ -802,11 +799,11 @@ a consistent and predictable way.  It is possible to edit a PO file
 with an ordinary plain text editor, but extra effort would be necessary
 to make it valid.  Here is a list of widely used PO editors:
 
-   * PO mode.  We recommend using GNU Emacs in PO mode, because Emacs
-     is the program that is suitable for performing any task when it
-     comes to maintaining the GNU Project's website.  Provided that you
-     have GNU gettext installed, any `.po' file you visit should
-     automatically switch to PO mode.  You can enable/disable it by
+   * PO mode.  We recommend using GNU Emacs in PO mode, because Emacs is
+     the program that is suitable for performing any task when it comes
+     to maintaining the GNU Project's website.  Provided that you have
+     GNU gettext installed, any `.po' file you visit should
+     automatically switch to PO mode.  You can enable/disable it with
      `M-x po-mode <RET>'.  On some GNU/Linux distros such as gNewSense,
      PO mode is available in a separate package, `gettext-el'. See
      `http://www.gnu.org/software/gettext'.
@@ -837,11 +834,11 @@ to make it valid.  Here is a list of widely used PO editors:
 2.3.1 Starting a New Translation
 --------------------------------
 
-To start a new translation, the easiest way is to copy the existing POT
-as `article.LANG.po', where LANG is your language code.  For example,
-to prepare for a new translation of the essay
+To start a new translation, the most simple way is to copy the existing
+POT as `article.LANG.po', where LANG is your language code.  For
+example, to prepare for a new translation of the essay
 `http://www.gnu.org/philosophy/free-sw.html', you can simply do `cd
-philosophy/po ; cp free-sw.pot free-sw.LANG.po' and then edit the
+philosophy/po; cp free-sw.pot free-sw.LANG.po' and then edit the
 latter.  If `free-sw.pot' does not exist it is because either the
 article is not yet "templated" (i.e. migrated to the new style), or the
 GNUN maintainers have not yet added it to the value of the appropriate
@@ -852,6 +849,9 @@ the necessary in order the POT to be generated.
 file header with the right information, provided your environment is
 set up correctly.  *Note msginit Invocation: (gettext)msginit
 Invocation.
+
+   GNUN also provides a customized script to automatically fill more
+header fields.  *Note gnun-init-po::.
 
    The PO file header as generated usually looks like this:
 
@@ -888,7 +888,7 @@ here is a list with all fields explained:
      you save the file with any decent PO editor.
 
 `Last-Translator'
-     The name and email address of the last translator who have edited
+     The name and email address of the last translator who has edited
      the translation.  Pay attention that normally this is the name of
      a member of your team, it can be the translation team leader if
      he/she was the person who updated the translation.  For example:
@@ -956,7 +956,7 @@ and improves the performance of `GNUmakefile.team''s `publish' rule
      *Note Credits Slot::.
 
    Most of the PO editors do not wrap long lines that inevitably appear
-in `msgstr''s.  If that happens, long lines make reading subsequent
+in `msgstr's.  If that happens, long lines make reading subsequent
 diffs harder, and are generally annoying for most people.  If this issue
 bothers you, you can "normalize" the already finished PO translation by
 executing on the command line `msgcat -o FILE.po FILE.po', before
@@ -1068,7 +1068,7 @@ provided that the translation team leader ensures that it constantly
 meets the linking criteria for gnu.org.  Please follow the FSF HTML
 Style Sheet when adding URIs or other information.
 
-2.3.2 Transforming existing translation in PO format
+2.3.2 Transforming Existing Translation in PO Format
 ----------------------------------------------------
 
 Migrating an existing translation to a PO file format is basically
@@ -1107,13 +1107,13 @@ gnun-merge-preconverted::.):
 
      gnun-merge-preconverted -C compendium.lang.po foo.lang.po foo.pot
 
-   If you have no compendium, just omit the "-C compendium.lang.po"
+   If you have no compendium, just omit the "`-C compendium.lang.po'"
 part.
 
    You get `foo.LANG.po' where all messages are marked as "fuzzy"
 (unless you use a compendium); you still should make sure that the
 translations correspond to the original and remove those "fuzzy" marks.
-The script adds differences against previous msgids to facilitate
+The script adds differences against previous `msgid's to facilitate
 checking.
 
    There is no need to delete the existing HTML translation, GNUN will
@@ -1137,7 +1137,7 @@ the FSF to check who translated a particular article, and when.
 translation, Jero^me made some changes in 2007, and the original
 translator returned in 2008 and continued maintaining it.
 
-2.3.3 Special Handling For GNU News
+2.3.3 Special Handling for GNU News
 -----------------------------------
 
 *Pay attention:* The practice of news handling that is described here
@@ -1167,7 +1167,7 @@ time in order the translated homepage to include it instead of
 would be annoying for subscribers if new items appear in English and
 then once again translated.
 
-2.3.4 Useful Hints For Editing PO Files
+2.3.4 Useful Hints for Editing PO Files
 ---------------------------------------
 
 This section contains additional explanations, some in the form of
@@ -1179,8 +1179,8 @@ files editing.
      add your PO file in the appropriate `/po' sub-directory.
 
      In the next build, your `ARTICLE.LANG.html' will be built and the
-     link to it will be added to the original page and propagate to all
-     translations, provided that they are under GNUN's control.
+     link to it will be added to the list of translations and propagate
+     to all translations, provided that they are under GNUN's control.
 
    * If you don't feel comfortable editing `gnun.mk', do not worry.
      Someone from the GNUN maintainers will notice and will amend
@@ -1210,10 +1210,6 @@ files editing.
      This is useful also for large chunks of text in `<pre>' elements,
      which normally you would want to preserve verbatim.
 
-   * To reduce the load on the webmasters RT queue, please replace
-     <webmasters@gnu.org> in the standard footer with
-     <web-translators@gnu.org>.
-
    * If you translate "Free Software Foundation, Inc." in your native
      language in the copyright notice, then please prepend the English
      name to the `<address>'; otherwise it looks awkward in most
@@ -1238,7 +1234,7 @@ files editing.
      the text inside the `msgstr' could lead to an invalid page or a
      page that is valid, but is rendered incorrectly by the web browser.
 
-2.3.5 The `generic.LANG.html' file
+2.3.5 The `generic.LANG.html' File
 ----------------------------------
 
 The files `server/gnun/generic.LANG.html' are special: if no such file
@@ -1263,14 +1259,14 @@ time a build occurs, all translations of the language code LANG (i.e.
 all `.LANG.html', including the homepage), will be modified to include
 the contents of this special file.
 
-2.3.6 The `languages.txt' file
+2.3.6 The `languages.txt' File
 ------------------------------
 
 The file `server/gnun/languages.txt' is used when generating lists of
 translations; those lists are subsequently included in all translations
 of the article.  Every line in the file is either a comment (when it
 begins with "#") or a definition for a language.  A language is defined
-by three tab-separated fields.  The first field defines the language
+by three <TAB>-separated fields.  The first field defines the language
 suffix; it is used in file names and in texts of the links.  The second
 field is the name of the language in English; it is used in HTML
 comments.  The third field defines the name of the language in that
@@ -1327,7 +1323,7 @@ applicable for small, medium and large teams:
           +------------<----<-------------'    |
                        Leader                  `---Member B
 
-   All members and the team leader(s) commit in their project's
+   All members and the team leader commit in their project's
 repository--when a translation is ready, the leader checks it in in the
 official `www' repository.  If an original article changes, a build
 could be invoked to synchronize (i.e. merge) the changes and optionally
@@ -1373,7 +1369,7 @@ files by priority.
    The next sections explain how to adopt the makefile for your team and
 how to invoke a "build".
 
-2.3.7.1 Adopting `GNUmakefile.team' For a Specific Team
+2.3.7.1 Adopting `GNUmakefile.team' for a Specific Team
 .......................................................
 
 To adjust the makefile for your team, you need to edit two variables.
@@ -1389,11 +1385,9 @@ To adjust the makefile for your team, you need to edit two variables.
      `../www/' or `/home/USER/projects/www/'.  Note the slash at the
      end, it is important.
 
-   Technically speaking, two variants of one language sharing the same
-project and repository (such as `zh-cn' and `zh-tw') are not
-supported--patches welcome.  As a workaround, there could be two
-directories with two `GNUmakefile's and each directory having its own
-tree.
+   If two variants of one language share the same project and repository
+(such as `zh-cn' and `zh-tw'), they should maintain two directories
+with two `GNUmakefile's and each directory having its own tree.
 
    Some variables are specified on the command line, and alter the
 behavior of the build process.
@@ -1433,11 +1427,11 @@ Targets in `GNUmakefile.team'
      statistics) of those that need to be updated.
 
 `format'
-     A convenience rule to rewrap all files upto the standard length.
+     A convenience rule to re-wrap all files upto the standard length.
      Most PO editors leave the `msgstr' as a single long line after it
-     has been edited, but GNUN will automatically rewrap the file to
+     has been edited, but GNUN will automatically re-wrap the file to
      the standard line length when it is processed.  Wrapping long
-     lines in PO files is a good pracice as it avoids unnecessary
+     lines in PO files is a good practice as it avoids unnecessary
      revisions.
 
      This rule checks for all translations that have lines longer than
@@ -1451,7 +1445,7 @@ Targets in `GNUmakefile.team'
 `publish'
      The `publish' rule's task is to copy all modified files to the
      official "www" repository.  It depends on the `format' target to
-     ensure that all files are rewrapped to the standard line length
+     ensure that all files are re-wrapped to the standard line length
      limit, but deliberately does not depend on `sync VCS=yes'.
      Usually, one would run `make publish' when one or a bunch of PO
      files are in a satisfactory condition to be published, and this
@@ -1512,7 +1506,7 @@ the project's repository, any new changes will be visible for
 subscribers.  Here is an example crontab entry:
 
      # m h  dom mon dow   command
-     @daily              cd $HOME/projects/www-LANG ; make VCS=yes
+     @daily              cd $HOME/projects/www-LANG; make VCS=yes
 
    It is not necessary the job to be run on the team leader's machine,
 since all team members have write access to their project repository.
@@ -1521,7 +1515,7 @@ since all team members have write access to their project repository.
 translations weekly or fortnightly, for example:
 
      # m h  dom mon dow   command
-     @weekly             cd $HOME/projects/www-LANG ; \
+     @weekly             cd $HOME/projects/www-LANG; \
                             make report | mail -s "Weekly statistics" \
                             www-LANG-list@gnu.org
 
@@ -1533,14 +1527,14 @@ for better readability.
 ---------------------
 
 Compendium is a PO file including translations for common strings; it is
-used to fill other PO files.  *Note gettext: (gettext)Compendium.  One
-example of such common strings is the footer text about reporting bugs
-and sending inquiries: when a webmaster updates footer texts in an
+used to fill other PO files.  *Note Compendium: (gettext)Compendium.
+One example of such common strings is the footer text about reporting
+bugs and sending inquiries: when a webmaster updates footer texts in an
 article, GNUN will use compendia to automatically fill the translations
 for the new version of the strings.
 
-   GNUN uses compendia located in `server/gnun/compendia' directory in
-the `www' web repository.  There are two kinds of compendia:
+   GNUN uses compendia located in the `server/gnun/compendia' directory
+of the `www' web repository.  There are two kinds of compendia:
 `master.LANG.po' and `compendium.LANG.po'.
 
    The first kind, `master.LANG.po', can be used to simultaneously
@@ -1551,20 +1545,21 @@ will be rebuilt.  GNUN doesn't modify this kind of compendia.
 
    The second kind, `compendium.LANG.po', is updated automatically.
 GNUN finds strings that repeat many times in POTs of articles and
-collects them in `compendium.pot'.  Then GNUN checks all available
+collects them in `compendium.pot'.  Then it checks all available
 `ARTICLE.LANG.po' files for translations of those strings and generates
 `compendium.LANG.po'.  This file is also used to fill missing
 translations, but it doesn't override the translations from
 `ARTICLE.LANG.po', and the strings coming from `compendium.LANG.po' are
-always marked as "fuzzy".
+always marked as "fuzzy" to prevent propagation of translations that
+may be wrong in a different context.
 
    When updating `compendium.pot', some strings should be excluded even
-though they repeat in the POT files many times, for instance, GNUN
+though they repeat in the POT files many times--for instance, GNUN
 slots for translators' notes.  *Note Notes Slot::.  They are not real
-translations, this is why they are likely to be differrent for different
+translations, this is why they are likely to be different for different
 articles.  In order to avoid including them in compendia, GNUN checks a
-specific file, `exclude.pot', and when that file contains the the
-string, it won't be added to `compendium.pot'.
+specific file, `exclude.pot', and when that file contains the string,
+it won't be added to `compendium.pot'.
 
 2.4 Tips and Hints for Webmasters
 =================================
@@ -1589,8 +1584,8 @@ again in the next run.
 
 The script `gnun-validate-html' is useful for webmasters who want to
 verify if their (potentially intrusive) changes result in a valid
-markup.  Before committing your changes, you can check if it is valid
-by running
+markup.  Before committing your changes, you can check whether the file
+is valid by running
 
      gnun-validate-html --root . philosophy/not-ipr.html
 
@@ -1622,13 +1617,13 @@ unnecessarily indent the comment in the POT.
 2.4.3 Modifying Boilerplates
 ----------------------------
 
-*Warning:* Any structural diversion from `boilerplate.html' in a
-specific article is likely to result in errors from GNUN.  Any
-unexpected updates to the server templates (such as changing the entire
-look & feel of the site) will most probably break _all_ translations
-under GNUN's control.  Of course, this does not mean that such changes
-should not happen--only that they must be applied in our sandbox first,
-to ensure a smooth transition.
+*Warning:* Any significant structural diversion from `boilerplate.html'
+in a specific article may result in errors from GNUN.  Any untested
+intrusive updates to the server templates (such as changing the entire
+look & feel of the site) will probably break _all_ translations under
+GNUN's control.  Of course, this does not mean that no changes should
+happen--only that they must be applied in our sandbox first, to ensure
+a smooth transition.
 
 2.4.4 Localized URLs
 --------------------
@@ -1651,29 +1646,31 @@ lists of URLs in `localized-urls.mk'.
    After every build GNUN will check if the respective
 `philosophy/category.LANG.png' and other files are present in the
 working copy and substitute the strings in the HTML file of the
-traslation.
+translation.
 
    GNUN relies on URLs being absolute, starting from the root homepage
 as required in
 `http://www.gnu.org/server/fsf-html-style-sheet.html#FilenameAndURLGuidelines'.
+
+   And please don't forget to commit the image in its source form
+(typically, in SVG format).
 
 3 Unexciting Information for GNUN's Operation
 *********************************************
 
 This chapter might be of interest probably only to people who would have
 special interest in the software, plan to enhance it or develop a
-front-end.
+front-end, except the section about scripts that includes descriptions
+of programs that may also be useful for the translators.
 
-3.1 Internally Used Scripts
-===========================
+3.1 GNUN Scripts
+================
 
-For the time being there are several helper scripts, used internally as
-commands with certain arguments in the makefile rules.  They can be
-invoked separately, as stand-alone programs, and sometimes they are
-useful on their own.
-
-   The `gnun-clear-previous' script is an exception--it is not used in
-GNUN's rules at all.
+For the time being there are several helper scripts. Some of them are
+used internally as commands with certain arguments in the makefile
+rules; other scripts were written specifically to facilitate some
+mechanical actions, like initially filling the headers in the PO files.
+They all can be invoked separately, as stand-alone programs.
 
 3.1.1 The `make-prototype' Script
 ---------------------------------
@@ -1682,7 +1679,8 @@ This is a Guile script which makes the "prototype" file,
 `foo.LANG.proto', from which the POT is generated.  GNUN is designed in
 such a way, because it would be no big improvement if links to other
 translations ended up in the POT--it would mean that translators would
-have to manually update their PO file when a new translation is added.
+have to manually update their PO file when a new translation is
+added.(1)
 
    In addition, `make-prototype' guards the timestamp (the $Date$ RCS
 keyword) in order the timestamp of the translation to be updated _only_
@@ -1697,11 +1695,7 @@ Translation::.
    Here are the options that `make-prototype' accepts:
 
 `--article'
-     Process the input file as an article.  This is the default.  As of
-     version 0.5, this option is considered obsolete because the lists
-     of translations are implemented as an automatically generated file
-     included via SSI directive just like the respective list is
-     included in the homepage.  *Note languages.txt::.
+     Process the input file as an article.  This is the default.(2)
 
 `--home'
      Process the input article as a homepage.  Specify this when you
@@ -1726,10 +1720,21 @@ Translation::.
 `--help'
      Print usage information on stdout.
 
+   ---------- Footnotes ----------
+
+   (1) Since version 0.5, those links are maintained in a separate file
+included with SSI directives.
+
+   (2) As of version 0.5, this option is considered obsolete because
+the lists of translations are implemented as an automatically generated
+file included via SSI directive just like the respective list is
+included in the homepage.  *Note languages.txt::. In the future, both
+the `--article' and the `--home' option will be removed.
+
 3.1.2 The `gnun-add-fuzzy-diff' Script
 --------------------------------------
 
-This script adds comments with differences of current msgids against
+This script adds comments with differences of current `msgid's against
 previous ones to fuzzy translations in a PO file.  To produce the
 differences `wdiff' is used.  This may be useful to figure out what has
 changed.  In fact, it wraps around a `sed' script used in GNUN
@@ -1745,16 +1750,59 @@ internally.
      Display copyright and version information and exit.
 
 `--help'
-     Display usage information and exit
+     Display usage information and exit.
 
-3.1.3 The `gnun-preconvert' Script
+3.1.3 The `gnun-init-po' Script
+-------------------------------
+
+This script initializes a PO file using POT generated with GNUN, and
+fills some fields in the header.  It also optionally uses a compendium
+(or compendia) to fill translations.
+
+     gnun-init-po [OPTION...] POT
+
+`-C'
+`--compendium=COMP'
+     Specify a compendium to use.  You can issue this option many times
+     to use multiple compendia simultaneously.  The suffix of
+     compendium is used when the language suffix is not specified with
+     the `--language' option.
+
+`-d'
+`--disable-diffs'
+     Don't add diffs to previous messages.
+
+`-g'
+`--team="TEAM <LIST>"'
+     Specify team's name and mailing list.
+
+`-l'
+`--language=LANG'
+     Specify language suffix, e.g "bg".  The suffix also defines the
+     name of the language which is used in some fields of PO file
+     header.
+
+`-t'
+`--translator="FULL NAME <EMAIL>"'
+     Specify translator.
+
+`--version'
+     Display copyright and version information and exit.
+
+`--help'
+     Display usage information and exit.
+
+   The PO file name is guessed from the name of POT and language
+suffix; the file is created in current working directory.
+
+3.1.4 The `gnun-preconvert' Script
 ----------------------------------
 
 This script uses `po4a-gettextize' to convert a translation from HTML
 to PO format (see
 `http://po4a.alioth.debian.org/man/man7/po4a.7.php#lbAO').  If the
-conversion is successful, you can merge the result with new POT using
-`gnun-merge-preconverted'.
+conversion is successful, you can merge the result with the new POT
+using `gnun-merge-preconverted'.
 
      gnun-preconvert [OPTION...] TRANSLATION MASTER
 
@@ -1766,14 +1814,14 @@ conversion is successful, you can merge the result with new POT using
      Display copyright and version information and exit.
 
 `--help'
-     Display usage information and exit
+     Display usage information and exit.
 
-3.1.4 The `gnun-merge-preconverted' Script
+3.1.5 The `gnun-merge-preconverted' Script
 ------------------------------------------
 
-This script takes `po4a-gettextize' output, adds current msgids as
-"previous" values, merges the file with new POT, and adds differences
-against previous values like `gnun-add-fuzzy-diff' does.
+This script takes `po4a-gettextize' output, adds current `msgid's as
+"previous" values, merges the file with the new POT, and adds
+differences against previous values like `gnun-add-fuzzy-diff' does.
 
      gnun-merge-preconverted [OPTION...] PO POT
 
@@ -1786,9 +1834,9 @@ against previous values like `gnun-add-fuzzy-diff' does.
      Display copyright and version information and exit.
 
 `--help'
-     Display usage information and exit
+     Display usage information and exit.
 
-3.1.5 The `gnun-validate-html' Script
+3.1.6 The `gnun-validate-html' Script
 -------------------------------------
 
 This is a Bash script whose purpose is to "validate" both the original
@@ -1802,15 +1850,24 @@ translators too, so this tool is useful to catch errors of that kind.
    The script expects only one FILE as the last argument and will exit
 with an error if it is not specified (which might be the case when an
 automatic variable is not expanded properly due to a bug in the
-makefile).
+makefile).  Example:
 
-   The top of the working directory can be specified through `--root'
-option; the default value is "../..".
+     gnun-validate-html --root . philosophy/free-sw.html
 
-   As a side effect, the expanded HTML can be saved in a file specified
-through `--expand-to' option.
+`--root=DIRECTORY'
+     Specify the top DIRECTORY of the working copy; the default value
+     is `../..'.
 
-3.1.6 The `mailfail' Script
+`--expand-to=FILE'
+     Save the expanded HTML as FILE.
+
+`--version'
+     Display copyright and version information and exit.
+
+`--help'
+     Display usage information and exit.
+
+3.1.7 The `mailfail' Script
 ---------------------------
 
 This is a helper script that runs a command, and mails the output of
@@ -1854,7 +1911,7 @@ body.
 argument is missing, the usage information is printed to the standard
 output and the exit code is 1.
 
-3.1.7 The `validate-html-notify' Script
+3.1.8 The `validate-html-notify' Script
 ---------------------------------------
 
 This script is a wrapper around `gnun-validate-html' (*note
@@ -1880,7 +1937,7 @@ output of another program that it runs.
 wrapper has a specific task and cannot be used to invoke an arbitrary
 command--use `mailfail' for that.  *Note mailfail::.
 
-3.1.8 The `gnun-clear-previous' Script
+3.1.9 The `gnun-clear-previous' Script
 --------------------------------------
 
 This simple script is not used internally in GNUN.  It is merely for
@@ -2405,109 +2462,112 @@ permit their use in free software.
 Index
 *****
 
-ALL_DIRS:                                      See 2.2.      (line  772)
-announce:                                      See 2.1.1.    (line  471)
-articles in root directory, defining:          See 2.2.      (line  765)
-Bazaar:                                        See 2.1.1.    (line  410)
-boilerplates:                                  See 2.4.3.    (line 1625)
-bugs, reporting:                               See 4.        (line 1913)
-bzr:                                           See 2.1.1.    (line  410)
-comments for translators:                      See 2.4.2.    (line 1602)
-compendia:                                     See 2.3.8.    (line 1535)
-compendium.pot:                                See 2.3.8.    (line 1535)
-config.mk:                                     See 2.1.      (line  375)
-conversion of existing translations <1>:       See 3.1.4.    (line 1774)
-conversion of existing translations <2>:       See 3.1.3.    (line 1753)
+ALL_DIRS:                                      See 2.2.      (line  769)
+announce:                                      See 2.1.1.    (line  470)
+articles in root directory, defining:          See 2.2.      (line  762)
+Bazaar:                                        See 2.1.1.    (line  409)
+boilerplates:                                  See 2.4.3.    (line 1620)
+bugs, reporting:                               See 4.        (line 1970)
+bzr:                                           See 2.1.1.    (line  409)
+comments for translators:                      See 2.4.2.    (line 1597)
+compendia:                                     See 2.3.8.    (line 1529)
+compendium.pot:                                See 2.3.8.    (line 1529)
+config.mk:                                     See 2.1.      (line  374)
+conversion of existing translations <1>:       See 3.1.5.    (line 1822)
+conversion of existing translations <2>:       See 3.1.4.    (line 1801)
 conversion of existing translations:           See 2.3.2.    (line 1074)
 credits, translators <1>:                      See 2.3.1.2.  (line 1051)
 credits, translators:                          See 2.3.1.    (line  952)
-cron, team maintenance:                        See 2.3.7.2.  (line 1509)
-CVS:                                           See 2.1.1.    (line  410)
-deferred generation of articles:               See 2.1.1.    (line  491)
-defining articles in the root dir:             See 2.2.      (line  765)
-defining directories:                          See 2.2.      (line  772)
-defining homepage:                             See 2.2.      (line  759)
-defining templates:                            See 2.2.      (line  730)
-directories, defining:                         See 2.2.      (line  772)
-exclude.pot:                                   See 2.3.8.    (line 1535)
-fuzzy strings:                                 See 2.1.1.    (line  491)
-FUZZY_DIFF_LINGUAS:                            See 2.2.      (line  754)
-generation, POT, .proto:                       See 3.1.1.    (line 1681)
-generic notice, translations:                  See 2.3.5.    (line 1244)
-GNUmakefile:                                   See 2.1.      (line  359)
-GNUmakefile.team:                              See 2.3.7.    (line 1300)
-gnun.mk <1>:                                   See 2.2.      (line  717)
-gnun.mk:                                       See 2.1.      (line  375)
+cron, team maintenance:                        See 2.3.7.2.  (line 1503)
+CVS:                                           See 2.1.1.    (line  409)
+deferred generation of articles:               See 2.1.1.    (line  490)
+defining articles in the root dir:             See 2.2.      (line  762)
+defining directories:                          See 2.2.      (line  769)
+defining homepage:                             See 2.2.      (line  756)
+defining templates:                            See 2.2.      (line  717)
+directories, defining:                         See 2.2.      (line  769)
+exclude.pot:                                   See 2.3.8.    (line 1529)
+fuzzy strings:                                 See 2.1.1.    (line  490)
+FUZZY_DIFF_LINGUAS:                            See 2.2.      (line  750)
+generation, POT, .proto:                       See 3.1.1.    (line 1678)
+generic notice, translations:                  See 2.3.5.    (line 1240)
+GNUmakefile:                                   See 2.1.      (line  358)
+GNUmakefile.team:                              See 2.3.7.    (line 1296)
+gnun.mk <1>:                                   See 2.2.      (line  703)
+gnun.mk:                                       See 2.1.      (line  374)
 gnunews:                                       See 2.3.3.    (line 1143)
 gnusflashes:                                   See 2.3.3.    (line 1143)
-GRACE:                                         See 2.1.1.    (line  491)
-grace period:                                  See 2.1.1.    (line  491)
-HOME_LINGUAS:                                  See 2.2.      (line  759)
-homepage, defining:                            See 2.2.      (line  759)
-invocation:                                    See 2.1.      (line  359)
-invoking:                                      See 2.1.      (line  359)
-localized URLs:                                See 2.4.4.    (line 1636)
+GRACE:                                         See 2.1.1.    (line  490)
+grace period:                                  See 2.1.1.    (line  490)
+HOME_LINGUAS:                                  See 2.2.      (line  756)
+homepage, defining:                            See 2.2.      (line  756)
+initializing, translations:                    See 3.1.3.    (line 1758)
+invocation:                                    See 2.1.      (line  358)
+invoking:                                      See 2.1.      (line  358)
+localized URLs:                                See 2.4.4.    (line 1631)
 long lines, wrap:                              See 2.3.1.    (line  958)
-mail, notifications <1>:                       See 3.1.6.    (line 1816)
-mail, notifications:                           See 2.1.1.    (line  458)
-migration, translations <1>:                   See 3.1.4.    (line 1774)
-migration, translations <2>:                   See 3.1.3.    (line 1753)
+mail, notifications <1>:                       See 3.1.7.    (line 1873)
+mail, notifications:                           See 2.1.1.    (line  457)
+migration, translations <1>:                   See 3.1.5.    (line 1822)
+migration, translations <2>:                   See 3.1.4.    (line 1801)
 migration, translations:                       See 2.3.2.    (line 1074)
-new translation:                               See 2.3.1.    (line  840)
-new translations, notifications/announcements: See 2.1.1.    (line  471)
+new translation:                               See 2.3.1.    (line  837)
+new translations, notifications/announcements: See 2.1.1.    (line  470)
 notes, translators <1>:                        See 2.3.1.1.  (line 1004)
 notes, translators:                            See 2.3.1.    (line  946)
-NOTIFY:                                        See 2.1.1.    (line  458)
-OUTDATED-GRACE:                                See 2.1.1.    (line  503)
-output, detailed:                              See 2.1.1.    (line  484)
-PO editors:                                    See 2.3.      (line  805)
+NOTIFY:                                        See 2.1.1.    (line  457)
+OUTDATED-GRACE:                                See 2.1.1.    (line  502)
+output, detailed:                              See 2.1.1.    (line  483)
+PO editors:                                    See 2.3.      (line  802)
 PO headers:                                    See 2.3.1.    (line  879)
-PO, editing:                                   See 2.3.      (line  793)
-POT generation:                                See 3.1.1.    (line 1681)
-POT generation, articles:                      See 2.2.      (line  776)
-previous, diff <1>:                            See 3.1.2.    (line 1732)
-previous, diff:                                See 2.2.      (line  754)
-previous, manipulating PO files:               See 3.1.8.    (line 1886)
-priorities.mk <1>:                             See 2.3.7.    (line 1370)
-priorities.mk <2>:                             See 2.1.2.4.  (line  639)
-priorities.mk:                                 See 2.1.      (line  375)
-project repository:                            See 2.3.7.    (line 1300)
-prototype generation:                          See 3.1.1.    (line 1681)
+PO, editing:                                   See 2.3.      (line  790)
+POT generation:                                See 3.1.1.    (line 1678)
+POT generation, articles:                      See 2.2.      (line  773)
+previous, diff <1>:                            See 3.1.2.    (line 1737)
+previous, diff:                                See 2.2.      (line  750)
+previous, manipulating PO files:               See 3.1.9.    (line 1943)
+priorities.mk <1>:                             See 2.3.7.    (line 1366)
+priorities.mk <2>:                             See 2.1.2.4.  (line  636)
+priorities.mk:                                 See 2.1.      (line  374)
+project repository:                            See 2.3.7.    (line 1296)
+prototype generation:                          See 3.1.1.    (line 1678)
 recommendations, PO files:                     See 2.3.4.    (line 1173)
-reporting:                                     See 2.1.2.4.  (line  625)
-reporting bugs:                                See 4.        (line 1913)
-repository, translation project:               See 2.3.7.    (line 1300)
-ROOT:                                          See 2.2.      (line  765)
-sanity checks:                                 See 2.1.1.    (line  437)
-status, translations:                          See 2.1.2.4.  (line  625)
-Subversion:                                    See 2.1.1.    (line  410)
-SVN:                                           See 2.1.1.    (line  410)
-synchronization, repository:                   See 2.1.2.3.  (line  589)
-TEAM:                                          See 2.1.1.    (line  513)
-team information:                              See 2.3.5.    (line 1244)
-team maintenance:                              See 2.3.7.    (line 1300)
-team maintenance, cron:                        See 2.3.7.2.  (line 1509)
-team workflow:                                 See 2.3.7.    (line 1318)
-TEMPLATE_LINGUAS:                              See 2.2.      (line  730)
-templates, defining:                           See 2.2.      (line  730)
+reporting:                                     See 2.1.2.4.  (line  622)
+reporting bugs:                                See 4.        (line 1970)
+repository, translation project:               See 2.3.7.    (line 1296)
+ROOT:                                          See 2.2.      (line  762)
+sanity checks:                                 See 2.1.1.    (line  436)
+status, translations:                          See 2.1.2.4.  (line  622)
+Subversion:                                    See 2.1.1.    (line  409)
+SVN:                                           See 2.1.1.    (line  409)
+synchronization, repository:                   See 2.1.2.3.  (line  587)
+TEAM:                                          See 2.1.1.    (line  511)
+team information:                              See 2.3.5.    (line 1240)
+team maintenance:                              See 2.3.7.    (line 1296)
+team maintenance, cron:                        See 2.3.7.2.  (line 1503)
+team workflow:                                 See 2.3.7.    (line 1314)
+TEMPLATE_LINGUAS:                              See 2.2.      (line  717)
+templates, defining:                           See 2.2.      (line  717)
 tips, translators:                             See 2.3.4.    (line 1173)
-tips, webmasters:                              See 2.4.      (line 1572)
-translation memory:                            See 2.3.8.    (line 1535)
-translation, new:                              See 2.3.1.    (line  840)
+tips, webmasters:                              See 2.4.      (line 1567)
+translation memory:                            See 2.3.8.    (line 1529)
+translation, new:                              See 2.3.1.    (line  837)
 translators' credits <1>:                      See 2.3.1.2.  (line 1051)
 translators' credits:                          See 2.3.1.    (line  952)
 translators' notes <1>:                        See 2.3.1.1.  (line 1004)
 translators' notes:                            See 2.3.1.    (line  946)
-triggering, build:                             See 2.1.      (line  359)
-VALIDATE:                                      See 2.1.1.    (line  437)
-validation:                                    See 2.1.1.    (line  437)
-validation, HTML, XHTML:                       See 3.1.5.    (line 1794)
-variable, behavior:                            See 2.1.1.    (line  403)
-variable, team:                                See 2.1.1.    (line  513)
-variables <1>:                                 See 2.2.      (line  717)
-variables:                                     See 2.1.1.    (line  403)
-VCS:                                           See 2.1.1.    (line  410)
-VERBOSE:                                       See 2.1.1.    (line  484)
-webmaster tips:                                See 2.4.      (line 1572)
+triggering, build:                             See 2.1.      (line  358)
+VALIDATE:                                      See 2.1.1.    (line  436)
+validation <1>:                                See 2.4.1.    (line 1585)
+validation <2>:                                See 2.1.2.6.  (line  694)
+validation:                                    See 2.1.1.    (line  436)
+validation, HTML, XHTML:                       See 3.1.6.    (line 1842)
+variable, behavior:                            See 2.1.1.    (line  402)
+variable, team:                                See 2.1.1.    (line  511)
+variables <1>:                                 See 2.2.      (line  703)
+variables:                                     See 2.1.1.    (line  402)
+VCS:                                           See 2.1.1.    (line  409)
+VERBOSE:                                       See 2.1.1.    (line  483)
+webmaster tips:                                See 2.4.      (line 1567)
 whatsnew:                                      See 2.3.3.    (line 1143)
 wrapping long lines:                           See 2.3.1.    (line  958)

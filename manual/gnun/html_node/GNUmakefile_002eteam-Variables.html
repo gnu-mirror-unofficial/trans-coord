@@ -9,8 +9,8 @@
 <link rel="next" href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron" title="GNUmakefile.team and Cron">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -47,7 +47,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files-and-Team.html#PO-Files-and-Tea
 <hr>
 </div>
 
-<h5 class="subsubsection">2.3.7.1 Adopting <samp><span class="file">GNUmakefile.team</span></samp> For a Specific Team</h5>
+<h5 class="subsubsection">2.3.7.1 Adopting <samp><span class="file">GNUmakefile.team</span></samp> for a Specific Team</h5>
 
 <p>To adjust the makefile for your team, you need to edit two variables.
 
@@ -62,9 +62,8 @@ be <code>../www/</code> or <samp><span class="file">/home/</span><var>user</var>
 slash at the end, it is important. 
 </dl>
 
-   <p>Technically speaking, two variants of one language sharing the same
-project and repository (such as <code>zh-cn</code> and <code>zh-tw</code>) are not
-supported&mdash;patches welcome.  As a workaround, there could be two
+   <p>If two variants of one language share the same project and repository
+(such as <code>zh-cn</code> and <code>zh-tw</code>), they should maintain two
 directories with two <samp><span class="file">GNUmakefile</span></samp>s and each directory having its
 own tree.
 
@@ -102,11 +101,11 @@ for it.
      <br><dt><code>report</code><dd>Verifies which translations are complete, and prints a list (with
 statistics) of those that need to be updated.
 
-     <br><dt><code>format</code><dd>A convenience rule to rewrap all files upto the standard length.  Most
+     <br><dt><code>format</code><dd>A convenience rule to re-wrap all files upto the standard length.  Most
 PO editors leave the <code>msgstr</code> as a single long line after it has
-been edited, but GNUN will automatically rewrap the file to the standard
+been edited, but GNUN will automatically re-wrap the file to the standard
 line length when it is processed.  Wrapping long lines in PO files is a
-good pracice as it avoids unnecessary revisions.
+good practice as it avoids unnecessary revisions.
 
      <p>This rule checks for all translations that have lines longer than 80,
 and runs <samp><span class="command">msgcat</span></samp> accordingly to reformat them.  For that
@@ -118,7 +117,7 @@ line, wherever it may occur.
 
      <br><dt><code>publish</code><dd>The <code>publish</code> rule's task is to copy all modified files to the
 official <dfn>www</dfn> repository.  It depends on the <code>format</code> target
-to ensure that all files are rewrapped to the standard line length
+to ensure that all files are re-wrapped to the standard line length
 limit, but deliberately does not depend on <code>sync VCS=yes</code>. 
 Usually, one would run <code>make publish</code> when one or a bunch of PO
 files are in a satisfactory condition to be published, and this rule is

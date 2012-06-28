@@ -50,7 +50,7 @@ GNU Web Translators Manual
 **************************
 
 This manual is a guide for the GNU Web Translators.
-Last updated on 02.06.2012, for GNUnited Nations version 0.5.
+Last updated on 28.06.2012, for GNUnited Nations version 0.6.
 
    Copyright (C) 2009, 2010, 2011, 2012 Free Software Foundation, Inc.
 
@@ -926,7 +926,7 @@ information.
    *Remember:* A choice of a particular VCS is a sensitive matter--some
 modern ones provide compelling features, but they also bump the barrier
 for participation higher.  The VCS is supposed to ease collaborative
-maintenance--if it eases only you, project members just won't use so
+maintenance--if it eases only you, project members just won't use it so
 that won't be a net win.
 
 Web-based Systems
@@ -1133,7 +1133,7 @@ the `#include''s used:
      Likewise, this file replaces head-include-1.html for HTML5 pages.
 
 `server/head-include-2.html'
-     Imports the standard CSS, which can be overriden.  *Note CSS::.
+     Imports the standard CSS, which can be overridden.  *Note CSS::.
 
 `server/footer.html'
      This is a very short and simple file (at least at the time of
@@ -1170,9 +1170,7 @@ the `#include''s used:
      the localized `gnusflashes.include' is derived from it.
 
 `licenses/gpl-3.0-body.html'
-
 `licenses/fdl-1.3-body.html'
-
 `...'
      Some of the licenses have the text of the license itself separated
      in another file.  This serves two purposes: 1) to provide a
@@ -1224,7 +1222,7 @@ variable has no effect for them.  *Note Runtime Variables:
 5.3 How To Use Custom CSS
 =========================
 
-CSS file `layout.css' gets included (with three other CSS files) in
+The CSS file `layout.css' gets included (with three other CSS files) in
 almost all the English articles through
 `server/head-include-2.LANG.html'.  However, sometimes this style isn't
 quite right for translations--many languages have much longer
@@ -1363,17 +1361,15 @@ native English speaker.
      automatic GNUN build job.
 
 `home.html'
-     There is not problem to translate this page, but don't make the
+     There is no problem to translate this page, but don't make the
      mistake to pick it up as your first translation.  It is modified
      often, sometimes intensively, and only active team members should
      take that road.
 
 `server/whatsnew.html'
      This is "What's New", also known as "GNU's Flashes", also known as
-     "GNU News".  Translate it only if the team has sufficient manpower
-     to catch up--new entries appear immediately on the homepages.  You
-     might want to subscribe to <trans-coord-news@gnu.org> in case you
-     maintain localized `gnunews'.
+     "GNU News".  It is deprecated since quite some time and translating
+     it is discouraged.
 
 5.5 When To CAPITALIZE
 ======================
@@ -1473,9 +1469,9 @@ translation process, and as a consequence, the documentation.  Every
 participant in the process should be free to suggest modifications to
 the current procedures and suggestions how to improve the current state
 of affairs.  Ideally, they should be accompanied with patches to the
-Texinfo source, but that's not mandatory.  In any event, please write to
-<trans-coord-discuss@gnu.org>--the goal of this list is precisely to
-discuss improvements of  the translation process.
+Texinfo source, but that's not mandatory.  In any event, please write
+to <trans-coord-discuss@gnu.org>--the goal of this list is precisely to
+discuss improvements of the translation process.
 
 6.1 Related Mailing Lists
 =========================
@@ -1513,7 +1509,7 @@ participants in the process.
      releases.  It is not mandatory to subscribe to it, although the
      traffic is very low.  If you want to track only GNUN release
      announcements, subscribe to the `gnun' topic via Mailman's user
-     interface.  Likewise, if you want to recieve only "What's New"
+     interface.  Likewise, if you want to receive only "What's New"
      updates, subscribe to the `whatsnew' topic.
 
      Automatic announcements for new gnu.org translations (provided

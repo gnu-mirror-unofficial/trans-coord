@@ -1,12 +1,12 @@
 <html lang="en">
 <head>
-<title>Rules - GNUnited Nations</title>
+<title>validate-all - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Internals.html#Internals" title="Internals">
-<link rel="prev" href="Scripts.html#Scripts" title="Scripts">
+<link rel="up" href="Special-Targets.html#Special-Targets" title="Special Targets">
+<link rel="prev" href="triggers.html#triggers" title="triggers">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (updated 28 June 2012) is for GNUnited Nations (version
@@ -39,16 +39,22 @@ Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<a name="Rules"></a>
+<a name="validate-all"></a>
+<a name="validate_002dall"></a>
 <p>
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Scripts.html#Scripts">Scripts</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Internals.html#Internals">Internals</a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="triggers.html#triggers">triggers</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">Special Targets</a>
 <hr>
 </div>
 
-<h3 class="section">3.2 How The Recipes Work</h3>
+<h5 class="subsubsection">2.1.2.6 The <code>validate-all</code> Target</h5>
 
-<p>Read the source code, then please tell us :-)
+<p><a name="index-validation-37"></a>
+The <code>validate-all</code> target validates all HTML pages under GNUN's
+control.  It is needed because GNUN doesn't track dependencies on the
+included files, so errors in those included files could pass unnoticed.
+
+   <p>This target is invoked once a day by the official GNUN cron job.
 
    </body></html>
 

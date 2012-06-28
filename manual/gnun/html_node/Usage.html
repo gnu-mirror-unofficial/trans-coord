@@ -9,8 +9,8 @@
 <link rel="next" href="Internals.html#Internals" title="Internals">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -62,18 +62,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 
 GNUN currently consists of a few makefiles, scripts and optional
 <samp><span class="file">generic.</span><var>lang</var><span class="file">.html</span></samp> files, intended to contain
-article-independent but team-specific information.  They are designed to
-reside in the <samp><span class="file">server/gnun</span></samp> directory, but this may change.  In all
-examples in this manual, &ldquo;invoking&rdquo; means executing on the command
-line <code>make -C server/gnun [</code><var>target</var><code>]
-[</code><var>variable</var><code>=</code><var>value</var><code> ...]</code> while the working directory is the
-root in the `www' web repository.  For the purpose of brevity, we will
-refer to the above command as simply <samp><span class="command">make</span></samp>, which is equivalent
-to <code>cd server/gnun ; make</code>.  It is desirable never to invoke
-<samp><span class="command">make</span></samp> with the <samp><span class="option">-k</span></samp> (<samp><span class="option">--keep-going</span></samp>) option,
-because an eventual error in only one make recipe might create a mess in
-many articles, both original and translated.  Do this with caution, and
-generally only when debugging in a safe environment.
+article-independent but team-specific information.  They are designed
+to reside in the <samp><span class="file">server/gnun</span></samp> directory, but this may change. 
+In all examples in this manual, &ldquo;invoking&rdquo; means executing on the
+command line <code>make -C server/gnun [</code><var>target</var><code>]
+[</code><var>variable</var><code>=</code><var>value</var><code> ...]</code> while the working directory is
+the root in the `www' web repository.  For the purpose of brevity, we
+will refer to the above command as simply <samp><span class="command">make</span></samp>, which is
+equivalent to <code>cd server/gnun; make</code>.  It is desirable never to
+invoke <samp><span class="command">make</span></samp> with the <samp><span class="option">-k</span></samp> (<samp><span class="option">--keep-going</span></samp>)
+option, because an eventual error in only one make recipe might create
+a mess in many articles, both original and translated.  Do this with
+caution, and generally only when debugging in a safe environment.
 
    <p>The build process is intended to be invoked by a cron job, although
 manual intervention to a certain degree is possible.

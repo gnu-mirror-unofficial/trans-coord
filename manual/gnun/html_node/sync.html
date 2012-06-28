@@ -10,8 +10,8 @@
 <link rel="next" href="report.html#report" title="report">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -48,9 +48,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">S
 <hr>
 </div>
 
-<h5 class="subsubsection">2.1.2.3 The <code>sync</code> target</h5>
+<h5 class="subsubsection">2.1.2.3 The <code>sync</code> Target</h5>
 
-<p><a name="index-synchronization_002c-repository-32"></a>
+<p><a name="index-synchronization_002c-repository-33"></a>
 The <code>sync</code> target has a simple task: synchronize the
 <em>original English</em> articles from a canonical repository, like
 `www'.  It is very important that such synchronization happens,
@@ -70,7 +70,7 @@ translations.
 repository, i.e. the <var>destination</var>.  In addition, if a file meant
 to be synchronized disappeared from the <var>source</var>, a warning mail
 will be sent to the address defined in the <code>devel-addr</code> variable
-(defined only in <samp><span class="file">GNUmakefile</span></samp>).  The build will continue without
+(defined in <samp><span class="file">gnun.conf</span></samp>).  The build will continue without
 failure, and will sync and commit all other files, but will send the
 same email message again if the file is still present in the
 <code>files-to-sync</code> variable during a subsequent invocation.
@@ -80,7 +80,7 @@ that are not under GNUN's control, such as <samp><span class="file">server/heade
 <samp><span class="file">server/banner.html</span></samp>, <samp><span class="file">server/footer.html</span></samp> and their
 translations, as defined in the <code>verbatim-templates</code> variable. 
 This is important, as these files may change in the master repository,
-while the validation of the html files in the development repository
+while the validation of the HTML files in the development repository
 will be performed with the old templates expanded, thus making this
 specific test more or less bogus.
 

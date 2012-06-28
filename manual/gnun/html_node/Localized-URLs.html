@@ -9,8 +9,8 @@
 <link rel="prev" href="Modifying-Boilerplates.html#Modifying-Boilerplates" title="Modifying Boilerplates">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -48,7 +48,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Webmaster-Tips.html#Webmaster-Tips">Web
 
 <h4 class="subsection">2.4.4 Localized URLs</h4>
 
-<p><a name="index-localized-URLs-93"></a>
+<p><a name="index-localized-URLs-96"></a>
 Some articles may contain diagrams or other images with English text
 that can and should be translated.  In order to make the translated
 versions appear in the respective translations, GNUN should be told
@@ -67,11 +67,14 @@ lists of URLs in <samp><span class="file">localized-urls.mk</span></samp>.
    <p>After every build GNUN will check if the respective
 <samp><span class="file">philosophy/category.</span><var>lang</var><span class="file">.png</span></samp> and other files are present in
 the working copy and substitute the strings in the HTML file of the
-traslation.
+translation.
 
    <p>GNUN relies on URLs being absolute, starting from the root homepage
 as required in
 <a href="http://www.gnu.org/server/fsf-html-style-sheet.html#FilenameAndURLGuidelines">http://www.gnu.org/server/fsf-html-style-sheet.html#FilenameAndURLGuidelines</a>.
+
+   <p>And please don't forget to commit the image in its source form
+(typically, in SVG format).
 
    </body></html>
 

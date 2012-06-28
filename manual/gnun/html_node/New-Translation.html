@@ -9,8 +9,8 @@
 <link rel="next" href="Migrating.html#Migrating" title="Migrating">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -48,21 +48,25 @@ Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
 
 <h4 class="subsection">2.3.1 Starting a New Translation</h4>
 
-<p><a name="index-translation_002c-new-55"></a><a name="index-new-translation-56"></a>
-To start a new translation, the easiest way is to copy the existing POT
-as <samp><span class="file">article.</span><var>lang</var><span class="file">.po</span></samp>, where <var>lang</var> is your language code. 
-For example, to prepare for a new translation of the essay
-<a href="http://www.gnu.org/philosophy/free-sw.html">http://www.gnu.org/philosophy/free-sw.html</a>, you can simply do
-<code>cd philosophy/po ; cp free-sw.pot free-sw.</code><var>lang</var><code>.po</code> and then
-edit the latter.  If <samp><span class="file">free-sw.pot</span></samp> does not exist it is because
-either the article is not yet &ldquo;templated&rdquo; (i.e. migrated to the new
-style), or the GNUN maintainers have not yet added it to the value of
-the appropriate variable in <samp><span class="file">server/gnun/gnun.mk</span></samp>.  In that case,
-just ask them to do the necessary in order the POT to be generated.
+<p><a name="index-translation_002c-new-57"></a><a name="index-new-translation-58"></a>
+To start a new translation, the most simple way is to copy the
+existing POT as <samp><span class="file">article.</span><var>lang</var><span class="file">.po</span></samp>, where <var>lang</var> is your
+language code.  For example, to prepare for a new translation of the
+essay <a href="http://www.gnu.org/philosophy/free-sw.html">http://www.gnu.org/philosophy/free-sw.html</a>, you can
+simply do <code>cd philosophy/po; cp free-sw.pot
+free-sw.</code><var>lang</var><code>.po</code> and then edit the latter.  If
+<samp><span class="file">free-sw.pot</span></samp> does not exist it is because either the article is
+not yet &ldquo;templated&rdquo; (i.e. migrated to the new style), or the GNUN
+maintainers have not yet added it to the value of the appropriate
+variable in <samp><span class="file">server/gnun/gnun.mk</span></samp>.  In that case, just ask them
+to do the necessary in order the POT to be generated.
 
    <p>You could also use the <samp><span class="command">msginit</span></samp> utility that would populate
 the PO file header with the right information, provided your
 environment is set up correctly.  See <a href="../gettext/msginit-Invocation.html#msginit-Invocation">msginit Invocation</a>.
+
+   <p>GNUN also provides a customized script to automatically fill more
+header fields.  See <a href="gnun_002dinit_002dpo.html#gnun_002dinit_002dpo">gnun-init-po</a>.
 
    <p>The PO file header as generated usually looks like this:
 
@@ -87,7 +91,7 @@ environment is set up correctly.  See <a href="../gettext/msginit-Invocation.htm
 conventions, and the rules for gnu.org translations.  For reference,
 here is a list with all fields explained:
 
-   <p><a name="index-PO-headers-57"></a>
+   <p><a name="index-PO-headers-59"></a>
      <dl>
 <dt>&lsquo;<samp><span class="samp">Project-Id-Version</span></samp>&rsquo;<dd>Add here the filename of the original article, without the
 sub-directory, like &ldquo;body-include-1.html&rdquo; or &ldquo;free-sw.html&rdquo;.
@@ -97,7 +101,7 @@ sub-directory, like &ldquo;body-include-1.html&rdquo; or &ldquo;free-sw.html&rdq
      <br><dt>&lsquo;<samp><span class="samp">PO-Revision-Date</span></samp>&rsquo;<dd>Likewise, do not edit.  This field is automatically filled in when you
 save the file with any decent PO editor.
 
-     <br><dt>&lsquo;<samp><span class="samp">Last-Translator</span></samp>&rsquo;<dd>The name and email address of the last translator who have edited the
+     <br><dt>&lsquo;<samp><span class="samp">Last-Translator</span></samp>&rsquo;<dd>The name and email address of the last translator who has edited the
 translation.  Pay attention that normally this is the name of a member
 of your team, it can be the translation team leader if he/she was the
 person who updated the translation.  For example:
@@ -105,7 +109,7 @@ person who updated the translation.  For example:
      <pre class="example">          Elvis Parsley &lt;king@grassland.com&gt;
 </pre>
      <br><dt>&lsquo;<samp><span class="samp">Language-Team</span></samp>&rsquo;<dd>This field should contain the mailing list on which the translation
-team can be reached&mdash;usually <a href="mailto:www-<var>lang</var>-...@gnu.org">www-<var>lang</var>-<small class="dots">...</small>@gnu.org</a>. 
+team can be reached&mdash;usually <a href="mailto:www-LANG-...@gnu.org">www-LANG-<small class="dots">...</small>@gnu.org</a>. 
 Example:
 
      <pre class="example">          Czech &lt;www-cs-general@gnu.org&gt;
@@ -151,21 +155,21 @@ rule (see <a href="GNUmakefile_002eteam-Variables.html#GNUmakefile_002eteam-Vari
    <p>There are some special messages that appear in the POT and PO:
 
      
-<a name="index-notes_002c-translators-58"></a>
-<a name="index-translators_0027-notes-59"></a>
+<a name="index-notes_002c-translators-60"></a>
+<a name="index-translators_0027-notes-61"></a>
 <dl><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S NOTES*</span></samp>&rsquo;<dd>This is for translator's notes that are injected in the resulting
 translation.  See <a href="Notes-Slot.html#Notes-Slot">Notes Slot</a>, for more information.  If your
 translation does not have notes, you <em>must</em> translate this as a
 space, that is, &lt;SPC&gt;.
 
-     <p><a name="index-credits_002c-translators-60"></a><a name="index-translators_0027-credits-61"></a><br><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S CREDITS*</span></samp>&rsquo;<dd>This is again optional, and should contain the name (and address) of
+     <p><a name="index-credits_002c-translators-62"></a><a name="index-translators_0027-credits-63"></a><br><dt>&lsquo;<samp><span class="samp">*GNUN-SLOT: TRANSLATOR'S CREDITS*</span></samp>&rsquo;<dd>This is again optional, and should contain the name (and address) of
 the person who made the translation.  &ldquo;Translate&rdquo; this string as a
 space (&lt;SPC&gt;) if you do not want your name to appear there. 
 See <a href="Credits-Slot.html#Credits-Slot">Credits Slot</a>. 
 </dl>
 
-   <p><a name="index-wrapping-long-lines-62"></a><a name="index-long-lines_002c-wrap-63"></a>Most of the PO editors do not wrap long lines that inevitably appear in
-<code>msgstr</code>'s.  If that happens, long lines make reading subsequent
+   <p><a name="index-wrapping-long-lines-64"></a><a name="index-long-lines_002c-wrap-65"></a>Most of the PO editors do not wrap long lines that inevitably appear in
+<code>msgstr</code>s.  If that happens, long lines make reading subsequent
 diffs harder, and are generally annoying for most people.  If this issue
 bothers you, you can &ldquo;normalize&rdquo; the already finished PO translation
 by executing on the command line <code>msgcat -o </code><var>file</var><code>.po

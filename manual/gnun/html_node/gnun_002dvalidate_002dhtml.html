@@ -10,8 +10,8 @@
 <link rel="next" href="mailfail.html#mailfail" title="mailfail">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -49,9 +49,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Scripts.html#Scripts">Scripts</a>
 <hr>
 </div>
 
-<h4 class="subsection">3.1.5 The <samp><span class="command">gnun-validate-html</span></samp> Script</h4>
+<h4 class="subsection">3.1.6 The <samp><span class="command">gnun-validate-html</span></samp> Script</h4>
 
-<p><a name="index-validation_002c-HTML_002c-XHTML-102"></a>
+<p><a name="index-validation_002c-HTML_002c-XHTML-106"></a>
 This is a Bash script whose purpose is to &ldquo;validate&rdquo; both the
 original and translated articles to make sure that they conform to the
 respective W3C standard.  Sometimes webmasters make mistakes, and
@@ -63,13 +63,20 @@ translators too, so this tool is useful to catch errors of that kind.
    <p>The script expects only one <var>file</var> as the last argument and will exit
 with an error if it is not specified (which might be the case when an
 automatic variable is not expanded properly due to a bug in the
-makefile).
+makefile).  Example:
 
-   <p>The top of the working directory can be specified through <code>--root</code>
-option; the default value is &ldquo;../..&rdquo;.
+<pre class="example">     gnun-validate-html --root . philosophy/free-sw.html
+</pre>
+     <dl>
+<dt><samp><span class="option">--root=</span><var>directory</var></samp><dd>Specify the top <var>directory</var> of the working copy; the default value
+is <samp><span class="file">../..</span></samp>.
 
-   <p>As a side effect, the expanded HTML can be saved in a file specified
-through <code>--expand-to</code> option.
+     <br><dt><samp><span class="option">--expand-to=</span><var>file</var></samp><dd>Save the expanded HTML as <var>file</var>.
+
+     <br><dt><samp><span class="option">--version</span></samp><dd>Display copyright and version information and exit.
+
+     <br><dt><samp><span class="option">--help</span></samp><dd>Display usage information and exit. 
+</dl>
 
    </body></html>
 

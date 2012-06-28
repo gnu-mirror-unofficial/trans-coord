@@ -9,8 +9,8 @@
 <link rel="prev" href="GNUmakefile_002eteam-Variables.html#GNUmakefile_002eteam-Variables" title="GNUmakefile.team Variables">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -49,14 +49,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files-and-Team.html#PO-Files-and-Tea
 
 <h5 class="subsubsection">2.3.7.2 Automatic Synchronization and Status Reports</h5>
 
-<p><a name="index-team-maintenance_002c-cron-83"></a><a name="index-cron_002c-team-maintenance-84"></a>
+<p><a name="index-team-maintenance_002c-cron-85"></a><a name="index-cron_002c-team-maintenance-86"></a>
 It is convenient to invoke such synchronization automatically, for
 example once every day.  If you have enabled commit notifications for
 the project's repository, any new changes will be visible for
 subscribers.  Here is an example crontab entry:
 
 <pre class="example">     # m h  dom mon dow   command
-     @daily              cd $HOME/projects/www-<var>lang</var> ; make VCS=yes
+     @daily              cd $HOME/projects/www-<var>lang</var>; make VCS=yes
 </pre>
    <p>It is not necessary the job to be run on the team leader's machine,
 since all team members have write access to their project repository.
@@ -65,7 +65,7 @@ since all team members have write access to their project repository.
 translations weekly or fortnightly, for example:
 
 <pre class="example">     # m h  dom mon dow   command
-     @weekly             cd $HOME/projects/www-<var>lang</var> ; \
+     @weekly             cd $HOME/projects/www-<var>lang</var>; \
                             make report | mail -s "Weekly statistics" \
                             www-<var>lang</var>-list@gnu.org
 </pre>

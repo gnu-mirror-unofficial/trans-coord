@@ -9,8 +9,8 @@
 <link rel="next" href="Rules.html#Rules" title="Rules">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -46,25 +46,26 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Internals.html#Internals">Internals</a>
 <hr>
 </div>
 
-<h3 class="section">3.1 Internally Used Scripts</h3>
+<h3 class="section">3.1 GNUN Scripts</h3>
 
-<p>For the time being there are several helper scripts, used internally
-as commands with certain arguments in the makefile rules.  They can be
-invoked separately, as stand-alone programs, and sometimes they are
-useful on their own.
-
-   <p>The <samp><span class="command">gnun-clear-previous</span></samp> script is an exception&mdash;it is not
-used in GNUN's rules at all.
+<p>For the time being there are several helper scripts. Some of them are
+used internally as commands with certain arguments in the makefile
+rules; other scripts were written specifically to facilitate some
+mechanical actions, like initially filling the headers in the PO files. 
+They all can be invoked separately, as stand-alone programs.
 
 <ul class="menu">
 <li><a accesskey="1" href="make_002dprototype.html#make_002dprototype">make-prototype</a>
-<li><a accesskey="2" href="gnun_002dadd_002dfuzzy_002ddiff.html#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a>
-<li><a accesskey="3" href="gnun_002dpreconvert.html#gnun_002dpreconvert">gnun-preconvert</a>
-<li><a accesskey="4" href="gnun_002dmerge_002dpreconverted.html#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a>
-<li><a accesskey="5" href="gnun_002dvalidate_002dhtml.html#gnun_002dvalidate_002dhtml">gnun-validate-html</a>
-<li><a accesskey="6" href="mailfail.html#mailfail">mailfail</a>
-<li><a accesskey="7" href="validate_002dhtml_002dnotify.html#validate_002dhtml_002dnotify">validate-html-notify</a>
-<li><a accesskey="8" href="gnun_002dclear_002dprevious.html#gnun_002dclear_002dprevious">gnun-clear-previous</a>
+<li><a accesskey="2" href="gnun_002dadd_002dfuzzy_002ddiff.html#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a>:       Add differences to previous
+                               <code>msgid</code>s. 
+<li><a accesskey="3" href="gnun_002dinit_002dpo.html#gnun_002dinit_002dpo">gnun-init-po</a>:              Initialize a new translation. 
+<li><a accesskey="4" href="gnun_002dpreconvert.html#gnun_002dpreconvert">gnun-preconvert</a>:           Invoke the first step in converting
+                               HTML translation to PO format. 
+<li><a accesskey="5" href="gnun_002dmerge_002dpreconverted.html#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a>:   Run the second step of the conversion. 
+<li><a accesskey="6" href="gnun_002dvalidate_002dhtml.html#gnun_002dvalidate_002dhtml">gnun-validate-html</a>:        Validate HTML file. 
+<li><a accesskey="7" href="mailfail.html#mailfail">mailfail</a>
+<li><a accesskey="8" href="validate_002dhtml_002dnotify.html#validate_002dhtml_002dnotify">validate-html-notify</a>
+<li><a accesskey="9" href="gnun_002dclear_002dprevious.html#gnun_002dclear_002dprevious">gnun-clear-previous</a>
 </ul>
 
    </body></html>

@@ -9,8 +9,8 @@
 <link rel="prev" href="PO-Files-and-Team.html#PO-Files-and-Team" title="PO Files and Team">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -48,16 +48,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
 
 <h4 class="subsection">2.3.8 Using Compendia</h4>
 
-<p><a name="index-compendia-85"></a><a name="index-translation-memory-86"></a><a name="index-exclude_002epot-87"></a><a name="index-compendium_002epot-88"></a>
+<p><a name="index-compendia-87"></a><a name="index-translation-memory-88"></a><a name="index-exclude_002epot-89"></a><a name="index-compendium_002epot-90"></a>
 Compendium is a PO file including translations for common strings; it is
-used to fill other PO files.  See <a href="../gettext/Compendium.html#Compendium">gettext</a>.  One example of such common strings is the footer
+used to fill other PO files.  See <a href="../gettext/Compendium.html#Compendium">Compendium</a>.  One example of such
+common strings is the footer
 text about reporting bugs and sending inquiries: when a webmaster
 updates footer texts in an article, GNUN will use compendia to
 automatically fill the translations for the new version of the strings.
 
-   <p>GNUN uses compendia located in <samp><span class="file">server/gnun/compendia</span></samp> directory in
-the `www' web repository.  There are two kinds of compendia:
-<samp><span class="file">master.</span><var>lang</var><span class="file">.po</span></samp> and <samp><span class="file">compendium.</span><var>lang</var><span class="file">.po</span></samp>.
+   <p>GNUN uses compendia located in the <samp><span class="file">server/gnun/compendia</span></samp>
+directory of the `www' web repository.  There are two kinds of
+compendia: <samp><span class="file">master.</span><var>lang</var><span class="file">.po</span></samp> and
+<samp><span class="file">compendium.</span><var>lang</var><span class="file">.po</span></samp>.
 
    <p>The first kind, <samp><span class="file">master.</span><var>lang</var><span class="file">.po</span></samp>, can be used to
 simultaneously update all occurrences of the translations of a given
@@ -68,21 +70,23 @@ kind of compendia.
 
    <p>The second kind, <samp><span class="file">compendium.</span><var>lang</var><span class="file">.po</span></samp>, is updated
 automatically.  GNUN finds strings that repeat many times in POTs of
-articles and collects them in <samp><span class="file">compendium.pot</span></samp>.  Then GNUN checks
-all available <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp> files for translations
-of those strings and generates <samp><span class="file">compendium.</span><var>lang</var><span class="file">.po</span></samp>.  This
-file is also used to fill missing translations, but it doesn't override
-the translations from <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>, and the
-strings coming from <samp><span class="file">compendium.</span><var>lang</var><span class="file">.po</span></samp> are always marked as
-&ldquo;fuzzy&rdquo;.
+articles and collects them in <samp><span class="file">compendium.pot</span></samp>.  Then it checks
+all available <samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp> files for
+translations of those strings and generates
+<samp><span class="file">compendium.</span><var>lang</var><span class="file">.po</span></samp>.  This file is also used to fill
+missing translations, but it doesn't override the translations from
+<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.po</span></samp>, and the strings coming from
+<samp><span class="file">compendium.</span><var>lang</var><span class="file">.po</span></samp> are always marked as &ldquo;fuzzy&rdquo; to
+prevent propagation of translations that may be wrong in a different
+context.
 
    <p>When updating <samp><span class="file">compendium.pot</span></samp>, some strings should be excluded
-even though they repeat in the POT files many times, for instance, GNUN
-slots for translators' notes.  See <a href="Notes-Slot.html#Notes-Slot">Notes Slot</a>.  They are not real
-translations, this is why they are likely to be differrent for different
-articles.  In order to avoid including them in compendia, GNUN checks a
-specific file, <samp><span class="file">exclude.pot</span></samp>, and when that file contains the the
-string, it won't be added to <samp><span class="file">compendium.pot</span></samp>.
+even though they repeat in the POT files many times&mdash;for instance,
+GNUN slots for translators' notes.  See <a href="Notes-Slot.html#Notes-Slot">Notes Slot</a>.  They are not
+real translations, this is why they are likely to be different for
+different articles.  In order to avoid including them in compendia,
+GNUN checks a specific file, <samp><span class="file">exclude.pot</span></samp>, and when that file
+contains the string, it won't be added to <samp><span class="file">compendium.pot</span></samp>.
 
    </body></html>
 

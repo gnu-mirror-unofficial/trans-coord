@@ -10,8 +10,8 @@
 <link rel="next" href="GNU-News.html#GNU-News" title="GNU News">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -48,9 +48,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
 <hr>
 </div>
 
-<h4 class="subsection">2.3.2 Transforming existing translation in PO format</h4>
+<h4 class="subsection">2.3.2 Transforming Existing Translation in PO Format</h4>
 
-<p><a name="index-migration_002c-translations-68"></a><a name="index-conversion-of-existing-translations-69"></a>
+<p><a name="index-migration_002c-translations-70"></a><a name="index-conversion-of-existing-translations-71"></a>
 Migrating an existing translation to a PO file format is basically
 editing the header as described in the previous section, and
 populating each of the messages by copying the already translated text
@@ -87,12 +87,13 @@ written to foo.lang.po.  After that, run
 
 <pre class="example">     gnun-merge-preconverted -C compendium.lang.po foo.lang.po foo.pot
 </pre>
-   <p>If you have no compendium, just omit the &ldquo;-C compendium.lang.po&rdquo; part.
+   <p>If you have no compendium, just omit the &ldquo;<code>-C
+compendium.lang.po</code>&rdquo; part.
 
    <p>You get <samp><span class="file">foo.</span><var>lang</var><span class="file">.po</span></samp> where all messages are marked as
 &ldquo;fuzzy&rdquo; (unless you use a compendium); you still should make sure that
 the translations correspond to the original and remove those &ldquo;fuzzy&rdquo;
-marks.  The script adds differences against previous msgids to
+marks.  The script adds differences against previous <code>msgid</code>s to
 facilitate checking.
 
    <p>There is no need to delete the existing HTML translation, GNUN will

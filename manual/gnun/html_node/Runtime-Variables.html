@@ -9,8 +9,8 @@
 <link rel="next" href="Special-Targets.html#Special-Targets" title="Special Targets">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
-This manual (updated 2 June 2012) is for GNUnited Nations (version
-0.5), a suite for maintaining translations of www.gnu.org
+This manual (updated 28 June 2012) is for GNUnited Nations (version
+0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -145,10 +145,9 @@ and all articles defined in the variable <code>no-grace-articles</code>.
 text (<samp><span class="file">server/outdated.html</span></samp> in the `www' repository) that is
 inserted into every outdated translation when the period defined in
 this variable is over; its purpose is to inform the reader that the
-translation does not correspond to the original English article, which
-has been changed since the translation was last updated.
+translation may not correspond to the original English article.
 
-     <p><a name="index-TEAM-30"></a><a name="index-variable_002c-team-31"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team which articles need to be checked for
+     <p><a name="index-TEAM-30"></a><a name="index-variable_002c-team-31"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team whose articles need to be checked for
 completeness.  This variable is applicable only for the <code>report</code>
 target, and is mandatory for it.  See <a href="report.html#report">report</a>.
 
@@ -160,18 +159,19 @@ the build this way will commit any newly added files as specified in
 <code>TEMPLATE_LINGUAS</code> and will perform additional check at the end,
 <code>cvs|svn|bzr add</code>-ing all necessary files.
 
-   <p>When validation is enabled (i.e. with <code>VALIDATE=yes</code>), the
+   <p><a name="index-validation-32"></a>When validation is enabled (i.e. with <code>VALIDATE=yes</code>), the
 original English articles are validated first, before any commands
 that generate the other files, and <samp><span class="command">make</span></samp> exits with an error
 on the first encountered article.  This is done on purpose, to prevent
 the propagation of an eventual error in the markup of the original
 article to all translations.
 
-   <p>By contrast, validation of the translated <samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> is
-performed after it is generated and if <code>VCS=yes</code> the article will
-be committed in the repository.  The build will fail again and further
-processing of the remaining articles will not be performed, but this
-particular translation will be installed.  The translator has time
+   <p>Validation of the translated <samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> is
+performed after it is preliminarily generated as a temporary file. 
+When no errors are found, the translation is updated; otherwise
+the real file is not changed (and it is not added if absent)&mdash;the build
+will fail and further processing of the remaining articles will not be
+performed.  The translator has time
 until the next run to fix the error&mdash;usually by modifying the
 corresponding <samp><span class="file">.</span><var>lang</var><span class="file">.po</span></samp> file.
 
