@@ -1,13 +1,12 @@
 <html lang="en">
 <head>
-<title>Modifying Boilerplates - GNUnited Nations</title>
+<title>Splitting Long Passages - GNUnited Nations</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNUnited Nations">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="up" href="Webmaster-Tips.html#Webmaster-Tips" title="Webmaster Tips">
-<link rel="prev" href="Comments-for-Translators.html#Comments-for-Translators" title="Comments for Translators">
-<link rel="next" href="Localized-URLs.html#Localized-URLs" title="Localized URLs">
+<link rel="prev" href="Localized-URLs.html#Localized-URLs" title="Localized URLs">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
 This manual (updated 26 September 2012) is for GNUnited Nations (version
@@ -40,24 +39,36 @@ Foundation, Inc.
 </head>
 <body>
 <div class="node">
-<a name="Modifying-Boilerplates"></a>
+<a name="Splitting-Long-Passages"></a>
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Localized-URLs.html#Localized-URLs">Localized URLs</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Comments-for-Translators.html#Comments-for-Translators">Comments for Translators</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Localized-URLs.html#Localized-URLs">Localized URLs</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="Webmaster-Tips.html#Webmaster-Tips">Webmaster Tips</a>
 <hr>
 </div>
 
-<h4 class="subsection">2.4.3 Modifying Boilerplates</h4>
+<h4 class="subsection">2.4.5 Splitting Long Passages</h4>
 
-<p><a name="index-boilerplates-101"></a>
-<strong>Warning:</strong> Any significant structural diversion from
-<samp><span class="file">boilerplate.html</span></samp> in a specific article may result in errors from
-GNUN.  Any untested intrusive updates to the server templates (such as
-changing the entire look &amp; feel of the site) will probably break
-<em>all</em> translations under GNUN's control.  Of course, this does not
-mean that no changes should happen&mdash;only that they must be applied in
-our sandbox first, to ensure a smooth transition.
+<p><a name="index-long-passages_002c-avoiding-103"></a><a name="index-conventional-separator-for-strings-104"></a>
+GNUN splits typical text by paragraphs, and translators write the
+translations for the resulting parts of the text one by one.  When a
+part is too long, it is hard to translate and proofread the translation;
+the likelihood of skipping some phrases is relatively high.
+
+   <p>In order to make our translators' life easier, it is desirable to keep
+the paragraphs short (no more than 350&ndash;700 characters).  If rearranging
+the paragraphs is not an option, you can use a conventional separator,
+<code>&lt;span class="gnun-split"&gt;&lt;/span&gt;</code>:
+
+<pre class="example">     &lt;p&gt;GNUN splits typical text by paragraphs, and translators write
+     the translations for the resulting parts of the text
+     one by one. &lt;span class="gnun-split"&gt;&lt;/span&gt; When a part
+     is too long, it is hard to translate and proofread the translation;
+     the likelihood of skipping some phrases is relatively high.&lt;/p&gt;
+</pre>
+   <p>It is important that the separator be inserted between complete
+sentences, because different languages may require different orders
+of parts of the sentence, and the translator has no control over
+the sequence of the strings in the translation.
 
    </body></html>
 
