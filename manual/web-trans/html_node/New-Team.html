@@ -53,12 +53,16 @@ a long-term engagement that requires a lot of spare time, communication
 and technical skills, and devotion.  The only &ldquo;bonus&rdquo; team leaders
 have is more work and more responsibilities.
 
-   <p>You should read most of the philosophy-related articles and <em>all</em>
-the documentation related to the translation process before you decide
-to form a new team, or take over an orphaned team.  Once you have the
-internal feeling that having a gnu.org translation team for your
-language is a must, and you are the one for this job, follow these
-steps:
+   <p>You should read and <em>all</em> the documentation related to the
+translation process at the very least all important philosophy-related
+articles listed on
+<a href="http://gnu.org/server/standards/README.translations.html">http://gnu.org/server/standards/README.translations.html</a>
+and
+<a href="http://gnu.org/server/standards/translations/priorities.html">http://gnu.org/server/standards/translations/priorities.html</a>
+before you decide to form a new team, or take over an orphaned team. 
+Once you have the internal feeling that having a gnu.org translation
+team for your language is a must, and you are the one for this job,
+follow these steps:
 
      <ol type=1 start=1>
 <li>If you do not have a Savannah account, register at
@@ -84,18 +88,31 @@ still not scared and determined to go on further, excellent.
 
      <p>As you have probably observed, every directory that contains
 translatable articles has a <samp><span class="file">/po</span></samp> sub-directory, which is where the
-new canonical source format of the translations is stored.
+canonical source format of the translations is stored.
 
-     <li>Assuming you have already read the GNUN manual entirely (as recommended
-in the beginning of this section), check if your language code is
+     <li>Submit your first message stating that you would like to establish a new
+team to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>; please mention that you have
+read all the documentation and list the issues that remain unclear for
+you.  The Translation Managers will answer your questions and send you
+the standard questionnaire for new team leaders.  It is short and
+shouldn't take more than 10&ndash;30 minutes to complete.  This questionnaire
+is important, as we consider it crucial for any translation team
+co-ordinator to have a good understanding of the philosophy of the free
+software movement.
+
+     <li>Check if your language code is
 present in the variable <code>TEMPLATE_LINGUAS</code> at
 <samp><span class="file">server/gnun/gnun.mk</span></samp>.  If it is not, the first thing to do is to
 translate and submit to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> the following
 files (all in the <samp><span class="file">server/po/</span></samp> directory):
 <samp><span class="file">head-include-2.</span><var>lang</var><span class="file">.po</span></samp>,
-<samp><span class="file">body-include-1.</span><var>lang</var><span class="file">.po</span></samp>, <samp><span class="file">body-include-2.</span><var>lang</var><span class="file">.po</span></samp>
-and <samp><span class="file">footer-text.</span><var>lang</var><span class="file">.po</span></samp>, together with your first message
-stating that you would like to establish a new team.  See <a href="../gnun/New-Translation.html#New-Translation">New Translation</a>.
+<samp><span class="file">body-include-1.</span><var>lang</var><span class="file">.po</span></samp>,
+<samp><span class="file">body-include-2.</span><var>lang</var><span class="file">.po</span></samp>
+<samp><span class="file">footer-text.</span><var>lang</var><span class="file">.po</span></samp>,
+<samp><span class="file">outdated.</span><var>lang</var><span class="file">.po</span></samp>,
+<samp><span class="file">skip-translations.</span><var>lang</var><span class="file">.po</span></samp>,
+and <samp><span class="file">top-addendum.</span><var>lang</var><span class="file">.po</span></samp>. 
+See <a href="../gnun/New-Translation.html#New-Translation">New Translation</a>.
 
           <ul>
 <li>The language code (<var>lang</var>) should be the ISO 639-1 code of the
@@ -139,15 +156,6 @@ comment on them (mostly technical details if there is no one among them
 speaking your language).  Depending on the case, it might be required to
 submit a corrected file.  In any event, please take into account the
 remarks in future work.
-
-     <li>Once the Translation Managers determine that you are doing well and
-about to complete the process, they will send you the standard
-questionnaire for new team leaders.  It is relevantly short and it
-shouldn't take more than 10-30 minutes to complete.  This questionnaire
-is important, as we consider it crucial any translation team
-co-ordinator to have a good understanding of the philosophy of the free
-software movement.  It is not unusual energetic people who complete all
-technical steps without trouble to fail here.
 
      <li>If all goes well, you will receive a response inviting you to apply for
 a new translation project at Savannah.  The project name should be

@@ -346,11 +346,14 @@ a long-term engagement that requires a lot of spare time, communication
 and technical skills, and devotion.  The only "bonus" team leaders have
 is more work and more responsibilities.
 
-   You should read most of the philosophy-related articles and _all_
-the documentation related to the translation process before you decide
-to form a new team, or take over an orphaned team.  Once you have the
-internal feeling that having a gnu.org translation team for your
-language is a must, and you are the one for this job, follow these
+   You should read and _all_ the documentation related to the
+translation process at the very least all important philosophy-related
+articles listed on
+`http://gnu.org/server/standards/README.translations.html' and
+`http://gnu.org/server/standards/translations/priorities.html' before
+you decide to form a new team, or take over an orphaned team.  Once you
+have the internal feeling that having a gnu.org translation team for
+your language is a must, and you are the one for this job, follow these
 steps:
 
   1. If you do not have a Savannah account, register at
@@ -377,18 +380,27 @@ steps:
 
      As you have probably observed, every directory that contains
      translatable articles has a `/po' sub-directory, which is where the
-     new canonical source format of the translations is stored.
+     canonical source format of the translations is stored.
 
-  3. Assuming you have already read the GNUN manual entirely (as
-     recommended in the beginning of this section), check if your
-     language code is present in the variable `TEMPLATE_LINGUAS' at
-     `server/gnun/gnun.mk'.  If it is not, the first thing to do is to
-     translate and submit to <web-translators@gnu.org> the following
-     files (all in the `server/po/' directory):
-     `head-include-2.LANG.po', `body-include-1.LANG.po',
-     `body-include-2.LANG.po' and `footer-text.LANG.po', together with
-     your first message stating that you would like to establish a new
-     team.  *Note New Translation: (gnun)New Translation.
+  3. Submit your first message stating that you would like to establish
+     a new team to <web-translators@gnu.org>; please mention that you
+     have read all the documentation and list the issues that remain
+     unclear for you.  The Translation Managers will answer your
+     questions and send you the standard questionnaire for new team
+     leaders.  It is short and shouldn't take more than 10-30 minutes
+     to complete.  This questionnaire is important, as we consider it
+     crucial for any translation team co-ordinator to have a good
+     understanding of the philosophy of the free software movement.
+
+  4. Check if your language code is present in the variable
+     `TEMPLATE_LINGUAS' at `server/gnun/gnun.mk'.  If it is not, the
+     first thing to do is to translate and submit to
+     <web-translators@gnu.org> the following files (all in the
+     `server/po/' directory): `head-include-2.LANG.po',
+     `body-include-1.LANG.po', `body-include-2.LANG.po'
+     `footer-text.LANG.po', `outdated.LANG.po',
+     `skip-translations.LANG.po', and `top-addendum.LANG.po'.  *Note
+     New Translation: (gnun)New Translation.
 
         - The language code (LANG) should be the ISO 639-1 code of the
           language, for example `hy' for Armenian or `el' for Greek.  If
@@ -405,7 +417,7 @@ steps:
           there is `&uuml;' and this is a character from the alphabet
           of your language, just write it as `u"' directly.
 
-  4. Any prospective team leader should submit a few translations first.
+  5. Any prospective team leader should submit a few translations first.
      This is a process of pointing errors and omissions (which are
      expected and natural); it's an important thing to do as the leader
      is going to carry out these checks on her own, once the team is
@@ -416,7 +428,7 @@ steps:
 
           find -name \*.LANG.html
 
-  5. Submit at least two translations of your own.  We maintain a list
+  6. Submit at least two translations of your own.  We maintain a list
      with priority articles at
      `http://www.gnu.org/server/standards/translations/priorities.html',
      although it is probably hard to start with one of them.  Choose
@@ -426,21 +438,11 @@ steps:
      parties in the process.  As usual, send the completed translation
      to <web-translators@gnu.org>.
 
-  6. The Translation Managers will review your translations, and
+  7. The Translation Managers will review your translations, and
      eventually comment on them (mostly technical details if there is
      no one among them speaking your language).  Depending on the case,
      it might be required to submit a corrected file.  In any event,
      please take into account the remarks in future work.
-
-  7. Once the Translation Managers determine that you are doing well and
-     about to complete the process, they will send you the standard
-     questionnaire for new team leaders.  It is relevantly short and it
-     shouldn't take more than 10-30 minutes to complete.  This
-     questionnaire is important, as we consider it crucial any
-     translation team co-ordinator to have a good understanding of the
-     philosophy of the free software movement.  It is not unusual
-     energetic people who complete all technical steps without trouble
-     to fail here.
 
   8. If all goes well, you will receive a response inviting you to
      apply for a new translation project at Savannah.  The project name
