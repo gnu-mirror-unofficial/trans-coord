@@ -1,16 +1,7 @@
-<html lang="en">
-<head>
-<title>Migrating - GNUnited Nations</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="PO-Files.html#PO-Files" title="PO Files">
-<link rel="prev" href="New-Translation.html#New-Translation" title="New Translation">
-<link rel="next" href="GNU-News.html#GNU-News" title="GNU News">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (updated 26 September 2012) is for GNUnited Nations (version
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+This manual (updated 3 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -18,47 +9,80 @@ essays and other articles.
 Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software
 Foundation, Inc.
 
-     Permission is granted to copy, distribute and/or modify this
-     document under the terms of the GNU Free Documentation License,
-     Version 1.3 or any later version published by the Free Software
-     Foundation; with no Invariant Sections, no Front-Cover Texts, and
-     no Back-Cover Texts.  A copy of the license is included in the
-     section entitled ``GNU Free Documentation License.''
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GNUnited Nations: Migrating</title>
+
+<meta name="description" content="GNUnited Nations: Migrating">
+<meta name="keywords" content="GNUnited Nations: Migrating">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="PO-Files.html#PO-Files" rel="up" title="PO Files">
+<link href="GNU-News.html#GNU-News" rel="next" title="GNU News">
+<link href="Credits-Slot.html#Credits-Slot" rel="previous" title="Credits Slot">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Migrating"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="GNU-News.html#GNU-News">GNU News</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="New-Translation.html#New-Translation">New Translation</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files.html#PO-Files">PO Files</a>
-<hr>
+Next: <a href="GNU-News.html#GNU-News" accesskey="n" rel="next">GNU News</a>, Previous: <a href="New-Translation.html#New-Translation" accesskey="p" rel="previous">New Translation</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="Transforming-Existing-Translation-in-PO-Format"></a>
 <h4 class="subsection">2.3.2 Transforming Existing Translation in PO Format</h4>
+<a name="index-migration_002c-translations"></a>
+<a name="index-conversion-of-existing-translations"></a>
 
-<p><a name="index-migration_002c-translations-76"></a><a name="index-conversion-of-existing-translations-77"></a>
-Migrating an existing translation to a PO file format is basically
+<p>Migrating an existing translation to a PO file format is basically
 editing the header as described in the previous section, and
 populating each of the messages by copying the already translated text
 and/or markup from the existing translation in HTML format in the
 relevant message.
-
-   <p>Typically, you will visit <samp><span class="file">po/foo.</span><var>lang</var><span class="file">.po</span></samp> (in PO mode) and
-<samp><span class="file">foo.</span><var>lang</var><span class="file">.html</span></samp> (in HTML mode) in another buffer.  Then you
+</p>
+<p>Typically, you will visit <samp>po/foo.<var>lang</var>.po</samp> (in PO mode) and
+<samp>foo.<var>lang</var>.html</samp> (in HTML mode) in another buffer.  Then you
 can copy a paragraph or an element from the latter and yank it in the
 relevant message in the former.  Be extra careful, since this is the
 time to check <em>precisely</em> that the translation corresponds to the
@@ -70,52 +94,66 @@ the other in the same buffer (or the similar concept in other PO
 editors), please <em>do</em> perform this initial sanity check even if
 you are confident that the translation you have been yanking strings
 from is a completely up-to-date translation.
-
-   <p>There is also a semi-automatic way to produce an initial PO file.  You
-checkout the revision of the English page, <samp><span class="file">foo.html</span></samp>, that
+</p>
+<p>There is also a semi-automatic way to produce an initial PO file.  You
+checkout the revision of the English page, <samp>foo.html</samp>, that
 corresponds to the latest revision of the translation,
-<samp><span class="file">foo.</span><var>lang</var><span class="file">.html</span></samp>.  Then you run <samp><span class="command">gnun-preconvert</span></samp>
-which invokes <samp><span class="command">po4a-gettextize</span></samp> (See <a href="gnun_002dpreconvert.html#gnun_002dpreconvert">gnun-preconvert</a>.):
+<samp>foo.<var>lang</var>.html</samp>.  Then you run <code>gnun-preconvert</code>
+which invokes <code>po4a-gettextize</code> (See <a href="gnun_002dpreconvert.html#gnun_002dpreconvert">gnun-preconvert</a>.):
+</p>
+<div class="example">
+<pre class="example">gnun-preconvert foo.lang.html foo.html
+</pre></div>
 
-<pre class="example">     gnun-preconvert foo.lang.html foo.html
-</pre>
-   <p>If some passages in <samp><span class="file">foo.</span><var>lang</var><span class="file">.html</span></samp> don't match the structure
-of <samp><span class="file">foo.html</span></samp>, error messages will be displayed.  Check them,
+<p>If some passages in <samp>foo.<var>lang</var>.html</samp> don&rsquo;t match the structure
+of <samp>foo.html</samp>, error messages will be displayed.  Check them,
 adjust the files and try again.  When you succeed, the result will be
 written to foo.lang.po.  After that, run
-<samp><span class="command">gnun-merge-preconverted</span></samp> (See <a href="gnun_002dmerge_002dpreconverted.html#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a>.):
+<code>gnun-merge-preconverted</code> (See <a href="gnun_002dmerge_002dpreconverted.html#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a>.):
+</p>
+<div class="example">
+<pre class="example">gnun-merge-preconverted -C compendium.lang.po foo.lang.po foo.pot
+</pre></div>
 
-<pre class="example">     gnun-merge-preconverted -C compendium.lang.po foo.lang.po foo.pot
-</pre>
-   <p>If you have no compendium, just omit the &ldquo;<code>-C
+<p>If you have no compendium, just omit the &ldquo;<code>-C
 compendium.lang.po</code>&rdquo; part.
-
-   <p>You get <samp><span class="file">foo.</span><var>lang</var><span class="file">.po</span></samp> where all messages are marked as
+</p>
+<p>You get <samp>foo.<var>lang</var>.po</samp> where all messages are marked as
 &ldquo;fuzzy&rdquo; (unless you use a compendium); you still should make sure that
 the translations correspond to the original and remove those &ldquo;fuzzy&rdquo;
 marks.  The script adds differences against previous <code>msgid</code>s to
 facilitate checking.
-
-   <p>There is no need to delete the existing HTML translation, GNUN will
+</p>
+<p>There is no need to delete the existing HTML translation, GNUN will
 automatically overwrite it.  The only thing a translator should do is to
 commit the PO file in the repository.
-
-   <p>When an essay has been translated by several people through the years,
+</p>
+<p>When an essay has been translated by several people through the years,
 it is important that this information is recorded and reflected in the
 PO file.  In the future, special targets may be added to enable the FSF
 to check who translated a particular article, and when.
+</p>
+<p>A recommended way to do this is as follows:
+</p>
+<div class="example">
+<pre class="example"># French translation of http://www.gnu.org/philosophy/bsd.html
+# Copyright (C) 2006, 2007, 2008 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gnu.org article.
+# C&eacute;dric Corazza &lt;cedric.corazza@wanadoo.fr&gt;, 2006, 2008.
+# Jer&ocirc;me Dominguez &lt;taz@gnu.org&gt;, 2007.
+</pre></div>
 
-   <p>A recommended way to do this is as follows:
-
-<pre class="example">     # French translation of http://www.gnu.org/philosophy/bsd.html
-     # Copyright (C) 2006, 2007, 2008 Free Software Foundation, Inc.
-     # This file is distributed under the same license as the gnu.org article.
-     # C&eacute;dric Corazza &lt;cedric.corazza@wanadoo.fr&gt;, 2006, 2008.
-     # Jer&ocirc;me Dominguez &lt;taz@gnu.org&gt;, 2007.
-</pre>
-   <p>In this example, it is clear that C&eacute;dric made the initial
+<p>In this example, it is clear that C&eacute;dric made the initial
 translation, Jer&ocirc;me made some changes in 2007, and the original
 translator returned in 2008 and continued maintaining it.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="GNU-News.html#GNU-News" accesskey="n" rel="next">GNU News</a>, Previous: <a href="New-Translation.html#New-Translation" accesskey="p" rel="previous">New Translation</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
-   </body></html>
 
+
+</body>
+</html>

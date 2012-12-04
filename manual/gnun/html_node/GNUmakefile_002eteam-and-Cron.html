@@ -1,15 +1,7 @@
-<html lang="en">
-<head>
-<title>GNUmakefile.team and Cron - GNUnited Nations</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="PO-Files-and-Team.html#PO-Files-and-Team" title="PO Files and Team">
-<link rel="prev" href="GNUmakefile_002eteam-Variables.html#GNUmakefile_002eteam-Variables" title="GNUmakefile.team Variables">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (updated 26 September 2012) is for GNUnited Nations (version
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+This manual (updated 3 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -17,61 +9,101 @@ essays and other articles.
 Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software
 Foundation, Inc.
 
-     Permission is granted to copy, distribute and/or modify this
-     document under the terms of the GNU Free Documentation License,
-     Version 1.3 or any later version published by the Free Software
-     Foundation; with no Invariant Sections, no Front-Cover Texts, and
-     no Back-Cover Texts.  A copy of the license is included in the
-     section entitled ``GNU Free Documentation License.''
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GNUnited Nations: GNUmakefile.team and Cron</title>
+
+<meta name="description" content="GNUnited Nations: GNUmakefile.team and Cron">
+<meta name="keywords" content="GNUnited Nations: GNUmakefile.team and Cron">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="PO-Files-and-Team.html#PO-Files-and-Team" rel="up" title="PO Files and Team">
+<link href="Compendia.html#Compendia" rel="next" title="Compendia">
+<link href="GNUmakefile_002eteam-Targets.html#GNUmakefile_002eteam-Targets" rel="previous" title="GNUmakefile.team Targets">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="GNUmakefile.team-and-Cron"></a>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="GNUmakefile_002eteam-and-Cron"></a>
+<div class="header">
 <p>
-Previous:&nbsp;<a rel="previous" accesskey="p" href="GNUmakefile_002eteam-Variables.html#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files-and-Team.html#PO-Files-and-Team">PO Files and Team</a>
-<hr>
+Previous: <a href="GNUmakefile_002eteam-Targets.html#GNUmakefile_002eteam-Targets" accesskey="p" rel="previous">GNUmakefile.team Targets</a>, Up: <a href="PO-Files-and-Team.html#PO-Files-and-Team" accesskey="u" rel="up">PO Files and Team</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
+<hr>
+<a name="Automatic-Synchronization-and-Status-Reports"></a>
+<h4 class="subsubsection">2.3.7.3 Automatic Synchronization and Status Reports</h4>
+<a name="index-team-maintenance_002c-cron"></a>
+<a name="index-cron_002c-team-maintenance"></a>
 
-<h5 class="subsubsection">2.3.7.2 Automatic Synchronization and Status Reports</h5>
-
-<p><a name="index-team-maintenance_002c-cron-91"></a><a name="index-cron_002c-team-maintenance-92"></a>
-It is convenient to invoke such synchronization automatically, for
+<p>It is convenient to invoke such synchronization automatically, for
 example once every day.  If you have enabled commit notifications for
-the project's repository, any new changes will be visible for
+the project&rsquo;s repository, any new changes will be visible for
 subscribers.  Here is an example crontab entry:
+</p>
+<div class="example">
+<pre class="example"># m h  dom mon dow   command
+@daily              cd $HOME/projects/www-<var>lang</var>; make VCS=yes
+</pre></div>
 
-<pre class="example">     # m h  dom mon dow   command
-     @daily              cd $HOME/projects/www-<var>lang</var>; make VCS=yes
-</pre>
-   <p>It is not necessary the job to be run on the team leader's machine,
+<p>It is not necessary the job to be run on the team leader&rsquo;s machine,
 since all team members have write access to their project repository.
-
-   <p>If desired, you could set up another job to report the status of the
+</p>
+<p>If desired, you could set up another job to report the status of the
 translations weekly or fortnightly, for example:
+</p>
+<div class="example">
+<pre class="example"># m h  dom mon dow   command
+@weekly             cd $HOME/projects/www-<var>lang</var>; \
+                       make report | mail -s &quot;Weekly statistics&quot; \
+                       www-<var>lang</var>-list@gnu.org
+</pre></div>
 
-<pre class="example">     # m h  dom mon dow   command
-     @weekly             cd $HOME/projects/www-<var>lang</var>; \
-                            make report | mail -s "Weekly statistics" \
-                            www-<var>lang</var>-list@gnu.org
-</pre>
-   <p><strong>Caution:</strong> Most cron implementations do not allow the character
-`\' as a line continuation character&mdash;the example shown is made that
+<p><strong>Caution:</strong> Most cron implementations do not allow the character
+&lsquo;\&rsquo; as a line continuation character&mdash;the example shown is made that
 way for better readability.
+</p>
 
-   </body></html>
 
+
+</body>
+</html>

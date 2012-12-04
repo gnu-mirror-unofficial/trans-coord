@@ -1,15 +1,7 @@
-<html lang="en">
-<head>
-<title>GNUmakefile.team Variables - GNUnited Nations</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="PO-Files-and-Team.html#PO-Files-and-Team" title="PO Files and Team">
-<link rel="next" href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron" title="GNUmakefile.team and Cron">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (updated 26 September 2012) is for GNUnited Nations (version
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+This manual (updated 3 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -17,157 +9,118 @@ essays and other articles.
 Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software
 Foundation, Inc.
 
-     Permission is granted to copy, distribute and/or modify this
-     document under the terms of the GNU Free Documentation License,
-     Version 1.3 or any later version published by the Free Software
-     Foundation; with no Invariant Sections, no Front-Cover Texts, and
-     no Back-Cover Texts.  A copy of the license is included in the
-     section entitled ``GNU Free Documentation License.''
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
-</head>
-<body>
-<div class="node">
-<a name="GNUmakefile.team-Variables"></a>
-<a name="GNUmakefile_002eteam-Variables"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="PO-Files-and-Team.html#PO-Files-and-Team">PO Files and Team</a>
-<hr>
-</div>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GNUnited Nations: GNUmakefile.team Variables</title>
 
-<h5 class="subsubsection">2.3.7.1 Adopting <samp><span class="file">GNUmakefile.team</span></samp> for a Specific Team</h5>
+<meta name="description" content="GNUnited Nations: GNUmakefile.team Variables">
+<meta name="keywords" content="GNUnited Nations: GNUmakefile.team Variables">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="PO-Files-and-Team.html#PO-Files-and-Team" rel="up" title="PO Files and Team">
+<link href="GNUmakefile_002eteam-Targets.html#GNUmakefile_002eteam-Targets" rel="next" title="GNUmakefile.team Targets">
+<link href="PO-Files-and-Team.html#PO-Files-and-Team" rel="previous" title="PO Files and Team">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="GNUmakefile_002eteam-Variables"></a>
+<div class="header">
+<p>
+Next: <a href="GNUmakefile_002eteam-Targets.html#GNUmakefile_002eteam-Targets" accesskey="n" rel="next">GNUmakefile.team Targets</a>, Up: <a href="PO-Files-and-Team.html#PO-Files-and-Team" accesskey="u" rel="up">PO Files and Team</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Adopting-GNUmakefile_002eteam-for-a-Specific-Team"></a>
+<h4 class="subsubsection">2.3.7.1 Adopting <samp>GNUmakefile.team</samp> for a Specific Team</h4>
 
 <p>To adjust the makefile for your team, you need to edit two variables.
-
-     <dl>
-<dt>&lsquo;<samp><span class="samp">TEAM</span></samp>&rsquo;<dd>Set this to the language code, like <code>bg</code> or <code>pt-br</code>.
-
-     <br><dt>&lsquo;<samp><span class="samp">wwwdir</span></samp>&rsquo;<dd>The relative or absolute path to the working copy of the master `www'
-repository.  So if you have checked out your project's Sources
-repository at <samp><span class="file">~/projects/www-</span><var>lang</var></samp> and the `www' Web
-repository at <samp><span class="file">~/projects/www</span></samp>, the value of <code>wwwdir</code> should
-be <code>../www/</code> or <samp><span class="file">/home/</span><var>user</var><span class="file">/projects/www/</span></samp>.  Note the
-slash at the end, it is important. 
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>TEAM</samp>&rsquo;</dt>
+<dd><p>Set this to the language code, like <code>bg</code> or <code>pt-br</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>wwwdir</samp>&rsquo;</dt>
+<dd><p>The relative or absolute path to the working copy of the master &lsquo;www&rsquo;
+repository.  So if you have checked out your project&rsquo;s Sources
+repository at <samp>~/projects/www-<var>lang</var></samp> and the &lsquo;www&rsquo; Web
+repository at <samp>~/projects/www</samp>, the value of <code>wwwdir</code> should
+be <code>../www/</code> or <samp>/home/<var>user</var>/projects/www/</samp>.  Note the
+slash at the end, it is important.
+</p></dd>
 </dl>
 
-   <p>If two variants of one language share the same project and repository
+<p>If two variants of one language share the same project and repository
 (such as <code>zh-cn</code> and <code>zh-tw</code>), they should maintain two
-directories with two <samp><span class="file">GNUmakefile</span></samp>s and each directory having its
+directories with two <samp>GNUmakefile</samp>s and each directory having its
 own tree.
-
-   <p>Some variables are specified on the command line, and alter the behavior
+</p>
+<p>Some variables are specified on the command line, and alter the behavior
 of the build process.
-
-     <dl>
-<dt>&lsquo;<samp><span class="samp">VERBOSE=yes</span></samp>&rsquo;<dd>Print more information from <samp><span class="command">cvs</span></samp>, <samp><span class="command">svn</span></samp> and
-<samp><span class="command">msgmerge</span></samp>; off by default.  Note that <code>VERBOSE</code> can be
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>VERBOSE=yes</samp>&rsquo;</dt>
+<dd><p>Print more information from <code>cvs</code>, <code>svn</code> and
+<code>msgmerge</code>; off by default.  Note that <code>VERBOSE</code> can be
 defined to any string, it will have the same effect.
-
-     <br><dt>&lsquo;<samp><span class="samp">VCS=yes</span></samp>&rsquo;<dd>Update both &lsquo;<samp><span class="samp">www</span></samp>&rsquo; and &lsquo;<samp><span class="samp">www-</span><var>lang</var></samp>&rsquo; repositories, then
+</p>
+</dd>
+<dt>&lsquo;<samp>VCS=yes</samp>&rsquo;</dt>
+<dd><p>Update both &lsquo;<samp>www</samp>&rsquo; and &lsquo;<samp>www-<var>lang</var></samp>&rsquo; repositories, then
 commit the merged PO files in the latter repository.  By default, there
 is no VCS interaction.  The VCS of the translation project repository is
 determined automatically; currently only CVS, Subversion, GNU Bzr, Git,
 Mercurial (Hg) and GNU Arch repositories are supported.
-
-     <p><strong>Caution:</strong> The makefile rule will commit all local changes, not
-only those that resulted from running <samp><span class="command">msgmerge</span></samp>.  Thus, it is
+</p>
+<p><strong>Caution:</strong> The makefile rule will commit all local changes, not
+only those that resulted from running <code>msgmerge</code>.  Thus, it is
 better to use a separate working copy dedicated solely for this
-purpose. 
+purpose.
+</p></dd>
 </dl>
 
-<h5 class="unnumberedsubsubsec">Targets in <samp><span class="file">GNUmakefile.team</span></samp></h5>
 
-     <dl>
-<dt><code>update</code><dd>Updates the repositories.  Does nothing unless <code>VCS=yes</code>.
 
-     <br><dt><code>sync</code><dd>Merges all available PO files from the corresponding POT in <dfn>www</dfn>. 
-If a POT is missing in the master repository (usually, because it was
-deleted when the original article was either split, renamed or deleted),
-a warning is printed for the corresponding file and no merging occurs
-for it.
 
-     <br><dt><code>report</code><dd>Verifies which translations are complete, and prints a list (with
-statistics) of those that need to be updated.
-
-     <br><dt><code>format</code><dd>A convenience rule to re-wrap all files upto the standard length.  Most
-PO editors leave the <code>msgstr</code> as a single long line after it has
-been edited, but GNUN will automatically re-wrap the file to the standard
-line length when it is processed.  Wrapping long lines in PO files is a
-good practice as it avoids unnecessary revisions.
-
-     <p>This rule checks for all translations that have lines longer than 80,
-and runs <samp><span class="command">msgcat</span></samp> accordingly to reformat them.  For that
-reason, it is recommended that you wrap all long lines in the comment
-fields (e.g. the file header, including the copyright statement, and any
-other comments for specific messages), because <code>make format</code> will
-unnecessarily invoke <samp><span class="command">msgcat</span></samp> for any file that has a longer
-line, wherever it may occur.
-
-     <br><dt><code>publish</code><dd>The <code>publish</code> rule's task is to copy all modified files to the
-official <dfn>www</dfn> repository.  It depends on the <code>format</code> target
-to ensure that all files are re-wrapped to the standard line length
-limit, but deliberately does not depend on <code>sync VCS=yes</code>. 
-Usually, one would run <code>make publish</code> when one or a bunch of PO
-files are in a satisfactory condition to be published, and this rule is
-just a convenience to avoid multiple manual <samp><span class="command">cp</span></samp> invocations. 
-As a rule of thumb, before running this rule it is sane to run
-<code>sync</code> and correct any <dfn>fuzzy</dfn> messages and other problems, if
-necessary.
-
-     <p>The <code>publish</code> rule does not depend on <code>sync</code> explicitly,
-because that would be a nuisance for offline operations and basically
-unnecessary when the committer is fairly confident that there are no
-changes to (re-)merge.  A hard dependency on <code>sync</code> would slow down
-the operation considerably.
-
-     <p>As usual, when committing to the official repository, it is always a
-good practice to examine the output of <samp><span class="command">cvs diff</span></samp>.
-
-     <p>Invoking <code>make publish</code> prints warnings and does not actually copy
-the affected file if the sub-directory in &ldquo;www&rdquo; is non-existent or the
-corresponding <samp><span class="file">.pot</span></samp> is missing.
-
-     <p>Typically, after an editing session (whether it involves actual editing
-or just merging contributions from team members), one would do:
-
-     <pre class="example">          $ make sync VCS=yes
-          $ make publish
-          $ cd <var>wwwdir</var>
-          $ cvs up
-          (Add all new translations, if any.)
-            $ cvs add <var>file</var> ...
-          $ cvs diff
-          $ cvs commit -m "Some descriptive message."
-</pre>
-     <br><dt><code>clean</code><dd>Deletes all backup and auto-generated files that some PO editors leave
-behind, namely&mdash;<samp><var>file</var><span class="file">.po~</span></samp>, <samp><var>file</var><span class="file">.po.bak</span></samp> and
-<samp><var>file</var><span class="file">.mo</span></samp>. 
-</dl>
-
-   <p><code>make VCS=yes</code> is the recommended command to be run periodically. 
-To check the status of the translations, run <code>make report</code>.
-
-   <p>Feel free to replace all strings with equivalents in your native
-language and of course&mdash;do not hesitate to extend this file and modify
-it as much as you like.  For example, useful extra functionality would
-be a target that will check which files have not yet been committed in
-the official repository, or which files have to be updated there
-(i.e. they were updated by the team members but not installed by the
-coordinator).  Either way, if you come up with something interesting, it
-would be nice to send a message to <a href="mailto:bug-gnun@gnu.org">bug-gnun@gnu.org</a>, so that
-<samp><span class="file">GNUmakefile.team</span></samp> gets updated for all teams' benefit.
-
-   </body></html>
-
+</body>
+</html>

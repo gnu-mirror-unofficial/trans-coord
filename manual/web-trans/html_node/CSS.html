@@ -1,102 +1,138 @@
-<html lang="en">
-<head>
-<title>CSS - GNU Web Translators Manual</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="GNU Web Translators Manual">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Translation-Tips.html#Translation-Tips" title="Translation Tips">
-<link rel="prev" href="SSI.html#SSI" title="SSI">
-<link rel="next" href="Priorities.html#Priorities" title="Priorities">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is a guide for the GNU Web Translators.
-Last updated on
+ Last updated on
 28.06.2012, for GNUnited Nations version 0.6.
 
-   Copyright (C) 2009, 2010, 2011, 2012 Free Software
+Copyright (C) 2009, 2010, 2011, 2012 Free Software
 Foundation, Inc.
 
-     Permission is granted to copy, distribute and/or modify this
-     document under the terms of the GNU Free Documentation License,
-     Version 1.3 or any later version published by the Free Software
-     Foundation; with no Invariant Sections, no Front-Cover Texts, and
-     no Back-Cover Texts.  A copy of the license is included in the
-     section entitled ``GNU Free Documentation License.''
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
-</head>
-<body>
-<div class="node">
-<a name="CSS"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Priorities.html#Priorities">Priorities</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="SSI.html#SSI">SSI</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Translation-Tips.html#Translation-Tips">Translation Tips</a>
-<hr>
-</div>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GNU Web Translators Manual: CSS</title>
 
+<meta name="description" content="GNU Web Translators Manual: CSS">
+<meta name="keywords" content="GNU Web Translators Manual: CSS">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Translation-Tips.html#Translation-Tips" rel="up" title="Translation Tips">
+<link href="topbanner.html#topbanner" rel="next" title="topbanner">
+<link href="SSI.html#SSI" rel="previous" title="SSI">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="CSS"></a>
+<div class="header">
+<p>
+Next: <a href="Priorities.html#Priorities" accesskey="n" rel="next">Priorities</a>, Previous: <a href="SSI.html#SSI" accesskey="p" rel="previous">SSI</a>, Up: <a href="Translation-Tips.html#Translation-Tips" accesskey="u" rel="up">Translation Tips</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="How-To-Use-Custom-CSS"></a>
 <h3 class="section">5.3 How To Use Custom CSS</h3>
 
-<p>The CSS file <samp><span class="file">layout.css</span></samp> gets included (with three other CSS files)
+<p>The CSS file <samp>layout.css</samp> gets included (with three other CSS files)
 in almost all the English articles through
-<samp><span class="file">server/head-include-2.</span><var>lang</var><span class="file">.html</span></samp>.  However, sometimes this
-style isn't quite right for translations&mdash;many languages have much
+<samp>server/head-include-2.<var>lang</var>.html</samp>.  However, sometimes this
+style isn&rsquo;t quite right for translations&mdash;many languages have much
 longer expressions, and that is natural.  To include your own CSS,
-create a file <samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp> and add it <em>after</em> the
-directive to include <samp><span class="file">server/head-include-2.</span><var>lang</var><span class="file">.html</span></samp> and
+create a file <samp>style.<var>lang</var>.css</samp> and add it <em>after</em> the
+directive to include <samp>server/head-include-2.<var>lang</var>.html</samp> and
 <em>before</em> the closing <code>&lt;/head&gt;</code> tag in
-<samp><span class="file">server/banner.</span><var>lang</var><span class="file">.html</span></samp>, i.e.
+<samp>server/banner.<var>lang</var>.html</samp>, i.e.
+</p>
+<div class="example">
+<pre class="example">&lt;!-- start of banner.bg.html --&gt;
+&lt;!--#include virtual=&quot;/server/head-include-2.bg.html&quot; --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/style.bg.css&quot; media=&quot;screen&quot; /&gt;
+&lt;/head&gt;
+</pre></div>
 
-<pre class="example">     &lt;!-- start of banner.bg.html --&gt;
-     &lt;!--#include virtual="/server/head-include-2.bg.html" --&gt;
-     &lt;link rel="stylesheet" href="/style.bg.css" media="screen" /&gt;
-     &lt;/head&gt;
-</pre>
-   <p>Override only what is necessary and looks broken in your language; do
+<p>Override only what is necessary and looks broken in your language; do
 not invent your own style.  This is important for the consistency of the
 gnu.org website.  A typical language-specific
-<samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp> file looks like this:
+<samp>style.<var>lang</var>.css</samp> file looks like this:
+</p>
+<div class="example">
+<pre class="example">.inner { max-width: 65em; }
 
-<pre class="example">     .inner { max-width: 65em; }
-     
-     #logo{background:url(/graphics/topbanner.bg.png) no-repeat;}
-     #fssbox {font-size: 50%;}
-</pre>
-   <p>This widens the menu and the area where the articles are displayed
+#logo{background:url(/graphics/topbanner.bg.png) no-repeat;}
+#fssbox {font-size: 50%;}
+</pre></div>
+
+<p>This widens the menu and the area where the articles are displayed
 (because the menu entries are <em>much</em> longer than the English
 equivalents when translated), includes a localized logo, and makes the
 font size for the FSF widget twice smaller (because in this language,
 the translations are almost twice longer and displayed truncated, which
 is undesirable).
-
-   <p>When creating your own <samp><span class="file">style.</span><var>lang</var><span class="file">.css</span></samp>, don't forget to
-include the license notice from the <samp><span class="file">layout.css</span></samp>, with a short
+</p>
+<p>When creating your own <samp>style.<var>lang</var>.css</samp>, don&rsquo;t forget to
+include the license notice from the <samp>layout.css</samp>, with a short
 comment.
-
-   <p>If using the default CSS style for translations does not give the
+</p>
+<p>If using the default CSS style for translations does not give the
 expected good results, or there are other problems (significant or not)
 that obstruct reading and/or worsen the look from aesthetic point of
 view, please write to <a href="mailto:webmasters@gnu.org">webmasters@gnu.org</a> with a description of
 the issue.  If there are several unrelated problems, send separate
 messages with appropriate explanation (which may include a demonstration
 of the bug, such as a screenshot).
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="topbanner.html#topbanner" accesskey="1">topbanner</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to localize the topbanner image.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="RTL.html#RTL" accesskey="2">RTL</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Special notes about RTL languages.
+</td></tr>
+</table>
 
-<ul class="menu">
-<li><a accesskey="1" href="topbanner.html#topbanner">topbanner</a>:            How to localize the topbanner image. 
-<li><a accesskey="2" href="RTL.html#RTL">RTL</a>:                  Special notes about RTL languages. 
-</ul>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Priorities.html#Priorities" accesskey="n" rel="next">Priorities</a>, Previous: <a href="SSI.html#SSI" accesskey="p" rel="previous">SSI</a>, Up: <a href="Translation-Tips.html#Translation-Tips" accesskey="u" rel="up">Translation Tips</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 
-   </body></html>
 
+
+</body>
+</html>

@@ -1,16 +1,7 @@
-<html lang="en">
-<head>
-<title>triggers - GNUnited Nations</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Special-Targets.html#Special-Targets" title="Special Targets">
-<link rel="prev" href="report.html#report" title="report">
-<link rel="next" href="validate_002dall.html#validate_002dall" title="validate-all">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (updated 26 September 2012) is for GNUnited Nations (version
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+This manual (updated 3 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -18,98 +9,128 @@ essays and other articles.
 Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software
 Foundation, Inc.
 
-     Permission is granted to copy, distribute and/or modify this
-     document under the terms of the GNU Free Documentation License,
-     Version 1.3 or any later version published by the Free Software
-     Foundation; with no Invariant Sections, no Front-Cover Texts, and
-     no Back-Cover Texts.  A copy of the license is included in the
-     section entitled ``GNU Free Documentation License.''
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
-</head>
-<body>
-<div class="node">
-<a name="triggers"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="validate_002dall.html#validate_002dall">validate-all</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="report.html#report">report</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Special-Targets.html#Special-Targets">Special Targets</a>
-<hr>
-</div>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GNUnited Nations: triggers</title>
 
-<h5 class="subsubsection">2.1.2.5 The <code>triggers</code> Target</h5>
+<meta name="description" content="GNUnited Nations: triggers">
+<meta name="keywords" content="GNUnited Nations: triggers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Special-Targets.html#Special-Targets" rel="up" title="Special Targets">
+<link href="validate_002dall.html#validate_002dall" rel="next" title="validate-all">
+<link href="report.html#report" rel="previous" title="report">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="triggers"></a>
+<div class="header">
+<p>
+Next: <a href="validate_002dall.html#validate_002dall" accesskey="n" rel="next">validate-all</a>, Previous: <a href="report.html#report" accesskey="p" rel="previous">report</a>, Up: <a href="Special-Targets.html#Special-Targets" accesskey="u" rel="up">Special Targets</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-triggers-Target"></a>
+<h4 class="subsubsection">2.1.2.5 The <code>triggers</code> Target</h4>
 
 <p>This is a special target intended to be run by the automatic build after
 the main build and <em>after</em> <code>cvs|svn|bzr commit</code>.
+</p>
 
-<!-- FIXME: Check how Subversion behaves with keywords and update the -->
-<!-- paragraph below. -->
-<!-- ineiev: In fact, "the result" is _not_ "checked in" the repository. -->
-<!-- When a GNUN build completes and some translations fail at the HTML -->
-<!-- validation stage, the result is checked in the repository, as -->
-<!-- explained earlier (@pxref{Runtime Variables}).  Thus, CVS updates the -->
-<!-- @w{$}Date$ RCS keyword (or any other keywords, for that matter) and -->
-<!-- resets the file(s) timestamp.  Next time @command{make} is invoked, -->
-<!-- the target appears newer than the prerequisite so no rebuild is -->
-<!-- triggered.  The purpose of the @code{triggers} target is to ``save'' -->
-<!-- the information of the faulty targets during the main build, and to -->
-<!-- touch their prerequisites in order such invalid articles not to remain -->
-<!-- online unnoticed. -->
-   <p>The <code>triggers</code> target currently executes the files named
-<samp><var>article</var><span class="file">.</span><var>lang</var><span class="file">.html.hook</span></samp> in the <samp><span class="file">server/gnun</span></samp>
+<p>The <code>triggers</code> target currently executes the files named
+<samp><var>article</var>.<var>lang</var>.html.hook</samp> in the <samp>server/gnun</samp>
 directory&mdash;these files are created during the main build and each of
 them contains the command to update the timestamp of the prerequisite
 based on the timestamp of the target that must be rebuilt.  Finally, it
-deletes all those <samp><span class="file">*.hook</span></samp> files.
-
-   <p>This is the rule that takes care of actually sending the
+deletes all those <samp>*.hook</samp> files.
+</p>
+<p>This is the rule that takes care of actually sending the
 announcements if <code>ANNOUNCE=yes</code>.  Since it is a completely valid
 scenario to have a new translation which is initially invalid HTML,
 the canned command sequence for announcements is recorded in
-<samp><span class="file">*.hook-ann</span></samp> files, and they are treated by <code>triggers</code> in a
-different way.  A newly added <samp><span class="file">.</span><var>lang</var><span class="file">.po</span></samp> file may be
+<samp>*.hook-ann</samp> files, and they are treated by <code>triggers</code> in a
+different way.  A newly added <samp>.<var>lang</var>.po</samp> file may be
 invalid, in which case the HTML file is not added, and it is not
 appropriate to announce it as a new translation as it is completely
 useless for the
 general public.  The <code>triggers</code> rule detects this case, and
 postpones the announcement to the next build attempt, when the
 generated HTML translation is supposed to be human-readable.
-
-   <p>To summarize, for effective operation GNUN should be invoked
-automatically as <code>make; cvs|svn|bzr commit -m ...; make
+</p>
+<p>To summarize, for effective operation GNUN should be invoked
+automatically as <code>make; cvs|svn|bzr commit -m &hellip;; make
 triggers</code>.  To illustrate this, here is a concrete example showing the
 official job running at fencepost.gnu.org:
+</p>
+<div class="example">
+<pre class="example">25 4,12,20 * * *  cd $HOME/projects/www; cvs -q update &amp;&gt;/dev/null; \
+                    make -j1 -C server/gnun VCS=yes VALIDATE=yes; \
+                    NOTIFY=yes VERBOSE=yes GRACE=5000; ANNOUNCE=yes; \
+                    cvs commit -m \
+                    &quot;Automatic update by GNUnited Nations.&quot;; \
+                    make -C server/gnun triggers
+</pre></div>
 
-<pre class="example">     25 4,12,20 * * *  cd $HOME/projects/www; cvs -q update &amp;&gt;/dev/null; \
-                         make -j1 -C server/gnun VCS=yes VALIDATE=yes; \
-                         NOTIFY=yes VERBOSE=yes GRACE=5000; ANNOUNCE=yes; \
-                         cvs commit -m \
-                         "Automatic update by GNUnited Nations."; \
-                         make -C server/gnun triggers
-</pre>
-   <p>The above example is for CVS; if the underlying repository is
+<p>The above example is for CVS; if the underlying repository is
 Subversion, they need to be amended accordingly.  If it is GNU Bzr,
-remember to add a <samp><span class="command">bzr push</span></samp> after commit (in the usual
+remember to add a <code>bzr push</code> after commit (in the usual
 scenario), otherwise changes will be committed only locally.  Since a
 distributed Version Control System can be used in multiple (sometimes
 radically different) ways, this step cannot be anticipated and therefore
-cannot be automated.  Adding the <samp><span class="command">push</span></samp> command in the makefile
+cannot be automated.  Adding the <code>push</code> command in the makefile
 rules would not work if a so called &ldquo;bound branch&rdquo; is used, for
 instance.
-
-   <p>In the future, this target may be extended further to do other useful
+</p>
+<p>In the future, this target may be extended further to do other useful
 things that should be &ldquo;triggered&rdquo; after the main build.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="validate_002dall.html#validate_002dall" accesskey="n" rel="next">validate-all</a>, Previous: <a href="report.html#report" accesskey="p" rel="previous">report</a>, Up: <a href="Special-Targets.html#Special-Targets" accesskey="u" rel="up">Special Targets</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
-   </body></html>
 
+
+</body>
+</html>

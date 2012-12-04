@@ -1,15 +1,7 @@
-<html lang="en">
-<head>
-<title>Runtime Variables - GNUnited Nations</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Invoking-GNUN.html#Invoking-GNUN" title="Invoking GNUN">
-<link rel="next" href="Special-Targets.html#Special-Targets" title="Special Targets">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (updated 26 September 2012) is for GNUnited Nations (version
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+This manual (updated 3 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -17,180 +9,271 @@ essays and other articles.
 Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software
 Foundation, Inc.
 
-     Permission is granted to copy, distribute and/or modify this
-     document under the terms of the GNU Free Documentation License,
-     Version 1.3 or any later version published by the Free Software
-     Foundation; with no Invariant Sections, no Front-Cover Texts, and
-     no Back-Cover Texts.  A copy of the license is included in the
-     section entitled ``GNU Free Documentation License.''
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GNUnited Nations: Runtime Variables</title>
+
+<meta name="description" content="GNUnited Nations: Runtime Variables">
+<meta name="keywords" content="GNUnited Nations: Runtime Variables">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Invoking-GNUN.html#Invoking-GNUN" rel="up" title="Invoking GNUN">
+<link href="Special-Targets.html#Special-Targets" rel="next" title="Special Targets">
+<link href="Invoking-GNUN.html#Invoking-GNUN" rel="previous" title="Invoking GNUN">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Runtime-Variables"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Special-Targets.html#Special-Targets">Special Targets</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Invoking-GNUN.html#Invoking-GNUN">Invoking GNUN</a>
-<hr>
+Next: <a href="Special-Targets.html#Special-Targets" accesskey="n" rel="next">Special Targets</a>, Up: <a href="Invoking-GNUN.html#Invoking-GNUN" accesskey="u" rel="up">Invoking GNUN</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="Variables-to-Control-the-Build-Process"></a>
 <h4 class="subsection">2.1.1 Variables to Control the Build Process</h4>
+<a name="index-variables"></a>
+<a name="index-variable_002c-behavior"></a>
 
-<p><a name="index-variables-8"></a><a name="index-variable_002c-behavior-9"></a>
-The build process has several modes of operation, and they all relate to
+<p>The build process has several modes of operation, and they all relate to
 the handling of files that are to be added to the repository or
 performing certain sanity checks at build time.  The variables are
-specified on the command line, after <samp><span class="command">make</span></samp>, in the form
+specified on the command line, after <code>make</code>, in the form
 <code>VARIABLE=value</code>, e.g. <code>make VCS=yes</code>.  In the future,
 additional features will be implemented in a similar fashion.
-
-     
-<a name="index-VCS-10"></a>
-<a name="index-CVS-11"></a>
-<a name="index-Subversion-12"></a>
-<a name="index-SVN-13"></a>
-<a name="index-Bazaar-14"></a>
-<a name="index-bzr-15"></a>
-<dl><dt>&lsquo;<samp><span class="samp">VCS=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>
-Do not add any files to the repository.  This is the default.  You may
+</p>
+<dl compact="compact">
+<dd><a name="index-VCS"></a>
+<a name="index-CVS"></a>
+<a name="index-Subversion"></a>
+<a name="index-SVN"></a>
+<a name="index-Bazaar"></a>
+<a name="index-bzr"></a>
+</dd>
+<dt>&lsquo;<samp>VCS=no</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>&hellip;</samp>&rsquo;</dt>
+<dd>
+<p>Do not add any files to the repository.  This is the default.  You may
 as well omit to define <code>VCS</code> entirely; there is no special code
-that expects assigning the value `no'.
-
-     <br><dt>&lsquo;<samp><span class="samp">VCS=yes</span></samp>&rsquo;<dd>Automatically add any new files in the repository (CVS, Subversion or
+that expects assigning the value &lsquo;no&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp>VCS=yes</samp>&rsquo;</dt>
+<dd><p>Automatically add any new files in the repository (CVS, Subversion or
 GNU Bazaar&mdash;the repository type is auto-determined at build time,
-<samp><span class="command">bzr</span></samp> being a fallback).<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a> These are
+<code>bzr</code> being a fallback).<a name="DOCF3" href="#FOOT3"><sup>3</sup></a> These are
 any POT files, if they are generated for the first time, and the
-translated articles (<samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp>) in HTML format.  In
-addition, if there is no <samp><span class="file">server/gnun/generic.</span><var>lang</var><span class="file">.html</span></samp> file
+translated articles (<samp>.<var>lang</var>.html</samp>) in HTML format.  In
+addition, if there is no <samp>server/gnun/generic.<var>lang</var>.html</samp> file
 for the specific language an article is being generated, an empty file
 will be added.  Finally, any missing PO and their HTML counterparts of
 the server templates will be added, computed on the basis of the
-<code>template-files</code> variable.
-
-     <br><dt>&lsquo;<samp><span class="samp">VCS=always</span></samp>&rsquo;<dd>Because GNU Make considers the targets up-to-date after a successful
+<code>extra-templates</code> and <code>optional-templates</code> variables.
+</p>
+</dd>
+<dt>&lsquo;<samp>VCS=always</samp>&rsquo;</dt>
+<dd><p>Because GNU Make considers the targets up-to-date after a successful
 build, if it was performed with no VCS interaction, the important newly
 created files will not be added (and committed when you do
 <code>cvs|svn|bzr commit</code>) in the repository.  Assigning this value
 enables additional check and forcefully adds all files.  Use it
 sparingly, since it is very slow and generally less reliable.
-
-     <p><a name="index-VALIDATE-16"></a><a name="index-validation-17"></a><a name="index-sanity-checks-18"></a><br><dt>&lsquo;<samp><span class="samp">VALIDATE=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Does not perform validation of the HTML articles and PO files.  This
+</p>
+<a name="index-VALIDATE"></a>
+<a name="index-validation"></a>
+<a name="index-sanity-checks"></a>
+</dd>
+<dt>&lsquo;<samp>VALIDATE=no</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>&hellip;</samp>&rsquo;</dt>
+<dd><p>Does not perform validation of the HTML articles and PO files.  This
 is the default, and not defining this variable has the same effect.
-
-     <br><dt>&lsquo;<samp><span class="samp">VALIDATE=yes</span></samp>&rsquo;<dd>Validates all original articles before generating the POTs, to ensure
+</p>
+</dd>
+<dt>&lsquo;<samp>VALIDATE=yes</samp>&rsquo;</dt>
+<dd><p>Validates all original articles before generating the POTs, to ensure
 that the ultimate source is valid (X)HMTL.  Also, validates all
 generated translations in HTML format and all PO files.  It is highly
 recommended to run the build this way, even if it is a bit tedious to
 fix the errors that are reported as a result of enforcing validation.
-
-     <p>Articles defined in the variable <code>no-validate-articles</code> are never
+</p>
+<p>Articles defined in the variable <code>no-validate-articles</code> are never
 checked for HTML validity.  Its purpose was to skip validation of HTML
 5 articles, until the command-line validation tools are updated to
 parse files that comply with this new standard.  As of version 0.5
 GNUN supports HTML 5, so resorting to <code>no-validate-articles</code>
 should not be necessary.
-
-     <p><a name="index-NOTIFY-19"></a><a name="index-mail_002c-notifications-20"></a><br><dt>&lsquo;<samp><span class="samp">NOTIFY=no</span></samp>&rsquo;<dt>&lsquo;<samp><span class="samp">...</span></samp>&rsquo;<dd>Do not send email notifications about errors.  This is the default.
-
-     <br><dt>&lsquo;<samp><span class="samp">NOTIFY=yes</span></samp>&rsquo;<dd>If an error occurs, send a mail with a meaningful subject and the error
+</p>
+<a name="index-NOTIFY"></a>
+<a name="index-mail_002c-notifications"></a>
+</dd>
+<dt>&lsquo;<samp>NOTIFY=no</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>&hellip;</samp>&rsquo;</dt>
+<dd><p>Do not send email notifications about errors.  This is the default.
+</p>
+</dd>
+<dt>&lsquo;<samp>NOTIFY=yes</samp>&rsquo;</dt>
+<dd><p>If an error occurs, send a mail with a meaningful subject and the error
 message as body to the concerned party.  The variables
 <code>devel-addr</code>, <code>web-addr</code> and <code>transl-addr</code> control the
 recipients; normally they should be set to the GNUN maintainers,
 webmasters and translators accordingly.  These variables are defined in
-the configuration file <samp><span class="file">gnun.conf</span></samp> and by default are set to
+the configuration file <samp>gnun.conf</samp> and by default are set to
 <a href="mailto:bug-gnun@gnu.org">bug-gnun@gnu.org</a>.
-
-     <p><a name="index-new-translations_002c-notifications_002fannouncements-21"></a><a name="index-announce-22"></a><br><dt>&lsquo;<samp><span class="samp">ANNOUNCE=yes</span></samp>&rsquo;<dd>If defined, automatic announcements for new translations will be sent to
+</p>
+<a name="index-new-translations_002c-notifications_002fannouncements"></a>
+<a name="index-announce"></a>
+</dd>
+<dt>&lsquo;<samp>ANNOUNCE=yes</samp>&rsquo;</dt>
+<dd><p>If defined, automatic announcements for new translations will be sent to
 the address defined in the <code>ann-addr</code> variable (in
-<samp><span class="file">gnun.conf</span></samp>).  The email messages contain the translated article
+<samp>gnun.conf</samp>).  The email messages contain the translated article
 title as Subject, and the URL of the translation as its body.  For the
 official GNUN build, they are delivered to the
 <a href="mailto:trans-coord-news@gnu.org">trans-coord-news@gnu.org</a> mailing list and each language has its
-own Mailman <dfn>topic</dfn>.  It is possible to subscribe to the list and
-receive only traffic related to a specific language.  See <a href="../web-trans/Mailing-Lists.html#Mailing-Lists">Mailing Lists</a>.
-
-     <p>The default behavior is not to send such announcements.
-
-     <p><a name="index-VERBOSE-23"></a><a name="index-output_002c-detailed-24"></a><br><dt>&lsquo;<samp><span class="samp">VERBOSE=yes</span></samp>&rsquo;<dd>If defined, the value of the variables <code>templates-translated</code>,
-<code>home-translated</code>, <code>ALL_POTS</code>, <code>articles-translated</code> and
+own Mailman <em>topic</em>.  It is possible to subscribe to the list and
+receive only traffic related to a specific language.  See <a href="http://www.gnu.org/software/trans-coord/manual/web-trans/html_node/Mailing-Lists.html#Mailing-Lists">Mailing
+Lists</a> in <cite>GNU Web Translators Manual</cite>.
+</p>
+<p>The default behavior is not to send such announcements.
+</p>
+<a name="index-VERBOSE"></a>
+<a name="index-output_002c-detailed"></a>
+</dd>
+<dt>&lsquo;<samp>VERBOSE=yes</samp>&rsquo;</dt>
+<dd><p>If defined, the value of the variables <code>templates-translated</code>,
+<code>ALL_POTS</code>, <code>articles-translated</code> and
 <code>gnunews</code> will be printed to the standard output.  This is off by
 default, but recommended in general since it will show a bug in the
 computation of the basic variables.
-
-     <p><a name="index-GRACE-25"></a><a name="index-fuzzy-strings-26"></a><a name="index-grace-period-27"></a><a name="index-deferred-generation-of-articles-28"></a><a name="GRACE"></a><br><dt>&lsquo;<samp><span class="samp">GRACE=</span><var>days</var></samp>&rsquo;<dd>If defined, ordinary articles that have fuzzy strings and are not older
+</p>
+<a name="index-GRACE"></a>
+<a name="index-fuzzy-strings"></a>
+<a name="index-grace-period"></a>
+<a name="index-deferred-generation-of-articles"></a>
+<a name="GRACE"></a></dd>
+<dt>&lsquo;<samp>GRACE=<var>days</var></samp>&rsquo;</dt>
+<dd><p>If defined, ordinary articles that have fuzzy strings and are not older
 than <var>days</var> will not be regenerated.  This functionality is
 implemented specifically to prevent gratuitous replacement of translated
 strings with the English text when there are only minor formatting
 changes in the original.  The translator has time (the &ldquo;grace&rdquo; period
 as defined in this variable) to review the changes and unfuzzy the
 strings, while keeping the online translation intact.  Note that this
-variable has no effect on the homepage, the server templates, gnunews
+variable has no effect on the server templates, gnunews
 and all articles defined in the variable <code>no-grace-articles</code>.
-
-     <p><a name="index-OUTDATED_002dGRACE-29"></a><br><dt>&lsquo;<samp><span class="samp">OUTDATED-GRACE=</span><var>days</var></samp>&rsquo;<dd>Grace period for the out-of-date notice.  When the variable
+</p>
+<a name="index-OUTDATED_002dGRACE"></a>
+</dd>
+<dt>&lsquo;<samp>OUTDATED-GRACE=<var>days</var></samp>&rsquo;</dt>
+<dd><p>Grace period for the out-of-date notice.  When the variable
 <code>GRACE</code> is defined, <code>OUTDATED-GRACE</code> defaults to 60 days
-(see <a href="GRACE.html#GRACE">grace period</a>).  The out-of-date notice is a special
-text (<samp><span class="file">server/outdated.html</span></samp> in the `www' repository) that is
+(see <a href="#GRACE">grace period</a>).  The out-of-date notice is a special
+text (<samp>server/outdated.html</samp> in the &lsquo;www&rsquo; repository) that is
 inserted into every outdated translation when the period defined in
 this variable is over; its purpose is to inform the reader that the
 translation may not correspond to the original English article.
-
-     <p><a name="index-TEAM-30"></a><a name="index-variable_002c-team-31"></a><br><dt>&lsquo;<samp><span class="samp">TEAM=</span><var>lang</var></samp>&rsquo;<dd>The translation team whose articles need to be checked for
+</p>
+<a name="index-TEAM"></a>
+<a name="index-variable_002c-team"></a>
+</dd>
+<dt>&lsquo;<samp>TEAM=<var>lang</var></samp>&rsquo;</dt>
+<dd><p>The translation team whose articles need to be checked for
 completeness.  This variable is applicable only for the <code>report</code>
 target, and is mandatory for it.  See <a href="report.html#report">report</a>.
+</p>
+</dd>
+</dl>
 
-   </dl>
-
-   <p>Note that <code>VCS=yes,always</code> is a valid combination: because POT
+<p>Note that <code>VCS=yes,always</code> is a valid combination: because POT
 files of the server templates are not handled by <code>always</code>, running
 the build this way will commit any newly added files as specified in
 <code>TEMPLATE_LINGUAS</code> and will perform additional check at the end,
 <code>cvs|svn|bzr add</code>-ing all necessary files.
-
-   <p><a name="index-validation-32"></a>When validation is enabled (i.e. with <code>VALIDATE=yes</code>), the
+</p>
+<a name="index-validation-1"></a>
+<p>When validation is enabled (i.e. with <code>VALIDATE=yes</code>), the
 original English articles are validated first, before any commands
-that generate the other files, and <samp><span class="command">make</span></samp> exits with an error
+that generate the other files, and <code>make</code> exits with an error
 on the first encountered article.  This is done on purpose, to prevent
 the propagation of an eventual error in the markup of the original
 article to all translations.
-
-   <p>Validation of the translated <samp><span class="file">.</span><var>lang</var><span class="file">.html</span></samp> is
-performed after it is preliminarily generated as a temporary file. 
+</p>
+<p>Validation of the translated <samp>.<var>lang</var>.html</samp> is
+performed after it is preliminarily generated as a temporary file.
 When no errors are found, the translation is updated; otherwise
 the real file is not changed (and it is not added if absent)&mdash;the build
 will fail and further processing of the remaining articles will not be
 performed.  The translator has time
 until the next run to fix the error&mdash;usually by modifying the
-corresponding <samp><span class="file">.</span><var>lang</var><span class="file">.po</span></samp> file.
-
-   <p>If notification is enabled (<code>NOTIFY=yes</code>), and the build system
+corresponding <samp>.<var>lang</var>.po</samp> file.
+</p>
+<p>If notification is enabled (<code>NOTIFY=yes</code>), and the build system
 encounters errors (mostly when validating articles), email messages
 will be sent to the party that is expected to fix the error.  The
 subject of the messages always includes the problematic article, for
 example:
+</p>
+<div class="example">
+<pre class="example">Subject: [GNUN Error] gnu/gnu.fa.html is not valid HTML
+</pre></div>
 
-<pre class="example">     Subject: [GNUN Error] gnu/gnu.fa.html is not valid HTML
-</pre>
-   <div class="footnote">
+<div class="footnote">
 <hr>
-<h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> When GNU Bzr is used, files
-are added locally only; you need to take care to use <samp><span class="command">bzr push</span></samp>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
+<p>When GNU Bzr is used, files
+are added locally only; you need to take care to use <code>bzr push</code>
 manually (or via cron) to take care of effectively adding them to the
 public repository.  See <a href="triggers.html#triggers">triggers</a>, for a short explanation.</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Special-Targets.html#Special-Targets" accesskey="n" rel="next">Special Targets</a>, Up: <a href="Invoking-GNUN.html#Invoking-GNUN" accesskey="u" rel="up">Invoking GNUN</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
-   <hr></div>
 
-   </body></html>
 
+</body>
+</html>

@@ -1,16 +1,7 @@
-<html lang="en">
-<head>
-<title>validate-html-notify - GNUnited Nations</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="GNUnited Nations">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Scripts.html#Scripts" title="Scripts">
-<link rel="prev" href="mailfail.html#mailfail" title="mailfail">
-<link rel="next" href="gnun_002dclear_002dprevious.html#gnun_002dclear_002dprevious" title="gnun-clear-previous">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
-This manual (updated 26 September 2012) is for GNUnited Nations (version
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+This manual (updated 3 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -18,60 +9,105 @@ essays and other articles.
 Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software
 Foundation, Inc.
 
-     Permission is granted to copy, distribute and/or modify this
-     document under the terms of the GNU Free Documentation License,
-     Version 1.3 or any later version published by the Free Software
-     Foundation; with no Invariant Sections, no Front-Cover Texts, and
-     no Back-Cover Texts.  A copy of the license is included in the
-     section entitled ``GNU Free Documentation License.''
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GNUnited Nations: validate-html-notify</title>
+
+<meta name="description" content="GNUnited Nations: validate-html-notify">
+<meta name="keywords" content="GNUnited Nations: validate-html-notify">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Scripts.html#Scripts" rel="up" title="Scripts">
+<link href="gnun_002dclear_002dprevious.html#gnun_002dclear_002dprevious" rel="next" title="gnun-clear-previous">
+<link href="mailfail.html#mailfail" rel="previous" title="mailfail">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="validate-html-notify"></a>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="validate_002dhtml_002dnotify"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="gnun_002dclear_002dprevious.html#gnun_002dclear_002dprevious">gnun-clear-previous</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="mailfail.html#mailfail">mailfail</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Scripts.html#Scripts">Scripts</a>
-<hr>
+Next: <a href="gnun_002dclear_002dprevious.html#gnun_002dclear_002dprevious" accesskey="n" rel="next">gnun-clear-previous</a>, Previous: <a href="mailfail.html#mailfail" accesskey="p" rel="previous">mailfail</a>, Up: <a href="Scripts.html#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
+<hr>
+<a name="The-validate_002dhtml_002dnotify-Script"></a>
+<h4 class="subsection">3.1.9 The <code>validate-html-notify</code> Script</h4>
 
-<h4 class="subsection">3.1.8 The <samp><span class="command">validate-html-notify</span></samp> Script</h4>
-
-<p>This script is a wrapper around <samp><span class="command">gnun-validate-html</span></samp>
+<p>This script is a wrapper around <code>gnun-validate-html</code>
 (see <a href="gnun_002dvalidate_002dhtml.html#gnun_002dvalidate_002dhtml">gnun-validate-html</a>); it is necessary because it is hard to
 capture the output of the program from a program that itself captures
 the output of another program that it runs.
+</p>
+<p>Usage:
+</p>
+<div class="example">
+<pre class="example">validate-html-notify [--dry-run] RCPT FILE
+</pre></div>
 
-   <p>Usage:
-
-<pre class="example">     validate-html-notify [--dry-run] RCPT FILE
-</pre>
-     <dl>
-<dt><samp><span class="option">--dry-run</span></samp><dd>Does not actually send the message, just like <samp><span class="command">mailfail</span></samp>.
-
-     <br><dt><samp><span class="option">RCPT</span></samp><dd>The recipient of the message.
-
-     <br><dt><samp><span class="option">FILE</span></samp><dd>The HTML file that has to be validated for compliance with the W3C
-standard. 
+<dl compact="compact">
+<dt><samp>--dry-run</samp></dt>
+<dd><p>Does not actually send the message, just like <code>mailfail</code>.
+In this case it runs <code>gnun-validate-html</code> without
+<samp>--verbose</samp> because it is expected that the expanded file
+will be available locally.
+</p>
+</dd>
+<dt><samp>RCPT</samp></dt>
+<dd><p>The recipient of the message.
+</p>
+</dd>
+<dt><samp>FILE</samp></dt>
+<dd><p>The HTML file that has to be validated for compliance with the W3C
+standard.
+</p></dd>
 </dl>
 
-   <p>The subject of the message is hardcoded in the script, since this
+<p>The subject of the message is hardcoded in the script, since this
 wrapper has a specific task and cannot be used to invoke an arbitrary
-command&mdash;use <samp><span class="command">mailfail</span></samp> for that.  See <a href="mailfail.html#mailfail">mailfail</a>.
+command&mdash;use <code>mailfail</code> for that.  See <a href="mailfail.html#mailfail">mailfail</a>.
+</p>
 
-   </body></html>
 
+
+</body>
+</html>

@@ -1,6 +1,3 @@
-Table of Contents
-*****************
-
 GNU Web Translators Manual
 1 Introduction
 2 Team Members
@@ -29,12 +26,12 @@ GNU Web Translators Manual
     3.2.4 Promoting Members As Co-leaders
   3.3 Reporting Team Status
   3.4 How To Retire Painlessly
-4 `trans-coord' Admins
+4 'trans-coord' Admins
 5 Details About The Translation Process
   5.1 Migration To The New Style
-  5.2 Summary of SSI `#include's
+  5.2 Summary of SSI '#include's
   5.3 How To Use Custom CSS
-    5.3.1 Localizing The `topbanner' Image
+    5.3.1 Localizing The 'topbanner' Image
     5.3.2 Specific Issues Related to RTL
   5.4 What To Translate
   5.5 When To CAPITALIZE
@@ -44,8 +41,6 @@ GNU Web Translators Manual
   6.1 Related Mailing Lists
   6.2 Savannah Projects Membership
 Appendix A GNU Free Documentation License
-
-
 GNU Web Translators Manual
 **************************
 
@@ -96,18 +91,18 @@ rather unfortunately, there are not so many volunteers willing to
 maintain on the long term translations of the various essays that
 describe the fundamental values of the free software movement.
 
-   Translators of the `http://gnu.org' website are organized in
-language teams.  Each team has one or more co-ordinators, who are
+   Translators of the <http://gnu.org> website are organized in language
+teams.  Each team has one or more co-ordinators (a.k.a leaders), who are
 responsible for the respective team.  The co-ordinators participate in
-the Savannah `trans-coord' organizational project, which is managed by
+the Savannah 'trans-coord' organizational project, which is managed by
 the GNU Web Translation Managers.  The manual is organized in chapters
 that follow the organizational structure of the whole translation
 project.
 
    If you wish to join a translation team or contribute a translation or
 two, *note Members::.  If your intention is to form a translation team,
-*note Leaders::.  The chapter about the `trans-coord' administrators
-(a.k.a. "GNU Translation Managers") describes all the responsibilities
+*note Leaders::.  The chapter about the 'trans-coord' administrators
+(a.k.a.  "GNU Translation Managers") describes all the responsibilities
 and procedures involved in performing this duty.  *Note Translation
 Managers::.
 
@@ -124,15 +119,15 @@ terminology issues, and sometimes performing clean-up tasks.
 ==================
 
 To join a team, please first look at the existing teams at
-`http://www.gnu.org/server/standards/README.translations.html#TranslationsUnderway'.
+<http://www.gnu.org/server/standards/README.translations.html#TranslationsUnderway>.
 Chances are that there is already an established team.  If there is no
 team listed for your language, this means that:
 
    * There is no team established and there are no translations to this
      language.
 
-   * Some translations were submitted by occasional contributors, but
-     no team has ever been formed.
+   * Some translations were submitted by occasional contributors, but no
+     team has ever been formed.
 
    * The page is not updated to reflect the current situation (this
      shouldn't happen, but it's a possibility anyway).
@@ -144,12 +139,11 @@ become a co-ordinator of an existing one, please refer to the next
 chapter, *note Leaders::.
 
    Contacting the team is best done via Savannah--each translation team
-has its own project, named `www-LANG', with the project page being
-<https://savannah.gnu.org/projects/www-LANG>.  Usually teams have
-mailing lists, typically in the form <www-LANG-...@gnu.org>.  Some
-teams have homepages,
-<http://gnu.org/server/standards/translations/LANG> with additional
-contact details and procedures for team members.
+has its own project, named 'www-LANG', with the project page being
+'https://savannah.gnu.org/projects/www-LANG'.  All teams should have
+mailing lists, typically in the form <www-LANG-...@gnu.org>.  Some teams
+have homepages, 'http://gnu.org/server/standards/translations/LANG' with
+additional contact details and procedures for team members.
 
    You could also write directly to the team leader via the Savannah
 interface--that way your request will be recorded by Savannah and can be
@@ -179,39 +173,47 @@ Everyone can still submit translations even if there is no translation
 team formed.  There are two ways to do that--following the existing
 procedures, which is the preferred way, and sending it as plain text,
 which means more work for a limited group of volunteers (the Translation
-Managers) to convert the translation in `.po' format.
+Managers) to convert the translation in '.po' format.
 
 2.2.1 How To Submit a Translation in PO Format
 ----------------------------------------------
 
 All translations(1) are maintained via GNUN (see
-`http://www.gnu.org/software/gnun/'), which significantly eases
+<http://www.gnu.org/software/gnun/>), which significantly eases
 maintenance and avoids the unpleasant situation where a translation is
-lagging behind the original.  *Note Advantages: (gnun)Advantages.
+lagging behind the original.  *Note (gnun)Advantages::.
 
-   As of September 2008 all new translations at gnu.org are installed in
-`.po' format, and the `.html' is generated automatically.  Here are the
+   Since September 2008 all new translations at gnu.org are installed in
+'.po' format, and the '.html' is generated automatically.  Here are the
 steps to produce and submit such a translation:
 
-   * Make a checkout of the CVS Web repository of the `www' Savannah
+   * Make a checkout of the CVS Web repository of the 'www' Savannah
      project.  You can find generic instructions at
-     `https://savannah.gnu.org/cvs/?group=www'.  All updates to the
+     <https://savannah.gnu.org/cvs/?group=www>.  All updates to the
      website are done as commits in the repository, so you would need an
      up-to-date working copy.  Anonymous access works under any
-     circumstances, i.e. it is not mandatory to have a registered
+     circumstances, i.e.  it is not mandatory to have a registered
      account at Savannah to use it.  You can also check out only a
      specific directory, for example:
 
           cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/web/www co www/gnu
 
-     This command will fetch only the `/gnu' directory--in other words,
-     all articles at `http://gnu.org/gnu'.
+     This command will fetch only the '/gnu' directory--in other words,
+     all articles at <http://gnu.org/gnu>.
+
+     You can also fetch single files by their respective URLs.  For
+     example, the URL for the template file of
+     <http://www.gnu.org/philosophy/free-sw.html> is
+     <http://www.gnu.org/philosophy/po/free-sw.pot>; the URL for its
+     LANG PO file (when available) is
+     <http://www.gnu.org/philosophy/po/free-sw.LANG.po>:
+
+          wget http://www.gnu.org/philosophy/po/free-sw.pot
 
    * Assuming you already know the article you want to translate, you
-     have to create an empty `ARTICLE.LANG.po' file and then translate
-     all messages with a PO editor.  *Note New Translation: (gnun)New
-     Translation.  For an almost complete list of PO editors, *note PO
-     Files: (gnun)PO Files.
+     have to create an empty 'ARTICLE.LANG.po' file and then translate
+     all messages with a PO editor.  *Note (gnun)New Translation::.  For
+     an almost complete list of PO editors, *note (gnun)PO Files::.
 
    * When you are pleased with the translation, check that the PO file
      is valid and submit it to <web-translators@gnu.org>, attached to
@@ -220,19 +222,14 @@ steps to produce and submit such a translation:
      repository.
 
    * In order GNUN to be able to generate (and subsequently update) a
-     gettextized translation, the language should have the server
+     fully translated page, the language should have the server
      templates available as PO files.  These templates are short, and
-     translating them shouldn't take much time.  If the language code
-     is present in the `TEMPLATE_LINGUAS' variable at
-     `server/gnun/gnun.mk', then you don't have to do anything.  If it
-     is not, the required files are `server/po/head-include-2.LANG.po',
-     `server/po/body-include-1.LANG.po',
-     `server/po/body-include-2.LANG.po' and
-     `server/po/footer-text.LANG.po'--you can translate and submit them
-     in the usual way, together with the translation of the essay.
-
-     Additional templates are defined via the EXTRA-TEMPLATES variable
-     in `server/gnun/gnun.mk'.
+     translating them shouldn't take much time.  If the language code is
+     present in the 'TEMPLATE_LINGUAS' variable at
+     'server/gnun/gnun.mk', then you don't have to do anything.  If it
+     is not, the required files are defined via the 'extra-templates'
+     variable in 'server/gnun/gnun.mk'--you can translate and submit
+     them in the usual way, together with the translation of the essay.
 
      If you don't want to translate the templates for whatever
      reason--do not worry, the web-translators will install empty
@@ -241,7 +238,7 @@ steps to produce and submit such a translation:
    It is quite possible that there will be errors or typos, so once you
 are informed that the translation is online, check it carefully and if
 necessary, resubmit the PO file with corrections.  Do not forget to run
-`cvs update' first and edit the updated `.po' file from the
+'cvs update' first and edit the updated '.po' file from the
 repository--most probably the Translation Managers have already made
 some modifications to it, usually to fix validation errors and to
 complete the PO file header.
@@ -260,29 +257,32 @@ the GNU Web Translation Managers, which can be tricky sometimes, and
 naturally, means more work for them and slower processing of your
 request.
 
-   You should _never_ translate the HTML markup--i.e. _do not_ use the
+   You should _never_ translate the HTML markup--i.e.  _do not_ use the
 "View Source" functionality of your browser to translate the raw HTML.
-Most of it is irrelevant, and automatically inherited from the markup
-of the original article.  Simply save your translation in a plain text
-file (`.txt'), preferably in UTF-8 encoding.  You can use any decent
-text editor for that--Emacs, Vim, gEdit, Kate, OpenOffice.org (the file
-should be saved as `.txt', not `.odt'), etc.
+Most of it is irrelevant, and automatically inherited from the markup of
+the original article.  Simply save your translation in a plain text file
+('.txt'), preferably in UTF-8 encoding.  You can use any decent text
+editor for that--Emacs, Vim, gEdit, Kate, OpenOffice.org (the file
+should be saved as '.txt', not '.odt'), etc.
 
    Translate the title, the blue heading (if it differs slightly from
-the title) and the body of the article upto the link `back to top'.
-For example, for `http://www.gnu.org/philosophy/free-sw.html' that
-would be:
+the title) and the body of the article upto the link 'back to top'.  For
+example, for <http://www.gnu.org/philosophy/free-sw.html> that would be:
 
-     The Free Software Definition - GNU Project - Free Software Foundation (FSF)
+     What is free software? - GNU Project - Free Software Foundation (FSF)
 
-     We maintain this free software definition...
+     What is free software?
+
+     The Free Software Definition
+
+     The free software definition presents...
      ...
-     ...If you would like to review the complete list of changes, you can
-     do so on our cvsweb interface.
+     ...You can review the complete list of changes to the page through
+     the cvsweb interface.
 
    Since web-translators do not speak all languages, it is essential to
 mark somehow any inner markup, because very often it is hard to figure
-out what translated text should be enclosed inside `<em>' or `<a>'
+out what translated text should be enclosed inside '<em>' or '<a>'
 elements, to name a few.  The easiest way to do this is just to use the
 corresponding HTML markup, although anything else is suitable.  For
 example, here is how to indicate that the link "History section" at the
@@ -292,12 +292,12 @@ historial" in the translation:
      Si quisiera revisar los cambios que hemos hecho, por favor vea la
      {seccio'n historial} ma's abajo para ma's informacio'n.
 
-   It is not necessary to include the value of the `href' attribute, as
+   It is not necessary to include the value of the 'href' attribute, as
 it is already known.
 
    If you wish your name to appear in the footer as a translator of the
-article, please also provide a translation of `Translation: YOUR NAME
-IN YOUR NATIVE LANGUAGE' or `Translated by: YOUR NAME IN YOUR NATIVE
+article, please also provide a translation of 'Translation: YOUR NAME IN
+YOUR NATIVE LANGUAGE' or 'Translated by: YOUR NAME IN YOUR NATIVE
 LANGUAGE', as you prefer.  Please also state if you wish your email
 address to be published (some readers prefer to send suggestions
 directly to the translator, but we certainly do not require that
@@ -328,14 +328,14 @@ limited to, having the final say on contributed translations and
 exercising levels of control as she sees fit.
 
    A prospective team co-ordinator should have perfect understanding of
-the GNU Philosophy and the various issues the free software movement
-set out to solve.  Energy and time are always needed, as well as certain
+the GNU Philosophy and the various issues the free software movement set
+out to solve.  Energy and time are always needed, as well as certain
 communication skills.
 
    However, a team leader is not a dictator (for life); every action
-and/or decision taken should have its justification and should stem
-from the goals of the project at large.  Inefficient or inoperative
-leaders are replaced, if necessary.
+and/or decision taken should have its justification and should stem from
+the goals of the project at large.  Inefficient or inoperative leaders
+are replaced, if necessary.
 
 3.1 How To Form A New Team
 ==========================
@@ -346,40 +346,39 @@ a long-term engagement that requires a lot of spare time, communication
 and technical skills, and devotion.  The only "bonus" team leaders have
 is more work and more responsibilities.
 
-   You should read and _all_ the documentation related to the
-translation process at the very least all important philosophy-related
-articles listed on
-`http://gnu.org/server/standards/README.translations.html' and
-`http://gnu.org/server/standards/translations/priorities.html' before
+   You should read _all_ the documentation related to the translation
+process and at the very least all important philosophy-related articles
+listed on <http://gnu.org/server/standards/README.translations.html> and
+<http://gnu.org/server/standards/translations/priorities.html> before
 you decide to form a new team, or take over an orphaned team.  Once you
 have the internal feeling that having a gnu.org translation team for
 your language is a must, and you are the one for this job, follow these
 steps:
 
   1. If you do not have a Savannah account, register at
-     `https://savannah.gnu.org/account/register.php'.  Write access to
+     <https://savannah.gnu.org/account/register.php>.  Write access to
      the repository and project membership is handled via Savannah, so
      you would need an account in any case.
 
   2. Checkout a complete working copy of the CVS Web repository as
-     described at `https://savannah.gnu.org/cvs/?group=www'.  If you
+     described at <https://savannah.gnu.org/cvs/?group=www>.  If you
      still don't have a Savannah account or if you have registered one,
      but are not yet member of any Savannah project, refer to the
      instructions under "Anonymous CVS Access".  If you are already a
      member of (any) Savannah project, you can proceed with "Project
-     Member CVS Access via SSH", although you will still lack
-     permission to commit (later, when it is granted, you can use the
-     same working copy).
+     Member CVS Access via SSH", although you will still lack permission
+     to commit (later, when it is granted, you can use the same working
+     copy).
 
      Examine the layout and structure of the repository.  Basically, it
      is mapped to the URL locations, more or less.  Take a look at the
-     most important materials to translate under `/philosophy', `/gnu',
-     `/distros', `/copyleft' and `/licenses' directories just to get a
-     rough estimate about the amount of work involved.  If you are
+     most important materials to translate under '/philosophy', '/gnu',
+     '/distros', '/copyleft' and '/licenses' directories just to get a
+     rough estimate about the amount of work involved(1).  If you are
      still not scared and determined to go on further, excellent.
 
      As you have probably observed, every directory that contains
-     translatable articles has a `/po' sub-directory, which is where the
+     translatable articles has a '/po' sub-directory, which is where the
      canonical source format of the translations is stored.
 
   3. Submit your first message stating that you would like to establish
@@ -387,35 +386,34 @@ steps:
      have read all the documentation and list the issues that remain
      unclear for you.  The Translation Managers will answer your
      questions and send you the standard questionnaire for new team
-     leaders.  It is short and shouldn't take more than 10-30 minutes
-     to complete.  This questionnaire is important, as we consider it
+     leaders.  It is short and shouldn't take more than 10-30 minutes to
+     complete.  This questionnaire is important, as we consider it
      crucial for any translation team co-ordinator to have a good
      understanding of the philosophy of the free software movement.
 
   4. Check if your language code is present in the variable
-     `TEMPLATE_LINGUAS' at `server/gnun/gnun.mk'.  If it is not, the
+     'TEMPLATE_LINGUAS' at 'server/gnun/gnun.mk'.  If it is not, the
      first thing to do is to translate and submit to
      <web-translators@gnu.org> the following files (all in the
-     `server/po/' directory): `head-include-2.LANG.po',
-     `body-include-1.LANG.po', `body-include-2.LANG.po'
-     `footer-text.LANG.po', `outdated.LANG.po',
-     `skip-translations.LANG.po', and `top-addendum.LANG.po'.  *Note
-     New Translation: (gnun)New Translation.
+     'server/po/' directory): 'head-include-2.LANG.po',
+     'body-include-1.LANG.po', 'body-include-2.LANG.po'
+     'footer-text.LANG.po', 'outdated.LANG.po',
+     'skip-translations.LANG.po', and 'top-addendum.LANG.po'.  *Note
+     (gnun)New Translation::.
 
         - The language code (LANG) should be the ISO 639-1 code of the
-          language, for example `hy' for Armenian or `el' for Greek.  If
-          there is no such code, use the ISO 639-2 one--e.g. `mai' for
-          Maithili.  If the language is a variant such as Brazilian
-          Portuguese or Simplified Chinese, use small caps and a
-          dash--`pt-br' and `zh-cn' instead of `pt_BR' and `zh_CN'.
+          language, for example 'hy' for Armenian or 'el' for Greek.  If
+          the language is a variant such as Brazilian Portuguese or
+          Simplified Chinese, use small caps and a dash--'pt-br' and
+          'zh-cn' instead of 'pt_BR' and 'zh_CN'.
 
         - The PO file header and initial comments should be completed as
           documented.
 
-        - Do not use HTML entities for non-ASCII characters as in the
+        - Do not use HTML entities for non-ASCII letters as in the
           English original.  They are harder to type and read.  So, if
-          there is `&uuml;' and this is a character from the alphabet
-          of your language, just write it as `u"' directly.
+          there is '&uuml;' and this is a character from the alphabet of
+          your language, just write it as 'u"' directly.
 
   5. Any prospective team leader should submit a few translations first.
      This is a process of pointing errors and omissions (which are
@@ -423,58 +421,55 @@ steps:
      is going to carry out these checks on her own, once the team is
      approved.  If there are existing translations that are not yet in
      PO format, the best thing to do is to migrate one or two.  You can
-     use `find' to find out what's already in the repository, for
+     use 'find' to find out what's already in the repository, for
      example:
 
           find -name \*.LANG.html
 
   6. Submit at least two translations of your own.  We maintain a list
      with priority articles at
-     `http://www.gnu.org/server/standards/translations/priorities.html',
+     <http://www.gnu.org/server/standards/translations/priorities.html>,
      although it is probably hard to start with one of them.  Choose
      whatever you wish, provided it is an essay and not an auxiliary
-     page.  Avoid translating the homepage or `whatsnew.html'--they are
-     moving targets and keeping up would be only a distraction for both
-     parties in the process.  As usual, send the completed translation
-     to <web-translators@gnu.org>.
+     page.  Avoid translating the homepage or 'planetfeeds.html'--they
+     are moving targets and keeping up would be only a distraction for
+     both parties in the process.  As usual, send the completed
+     translation to <web-translators@gnu.org>.
 
   7. The Translation Managers will review your translations, and
-     eventually comment on them (mostly technical details if there is
-     no one among them speaking your language).  Depending on the case,
-     it might be required to submit a corrected file.  In any event,
-     please take into account the remarks in future work.
+     eventually comment on them (mostly technical details if there is no
+     one among them speaking your language).  Depending on the case, it
+     might be required to submit a corrected file.  In any event, please
+     take into account the remarks in future work.
 
-  8. If all goes well, you will receive a response inviting you to
-     apply for a new translation project at Savannah.  The project name
-     should be `www-LANG' where LANG is, unsurprisingly, the language
-     code.  If such a project already exists, this step will be skipped
-     and you'll be made an administrator of the project.  To register
-     the project, go to `https://savannah.gnu.org/register/' and make
-     sure you fill in the required fields.  The "Group type" should be
-     `www.gnu.org translation team', and "Project license"--`WebSite
-     Only'.  In the "Tarball URL" field enter a bogus URL such as
-     `http://gnu.org'.
+  8. If all goes well, you will receive a response inviting you to apply
+     for a new translation project at Savannah.  The project name should
+     be 'www-LANG' where LANG is, unsurprisingly, the language code.  If
+     such a project already exists, this step will be skipped and you'll
+     be made an administrator of the project and its mailing lists.  To
+     register the project, go to <https://savannah.gnu.org/register/>
+     and make sure you fill in the required fields.  The "Group type"
+     should be 'www.gnu.org translation team', and "Project
+     license"--'WebSite Only'.  In the "Tarball URL" field enter a bogus
+     URL such as 'http://gnu.org'.
 
-     *Pay attention:* This step is a formality.  You should proceed
-     with the project registration only when you have been asked by
+     *Pay attention:* This step is a formality.  You should proceed with
+     the project registration only when you have been asked by
      <web-translators@gnu.org> to do so.  Otherwise, the submission may
      appear in the task list of the Savannah Hackers for a fairly long
      time, which is troublesome.
 
-  9. When the project is approved, the team information will be added
-     to the list at `README.translations.html', you will become a
-     member of the `www' project (thus granting you CVS write access to
-     the whole repository--so be careful) and the `trans-coord'
-     project.  You'll also be subscribed to the following mailing lists:
+  9. When the project is approved, the team information will be added to
+     the list at 'README.translations.html', you will become a member of
+     the 'www' project (thus granting you CVS write access to the whole
+     repository--so be careful) and the 'trans-coord' project.  You'll
+     also be subscribed to the following mailing lists:
 
         - www-commits
 
         - trans-coord-discuss
 
-     You'll have to request subscription to `www-discuss'
-     yourself--this list is managed by the GNU Webmasters, but all team
-     leaders are required to subscribe in order to receive important
-     site-wide announcements.
+        - www-discuss
 
    The whole process should not take more than two weeks or maximum a
 month--if this period turns out to be longer, it is an indication that
@@ -483,12 +478,12 @@ web-translators are badly lagging behind and do not process the requests
 with the expected pace.
 
    Applications for new teams are sometimes processed in
-parallel(1)--the most suitable candidate is chosen in this case.  This
+parallel(2)--the most suitable candidate is chosen in this case.  This
 is, undoubtedly, based on a subjective judgment made by the Translation
 Managers, and many factors are important.
 
    The procedure for taking over an orphaned team is the same.  Once
-completed, you will be made an admin of the respective `www-LANG'
+completed, you will be made an admin of the respective 'www-LANG'
 Savannah project, or if it doesn't exist, invited to apply for
 registration.  Do not automatically remove old members just because you
 are starting "afresh"--some of them might want to continue to
@@ -498,9 +493,12 @@ continue their involvement in the team.
 
    ---------- Footnotes ----------
 
-   (1) In general, we try to avoid this and direct all new volunteers
-to the person who is already carrying out the process--this is also a
-verification if she can cooperate easily with others.
+   (1) As of December 2012, there are over 250 files to translate in
+"important" directories; their volume is about 3.5 MB.
+
+   (2) In general, we try to avoid this and direct all new volunteers to
+the person who is already carrying out the process--this is also a
+verification if she can co-operate easily with others.
 
 3.2 The Gentle Art of Managing A Translation Team
 =================================================
@@ -535,8 +533,8 @@ larger group) is crucial for the quality of the translation process.
 Too many errors are just missed (especially if they are obvious) when
 the translator does a final review of her own translation.
 
-   It is good to establish a practice: Do not commit officially (i.e. in
-`www', which will appear online at `http://gnu.org' immediately) a
+   It is good to establish a practice: Do not commit officially (i.e.
+in 'www', which will appear online at <http://gnu.org> immediately) a
 translation that is not yet reviewed by someone else who is not the
 translator.  Always perform a final review yourself even if the
 translation has been checked by another member of the team.  In other
@@ -547,12 +545,12 @@ hands (read: eyes).
 list--the translator sends the new translation and participants comment
 on specific parts, quoting them appropriately.  The benefit of this
 approach is that it is straightforward, but the drawback is that there
-is no automatic "record" about the conclusion of the specific
-discussion (or sub-thread) and sometimes such discussions easily
-digress, making it even harder to come up with a solution.
+is no automatic "record" about the conclusion of the specific discussion
+(or sub-thread) and sometimes such discussions easily digress, making it
+even harder to come up with a solution.
 
-   Another way is to use Savannah's built-in trackers (the `Tasks' and
-`Bugs' trackers, specifically).  This is further explained in the next
+   Another way is to use Savannah's built-in trackers (the 'Tasks' and
+'Bugs' trackers, specifically).  This is further explained in the next
 section, *note Tracking Tasks::.  One way or another, you should create
 some kind of review process.
 
@@ -563,7 +561,7 @@ The team leader has to make sure that prospective translations are
 reviewed, that they do not contain obvious errors and/or confusing
 expressions and that they match the spirit and intention of the original
 essay.  However, many teams tend to suffer from a specific problem: team
-members rely on the leader to make these extensive reviews. That is
+members rely on the leader to make these extensive reviews.  That is
 fine, as far as it goes, and the leader should always review
 translations before installing them in the repository--but it is nearly
 impossible (especially for a large team) to rely on a single person for
@@ -572,12 +570,12 @@ in time, resulting in frustration among the team members and generally
 slowing the translation process.
 
    A solution to this specific problem is to distribute the load among
-more people.  For example: Member D makes a translation of `foo.html'
-and uploads `foo.LANG.po' in the translation project's repository at
+more people.  For example: Member D makes a translation of 'foo.html'
+and uploads 'foo.LANG.po' in the translation project's repository at
 Savannah, marking the relevant task as "Ready for Test" (of course, the
 equivalent is sending a message with the attached translation to the
-team's mailing list, or similar).  Then Member A, B and C (or only A
-and B if C is currently busy) review it independently and post
+team's mailing list, or similar).  Then Member A, B and C (or only A and
+B if C is currently busy) review it independently and post
 comments/suggestions/errors in the bug tracker.  Discussion goes on
 between them and D, problems are rectified and finally the leader (who
 may happen to be one of A, B, C, D) makes a final review.  It is easier
@@ -588,10 +586,10 @@ and the whole burden does not fall solely on the shoulders of the
 leader.  You can also set up an internal formal rule: If a member makes
 a translation, he has to review another one (or two) as well.
 
-   Some translations can take a fairly long time--the typical example
-is a complicated essay or a transcript of a speech.  It is best to avoid
+   Some translations can take a fairly long time--the typical example is
+a complicated essay or a transcript of a speech.  It is best to avoid
 duplicate work by indicating, or better--recording, that someone is
-working on this specific article.  The `Tasks' tracker is suitable for
+working on this specific article.  The 'Tasks' tracker is suitable for
 this purpose.
 
    It is prudent to discuss the most convenient naming scheme and
@@ -603,40 +601,40 @@ values.
    Thus, a possible straightforward way to manage these tasks is:
 
    * If someone starts working on a new translation, she creates a new
-     task with a `Subject' indicating the article, for example simply
-     `philosophy/bsd.html' and assigns it to herself.
+     task with a 'Subject' indicating the article, for example simply
+     'philosophy/bsd.html' and assigns it to herself.
 
    * When the translation is finished and ready for review, the
-     translator changes the `Status' to "Ready For Test".
+     translator changes the 'Status' to "Ready For Test".
 
    * Other members review it, and open bugs relevant to one specific
-     problem.  It is usually better not to conflate two different
-     issues together--it makes them harder to discuss, and hard to
-     track them by severity.  Some are grammatical errors, some are
-     fundamental ones that change the whole meaning, some are simply
-     suggestions for improvement.  It helps if the project admin
-     creates new Category fields for every article, for instance
-     `gnu/gnu-history.LANG.html', `philosophy/microsoft.LANG.html'--it
-     would enable functionality like "Show me all bugs ever reported
-     against this translation", which is useful.
+     problem.  It is usually better not to conflate two different issues
+     together--it makes them harder to discuss, and hard to track them
+     by severity.  Some are grammatical errors, some are fundamental
+     ones that change the whole meaning, some are simply suggestions for
+     improvement.  It helps if the project admin creates new Category
+     fields for every article, for instance 'gnu/gnu-history.LANG.html',
+     'philosophy/microsoft.LANG.html'--it would enable functionality
+     like "Show me all bugs ever reported against this translation",
+     which is useful.
 
    * Once the bugs (or at least the important bugs) are fixed, the team
      leader can make the final review and install the translation in the
-     official repository, marking the task as `Done'.  Bugs that are not
-     resolved should remain opened, naturally.
+     official repository, marking the task as 'Done'.  Bugs that are not
+     resolved should remain open, naturally.
 
    Of course, teams can choose to manage these things using external
 resources and eventually other bug (or issue) tracking systems.
 Whatever you decide, please make sure that bugs can be reported using
 free software only, and that the software providing that service is
 free.  It makes an extremely bad impression if a reader has to report a
-problem about a gnu.org translation via non-free hosting platforms like
+problem about a gnu.org translation via nonfree hosting platforms like
 SourceForge.
 
-   If you use a certain facility (i.e. a bug tracking system) to manage
+   If you use a certain facility (i.e.  a bug tracking system) to manage
 bugs in translations, it is best to take advantage of
-`generic.LANG.html' and advertise it on every page.  *Note
-generic.LANG.html: (gnun)generic.LANG.html, for details.
+'generic.LANG.html' and advertise it on every page.  *Note
+(gnun)generic.LANG.html::, for details.
 
 3.2.1.2 How To Proceed With Unreviewed Translations
 ...................................................
@@ -649,21 +647,19 @@ Readers may report bugs as well (and they do!).
 
    It is important to record somehow that this published translation
 still lacks appropriate review.  If the suggestion in the previous
-section is implemented, it would mean leaving the relevant task `Open'
-and `Ready For Test' despite the translation being officially online.
+section is implemented, it would mean leaving the relevant task 'Open'
+and 'Ready For Test' despite the translation being officially online.
 You may also add a comment to the PO file.
 
 3.2.2 CVS Commits And Best Practices
 ------------------------------------
 
-As all team leaders have write access to the CVS repository of the
-`www' project, this technically means that they are able to modify
-every single file in it, and also those of the Web CVS repositories of
-other projects at Savannah.  This vote of confidence should never be
-abused--the only files team co-ordinators should add/update are those
-relevant to their translation work.  It is OK to fix an obvious typo in
-an original article; for anything else please report to
-<webmasters@gnu.org>.
+As all team leaders have write access to the CVS repository of the 'www'
+project, this technically means that they are able to modify every
+single file in it.  This vote of confidence should never be abused--the
+only files team co-ordinators should add/update are those relevant to
+their translation work.  It is OK to fix an obvious typo in an original
+article; for anything else please report to <webmasters@gnu.org>.
 
    If you wish to volunteer as webmaster and help with generic webmaster
 work and RT tickets, that is perfectly fine--please follow the
@@ -672,19 +668,19 @@ can modify such pages wearing your "webmaster's hat".
 
    If a particular page has issues with the markup which create problems
 for your language, please inform <trans-coord-discuss@gnu.org>.  For
-general issues that affect more articles, or for severe problems,
-please write to <www-discuss@gnu.org>.
+general issues that affect more articles, or for severe problems, please
+write to <www-discuss@gnu.org>.
 
    It is recommended to read the entire CVS manual at least once, for a
 basic understanding of how this VCS works.  *Note Concurrent Versions
-System: (cvs)Top.  It is not necessary to become an expert--the `www'
+System: (cvs)Top.  It is not necessary to become an expert--the 'www'
 project does not use complex features like tags, vendor branches,
-merging, etc. as they are not very useful for a live website.
+merging, etc.  as they are not very useful for a live website.
 
    However, you'd probably have to learn how to use CVS for effective
-work--to extract information from the history, review diffs and
-specific changes, synchronize with the working repository of the team
-(if any), adding/removing files, etc.
+work--to extract information from the history, review diffs and specific
+changes, synchronize with the working repository of the team (if any),
+adding/removing files, etc.
 
    If you make changes that affect more than one file but the change is
 coherent, please do it as a single commit.  This will generate only one
@@ -692,8 +688,9 @@ message to <www-commits@gnu.org>, which is better than 5 messages for 5
 files about semantically the same change.  Always write commit logs in
 English(1), providing a short description of the change.  If you modify
 a file that is not an article but a script or part of software (such as
-`server/gnun/gnun.mk'), it would be nice to follow the GNU Coding
-Standards and describe the change precisely.  For example, do not write:
+'server/gnun/gnun.mk'), it would be nice to follow the GNU Coding
+Standards and describe the change precisely.  *Note Log Messages:
+(standards)Change Logs.  For example, do not write:
 
      Added support for Nepali.
 
@@ -707,34 +704,36 @@ Standards and describe the change precisely.  For example, do not write:
 
    and
 
-     (HOME_LINGUAS): Add `pa'.
+     (FUZZY_DIFF_LINGUAS): Add `pa'.
 
    This makes it easier for others to search for a particular change in
 the history.
 
-   If you add a binary file (for example, `.png'), do it with `cvs
+   If you add a binary file (for example, '.png'), do it with 'cvs
 commit -kb FILE'.  This turns off keyword substitution, which prevents
-RCS keywords like `$Id$' to get expanded, subsequently corrupting the
-file.  *Note Substitution Modes: (cvs)Substitution Modes.  More
-importantly, using `-kb' prevents corruption of the binary when people
-using CVS clients under Windoze checkout, modify the file, and then
-commit it with messed EOLs.  (Unfortunately there are still committers
-using non-free operating systems--we cannot dictate what OS people use,
-but we can at least try to prevent damage.)
+RCS keywords like '$Id$' to get expanded, subsequently corrupting the
+file.  *Note (cvs)Substitution Modes::.  More importantly, using '-kb'
+prevents corruption of the binary when people using CVS clients under
+infamous OS checkout, modify the file, and then commit it with messed
+ends of lines.(2)
 
    Although not absolutely compulsory, it is recommended that every team
-leader subscribes to <www-commits@gnu.org>.  It is useful to examine
-the diffs of your own messages, if you miss something while inspecting
-the diff before the commit.  In any case, a team leader should be
-subscribed to that list to avoid his own commit messages to be
-moderated.  If you absolutely do not desire receiving all traffic, just
-disable mail delivery in Mailman's user interface.
+leader subscribes to <www-commits@gnu.org>.  It is useful to examine the
+diffs of your own messages, if you miss something while inspecting the
+diff before the commit.  In any case, a team leader should be subscribed
+to that list to avoid his own commit messages to be moderated.  If you
+absolutely do not desire receiving all traffic, just disable mail
+delivery in Mailman's user interface.
 
    ---------- Footnotes ----------
 
-   (1) This advice is applicable for the `www' repository only--feel
+   (1) This advice is applicable for the 'www' repository only--feel
 free to write logs in your native language when committing in your
-project's Sources repository.
+team's repositories.
+
+   (2) Few years ago there still were committers using nonfree operating
+systems--we don't dictate what OS people use, but we can at least
+prevent this technical kind of damage.
 
 3.2.3 Taking Advantage of Savannah
 ----------------------------------
@@ -747,12 +746,12 @@ find information for translation teams and their contacts.
 
    Using external hosting facilities may seem justified sometimes.  Some
 teams may have already established repositories and/or bug tracking
-systems where usual contributors already have access.  Some team
-members prefer to work within the established infrastructure of a broad
+systems where usual contributors already have access.  Some team members
+prefer to work within the established infrastructure of a broad
 translation team (for whatever reason), but this is discouraged.  It is
 required that every team has a mailing list at Savannah (*note Savannah
-Mailing Lists::), because it is easier to pass its management to the
-new co-ordinator when the old one steps down, and it helps to keep the
+Mailing Lists::), because it is easier to pass its management to the new
+co-ordinator when the old one steps down, and it helps to keep the
 archives at one place for future members of the team.  Likewise, it is
 better to use Savannah for the team's repository and bugs/tasks, but
 this is not mandatory.
@@ -796,20 +795,20 @@ In such situations, there is no need to add her as a member.
    It is a good idea to mark inactive members, for example if there is
 no interaction (bug reports, new translations, updates to existing
 translations, proof-reading) for at least six months.  You can do that
-by unmarking the `On Duty' checkbox for the respective project member
-under `Set Permissions'.  Inactive members have absolutely the same
+by unmarking the 'On Duty' checkbox for the respective project member
+under 'Set Permissions'.  Inactive members have absolutely the same
 rights as active ones--the only exception is that they don't count for
-the total number of members, and they appear separately on `View
+the total number of members, and they appear separately on 'View
 Members'.
 
 3.2.3.2 Homepage of The Team
 ............................
 
 Every Savannah project has a Web repository, which is, for technical and
-historical reasons, only CVS.  By default it is mapped to
-<http://www.gnu.org/server/standards/translations/LANG>; to add files
-to it first make a checkout, following the instructions at
-<https://savannah.gnu.org/cvs/?group=www-LANG>.
+historical reasons, only CVS. By default it is mapped to
+'http://www.gnu.org/server/standards/translations/LANG'; to add files to
+it first make a checkout, following the instructions at
+'https://savannah.gnu.org/cvs/?group=www-LANG'.
 
    It is recommended to describe all team-specific procedures, if there
 are any.  That way, you can point potential team members to the
@@ -817,44 +816,42 @@ corresponding page containing these instructions, instead of repeatedly
 explaining every volunteer separately.
 
    All team-specific pages should follow the usual linking criteria (see
-`http://gnu.org/server/standards/README.webmastering.html#pollinking'
+<http://gnu.org/server/standards/README.webmastering.html#pollinking>
 and the FSF HTML Style Sheet
-Guidelines--`http://gnu.org/server/fsf-html-style-sheet.html').
+Guidelines--<http://gnu.org/server/fsf-html-style-sheet.html>).
 
    For historical reasons, team-specific materials were available in the
-`www' repository, under ad-hoc locations as `/spanish', `/wwwsr', etc.
-These locations are deprecated, and the contents will be moved without
-warning to `/graveyard' in the `trans-coord' _Sources_ repository,
-following the original `www' layout (that is, if there were any
-sub-directories, they will be retained).
+'www' repository, under ad-hoc locations as '/spanish', '/wwwsr', etc.
+These locations are deprecated, and the contents will be removed without
+warning.
 
 3.2.3.3 Support Tracker
 .......................
 
 This tracker is supposed to be related to things about the _project
-management_ itself, i.e. project members may report here missing
-functionality and/or features that requires the project admin(s)'s
-action.  Do not use it for anything else as it quickly becomes
-confusing.  It is OK to disable it if the team is small.
+management_ itself, i.e.  project members may report here missing
+functionality and/or features that requires the project admin's action.
+Do not use it for anything else as it quickly becomes confusing.  It is
+OK to disable it if the team is small.
 
 3.2.3.4 Tasks Tracker
 .....................
 
 This is a way to manage all sorts of tasks.  They appear in the personal
 Savannah page of the assignee, so it is difficult to miss them out.  It
-is possible to use this tracker to "announce" to the team members that
-a specific article should be translated.  The one who volunteers may
+is possible to use this tracker to "announce" to the team members that a
+specific article should be translated.  The one who volunteers may
 assign the task to herself.
 
    Teams may use this tracker to avoid duplicate work, by declaring that
 they intend to work on a specific translation.
 
-   Feel free to organize the `Tasks' management as you see fit.
+   Feel free to organize the 'Tasks' management as you see fit.
 
 3.2.3.5 Bugs Tracker
 ....................
 
-The `Bugs' tracker is designed for tracking bugs.  You can use for
+The 'Bugs' tracker is designed for tracking bugs.  You can use for
 several purposes:
 
    * Suggest readers to report bugs there.
@@ -862,8 +859,8 @@ several purposes:
    * Use it for all kinds of internal team tasks.
 
    * Forward bugs reported against LANG translations in the
-     `trans-coord' project and assign them to the specific maintainer
-     (who is supposed to be a `www-LANG' project member), if you have
+     'trans-coord' project and assign them to the specific maintainer
+     (who is supposed to be a 'www-LANG' project member), if you have
      such policy.
 
 3.2.3.6 Patch Tracker
@@ -872,9 +869,9 @@ several purposes:
 This tracker doesn't make much sense for translation projects, as the
 original on which the translation is based is volatile and the
 translation "patch" is 100% guaranteed not to apply cleanly very soon
-after it is submitted.  Even ignoring this detail, this specific
-feature is slowly marching towards complete deprecation, as there are
-much better ways to submit patches nowadays.
+after it is submitted.  Even ignoring this detail, this specific feature
+is slowly marching towards complete deprecation, as there are much
+better ways to submit patches nowadays.
 
    You should disable this feature, as it causes only confusion.
 
@@ -882,7 +879,7 @@ much better ways to submit patches nowadays.
 ....................
 
 That is a way to inform newcomers and interested people (who visit the
-project page from time to time, or subscribe to the `News' RSS feed)
+project page from time to time, or subscribe to the 'News' RSS feed)
 about a major change or event within the project.
 
    You can also setup news entries to be sent to a mailing list (that's
@@ -899,11 +896,11 @@ translations, which is also fine.
 Every team should have a mailing list on lists.gnu.org and use it for
 internal communications.  All active translators should be on the list.
 The list owner should be the co-ordinator of the team.  The name of the
-list should begin with `www-LANG-'.
+list should begin with 'www-LANG-'.
 
    The list will make it possible for the GNU project to contact the
-team when the co-ordinator disappears; its archive will also give
-access to the history for new translators.
+team when the co-ordinator disappears; its archive will also give access
+to the history for new translators.
 
    You can create new mailing lists via the Savannah interface.
 However, this should be done after some thought.  If the project
@@ -918,12 +915,11 @@ one mailing list.
 An easy way to keep up with changes in the original articles and to
 manage continuous contributions is to keep all translations in the
 translation project's Sources repository.  That way, it is easy to edit
-draft translations and install them in `www' only when they're ready.
+draft translations and install them in 'www' only when they're ready.
 It is also convenient to update the translation (merge any changes from
 the original) while it is still under review.
 
-   *Note PO Files and Team: (gnun)PO Files and Team, for more
-information.
+   *Note (gnun)PO Files and Team::, for more information.
 
    *Remember:* A choice of a particular VCS is a sensitive matter--some
 modern ones provide compelling features, but they also bump the barrier
@@ -936,29 +932,28 @@ Web-based Systems
 
 An alternative way to maintain translations is to use one of the
 existing online editors.  There are plans to install a web-based system
-for managing `.po' files at Savannah, including online editing and
+for managing '.po' files at Savannah, including online editing and
 statistics.  Until it happens, teams who wish to use this functionality
 may setup such a server on a host of their own, or use one of the
 existing free hosting platforms such as Launchpad
-(`http://translations.launchpad.net').
+(<http://translations.launchpad.net>).
 
    Here is a short and probably incomplete list of such systems:
 
-   * Pootle--`http://translate.sourceforge.net/wiki/pootle'
+   * Pootle--<http://translate.sourceforge.net/wiki/pootle>
 
-   * Vertaal--`http://code.google.com/p/vertaal'
+   * Vertaal--<http://code.google.com/p/vertaal>
 
-   * Narro--`http://code.google.com/p/narro'
+   * Narro--<http://code.google.com/p/narro>
 
-   * Launchpad--`https://dev.launchpad.net'
-
+   * Launchpad--<https://dev.launchpad.net>
 
    If you decide to use such a system, please make sure that no
 translations are published in HTML format there.
 
-   Note that to keep the `.pot' files regularly updated (assuming such
-a web-based system runs `msgmerge' automatically), you'll have to take
-care of the one-way regular sync from the `www' CVS repository.
+   Note that to keep the '.pot' files regularly updated (assuming such a
+web-based system runs 'msgmerge' automatically), you'll have to take
+care of the one-way regular sync from the 'www' CVS repository.
 
 3.2.4 Promoting Members As Co-leaders
 -------------------------------------
@@ -966,21 +961,21 @@ care of the one-way regular sync from the `www' CVS repository.
 When the team grows large and it becomes hard for a single person to
 manage, there is no problem to add another (or even another two) people
 to help.  Note that a subsequently appointed team co-ordinator is not
-simply a "committer" with write access to the `www' repository; she has
+simply a "committer" with write access to the 'www' repository; she has
 full responsibilities just like a single leader, although the latter
 still remains the primary contact for the team.
 
    If you'd like another person to act as a co-leader and help you with
 the management tasks, send a message to <web-translators@gnu.org> with
 her name and Savannah account.  She has to be already a member of
-`www-LANG'.
+'www-LANG'.
 
    The procedure for co-leaders is a simplified version of the one for a
 new team or taking over an existing team.  *Note New Team::.
 
    To remove co-ordinators, please write to <web-translators@gnu.org>
 with details and rationale for the removal.  Do not edit
-`README.translations.html' yourself; this is a final formality step to
+'README.translations.html' yourself; this is a final formality step to
 be performed by the Translation Managers.
 
 3.3 Reporting Team Status
@@ -1010,8 +1005,8 @@ good report should include:
    The best time to send a report is near the end of the year, for
 example November.  In any case, please do not send it later than
 December 15th, as the Translation Manager has to prepare a general
-report to the FSF, and it is better if it takes into account the
-reports of the team leaders.
+report to the FSF, and it is better if it takes into account the reports
+of the team leaders.
 
    If there is no sensitive information in the report and you feel like
 sharing it, you can send it to <trans-coord-discuss@gnu.org> (which is
@@ -1037,7 +1032,7 @@ person you consider capable of doing the job as co-leader (*note
 Co-leaders::) and retire completely when she is absolutely ready to
 proceed without your further help and advice.
 
-4 `trans-coord' Admins
+4 'trans-coord' Admins
 **********************
 
 This chapter is not yet written.  The current admins know what to do,
@@ -1061,177 +1056,159 @@ webmastering processes.  Others are outright deficiencies (i.e.
 
 Migration to the new style should be straightforward, and this is one of
 the problems GNUN set out to solve.  If you have to migrate old-style
-translations, *note Migrating: (gnun)Migrating.  If the old translation
-is HTML 2.0 (or 3.2), you still have to take care about the inner
-markup.  Overall, it is substantially easier than doing all of it
-manually.
+translations, *note (gnun)Migrating::.  If the old translation is HTML
+2.0 (or 3.2), you still have to take care about the inner markup.
+Overall, it is substantially easier than doing all of it manually.
 
    Subsequent migrations to newer HTML standards and newer look and feel
 of the website are supposed to happen semi-automatically, although this
 manual will be updated as needed.
 
-5.2 Summary of SSI `#include's
+5.2 Summary of SSI '#include's
 ==============================
 
 The GNU Project's website uses SSI (Server Side Includes) to manage some
 common parts that are the same in many of the articles.  With the help
 of GNUN their handling should be behind the scenes, but for some of them
 manual intervention is needed.  Here is a (possibly incomplete) list of
-the `#include''s used:
+the '#include''s used:
 
-`server/banner.html'
-     This file contains only `#include' directives, so the
-     "translation" should be identical, with filenames modified to have
-     the LANG extension.
+'server/banner.html'
+     This file contains only '#include' directives, so the "translation"
+     should be identical, with filenames modified to have the LANG
+     extension.
 
-`server/body-include-1.html'
+'server/body-include-1.html'
      Contains the top menu with useful "skip to" links.
 
-`server/body-include-2.html'
+'server/body-include-2.html'
      This is the file containing the menus, the FSF widget, and any
      visible announcements made from time to time.  If a string gets
      "fuzzy" or "new" here, it will appear in English in all
-     translations, until `server/po/body-include-2.LANG.po' is updated.
+     translations, until 'server/po/body-include-2.LANG.po' is updated.
      Note that some validation errors originate from an error in
-     `server/body-include-2.LANG.html' or some other template file.
+     'server/body-include-2.LANG.html' or some other template file.
 
-`server/footer-text.html'
+'server/footer-text.html'
      This is a very short file currently containing the "back to top"
      link.  Also translatable via GNUN.
 
-`server/header.html'
+'server/header.html'
      The declaration that is included in literally every file.  It is
      maintained manually, as it does not make much sense to put it under
      GNUN's control (there are no translatable strings).  Remember to
-     specify the proper `xml:lang' and `lang' attributes, and for RTL
-     languages, the `dir' attribute.  For example, the file
-     `header.ar.html' should contain this line:
+     specify the proper 'xml:lang' and 'lang' attributes, and for RTL
+     languages, the 'dir' attribute.  For example, the file
+     'header.ar.html' should contain this line:
 
           <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" lang="ar"
                 dir="rtl">
 
-`server/head-include-1.html'
-     This file (included from `server/header.html') is very important:
+'server/head-include-1.html'
+     This file (included from 'server/header.html') is very important:
      the encoding is defined here.  Note that it is applicable for all
      translations, so it is not possible to have different articles in
      different encodings.  Even if a specific PO file is deliberately
      encoded in another encoding, the generated HTML will contain the
-     encoding declared in the `<meta>' element at
-     `server/head-include-1.LANG.html', so browsers will obey it.
+     encoding declared in the '<meta>' element at
+     'server/head-include-1.LANG.html', so browsers will obey it.
 
-     The encoding should be UTF-8.  This is required because the
-     English text in the articles serves as a replacement of the
-     translation when the latter is not complete, and because all
-     translated pages share automatically generated lists of
-     translations.
+     The encoding should be UTF-8.  This is required because the English
+     text in the articles serves as a replacement of the translation
+     when the latter is not complete, and because all translated pages
+     share automatically generated lists of translations.
 
-`server/html5-header.html'
+'server/html5-header.html'
      This file is included in newer pages using some entities introduced
      in HTML5 draft.  We have to distinguish those pages since some
      features of HTML4 were rejected in HTML5, and our old pages don't
      validate as HTML5.
 
-`server/html5-head-include-1.html'
+'server/html5-head-include-1.html'
      Likewise, this file replaces head-include-1.html for HTML5 pages.
 
-`server/head-include-2.html'
+'server/head-include-2.html'
      Imports the standard CSS, which can be overridden.  *Note CSS::.
 
-`server/footer.html'
+'server/footer.html'
      This is a very short and simple file (at least at the time of
-     writing), containing another `#include' directive.  It is
-     maintained manually, so just add LANG to the filename, in order
-     the localized `footer-text.LANG.html' to be included.
+     writing), containing another '#include' directive.  It is
+     maintained manually, so just add LANG to the filename, in order the
+     localized 'footer-text.LANG.html' to be included.
 
-`server/outdated.html'
+'server/outdated.html'
      This file is automatically included in outdated translations.  It
-     contains respective message with links to the English file and to
-     a generated difference of the current revision of the English file
+     contains respective message with links to the English file and to a
+     generated difference of the current revision of the English file
      against the most recent revision that has a complete translation.
      It is only included in articles affected by "grace period" because
      in those cases the outdated passages are replaced with English
      text, and it is evident without any notices that there is no
      complete and up to date translation.
 
-`translations.include'
+'server/skip-translations.html'
+     The text for a link to the end of the autogenerated list of
+     translations.
+
+'server/top-addendum.html'
+     The text saying that the page is a translation.
+
+'translations.include'
      The list of translations for the homepage (and only the homepage).
      It is maintained manually; in order the link to a translation to
      appear on all of the homepages, it has to be present here.
 
-`gnusflashes.include'
-     A portion of the most recent 3 news items from
-     `server/whatsnew.html', generated automatically.  If your language
-     does not have `server/po/whatsnew.LANG.po', this file will be
-     used.  Otherwise, if there is an existing localized homepage and
-     you commit `whatsnew.LANG.po', the homepage will be rebuilt to
-     include the translated `gnusflashes.LANG.include'.
-
-`server/whatsnew.include'
-     Generated automatically, this file is included from
-     `server/whatsnew.html'.  Translations are built automatically, and
-     the localized `gnusflashes.include' is derived from it.
-
-`licenses/gpl-3.0-body.html'
-`licenses/fdl-1.3-body.html'
-`...'
+'licenses/gpl-3.0-body.html'
+'licenses/fdl-1.3-body.html'
+'...'
      Some of the licenses have the text of the license itself separated
      in another file.  This serves two purposes: 1) to provide a
-     "standalone" HTML version of the license without the gnu.org
-     style; 2) to prevent strings sneaking in the `.pot' files, as
-     licenses have only unofficial translations, hosted elsewhere.
-     Nothing special should be done about these SSI directives; the
-     files generated by GNUN include them verbatim as they should not
-     be translated.
+     "standalone" HTML version of the license without the gnu.org style;
+     2) to prevent strings sneaking in the '.pot' files, as licenses
+     have only unofficial translations, hosted elsewhere.  Nothing
+     special should be done about these SSI directives; the files
+     generated by GNUN include them verbatim as they should not be
+     translated.
 
-`server/sidebar*.html'
+'server/sidebar*.html'
      These files are deprecated--they are remnants from an older design
-     that lived shortly in the middle between the old classic design
-     and the current one.  If all translations are successfully
-     migrated and none of them includes such files, you should delete
-     them.  You can use `grep' to check this.
+     that lived shortly in the middle between the old classic design and
+     the current one.  If all translations are successfully migrated and
+     none of them includes such files, you should delete them.  You can
+     use 'grep' to check this.
 
    The files
 
-   - `header.html'
+   - 'header.html'
+   - 'head-include-1.html'
+   - 'html5-header.html'
+   - 'html5-head-include-1.html'
+   - 'head-include-2.html'
+   - 'banner.html'
+   - 'body-include-1.html'
+   - 'body-include-2.html'
+   - 'footer.html'
+   - 'footer-text.html'
 
-   - `head-include-1.html'
-
-   - `html5-header.html'
-
-   - `html5-head-include-1.html'
-
-   - `head-include-2.html'
-
-   - `banner.html'
-
-   - `body-include-1.html'
-
-   - `body-include-2.html'
-
-   - `footer.html'
-
-   - `footer-text.html'
-
-   in the `server' sub-directory are what webmasters call "the server
+   in the 'server' sub-directory are what webmasters call "the server
 templates".  These files are included in almost every article,
 translated or not.  They are somewhat important, as an error made in
 translating them propagates everywhere.  The server templates, the
-homepages, and whatsnew (a.k.a. "GNU News") are being rebuilt by GNUN
-whenever there is a change in the original English files; the `GRACE'
-variable has no effect for them.  *Note Runtime Variables:
-(gnun)Runtime Variables.
+homepages, and whatsnew (a.k.a.  "GNU News") are being rebuilt by GNUN
+whenever there is a change in the original English files; the 'GRACE'
+variable has no effect for them.  *Note (gnun)Runtime Variables::.
 
 5.3 How To Use Custom CSS
 =========================
 
-The CSS file `layout.css' gets included (with three other CSS files) in
+The CSS file 'layout.css' gets included (with three other CSS files) in
 almost all the English articles through
-`server/head-include-2.LANG.html'.  However, sometimes this style isn't
+'server/head-include-2.LANG.html'.  However, sometimes this style isn't
 quite right for translations--many languages have much longer
 expressions, and that is natural.  To include your own CSS, create a
-file `style.LANG.css' and add it _after_ the directive to include
-`server/head-include-2.LANG.html' and _before_ the closing `</head>'
-tag in `server/banner.LANG.html', i.e.
+file 'style.LANG.css' and add it _after_ the directive to include
+'server/head-include-2.LANG.html' and _before_ the closing '</head>' tag
+in 'server/banner.LANG.html', i.e.
 
      <!-- start of banner.bg.html -->
      <!--#include virtual="/server/head-include-2.bg.html" -->
@@ -1240,7 +1217,7 @@ tag in `server/banner.LANG.html', i.e.
 
    Override only what is necessary and looks broken in your language; do
 not invent your own style.  This is important for the consistency of the
-gnu.org website.  A typical language-specific `style.LANG.css' file
+gnu.org website.  A typical language-specific 'style.LANG.css' file
 looks like this:
 
      .inner { max-width: 65em; }
@@ -1249,14 +1226,13 @@ looks like this:
      #fssbox {font-size: 50%;}
 
    This widens the menu and the area where the articles are displayed
-(because the menu entries are _much_ longer than the English
-equivalents when translated), includes a localized logo, and makes the
-font size for the FSF widget twice smaller (because in this language,
-the translations are almost twice longer and displayed truncated, which
-is undesirable).
+(because the menu entries are _much_ longer than the English equivalents
+when translated), includes a localized logo, and makes the font size for
+the FSF widget twice smaller (because in this language, the translations
+are almost twice longer and displayed truncated, which is undesirable).
 
-   When creating your own `style.LANG.css', don't forget to include the
-license notice from the `layout.css', with a short comment.
+   When creating your own 'style.LANG.css', don't forget to include the
+license notice from the 'layout.css', with a short comment.
 
    If using the default CSS style for translations does not give the
 expected good results, or there are other problems (significant or not)
@@ -1266,28 +1242,28 @@ issue.  If there are several unrelated problems, send separate messages
 with appropriate explanation (which may include a demonstration of the
 bug, such as a screenshot).
 
-5.3.1 Localizing The `topbanner' Image
+5.3.1 Localizing The 'topbanner' Image
 --------------------------------------
 
-If you'd like the nice gnu image to be localized (i.e. "GNU Operating
+If you'd like the nice gnu image to be localized (i.e.  "GNU Operating
 System" to appear in your native language, here are the steps:
 
-  1. Copy `graphics/topbanner.svg' as `graphics/topbanner.LANG.svg'
+  1. Copy 'graphics/topbanner.svg' as 'graphics/topbanner.LANG.svg'
      where LANG is the language code, as usual.  Edit the file with
-     Inkscape or with a plain text editor such as GNU Emacs,
-     translating "GNU Operating System".  Then with Inkscape, save the
-     file as `graphics/topbanner.LANG.png' (File -> Export Bitmap...).
-     Then open the PNG image with the GIMP and flatten it (Image ->
-     Flatten Image).  Don't forget to save and `cvs add' the files(1).
+     Inkscape or with a plain text editor such as GNU Emacs, translating
+     "GNU Operating System".  Then with Inkscape, save the file as
+     'graphics/topbanner.LANG.png' (File -> Export Bitmap...).  Then
+     open the PNG image with the GIMP and flatten it (Image -> Flatten
+     Image).  Don't forget to save and 'cvs add' the files(1).
 
-  2. Create a `style.LANG.css' at the toplevel directory, if it doesn't
+  2. Create a 'style.LANG.css' at the toplevel directory, if it doesn't
      exist already.  Normally, you would need only one line in it,
      namely:
 
           #logo{background:url(/graphics/topbanner.LANG.png) no-repeat;}
 
-  3. If not done already for other reasons, update `banner.LANG.html'
-     to include the language specific `style.LANG.css'.  *Note CSS::.
+  3. If not done already for other reasons, update 'banner.LANG.html' to
+     include the language specific 'style.LANG.css'.  *Note CSS::.
 
    If you feel uncomfortable manipulating images--don't despair!  Send a
 plea for help to <trans-coord-discuss@gnu.org>, some people would be
@@ -1300,47 +1276,51 @@ happy to help you.  Failing that, write to <www-discuss@gnu.org>.
 5.3.2 Specific Issues Related to RTL
 ------------------------------------
 
-Unfortunately, the `http://gnu.org' website does not have excellent
+Unfortunately, the <http://gnu.org> website does not have excellent
 support for RTL (right-to-left) languages, although best efforts are
 made.  If your language is in this category, make sure to:
 
-   * Set the attribute `dir="rtl"' in the `html' element at
-     `server/header.LANG.html'.
+   * Set the attribute 'dir="rtl"' in the 'html' element at
+     'server/header.LANG.html'.
 
    * You _must_ have a custom CSS to override some of the pre-defined
-     values.  See `style.ar.css' and `style.fa.css' to understand how
+     values.  See 'style.ar.css' and 'style.fa.css' to understand how
      these two languages solve some of the problems.  *Note CSS::.
 
-   *Important:* Some articles contain their own `<style>'
-redefinitions, or style attributes in the form `<p style="...">'.  In
-such situations, it is quite possible that the general
-language-specific CSS does not help, and the translation of this
-specific article does not look correct.  Please write to
-<webmasters@gnu.org>; if you have a working solution that works for
-both cases--so much the better.  For general issues that affect your
-language and require a general solution, write to <webmasters@gnu.org>
-as well, precisely describing the problem.
+   *Important:* Some articles contain their own '<style>' redefinitions,
+or style attributes in the form '<p style="...">'.  In such situations,
+it is quite possible that the general language-specific CSS does not
+help, and the translation of this specific article does not look
+correct.  Please write to <webmasters@gnu.org>; if you have a working
+solution that works for both cases--so much the better.  For general
+issues that affect your language and require a general solution, write
+to <webmasters@gnu.org> as well, precisely describing the problem.
 
 5.4 What To Translate
 =====================
 
 The article
-`http://www.gnu.org/server/standards/translations/priorities.html'
-lists the most important essays to translate.  In general, articles in
-the directories `philosophy', `gnu', `education', `distros', `copyleft'
-and `licenses' are important.  The others may be deferred for a time
-when a team completes most of the important translations, or they can
-be translated as a "rest"-in translators' parlance this means doing
+<http://www.gnu.org/server/standards/translations/priorities.html> lists
+the most important essays to translate.  In general, articles in the
+directories 'philosophy', 'gnu', 'education', 'distros', 'copyleft' and
+'licenses' are important.  The others may be deferred for a time when a
+team completes most of the important translations, or they can be
+translated as a "rest"--in translators' parlance this means doing
 something in between which is typically easier to handle.
 
    It is very important to keep existing translations up-to-date with
 the respective English originals.  This task should be higher priority
-than translating new articles.  GNUN's `report' rule can help you to
-identify precisely which articles need updating; *note report:
-(gnun)report.  There is a monthly cronjob which sends a verbose output
-to each team--by default, the address(es) used is the Savannah
-account(s) of the admin(s) of the specific translation project.  If you
-want them changed, please write to <web-translators@gnu.org>.
+than translating new articles.  GNUN's 'report' rule can help you to
+identify precisely which articles need updating; *note (gnun)report::.
+There is a monthly cronjob which sends a verbose output to each team--by
+default, the address(es) used is the Savannah account(s) of the admin(s)
+of the specific translation project.  If you want them changed, please
+write to <web-translators@gnu.org>.
+
+   GNUN also maintains reports about current status of translations of
+all active teams in <http://www.gnu.org/software/gnun/reports/>.  If the
+page for your team is missing there, please ask
+<web-translators@gnu.org> to add it to the cron job.
 
    It is strongly recommended translation teams to attempt to recruit
 native English speakers in order to improve their translation process.
@@ -1351,24 +1331,24 @@ native English speaker.
 
    _Do not_ translate articles under these directories:
 
-`software/PKG/'
-     These pages are maintained by the respective PKG maintainers.
-     GNUN does not support them for the time being, as they reside in
+'software/PKG/'
+     These pages are maintained by the respective PKG maintainers.  GNUN
+     does not support them for the time being, as they reside in
      separate repositories.  The procedures for contributing
      translations of such articles are not yet settled.
 
-`brave-gnu-world'
+'brave-gnu-world'
      The Brave GNU World initiative has been abandoned long time ago,
      and it's in a separate repository--thus not supported by the
      automatic GNUN build job.
 
-`home.html'
+'home.html'
      There is no problem to translate this page, but don't make the
      mistake to pick it up as your first translation.  It is modified
      often, sometimes intensively, and only active team members should
      take that road.
 
-`server/whatsnew.html'
+'server/whatsnew.html'
      This is "What's New", also known as "GNU's Flashes", also known as
      "GNU News".  It is deprecated since quite some time and translating
      it is discouraged.
@@ -1383,19 +1363,18 @@ consistently.  They do not make sense for many other languages, but
 unfortunately, many translators _erroneously duplicate_ the
 capitalization in their translation.
 
-   Examples for common (and correct) English capitalization is the
-title of the article "Why Software Should Be Free" or "Free Software
-Foundation" (FSF).  However, in languages that do not have such grammar
+   Examples for common (and correct) English capitalization is the title
+of the article "Why Software Should Be Free" or "Free Software
+Foundation" (FSF). However, in languages that do not have such grammar
 rules it is wrong to write "Dlaczego Oprogramowanie Powinno Byc' Wolne"
 (Polish) or "Fondation Pour Le Logiciel Libre" (French).
 
    Another prominent and widely spread mistake is to write your own
-language with a capital letter in the `translations-list' when
-languages are written beginning with a small letter according to your
-own rules.  In other words, it is right to write `English' or `Deutsch'
-(because in English and German languages are capitalized), but not
-`Franc,ais' or `Portugue^s'--write them as `franc,ais' or `portugue^s',
-respectively.
+language with a capital letter in the 'translations-list' when languages
+are written beginning with a small letter according to your own rules.
+In other words, it is right to write 'English' or 'Deutsch' (because in
+English and German languages are capitalized), but not 'Franc,ais' or
+'Portugue^s'--write them as 'franc,ais' or 'portugue^s', respectively.
 
 5.6 Distribution Terms
 ======================
@@ -1410,20 +1389,19 @@ for English pages to use is:
 
    Pages in other languages should translate this notice, and should
 link to a translated version of the Creative Commons license "deed" if
-it's available.  Creative Commons provides standard text for this in
-all the languages they support, and we should use that wording whenever
+it's available.  Creative Commons provides standard text for this in all
+the languages they support, and we should use that wording whenever
 possible.  To do that, follow these steps:
 
    * Check at the bottom of the English deed page to see the list of
-     languages they support.  Follow the link the language that you
-     want a translation for, if available.
+     languages they support.  Follow the link the language that you want
+     a translation for, if available.
 
    * Follow the "Use this license for your own work" link near the
      bottom of the translated deed page--it's in distinct yellow text.
 
-   * The textarea on that page provides standard HTML.  Note that we're
+   * The textarea on that page provides standard HTML. Note that we're
      not using the graphic, just the text.
-
 
    For example, here's the text they provide for Dutch:
 
@@ -1442,7 +1420,7 @@ language, and link to the English language deed.  Also, please write
 your own translation when the translation provided by CC is not
 satisfactory for some reasons--for instance, as of May, 2012, their
 German translation uses "Content", which is a word to use with caution
-(see `http://www.gnu.org/philosophy/words-to-avoid.en.html#Content').
+(see <http://www.gnu.org/philosophy/words-to-avoid.en.html#Content>).
 
    Note that translations should _not_ change the jurisdiction of the
 license; they should _always_ link to the CC BY-ND 3.0 _United States_
@@ -1471,8 +1449,8 @@ translation process, and as a consequence, the documentation.  Every
 participant in the process should be free to suggest modifications to
 the current procedures and suggestions how to improve the current state
 of affairs.  Ideally, they should be accompanied with patches to the
-Texinfo source, but that's not mandatory.  In any event, please write
-to <trans-coord-discuss@gnu.org>--the goal of this list is precisely to
+Texinfo source, but that's not mandatory.  In any event, please write to
+<trans-coord-discuss@gnu.org>--the goal of this list is precisely to
 discuss improvements of the translation process.
 
 6.1 Related Mailing Lists
@@ -1482,62 +1460,48 @@ Here is a short summary of the mailing lists relevant to the translation
 process, and a brief description about how they relate to the various
 participants in the process.
 
-<www-discuss@gnu.org>
      The basic discussion list of the GNU Webmasters.  All team leaders
      are required to subscribe.
 
      This is a private mailing list.
 
-<www-commits@gnu.org>
-     Commits to the `www' repository are sent here.  All Translation
+     Commits to the 'www' repository are sent here.  All Translation
      Managers are required to subscribe.  It is strongly recommended
      that team leaders subscribe--in any case they should, and mail
      delivery can be disabled personally.
 
-     This is a public mailing list, so everyone can subscribe and
-     review the archives.  The `www' CVS repository is also public.
+     This is a public mailing list, so everyone can subscribe and review
+     the archives.  The 'www' CVS repository is also public.
 
-<trans-coord-discuss@gnu.org>
-     The main discussion list for the GNU Web Translators.  Team
-     leaders must subscribe, as errors from GNUN are mailed here.
-     Active team members are highly recommended to join as well,
-     because the changes in general policies for translations are also
-     announced and discussed here.
+     The main discussion list for the GNU Web Translators.  Team leaders
+     must subscribe, as errors from GNUN are mailed here.  Active team
+     members are highly recommended to join as well, because the changes
+     in general policies for translations are also announced and
+     discussed here.
 
      This is a private mailing list.
 
-<trans-coord-news@gnu.org>
      This is a list for notifications about gnunews and GNUnited Nations
      releases.  It is not mandatory to subscribe to it, although the
      traffic is very low.  If you want to track only GNUN release
-     announcements, subscribe to the `gnun' topic via Mailman's user
+     announcements, subscribe to the 'gnun' topic via Mailman's user
      interface.  Likewise, if you want to receive only "What's New"
-     updates, subscribe to the `whatsnew' topic.
+     updates, subscribe to the 'whatsnew' topic.
 
      Automatic announcements for new gnu.org translations (provided
      they're handled by GNUN) are also delivered here.  There are
-     separate `LANG-ann' topics for every GNUN-aware language, so it is
+     separate 'LANG-ann' topics for every GNUN-aware language, so it is
      a good idea to advertise this capability widely among your local
      community.  For example, if a reader wants to be informed only
      about new Spanish translations, she can just subscribe to the
-     `es-ann' mailing list topic.
+     'es-ann' mailing list topic.
 
      This is a public mailing list.
 
-<trans-coord-devel@gnu.org>
-     All development of GNUN happens here.  Commits to the `trans-coord'
+     All development of GNUN happens here.  Commits to the 'trans-coord'
      repository are also sent to this list.
 
      This is a public list, and <bug-gnun@gnu.org> is an alias.
-
-<trans-coord-logs@gnu.org>
-     All build logs from the various GNUN automatic builds are sent to
-     this list, so it is not a very pleasant thing to be subscribed,
-     especially if you are not interested in GNUN's internals.
-     However, everyone can use the web archives to check the log why a
-     particular article was not built at expected.
-
-     This is a public list.
 
 6.2 Savannah Projects Membership
 ================================
@@ -1545,31 +1509,31 @@ participants in the process.
 Participants in the www.gnu.org translations process normally have to be
 members of the following Savannah projects, depending on the case:
 
-`www'
-     The main project which hosts the `gnu.org' Web repository.
+'www'
+     The main project which hosts the 'gnu.org' Web repository.
      Administrators are the Chief Webmaster, entrusted webmasters and
      the Translation Manager (in order to approve leader's
-     applications).  All team leaders (and co-leaders) should be
-     members of this project.
+     applications).  All team leaders (and co-leaders) should be members
+     of this project.
 
      Note that this project has no direct relationship with translators,
-     although anything happening in `www' directly affects them.  The
-     `www' project is managed separately and has a different (entirely
+     although anything happening in 'www' directly affects them.  The
+     'www' project is managed separately and has a different (entirely
      unrelated) process for approving contributors.
 
-`trans-coord'
-     An organizational project especially created for coordination and
+'trans-coord'
+     An organizational project especially created for co-ordination and
      improvement of the translation process.  All team leaders are
      required to be members, as bugs reported to
-     <web-translators@gnu.org> are often redirected to the
-     `trans-coord' `Bugs' tracker.
+     <web-translators@gnu.org> are often redirected to the 'trans-coord'
+     'Bugs' tracker.
 
      The admins of this project are the GNU Web Translation Managers.
 
-`www-LANG'
-     All translation team leaders of the language LANG should be
-     members of the project `www-LANG'.  The admins of the project are
-     the team leader and the co-leaders, if any.
+'www-LANG'
+     All translation team leaders of the language LANG should be members
+     of the project 'www-LANG'.  The admins of the project are the team
+     leader and the co-leaders, if any.
 
 Appendix A GNU Free Documentation License
 *****************************************
@@ -1577,7 +1541,7 @@ Appendix A GNU Free Documentation License
                      Version 1.3, 3 November 2008
 
      Copyright (C) 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
-     `http://fsf.org/'
+     <http://fsf.org/>
 
      Everyone is permitted to copy and distribute verbatim copies
      of this license document, but changing it is not allowed.
@@ -1602,21 +1566,21 @@ Appendix A GNU Free Documentation License
      free program should come with manuals providing the same freedoms
      that the software does.  But this License is not limited to
      software manuals; it can be used for any textual work, regardless
-     of subject matter or whether it is published as a printed book.
-     We recommend this License principally for works whose purpose is
+     of subject matter or whether it is published as a printed book.  We
+     recommend this License principally for works whose purpose is
      instruction or reference.
 
   1. APPLICABILITY AND DEFINITIONS
 
      This License applies to any manual or other work, in any medium,
-     that contains a notice placed by the copyright holder saying it
-     can be distributed under the terms of this License.  Such a notice
+     that contains a notice placed by the copyright holder saying it can
+     be distributed under the terms of this License.  Such a notice
      grants a world-wide, royalty-free license, unlimited in duration,
      to use that work under the conditions stated herein.  The
      "Document", below, refers to any such manual or work.  Any member
-     of the public is a licensee, and is addressed as "you".  You
-     accept the license if you copy, modify or distribute the work in a
-     way requiring permission under copyright law.
+     of the public is a licensee, and is addressed as "you".  You accept
+     the license if you copy, modify or distribute the work in a way
+     requiring permission under copyright law.
 
      A "Modified Version" of the Document means any work containing the
      Document or a portion of it, either copied verbatim, or with
@@ -1634,12 +1598,12 @@ Appendix A GNU Free Documentation License
      regarding them.
 
      The "Invariant Sections" are certain Secondary Sections whose
-     titles are designated, as being those of Invariant Sections, in
-     the notice that says that the Document is released under this
-     License.  If a section does not fit the above definition of
-     Secondary then it is not allowed to be designated as Invariant.
-     The Document may contain zero Invariant Sections.  If the Document
-     does not identify any Invariant Sections then there are none.
+     titles are designated, as being those of Invariant Sections, in the
+     notice that says that the Document is released under this License.
+     If a section does not fit the above definition of Secondary then it
+     is not allowed to be designated as Invariant.  The Document may
+     contain zero Invariant Sections.  If the Document does not identify
+     any Invariant Sections then there are none.
 
      The "Cover Texts" are certain short passages of text that are
      listed, as Front-Cover Texts or Back-Cover Texts, in the notice
@@ -1650,27 +1614,27 @@ Appendix A GNU Free Documentation License
      A "Transparent" copy of the Document means a machine-readable copy,
      represented in a format whose specification is available to the
      general public, that is suitable for revising the document
-     straightforwardly with generic text editors or (for images
-     composed of pixels) generic paint programs or (for drawings) some
-     widely available drawing editor, and that is suitable for input to
-     text formatters or for automatic translation to a variety of
-     formats suitable for input to text formatters.  A copy made in an
-     otherwise Transparent file format whose markup, or absence of
-     markup, has been arranged to thwart or discourage subsequent
-     modification by readers is not Transparent.  An image format is
-     not Transparent if used for any substantial amount of text.  A
-     copy that is not "Transparent" is called "Opaque".
+     straightforwardly with generic text editors or (for images composed
+     of pixels) generic paint programs or (for drawings) some widely
+     available drawing editor, and that is suitable for input to text
+     formatters or for automatic translation to a variety of formats
+     suitable for input to text formatters.  A copy made in an otherwise
+     Transparent file format whose markup, or absence of markup, has
+     been arranged to thwart or discourage subsequent modification by
+     readers is not Transparent.  An image format is not Transparent if
+     used for any substantial amount of text.  A copy that is not
+     "Transparent" is called "Opaque".
 
      Examples of suitable formats for Transparent copies include plain
      ASCII without markup, Texinfo input format, LaTeX input format,
-     SGML or XML using a publicly available DTD, and
-     standard-conforming simple HTML, PostScript or PDF designed for
-     human modification.  Examples of transparent image formats include
-     PNG, XCF and JPG.  Opaque formats include proprietary formats that
-     can be read and edited only by proprietary word processors, SGML or
-     XML for which the DTD and/or processing tools are not generally
-     available, and the machine-generated HTML, PostScript or PDF
-     produced by some word processors for output purposes only.
+     SGML or XML using a publicly available DTD, and standard-conforming
+     simple HTML, PostScript or PDF designed for human modification.
+     Examples of transparent image formats include PNG, XCF and JPG.
+     Opaque formats include proprietary formats that can be read and
+     edited only by proprietary word processors, SGML or XML for which
+     the DTD and/or processing tools are not generally available, and
+     the machine-generated HTML, PostScript or PDF produced by some word
+     processors for output purposes only.
 
      The "Title Page" means, for a printed book, the title page itself,
      plus such following pages as are needed to hold, legibly, the
@@ -1708,8 +1672,8 @@ Appendix A GNU Free Documentation License
      may not use technical measures to obstruct or control the reading
      or further copying of the copies you make or distribute.  However,
      you may accept compensation in exchange for copies.  If you
-     distribute a large enough number of copies you must also follow
-     the conditions in section 3.
+     distribute a large enough number of copies you must also follow the
+     conditions in section 3.
 
      You may also lend copies, under the same conditions stated above,
      and you may publicly display copies.
@@ -1723,12 +1687,11 @@ Appendix A GNU Free Documentation License
      these Cover Texts: Front-Cover Texts on the front cover, and
      Back-Cover Texts on the back cover.  Both covers must also clearly
      and legibly identify you as the publisher of these copies.  The
-     front cover must present the full title with all words of the
-     title equally prominent and visible.  You may add other material
-     on the covers in addition.  Copying with changes limited to the
-     covers, as long as they preserve the title of the Document and
-     satisfy these conditions, can be treated as verbatim copying in
-     other respects.
+     front cover must present the full title with all words of the title
+     equally prominent and visible.  You may add other material on the
+     covers in addition.  Copying with changes limited to the covers, as
+     long as they preserve the title of the Document and satisfy these
+     conditions, can be treated as verbatim copying in other respects.
 
      If the required texts for either cover are too voluminous to fit
      legibly, you should put the first ones listed (as many as fit
@@ -1736,40 +1699,39 @@ Appendix A GNU Free Documentation License
      adjacent pages.
 
      If you publish or distribute Opaque copies of the Document
-     numbering more than 100, you must either include a
-     machine-readable Transparent copy along with each Opaque copy, or
-     state in or with each Opaque copy a computer-network location from
-     which the general network-using public has access to download
-     using public-standard network protocols a complete Transparent
-     copy of the Document, free of added material.  If you use the
-     latter option, you must take reasonably prudent steps, when you
-     begin distribution of Opaque copies in quantity, to ensure that
-     this Transparent copy will remain thus accessible at the stated
-     location until at least one year after the last time you
-     distribute an Opaque copy (directly or through your agents or
-     retailers) of that edition to the public.
+     numbering more than 100, you must either include a machine-readable
+     Transparent copy along with each Opaque copy, or state in or with
+     each Opaque copy a computer-network location from which the general
+     network-using public has access to download using public-standard
+     network protocols a complete Transparent copy of the Document, free
+     of added material.  If you use the latter option, you must take
+     reasonably prudent steps, when you begin distribution of Opaque
+     copies in quantity, to ensure that this Transparent copy will
+     remain thus accessible at the stated location until at least one
+     year after the last time you distribute an Opaque copy (directly or
+     through your agents or retailers) of that edition to the public.
 
      It is requested, but not required, that you contact the authors of
-     the Document well before redistributing any large number of
-     copies, to give them a chance to provide you with an updated
-     version of the Document.
+     the Document well before redistributing any large number of copies,
+     to give them a chance to provide you with an updated version of the
+     Document.
 
   4. MODIFICATIONS
 
      You may copy and distribute a Modified Version of the Document
      under the conditions of sections 2 and 3 above, provided that you
-     release the Modified Version under precisely this License, with
-     the Modified Version filling the role of the Document, thus
-     licensing distribution and modification of the Modified Version to
-     whoever possesses a copy of it.  In addition, you must do these
-     things in the Modified Version:
+     release the Modified Version under precisely this License, with the
+     Modified Version filling the role of the Document, thus licensing
+     distribution and modification of the Modified Version to whoever
+     possesses a copy of it.  In addition, you must do these things in
+     the Modified Version:
 
        A. Use in the Title Page (and on the covers, if any) a title
-          distinct from that of the Document, and from those of
-          previous versions (which should, if there were any, be listed
-          in the History section of the Document).  You may use the
-          same title as a previous version if the original publisher of
-          that version gives permission.
+          distinct from that of the Document, and from those of previous
+          versions (which should, if there were any, be listed in the
+          History section of the Document).  You may use the same title
+          as a previous version if the original publisher of that
+          version gives permission.
 
        B. List on the Title Page, as authors, one or more persons or
           entities responsible for authorship of the modifications in
@@ -1799,31 +1761,30 @@ Appendix A GNU Free Documentation License
 
        I. Preserve the section Entitled "History", Preserve its Title,
           and add to it an item stating at least the title, year, new
-          authors, and publisher of the Modified Version as given on
-          the Title Page.  If there is no section Entitled "History" in
-          the Document, create one stating the title, year, authors,
-          and publisher of the Document as given on its Title Page,
-          then add an item describing the Modified Version as stated in
-          the previous sentence.
+          authors, and publisher of the Modified Version as given on the
+          Title Page.  If there is no section Entitled "History" in the
+          Document, create one stating the title, year, authors, and
+          publisher of the Document as given on its Title Page, then add
+          an item describing the Modified Version as stated in the
+          previous sentence.
 
        J. Preserve the network location, if any, given in the Document
           for public access to a Transparent copy of the Document, and
           likewise the network locations given in the Document for
-          previous versions it was based on.  These may be placed in
-          the "History" section.  You may omit a network location for a
-          work that was published at least four years before the
-          Document itself, or if the original publisher of the version
-          it refers to gives permission.
+          previous versions it was based on.  These may be placed in the
+          "History" section.  You may omit a network location for a work
+          that was published at least four years before the Document
+          itself, or if the original publisher of the version it refers
+          to gives permission.
 
        K. For any section Entitled "Acknowledgements" or "Dedications",
-          Preserve the Title of the section, and preserve in the
-          section all the substance and tone of each of the contributor
+          Preserve the Title of the section, and preserve in the section
+          all the substance and tone of each of the contributor
           acknowledgements and/or dedications given therein.
 
-       L. Preserve all the Invariant Sections of the Document,
-          unaltered in their text and in their titles.  Section numbers
-          or the equivalent are not considered part of the section
-          titles.
+       L. Preserve all the Invariant Sections of the Document, unaltered
+          in their text and in their titles.  Section numbers or the
+          equivalent are not considered part of the section titles.
 
        M. Delete any section Entitled "Endorsements".  Such a section
           may not be included in the Modified Version.
@@ -1836,11 +1797,11 @@ Appendix A GNU Free Documentation License
 
      If the Modified Version includes new front-matter sections or
      appendices that qualify as Secondary Sections and contain no
-     material copied from the Document, you may at your option
-     designate some or all of these sections as invariant.  To do this,
-     add their titles to the list of Invariant Sections in the Modified
-     Version's license notice.  These titles must be distinct from any
-     other section titles.
+     material copied from the Document, you may at your option designate
+     some or all of these sections as invariant.  To do this, add their
+     titles to the list of Invariant Sections in the Modified Version's
+     license notice.  These titles must be distinct from any other
+     section titles.
 
      You may add a section Entitled "Endorsements", provided it contains
      nothing but endorsements of your Modified Version by various
@@ -1849,15 +1810,15 @@ Appendix A GNU Free Documentation License
      definition of a standard.
 
      You may add a passage of up to five words as a Front-Cover Text,
-     and a passage of up to 25 words as a Back-Cover Text, to the end
-     of the list of Cover Texts in the Modified Version.  Only one
-     passage of Front-Cover Text and one of Back-Cover Text may be
-     added by (or through arrangements made by) any one entity.  If the
-     Document already includes a cover text for the same cover,
-     previously added by you or by arrangement made by the same entity
-     you are acting on behalf of, you may not add another; but you may
-     replace the old one, on explicit permission from the previous
-     publisher that added the old one.
+     and a passage of up to 25 words as a Back-Cover Text, to the end of
+     the list of Cover Texts in the Modified Version.  Only one passage
+     of Front-Cover Text and one of Back-Cover Text may be added by (or
+     through arrangements made by) any one entity.  If the Document
+     already includes a cover text for the same cover, previously added
+     by you or by arrangement made by the same entity you are acting on
+     behalf of, you may not add another; but you may replace the old
+     one, on explicit permission from the previous publisher that added
+     the old one.
 
      The author(s) and publisher(s) of the Document do not by this
      License give permission to use their names for publicity for or to
@@ -1867,8 +1828,8 @@ Appendix A GNU Free Documentation License
 
      You may combine the Document with other documents released under
      this License, under the terms defined in section 4 above for
-     modified versions, provided that you include in the combination
-     all of the Invariant Sections of all of the original documents,
+     modified versions, provided that you include in the combination all
+     of the Invariant Sections of all of the original documents,
      unmodified, and list them all as Invariant Sections of your
      combined work in its license notice, and that you preserve all
      their Warranty Disclaimers.
@@ -1895,20 +1856,20 @@ Appendix A GNU Free Documentation License
      documents released under this License, and replace the individual
      copies of this License in the various documents with a single copy
      that is included in the collection, provided that you follow the
-     rules of this License for verbatim copying of each of the
-     documents in all other respects.
+     rules of this License for verbatim copying of each of the documents
+     in all other respects.
 
      You may extract a single document from such a collection, and
      distribute it individually under this License, provided you insert
-     a copy of this License into the extracted document, and follow
-     this License in all other respects regarding verbatim copying of
-     that document.
+     a copy of this License into the extracted document, and follow this
+     License in all other respects regarding verbatim copying of that
+     document.
 
   7. AGGREGATION WITH INDEPENDENT WORKS
 
      A compilation of the Document or its derivatives with other
-     separate and independent documents or works, in or on a volume of
-     a storage or distribution medium, is called an "aggregate" if the
+     separate and independent documents or works, in or on a volume of a
+     storage or distribution medium, is called an "aggregate" if the
      copyright resulting from the compilation is not used to limit the
      legal rights of the compilation's users beyond what the individual
      works permit.  When the Document is included in an aggregate, this
@@ -1953,8 +1914,8 @@ Appendix A GNU Free Documentation License
 
      However, if you cease all violation of this License, then your
      license from a particular copyright holder is reinstated (a)
-     provisionally, unless and until the copyright holder explicitly
-     and finally terminates your license, and (b) permanently, if the
+     provisionally, unless and until the copyright holder explicitly and
+     finally terminates your license, and (b) permanently, if the
      copyright holder fails to notify you of the violation by some
      reasonable means prior to 60 days after the cessation.
 
@@ -1966,33 +1927,33 @@ Appendix A GNU Free Documentation License
      after your receipt of the notice.
 
      Termination of your rights under this section does not terminate
-     the licenses of parties who have received copies or rights from
-     you under this License.  If your rights have been terminated and
-     not permanently reinstated, receipt of a copy of some or all of
-     the same material does not give you any rights to use it.
+     the licenses of parties who have received copies or rights from you
+     under this License.  If your rights have been terminated and not
+     permanently reinstated, receipt of a copy of some or all of the
+     same material does not give you any rights to use it.
 
- 10. FUTURE REVISIONS OF THIS LICENSE
+  10. FUTURE REVISIONS OF THIS LICENSE
 
      The Free Software Foundation may publish new, revised versions of
      the GNU Free Documentation License from time to time.  Such new
      versions will be similar in spirit to the present version, but may
      differ in detail to address new problems or concerns.  See
-     `http://www.gnu.org/copyleft/'.
+     <http://www.gnu.org/copyleft/>.
 
      Each version of the License is given a distinguishing version
      number.  If the Document specifies that a particular numbered
      version of this License "or any later version" applies to it, you
      have the option of following the terms and conditions either of
      that specified version or of any later version that has been
-     published (not as a draft) by the Free Software Foundation.  If
-     the Document does not specify a version number of this License,
-     you may choose any version ever published (not as a draft) by the
-     Free Software Foundation.  If the Document specifies that a proxy
-     can decide which future versions of this License can be used, that
+     published (not as a draft) by the Free Software Foundation.  If the
+     Document does not specify a version number of this License, you may
+     choose any version ever published (not as a draft) by the Free
+     Software Foundation.  If the Document specifies that a proxy can
+     decide which future versions of this License can be used, that
      proxy's public statement of acceptance of a version permanently
      authorizes you to choose that version for the Document.
 
- 11. RELICENSING
+  11. RELICENSING
 
      "Massive Multiauthor Collaboration Site" (or "MMC Site") means any
      World Wide Web server that publishes copyrightable works and also
@@ -2022,7 +1983,6 @@ Appendix A GNU Free Documentation License
      site under CC-BY-SA on the same site at any time before August 1,
      2009, provided the MMC is eligible for relicensing.
 
-
 ADDENDUM: How to use this License for your documents
 ====================================================
 
@@ -2039,7 +1999,7 @@ notices just after the title page:
        Free Documentation License''.
 
    If you have Invariant Sections, Front-Cover Texts and Back-Cover
-Texts, replace the "with...Texts." line with this:
+Texts, replace the "with...Texts."  line with this:
 
          with the Invariant Sections being LIST THEIR TITLES, with
          the Front-Cover Texts being LIST, and with the Back-Cover Texts
@@ -2050,7 +2010,7 @@ combination of the three, merge those two alternatives to suit the
 situation.
 
    If your document contains nontrivial examples of program code, we
-recommend releasing these examples in parallel under your choice of
-free software license, such as the GNU General Public License, to
-permit their use in free software.
+recommend releasing these examples in parallel under your choice of free
+software license, such as the GNU General Public License, to permit
+their use in free software.
 
