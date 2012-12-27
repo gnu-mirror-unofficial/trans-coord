@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 3 December 2012) is for GNUnited Nations (version
+This manual (updated 27 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -15,7 +15,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNUnited Nations: Concepts</title>
 
@@ -70,8 +70,8 @@ ul.no-bullet {list-style: none}
 Next: <a href="Advantages.html#Advantages" accesskey="n" rel="next">Advantages</a>, Previous: <a href="Overview.html#Overview" accesskey="p" rel="previous">Overview</a>, Up: <a href="Introduction.html#Introduction" accesskey="u" rel="up">Introduction</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="What-GNUnited-Nations-is-and-Should-be"></a>
-<h3 class="section">1.2 What GNUnited Nations is and Should be</h3>
+<a name="What-GNUnited-Nations-Is-and-Should-Be"></a>
+<h3 class="section">1.2 What GNUnited Nations Is and Should Be</h3>
 
 <p>The basic concept behind GNUN is that localization of HTML articles is
 similar to localization of computer programs<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>.  In articles, like in programs, not every string is considered
@@ -127,8 +127,8 @@ marks this as a Template PO file, not yet oriented towards any
 particular language.
 </p>
 <p>The first time though, there is no <samp><var>article</var>.<var>lang</var>.po</samp>
-yet, so a translator must manually copy <samp><var>article</var>.pot</samp> to
-<samp><var>article</var>.<var>lang</var>.po</samp>, where <var>lang</var> represents the
+yet, so a translator must make <samp><var>article</var>.<var>lang</var>.po</samp> from
+<samp><var>article</var>.pot</samp>, where <var>lang</var> represents the
 target language.  See <a href="New-Translation.html#New-Translation">New Translation</a>, for details.
 </p>
 <p>Then comes the initial translation of messages in
@@ -158,7 +158,7 @@ dynamic in nature, like ones containing news entries or a list of other
 articles.  If the original article changes, GNUN will automatically
 rebuild <samp><var>article</var>.pot</samp>, and will merge the changes to
 <samp><var>article</var>.<var>lang</var>.po</samp>.  Any outdated translations will be
-marked as fuzzy, any new strings will be added with empty translations,
+marked as &ldquo;fuzzy,&rdquo; any new strings will be added with empty translations,
 waiting to be translated.  In the same run
 <samp><var>article</var>.<var>lang</var>.html</samp> will be rebuilt so the relevant
 strings in the translation will be substituted with the original English
@@ -166,19 +166,20 @@ text, until the translation teams update them in
 <samp><var>article</var>.<var>lang</var>.po</samp>.
 </p>
 <p>Those changes in the original article that do not affect the
-translatable strings will not lead to changes in
+translatable strings (or just delete whole strings) will not lead
+to changes in
 <samp><var>article</var>.<var>lang</var>.po</samp>.  Thus, no actions from translators
 will be needed.  <samp><var>article</var>.<var>lang</var>.html</samp> will be
 automatically regenerated to reflect the changes.
 </p>
-
 <p>The POT for every article under GNUN&rsquo;s control is kept in the &lsquo;www&rsquo;
 repository under a special directory <samp>po/</samp>, which is a
 sub-directory of the relevant directory in the &lsquo;www&rsquo; tree.  So, for
 &lsquo;<code>http://www.gnu.org/philosophy/free-sw.html</code>&rsquo; that is
 <samp>philosophy/po/</samp>.  Except <samp>free-sw.pot</samp>, this directory holds
 the canonical source of every translation, like <samp>free-sw.bg.po</samp>,
-<samp>free-sw.ca.po</samp>, etc.
+<samp>free-sw.ca.po</samp>, etc. For more details,
+See <a href="Files-and-Directories.html#Files-and-Directories">Files and Directories</a>.
 </p>
 <p>Several additional features are implemented, like automatic update of
 the list of the available translations.  For example, if a new

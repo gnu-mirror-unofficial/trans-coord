@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 3 December 2012) is for GNUnited Nations (version
+This manual (updated 27 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -15,7 +15,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNUnited Nations: PO Files</title>
 
@@ -72,83 +72,33 @@ Next: <a href="Webmaster-Tips.html#Webmaster-Tips" accesskey="n" rel="next">Webm
 <hr>
 <a name="Working-with-PO-Files"></a>
 <h3 class="section">2.3 Working with PO Files</h3>
-<a name="index-PO_002c-editing"></a>
 
-<p>We anticipate that some gnu.org translators will find this format odd
-or inconvenient, if they never happened to work with PO files before.
-Don&rsquo;t worry, you will soon get accustomed to it.  It is the
-established format for translations in the Free World, and you should
-have no problems if you have translated software before.
+<p>This section provides GNUN-specific information about woking
+with PO files.  For general information, see <a href="http://www.gnu.org/software/trans-coord/manual/web-trans/html_node/PO-Files.html#PO-Files">Working with PO Files</a> in <cite>GNU Web Translators Manual</cite>.
 </p>
-<p>The most efficient way to edit a PO file is using a specialized PO
-editor, because each of them represents and treats gettext messages in
-a consistent and predictable way.  It is possible to edit a PO file
-with an ordinary plain text editor, but extra effort would be
-necessary to make it valid.  Here is a list of widely used PO editors:
-</p>
-<ul>
-<li> <a name="index-PO-editors"></a>
-PO mode.  We recommend using GNU Emacs in PO mode, because Emacs is
-the program that is suitable for performing any task when it comes to
-maintaining the GNU Project&rsquo;s website.  Provided that you have GNU
-gettext installed, any <samp>.po</samp> file you visit should automatically
-switch to PO mode.  You can enable/disable it with <code>M-x po-mode
-<span class="key">RET</span></code>.  On some GNU/Linux distros such as gNewSense, PO mode is
-available in a separate package, <code>gettext-el</code>. See
-<a href="http://www.gnu.org/software/gettext">http://www.gnu.org/software/gettext</a>.
-
-</li><li> Gtranslator&mdash;the GNOME PO editor.  See
-<a href="http://projects.gnome.org/gtranslator/">http://projects.gnome.org/gtranslator/</a>.
-
-</li><li> Lokalize&mdash;the KDE 4 editor.  See
-<a href="http://userbase.kde.org/Lokalize">http://userbase.kde.org/Lokalize</a>.
-
-</li><li> KBabel&mdash;the KDE 3 editor.  No longer supported, but might be
-available on some old systems.
-
-</li><li> Poedit&mdash;another popular editor that is based on the <code>wxWidgets</code>
-graphical toolkit.  See <a href="http://www.poedit.net">http://www.poedit.net</a>.
-
-</li><li> Virtaal&mdash;a relevantly new editor that supports also the XLIFF format
-and uses the Translate Toolkit API.  See
-<a href="http://translate.sourceforge.net/wiki/virtaal">http://translate.sourceforge.net/wiki/virtaal</a>.
-
-</li><li> po.vim&mdash;ftplugin for the Vim editor.  The best option for people who
-use Vim as their editor.  See
-<a href="http://www.vim.org/scripts/script.php?script_id=2530">http://www.vim.org/scripts/script.php?script_id=2530</a>.
-
-</li><li> Various web-based editors.  See <a href="http://www.gnu.org/software/trans-coord/manual/web-trans/html_node/Savannah-VCS.html#Savannah-VCS">Savannah VCS</a> in <cite>GNU Web
-Translators Manual</cite>.
-</li></ul>
-
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="New-Translation.html#New-Translation" accesskey="1">New Translation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to start a new translation.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Migrating.html#Migrating" accesskey="2">Migrating</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to migrate an existing translation to a PO
+<tr><td align="left" valign="top">&bull; <a href="PO-Tips.html#PO-Tips" accesskey="2">PO Tips</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tips and hints for translators.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Migrating.html#Migrating" accesskey="3">Migrating</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to migrate an existing translation to a PO
                           format under GNUN&rsquo;s control.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="GNU-News.html#GNU-News" accesskey="3">GNU News</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to handle &ldquo;whatsnew&rdquo; (a.k.a. &ldquo;gnunews&rdquo;).
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="PO-Tips.html#PO-Tips" accesskey="4">PO Tips</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tips and hints for translators.
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml" accesskey="5">generic.LANG.html</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying information that will propagate in
+<tr><td align="left" valign="top">&bull; <a href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml" accesskey="4">generic.LANG.html</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying information that will propagate in
                           every translation in a certain language.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="languages_002etxt.html#languages_002etxt" accesskey="6">languages.txt</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying canonical names for languages.
+<tr><td align="left" valign="top">&bull; <a href="languages_002etxt.html#languages_002etxt" accesskey="5">languages.txt</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying canonical names for languages.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="PO-Files-and-Team.html#PO-Files-and-Team" accesskey="7">PO Files and Team</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to maintain translations in the team&rsquo;s
+<tr><td align="left" valign="top">&bull; <a href="PO-Files-and-Team.html#PO-Files-and-Team" accesskey="6">PO Files and Team</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to maintain translations in the team&rsquo;s
                           repository.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Compendia.html#Compendia" accesskey="8">Compendia</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Using translation memory.
+<tr><td align="left" valign="top">&bull; <a href="Compendia.html#Compendia" accesskey="7">Compendia</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Using translation memory.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="GNU-News.html#GNU-News" accesskey="8">GNU News</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Obsolete: How to handle &ldquo;whatsnew&rdquo;.
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 </pre></th></tr></table>
 
-<hr>
-<div class="header">
-<p>
-Next: <a href="Webmaster-Tips.html#Webmaster-Tips" accesskey="n" rel="next">Webmaster Tips</a>, Previous: <a href="Main-Variables.html#Main-Variables" accesskey="p" rel="previous">Main Variables</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
-</div>
 
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 3 December 2012) is for GNUnited Nations (version
+This manual (updated 27 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -15,7 +15,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNUnited Nations: GNUmakefile.team Targets</title>
 
@@ -71,7 +71,7 @@ Next: <a href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron"
 </div>
 <hr>
 <a name="Targets-in-GNUmakefile_002eteam"></a>
-<h4 class="subsubsection">2.3.7.2 Targets in <samp>GNUmakefile.team</samp></h4>
+<h4 class="subsubsection">2.3.6.2 Targets in <samp>GNUmakefile.team</samp></h4>
 
 <dl compact="compact">
 <dt><code>update</code></dt>
@@ -87,8 +87,98 @@ for it.
 </p>
 </dd>
 <dt><code>report</code></dt>
-<dd><p>Verifies which translations are complete, and prints a list (with
-statistics) of those that need to be updated.
+<dd><a name="report-in-GNUmakefile_002eteam"></a><p>Verifies which translations are complete, and prints a list (with
+statistics) of those that need to be updated.  Also, it reports
+the translations that are not consistent with the revisions from
+<em>www</em> repository.
+</p>
+<p>More fine-grained notifications are implemented as the <code>notify</code>
+target.
+</p>
+</dd>
+<dt><code>notify</code></dt>
+<dd><a name="index-outdated-translations_002c-notifications"></a>
+<p>Invokes the <code>report</code> target, filters its output for different
+translators and sends them notifications.
+</p>
+<p>As an addition to the output of the <code>report</code> target, URLs for
+relevant files are written; also, when <em>www</em> and team revisions
+are not consistent, their differences generated with
+<code>gnun-diff-po</code> are optionally attached (see <a href="gnun_002ddiff_002dpo.html#gnun_002ddiff_002dpo">gnun-diff-po</a>,
+for more details).
+</p>
+<a name="index-nottab"></a>
+<p>The list of files to report against are configured with <samp>nottab</samp>
+file.  The lines of this file that begin with &lsquo;#&rsquo; are ignored;
+other lines should contain two fields separated by &lsquo;:&rsquo;.
+</p>
+<p>The first field is an extended grep regular expression; the files are
+selected for the report if their names match this expression.
+See <a href="http://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html#Regular-Expressions">Regular Expressions</a> in <cite>GNU Grep manual</cite>.
+</p>
+<p>The second field is a space-separated list of single-word translators&rsquo;
+identifiers for which the line applies.  The file may look like this:
+</p>
+<div class="example">
+<pre class="example">^gnu/gnu-history: alice bob carol
+^distros/(common-distros|distros|screenshot): dan alice
+^(licenses|philosophy)/: eve bob frank
+^licenses/: dan
+</pre></div>
+
+<a name="index-email_002daliases"></a>
+<p>Email addresses of the translators are kept in a separate file,
+<samp>email-aliases</samp>.  Like <samp>nottab</samp>, this file contains lines
+separated by &lsquo;:&rsquo;; the lines beginning with &lsquo;#&rsquo; are ignored.
+</p>
+<p>The first field is translators&rsquo; identifier, the second is
+space-separated list of translators&rsquo; email addresses.  These two
+fields are mandatory.
+</p>
+<a name="index-reminder-period"></a>
+<a name="index-notification-period"></a>
+<p>The third field is the personal reminder period in days.  After that
+period the message is sent again even though its contents don&rsquo;t
+change.  Otherwise, the <code>notify</code> target only sends messages when
+something changes.  Naturally, no message is sent when no action
+is needed in the requested set of translations.
+</p>
+<p>The team-wide default period is defined in its GNUmakefile.team using
+the <code>NOTIFICATION_PERIOD</code> variable.
+</p>
+<p>The fourth field provides comma-separated options for the report.
+Currently recognized options are:
+</p>
+<dl compact="compact">
+<dt><code>no-diffs</code></dt>
+<dd><p>Disables sending <em>www</em> vs. <em>www-<var>lang</var></em> differences
+as attachments.
+</p>
+</dd>
+<dt><code>www</code></dt>
+<dd><p>Report cases that suggest actions by the team leader, that is,
+when the translation in the team repository is full whereas
+in <em>www</em> it is incomplete or absent.
+</p></dd>
+</dl>
+
+<p>This is an example of <samp>email-aliases</samp>:
+</p>
+<div class="example">
+<pre class="example">alice:alice@example.com abc@test.net
+# Disable `dan' temporarily.
+#dan:miller@test.by:5:no-diffs,www
+bob:brh@invalid.tr:3
+# Note that the third field is empty; the default value for period
+# will be used.
+carol:carol@localhost.br translator@example.bg::no-diffs
+eve:eve@test.gr:2:www
+frank:gnun-notifications@example.gr:1:www,no-diffs
+</pre></div>
+
+<p>The <samp>email-aliases</samp> file should be kept privately because it
+may contain personal email addresses of people.  How to do this
+is out of scope of GNUN and this manual.
 </p>
 </dd>
 <dt><code>format</code></dt>
@@ -108,7 +198,7 @@ line, wherever it may occur.
 </p>
 </dd>
 <dt><code>publish</code></dt>
-<dd><p>The <code>publish</code> rule&rsquo;s task is to copy all modified files to the
+<dd><a name="publish"></a><p>The <code>publish</code> rule&rsquo;s task is to copy all modified files to the
 official <em>www</em> repository.  It depends on the <code>format</code> target
 to ensure that all files are re-wrapped to the standard line length
 limit, but deliberately does not depend on <code>sync VCS=yes</code>.
@@ -116,7 +206,7 @@ Usually, one would run <code>make publish</code> when one or a bunch of PO
 files are in a satisfactory condition to be published, and this rule is
 just a convenience to avoid multiple manual <code>cp</code> invocations.
 As a rule of thumb, before running this rule it is sane to run
-<code>sync</code> and correct any <em>fuzzy</em> messages and other problems, if
+<code>sync</code> and correct any &ldquo;fuzzy&rdquo; messages and other problems, if
 necessary.
 </p>
 <p>The <code>publish</code> rule does not depend on <code>sync</code> explicitly,
@@ -148,9 +238,7 @@ $ cvs commit -m &quot;Some descriptive message.&quot;
 
 </dd>
 <dt><code>clean</code></dt>
-<dd><p>Deletes all backup and auto-generated files that some PO editors leave
-behind, namely&mdash;<samp><var>file</var>.po~</samp>, <samp><var>file</var>.po.bak</samp> and
-<samp><var>file</var>.mo</samp>.
+<dd><p>Deletes all backup and auto-generated files.
 </p></dd>
 </dl>
 
@@ -158,14 +246,11 @@ behind, namely&mdash;<samp><var>file</var>.po~</samp>, <samp><var>file</var>.po.
 To check the status of the translations, run <code>make report</code>.
 </p>
 <p>Feel free to replace all strings with equivalents in your native
-language and of course&mdash;do not hesitate to extend this file and modify
-it as much as you like.  For example, useful extra functionality would
-be a target that will check which files have not yet been committed in
-the official repository, or which files have to be updated there
-(i.e. they were updated by the team members but not installed by the
-coordinator).  Either way, if you come up with something interesting, it
-would be nice to send a message to <a href="mailto:bug-gnun@gnu.org">bug-gnun@gnu.org</a>, so that
-<samp>GNUmakefile.team</samp> gets updated for all teams&rsquo; benefit.
+language and of course&mdash;do not hesitate to extend this file and
+modify it as much as you like.  If you come up with
+something interesting, it would be nice to send a message to
+<a href="mailto:bug-gnun@gnu.org">bug-gnun@gnu.org</a>, so that <samp>GNUmakefile.team</samp> gets
+updated for all teams&rsquo; benefit.
 </p>
 <hr>
 <div class="header">

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 3 December 2012) is for GNUnited Nations (version
+This manual (updated 27 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -15,7 +15,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNUnited Nations: Main Variables</title>
 
@@ -70,8 +70,8 @@ ul.no-bullet {list-style: none}
 Next: <a href="PO-Files.html#PO-Files" accesskey="n" rel="next">PO Files</a>, Previous: <a href="Invoking-GNUN.html#Invoking-GNUN" accesskey="p" rel="previous">Invoking GNUN</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Defining-Articles-to-be-Built"></a>
-<h3 class="section">2.2 Defining Articles to be Built</h3>
+<a name="Defining-Articles-to-Be-Built"></a>
+<h3 class="section">2.2 Defining Articles to Be Built</h3>
 <a name="index-variables-1"></a>
 <a name="index-gnun_002emk-1"></a>
 
@@ -83,12 +83,18 @@ behavior of the build process.
 <p>There are two types of variables, which are specifically separated in
 order to make translators&rsquo; life easier: variables that translators are
 free to modify and variables that are modified by the web-translators
-staff<a name="DOCF4" href="#FOOT4"><sup>4</sup></a>, ideally after performing some local tests.  A
+staff<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>, ideally after performing some local tests.  A
 translation team leader should update only <code>FUZZY_DIFF_LINGUAS</code>,
 <code>TEMPLATE_LINGUAS</code>; everything else is supposed to be built
 automagically, without manual intervention.  If not, that is a bug that
 should be reported and fixed.
 </p>
+<p>You can also request building files separately this way: 
+</p>
+<div class="example">
+<pre class="example">make -C server/gnun ../../philosophy/not-ipr.bg.html
+</pre></div>
+
 <dl compact="compact">
 <dd><a name="index-TEMPLATE_005fLINGUAS"></a>
 <a name="index-templates_002c-defining"></a>
@@ -148,7 +154,7 @@ the team decides to actually commit <var>template</var>.<var>lang</var>.po.
 </dd>
 <dt>&lsquo;<samp>FUZZY_DIFF_LINGUAS</samp>&rsquo;</dt>
 <dd><p>Add your language code here if you want GNUN to add differences to
-previous <code>msgid</code>s in your PO files.  The differences are shown in
+&ldquo;previous&rdquo; <code>msgid</code>s in your PO files.  The differences are shown in
 the default <code>wdiff</code> format.  See <a href="http://www.gnu.org/software/wdiff/manual/html_node/wdiff.html#wdiff">The word
 difference finder</a> in <cite>GNU wdiff</cite>, for more information.
 </p>
@@ -187,7 +193,7 @@ way its translations to be maintained via GNUN.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
+<h3><a name="FOOT5" href="#DOCF5">(5)</a></h3>
 <p>Only because presumably, they are more familiar with
 GNUnited Nations&rsquo; internals.  From a purely technical point of view,
 there is no difference.</p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 3 December 2012) is for GNUnited Nations (version
+This manual (updated 27 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -15,7 +15,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNUnited Nations: GNUmakefile.team Variables</title>
 
@@ -71,13 +71,15 @@ Next: <a href="GNUmakefile_002eteam-Targets.html#GNUmakefile_002eteam-Targets" a
 </div>
 <hr>
 <a name="Adopting-GNUmakefile_002eteam-for-a-Specific-Team"></a>
-<h4 class="subsubsection">2.3.7.1 Adopting <samp>GNUmakefile.team</samp> for a Specific Team</h4>
+<h4 class="subsubsection">2.3.6.1 Adopting <samp>GNUmakefile.team</samp> for a Specific Team</h4>
 
-<p>To adjust the makefile for your team, you need to edit two variables.
+<p>To adjust the makefile for your team, you need to edit the next
+variables.
 </p>
 <dl compact="compact">
 <dt>&lsquo;<samp>TEAM</samp>&rsquo;</dt>
 <dd><p>Set this to the language code, like <code>bg</code> or <code>pt-br</code>.
+It is autodetected if not defined.
 </p>
 </dd>
 <dt>&lsquo;<samp>wwwdir</samp>&rsquo;</dt>
@@ -87,7 +89,22 @@ repository at <samp>~/projects/www-<var>lang</var></samp> and the &lsquo;www&rsq
 repository at <samp>~/projects/www</samp>, the value of <code>wwwdir</code> should
 be <code>../www/</code> or <samp>/home/<var>user</var>/projects/www/</samp>.  Note the
 slash at the end, it is important.
-</p></dd>
+</p>
+</dd>
+<dt>&lsquo;<samp>TEAM_URL_PREFIX</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>TEAM_URL_POSTFIX</samp>&rsquo;</dt>
+<dd><p>These variables are used to transform the path to a file in team&rsquo;s
+working copy into a URL for this file; they are only needed for
+automatic email notifications.  It is expected that typically
+the URL will point to some sort of Web interface for the repository,
+for example,
+</p>
+<div class="example">
+<pre class="example">TEAM_URL_PREFIX := http://cvs.savannah.gnu.org/viewvc/*checkout*/www-bg/
+TEAM_URL_POSTFIX := ?root=www-bg
+</pre></div>
+
+</dd>
 </dl>
 
 <p>If two variants of one language share the same project and repository
@@ -99,6 +116,32 @@ own tree.
 of the build process.
 </p>
 <dl compact="compact">
+<dt>&lsquo;<samp>ADD_FUZZY_DIFF</samp>&rsquo;</dt>
+<dd><p>The program to manage differences to &ldquo;previous&rdquo; <code>msgid</code>s added to
+&ldquo;fuzzy&rdquo; translations when merging PO files.  When undefined,
+the makefile tries to find <code>gnun-add-fuzzy-diff</code> and assigns
+the result to this variable. See <a href="gnun_002dadd_002dfuzzy_002ddiff.html#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a>.
+</p>
+<p>Define to empty string to disable the feature.
+</p>
+</dd>
+<dt>&lsquo;<samp>NOTIFICATION_PERIOD=<var>days</var></samp>&rsquo;</dt>
+<dd><a name="index-NOTIFICATION_005fPERIOD"></a>
+<a name="index-reminder-period_002c-default"></a>
+<a name="index-notification-period_002c-default"></a>
+<p>Default period of reminders sent by the <code>notify</code> target.
+</p>
+<a name="index-mail_002c-notifications-1"></a>
+<a name="index-NOTIFY-1"></a>
+</dd>
+<dt>&lsquo;<samp>NOTIFY=yes</samp>&rsquo;</dt>
+<dd><p>Make the <code>notify</code> target actually send notifications.
+</p>
+</dd>
+<dt>&lsquo;<samp>NOTIFY=no</samp>&rsquo;</dt>
+<dd><p>Do not send email notifications about errors.  This is the default.
+</p>
+</dd>
 <dt>&lsquo;<samp>VERBOSE=yes</samp>&rsquo;</dt>
 <dd><p>Print more information from <code>cvs</code>, <code>svn</code> and
 <code>msgmerge</code>; off by default.  Note that <code>VERBOSE</code> can be
@@ -119,6 +162,11 @@ purpose.
 </p></dd>
 </dl>
 
+<hr>
+<div class="header">
+<p>
+Next: <a href="GNUmakefile_002eteam-Targets.html#GNUmakefile_002eteam-Targets" accesskey="n" rel="next">GNUmakefile.team Targets</a>, Up: <a href="PO-Files-and-Team.html#PO-Files-and-Team" accesskey="u" rel="up">PO Files and Team</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

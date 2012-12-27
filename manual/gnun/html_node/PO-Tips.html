@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 3 December 2012) is for GNUnited Nations (version
+This manual (updated 27 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -15,7 +15,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNUnited Nations: PO Tips</title>
 
@@ -29,8 +29,8 @@ Documentation License." -->
 <link href="Index.html#Index" rel="index" title="Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="PO-Files.html#PO-Files" rel="up" title="PO Files">
-<link href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml" rel="next" title="generic.LANG.html">
-<link href="GNU-News.html#GNU-News" rel="previous" title="GNU News">
+<link href="Migrating.html#Migrating" rel="next" title="Migrating">
+<link href="Credits-Slot.html#Credits-Slot" rel="previous" title="Credits Slot">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -67,11 +67,11 @@ ul.no-bullet {list-style: none}
 <a name="PO-Tips"></a>
 <div class="header">
 <p>
-Next: <a href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml" accesskey="n" rel="next">generic.LANG.html</a>, Previous: <a href="GNU-News.html#GNU-News" accesskey="p" rel="previous">GNU News</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Migrating.html#Migrating" accesskey="n" rel="next">Migrating</a>, Previous: <a href="New-Translation.html#New-Translation" accesskey="p" rel="previous">New Translation</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Useful-Hints-for-Editing-PO-Files"></a>
-<h4 class="subsection">2.3.4 Useful Hints for Editing PO Files</h4>
+<h4 class="subsection">2.3.2 Useful Hints for Editing PO Files</h4>
 <a name="index-tips_002c-translators"></a>
 <a name="index-recommendations_002c-PO-files"></a>
 
@@ -130,9 +130,10 @@ msgstr &quot;&quot;
 &quot;Boston, MA 02110-1301, USA&quot;
 </pre></div>
 
-</li><li> There is absolutely no reason to use HTML entities in translations as a
-replacement for common non-ASCII characters.  They are harder to write
-and serve no purpose.
+</li><li> Do not use HTML entities for non-ASCII letters as in the English
+original.  They are harder to type and read.  So, if there is
+&lsquo;<samp>&amp;uuml;</samp>&rsquo; and this is a character from the alphabet of your
+language, just write it as &lsquo;<samp>&uuml;</samp>&rsquo; directly.
 
 </li><li> Wrapping of <code>msgstr</code> using <kbd>M-q</kbd> in Emacs (or other means) is
 considered harmful.  It is best to leave GNUN (or more precisely, Po4a)
@@ -147,7 +148,7 @@ is rendered incorrectly by the web browser.
 <hr>
 <div class="header">
 <p>
-Next: <a href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml" accesskey="n" rel="next">generic.LANG.html</a>, Previous: <a href="GNU-News.html#GNU-News" accesskey="p" rel="previous">GNU News</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Migrating.html#Migrating" accesskey="n" rel="next">Migrating</a>, Previous: <a href="New-Translation.html#New-Translation" accesskey="p" rel="previous">New Translation</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 3 December 2012) is for GNUnited Nations (version
+This manual (updated 27 December 2012) is for GNUnited Nations (version
 0.6), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -15,7 +15,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 4.13.90, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNUnited Nations: Runtime Variables</title>
 
@@ -125,8 +125,7 @@ sparingly, since it is very slow and generally less reliable.
 </dd>
 <dt>&lsquo;<samp>VALIDATE=no</samp>&rsquo;</dt>
 <dt>&lsquo;<samp>&hellip;</samp>&rsquo;</dt>
-<dd><p>Does not perform validation of the HTML articles and PO files.  This
-is the default, and not defining this variable has the same effect.
+<dd><p>Skips validation of the HTML articles and generated translations.
 </p>
 </dd>
 <dt>&lsquo;<samp>VALIDATE=yes</samp>&rsquo;</dt>
@@ -137,11 +136,13 @@ recommended to run the build this way, even if it is a bit tedious to
 fix the errors that are reported as a result of enforcing validation.
 </p>
 <p>Articles defined in the variable <code>no-validate-articles</code> are never
-checked for HTML validity.  Its purpose was to skip validation of HTML
-5 articles, until the command-line validation tools are updated to
+checked for HTML validity.  Its purpose was to skip validation of HTML5
+articles, until the command-line validation tools are updated to
 parse files that comply with this new standard.  As of version 0.5
-GNUN supports HTML 5, so resorting to <code>no-validate-articles</code>
+GNUN supports HTML5, so resorting to <code>no-validate-articles</code>
 should not be necessary.
+</p>
+<p>This is the default, and not defining this variable has the same effect.
 </p>
 <a name="index-NOTIFY"></a>
 <a name="index-mail_002c-notifications"></a>
@@ -192,7 +193,7 @@ computation of the basic variables.
 <a name="index-deferred-generation-of-articles"></a>
 <a name="GRACE"></a></dd>
 <dt>&lsquo;<samp>GRACE=<var>days</var></samp>&rsquo;</dt>
-<dd><p>If defined, ordinary articles that have fuzzy strings and are not older
+<dd><p>If defined, ordinary articles that have &ldquo;fuzzy&rdquo; strings and are not older
 than <var>days</var> will not be regenerated.  This functionality is
 implemented specifically to prevent gratuitous replacement of translated
 strings with the English text when there are only minor formatting
@@ -231,7 +232,7 @@ the build this way will commit any newly added files as specified in
 <code>cvs|svn|bzr add</code>-ing all necessary files.
 </p>
 <a name="index-validation-1"></a>
-<p>When validation is enabled (i.e. with <code>VALIDATE=yes</code>), the
+<p>When validation is enabled, the
 original English articles are validated first, before any commands
 that generate the other files, and <code>make</code> exits with an error
 on the first encountered article.  This is done on purpose, to prevent
