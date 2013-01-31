@@ -9,24 +9,24 @@ GNU Web Translators Manual
 3 Team Co-ordinators
   3.1 How to Form a New Team
   3.2 The Gentle Art of Managing a Translation Team
-    3.2.1 Peer Review
-      3.2.1.1 How to Track Tasks and Bugs Using Savannah
-      3.2.1.2 How to Proceed with Unreviewed Translations
-    3.2.2 CVS Commits and Best Practices
-    3.2.3 Working with PO Files
-      3.2.3.1 Web-based Systems
-    3.2.4 Taking Advantage of Savannah
-      3.2.4.1 Managing Members
-      3.2.4.2 Homepage of the Team
-      3.2.4.3 Support Tracker
-      3.2.4.4 Tasks Tracker
-      3.2.4.5 Bugs Tracker
-      3.2.4.6 News Tracker
-      3.2.4.7 Managing Mailing Lists
-      3.2.4.8 Version Control Systems
-    3.2.5 Promoting Members as Co-leaders
-  3.3 Reporting Team Status
-  3.4 How to Retire Painlessly
+  3.3 Peer Review
+    3.3.1 How to Track Tasks and Bugs Using Savannah
+    3.3.2 How to Proceed with Unreviewed Translations
+  3.4 CVS Commits and Best Practices
+  3.5 Working with PO Files
+    3.5.1 Web-based Systems
+  3.6 Taking Advantage of Savannah
+    3.6.1 Managing Members
+    3.6.2 Homepage of the Team
+    3.6.3 Support Tracker
+    3.6.4 Tasks Tracker
+    3.6.5 Bugs Tracker
+    3.6.6 News Tracker
+    3.6.7 Managing Mailing Lists
+    3.6.8 Version Control Systems
+  3.7 Promoting Members as Co-leaders
+  3.8 Reporting Team Status
+  3.9 How to Retire Painlessly
 4 'trans-coord' Admins
 5 Details about the Translation Process
   5.1 Migration to the New Style
@@ -35,9 +35,10 @@ GNU Web Translators Manual
     5.3.1 Localizing the 'topbanner' Image
     5.3.2 Specific Issues Related to RTL
   5.4 What to Translate
-  5.5 When to CAPITALIZE
-  5.6 Distribution Terms
-  5.7 Language-specific Terminology
+  5.5 Keeping Translations Current
+  5.6 When to CAPITALIZE
+  5.7 Distribution Terms
+  5.8 Language-specific Terminology
 6 Overview of the Translation Process
   6.1 Related Mailing Lists
   6.2 Savannah Projects Membership
@@ -46,9 +47,10 @@ GNU Web Translators Manual
 **************************
 
 This manual is a guide for the GNU Web Translators.
-Last updated on 25.12.2012, for GNUnited Nations version 0.6.
+Last updated on 17.01.2013, for GNUnited Nations version 0.7.
 
-   Copyright (C) 2009, 2010, 2011, 2012 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010, 2011, 2012, 2013 Free Software Foundation,
+Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -402,6 +404,8 @@ follow these steps:
 
         * 'body-include-2.LANG.po'
 
+        * 'bottom-notes.LANG.po'
+
         * 'footer-text.LANG.po'
 
         * 'outdated.LANG.po'
@@ -528,8 +532,15 @@ created to discuss issues that leaders encounter while managing the
 teams, and for general organizational work.  Feel free to discuss
 anything related to the translation process there.
 
-3.2.1 Peer Review
------------------
+   It is strongly recommended translation teams to attempt to recruit
+native English speakers in order to improve their translation process.
+Translators sometimes misunderstand English idioms and expressions, and
+as a result, they translate them incorrectly or in ways that are
+suboptimal and confusing.  These errors are trivial to discover for the
+native English speaker.
+
+3.3 Peer Review
+===============
 
 First and foremost, find at least one person for peer review.  You will
 review her translations, and she will review yours (at least in the
@@ -560,8 +571,8 @@ even harder to come up with a solution.
 section, *note Tracking Tasks::.  One way or another, you should create
 some kind of review process.
 
-3.2.1.1 How to Track Tasks and Bugs Using Savannah
-..................................................
+3.3.1 How to Track Tasks and Bugs Using Savannah
+------------------------------------------------
 
 The team leader has to make sure that prospective translations are
 reviewed, that they do not contain obvious errors and/or confusing
@@ -642,8 +653,8 @@ bugs in translations, it is best to take advantage of
 'generic.LANG.html' and advertise it on every page.  *Note
 (gnun)generic.LANG.html::, for details.
 
-3.2.1.2 How to Proceed with Unreviewed Translations
-...................................................
+3.3.2 How to Proceed with Unreviewed Translations
+-------------------------------------------------
 
 Sometimes a translation (typically your own) is not reviewed by anyone
 else for a fairly long time.  This is unfortunate, but there is no
@@ -657,8 +668,8 @@ section is implemented, it would mean leaving the relevant task 'Open'
 and 'Ready For Test' despite the translation being officially online.
 You may also add a comment to the PO file.
 
-3.2.2 CVS Commits and Best Practices
-------------------------------------
+3.4 CVS Commits and Best Practices
+==================================
 
 As all team leaders have write access to the CVS repository of the 'www'
 project, this technically means that they are able to modify every
@@ -742,8 +753,8 @@ team's repositories.
 systems--we don't dictate what OS people use, but we can at least
 prevent this technical kind of damage.
 
-3.2.3 Working with PO Files
----------------------------
+3.5 Working with PO Files
+=========================
 
 We anticipate that some gnu.org translators will find this format odd or
 inconvenient, if they never happened to work with PO files before(1).
@@ -788,8 +799,8 @@ make it valid.  Here is a list of widely used PO editors:
 
    * Various web-based editors.
 
-3.2.3.1 Web-based Systems
-.........................
+3.5.1 Web-based Systems
+-----------------------
 
 An alternative way to maintain translations is to use one of the
 existing online editors.  There are plans to install a web-based system
@@ -821,8 +832,8 @@ care of the one-way regular sync from the 'www' CVS repository.
    (1) For www.gnu.org-specific information about editing PO files,
 *note Working with PO Files: (gnun)PO Files.
 
-3.2.4 Taking Advantage of Savannah
-----------------------------------
+3.6 Taking Advantage of Savannah
+================================
 
 Every translation team should have a project in Savannah.  There are
 some teams that use their own resources outside Savannah; although
@@ -866,8 +877,8 @@ wizardry to do their work.
 facilities provided by Savannah.  It is not mandatory to follow them,
 they are just suggestions.
 
-3.2.4.1 Managing Members
-........................
+3.6.1 Managing Members
+----------------------
 
 You should add active translators as members of the translation team,
 and remove them when they leave.  Team members should have access to all
@@ -887,8 +898,8 @@ rights as active ones--the only exception is that they don't count for
 the total number of members, and they appear separately on 'View
 Members'.
 
-3.2.4.2 Homepage of the Team
-............................
+3.6.2 Homepage of the Team
+--------------------------
 
 Every Savannah project has a Web repository, which is, for technical and
 historical reasons, only CVS. By default it is mapped to
@@ -911,8 +922,8 @@ Guidelines--<http://gnu.org/server/fsf-html-style-sheet.html>).
 These locations are deprecated, and the contents will be removed without
 warning.
 
-3.2.4.3 Support Tracker
-.......................
+3.6.3 Support Tracker
+---------------------
 
 This tracker is supposed to be related to things about the _project
 management_ itself, i.e.  project members may report here missing
@@ -920,8 +931,8 @@ functionality and/or features that requires the project admin's action.
 Do not use it for anything else as it quickly becomes confusing.  It is
 OK to disable it if the team is small.
 
-3.2.4.4 Tasks Tracker
-.....................
+3.6.4 Tasks Tracker
+-------------------
 
 This is a way to manage all sorts of tasks.  They appear in the personal
 Savannah page of the assignee, so it is difficult to miss them out.  It
@@ -934,8 +945,8 @@ they intend to work on a specific translation.
 
    Feel free to organize the 'Tasks' management as you see fit.
 
-3.2.4.5 Bugs Tracker
-....................
+3.6.5 Bugs Tracker
+------------------
 
 The 'Bugs' tracker is designed for tracking bugs.  You can use for
 several purposes:
@@ -949,8 +960,8 @@ several purposes:
      (who is supposed to be a 'www-LANG' project member), if you have
      such policy.
 
-3.2.4.6 News Tracker
-....................
+3.6.6 News Tracker
+------------------
 
 That is a way to inform newcomers and interested people (who visit the
 project page from time to time, or subscribe to the 'News' RSS feed)
@@ -964,8 +975,8 @@ about an important change (in practices, procedures, etc.), it is
 perfectly OK to announce it here.  Some teams use it to announce new
 translations, which is also fine.
 
-3.2.4.7 Managing Mailing Lists
-..............................
+3.6.7 Managing Mailing Lists
+----------------------------
 
 Every team should have a mailing list on lists.gnu.org and use it for
 internal communications.  All active translators should be on the list.
@@ -983,8 +994,8 @@ one mailing list.
 
    You can redirect all messages generated by the trackers to any list.
 
-3.2.4.8 Version Control Systems
-...............................
+3.6.8 Version Control Systems
+-----------------------------
 
 An easy way to keep up with changes in the original articles and to
 manage continuous contributions is to keep all translations in the
@@ -1001,8 +1012,8 @@ for participation higher.  The VCS is supposed to ease collaborative
 maintenance--if it eases only you, project members just won't use it so
 that won't be a net win.
 
-3.2.5 Promoting Members as Co-leaders
--------------------------------------
+3.7 Promoting Members as Co-leaders
+===================================
 
 When the team grows large and it becomes hard for a single person to
 manage, there is no problem to add another (or even another two) people
@@ -1024,7 +1035,7 @@ with details and rationale for the removal.  Do not edit
 'README.translations.html' yourself; this is a final formality step to
 be performed by the Translation Managers.
 
-3.3 Reporting Team Status
+3.8 Reporting Team Status
 =========================
 
 Team leaders must send an annual report about the status of the team.  A
@@ -1063,7 +1074,7 @@ about the progress improves the community spirit.
    If you do not wish to share some information that is in the report,
 please send it to <web-translators@gnu.org>.
 
-3.4 How to Retire Painlessly
+3.9 How to Retire Painlessly
 ============================
 
 When you feel you don't have the energy to manage the team successfully,
@@ -1134,6 +1145,10 @@ the '#include''s used:
      translations, until 'server/po/body-include-2.LANG.po' is updated.
      Note that some validation errors originate from an error in
      'server/body-include-2.LANG.html' or some other template file.
+
+'server/bottom-notes.html'
+     A link to the FSF page explaining how to report possible copyright
+     infringements.
 
 'server/footer-text.html'
      This is a very short file currently containing the "back to top"
@@ -1233,8 +1248,10 @@ the '#include''s used:
    - 'banner.html'
    - 'body-include-1.html'
    - 'body-include-2.html'
+   - 'bottom-notes.html'
    - 'footer.html'
    - 'footer-text.html'
+   - 'skip-translations.html'
 
    in the 'server' sub-directory are what webmasters call "the server
 templates".  These files are included in almost every article,
@@ -1354,28 +1371,11 @@ team completes most of the important translations, or they can be
 translated as a "rest"--in translators' parlance this means doing
 something in between which is typically easier to handle.
 
-   It is very important to keep existing translations up-to-date with
-the respective English originals.  This task should be higher priority
-than translating new articles.  GNUN's 'report' rule can help you to
-identify precisely which articles need updating; *note (gnun)report::.
-There is a monthly cron job which sends a verbose output to each team as
-requested by their leaders.  If you want the addresses changed, please
-write to <web-translators@gnu.org>.
-
-   More detailed notifications can be arranged through
-'GNUmakefile.team' (*note (gnun)PO Files and Team::).
-
-   GNUN also maintains reports about current status of translations of
-all active teams in <http://www.gnu.org/software/gnun/reports/>.  If the
-page for your team is missing there, please ask
-<web-translators@gnu.org> to add it to the cron job.
-
-   It is strongly recommended translation teams to attempt to recruit
-native English speakers in order to improve their translation process.
-Translators sometimes misunderstand English idioms and expressions, and
-as a result, they translate them incorrectly or in ways that are
-suboptimal and confusing.  These errors are trivial to discover for the
-native English speaker.
+   You can find links automatic reports about current status of
+translations of all active teams sorted by their priority in
+<http://www.gnu.org/software/gnun/reports/>.  If the page for your team
+is missing there, please ask <web-translators@gnu.org> to add it to the
+cron job.
 
    _Do not_ translate articles under these directories:
 
@@ -1401,7 +1401,45 @@ native English speaker.
      "GNU News".  It is deprecated since quite some time and translating
      it is discouraged.
 
-5.5 When to CAPITALIZE
+5.5 Keeping Translations Current
+================================
+
+It is very important to keep existing translations up-to-date with the
+respective English originals.  This task should be higher priority than
+translating new articles.  We developped different means to automate the
+process of tracking outdated translations.
+
+   * GNUN's 'report' rule can help you to identify precisely which
+     articles need updating; *note (gnun)report::.  There is a monthly
+     cron job which sends the output of this rule to each team as
+     requested by their leaders.  If you want the addresses changed,
+     please write to <web-translators@gnu.org>.
+
+   * The 'gnun-report' script produces a HTML page listing detailed
+     status of translations; *note (gnun)gnun-report::.  A cron job
+     commits updated reports for all active teams to GNUN project web
+     repository, typically twice an hour.  The links to those reports
+     are provided on <http://gnu.org/software/gnun/reports/>.
+
+   * GNUmakefile.team provides a more detailed 'report' target: unlike
+     the output of the previous tools, it analyzes the status of files
+     in team's repository as well as of those in 'www' repository; *note
+     (gnun)report in GNUmakefile.team::.
+
+   * GNUmakefile.team also has a means to send a further detalized
+     reports to specific translators; *note (gnun)notify in
+     GNUmakefile.team::.  The notification facility takes the output of
+     the 'report' target, adds the URLs of relevant files, and the
+     results are sent with attached HTML files of team's-against-'www'
+     differences to the translators who requested tracking particular
+     files.
+
+     The feature is supposed to be invoked via a cron job; such jobs
+     already run for some teams on our server.  If you'd like GNU Web
+     Translation Managers to setup a job for your team, please write to
+     <web-translators@gnu.org>.
+
+5.6 When to CAPITALIZE
 ======================
 
 The English language has some rules for capitalization of titles,
@@ -1431,7 +1469,7 @@ not 'Franc,ais' or 'Portugue^s'--write them as 'franc,ais' or
 of the languages are defined in a specific file, languages.txt (*note
 (gnun)languages.txt::).
 
-5.6 Distribution Terms
+5.7 Distribution Terms
 ======================
 
 Most www.gnu.org articles are released under the terms of the Creative
@@ -1484,7 +1522,7 @@ because there are substantive differences between the way different
 ports handle moral rights issues, and we prefer the specific terms that
 are in the United States license.
 
-5.7 Language-specific Terminology
+5.8 Language-specific Terminology
 =================================
 
 This is a very important topic, not yet covered by this manual.
