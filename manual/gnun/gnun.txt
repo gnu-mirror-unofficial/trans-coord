@@ -6,56 +6,56 @@ GNUnited Nations
   1.4 Known Bugs and Limitations
 2 General Usage
   2.1 Invoking GNUN
-    2.1.1 Variables to Control the Build Process
-    2.1.2 Targets Specified on the Command Line
-      2.1.2.1 The 'no-grace-items' Target
-      2.1.2.2 The 'update-localized-URLs' Target
-      2.1.2.3 The 'sync' Target
-      2.1.2.4 The 'report' Target
-      2.1.2.5 The 'triggers' Target
-      2.1.2.6 The 'validate-all' Target
-  2.2 Defining Articles to Be Built
-  2.3 Working with PO Files
-    2.3.1 Starting a New Translation
-      2.3.1.1 The Special Slot for Translator's Notes
-      2.3.1.2 The Special Slot for Translator's Credits
-    2.3.2 Useful Hints for Editing PO Files
-    2.3.3 Transforming Existing Translation in PO Format
-    2.3.4 The 'generic.LANG.html' File
-    2.3.5 The 'languages.txt' File
-    2.3.6 Maintaining Translations in Your Team's Repository
-      2.3.6.1 Adopting 'GNUmakefile.team' for a Specific Team
-      2.3.6.2 Targets in 'GNUmakefile.team'
-      2.3.6.3 Automatic Synchronization and Status Reports
-    2.3.7 Using Compendia
-    2.3.8 Building Sitemap
-    2.3.9 Special Handling for GNU News
-  2.4 Tips and Hints for Webmasters
-    2.4.1 Validation
-    2.4.2 Comments for Translators
-    2.4.3 Modifying Boilerplates
-    2.4.4 Localized URLs
-    2.4.5 Splitting Long Passages
-3 Unexciting Information for GNUN's Operation
-  3.1 Files and Directories
-  3.2 GNUN Scripts
-    3.2.1 The 'gnun-add-fuzzy-diff' Script
-    3.2.2 The 'gnun-diff-po' Script
-    3.2.3 The 'gnun-init-po' Script
-    3.2.4 The 'gnun-preconvert' Script
-    3.2.5 The 'gnun-merge-preconverted' Script
-    3.2.6 The 'gnun-report' Script
-    3.2.7 The 'gnun-validate-html' Script
-    3.2.8 The 'mailfail' Script
-    3.2.9 The 'validate-html-notify' Script
-    3.2.10 The 'gnun-clear-previous' Script
-4 Reporting Bugs
+  2.2 Variables to Control the Build Process
+  2.3 Targets Specified on the Command Line
+    2.3.1 The 'no-grace-items' Target
+    2.3.2 The 'update-localized-URLs' Target
+    2.3.3 The 'sync' Target
+    2.3.4 The 'report' Target
+    2.3.5 The 'triggers' Target
+    2.3.6 The 'validate-all' Target
+  2.4 Defining Articles to Be Built
+  2.5 The 'generic.LANG.html' File
+  2.6 The 'languages.txt' File
+  2.7 Using Compendia
+  2.8 Building Sitemap
+  2.9 Special Handling for GNU News
+3 Maintaining Translations in Your Team's Repository
+  3.1 Adopting 'GNUmakefile.team' for a Specific Team
+  3.2 Targets in 'GNUmakefile.team'
+  3.3 Automatic Synchronization and Status Reports
+4 Working with PO Files
+  4.1 Starting a New Translation
+    4.1.1 The Special Slot for Translator's Notes
+    4.1.2 The Special Slot for Translator's Credits
+  4.2 Useful Hints for Editing PO Files
+  4.3 Transforming Existing Translation in PO Format
+5 Tips and Hints for Webmasters
+  5.1 Validation
+  5.2 Comments for Translators
+  5.3 Modifying Boilerplates
+  5.4 Localized URLs
+  5.5 Splitting Long Passages
+6 Unexciting Information for GNUN's Operation
+  6.1 Files and Directories
+  6.2 GNUN Scripts
+    6.2.1 The 'gnun-add-fuzzy-diff' Script
+    6.2.2 The 'gnun-diff-po' Script
+    6.2.3 The 'gnun-init-po' Script
+    6.2.4 The 'gnun-preconvert' Script
+    6.2.5 The 'gnun-merge-preconverted' Script
+    6.2.6 The 'gnun-report' Script
+    6.2.7 The 'gnun-validate-html' Script
+    6.2.8 The 'mailfail' Script
+    6.2.9 The 'validate-html-notify' Script
+    6.2.10 The 'gnun-clear-previous' Script
+7 Reporting Bugs
 Index
 Appendix A GNU Free Documentation License
 GNUnited Nations
 ****************
 
-This manual (updated 31 January 2013) is for GNUnited Nations (version
+This manual (updated 1 February 2013) is for GNUnited Nations (version
 0.7), a suite for maintaining translations of www.gnu.org essays and
 other articles.
 
@@ -388,8 +388,8 @@ of 'gnun.mk' and put a modified version under 'server/gnun' of your
 hypothetical tree.  (For gnu.org, that is not necessary since a proper
 'gnun.mk' is maintained in 'www'.)
 
-2.1.1 Variables to Control the Build Process
---------------------------------------------
+2.2 Variables to Control the Build Process
+==========================================
 
 The build process has several modes of operation, and they all relate to
 the handling of files that are to be added to the repository or
@@ -540,8 +540,8 @@ take care to use 'bzr push' manually (or via cron) to take care of
 effectively adding them to the public repository.  *Note triggers::, for
 a short explanation.
 
-2.1.2 Targets Specified on the Command Line
--------------------------------------------
+2.3 Targets Specified on the Command Line
+=========================================
 
 Some targets are not built by default, because they are only useful
 under certain circumstances.  Think of them like semi-automated commands
@@ -550,8 +550,8 @@ importantly, whose arguments are variables computed at the time 'make'
 reads the makefiles--the filesets they affect are specific and already
 defined, one way or another.
 
-2.1.2.1 The 'no-grace-items' Target
-...................................
+2.3.1 The 'no-grace-items' Target
+---------------------------------
 
 The 'no-grace-items' target regenerates a limited set of articles that
 are not affected by the grace period, namely, the server templates,
@@ -561,8 +561,8 @@ gnunews, and all articles defined in the variable 'no-grace-articles'
    This target can be rebuilt more often than 'all'; however, currently
 it is not used.
 
-2.1.2.2 The 'update-localized-URLs' Target
-..........................................
+2.3.2 The 'update-localized-URLs' Target
+----------------------------------------
 
 The 'update-localized-URLs' target invokes a script that generates the
 'localized-urls.mk' file.  This file includes the list of URLs that
@@ -571,8 +571,8 @@ source (*note Localized URLs::).
 
    This target is meant to be rebuilt nightly.
 
-2.1.2.3 The 'sync' Target
-.........................
+2.3.3 The 'sync' Target
+-----------------------
 
 The 'sync' target has a simple task: synchronize the _original English_
 articles from a canonical repository, like 'www'.  It is very important
@@ -606,8 +606,8 @@ bogus.
 
    'VCS=always' has no effect on this target, as well as 'VALIDATE'.
 
-2.1.2.4 The 'report' Target
-...........................
+2.3.4 The 'report' Target
+-------------------------
 
 This target exists solely for convenience to translators, enabling them
 to check which articles are not 100% translated and have to be updated.
@@ -633,8 +633,8 @@ reported as less important.
 which produces a more detailed report.  *Note report in
 GNUmakefile.team::.
 
-2.1.2.5 The 'triggers' Target
-.............................
+2.3.5 The 'triggers' Target
+---------------------------
 
 This is a special target intended to be run by the automatic build after
 the main build and _after_ 'cvs|svn|bzr commit'.
@@ -688,8 +688,8 @@ things that should be "triggered" after the main build.
 job in order to address some exceptional situations like concurrent
 builds.
 
-2.1.2.6 The 'validate-all' Target
-.................................
+2.3.6 The 'validate-all' Target
+-------------------------------
 
 The 'validate-all' target validates all HTML pages under GNUN's control.
 It is needed because GNUN doesn't track dependencies on the included
@@ -697,7 +697,7 @@ files, so errors in those included files could pass unnoticed.
 
    This target is invoked once a day by the official GNUN cron job.
 
-2.2 Defining Articles to Be Built
+2.4 Defining Articles to Be Built
 =================================
 
 The file 'gnun.mk' contains variable definitions, based on which almost
@@ -790,15 +790,503 @@ intervention.  If not, that is a bug that should be reported and fixed.
 Nations' internals.  From a purely technical point of view, there is no
 difference.
 
-2.3 Working with PO Files
-=========================
+2.5 The 'generic.LANG.html' File
+================================
+
+The files 'server/gnun/generic.LANG.html' are special: if no such file
+exists for your language, an empty file will be created (and added to
+the repository if specified 'VCS=yes').  This file is optional, and
+should contain a short message in your native language, ideally
+providing more information about the translation team or where to report
+bugs.  For example:
+
+     <p>To join the Fooish translation team, see <a
+     href="http://gnu.org/server/standards/translations/foo">the
+     Foo team homepage</a>.</p>
+
+   The contents of 'generic.LANG.html' is injected right after the
+translators' credits, if any, and before the timestamp.  It should be
+valid HTML markup.
+
+   When you modify this file, for example, adding a message to the
+existing empty file or changing a URL, such modification will affect
+_all_ articles of the language LANG in 'generic.LANG.html'.  The next
+time a build occurs, all translations of the language code LANG (i.e.
+all '.LANG.html', including the homepage), will be modified to include
+the contents of this special file.
+
+2.6 The 'languages.txt' File
+============================
+
+The file 'server/gnun/languages.txt' is used when generating lists of
+translations; those lists are subsequently included in all translations
+of the article.  Every line in the file is either a comment (when it
+begins with "#") or a definition for a language.  A language is defined
+by three <TAB>-separated fields.  The first field defines the language
+suffix; it is used in file names and in texts of the links.  The second
+field is the name of the language in English; it is used in HTML
+comments.  The third field defines the name of the language in that
+language itself; it is used in texts of the links, and it should be in
+UTF-8.  For example:
+
+     de	German	Deutsch
+
+   The generated list of translations may look like this:
+
+     <!-- begin translinks file -->
+     <div id="translations">
+     <ul class="translations-list">
+     <!-- German -->
+     <li><a href="/distros/screenshot.de.html">Deutsch</a>&nbsp;[de]</li>
+     <!-- English -->
+     <li><a href="/distros/screenshot.html">English</a>&nbsp;[en]</li>
+     <!-- Polish -->
+     <li><a href="/distros/screenshot.pl.html">polski</a>&nbsp;[pl]</li>
+     </ul>
+     </div> <!-- id="translations" -->
+     <!-- end translinks file -->
+
+2.7 Using Compendia
+===================
+
+Compendium is a PO file including translations for common strings; it is
+used to fill other PO files.  *Note Compendium: (gettext)Compendium.
+One example of such common strings is the footer text about reporting
+bugs and sending inquiries: when a webmaster updates footer texts in an
+article, GNUN will use compendia to automatically fill the translations
+for the new version of the strings.
+
+   GNUN uses compendia located in the 'server/gnun/compendia' directory
+of the 'www' web repository.  There are two kinds of compendia:
+'master.LANG.po' and 'compendium.LANG.po'.
+
+   The first kind, 'master.LANG.po', can be used to simultaneously
+update all occurrences of the translations of a given string.
+Translations from this file will override the translations from
+'ARTICLE.LANG.po'.  When 'master.LANG.po' is updated, the translations
+will be rebuilt.  GNUN doesn't modify this kind of compendia.
+
+   The second kind, 'compendium.LANG.po', is updated automatically.
+GNUN finds strings that repeat many times in POTs of articles and
+collects them in 'compendium.pot'.  Then it checks all available
+'ARTICLE.LANG.po' files for translations of those strings and generates
+'compendium.LANG.po'.  This file is also used to fill missing
+translations, but it doesn't override the translations from
+'ARTICLE.LANG.po', and the strings coming from 'compendium.LANG.po' are
+always marked as "fuzzy" to prevent propagation of translations that may
+be wrong in a different context.
+
+   When updating 'compendium.pot', some strings should be excluded even
+though they repeat in the POT files many times--for instance, GNUN slots
+for translators' notes.  *Note Notes Slot::.  They are not real
+translations, this is why they are likely to be different for different
+articles.  In order to avoid including them in compendia, GNUN checks a
+specific file, 'exclude.pot', and when that file contains the string, it
+won't be added to 'compendium.pot'.
+
+2.8 Building Sitemap
+====================
+
+Sitemaps differ from regular pages in two respects:
+
+  1. They are typically regenerated automatically from the texts of the
+     articles.
+
+  2. They mostly consist of links, therefore significant part of their
+     text should come to translations without any changes.
+
+   Also, sitemaps contain many translatable messages, so it is desirable
+to eliminate manual work where possible.
+
+   In order to take this into account, GNUN provides the 'sitemap'
+variable in 'gnun.mk'.  All articles listed in 'sitemap' are rebuilt
+using an additional compendium (when present),
+'server/gnun/compendia/sitemap-compendium.LANG.po'.
+
+   Those additional compendia are supposed to be compiled outside of
+GNUN by the same tool that generates the sitemap.  It is responsibility
+of that tool to provide the compendia with reasonable translations whose
+'msgid's match those generated by PO4A when processing the English
+version of the sitemap.
+
+2.9 Special Handling for GNU News
+=================================
+
+*Pay attention:* The practice of news handling that is described here
+has been obsolete for some time now, as they are being fed automatically
+from Planet GNU (<http://planet.gnu.org>).  Nevertheless, the
+information below is accurate to the extent that the support for the
+old-fashioned way is still available.
+
+   The GNU website has infrastructure for supporting "What's New", also
+known as "GNU News".  Entries are added in a special plain text file,
+'server/whatsnew.txt' and are used to build 'server/whatsnew.include'
+and 'gnusflashes.include'.  The former is used by
+'server/whatsnew.html', while the latter was included in the homepage.
+
+   GNUN has additional rules for building 'whatsnew.pot', which contains
+a combination of all necessary strings for 'server/whatsnew.LANG.html',
+'server/whatsnew.LANG.include' and 'gnusflashes.LANG.include'.  There is
+nothing unusual in this POT file, so it should be translated like any
+other.  When you commit 'whatsnew.LANG.po', it will be used to generate
+all three localized files.
+
+   Note that localized RSS feeds are not supported on purpose, as it
+would be annoying for subscribers if new items appear in English and
+then once again translated.
+
+3 Maintaining Translations in Your Team's Repository
+****************************************************
+
+GNUN operates on the "official" Web repository of the Savannah project
+'www', where normally only the coordinators of translation teams have
+write access.  However, all translation teams have their own projects,
+so it is possible to take advantage of Savannah as a hosting facility to
+make the team work more comfortable.
+
+   The PO files provide an excellent and natural way to review each
+other's translations, because the translation appears right below the
+original message.  Mutual reviews and proof-reading of translations is a
+crucial part of the process.  Furthermore, team work is great for the
+community spirit; automating some of the operations also result in more
+time for all members to concentrate on the important tasks.
+
+   The file 'GNUmakefile.team' in the 'gnun' package is a template,
+aimed for all translation teams who wish to use their own project's
+repository as a place to keep their draft translations, until they ripe
+and are ready to be installed officially.
+
+   The following diagram illustrates a typical workflow--it is
+applicable for small, medium and large teams:
+
+     +----------+                   +-------------------+
+     | ``www''  |                   |   ``www-LANG''    |
+     |   Web    |------>---->-------|Sources repository |
+     |repository|  automatic merge  +-------------------+
+     +----------+                         |    |     |
+          |                               |    |     `-- Member A
+          +------------<----<-------------'    |
+                       Leader                  `---Member B
+
+   All members and the team leader commit in their project's
+repository--when a translation is ready, the leader checks it in the
+official 'www' repository.  If an original article changes, a build
+could be invoked to synchronize (i.e.  merge) the changes and optionally
+automatically commit them so that the draft PO files are updated; at the
+same time, automatic notifications are sent to the persons interested in
+particular translations(1).  A translator would then normally update the
+PO file, and commit it again in the project's Sources repository, from
+where the coordinator will pick it up and install it in 'www'.
+
+   To take advantage of this semi-automation, rename this template
+'GNUmakefile.team' as 'GNUmakefile' and install it in the root of your
+project's Sources repository.  Then create directories and
+sub-directories exactly as they are in 'www'.  Do not create the '/po'
+sub-directories; they are redundant here.  Instead, install the PO files
+in the normal locations where the corresponding '.LANG.html' resides in
+'www', for example:
+
+     Root
+       |
+       |--GNUmakefile
+       |--home.LANG.po
+       |--...
+       |--gnu
+       |   |
+       |   |
+       |   +--linux-and-gnu.LANG.po
+       |   +--manifesto.LANG.po
+       |   +--...
+       |
+       |
+       +--philosophy
+       |     |
+       |     |
+       |     +--free-sw.LANG.po
+       |     +--not-ipr.LANG.po
+       |     +--open-source-misses-the-point.LANG.po
+       |     +--...
+       |
+       +--...
+
+   The next sections explain how to adopt the makefile for your team and
+how to invoke a "build".
+
+   ---------- Footnotes ----------
+
+   (1) The following sections describe in more details how to setup
+these automatic actions; however, if you have any difficulties with
+that, please ask the GNU Web Translation Managers to make it for your
+team using our server.
+
+3.1 Adopting 'GNUmakefile.team' for a Specific Team
+===================================================
+
+To adjust the makefile for your team, you need to edit the next
+variables.
+
+'TEAM'
+     Set this to the language code, like 'bg' or 'pt-br'.  It is
+     autodetected if not defined.
+
+'wwwdir'
+     The relative or absolute path to the working copy of the master
+     'www' repository.  So if you have checked out your project's
+     Sources repository at '~/projects/www-LANG' and the 'www' Web
+     repository at '~/projects/www', the value of 'wwwdir' should be
+     '../www/' or '/home/USER/projects/www/'.  Note the slash at the
+     end, it is important.
+
+'TEAM_URL_PREFIX'
+'TEAM_URL_POSTFIX'
+     These variables are used to transform the path to a file in team's
+     working copy into a URL for this file; they are only needed for
+     automatic email notifications.  It is expected that typically the
+     URL will point to some sort of Web interface for the repository,
+     for example,
+
+          TEAM_URL_PREFIX := http://cvs.savannah.gnu.org/viewvc/*checkout*/www-bg/
+          TEAM_URL_POSTFIX := ?root=www-bg
+
+   If two variants of one language share the same project and repository
+(such as 'zh-cn' and 'zh-tw'), they should maintain two directories with
+two 'GNUmakefile's and each directory having its own tree.
+
+   Some variables are specified on the command line, and alter the
+behavior of the build process.
+
+'ADD_FUZZY_DIFF'
+     The program to manage differences to "previous" 'msgid's added to
+     "fuzzy" translations when merging PO files.  When undefined, the
+     makefile tries to find 'gnun-add-fuzzy-diff' and assigns the result
+     to this variable.  *Note gnun-add-fuzzy-diff::.
+
+     Define to empty string to disable the feature.
+
+'NOTIFICATION_PERIOD=DAYS'
+     Default period of reminders sent by the 'notify' target.
+
+'NOTIFY=yes'
+     Make the 'notify' target actually send notifications.
+
+'NOTIFY=no'
+     Do not send email notifications about errors.  This is the default.
+
+'VERBOSE=yes'
+     Print more information from 'cvs', 'svn' and 'msgmerge'; off by
+     default.  Note that 'VERBOSE' can be defined to any string, it will
+     have the same effect.
+
+'VCS=yes'
+     Update both 'www' and 'www-LANG' repositories, then commit the
+     merged PO files in the latter repository.  By default, there is no
+     VCS interaction.  The VCS of the translation project repository is
+     determined automatically; currently only CVS, Subversion, GNU Bzr,
+     Git, Mercurial (Hg) and GNU Arch repositories are supported.
+
+     *Caution:* The makefile rule will commit all local changes, not
+     only those that resulted from running 'msgmerge'.  Thus, it is
+     better to use a separate working copy dedicated solely for this
+     purpose.
+
+3.2 Targets in 'GNUmakefile.team'
+=================================
+
+'update'
+     Updates the repositories.  Does nothing unless 'VCS=yes'.
+
+'sync'
+     Merges all available PO files from the corresponding POT in "www".
+     If a POT is missing in the master repository (usually, because it
+     was deleted when the original article was either split, renamed or
+     deleted), a warning is printed for the corresponding file and no
+     merging occurs for it.
+
+'report'
+     Verifies which translations are complete, and prints a list (with
+     statistics) of those that need to be updated.  Also, it reports the
+     translations that are not consistent with the revisions from "www"
+     repository.
+
+     More fine-grained notifications are implemented as the 'notify'
+     target.
+
+'notify'
+     Invokes the 'report' target, filters its output for different
+     translators and sends them notifications.
+
+     As an addition to the output of the 'report' target, URLs for
+     relevant files are written; also, when "www" and team revisions are
+     not consistent, their differences generated with 'gnun-diff-po' are
+     optionally attached (*note gnun-diff-po::, for more details).
+
+     The list of files to report against are configured with 'nottab'
+     file.  The lines of this file that begin with '#' are ignored;
+     other lines should contain two fields separated by ':'.
+
+     The first field is an extended grep regular expression; the files
+     are selected for the report if their names match this expression.
+     *Note Regular Expressions: (grep)Regular Expressions.
+
+     The second field is a space-separated list of single-word
+     translators' identifiers for which the line applies.  The file may
+     look like this:
+
+          ^gnu/gnu-history: alice bob carol
+          ^distros/(common-distros|distros|screenshot): dan alice
+          ^(licenses|philosophy)/: eve bob frank
+          ^licenses/: dan
+
+     Email addresses of the translators are kept in a separate file,
+     'email-aliases'.  Like 'nottab', this file contains lines separated
+     by ':'; the lines beginning with '#' are ignored.
+
+     The first field is translators' identifier, the second is
+     space-separated list of translators' email addresses.  These two
+     fields are mandatory.
+
+     The third field is the personal reminder period in days.  After
+     that period the message is sent again even though its contents
+     don't change.  Otherwise, the 'notify' target only sends messages
+     when something changes.  Naturally, no message is sent when no
+     action is needed in the requested set of translations (unless the
+     'force' option is used).
+
+     The team-wide default period is defined in its GNUmakefile.team
+     using the 'NOTIFICATION_PERIOD' variable.
+
+     The fourth field provides comma-separated options for the report.
+     Currently recognized options are:
+
+     'force'
+          Forces sending messages even when there are no files to work
+          on.
+
+     'no-diffs'
+          Disables sending "www" vs.  "www-LANG" differences as
+          attachments.
+
+     'www'
+          Report cases that suggest actions by the team leader, that is,
+          when the translation in the team repository is full whereas in
+          "www" it is incomplete or absent.
+
+     This is an example of 'email-aliases':
+
+          alice:alice@example.com abc@test.net
+          # Disable `dan' temporarily.
+          #dan:miller@test.by:5:no-diffs,www
+          bob:brh@invalid.tr:3
+          # Note that the third field is empty; the default value for period
+          # will be used.
+          carol:carol@localhost.br translator@example.bg::no-diffs
+          eve:eve@test.gr:2:www
+          frank:gnun-notifications@example.gr:1:www,no-diffs
+
+     The 'email-aliases' file should be kept privately because it may
+     contain personal email addresses of people.  How to do this is out
+     of scope of GNUN and this manual.
+
+'format'
+     A convenience rule to re-wrap all files upto the standard length.
+     Most PO editors leave the 'msgstr' as a single long line after it
+     has been edited, but GNUN will automatically re-wrap the file to
+     the standard line length when it is processed.  Wrapping long lines
+     in PO files is a good practice as it avoids unnecessary revisions.
+
+     This rule checks for all translations that have lines longer than
+     80, and runs 'msgcat' accordingly to reformat them.  For that
+     reason, it is recommended that you wrap all long lines in the
+     comment fields (e.g.  the file header, including the copyright
+     statement, and any other comments for specific messages), because
+     'make format' will unnecessarily invoke 'msgcat' for any file that
+     has a longer line, wherever it may occur.
+
+'publish'
+     The 'publish' rule's task is to copy all modified files to the
+     official "www" repository.  It depends on the 'format' target to
+     ensure that all files are re-wrapped to the standard line length
+     limit, but deliberately does not depend on 'sync VCS=yes'.
+     Usually, one would run 'make publish' when one or a bunch of PO
+     files are in a satisfactory condition to be published, and this
+     rule is just a convenience to avoid multiple manual 'cp'
+     invocations.  As a rule of thumb, before running this rule it is
+     sane to run 'sync' and correct any "fuzzy" messages and other
+     problems, if necessary.
+
+     The 'publish' rule does not depend on 'sync' explicitly, because
+     that would be a nuisance for offline operations and basically
+     unnecessary when the committer is fairly confident that there are
+     no changes to (re-)merge.  A hard dependency on 'sync' would slow
+     down the operation considerably.
+
+     As usual, when committing to the official repository, it is always
+     a good practice to examine the output of 'cvs diff'.
+
+     Invoking 'make publish' prints warnings and does not actually copy
+     the affected file if the sub-directory in "www" is non-existent or
+     the corresponding '.pot' is missing.
+
+     Typically, after an editing session (whether it involves actual
+     editing or just merging contributions from team members), one would
+     do:
+
+          $ make sync VCS=yes
+          $ make publish
+          $ cd WWWDIR
+          $ cvs up
+          (Add all new translations, if any.)
+            $ cvs add FILE ...
+          $ cvs diff
+          $ cvs commit -m "Some descriptive message."
+
+'clean'
+     Deletes all backup and auto-generated files.
+
+   'make VCS=yes' is the recommended command to be run periodically.  To
+check the status of the translations, run 'make report'.
+
+   Feel free to replace all strings with equivalents in your native
+language and of course--do not hesitate to extend this file and modify
+it as much as you like.  If you come up with something interesting, it
+would be nice to send a message to <bug-gnun@gnu.org>, so that
+'GNUmakefile.team' gets updated for all teams' benefit.
+
+3.3 Automatic Synchronization and Status Reports
+================================================
+
+It is convenient to invoke such synchronization automatically, for
+example once every day.  If you have enabled commit notifications for
+the project's repository, any new changes will be visible for
+subscribers.  Here is an example crontab entry:
+
+     # m h  dom mon dow   command
+     @daily              cd $HOME/projects/www-LANG; make VCS=yes
+
+   It is not necessary the job to be run on the team leader's machine,
+since all team members have write access to their project repository.
+
+   If desired, you could set up another job to report the status of the
+translations weekly or fortnightly, for example:
+
+     # m h  dom mon dow   command
+     @weekly             cd $HOME/projects/www-LANG; \
+                            make report | mail -s "Weekly statistics" \
+                            www-LANG-list@gnu.org
+
+   *Caution:* Most cron implementations do not allow the character '\'
+as a line continuation character--the example shown is made that way for
+better readability.
+
+4 Working with PO Files
+***********************
 
 This section provides GNUN-specific information about woking with PO
 files.  For general information, *note Working with PO Files:
 (web-trans)PO Files.
 
-2.3.1 Starting a New Translation
---------------------------------
+4.1 Starting a New Translation
+==============================
 
 To start a new translation, the most simple way is to copy the existing
 POT as 'article.LANG.po', where LANG is your language code.  For
@@ -966,8 +1454,8 @@ if a stupid typo you made halts the whole update of all translations.
 Such things happen to everyone, so it is a good practice to check before
 you actually commit.
 
-2.3.1.1 The Special Slot for Translator's Notes
-...............................................
+4.1.1 The Special Slot for Translator's Notes
+---------------------------------------------
 
 Sometimes it is necessary to complement the translation of an essay with
 translator's notes.  The special message '*GNUN-SLOT: TRANSLATOR'S
@@ -1013,8 +1501,8 @@ authors' footnotes, if any.  Furthermore, it would be easier to define a
 special CSS class for them, and also to convert the translations in
 other formats such as Texinfo--when these features are implemented.
 
-2.3.1.2 The Special Slot for Translator's Credits
-.................................................
+4.1.2 The Special Slot for Translator's Credits
+-----------------------------------------------
 
 Most of the translators usually put their name under the translation, in
 the "footer" area.  This is entirely acceptable, since some readers
@@ -1036,8 +1524,8 @@ provided that the translation team leader ensures that it constantly
 meets the linking criteria for gnu.org.  Please follow the FSF HTML
 Style Sheet when adding URIs or other information.
 
-2.3.2 Useful Hints for Editing PO Files
----------------------------------------
+4.2 Useful Hints for Editing PO Files
+=====================================
 
 This section contains additional explanations, some in the form of
 advices and recommendations; not all of them are strictly related to PO
@@ -1104,8 +1592,8 @@ files editing.
      inside the 'msgstr' could lead to an invalid page or a page that is
      valid, but is rendered incorrectly by the web browser.
 
-2.3.3 Transforming Existing Translation in PO Format
-----------------------------------------------------
+4.3 Transforming Existing Translation in PO Format
+==================================================
 
 Migrating an existing translation to a PO file format is basically
 editing the header as described in the previous section, and populating
@@ -1172,496 +1660,8 @@ the FSF to check who translated a particular article, and when.
 translation, Jero^me made some changes in 2007, and the original
 translator returned in 2008 and continued maintaining it.
 
-2.3.4 The 'generic.LANG.html' File
-----------------------------------
-
-The files 'server/gnun/generic.LANG.html' are special: if no such file
-exists for your language, an empty file will be created (and added to
-the repository if specified 'VCS=yes').  This file is optional, and
-should contain a short message in your native language, ideally
-providing more information about the translation team or where to report
-bugs.  For example:
-
-     <p>To join the Fooish translation team, see <a
-     href="http://gnu.org/server/standards/translations/foo">the
-     Foo team homepage</a>.</p>
-
-   The contents of 'generic.LANG.html' is injected right after the
-translators' credits, if any, and before the timestamp.  It should be
-valid HTML markup.
-
-   When you modify this file, for example, adding a message to the
-existing empty file or changing a URL, such modification will affect
-_all_ articles of the language LANG in 'generic.LANG.html'.  The next
-time a build occurs, all translations of the language code LANG (i.e.
-all '.LANG.html', including the homepage), will be modified to include
-the contents of this special file.
-
-2.3.5 The 'languages.txt' File
-------------------------------
-
-The file 'server/gnun/languages.txt' is used when generating lists of
-translations; those lists are subsequently included in all translations
-of the article.  Every line in the file is either a comment (when it
-begins with "#") or a definition for a language.  A language is defined
-by three <TAB>-separated fields.  The first field defines the language
-suffix; it is used in file names and in texts of the links.  The second
-field is the name of the language in English; it is used in HTML
-comments.  The third field defines the name of the language in that
-language itself; it is used in texts of the links, and it should be in
-UTF-8.  For example:
-
-     de	German	Deutsch
-
-   The generated list of translations may look like this:
-
-     <!-- begin translinks file -->
-     <div id="translations">
-     <ul class="translations-list">
-     <!-- German -->
-     <li><a href="/distros/screenshot.de.html">Deutsch</a>&nbsp;[de]</li>
-     <!-- English -->
-     <li><a href="/distros/screenshot.html">English</a>&nbsp;[en]</li>
-     <!-- Polish -->
-     <li><a href="/distros/screenshot.pl.html">polski</a>&nbsp;[pl]</li>
-     </ul>
-     </div> <!-- id="translations" -->
-     <!-- end translinks file -->
-
-2.3.6 Maintaining Translations in Your Team's Repository
---------------------------------------------------------
-
-GNUN operates on the "official" Web repository of the Savannah project
-'www', where normally only the coordinators of translation teams have
-write access.  However, all translation teams have their own projects,
-so it is possible to take advantage of Savannah as a hosting facility to
-make the team work more comfortable.
-
-   The PO files provide an excellent and natural way to review each
-other's translations, because the translation appears right below the
-original message.  Mutual reviews and proof-reading of translations is a
-crucial part of the process.  Furthermore, team work is great for the
-community spirit; automating some of the operations also result in more
-time for all members to concentrate on the important tasks.
-
-   The file 'GNUmakefile.team' in the 'gnun' package is a template,
-aimed for all translation teams who wish to use their own project's
-repository as a place to keep their draft translations, until they ripe
-and are ready to be installed officially.
-
-   The following diagram illustrates a typical workflow--it is
-applicable for small, medium and large teams:
-
-     +----------+                   +-------------------+
-     | ``www''  |                   |   ``www-LANG''    |
-     |   Web    |------>---->-------|Sources repository |
-     |repository|  automatic merge  +-------------------+
-     +----------+                         |    |     |
-          |                               |    |     `-- Member A
-          +------------<----<-------------'    |
-                       Leader                  `---Member B
-
-   All members and the team leader commit in their project's
-repository--when a translation is ready, the leader checks it in the
-official 'www' repository.  If an original article changes, a build
-could be invoked to synchronize (i.e.  merge) the changes and optionally
-automatically commit them so that the draft PO files are updated; at the
-same time, automatic notifications are sent to the persons interested in
-particular translations(1).  A translator would then normally update the
-PO file, and commit it again in the project's Sources repository, from
-where the coordinator will pick it up and install it in 'www'.
-
-   To take advantage of this semi-automation, rename this template
-'GNUmakefile.team' as 'GNUmakefile' and install it in the root of your
-project's Sources repository.  Then create directories and
-sub-directories exactly as they are in 'www'.  Do not create the '/po'
-sub-directories; they are redundant here.  Instead, install the PO files
-in the normal locations where the corresponding '.LANG.html' resides in
-'www', for example:
-
-     Root
-       |
-       |--GNUmakefile
-       |--home.LANG.po
-       |--...
-       |--gnu
-       |   |
-       |   |
-       |   +--linux-and-gnu.LANG.po
-       |   +--manifesto.LANG.po
-       |   +--...
-       |
-       |
-       +--philosophy
-       |     |
-       |     |
-       |     +--free-sw.LANG.po
-       |     +--not-ipr.LANG.po
-       |     +--open-source-misses-the-point.LANG.po
-       |     +--...
-       |
-       +--...
-
-   The next sections explain how to adopt the makefile for your team and
-how to invoke a "build".
-
-   ---------- Footnotes ----------
-
-   (1) The following sections describe in more details how to setup
-these automatic actions; however, if you have any difficulties with
-that, please ask the GNU Web Translation Managers to make it for your
-team using our server.
-
-2.3.6.1 Adopting 'GNUmakefile.team' for a Specific Team
-.......................................................
-
-To adjust the makefile for your team, you need to edit the next
-variables.
-
-'TEAM'
-     Set this to the language code, like 'bg' or 'pt-br'.  It is
-     autodetected if not defined.
-
-'wwwdir'
-     The relative or absolute path to the working copy of the master
-     'www' repository.  So if you have checked out your project's
-     Sources repository at '~/projects/www-LANG' and the 'www' Web
-     repository at '~/projects/www', the value of 'wwwdir' should be
-     '../www/' or '/home/USER/projects/www/'.  Note the slash at the
-     end, it is important.
-
-'TEAM_URL_PREFIX'
-'TEAM_URL_POSTFIX'
-     These variables are used to transform the path to a file in team's
-     working copy into a URL for this file; they are only needed for
-     automatic email notifications.  It is expected that typically the
-     URL will point to some sort of Web interface for the repository,
-     for example,
-
-          TEAM_URL_PREFIX := http://cvs.savannah.gnu.org/viewvc/*checkout*/www-bg/
-          TEAM_URL_POSTFIX := ?root=www-bg
-
-   If two variants of one language share the same project and repository
-(such as 'zh-cn' and 'zh-tw'), they should maintain two directories with
-two 'GNUmakefile's and each directory having its own tree.
-
-   Some variables are specified on the command line, and alter the
-behavior of the build process.
-
-'ADD_FUZZY_DIFF'
-     The program to manage differences to "previous" 'msgid's added to
-     "fuzzy" translations when merging PO files.  When undefined, the
-     makefile tries to find 'gnun-add-fuzzy-diff' and assigns the result
-     to this variable.  *Note gnun-add-fuzzy-diff::.
-
-     Define to empty string to disable the feature.
-
-'NOTIFICATION_PERIOD=DAYS'
-     Default period of reminders sent by the 'notify' target.
-
-'NOTIFY=yes'
-     Make the 'notify' target actually send notifications.
-
-'NOTIFY=no'
-     Do not send email notifications about errors.  This is the default.
-
-'VERBOSE=yes'
-     Print more information from 'cvs', 'svn' and 'msgmerge'; off by
-     default.  Note that 'VERBOSE' can be defined to any string, it will
-     have the same effect.
-
-'VCS=yes'
-     Update both 'www' and 'www-LANG' repositories, then commit the
-     merged PO files in the latter repository.  By default, there is no
-     VCS interaction.  The VCS of the translation project repository is
-     determined automatically; currently only CVS, Subversion, GNU Bzr,
-     Git, Mercurial (Hg) and GNU Arch repositories are supported.
-
-     *Caution:* The makefile rule will commit all local changes, not
-     only those that resulted from running 'msgmerge'.  Thus, it is
-     better to use a separate working copy dedicated solely for this
-     purpose.
-
-2.3.6.2 Targets in 'GNUmakefile.team'
-.....................................
-
-'update'
-     Updates the repositories.  Does nothing unless 'VCS=yes'.
-
-'sync'
-     Merges all available PO files from the corresponding POT in "www".
-     If a POT is missing in the master repository (usually, because it
-     was deleted when the original article was either split, renamed or
-     deleted), a warning is printed for the corresponding file and no
-     merging occurs for it.
-
-'report'
-     Verifies which translations are complete, and prints a list (with
-     statistics) of those that need to be updated.  Also, it reports the
-     translations that are not consistent with the revisions from "www"
-     repository.
-
-     More fine-grained notifications are implemented as the 'notify'
-     target.
-
-'notify'
-     Invokes the 'report' target, filters its output for different
-     translators and sends them notifications.
-
-     As an addition to the output of the 'report' target, URLs for
-     relevant files are written; also, when "www" and team revisions are
-     not consistent, their differences generated with 'gnun-diff-po' are
-     optionally attached (*note gnun-diff-po::, for more details).
-
-     The list of files to report against are configured with 'nottab'
-     file.  The lines of this file that begin with '#' are ignored;
-     other lines should contain two fields separated by ':'.
-
-     The first field is an extended grep regular expression; the files
-     are selected for the report if their names match this expression.
-     *Note Regular Expressions: (grep)Regular Expressions.
-
-     The second field is a space-separated list of single-word
-     translators' identifiers for which the line applies.  The file may
-     look like this:
-
-          ^gnu/gnu-history: alice bob carol
-          ^distros/(common-distros|distros|screenshot): dan alice
-          ^(licenses|philosophy)/: eve bob frank
-          ^licenses/: dan
-
-     Email addresses of the translators are kept in a separate file,
-     'email-aliases'.  Like 'nottab', this file contains lines separated
-     by ':'; the lines beginning with '#' are ignored.
-
-     The first field is translators' identifier, the second is
-     space-separated list of translators' email addresses.  These two
-     fields are mandatory.
-
-     The third field is the personal reminder period in days.  After
-     that period the message is sent again even though its contents
-     don't change.  Otherwise, the 'notify' target only sends messages
-     when something changes.  Naturally, no message is sent when no
-     action is needed in the requested set of translations (unless the
-     'force' option is used).
-
-     The team-wide default period is defined in its GNUmakefile.team
-     using the 'NOTIFICATION_PERIOD' variable.
-
-     The fourth field provides comma-separated options for the report.
-     Currently recognized options are:
-
-     'force'
-          Forces sending messages even when there are no files to work
-          on.
-
-     'no-diffs'
-          Disables sending "www" vs.  "www-LANG" differences as
-          attachments.
-
-     'www'
-          Report cases that suggest actions by the team leader, that is,
-          when the translation in the team repository is full whereas in
-          "www" it is incomplete or absent.
-
-     This is an example of 'email-aliases':
-
-          alice:alice@example.com abc@test.net
-          # Disable `dan' temporarily.
-          #dan:miller@test.by:5:no-diffs,www
-          bob:brh@invalid.tr:3
-          # Note that the third field is empty; the default value for period
-          # will be used.
-          carol:carol@localhost.br translator@example.bg::no-diffs
-          eve:eve@test.gr:2:www
-          frank:gnun-notifications@example.gr:1:www,no-diffs
-
-     The 'email-aliases' file should be kept privately because it may
-     contain personal email addresses of people.  How to do this is out
-     of scope of GNUN and this manual.
-
-'format'
-     A convenience rule to re-wrap all files upto the standard length.
-     Most PO editors leave the 'msgstr' as a single long line after it
-     has been edited, but GNUN will automatically re-wrap the file to
-     the standard line length when it is processed.  Wrapping long lines
-     in PO files is a good practice as it avoids unnecessary revisions.
-
-     This rule checks for all translations that have lines longer than
-     80, and runs 'msgcat' accordingly to reformat them.  For that
-     reason, it is recommended that you wrap all long lines in the
-     comment fields (e.g.  the file header, including the copyright
-     statement, and any other comments for specific messages), because
-     'make format' will unnecessarily invoke 'msgcat' for any file that
-     has a longer line, wherever it may occur.
-
-'publish'
-     The 'publish' rule's task is to copy all modified files to the
-     official "www" repository.  It depends on the 'format' target to
-     ensure that all files are re-wrapped to the standard line length
-     limit, but deliberately does not depend on 'sync VCS=yes'.
-     Usually, one would run 'make publish' when one or a bunch of PO
-     files are in a satisfactory condition to be published, and this
-     rule is just a convenience to avoid multiple manual 'cp'
-     invocations.  As a rule of thumb, before running this rule it is
-     sane to run 'sync' and correct any "fuzzy" messages and other
-     problems, if necessary.
-
-     The 'publish' rule does not depend on 'sync' explicitly, because
-     that would be a nuisance for offline operations and basically
-     unnecessary when the committer is fairly confident that there are
-     no changes to (re-)merge.  A hard dependency on 'sync' would slow
-     down the operation considerably.
-
-     As usual, when committing to the official repository, it is always
-     a good practice to examine the output of 'cvs diff'.
-
-     Invoking 'make publish' prints warnings and does not actually copy
-     the affected file if the sub-directory in "www" is non-existent or
-     the corresponding '.pot' is missing.
-
-     Typically, after an editing session (whether it involves actual
-     editing or just merging contributions from team members), one would
-     do:
-
-          $ make sync VCS=yes
-          $ make publish
-          $ cd WWWDIR
-          $ cvs up
-          (Add all new translations, if any.)
-            $ cvs add FILE ...
-          $ cvs diff
-          $ cvs commit -m "Some descriptive message."
-
-'clean'
-     Deletes all backup and auto-generated files.
-
-   'make VCS=yes' is the recommended command to be run periodically.  To
-check the status of the translations, run 'make report'.
-
-   Feel free to replace all strings with equivalents in your native
-language and of course--do not hesitate to extend this file and modify
-it as much as you like.  If you come up with something interesting, it
-would be nice to send a message to <bug-gnun@gnu.org>, so that
-'GNUmakefile.team' gets updated for all teams' benefit.
-
-2.3.6.3 Automatic Synchronization and Status Reports
-....................................................
-
-It is convenient to invoke such synchronization automatically, for
-example once every day.  If you have enabled commit notifications for
-the project's repository, any new changes will be visible for
-subscribers.  Here is an example crontab entry:
-
-     # m h  dom mon dow   command
-     @daily              cd $HOME/projects/www-LANG; make VCS=yes
-
-   It is not necessary the job to be run on the team leader's machine,
-since all team members have write access to their project repository.
-
-   If desired, you could set up another job to report the status of the
-translations weekly or fortnightly, for example:
-
-     # m h  dom mon dow   command
-     @weekly             cd $HOME/projects/www-LANG; \
-                            make report | mail -s "Weekly statistics" \
-                            www-LANG-list@gnu.org
-
-   *Caution:* Most cron implementations do not allow the character '\'
-as a line continuation character--the example shown is made that way for
-better readability.
-
-2.3.7 Using Compendia
----------------------
-
-Compendium is a PO file including translations for common strings; it is
-used to fill other PO files.  *Note Compendium: (gettext)Compendium.
-One example of such common strings is the footer text about reporting
-bugs and sending inquiries: when a webmaster updates footer texts in an
-article, GNUN will use compendia to automatically fill the translations
-for the new version of the strings.
-
-   GNUN uses compendia located in the 'server/gnun/compendia' directory
-of the 'www' web repository.  There are two kinds of compendia:
-'master.LANG.po' and 'compendium.LANG.po'.
-
-   The first kind, 'master.LANG.po', can be used to simultaneously
-update all occurrences of the translations of a given string.
-Translations from this file will override the translations from
-'ARTICLE.LANG.po'.  When 'master.LANG.po' is updated, the translations
-will be rebuilt.  GNUN doesn't modify this kind of compendia.
-
-   The second kind, 'compendium.LANG.po', is updated automatically.
-GNUN finds strings that repeat many times in POTs of articles and
-collects them in 'compendium.pot'.  Then it checks all available
-'ARTICLE.LANG.po' files for translations of those strings and generates
-'compendium.LANG.po'.  This file is also used to fill missing
-translations, but it doesn't override the translations from
-'ARTICLE.LANG.po', and the strings coming from 'compendium.LANG.po' are
-always marked as "fuzzy" to prevent propagation of translations that may
-be wrong in a different context.
-
-   When updating 'compendium.pot', some strings should be excluded even
-though they repeat in the POT files many times--for instance, GNUN slots
-for translators' notes.  *Note Notes Slot::.  They are not real
-translations, this is why they are likely to be different for different
-articles.  In order to avoid including them in compendia, GNUN checks a
-specific file, 'exclude.pot', and when that file contains the string, it
-won't be added to 'compendium.pot'.
-
-2.3.8 Building Sitemap
-----------------------
-
-Sitemaps differ from regular pages in two respects:
-
-  1. They are typically regenerated automatically from the texts of the
-     articles.
-
-  2. They mostly consist of links, therefore significant part of their
-     text should come to translations without any changes.
-
-   Also, sitemaps contain many translatable messages, so it is desirable
-to eliminate manual work where possible.
-
-   In order to take this into account, GNUN provides the 'sitemap'
-variable in 'gnun.mk'.  All articles listed in 'sitemap' are rebuilt
-using an additional compendium (when present),
-'server/gnun/compendia/sitemap-compendium.LANG.po'.
-
-   Those additional compendia are supposed to be compiled outside of
-GNUN by the same tool that generates the sitemap.  It is responsibility
-of that tool to provide the compendia with reasonable translations whose
-'msgid's match those generated by PO4A when processing the English
-version of the sitemap.
-
-2.3.9 Special Handling for GNU News
------------------------------------
-
-*Pay attention:* The practice of news handling that is described here
-has been obsolete for some time now, as they are being fed automatically
-from Planet GNU (<http://planet.gnu.org>).  Nevertheless, the
-information below is accurate to the extent that the support for the
-old-fashioned way is still available.
-
-   The GNU website has infrastructure for supporting "What's New", also
-known as "GNU News".  Entries are added in a special plain text file,
-'server/whatsnew.txt' and are used to build 'server/whatsnew.include'
-and 'gnusflashes.include'.  The former is used by
-'server/whatsnew.html', while the latter was included in the homepage.
-
-   GNUN has additional rules for building 'whatsnew.pot', which contains
-a combination of all necessary strings for 'server/whatsnew.LANG.html',
-'server/whatsnew.LANG.include' and 'gnusflashes.LANG.include'.  There is
-nothing unusual in this POT file, so it should be translated like any
-other.  When you commit 'whatsnew.LANG.po', it will be used to generate
-all three localized files.
-
-   Note that localized RSS feeds are not supported on purpose, as it
-would be annoying for subscribers if new items appear in English and
-then once again translated.
-
-2.4 Tips and Hints for Webmasters
-=================================
+5 Tips and Hints for Webmasters
+*******************************
 
 This section contains some tips and general recommendations for
 webmasters in no particular order--it is not mandatory to follow them,
@@ -1677,8 +1677,8 @@ reasonable time frame, for example a day or preferably, several hours.
 That way, the translators who are quick to update it immediately won't
 be disappointed if the POT changes again in the next GNUN run(s).
 
-2.4.1 Validation
-----------------
+5.1 Validation
+==============
 
 The script 'gnun-validate-html' is useful for webmasters who want to
 verify if their (potentially intrusive) changes result in a valid
@@ -1689,8 +1689,8 @@ is valid by running
 
    *Note gnun-validate-html::, for more information.
 
-2.4.2 Comments for Translators
-------------------------------
+5.2 Comments for Translators
+============================
 
 If you want a comment to be visible for translators, place it _inside_
 the element, for example:
@@ -1712,8 +1712,8 @@ the element, for example:
 the beginning of the HTML comment ('<!--'), since this will
 unnecessarily indent the comment in the POT.
 
-2.4.3 Modifying Boilerplates
-----------------------------
+5.3 Modifying Boilerplates
+==========================
 
 *Warning:* Any significant structural diversion from 'boilerplate.html'
 in a specific article may result in errors from GNUN. Any untested
@@ -1723,8 +1723,8 @@ GNUN's control.  Of course, this does not mean that no changes should
 happen--only that they must be applied in our sandbox first, to ensure a
 smooth transition.
 
-2.4.4 Localized URLs
---------------------
+5.4 Localized URLs
+==================
 
 Some articles may contain diagrams or other images with English text
 that can and should be translated.  In order to make the translated
@@ -1753,8 +1753,8 @@ as required in
    And please don't forget to commit the image in its source form
 (typically, in SVG format).
 
-2.4.5 Splitting Long Passages
------------------------------
+5.5 Splitting Long Passages
+===========================
 
 GNUN splits typical text by paragraphs, and translators write the
 translations for the resulting parts of the text one by one.  When a
@@ -1777,7 +1777,7 @@ sentences, because different languages may require different orders of
 parts of the sentence, and the translator has no control over the
 sequence of the strings in the translation.
 
-3 Unexciting Information for GNUN's Operation
+6 Unexciting Information for GNUN's Operation
 *********************************************
 
 This chapter might be of interest probably only to people who would have
@@ -1785,7 +1785,7 @@ special interest in the software, plan to enhance it or develop a
 front-end, except the section about scripts that includes descriptions
 of programs that may also be useful for the translators.
 
-3.1 Files and Directories
+6.1 Files and Directories
 =========================
 
 This is a brief diagram of "www" working copy; note that in this section
@@ -1924,7 +1924,7 @@ HTML-only translations.
 'server/gnun/compendia'
      The directory for compendia.  *Note Compendia::.
 
-3.2 GNUN Scripts
+6.2 GNUN Scripts
 ================
 
 For the time being there are several helper scripts.  Some of them are
@@ -1933,7 +1933,7 @@ rules; other scripts were written specifically to facilitate some
 mechanical actions, like initially filling the headers in the PO files.
 They all can be invoked separately, as stand-alone programs.
 
-3.2.1 The 'gnun-add-fuzzy-diff' Script
+6.2.1 The 'gnun-add-fuzzy-diff' Script
 --------------------------------------
 
 This script adds comments with differences of current 'msgid's against
@@ -1954,7 +1954,7 @@ internally.
 '--help'
      Display usage information and exit.
 
-3.2.2 The 'gnun-diff-po' Script
+6.2.2 The 'gnun-diff-po' Script
 -------------------------------
 
 This script compares two versions of a PO file.  It produces a HTML page
@@ -1989,7 +1989,7 @@ in the original strings.
 '--help'
      Display usage information and exit.
 
-3.2.3 The 'gnun-init-po' Script
+6.2.3 The 'gnun-init-po' Script
 -------------------------------
 
 This script initializes a PO file using POT generated with GNUN, and
@@ -2032,7 +2032,7 @@ fills some fields in the header.  It also optionally uses a compendium
    The PO file name is guessed from the name of POT and language suffix;
 the file is created in the current working directory.
 
-3.2.4 The 'gnun-preconvert' Script
+6.2.4 The 'gnun-preconvert' Script
 ----------------------------------
 
 This script uses 'po4a-gettextize' to convert a translation from HTML to
@@ -2053,7 +2053,7 @@ using 'gnun-merge-preconverted'.
 '--help'
      Display usage information and exit.
 
-3.2.5 The 'gnun-merge-preconverted' Script
+6.2.5 The 'gnun-merge-preconverted' Script
 ------------------------------------------
 
 This script takes 'po4a-gettextize' output, adds current 'msgid's as
@@ -2073,7 +2073,7 @@ differences against "previous" values like 'gnun-add-fuzzy-diff' does.
 '--help'
      Display usage information and exit.
 
-3.2.6 The 'gnun-report' Script
+6.2.6 The 'gnun-report' Script
 ------------------------------
 
 This script generates HTML reports about translations of a given team.
@@ -2115,7 +2115,7 @@ reports are provided on <http://www.gnu.org/software/gnun/reports/>.
    There is also a target in 'GNUmakefile' to generate text reports
 intended for monthly messages sent to the teams.  *Note report::.
 
-3.2.7 The 'gnun-validate-html' Script
+6.2.7 The 'gnun-validate-html' Script
 -------------------------------------
 
 This is a Bash script whose purpose is to "validate" both the original
@@ -2151,7 +2151,7 @@ makefile).  Example:
 '--help'
      Display usage information and exit.
 
-3.2.8 The 'mailfail' Script
+6.2.8 The 'mailfail' Script
 ---------------------------
 
 This is a helper script that runs a command, and mails the output of
@@ -2195,7 +2195,7 @@ body.
 argument is missing, the usage information is printed to the standard
 output and the exit code is 1.
 
-3.2.9 The 'validate-html-notify' Script
+6.2.9 The 'validate-html-notify' Script
 ---------------------------------------
 
 This script is a wrapper around 'gnun-validate-html' (*note
@@ -2223,7 +2223,7 @@ another program that it runs.
 wrapper has a specific task and cannot be used to invoke an arbitrary
 command--use 'mailfail' for that.  *Note mailfail::.
 
-3.2.10 The 'gnun-clear-previous' Script
+6.2.10 The 'gnun-clear-previous' Script
 ---------------------------------------
 
 This simple script is not used internally in GNUN. It is merely for
@@ -2245,7 +2245,7 @@ long lines in PO files.
 '--help'
      Print usage information on stdout.
 
-4 Reporting Bugs
+7 Reporting Bugs
 ****************
 
 GNUnited Nations, like any other software, is not bug free.  There are
@@ -2273,19 +2273,19 @@ Index
 * comments for translators:              Comments for Translators.
                                                              (line 1694)
 * comparing, translations:               gnun-diff-po.       (line 1959)
-* compendia:                             Compendia.          (line 1576)
-* compendium.pot:                        Compendia.          (line 1576)
+* compendia:                             Compendia.          (line  851)
+* compendium.pot:                        Compendia.          (line  851)
 * config.mk:                             Invoking GNUN.      (line  365)
 * conventional separator for strings:    Splitting Long Passages.
                                                              (line 1758)
-* conversion of existing translations:   Migrating.          (line 1109)
+* conversion of existing translations:   Migrating.          (line 1597)
 * conversion of existing translations <1>: gnun-preconvert.  (line 2037)
 * conversion of existing translations <2>: gnun-merge-preconverted.
                                                              (line 2058)
-* credits, translators:                  New Translation.    (line  919)
-* credits, translators <1>:              Credits Slot.       (line 1018)
+* credits, translators:                  New Translation.    (line 1407)
+* credits, translators <1>:              Credits Slot.       (line 1506)
 * cron, team maintenance:                GNUmakefile.team and Cron.
-                                                             (line 1550)
+                                                             (line 1257)
 * CVS:                                   Runtime Variables.  (line  400)
 * deferred generation of articles:       Runtime Variables.  (line  482)
 * defining articles in the root dir:     Main Variables.     (line  767)
@@ -2295,57 +2295,57 @@ Index
 * defining templates <2>:                Main Variables.     (line  741)
 * directories, defining:                 Main Variables.     (line  774)
 * email-aliases:                         GNUmakefile.team Targets.
-                                                             (line 1432)
-* exclude.pot:                           Compendia.          (line 1576)
+                                                             (line 1139)
+* exclude.pot:                           Compendia.          (line  851)
 * extra-templates:                       Main Variables.     (line  734)
 * fuzzy strings:                         Runtime Variables.  (line  482)
 * FUZZY_DIFF_LINGUAS:                    Main Variables.     (line  761)
-* generic notice, translations:          generic.LANG.html.  (line 1177)
+* generic notice, translations:          generic.LANG.html.  (line  795)
 * GNUmakefile:                           Invoking GNUN.      (line  350)
-* GNUmakefile.team:                      PO Files and Team.  (line 1233)
+* GNUmakefile.team:                      Team's Repository.  (line  940)
 * gnun.mk:                               Invoking GNUN.      (line  365)
 * gnun.mk <1>:                           Main Variables.     (line  702)
-* gnunews:                               GNU News.           (line 1639)
-* gnusflashes:                           GNU News.           (line 1639)
+* gnunews:                               GNU News.           (line  914)
+* gnusflashes:                           GNU News.           (line  914)
 * GRACE:                                 Runtime Variables.  (line  482)
 * grace period:                          Runtime Variables.  (line  482)
 * initializing, translations:            gnun-init-po.       (line 1994)
 * invocation:                            Invoking GNUN.      (line  350)
 * invoking:                              Invoking GNUN.      (line  350)
 * localized URLs:                        Localized URLs.     (line 1728)
-* long lines, wrap:                      New Translation.    (line  925)
+* long lines, wrap:                      New Translation.    (line 1413)
 * long passages, avoiding:               Splitting Long Passages.
                                                              (line 1758)
 * mail, notifications:                   Runtime Variables.  (line  449)
 * mail, notifications <1>:               GNUmakefile.team Variables.
-                                                             (line 1361)
+                                                             (line 1068)
 * mail, notifications <2>:               mailfail.           (line 2156)
-* migration, translations:               Migrating.          (line 1109)
+* migration, translations:               Migrating.          (line 1597)
 * migration, translations <1>:           gnun-preconvert.    (line 2037)
 * migration, translations <2>:           gnun-merge-preconverted.
                                                              (line 2058)
-* new translation:                       New Translation.    (line  802)
+* new translation:                       New Translation.    (line 1290)
 * new translations, notifications/announcements: Runtime Variables.
                                                              (line  462)
-* notes, translators:                    New Translation.    (line  910)
-* notes, translators <1>:                Notes Slot.         (line  971)
+* notes, translators:                    New Translation.    (line 1398)
+* notes, translators <1>:                Notes Slot.         (line 1459)
 * notification period:                   GNUmakefile.team Targets.
-                                                             (line 1440)
+                                                             (line 1147)
 * notification period, default:          GNUmakefile.team Variables.
-                                                             (line 1359)
+                                                             (line 1066)
 * NOTIFICATION_PERIOD:                   GNUmakefile.team Variables.
-                                                             (line 1359)
+                                                             (line 1066)
 * NOTIFY:                                Runtime Variables.  (line  449)
 * NOTIFY <1>:                            GNUmakefile.team Variables.
-                                                             (line 1361)
+                                                             (line 1068)
 * nottab:                                GNUmakefile.team Targets.
-                                                             (line 1415)
+                                                             (line 1122)
 * optional-templates:                    Main Variables.     (line  741)
 * outdated translations, notifications:  GNUmakefile.team Targets.
-                                                             (line 1407)
+                                                             (line 1114)
 * OUTDATED-GRACE:                        Runtime Variables.  (line  494)
 * output, detailed:                      Runtime Variables.  (line  475)
-* PO headers:                            New Translation.    (line  843)
+* PO headers:                            New Translation.    (line 1331)
 * POT generation, articles:              Main Variables.     (line  778)
 * previous, diff:                        Main Variables.     (line  761)
 * previous, diff <1>:                    gnun-add-fuzzy-diff.
@@ -2355,43 +2355,43 @@ Index
 * priorities.mk:                         Invoking GNUN.      (line  365)
 * priorities.mk <1>:                     report.             (line  624)
 * priorities.mk <2>:                     gnun-report.        (line 2083)
-* project repository:                    PO Files and Team.  (line 1233)
-* recommendations, PO files:             PO Tips.            (line 1041)
+* project repository:                    Team's Repository.  (line  940)
+* recommendations, PO files:             PO Tips.            (line 1529)
 * reminder period:                       GNUmakefile.team Targets.
-                                                             (line 1440)
+                                                             (line 1147)
 * reminder period, default:              GNUmakefile.team Variables.
-                                                             (line 1359)
+                                                             (line 1066)
 * reporting:                             report.             (line  611)
 * reporting <1>:                         gnun-report.        (line 2078)
 * reporting bugs:                        Bugs.               (line 2250)
-* repository, translation project:       PO Files and Team.  (line 1233)
+* repository, translation project:       Team's Repository.  (line  940)
 * ROOT:                                  Main Variables.     (line  767)
 * sanity checks:                         Runtime Variables.  (line  427)
 * sitemap:                               Main Variables.     (line  756)
-* sitemap <1>:                           Sitemap.            (line 1614)
+* sitemap <1>:                           Sitemap.            (line  889)
 * status, translations:                  report.             (line  611)
 * status, translations <1>:              gnun-report.        (line 2078)
 * Subversion:                            Runtime Variables.  (line  400)
 * SVN:                                   Runtime Variables.  (line  400)
 * synchronization, repository:           sync.               (line  576)
 * TEAM:                                  Runtime Variables.  (line  503)
-* team information:                      generic.LANG.html.  (line 1177)
-* team maintenance:                      PO Files and Team.  (line 1233)
+* team information:                      generic.LANG.html.  (line  795)
+* team maintenance:                      Team's Repository.  (line  940)
 * team maintenance, cron:                GNUmakefile.team and Cron.
-                                                             (line 1550)
-* team workflow:                         PO Files and Team.  (line 1251)
+                                                             (line 1257)
+* team workflow:                         Team's Repository.  (line  958)
 * templates, additional:                 Main Variables.     (line  734)
 * templates, defining:                   Main Variables.     (line  719)
 * templates, optional:                   Main Variables.     (line  741)
 * TEMPLATE_LINGUAS:                      Main Variables.     (line  719)
-* tips, translators:                     PO Tips.            (line 1041)
+* tips, translators:                     PO Tips.            (line 1529)
 * tips, webmasters:                      Webmaster Tips.     (line 1665)
-* translation memory:                    Compendia.          (line 1576)
-* translation, new:                      New Translation.    (line  802)
-* translators' credits:                  New Translation.    (line  919)
-* translators' credits <1>:              Credits Slot.       (line 1018)
-* translators' notes:                    New Translation.    (line  910)
-* translators' notes <1>:                Notes Slot.         (line  971)
+* translation memory:                    Compendia.          (line  851)
+* translation, new:                      New Translation.    (line 1290)
+* translators' credits:                  New Translation.    (line 1407)
+* translators' credits <1>:              Credits Slot.       (line 1506)
+* translators' notes:                    New Translation.    (line 1398)
+* translators' notes <1>:                Notes Slot.         (line 1459)
 * triggering, build:                     Invoking GNUN.      (line  350)
 * VALIDATE:                              Runtime Variables.  (line  427)
 * validation:                            Runtime Variables.  (line  427)
@@ -2406,8 +2406,8 @@ Index
 * VCS:                                   Runtime Variables.  (line  400)
 * VERBOSE:                               Runtime Variables.  (line  475)
 * webmaster tips:                        Webmaster Tips.     (line 1665)
-* whatsnew:                              GNU News.           (line 1639)
-* wrapping long lines:                   New Translation.    (line  925)
+* whatsnew:                              GNU News.           (line  914)
+* wrapping long lines:                   New Translation.    (line 1413)
 
 Appendix A GNU Free Documentation License
 *****************************************
