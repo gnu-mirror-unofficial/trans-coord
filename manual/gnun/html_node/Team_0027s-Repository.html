@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+This manual (updated 4 March 2013) is for GNUnited Nations (version
+0.7), a suite for maintaining translations of www.gnu.org
+essays and other articles.
+
+
+Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Free
+Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GNUnited Nations: Team's Repository</title>
+
+<meta name="description" content="GNUnited Nations: Team's Repository">
+<meta name="keywords" content="GNUnited Nations: Team's Repository">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="GNUmakefile_002eteam-Variables.html#GNUmakefile_002eteam-Variables" rel="next" title="GNUmakefile.team Variables">
+<link href="GNU-News.html#GNU-News" rel="previous" title="GNU News">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Team_0027s-Repository"></a>
+<div class="header">
+<p>
+Next: <a href="PO-Files.html#PO-Files" accesskey="n" rel="next">PO Files</a>, Previous: <a href="Usage.html#Usage" accesskey="p" rel="previous">Usage</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Maintaining-Translations-in-Your-Team_0027s-Repository"></a>
+<h2 class="chapter">3 Maintaining Translations in Your Team&rsquo;s Repository</h2>
+<a name="index-project-repository"></a>
+<a name="index-repository_002c-translation-project"></a>
+<a name="index-team-maintenance"></a>
+<a name="index-GNUmakefile_002eteam"></a>
+
+<p>GNUN operates on the &ldquo;official&rdquo; Web repository of the Savannah project
+&lsquo;www&rsquo;, where normally only the coordinators of translation teams have
+write access.  However, all translation teams have their own projects,
+so it is possible to take advantage of Savannah as a hosting facility to
+make the team work more comfortable.
+</p>
+<p>The PO files provide an excellent and natural way to review each other&rsquo;s
+translations, because the translation appears right below the original
+message.  Mutual reviews and proof-reading of translations is a crucial
+part of the process.  Furthermore, team work is great for the community
+spirit; automating some of the operations also result in more time for
+all members to concentrate on the important tasks.
+</p>
+<p>The file <samp>GNUmakefile.team</samp> in the &lsquo;<samp>gnun</samp>&rsquo; package is a
+template, aimed for all translation teams who wish to use their own
+project&rsquo;s repository as a place to keep their draft translations, until
+they ripe and are ready to be installed officially.
+</p>
+<a name="index-team-workflow"></a>
+<p>The following diagram illustrates a typical workflow&mdash;it is applicable
+for small, medium and large teams:
+</p>
+<div class="example">
+<pre class="example">+----------+                   +-------------------+
+| ``www''  |                   |   ``www-LANG''    |
+|   Web    |------&gt;----&gt;-------|Sources repository |
+|repository|  automatic merge  +-------------------+
++----------+                         |    |     |
+     |                               |    |     `-- Member A
+     +------------&lt;----&lt;-------------'    |
+                  Leader                  `---Member B
+</pre></div>
+
+<p>All members and the team leader commit in their project&rsquo;s
+repository&mdash;when a translation is ready, the leader checks it in the
+official &lsquo;www&rsquo; repository.  If an original article changes, a build
+could be invoked to synchronize (i.e. merge) the changes and
+optionally automatically commit them so that the draft PO files are
+updated; at the same time, automatic notifications are sent to the
+persons interested in particular translations<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>.  A translator would then normally update the PO file, and
+commit it again in the project&rsquo;s Sources repository, from where the
+coordinator will pick it up and install it in &lsquo;www&rsquo;.
+</p>
+<p>To take advantage of this semi-automation, rename this template
+<samp>GNUmakefile.team</samp> as <samp>GNUmakefile</samp> and install it in the root
+of your project&rsquo;s Sources repository.  Then create directories and
+sub-directories exactly as they are in &lsquo;www&rsquo;.  Do not create the
+<samp>/po</samp> sub-directories; they are redundant here.  Instead, install
+the PO files in the normal locations where the corresponding
+<samp>.<var>lang</var>.html</samp> resides in &lsquo;www&rsquo;, for example:
+</p>
+<div class="example">
+<pre class="example">Root
+  |
+  |--GNUmakefile
+  |--home.<var>lang</var>.po
+  |--&hellip;
+  |--gnu
+  |   |
+  |   |
+  |   +--linux-and-gnu.<var>lang</var>.po
+  |   +--manifesto.<var>lang</var>.po
+  |   +--&hellip;
+  |
+  |
+  +--philosophy
+  |     |
+  |     |
+  |     +--free-sw.<var>lang</var>.po
+  |     +--not-ipr.<var>lang</var>.po
+  |     +--open-source-misses-the-point.<var>lang</var>.po
+  |     +--&hellip;
+  |
+  +--&hellip;
+</pre></div>
+
+<p>The next sections explain how to adopt the makefile for your team and
+how to invoke a &ldquo;build&rdquo;.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="GNUmakefile_002eteam-Variables.html#GNUmakefile_002eteam-Variables" accesskey="1">GNUmakefile.team Variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="GNUmakefile_002eteam-Targets.html#GNUmakefile_002eteam-Targets" accesskey="2">GNUmakefile.team Targets</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron" accesskey="3">GNUmakefile.team and Cron</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
+<p>The following
+sections describe in more details how to setup these automatic
+actions; however, if you have any difficulties with that, please ask
+the GNU Web Translation Managers to setup them for your team on our
+server.</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="PO-Files.html#PO-Files" accesskey="n" rel="next">PO Files</a>, Previous: <a href="Usage.html#Usage" accesskey="p" rel="previous">Usage</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
