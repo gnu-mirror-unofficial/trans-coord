@@ -26,16 +26,18 @@ GNUnited Nations
   3.3 Automatic Synchronization and Status Reports
 4 Working with PO Files
   4.1 Starting a New Translation
-    4.1.1 The Special Slot for Translator's Notes
-    4.1.2 The Special Slot for Translator's Credits
-  4.2 Useful Hints for Editing PO Files
-  4.3 Transforming Existing Translation in PO Format
+  4.2 Filling the PO File Header
+  4.3 Special GNUN messages
+    4.3.1 The Special Slot for Translator's Notes
+    4.3.2 The Special Slot for Translator's Credits
+  4.4 Wrapping Long Lines
+  4.5 Useful Hints for Editing PO Files
+  4.6 Transforming Existing Translation in PO Format
 5 Tips and Hints for Webmasters
-  5.1 Validation
+  5.1 Modifying Templates
   5.2 Comments for Translators
-  5.3 Modifying Boilerplates
-  5.4 Localized URLs
-  5.5 Splitting Long Passages
+  5.3 Localized URLs
+  5.4 Splitting Long Passages
 6 Unexciting Information for GNUN's Operation
   6.1 Files and Directories
   6.2 GNUN Scripts
@@ -55,7 +57,7 @@ Appendix A GNU Free Documentation License
 GNUnited Nations
 ****************
 
-This manual (updated 1 February 2013) is for GNUnited Nations (version
+This manual (updated 4 March 2013) is for GNUnited Nations (version
 0.7), a suite for maintaining translations of www.gnu.org essays and
 other articles.
 
@@ -709,7 +711,7 @@ the build process.
 order to make translators' life easier: variables that translators are
 free to modify and variables that are modified by the web-translators
 staff(1), ideally after performing some local tests.  A translation team
-leader should update only 'FUZZY_DIFF_LINGUAS', 'TEMPLATE_LINGUAS';
+leader should update only 'FUZZY_DIFF_LINGUAS' and 'TEMPLATE_LINGUAS';
 everything else is supposed to be built automagically, without manual
 intervention.  If not, that is a bug that should be reported and fixed.
 
@@ -731,6 +733,11 @@ intervention.  If not, that is a bug that should be reported and fixed.
         - 'server/html5-head-include-1.LANG.html'
         - 'server/banner.LANG.html'
         - 'server/footer.LANG.html'.
+
+'FUZZY_DIFF_LINGUAS'
+     Add your language code here if you want GNUN to add differences to
+     "previous" 'msgid's in your PO files.  *Note gnun-add-fuzzy-diff::,
+     for more information.
 
 'extra-templates'
 
@@ -758,12 +765,6 @@ intervention.  If not, that is a bug that should be reported and fixed.
      The 'sitemap' variable declares the pages that are treated like
      sitemaps, that is, an additional externally generated compendium is
      used when updating them.  *Note Sitemap::, for more information.
-
-'FUZZY_DIFF_LINGUAS'
-     Add your language code here if you want GNUN to add differences to
-     "previous" 'msgid's in your PO files.  The differences are shown in
-     the default 'wdiff' format.  *Note wdiff: (wdiff)wdiff, for more
-     information.
 
 'ROOT'
      Add here articles that are in the server root, like 'home.html',
@@ -824,27 +825,23 @@ of the article.  Every line in the file is either a comment (when it
 begins with "#") or a definition for a language.  A language is defined
 by three <TAB>-separated fields.  The first field defines the language
 suffix; it is used in file names and in texts of the links.  The second
-field is the name of the language in English; it is used in HTML
-comments.  The third field defines the name of the language in that
-language itself; it is used in texts of the links, and it should be in
-UTF-8.  For example:
+field is the name of the language in English.  The third field defines
+the name of the language in that language itself; it is used in texts of
+the links, and it should be in UTF-8.  For example:
 
      de	German	Deutsch
 
    The generated list of translations may look like this:
 
-     <!-- begin translinks file -->
+     <!-- begin translist file -->
      <div id="translations">
-     <ul class="translations-list">
-     <!-- German -->
-     <li><a href="/distros/screenshot.de.html">Deutsch</a>&nbsp;[de]</li>
-     <!-- English -->
-     <li><a href="/distros/screenshot.html">English</a>&nbsp;[en]</li>
-     <!-- Polish -->
-     <li><a href="/distros/screenshot.pl.html">polski</a>&nbsp;[pl]</li>
-     </ul>
+     <p>
+     <span class="original"><a href="/distros/screenshot.en.html">English</a>&nbsp;[en]</span>&nbsp;&nbsp;
+     <span><a href="/distros/screenshot.de.html">Deutsch</a>&nbsp;[de]</span>&nbsp;&nbsp;
+     <span><a href="/distros/screenshot.pl.html">polski</a>&nbsp;[pl]</span>&nbsp;&nbsp;
+     </p>
      </div> <!-- id="translations" -->
-     <!-- end translinks file -->
+     <!-- end translist file -->
 
 2.7 Using Compendia
 ===================
@@ -1016,8 +1013,8 @@ how to invoke a "build".
 
    (1) The following sections describe in more details how to setup
 these automatic actions; however, if you have any difficulties with
-that, please ask the GNU Web Translation Managers to make it for your
-team using our server.
+that, please ask the GNU Web Translation Managers to setup them for your
+team on our server.
 
 3.1 Adopting 'GNUmakefile.team' for a Specific Team
 ===================================================
@@ -1059,7 +1056,8 @@ behavior of the build process.
      The program to manage differences to "previous" 'msgid's added to
      "fuzzy" translations when merging PO files.  When undefined, the
      makefile tries to find 'gnun-add-fuzzy-diff' and assigns the result
-     to this variable.  *Note gnun-add-fuzzy-diff::.
+     to this variable.  *Note gnun-add-fuzzy-diff::, for more
+     information.
 
      Define to empty string to disable the feature.
 
@@ -1281,8 +1279,8 @@ better readability.
 4 Working with PO Files
 ***********************
 
-This section provides GNUN-specific information about woking with PO
-files.  For general information, *note Working with PO Files:
+This section provides technical details about woking with PO files.  For
+general information about PO editors, *note Working with PO Files:
 (web-trans)PO Files.
 
 4.1 Starting a New Translation
@@ -1306,7 +1304,10 @@ up correctly.  *Note (gettext)msginit Invocation::.
    GNUN also provides a customized script to automatically fill more
 header fields.  *Note gnun-init-po::.
 
-   The PO file header as generated usually looks like this:
+4.2 Filling the PO File Header
+==============================
+
+The PO file header as generated usually looks like this:
 
      # SOME DESCRIPTIVE TITLE
      # Copyright (C) YEAR Free Software Foundation, Inc.
@@ -1383,18 +1384,21 @@ here is a list with all fields explained:
      "Language-Team: Bulgarian <www-bg-list@gnu.org>\n"
      "MIME-Version: 1.0\n"
      "Content-Type: text/plain; charset=UTF-8\n"
-     "Content-Transfer-Encoding: 8-bit\n"
+     "Content-Transfer-Encoding: 8bit\n"
 
    Notice the absence of the "fuzzy" marker; you should "unfuzzy" the
 header after entering the necessary information (this is done by simply
 pressing <TAB> in PO mode).
 
    It is recommended that you wrap all lines in the comments to be less
-than 80 lines; that looks better from a purely aesthetic point of view
-and improves the performance of 'GNUmakefile.team''s 'publish' rule
+than 80 characters; that looks better from a purely aesthetic point of
+view and improves the performance of 'GNUmakefile.team''s 'publish' rule
 (*note publish::).
 
-   There are some special messages that appear in the POT and PO:
+4.3 Special GNUN messages
+=========================
+
+There are some special messages that appear in the POT and PO:
 
 '*GNUN-SLOT: TRANSLATOR'S NOTES*'
      This is for translator's notes that are injected in the resulting
@@ -1411,50 +1415,7 @@ and improves the performance of 'GNUmakefile.team''s 'publish' rule
      a space if you do not want your name to appear there.  *Note
      Credits Slot::.
 
-   Most of the PO editors do not wrap long lines that inevitably appear
-in 'msgstr's.  If that happens, long lines make reading subsequent diffs
-harder, and are generally annoying for most people.  If this issue
-bothers you, you can "normalize" the already finished PO translation by
-executing on the command line 'msgcat -o FILE.po FILE.po', before
-installing it in the repository.  Either way, the build system will
-treat it is a valid PO file.
-
-   For those lucky Emacs users, here is a code snippet that you can put
-in your '.emacs'; doing 'M-x po-wrap' while in PO mode will wrap all
-long lines:
-
-     (defun po-wrap ()
-       "Filter current po-mode buffer through `msgcat' tool to wrap all lines."
-       (interactive)
-       (if (eq major-mode 'po-mode)
-           (let ((tmp-file (make-temp-file "po-wrap."))
-     	    (tmp-buf (generate-new-buffer "*temp*")))
-     	(unwind-protect
-     	    (progn
-     	      (write-region (point-min) (point-max) tmp-file nil 1)
-     	      (if (zerop
-     		   (call-process
-     		    "msgcat" nil tmp-buf t (shell-quote-argument tmp-file)))
-     		  (let ((saved (point))
-     			(inhibit-read-only t))
-     		    (delete-region (point-min) (point-max))
-     		    (insert-buffer tmp-buf)
-     		    (goto-char (min saved (point-max))))
-     		(with-current-buffer tmp-buf
-     		  (error (buffer-string)))))
-     	  (kill-buffer tmp-buf)
-     	  (delete-file tmp-file)))))
-
-   It is highly desirable that you check if the PO file you finished
-translating (or editing) is valid, before committing it.  This is done
-by running 'msgfmt -cv -o /dev/null FILE' or by simply pressing 'V' in
-PO mode.  The build system automatically verifies each PO file when
-invoked with 'VALIDATE=yes', but you won't get a warm and fuzzy feeling
-if a stupid typo you made halts the whole update of all translations.
-Such things happen to everyone, so it is a good practice to check before
-you actually commit.
-
-4.1.1 The Special Slot for Translator's Notes
+4.3.1 The Special Slot for Translator's Notes
 ---------------------------------------------
 
 Sometimes it is necessary to complement the translation of an essay with
@@ -1501,7 +1462,7 @@ authors' footnotes, if any.  Furthermore, it would be easier to define a
 special CSS class for them, and also to convert the translations in
 other formats such as Texinfo--when these features are implemented.
 
-4.1.2 The Special Slot for Translator's Credits
+4.3.2 The Special Slot for Translator's Credits
 -----------------------------------------------
 
 Most of the translators usually put their name under the translation, in
@@ -1509,7 +1470,7 @@ the "footer" area.  This is entirely acceptable, since some readers
 prefer to send buggestions directly to the translator.  Also, giving
 credit where credit is due is a natural thing.
 
-   Like the previous slot, you should "translate" it as a <SPC> if you
+   Like the previous slot, you should "translate" it as a space if you
 don't want your name to appear there.
 
    Here is an example of the recommended way to specify credits:
@@ -1524,7 +1485,53 @@ provided that the translation team leader ensures that it constantly
 meets the linking criteria for gnu.org.  Please follow the FSF HTML
 Style Sheet when adding URIs or other information.
 
-4.2 Useful Hints for Editing PO Files
+4.4 Wrapping Long Lines
+=======================
+
+Most of the PO editors do not wrap long lines that inevitably appear in
+'msgstr's.  If that happens, long lines make reading subsequent diffs
+harder, and are generally annoying for most people.  If this issue
+bothers you, you can "normalize" the already finished PO translation by
+executing on the command line 'msgcat -o FILE.po FILE.po', before
+installing it in the repository.  Either way, the build system will
+treat it is a valid PO file.
+
+   For those lucky Emacs users, here is a code snippet that you can put
+in your '.emacs'; doing 'M-x po-wrap' while in PO mode will wrap all
+long lines:
+
+     (defun po-wrap ()
+       "Filter current po-mode buffer through `msgcat' tool to wrap all lines."
+       (interactive)
+       (if (eq major-mode 'po-mode)
+           (let ((tmp-file (make-temp-file "po-wrap."))
+     	    (tmp-buf (generate-new-buffer "*temp*")))
+     	(unwind-protect
+     	    (progn
+     	      (write-region (point-min) (point-max) tmp-file nil 1)
+     	      (if (zerop
+     		   (call-process
+     		    "msgcat" nil tmp-buf t (shell-quote-argument tmp-file)))
+     		  (let ((saved (point))
+     			(inhibit-read-only t))
+     		    (delete-region (point-min) (point-max))
+     		    (insert-buffer tmp-buf)
+     		    (goto-char (min saved (point-max))))
+     		(with-current-buffer tmp-buf
+     		  (error (buffer-string)))))
+     	  (kill-buffer tmp-buf)
+     	  (delete-file tmp-file)))))
+
+   It is highly desirable that you check if the PO file you finished
+translating (or editing) is valid, before committing it.  This is done
+by running 'msgfmt -cv -o /dev/null FILE' or by simply pressing 'V' in
+PO mode.  The build system automatically verifies each PO file when
+invoked with 'VALIDATE=yes', but you won't get a warm and fuzzy feeling
+if a stupid typo you made halts the whole update of all translations.
+Such things happen to everyone, so it is a good practice to check before
+you actually commit.
+
+4.5 Useful Hints for Editing PO Files
 =====================================
 
 This section contains additional explanations, some in the form of
@@ -1567,17 +1574,6 @@ files editing.
      This is useful also for large chunks of text in '<pre>' elements,
      which normally you would want to preserve verbatim.
 
-   * If you translate "Free Software Foundation, Inc."  in your native
-     language in the copyright notice, then please prepend the English
-     name to the '<address>'; otherwise it looks awkward in most
-     languages.  Example:
-
-          # type: Content of: <div><address>
-          msgid "51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA"
-          msgstr ""
-          "Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, "
-          "Boston, MA 02110-1301, USA"
-
    * Do not use HTML entities for non-ASCII letters as in the English
      original.  They are harder to type and read.  So, if there is
      '&uuml;' and this is a character from the alphabet of your
@@ -1592,7 +1588,7 @@ files editing.
      inside the 'msgstr' could lead to an invalid page or a page that is
      valid, but is rendered incorrectly by the web browser.
 
-4.3 Transforming Existing Translation in PO Format
+4.6 Transforming Existing Translation in PO Format
 ==================================================
 
 Migrating an existing translation to a PO file format is basically
@@ -1677,10 +1673,17 @@ reasonable time frame, for example a day or preferably, several hours.
 That way, the translators who are quick to update it immediately won't
 be disappointed if the POT changes again in the next GNUN run(s).
 
-5.1 Validation
-==============
+5.1 Modifying Templates
+=======================
 
-The script 'gnun-validate-html' is useful for webmasters who want to
+Any significant structural diversion from 'boilerplate.html' in a
+specific article may result in errors from GNUN. Any untested intrusive
+updates to the server templates (such as changing the entire look & feel
+of the site) will probably break GNUN build process.  Of course, this
+does not mean that no changes should happen--only that they must be
+applied in a sandbox first, to ensure a smooth transition.
+
+   The script 'gnun-validate-html' is useful for webmasters who want to
 verify if their (potentially intrusive) changes result in a valid
 markup.  Before committing your changes, you can check whether the file
 is valid by running
@@ -1712,18 +1715,7 @@ the element, for example:
 the beginning of the HTML comment ('<!--'), since this will
 unnecessarily indent the comment in the POT.
 
-5.3 Modifying Boilerplates
-==========================
-
-*Warning:* Any significant structural diversion from 'boilerplate.html'
-in a specific article may result in errors from GNUN. Any untested
-intrusive updates to the server templates (such as changing the entire
-look & feel of the site) will probably break _all_ translations under
-GNUN's control.  Of course, this does not mean that no changes should
-happen--only that they must be applied in our sandbox first, to ensure a
-smooth transition.
-
-5.4 Localized URLs
+5.3 Localized URLs
 ==================
 
 Some articles may contain diagrams or other images with English text
@@ -1753,7 +1745,7 @@ as required in
    And please don't forget to commit the image in its source form
 (typically, in SVG format).
 
-5.5 Splitting Long Passages
+5.4 Splitting Long Passages
 ===========================
 
 GNUN splits typical text by paragraphs, and translators write the
@@ -1938,9 +1930,9 @@ They all can be invoked separately, as stand-alone programs.
 
 This script adds comments with differences of current 'msgid's against
 "previous" ones to "fuzzy" translations in a PO file.  To produce the
-differences 'wdiff' is used.  This may be useful to figure out what has
-changed.  In fact, it wraps around a 'sed' script used in GNUN
-internally.
+differences 'wdiff' is used.  (*Note wdiff: (wdiff)wdiff, for more
+information.)  This may be useful to figure out what has changed.  In
+fact, it wraps around a 'sed' script used in GNUN internally.
 
      gnun-add-fuzzy-diff [OPTION...] [FILE]
 
@@ -1953,6 +1945,11 @@ internally.
 
 '--help'
      Display usage information and exit.
+
+   The script is invoked automatically when requested through the
+'FUZZY_DIFF_LINGUAS' variable in 'GNUmakefile' (*note
+FUZZY_DIFF_LINGUAS::) and through the 'ADD_FUZZY_DIFF' variable in
+'GNUmakefile.team' (*note ADD_FUZZY_DIFF::).
 
 6.2.2 The 'gnun-diff-po' Script
 -------------------------------
@@ -2262,152 +2259,158 @@ Index
 
 * Menu:
 
-* ALL_DIRS:                              Main Variables.     (line  774)
-* announce:                              Runtime Variables.  (line  462)
-* articles in root directory, defining:  Main Variables.     (line  767)
-* Bazaar:                                Runtime Variables.  (line  400)
-* boilerplates:                          Modifying Boilerplates.
-                                                             (line 1717)
-* bugs, reporting:                       Bugs.               (line 2250)
-* bzr:                                   Runtime Variables.  (line  400)
+* ALL_DIRS:                              Main Variables.     (line  775)
+* announce:                              Runtime Variables.  (line  464)
+* articles in root directory, defining:  Main Variables.     (line  768)
+* Bazaar:                                Runtime Variables.  (line  402)
+* boilerplates:                          Modifying Templates.
+                                                             (line 1678)
+* bugs, reporting:                       Bugs.               (line 2247)
+* bzr:                                   Runtime Variables.  (line  402)
 * comments for translators:              Comments for Translators.
-                                                             (line 1694)
-* comparing, translations:               gnun-diff-po.       (line 1959)
-* compendia:                             Compendia.          (line  851)
-* compendium.pot:                        Compendia.          (line  851)
-* config.mk:                             Invoking GNUN.      (line  365)
+                                                             (line 1697)
+* comparing, translations:               gnun-diff-po.       (line 1956)
+* compendia:                             Compendia.          (line  848)
+* compendium.pot:                        Compendia.          (line  848)
+* config.mk:                             Invoking GNUN.      (line  367)
 * conventional separator for strings:    Splitting Long Passages.
-                                                             (line 1758)
-* conversion of existing translations:   Migrating.          (line 1597)
-* conversion of existing translations <1>: gnun-preconvert.  (line 2037)
+                                                             (line 1750)
+* conversion of existing translations:   Migrating.          (line 1593)
+* conversion of existing translations <1>: gnun-preconvert.  (line 2034)
 * conversion of existing translations <2>: gnun-merge-preconverted.
-                                                             (line 2058)
-* credits, translators:                  New Translation.    (line 1407)
-* credits, translators <1>:              Credits Slot.       (line 1506)
+                                                             (line 2055)
+* credits, translators:                  GNUN Slots.         (line 1411)
+* credits, translators <1>:              Credits Slot.       (line 1467)
 * cron, team maintenance:                GNUmakefile.team and Cron.
-                                                             (line 1257)
-* CVS:                                   Runtime Variables.  (line  400)
-* deferred generation of articles:       Runtime Variables.  (line  482)
-* defining articles in the root dir:     Main Variables.     (line  767)
-* defining directories:                  Main Variables.     (line  774)
-* defining templates:                    Main Variables.     (line  719)
-* defining templates <1>:                Main Variables.     (line  734)
-* defining templates <2>:                Main Variables.     (line  741)
-* directories, defining:                 Main Variables.     (line  774)
+                                                             (line 1255)
+* CVS:                                   Runtime Variables.  (line  402)
+* deferred generation of articles:       Runtime Variables.  (line  484)
+* defining articles in the root dir:     Main Variables.     (line  768)
+* defining directories:                  Main Variables.     (line  775)
+* defining templates:                    Main Variables.     (line  721)
+* defining templates <1>:                Main Variables.     (line  741)
+* defining templates <2>:                Main Variables.     (line  748)
+* directories, defining:                 Main Variables.     (line  775)
 * email-aliases:                         GNUmakefile.team Targets.
-                                                             (line 1139)
-* exclude.pot:                           Compendia.          (line  851)
-* extra-templates:                       Main Variables.     (line  734)
-* fuzzy strings:                         Runtime Variables.  (line  482)
-* FUZZY_DIFF_LINGUAS:                    Main Variables.     (line  761)
-* generic notice, translations:          generic.LANG.html.  (line  795)
-* GNUmakefile:                           Invoking GNUN.      (line  350)
-* GNUmakefile.team:                      Team's Repository.  (line  940)
-* gnun.mk:                               Invoking GNUN.      (line  365)
-* gnun.mk <1>:                           Main Variables.     (line  702)
-* gnunews:                               GNU News.           (line  914)
-* gnusflashes:                           GNU News.           (line  914)
-* GRACE:                                 Runtime Variables.  (line  482)
-* grace period:                          Runtime Variables.  (line  482)
-* initializing, translations:            gnun-init-po.       (line 1994)
-* invocation:                            Invoking GNUN.      (line  350)
-* invoking:                              Invoking GNUN.      (line  350)
-* localized URLs:                        Localized URLs.     (line 1728)
-* long lines, wrap:                      New Translation.    (line 1413)
+                                                             (line 1137)
+* exclude.pot:                           Compendia.          (line  848)
+* extra-templates:                       Main Variables.     (line  741)
+* fuzzy strings:                         Runtime Variables.  (line  484)
+* FUZZY_DIFF_LINGUAS:                    Main Variables.     (line  736)
+* generic notice, translations:          generic.LANG.html.  (line  796)
+* GNUmakefile:                           Invoking GNUN.      (line  352)
+* GNUmakefile.team:                      Team's Repository.  (line  937)
+* gnun.mk:                               Invoking GNUN.      (line  367)
+* gnun.mk <1>:                           Main Variables.     (line  704)
+* gnunews:                               GNU News.           (line  911)
+* gnusflashes:                           GNU News.           (line  911)
+* GRACE:                                 Runtime Variables.  (line  484)
+* grace period:                          Runtime Variables.  (line  484)
+* initializing, translations:            gnun-init-po.       (line 1991)
+* invocation:                            Invoking GNUN.      (line  352)
+* invoking:                              Invoking GNUN.      (line  352)
+* localized URLs:                        Localized URLs.     (line 1720)
+* long lines, wrap:                      Wrapping Long Lines.
+                                                             (line 1490)
 * long passages, avoiding:               Splitting Long Passages.
-                                                             (line 1758)
-* mail, notifications:                   Runtime Variables.  (line  449)
+                                                             (line 1750)
+* mail, notifications:                   Runtime Variables.  (line  451)
 * mail, notifications <1>:               GNUmakefile.team Variables.
-                                                             (line 1068)
-* mail, notifications <2>:               mailfail.           (line 2156)
-* migration, translations:               Migrating.          (line 1597)
-* migration, translations <1>:           gnun-preconvert.    (line 2037)
+                                                             (line 1066)
+* mail, notifications <2>:               mailfail.           (line 2153)
+* migration, translations:               Migrating.          (line 1593)
+* migration, translations <1>:           gnun-preconvert.    (line 2034)
 * migration, translations <2>:           gnun-merge-preconverted.
-                                                             (line 2058)
-* new translation:                       New Translation.    (line 1290)
+                                                             (line 2055)
+* new translation:                       New Translation.    (line 1288)
 * new translations, notifications/announcements: Runtime Variables.
-                                                             (line  462)
-* notes, translators:                    New Translation.    (line 1398)
-* notes, translators <1>:                Notes Slot.         (line 1459)
+                                                             (line  464)
+* notes, translators:                    GNUN Slots.         (line 1402)
+* notes, translators <1>:                Notes Slot.         (line 1420)
 * notification period:                   GNUmakefile.team Targets.
-                                                             (line 1147)
+                                                             (line 1145)
 * notification period, default:          GNUmakefile.team Variables.
-                                                             (line 1066)
+                                                             (line 1064)
 * NOTIFICATION_PERIOD:                   GNUmakefile.team Variables.
-                                                             (line 1066)
-* NOTIFY:                                Runtime Variables.  (line  449)
+                                                             (line 1064)
+* NOTIFY:                                Runtime Variables.  (line  451)
 * NOTIFY <1>:                            GNUmakefile.team Variables.
-                                                             (line 1068)
-* nottab:                                GNUmakefile.team Targets.
-                                                             (line 1122)
-* optional-templates:                    Main Variables.     (line  741)
-* outdated translations, notifications:  GNUmakefile.team Targets.
-                                                             (line 1114)
-* OUTDATED-GRACE:                        Runtime Variables.  (line  494)
-* output, detailed:                      Runtime Variables.  (line  475)
-* PO headers:                            New Translation.    (line 1331)
-* POT generation, articles:              Main Variables.     (line  778)
-* previous, diff:                        Main Variables.     (line  761)
-* previous, diff <1>:                    gnun-add-fuzzy-diff.
-                                                             (line 1938)
-* previous, manipulating PO files:       gnun-clear-previous.
-                                                             (line 2228)
-* priorities.mk:                         Invoking GNUN.      (line  365)
-* priorities.mk <1>:                     report.             (line  624)
-* priorities.mk <2>:                     gnun-report.        (line 2083)
-* project repository:                    Team's Repository.  (line  940)
-* recommendations, PO files:             PO Tips.            (line 1529)
-* reminder period:                       GNUmakefile.team Targets.
-                                                             (line 1147)
-* reminder period, default:              GNUmakefile.team Variables.
                                                              (line 1066)
-* reporting:                             report.             (line  611)
-* reporting <1>:                         gnun-report.        (line 2078)
-* reporting bugs:                        Bugs.               (line 2250)
-* repository, translation project:       Team's Repository.  (line  940)
-* ROOT:                                  Main Variables.     (line  767)
-* sanity checks:                         Runtime Variables.  (line  427)
-* sitemap:                               Main Variables.     (line  756)
-* sitemap <1>:                           Sitemap.            (line  889)
-* status, translations:                  report.             (line  611)
-* status, translations <1>:              gnun-report.        (line 2078)
-* Subversion:                            Runtime Variables.  (line  400)
-* SVN:                                   Runtime Variables.  (line  400)
-* synchronization, repository:           sync.               (line  576)
-* TEAM:                                  Runtime Variables.  (line  503)
-* team information:                      generic.LANG.html.  (line  795)
-* team maintenance:                      Team's Repository.  (line  940)
+* nottab:                                GNUmakefile.team Targets.
+                                                             (line 1120)
+* optional-templates:                    Main Variables.     (line  748)
+* outdated translations, notifications:  GNUmakefile.team Targets.
+                                                             (line 1112)
+* OUTDATED-GRACE:                        Runtime Variables.  (line  496)
+* output, detailed:                      Runtime Variables.  (line  477)
+* PO files, header:                      PO Header.          (line 1309)
+* PO headers:                            PO Header.          (line 1332)
+* POT generation, articles:              Main Variables.     (line  779)
+* previous, diff:                        Main Variables.     (line  736)
+* previous, diff <1>:                    gnun-add-fuzzy-diff.
+                                                             (line 1930)
+* previous, manipulating PO files:       gnun-clear-previous.
+                                                             (line 2225)
+* priorities.mk:                         Invoking GNUN.      (line  367)
+* priorities.mk <1>:                     report.             (line  626)
+* priorities.mk <2>:                     gnun-report.        (line 2080)
+* project repository:                    Team's Repository.  (line  937)
+* recommendations, PO files:             PO Tips.            (line 1536)
+* reminder period:                       GNUmakefile.team Targets.
+                                                             (line 1145)
+* reminder period, default:              GNUmakefile.team Variables.
+                                                             (line 1064)
+* reporting:                             report.             (line  613)
+* reporting <1>:                         gnun-report.        (line 2075)
+* reporting bugs:                        Bugs.               (line 2247)
+* repository, translation project:       Team's Repository.  (line  937)
+* ROOT:                                  Main Variables.     (line  768)
+* sanity checks:                         Runtime Variables.  (line  429)
+* sitemap:                               Main Variables.     (line  763)
+* sitemap <1>:                           Sitemap.            (line  886)
+* status, translations:                  report.             (line  613)
+* status, translations <1>:              gnun-report.        (line 2075)
+* Subversion:                            Runtime Variables.  (line  402)
+* SVN:                                   Runtime Variables.  (line  402)
+* synchronization, repository:           sync.               (line  578)
+* TEAM:                                  Runtime Variables.  (line  505)
+* team information:                      generic.LANG.html.  (line  796)
+* team maintenance:                      Team's Repository.  (line  937)
 * team maintenance, cron:                GNUmakefile.team and Cron.
-                                                             (line 1257)
-* team workflow:                         Team's Repository.  (line  958)
-* templates, additional:                 Main Variables.     (line  734)
-* templates, defining:                   Main Variables.     (line  719)
-* templates, optional:                   Main Variables.     (line  741)
-* TEMPLATE_LINGUAS:                      Main Variables.     (line  719)
-* tips, translators:                     PO Tips.            (line 1529)
-* tips, webmasters:                      Webmaster Tips.     (line 1665)
-* translation memory:                    Compendia.          (line  851)
-* translation, new:                      New Translation.    (line 1290)
-* translators' credits:                  New Translation.    (line 1407)
-* translators' credits <1>:              Credits Slot.       (line 1506)
-* translators' notes:                    New Translation.    (line 1398)
-* translators' notes <1>:                Notes Slot.         (line 1459)
-* triggering, build:                     Invoking GNUN.      (line  350)
-* VALIDATE:                              Runtime Variables.  (line  427)
-* validation:                            Runtime Variables.  (line  427)
-* validation <1>:                        Runtime Variables.  (line  514)
-* validation <2>:                        validate-all.       (line  693)
-* validation <3>:                        Validation.         (line 1682)
-* validation, HTML, XHTML:               gnun-validate-html. (line 2120)
-* variable, behavior:                    Runtime Variables.  (line  393)
-* variable, team:                        Runtime Variables.  (line  503)
-* variables:                             Runtime Variables.  (line  393)
-* variables <1>:                         Main Variables.     (line  702)
-* VCS:                                   Runtime Variables.  (line  400)
-* VERBOSE:                               Runtime Variables.  (line  475)
-* webmaster tips:                        Webmaster Tips.     (line 1665)
-* whatsnew:                              GNU News.           (line  914)
-* wrapping long lines:                   New Translation.    (line 1413)
+                                                             (line 1255)
+* team workflow:                         Team's Repository.  (line  955)
+* templates:                             Modifying Templates.
+                                                             (line 1678)
+* templates, additional:                 Main Variables.     (line  741)
+* templates, defining:                   Main Variables.     (line  721)
+* templates, optional:                   Main Variables.     (line  748)
+* TEMPLATE_LINGUAS:                      Main Variables.     (line  721)
+* tips, translators:                     PO Tips.            (line 1536)
+* tips, webmasters:                      Webmaster Tips.     (line 1661)
+* translation memory:                    Compendia.          (line  848)
+* translation, new:                      New Translation.    (line 1288)
+* translators' credits:                  GNUN Slots.         (line 1411)
+* translators' credits <1>:              Credits Slot.       (line 1467)
+* translators' notes:                    GNUN Slots.         (line 1402)
+* translators' notes <1>:                Notes Slot.         (line 1420)
+* triggering, build:                     Invoking GNUN.      (line  352)
+* VALIDATE:                              Runtime Variables.  (line  429)
+* validation:                            Runtime Variables.  (line  429)
+* validation <1>:                        Runtime Variables.  (line  516)
+* validation <2>:                        validate-all.       (line  695)
+* validation <3>:                        Modifying Templates.
+                                                             (line 1685)
+* validation, HTML, XHTML:               gnun-validate-html. (line 2117)
+* variable, behavior:                    Runtime Variables.  (line  395)
+* variable, team:                        Runtime Variables.  (line  505)
+* variables:                             Runtime Variables.  (line  395)
+* variables <1>:                         Main Variables.     (line  704)
+* VCS:                                   Runtime Variables.  (line  402)
+* VERBOSE:                               Runtime Variables.  (line  477)
+* webmaster tips:                        Webmaster Tips.     (line 1661)
+* whatsnew:                              GNU News.           (line  911)
+* wrapping long lines:                   Wrapping Long Lines.
+                                                             (line 1490)
 
 Appendix A GNU Free Documentation License
 *****************************************

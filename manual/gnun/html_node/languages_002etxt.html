@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 1 February 2013) is for GNUnited Nations (version
+This manual (updated 4 March 2013) is for GNUnited Nations (version
 0.7), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -79,8 +79,8 @@ translations of the article.  Every line in the file is either a
 comment (when it begins with &ldquo;#&rdquo;) or a definition for a language.  A
 language is defined by three <tt class="key">TAB</tt>-separated fields.  The first field
 defines the language suffix; it is used in file names and in texts of
-the links.  The second field is the name of the language in English;
-it is used in HTML comments.  The third field defines the name of the
+the links.  The second field is the name of the language in English.
+The third field defines the name of the
 language in that language itself; it is used in texts of the links,
 and it should be in UTF-8.  For example:
 </p>
@@ -91,18 +91,15 @@ and it should be in UTF-8.  For example:
 <p>The generated list of translations may look like this:
 </p>
 <div class="example">
-<pre class="example">&lt;!-- begin translinks file --&gt;
+<pre class="example">&lt;!-- begin translist file --&gt;
 &lt;div id=&quot;translations&quot;&gt;
-&lt;ul class=&quot;translations-list&quot;&gt;
-&lt;!-- German --&gt;
-&lt;li&gt;&lt;a href=&quot;/distros/screenshot.de.html&quot;&gt;Deutsch&lt;/a&gt;&amp;nbsp;[de]&lt;/li&gt;
-&lt;!-- English --&gt;
-&lt;li&gt;&lt;a href=&quot;/distros/screenshot.html&quot;&gt;English&lt;/a&gt;&amp;nbsp;[en]&lt;/li&gt;
-&lt;!-- Polish --&gt;
-&lt;li&gt;&lt;a href=&quot;/distros/screenshot.pl.html&quot;&gt;polski&lt;/a&gt;&amp;nbsp;[pl]&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;
+&lt;span class=&quot;original&quot;&gt;&lt;a href=&quot;/distros/screenshot.en.html&quot;&gt;English&lt;/a&gt;&amp;nbsp;[en]&lt;/span&gt;&amp;nbsp;&amp;nbsp;
+&lt;span&gt;&lt;a href=&quot;/distros/screenshot.de.html&quot;&gt;Deutsch&lt;/a&gt;&amp;nbsp;[de]&lt;/span&gt;&amp;nbsp;&amp;nbsp;
+&lt;span&gt;&lt;a href=&quot;/distros/screenshot.pl.html&quot;&gt;polski&lt;/a&gt;&amp;nbsp;[pl]&lt;/span&gt;&amp;nbsp;&amp;nbsp;
+&lt;/p&gt;
 &lt;/div&gt; &lt;!-- id=&quot;translations&quot; --&gt;
-&lt;!-- end translinks file --&gt;
+&lt;!-- end translist file --&gt;
 </pre></div>
 
 

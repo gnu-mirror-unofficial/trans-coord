@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 1 February 2013) is for GNUnited Nations (version
+This manual (updated 4 March 2013) is for GNUnited Nations (version
 0.7), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -29,7 +29,7 @@ Documentation License." -->
 <link href="Index.html#Index" rel="index" title="Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="PO-Files.html#PO-Files" rel="up" title="PO Files">
-<link href="Notes-Slot.html#Notes-Slot" rel="next" title="Notes Slot">
+<link href="PO-Header.html#PO-Header" rel="next" title="PO Header">
 <link href="PO-Files.html#PO-Files" rel="previous" title="PO Files">
 <style type="text/css">
 <!--
@@ -67,7 +67,7 @@ ul.no-bullet {list-style: none}
 <a name="New-Translation"></a>
 <div class="header">
 <p>
-Next: <a href="PO-Tips.html#PO-Tips" accesskey="n" rel="next">PO Tips</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="PO-Header.html#PO-Header" accesskey="n" rel="next">PO Header</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Starting-a-New-Translation"></a>
@@ -94,201 +94,6 @@ environment is set up correctly.  See <a href="http://www.gnu.org/software/gette
 <p>GNUN also provides a customized script to automatically fill more
 header fields.  See <a href="gnun_002dinit_002dpo.html#gnun_002dinit_002dpo">gnun-init-po</a>.
 </p>
-<p>The PO file header as generated usually looks like this:
-</p>
-<div class="example">
-<pre class="example"># SOME DESCRIPTIVE TITLE
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, YEAR.
-#
-#, fuzzy
-msgid &quot;&quot;
-msgstr &quot;&quot;
-&quot;Project-Id-Version: PACKAGE VERSION\n&quot;
-&quot;POT-Creation-Date: 2008-02-06 16:25-0500\n&quot;
-&quot;PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n&quot;
-&quot;Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt;\n&quot;
-&quot;Language-Team: LANGUAGE &lt;LL@li.org&gt;\n&quot;
-&quot;MIME-Version: 1.0\n&quot;
-&quot;Content-Type: text/plain; charset=CHARSET\n&quot;
-&quot;Content-Transfer-Encoding: ENCODING\n&quot;
-</pre></div>
-
-<p>You have to edit the header to match the already established
-conventions, and the rules for gnu.org translations.  For reference,
-here is a list with all fields explained:
-</p>
-<a name="index-PO-headers"></a>
-<dl compact="compact">
-<dt>&lsquo;<samp>Project-Id-Version</samp>&rsquo;</dt>
-<dd><p>Add here the filename of the original article, without the
-sub-directory, like &ldquo;body-include-1.html&rdquo; or &ldquo;free-sw.html&rdquo;.
-</p>
-</dd>
-<dt>&lsquo;<samp>POT-Creation-Date</samp>&rsquo;</dt>
-<dd><p>Do not edit this field, it is already set when the POT is created.
-</p>
-</dd>
-<dt>&lsquo;<samp>PO-Revision-Date</samp>&rsquo;</dt>
-<dd><p>Likewise, do not edit.  This field is automatically filled in when you
-save the file with any decent PO editor.
-</p>
-</dd>
-<dt>&lsquo;<samp>Last-Translator</samp>&rsquo;</dt>
-<dd><p>The name and email address of the last translator who has edited the
-translation.  Pay attention that normally this is the name of a member
-of your team, it can be the translation team leader if he/she was the
-person who updated the translation.  For example:
-</p>
-<div class="example">
-<pre class="example">Elvis Parsley &lt;king@grassland.com&gt;
-</pre></div>
-
-</dd>
-<dt>&lsquo;<samp>Language-Team</samp>&rsquo;</dt>
-<dd><p>This field should contain the mailing list on which the translation
-team can be reached&mdash;usually <a href="mailto:www-LANG-&hellip;@gnu.org">www-LANG-&hellip;@gnu.org</a>.
-Example:
-</p>
-<div class="example">
-<pre class="example">Czech &lt;www-cs-general@gnu.org&gt;
-</pre></div>
-
-</dd>
-<dt>&lsquo;<samp>MIME-Version</samp>&rsquo;</dt>
-<dd><p>Leave it like it is.
-</p>
-</dd>
-<dt>&lsquo;<samp>Content-Type</samp>&rsquo;</dt>
-<dd><p>Usually this is <code>text/plain; charset=UTF-8</code>; change the charset
-accordingly.
-</p>
-</dd>
-<dt>&lsquo;<samp>Content-Transfer-Encoding</samp>&rsquo;</dt>
-<dd><p>Set this to <code>8bit</code>.  Note that the PO file header ends with this
-field, and it should contain a newline (&lsquo;<samp>\n</samp>&rsquo;).  Unfortunately, some
-PO editors remove the newline, which causes an unnecessary revision when
-the file is automatically modified by GNUN&rsquo;s rules.
-</p></dd>
-</dl>
-
-<p>Here is an example of a properly edited header:
-</p>
-<div class="example">
-<pre class="example"># Bulgarian translation of http://www.gnu.org/philosophy/free-sw.html
-# Copyright (C) 2008 Free Software Foundation, Inc.
-# This file is distributed under the same license as the gnu.org article.
-# Yavor Doganov &lt;yavor@gnu.org&gt;, 2008.
-#
-msgid &quot;&quot;
-msgstr &quot;&quot;
-&quot;Project-Id-Version: free-sw.html\n&quot;
-&quot;POT-Creation-Date: 2008-02-06 16:25-0500\n&quot;
-&quot;PO-Revision-Date: 2008-02-09 15:23+0200\n&quot;
-&quot;Last-Translator: Yavor Doganov &lt;yavor@gnu.org&gt;\n&quot;
-&quot;Language-Team: Bulgarian &lt;www-bg-list@gnu.org&gt;\n&quot;
-&quot;MIME-Version: 1.0\n&quot;
-&quot;Content-Type: text/plain; charset=UTF-8\n&quot;
-&quot;Content-Transfer-Encoding: 8-bit\n&quot;
-</pre></div>
-
-<p>Notice the absence of the &ldquo;fuzzy&rdquo; marker; you should &ldquo;unfuzzy&rdquo; the
-header after entering the necessary information (this is done by
-simply pressing <tt class="key">TAB</tt> in PO mode).
-</p>
-<p>It is recommended that you wrap all lines in the comments to be less
-than 80 lines; that looks better from a purely aesthetic point of view
-and improves the performance of <samp>GNUmakefile.team</samp>&rsquo;s <code>publish</code>
-rule (see <a href="GNUmakefile_002eteam-Targets.html#publish">publish</a>).
-</p>
-<p>There are some special messages that appear in the POT and PO:
-</p>
-<dl compact="compact">
-<dd><a name="index-notes_002c-translators"></a>
-<a name="index-translators_0027-notes"></a>
-<a name="GNUN-Slots"></a></dd>
-<dt>&lsquo;<samp>*GNUN-SLOT: TRANSLATOR'S NOTES*</samp>&rsquo;</dt>
-<dd><p>This is for translator&rsquo;s notes that are injected in the resulting
-translation.  See <a href="Notes-Slot.html#Notes-Slot">Notes Slot</a>, for more information.  If your
-translation does not have notes, you <em>must</em> translate this as a
-space:
-</p>
-<div class="example">
-<pre class="example">msgid &quot;*GNUN-SLOT: TRANSLATOR'S NOTES*&quot;
-msgstr &quot; &quot;
-</pre></div>
-
-<a name="index-credits_002c-translators"></a>
-<a name="index-translators_0027-credits"></a>
-</dd>
-<dt>&lsquo;<samp>*GNUN-SLOT: TRANSLATOR'S CREDITS*</samp>&rsquo;</dt>
-<dd><p>This is again optional, and should contain the name (and address) of
-the person who made the translation.  &ldquo;Translate&rdquo; this string as a
-space if you do not want your name to appear there.
-See <a href="Credits-Slot.html#Credits-Slot">Credits Slot</a>.
-</p></dd>
-</dl>
-
-<a name="index-wrapping-long-lines"></a>
-<a name="index-long-lines_002c-wrap"></a>
-<p>Most of the PO editors do not wrap long lines that inevitably appear in
-<code>msgstr</code>s.  If that happens, long lines make reading subsequent
-diffs harder, and are generally annoying for most people.  If this issue
-bothers you, you can &ldquo;normalize&rdquo; the already finished PO translation
-by executing on the command line <code>msgcat -o <var>file</var>.po
-<var>file</var>.po</code>, before installing it in the repository.  Either way, the
-build system will treat it is a valid PO file.
-</p>
-<p>For those lucky Emacs users, here is a code snippet that you can put
-in your <samp>.emacs</samp>; doing <kbd>M-x po-wrap</kbd> while in PO mode will
-wrap all long lines:
-</p>
-<div class="lisp">
-<pre class="lisp">(defun po-wrap ()
-  &quot;Filter current po-mode buffer through `msgcat' tool to wrap all lines.&quot;
-  (interactive)
-  (if (eq major-mode 'po-mode)
-      (let ((tmp-file (make-temp-file &quot;po-wrap.&quot;))
-	    (tmp-buf (generate-new-buffer &quot;*temp*&quot;)))
-	(unwind-protect
-	    (progn
-	      (write-region (point-min) (point-max) tmp-file nil 1)
-	      (if (zerop
-		   (call-process
-		    &quot;msgcat&quot; nil tmp-buf t (shell-quote-argument tmp-file)))
-		  (let ((saved (point))
-			(inhibit-read-only t))
-		    (delete-region (point-min) (point-max))
-		    (insert-buffer tmp-buf)
-		    (goto-char (min saved (point-max))))
-		(with-current-buffer tmp-buf
-		  (error (buffer-string)))))
-	  (kill-buffer tmp-buf)
-	  (delete-file tmp-file)))))
-</pre></div>
-
-<p>It is highly desirable that you check if the PO file you finished
-translating (or editing) is valid, before committing it.  This is done
-by running <code>msgfmt -cv -o /dev/null <var>file</var></code> or by simply
-pressing <kbd>V</kbd> in PO mode.  The build system automatically verifies
-each PO file when invoked with <code>VALIDATE=yes</code>, but you won&rsquo;t get a
-warm and fuzzy feeling if a stupid typo you made halts the whole update
-of all translations.  Such things happen to everyone, so it is a good
-practice to check before you actually commit.
-</p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="Notes-Slot.html#Notes-Slot" accesskey="1">Notes Slot</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to handle translator&rsquo;s notes.
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Credits-Slot.html#Credits-Slot" accesskey="2">Credits Slot</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Translator&rsquo;s credits.
-</td></tr>
-</table>
-
-<hr>
-<div class="header">
-<p>
-Next: <a href="PO-Tips.html#PO-Tips" accesskey="n" rel="next">PO Tips</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
-</div>
 
 
 

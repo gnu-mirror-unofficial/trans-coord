@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 1 February 2013) is for GNUnited Nations (version
+This manual (updated 4 March 2013) is for GNUnited Nations (version
 0.7), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -76,9 +76,10 @@ Next: <a href="gnun_002ddiff_002dpo.html#gnun_002ddiff_002dpo" accesskey="n" rel
 
 <p>This script adds comments with differences of current <code>msgid</code>s
 against &ldquo;previous&rdquo; ones to &ldquo;fuzzy&rdquo; translations in a PO file.  To produce
-the differences <code>wdiff</code> is used.  This may be useful to figure
-out what has changed.  In fact, it wraps around a <code>sed</code> script
-used in GNUN internally.
+the differences <code>wdiff</code> is used.  (See <a href="http://www.gnu.org/software/wdiff/manual/html_node/wdiff.html#wdiff">The word
+difference finder</a> in <cite>GNU wdiff</cite>, for more information.)
+This may be useful to figure out what has changed.  In fact, it wraps
+around a <code>sed</code> script used in GNUN internally.
 </p>
 <div class="example">
 <pre class="example">gnun-add-fuzzy-diff [OPTION...] [FILE]
@@ -99,6 +100,11 @@ used in GNUN internally.
 </p></dd>
 </dl>
 
+<p>The script is invoked automatically when requested through the
+<code>FUZZY_DIFF_LINGUAS</code> variable in <samp>GNUmakefile</samp>
+(see <a href="Main-Variables.html#FUZZY_005fDIFF_005fLINGUAS">FUZZY_DIFF_LINGUAS</a>) and through the <code>ADD_FUZZY_DIFF</code>
+variable in <samp>GNUmakefile.team</samp> (see <a href="GNUmakefile_002eteam-Variables.html#ADD_005fFUZZY_005fDIFF">ADD_FUZZY_DIFF</a>).
+</p>
 
 
 

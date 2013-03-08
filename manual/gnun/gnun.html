@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 1 February 2013) is for GNUnited Nations (version
+This manual (updated 4 March 2013) is for GNUnited Nations (version
 0.7), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -108,21 +108,23 @@ ul.no-bullet {list-style: none}
   </ul></li>
   <li><a name="toc-Working-with-PO-Files" href="#PO-Files">4 Working with PO Files</a>
   <ul class="no-bullet">
-    <li><a name="toc-Starting-a-New-Translation" href="#New-Translation">4.1 Starting a New Translation</a>
+    <li><a name="toc-Starting-a-New-Translation" href="#New-Translation">4.1 Starting a New Translation</a></li>
+    <li><a name="toc-Filling-the-PO-File-Header" href="#PO-Header">4.2 Filling the PO File Header</a></li>
+    <li><a name="toc-Special-GNUN-messages" href="#GNUN-Slots">4.3 Special GNUN messages</a>
     <ul class="no-bullet">
-      <li><a name="toc-The-Special-Slot-for-Translator_0027s-Notes" href="#Notes-Slot">4.1.1 The Special Slot for Translator&rsquo;s Notes</a></li>
-      <li><a name="toc-The-Special-Slot-for-Translator_0027s-Credits" href="#Credits-Slot">4.1.2 The Special Slot for Translator&rsquo;s Credits</a></li>
+      <li><a name="toc-The-Special-Slot-for-Translator_0027s-Notes" href="#Notes-Slot">4.3.1 The Special Slot for Translator&rsquo;s Notes</a></li>
+      <li><a name="toc-The-Special-Slot-for-Translator_0027s-Credits" href="#Credits-Slot">4.3.2 The Special Slot for Translator&rsquo;s Credits</a></li>
     </ul></li>
-    <li><a name="toc-Useful-Hints-for-Editing-PO-Files" href="#PO-Tips">4.2 Useful Hints for Editing PO Files</a></li>
-    <li><a name="toc-Transforming-Existing-Translation-in-PO-Format" href="#Migrating">4.3 Transforming Existing Translation in PO Format</a></li>
+    <li><a name="toc-Wrapping-Long-Lines-1" href="#Wrapping-Long-Lines">4.4 Wrapping Long Lines</a></li>
+    <li><a name="toc-Useful-Hints-for-Editing-PO-Files" href="#PO-Tips">4.5 Useful Hints for Editing PO Files</a></li>
+    <li><a name="toc-Transforming-Existing-Translation-in-PO-Format" href="#Migrating">4.6 Transforming Existing Translation in PO Format</a></li>
   </ul></li>
   <li><a name="toc-Tips-and-Hints-for-Webmasters" href="#Webmaster-Tips">5 Tips and Hints for Webmasters</a>
   <ul class="no-bullet">
-    <li><a name="toc-Validation-1" href="#Validation">5.1 Validation</a></li>
+    <li><a name="toc-Modifying-Templates-1" href="#Modifying-Templates">5.1 Modifying Templates</a></li>
     <li><a name="toc-Comments-for-Translators-1" href="#Comments-for-Translators">5.2 Comments for Translators</a></li>
-    <li><a name="toc-Modifying-Boilerplates-1" href="#Modifying-Boilerplates">5.3 Modifying Boilerplates</a></li>
-    <li><a name="toc-Localized-URLs-1" href="#Localized-URLs">5.4 Localized URLs</a></li>
-    <li><a name="toc-Splitting-Long-Passages-1" href="#Splitting-Long-Passages">5.5 Splitting Long Passages</a></li>
+    <li><a name="toc-Localized-URLs-1" href="#Localized-URLs">5.3 Localized URLs</a></li>
+    <li><a name="toc-Splitting-Long-Passages-1" href="#Splitting-Long-Passages">5.4 Splitting Long Passages</a></li>
   </ul></li>
   <li><a name="toc-Unexciting-Information-for-GNUN_0027s-Operation" href="#Internals">6 Unexciting Information for GNUN&rsquo;s Operation</a>
   <ul class="no-bullet">
@@ -157,7 +159,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a 
 <a name="GNUnited-Nations"></a>
 <h1 class="top">GNUnited Nations</h1>
 
-<p>This manual (updated 1 February 2013) is for GNUnited Nations (version
+<p>This manual (updated 4 March 2013) is for GNUnited Nations (version
 0.7), a suite for maintaining translations of www.gnu.org
 essays and other articles.<br>
 </p><br>
@@ -1049,8 +1051,8 @@ behavior of the build process.
 order to make translators&rsquo; life easier: variables that translators are
 free to modify and variables that are modified by the web-translators
 staff<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>, ideally after performing some local tests.  A
-translation team leader should update only <code>FUZZY_DIFF_LINGUAS</code>,
-<code>TEMPLATE_LINGUAS</code>; everything else is supposed to be built
+translation team leader should update only <code>FUZZY_DIFF_LINGUAS</code>
+and <code>TEMPLATE_LINGUAS</code>; everything else is supposed to be built
 automagically, without manual intervention.  If not, that is a bug that
 should be reported and fixed.
 </p>
@@ -1082,6 +1084,14 @@ translated manually, like
 </li><li>- <samp>server/footer.<var>lang</var>.html</samp>.
 </li></ul>
 
+<a name="index-FUZZY_005fDIFF_005fLINGUAS"></a>
+<a name="FUZZY_005fDIFF_005fLINGUAS"></a><a name="index-previous_002c-diff"></a>
+</dd>
+<dt>&lsquo;<samp>FUZZY_DIFF_LINGUAS</samp>&rsquo;</dt>
+<dd><p>Add your language code here if you want GNUN to add differences to
+&ldquo;previous&rdquo; <code>msgid</code>s in your PO files.
+See <a href="#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a>, for more information.
+</p>
 <a name="index-extra_002dtemplates"></a>
 <a name="index-templates_002c-additional"></a>
 <a name="index-defining-templates-1"></a>
@@ -1120,15 +1130,6 @@ the team decides to actually commit <var>template</var>.<var>lang</var>.po.
 <dd><p>The <code>sitemap</code> variable declares the pages that are treated like
 sitemaps, that is, an additional externally generated compendium is used
 when updating them.  See <a href="#Sitemap">Sitemap</a>, for more information.
-</p>
-<a name="index-FUZZY_005fDIFF_005fLINGUAS"></a>
-<a name="index-previous_002c-diff"></a>
-</dd>
-<dt>&lsquo;<samp>FUZZY_DIFF_LINGUAS</samp>&rsquo;</dt>
-<dd><p>Add your language code here if you want GNUN to add differences to
-&ldquo;previous&rdquo; <code>msgid</code>s in your PO files.  The differences are shown in
-the default <code>wdiff</code> format.  See <a href="http://www.gnu.org/software/wdiff/manual/wdiff.html#wdiff">The word
-difference finder</a> in <cite>GNU wdiff</cite>, for more information.
 </p>
 <a name="index-ROOT"></a>
 <a name="index-articles-in-root-directory_002c-defining"></a>
@@ -1212,8 +1213,8 @@ translations of the article.  Every line in the file is either a
 comment (when it begins with &ldquo;#&rdquo;) or a definition for a language.  A
 language is defined by three <tt class="key">TAB</tt>-separated fields.  The first field
 defines the language suffix; it is used in file names and in texts of
-the links.  The second field is the name of the language in English;
-it is used in HTML comments.  The third field defines the name of the
+the links.  The second field is the name of the language in English.
+The third field defines the name of the
 language in that language itself; it is used in texts of the links,
 and it should be in UTF-8.  For example:
 </p>
@@ -1224,18 +1225,15 @@ and it should be in UTF-8.  For example:
 <p>The generated list of translations may look like this:
 </p>
 <div class="example">
-<pre class="example">&lt;!-- begin translinks file --&gt;
+<pre class="example">&lt;!-- begin translist file --&gt;
 &lt;div id=&quot;translations&quot;&gt;
-&lt;ul class=&quot;translations-list&quot;&gt;
-&lt;!-- German --&gt;
-&lt;li&gt;&lt;a href=&quot;/distros/screenshot.de.html&quot;&gt;Deutsch&lt;/a&gt;&amp;nbsp;[de]&lt;/li&gt;
-&lt;!-- English --&gt;
-&lt;li&gt;&lt;a href=&quot;/distros/screenshot.html&quot;&gt;English&lt;/a&gt;&amp;nbsp;[en]&lt;/li&gt;
-&lt;!-- Polish --&gt;
-&lt;li&gt;&lt;a href=&quot;/distros/screenshot.pl.html&quot;&gt;polski&lt;/a&gt;&amp;nbsp;[pl]&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;
+&lt;span class=&quot;original&quot;&gt;&lt;a href=&quot;/distros/screenshot.en.html&quot;&gt;English&lt;/a&gt;&amp;nbsp;[en]&lt;/span&gt;&amp;nbsp;&amp;nbsp;
+&lt;span&gt;&lt;a href=&quot;/distros/screenshot.de.html&quot;&gt;Deutsch&lt;/a&gt;&amp;nbsp;[de]&lt;/span&gt;&amp;nbsp;&amp;nbsp;
+&lt;span&gt;&lt;a href=&quot;/distros/screenshot.pl.html&quot;&gt;polski&lt;/a&gt;&amp;nbsp;[pl]&lt;/span&gt;&amp;nbsp;&amp;nbsp;
+&lt;/p&gt;
 &lt;/div&gt; &lt;!-- id=&quot;translations&quot; --&gt;
-&lt;!-- end translinks file --&gt;
+&lt;!-- end translist file --&gt;
 </pre></div>
 
 <hr>
@@ -1519,10 +1517,11 @@ of the build process.
 </p>
 <dl compact="compact">
 <dt>&lsquo;<samp>ADD_FUZZY_DIFF</samp>&rsquo;</dt>
-<dd><p>The program to manage differences to &ldquo;previous&rdquo; <code>msgid</code>s added to
+<dd><a name="ADD_005fFUZZY_005fDIFF"></a><p>The program to manage differences to &ldquo;previous&rdquo; <code>msgid</code>s added to
 &ldquo;fuzzy&rdquo; translations when merging PO files.  When undefined,
 the makefile tries to find <code>gnun-add-fuzzy-diff</code> and assigns
-the result to this variable. See <a href="#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a>.
+the result to this variable. See <a href="#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a>, for more
+information.
 </p>
 <p>Define to empty string to disable the feature.
 </p>
@@ -1804,25 +1803,30 @@ Next: <a href="#Webmaster-Tips" accesskey="n" rel="next">Webmaster Tips</a>, Pre
 <a name="Working-with-PO-Files"></a>
 <h2 class="chapter">4 Working with PO Files</h2>
 
-<p>This section provides GNUN-specific information about woking
-with PO files.  For general information, see <a href="http://www.gnu.org/software/trans-coord/manual/web-trans/web-trans.html#PO-Files">Working with PO Files</a> in <cite>GNU Web Translators Manual</cite>.
+<p>This section provides technical details about woking with PO files.
+For general information about PO editors, see <a href="http://www.gnu.org/software/trans-coord/manual/web-trans/web-trans.html#PO-Files">Working with PO Files</a> in <cite>GNU Web Translators Manual</cite>.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#New-Translation" accesskey="1">New Translation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to start a new translation.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#PO-Tips" accesskey="2">PO Tips</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tips and hints for translators.
+<tr><td align="left" valign="top">&bull; <a href="#PO-Header" accesskey="2">PO Header</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to fill the header of a new translation.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Migrating" accesskey="3">Migrating</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to migrate an existing translation to a PO
+<tr><td align="left" valign="top">&bull; <a href="#GNUN-Slots" accesskey="3">GNUN Slots</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Special GNUN messages.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Wrapping-Long-Lines" accesskey="4">Wrapping Long Lines</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#PO-Tips" accesskey="5">PO Tips</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tips and hints for translators.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Migrating" accesskey="6">Migrating</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to migrate an existing translation to a PO
                           format under GNUN&rsquo;s control.
 </td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
-</pre></th></tr></table>
+</table>
 
 <hr>
 <a name="New-Translation"></a>
 <div class="header">
 <p>
-Next: <a href="#PO-Tips" accesskey="n" rel="next">PO Tips</a>, Up: <a href="#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#PO-Header" accesskey="n" rel="next">PO Header</a>, Up: <a href="#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Starting-a-New-Translation"></a>
 <h3 class="section">4.1 Starting a New Translation</h3>
@@ -1848,6 +1852,16 @@ environment is set up correctly.  See <a href="http://www.gnu.org/software/gette
 <p>GNUN also provides a customized script to automatically fill more
 header fields.  See <a href="#gnun_002dinit_002dpo">gnun-init-po</a>.
 </p>
+<hr>
+<a name="PO-Header"></a>
+<div class="header">
+<p>
+Next: <a href="#GNUN-Slots" accesskey="n" rel="next">GNUN Slots</a>, Previous: <a href="#New-Translation" accesskey="p" rel="previous">New Translation</a>, Up: <a href="#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Filling-the-PO-File-Header"></a>
+<h3 class="section">4.2 Filling the PO File Header</h3>
+<a name="index-PO-files_002c-header"></a>
+
 <p>The PO file header as generated usually looks like this:
 </p>
 <div class="example">
@@ -1944,7 +1958,7 @@ msgstr &quot;&quot;
 &quot;Language-Team: Bulgarian &lt;www-bg-list@gnu.org&gt;\n&quot;
 &quot;MIME-Version: 1.0\n&quot;
 &quot;Content-Type: text/plain; charset=UTF-8\n&quot;
-&quot;Content-Transfer-Encoding: 8-bit\n&quot;
+&quot;Content-Transfer-Encoding: 8bit\n&quot;
 </pre></div>
 
 <p>Notice the absence of the &ldquo;fuzzy&rdquo; marker; you should &ldquo;unfuzzy&rdquo; the
@@ -1952,16 +1966,25 @@ header after entering the necessary information (this is done by
 simply pressing <tt class="key">TAB</tt> in PO mode).
 </p>
 <p>It is recommended that you wrap all lines in the comments to be less
-than 80 lines; that looks better from a purely aesthetic point of view
+than 80 characters; that looks better from a purely aesthetic point of view
 and improves the performance of <samp>GNUmakefile.team</samp>&rsquo;s <code>publish</code>
 rule (see <a href="#publish">publish</a>).
 </p>
+<hr>
+<a name="GNUN-Slots"></a>
+<div class="header">
+<p>
+Next: <a href="#Wrapping-Long-Lines" accesskey="n" rel="next">Wrapping Long Lines</a>, Previous: <a href="#PO-Header" accesskey="p" rel="previous">PO Header</a>, Up: <a href="#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Special-GNUN-messages"></a>
+<h3 class="section">4.3 Special GNUN messages</h3>
+
 <p>There are some special messages that appear in the POT and PO:
 </p>
 <dl compact="compact">
 <dd><a name="index-notes_002c-translators"></a>
 <a name="index-translators_0027-notes"></a>
-<a name="GNUN-Slots"></a></dd>
+</dd>
 <dt>&lsquo;<samp>*GNUN-SLOT: TRANSLATOR'S NOTES*</samp>&rsquo;</dt>
 <dd><p>This is for translator&rsquo;s notes that are injected in the resulting
 translation.  See <a href="#Notes-Slot">Notes Slot</a>, for more information.  If your
@@ -1984,53 +2007,6 @@ See <a href="#Credits-Slot">Credits Slot</a>.
 </p></dd>
 </dl>
 
-<a name="index-wrapping-long-lines"></a>
-<a name="index-long-lines_002c-wrap"></a>
-<p>Most of the PO editors do not wrap long lines that inevitably appear in
-<code>msgstr</code>s.  If that happens, long lines make reading subsequent
-diffs harder, and are generally annoying for most people.  If this issue
-bothers you, you can &ldquo;normalize&rdquo; the already finished PO translation
-by executing on the command line <code>msgcat -o <var>file</var>.po
-<var>file</var>.po</code>, before installing it in the repository.  Either way, the
-build system will treat it is a valid PO file.
-</p>
-<p>For those lucky Emacs users, here is a code snippet that you can put
-in your <samp>.emacs</samp>; doing <kbd>M-x po-wrap</kbd> while in PO mode will
-wrap all long lines:
-</p>
-<div class="lisp">
-<pre class="lisp">(defun po-wrap ()
-  &quot;Filter current po-mode buffer through `msgcat' tool to wrap all lines.&quot;
-  (interactive)
-  (if (eq major-mode 'po-mode)
-      (let ((tmp-file (make-temp-file &quot;po-wrap.&quot;))
-	    (tmp-buf (generate-new-buffer &quot;*temp*&quot;)))
-	(unwind-protect
-	    (progn
-	      (write-region (point-min) (point-max) tmp-file nil 1)
-	      (if (zerop
-		   (call-process
-		    &quot;msgcat&quot; nil tmp-buf t (shell-quote-argument tmp-file)))
-		  (let ((saved (point))
-			(inhibit-read-only t))
-		    (delete-region (point-min) (point-max))
-		    (insert-buffer tmp-buf)
-		    (goto-char (min saved (point-max))))
-		(with-current-buffer tmp-buf
-		  (error (buffer-string)))))
-	  (kill-buffer tmp-buf)
-	  (delete-file tmp-file)))))
-</pre></div>
-
-<p>It is highly desirable that you check if the PO file you finished
-translating (or editing) is valid, before committing it.  This is done
-by running <code>msgfmt -cv -o /dev/null <var>file</var></code> or by simply
-pressing <kbd>V</kbd> in PO mode.  The build system automatically verifies
-each PO file when invoked with <code>VALIDATE=yes</code>, but you won&rsquo;t get a
-warm and fuzzy feeling if a stupid typo you made halts the whole update
-of all translations.  Such things happen to everyone, so it is a good
-practice to check before you actually commit.
-</p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Notes-Slot" accesskey="1">Notes Slot</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to handle translator&rsquo;s notes.
 </td></tr>
@@ -2042,10 +2018,10 @@ practice to check before you actually commit.
 <a name="Notes-Slot"></a>
 <div class="header">
 <p>
-Next: <a href="#Credits-Slot" accesskey="n" rel="next">Credits Slot</a>, Up: <a href="#New-Translation" accesskey="u" rel="up">New Translation</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Credits-Slot" accesskey="n" rel="next">Credits Slot</a>, Up: <a href="#GNUN-Slots" accesskey="u" rel="up">GNUN Slots</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-Special-Slot-for-Translator_0027s-Notes"></a>
-<h4 class="subsection">4.1.1 The Special Slot for Translator&rsquo;s Notes</h4>
+<h4 class="subsection">4.3.1 The Special Slot for Translator&rsquo;s Notes</h4>
 <a name="index-notes_002c-translators-1"></a>
 <a name="index-translators_0027-notes-1"></a>
 
@@ -2100,10 +2076,10 @@ are implemented.
 <a name="Credits-Slot"></a>
 <div class="header">
 <p>
-Previous: <a href="#Notes-Slot" accesskey="p" rel="previous">Notes Slot</a>, Up: <a href="#New-Translation" accesskey="u" rel="up">New Translation</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#Notes-Slot" accesskey="p" rel="previous">Notes Slot</a>, Up: <a href="#GNUN-Slots" accesskey="u" rel="up">GNUN Slots</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-Special-Slot-for-Translator_0027s-Credits"></a>
-<h4 class="subsection">4.1.2 The Special Slot for Translator&rsquo;s Credits</h4>
+<h4 class="subsection">4.3.2 The Special Slot for Translator&rsquo;s Credits</h4>
 <a name="index-credits_002c-translators-1"></a>
 <a name="index-translators_0027-credits-1"></a>
 
@@ -2112,7 +2088,7 @@ in the &ldquo;footer&rdquo; area.  This is entirely acceptable, since some
 readers prefer to send buggestions directly to the translator.  Also,
 giving credit where credit is due is a natural thing.
 </p>
-<p>Like the previous slot, you should &ldquo;translate&rdquo; it as a <tt class="key">SPC</tt> if
+<p>Like the previous slot, you should &ldquo;translate&rdquo; it as a space if
 you don&rsquo;t want your name to appear there.
 </p>
 <p>Here is an example of the recommended way to specify credits:
@@ -2130,13 +2106,69 @@ meets the linking criteria for gnu.org.  Please follow the FSF HTML
 Style Sheet when adding URIs or other information.
 </p>
 <hr>
+<a name="Wrapping-Long-Lines"></a>
+<div class="header">
+<p>
+Next: <a href="#PO-Tips" accesskey="n" rel="next">PO Tips</a>, Previous: <a href="#GNUN-Slots" accesskey="p" rel="previous">GNUN Slots</a>, Up: <a href="#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Wrapping-Long-Lines-1"></a>
+<h3 class="section">4.4 Wrapping Long Lines</h3>
+<a name="index-wrapping-long-lines"></a>
+<a name="index-long-lines_002c-wrap"></a>
+
+<p>Most of the PO editors do not wrap long lines that inevitably appear in
+<code>msgstr</code>s.  If that happens, long lines make reading subsequent
+diffs harder, and are generally annoying for most people.  If this issue
+bothers you, you can &ldquo;normalize&rdquo; the already finished PO translation
+by executing on the command line <code>msgcat -o <var>file</var>.po
+<var>file</var>.po</code>, before installing it in the repository.  Either way, the
+build system will treat it is a valid PO file.
+</p>
+<p>For those lucky Emacs users, here is a code snippet that you can put
+in your <samp>.emacs</samp>; doing <kbd>M-x po-wrap</kbd> while in PO mode will
+wrap all long lines:
+</p>
+<div class="lisp">
+<pre class="lisp">(defun po-wrap ()
+  &quot;Filter current po-mode buffer through `msgcat' tool to wrap all lines.&quot;
+  (interactive)
+  (if (eq major-mode 'po-mode)
+      (let ((tmp-file (make-temp-file &quot;po-wrap.&quot;))
+	    (tmp-buf (generate-new-buffer &quot;*temp*&quot;)))
+	(unwind-protect
+	    (progn
+	      (write-region (point-min) (point-max) tmp-file nil 1)
+	      (if (zerop
+		   (call-process
+		    &quot;msgcat&quot; nil tmp-buf t (shell-quote-argument tmp-file)))
+		  (let ((saved (point))
+			(inhibit-read-only t))
+		    (delete-region (point-min) (point-max))
+		    (insert-buffer tmp-buf)
+		    (goto-char (min saved (point-max))))
+		(with-current-buffer tmp-buf
+		  (error (buffer-string)))))
+	  (kill-buffer tmp-buf)
+	  (delete-file tmp-file)))))
+</pre></div>
+
+<p>It is highly desirable that you check if the PO file you finished
+translating (or editing) is valid, before committing it.  This is done
+by running <code>msgfmt -cv -o /dev/null <var>file</var></code> or by simply
+pressing <kbd>V</kbd> in PO mode.  The build system automatically verifies
+each PO file when invoked with <code>VALIDATE=yes</code>, but you won&rsquo;t get a
+warm and fuzzy feeling if a stupid typo you made halts the whole update
+of all translations.  Such things happen to everyone, so it is a good
+practice to check before you actually commit.
+</p>
+<hr>
 <a name="PO-Tips"></a>
 <div class="header">
 <p>
-Next: <a href="#Migrating" accesskey="n" rel="next">Migrating</a>, Previous: <a href="#New-Translation" accesskey="p" rel="previous">New Translation</a>, Up: <a href="#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Migrating" accesskey="n" rel="next">Migrating</a>, Previous: <a href="#Wrapping-Long-Lines" accesskey="p" rel="previous">Wrapping Long Lines</a>, Up: <a href="#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Useful-Hints-for-Editing-PO-Files"></a>
-<h3 class="section">4.2 Useful Hints for Editing PO Files</h3>
+<h3 class="section">4.5 Useful Hints for Editing PO Files</h3>
 <a name="index-tips_002c-translators"></a>
 <a name="index-recommendations_002c-PO-files"></a>
 
@@ -2182,19 +2214,6 @@ translating the English text.  In PO mode, this is done by <kbd>C-j</kbd>.
 This is useful also for large chunks of text in <code>&lt;pre&gt;</code> elements,
 which normally you would want to preserve verbatim.
 
-</li><li> If you translate &ldquo;Free Software Foundation, Inc.&rdquo; in your native
-language in the copyright notice, then please prepend the English name
-to the <code>&lt;address&gt;</code>; otherwise it looks awkward in most
-languages.  Example:
-
-<div class="example">
-<pre class="example"># type: Content of: &lt;div&gt;&lt;address&gt;
-msgid &quot;51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA&quot;
-msgstr &quot;&quot;
-&quot;Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, &quot;
-&quot;Boston, MA 02110-1301, USA&quot;
-</pre></div>
-
 </li><li> Do not use HTML entities for non-ASCII letters as in the English
 original.  They are harder to type and read.  So, if there is
 &lsquo;<samp>&amp;uuml;</samp>&rsquo; and this is a character from the alphabet of your
@@ -2217,7 +2236,7 @@ is rendered incorrectly by the web browser.
 Previous: <a href="#PO-Tips" accesskey="p" rel="previous">PO Tips</a>, Up: <a href="#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Transforming-Existing-Translation-in-PO-Format"></a>
-<h3 class="section">4.3 Transforming Existing Translation in PO Format</h3>
+<h3 class="section">4.6 Transforming Existing Translation in PO Format</h3>
 <a name="index-migration_002c-translations"></a>
 <a name="index-conversion-of-existing-translations"></a>
 
@@ -2319,30 +2338,38 @@ That way, the translators who are quick to update it immediately won&rsquo;t
 be disappointed if the POT changes again in the next GNUN run(s).
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Validation" accesskey="1">Validation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to verify the documents.
+<tr><td align="left" valign="top">&bull; <a href="#Modifying-Templates" accesskey="1">Modifying Templates</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to avoid errors.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Comments-for-Translators" accesskey="2">Comments for Translators</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Passing comments to translators.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Modifying-Boilerplates" accesskey="3">Modifying Boilerplates</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Localized-URLs" accesskey="4">Localized URLs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying URLs of diagrams
+<tr><td align="left" valign="top">&bull; <a href="#Localized-URLs" accesskey="3">Localized URLs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying URLs of diagrams
                                 to be translated.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Splitting-Long-Passages" accesskey="5">Splitting Long Passages</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to avoid too long strings
+<tr><td align="left" valign="top">&bull; <a href="#Splitting-Long-Passages" accesskey="4">Splitting Long Passages</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to avoid too long strings
                                 in PO files.
 </td></tr>
 </table>
 
 <hr>
-<a name="Validation"></a>
+<a name="Modifying-Templates"></a>
 <div class="header">
 <p>
 Next: <a href="#Comments-for-Translators" accesskey="n" rel="next">Comments for Translators</a>, Up: <a href="#Webmaster-Tips" accesskey="u" rel="up">Webmaster Tips</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Validation-1"></a>
-<h3 class="section">5.1 Validation</h3>
-<a name="index-validation-3"></a>
+<a name="Modifying-Templates-1"></a>
+<h3 class="section">5.1 Modifying Templates</h3>
+<a name="index-boilerplates"></a>
+<a name="index-templates"></a>
 
+<p>Any significant structural diversion from
+<samp>boilerplate.html</samp> in a specific article may result in errors from
+GNUN.  Any untested intrusive updates to the server templates (such as
+changing the entire look &amp; feel of the site) will probably break
+GNUN build process.  Of course, this does not
+mean that no changes should happen&mdash;only that they must be applied in
+a sandbox first, to ensure a smooth transition.
+</p>
+<a name="index-validation-3"></a>
 <p>The script <code>gnun-validate-html</code> is useful for webmasters who
 want to verify if their (potentially intrusive) changes result in a
 valid markup.  Before committing your changes, you can check whether
@@ -2358,12 +2385,11 @@ the file is valid by running
 <a name="Comments-for-Translators"></a>
 <div class="header">
 <p>
-Next: <a href="#Modifying-Boilerplates" accesskey="n" rel="next">Modifying Boilerplates</a>, Previous: <a href="#Validation" accesskey="p" rel="previous">Validation</a>, Up: <a href="#Webmaster-Tips" accesskey="u" rel="up">Webmaster Tips</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Localized-URLs" accesskey="n" rel="next">Localized URLs</a>, Previous: <a href="#Modifying-Templates" accesskey="p" rel="previous">Modifying Templates</a>, Up: <a href="#Webmaster-Tips" accesskey="u" rel="up">Webmaster Tips</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Comments-for-Translators-1"></a>
 <h3 class="section">5.2 Comments for Translators</h3>
 <a name="index-comments-for-translators"></a>
-
 
 <p>If you want a comment to be visible for translators, place it
 <em>inside</em> the element, for example:
@@ -2390,31 +2416,13 @@ after the beginning of the HTML comment (<code>&lt;!--</code>), since this will
 unnecessarily indent the comment in the POT.
 </p>
 <hr>
-<a name="Modifying-Boilerplates"></a>
-<div class="header">
-<p>
-Next: <a href="#Localized-URLs" accesskey="n" rel="next">Localized URLs</a>, Previous: <a href="#Comments-for-Translators" accesskey="p" rel="previous">Comments for Translators</a>, Up: <a href="#Webmaster-Tips" accesskey="u" rel="up">Webmaster Tips</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
-</div>
-<a name="Modifying-Boilerplates-1"></a>
-<h3 class="section">5.3 Modifying Boilerplates</h3>
-<a name="index-boilerplates"></a>
-
-<p><strong>Warning:</strong> Any significant structural diversion from
-<samp>boilerplate.html</samp> in a specific article may result in errors from
-GNUN.  Any untested intrusive updates to the server templates (such as
-changing the entire look &amp; feel of the site) will probably break
-<em>all</em> translations under GNUN&rsquo;s control.  Of course, this does not
-mean that no changes should happen&mdash;only that they must be applied in
-our sandbox first, to ensure a smooth transition.
-</p>
-<hr>
 <a name="Localized-URLs"></a>
 <div class="header">
 <p>
-Next: <a href="#Splitting-Long-Passages" accesskey="n" rel="next">Splitting Long Passages</a>, Previous: <a href="#Modifying-Boilerplates" accesskey="p" rel="previous">Modifying Boilerplates</a>, Up: <a href="#Webmaster-Tips" accesskey="u" rel="up">Webmaster Tips</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Splitting-Long-Passages" accesskey="n" rel="next">Splitting Long Passages</a>, Previous: <a href="#Comments-for-Translators" accesskey="p" rel="previous">Comments for Translators</a>, Up: <a href="#Webmaster-Tips" accesskey="u" rel="up">Webmaster Tips</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Localized-URLs-1"></a>
-<h3 class="section">5.4 Localized URLs</h3>
+<h3 class="section">5.3 Localized URLs</h3>
 <a name="index-localized-URLs"></a>
 
 <p>Some articles may contain diagrams or other images with English text
@@ -2453,7 +2461,7 @@ as required in
 Previous: <a href="#Localized-URLs" accesskey="p" rel="previous">Localized URLs</a>, Up: <a href="#Webmaster-Tips" accesskey="u" rel="up">Webmaster Tips</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Splitting-Long-Passages-1"></a>
-<h3 class="section">5.5 Splitting Long Passages</h3>
+<h3 class="section">5.4 Splitting Long Passages</h3>
 <a name="index-long-passages_002c-avoiding"></a>
 <a name="index-conventional-separator-for-strings"></a>
 
@@ -2722,9 +2730,10 @@ Next: <a href="#gnun_002ddiff_002dpo" accesskey="n" rel="next">gnun-diff-po</a>,
 
 <p>This script adds comments with differences of current <code>msgid</code>s
 against &ldquo;previous&rdquo; ones to &ldquo;fuzzy&rdquo; translations in a PO file.  To produce
-the differences <code>wdiff</code> is used.  This may be useful to figure
-out what has changed.  In fact, it wraps around a <code>sed</code> script
-used in GNUN internally.
+the differences <code>wdiff</code> is used.  (See <a href="http://www.gnu.org/software/wdiff/manual/wdiff.html#wdiff">The word
+difference finder</a> in <cite>GNU wdiff</cite>, for more information.)
+This may be useful to figure out what has changed.  In fact, it wraps
+around a <code>sed</code> script used in GNUN internally.
 </p>
 <div class="example">
 <pre class="example">gnun-add-fuzzy-diff [OPTION...] [FILE]
@@ -2745,6 +2754,11 @@ used in GNUN internally.
 </p></dd>
 </dl>
 
+<p>The script is invoked automatically when requested through the
+<code>FUZZY_DIFF_LINGUAS</code> variable in <samp>GNUmakefile</samp>
+(see <a href="#FUZZY_005fDIFF_005fLINGUAS">FUZZY_DIFF_LINGUAS</a>) and through the <code>ADD_FUZZY_DIFF</code>
+variable in <samp>GNUmakefile.team</samp> (see <a href="#ADD_005fFUZZY_005fDIFF">ADD_FUZZY_DIFF</a>).
+</p>
 <hr>
 <a name="gnun_002ddiff_002dpo"></a>
 <div class="header">
@@ -3257,7 +3271,7 @@ Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manua
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-B">B</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Bazaar">Bazaar</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-boilerplates">boilerplates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Boilerplates">Modifying Boilerplates</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-boilerplates">boilerplates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Templates">Modifying Templates</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-bugs_002c-reporting">bugs, reporting</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bugs">Bugs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-bzr">bzr</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -3271,7 +3285,7 @@ Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manua
 <tr><td></td><td valign="top"><a href="#index-conversion-of-existing-translations">conversion of existing translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Migrating">Migrating</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-conversion-of-existing-translations-1">conversion of existing translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dpreconvert">gnun-preconvert</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-conversion-of-existing-translations-2">conversion of existing translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-credits_002c-translators">credits, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-credits_002c-translators">credits, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUN-Slots">GNUN Slots</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-credits_002c-translators-1">credits, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Credits-Slot">Credits Slot</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-cron_002c-team-maintenance">cron, team maintenance</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-CVS">CVS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
@@ -3312,7 +3326,7 @@ Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manua
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-L">L</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-localized-URLs">localized URLs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Localized-URLs">Localized URLs</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-long-lines_002c-wrap">long lines, wrap</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-long-lines_002c-wrap">long lines, wrap</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Wrapping-Long-Lines">Wrapping Long Lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-long-passages_002c-avoiding">long passages, avoiding</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Splitting-Long-Passages">Splitting Long Passages</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-M">M</a></th><td></td><td></td></tr>
@@ -3326,7 +3340,7 @@ Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manua
 <tr><th><a name="Index_cp_letter-N">N</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-new-translation">new translation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-new-translations_002c-notifications_002fannouncements">new translations, notifications/announcements</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-notes_002c-translators">notes, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-notes_002c-translators">notes, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUN-Slots">GNUN Slots</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-notes_002c-translators-1">notes, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Notes-Slot">Notes Slot</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-notification-period">notification period</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Targets">GNUmakefile.team Targets</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-notification-period_002c-default">notification period, default</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
@@ -3342,7 +3356,8 @@ Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manua
 <tr><td></td><td valign="top"><a href="#index-output_002c-detailed">output, detailed</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-P">P</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-PO-headers">PO headers</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PO-files_002c-header">PO files, header</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Header">PO Header</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PO-headers">PO headers</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Header">PO Header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-POT-generation_002c-articles">POT generation, articles</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-previous_002c-diff">previous, diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-previous_002c-diff-1">previous, diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a></td></tr>
@@ -3378,6 +3393,7 @@ Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manua
 <tr><td></td><td valign="top"><a href="#index-team-maintenance">team maintenance</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-team-maintenance_002c-cron">team maintenance, cron</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-team-workflow">team workflow</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-templates">templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Templates">Modifying Templates</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-templates_002c-additional">templates, additional</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-templates_002c-defining">templates, defining</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-templates_002c-optional">templates, optional</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
@@ -3386,9 +3402,9 @@ Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manua
 <tr><td></td><td valign="top"><a href="#index-tips_002c-webmasters">tips, webmasters</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Webmaster-Tips">Webmaster Tips</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-translation-memory">translation memory</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-translation_002c-new">translation, new</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-translators_0027-credits">translators&rsquo; credits</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-translators_0027-credits">translators&rsquo; credits</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUN-Slots">GNUN Slots</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-translators_0027-credits-1">translators&rsquo; credits</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Credits-Slot">Credits Slot</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-translators_0027-notes">translators&rsquo; notes</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-translators_0027-notes">translators&rsquo; notes</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUN-Slots">GNUN Slots</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-translators_0027-notes-1">translators&rsquo; notes</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Notes-Slot">Notes Slot</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-triggering_002c-build">triggering, build</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -3397,7 +3413,7 @@ Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manua
 <tr><td></td><td valign="top"><a href="#index-validation">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-validation-1">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-validation-2">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#validate_002dall">validate-all</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-validation-3">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Validation">Validation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-validation-3">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Templates">Modifying Templates</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-validation_002c-HTML_002c-XHTML">validation, HTML, XHTML</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-variable_002c-behavior">variable, behavior</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-variable_002c-team">variable, team</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
@@ -3409,7 +3425,7 @@ Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manua
 <tr><th><a name="Index_cp_letter-W">W</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-webmaster-tips">webmaster tips</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Webmaster-Tips">Webmaster Tips</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-whatsnew">whatsnew</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNU-News">GNU News</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-wrapping-long-lines">wrapping long lines</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-wrapping-long-lines">wrapping long lines</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Wrapping-Long-Lines">Wrapping Long Lines</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_letter-A"><b>A</b></a>
@@ -3960,7 +3976,7 @@ there is no difference.</p>
 <p>The following
 sections describe in more details how to setup these automatic
 actions; however, if you have any difficulties with that, please ask
-the GNU Web Translation Managers to make it for your team using our
+the GNU Web Translation Managers to setup them for your team on our
 server.</p>
 </div>
 <hr>
