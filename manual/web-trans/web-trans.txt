@@ -45,7 +45,7 @@ GNU Web Translators Manual
 **************************
 
 This manual is a guide for the GNU Web Translators.
-Last updated on 2 March 2013, for GNUnited Nations version 0.7.
+Last updated on 19 August 2013, for GNUnited Nations version 0.7.
 
    Copyright (C) 2009, 2010, 2011, 2012, 2013 Free Software Foundation,
 Inc.
@@ -1313,7 +1313,17 @@ problems if you have translated software before.
 editor, because each of them represents and treats gettext messages in a
 consistent and predictable way.  It is possible to edit a PO file with
 an ordinary plain text editor, but extra effort would be necessary to
-make it valid.  Here is a list of widely used PO editors:
+make it valid.
+
+   Note that recent versions of some PO editors (both offline and
+web-based) offer access to various translation services that do machine
+translation for their users.  Using a translation service is a clear
+example of SaaSS (see
+<https://www.gnu.org/philosophy/who-does-that-server-really-serve.html>),
+so please don't use such editors unless they only submit requests to
+your (or GNU project's) own servers.
+
+   Here is a list of widely used PO editors we can recommend:
 
    * PO mode.  We recommend using GNU Emacs in PO mode, because Emacs is
      the program that is suitable for performing any task when it comes
@@ -1336,10 +1346,6 @@ make it valid.  Here is a list of widely used PO editors:
    * Poedit--another popular editor that is based on the 'wxWidgets'
      graphical toolkit.  See <http://www.poedit.net>.
 
-   * Virtaal--a relevantly new editor that supports also the XLIFF
-     format and uses the Translate Toolkit API. See
-     <http://translate.sourceforge.net/wiki/virtaal>.
-
    * po.vim--ftplugin for the Vim editor.  The best option for people
      who use Vim as their editor.  See
      <http://www.vim.org/scripts/script.php?script_id=2530>.
@@ -1358,8 +1364,6 @@ existing free hosting platforms such as Launchpad
 (<http://translations.launchpad.net>).
 
    Here is a short and probably incomplete list of such systems:
-
-   * Pootle--<http://translate.sourceforge.net/wiki/pootle>
 
    * Vertaal--<http://code.google.com/p/vertaal>
 
