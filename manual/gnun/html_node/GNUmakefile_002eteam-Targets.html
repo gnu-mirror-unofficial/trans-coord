@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 4 March 2013) is for GNUnited Nations (version
+This manual (updated 30 August 2013) is for GNUnited Nations (version
 0.7), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -131,8 +131,8 @@ identifiers for which the line applies.  The file may look like this:
 <samp>email-aliases</samp>.  Like <samp>nottab</samp>, this file contains lines
 separated by &lsquo;:&rsquo;; the lines beginning with &lsquo;#&rsquo; are ignored.
 </p>
-<p>The first field is translators&rsquo; identifier, the second is
-space-separated list of translators&rsquo; email addresses.  These two
+<p>The first field is the translator&rsquo;s identifier, the second is
+space-separated list of the translator&rsquo;s email addresses.  These two
 fields are mandatory.
 </p>
 <a name="index-reminder-period"></a>
@@ -187,19 +187,15 @@ is out of scope of GNUN and this manual.
 </p>
 </dd>
 <dt><code>format</code></dt>
-<dd><p>A convenience rule to re-wrap all files upto the standard length.  Most
+<dd><p>A convenience rule to re-wrap all files upto the standard length.  Many
 PO editors leave the <code>msgstr</code> as a single long line after it has
 been edited, but GNUN will automatically re-wrap the file to the standard
 line length when it is processed.  Wrapping long lines in PO files is a
 good practice as it avoids unnecessary revisions.
 </p>
-<p>This rule checks for all translations that have lines longer than 80,
-and runs <code>msgcat</code> accordingly to reformat them.  For that
-reason, it is recommended that you wrap all long lines in the comment
-fields (e.g. the file header, including the copyright statement, and any
-other comments for specific messages), because <code>make format</code> will
-unnecessarily invoke <code>msgcat</code> for any file that has a longer
-line, wherever it may occur.
+<p>This rule filters all translations with <code>msgcat</code>; basically,
+it reformats the lines that are longer than the default page width
+of <code>msgcat</code>.
 </p>
 </dd>
 <dt><code>publish</code></dt>

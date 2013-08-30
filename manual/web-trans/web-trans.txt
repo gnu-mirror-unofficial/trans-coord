@@ -45,7 +45,7 @@ GNU Web Translators Manual
 **************************
 
 This manual is a guide for the GNU Web Translators.
-Last updated on 19 August 2013, for GNUnited Nations version 0.7.
+Last updated on 30 August 2013, for GNUnited Nations version 0.7.
 
    Copyright (C) 2009, 2010, 2011, 2012, 2013 Free Software Foundation,
 Inc.
@@ -220,8 +220,8 @@ steps to produce and submit such a translation:
      their ability) the translation and will install it in the
      repository.
 
-   * In order GNUN to be able to generate (and subsequently update) a
-     fully translated page, the language should have the server
+   * In order for GNUN to be able to generate (and subsequently update)
+     a fully translated page, the language should have the server
      templates available as PO files.  These templates are short, and
      translating them shouldn't take much time.  If the language code is
      present in the 'TEMPLATE_LINGUAS' variable at
@@ -261,8 +261,8 @@ request.
 Most of it is irrelevant, and automatically inherited from the markup of
 the original article.  Simply save your translation in a plain text file
 ('.txt'), preferably in UTF-8 encoding.  You can use any decent text
-editor for that--Emacs, Vim, gEdit, Kate, OpenOffice.org (the file
-should be saved as '.txt', not '.odt'), etc.
+editor for that--Emacs, Vim, gEdit, Kate, LibreOffice (the file should
+be saved as '.txt', not '.odt'), etc.
 
    Translate the title, the blue heading (if it differs slightly from
 the title) and the body of the article upto the link 'back to top'.  For
@@ -1073,8 +1073,8 @@ cron job.
 
 'server/whatsnew.html'
      This is "What's New", also known as "GNU's Flashes", also known as
-     "GNU News".  It is deprecated since quite some time and translating
-     it is discouraged.
+     "GNU News".  It has been deprecated for quite some time and
+     translating it is discouraged.
 
 4.2 Keeping Translations Current
 ================================
@@ -1101,13 +1101,12 @@ process of tracking outdated translations.
      in team's repository as well as of those in 'www' repository; *note
      (gnun)report in GNUmakefile.team::.
 
-   * GNUmakefile.team also has a means to send a further detalized
-     reports to specific translators; *note (gnun)notify in
-     GNUmakefile.team::.  The notification facility takes the output of
-     the 'report' target, adds the URLs of relevant files, and the
-     results are sent with attached HTML files of team's-against-'www'
-     differences to the translators who requested tracking particular
-     files.
+   * GNUmakefile.team also has a means to send more detaled reports to
+     specific translators; *note (gnun)notify in GNUmakefile.team::.
+     The notification facility takes the output of the 'report' target,
+     adds the URLs of relevant files, and the results are sent with
+     attached HTML files of team's-against-'www' differences to the
+     translators who requested tracking particular files.
 
      The feature is supposed to be invoked via a cron job; such jobs
      already run for some teams on our server.  If you'd like GNU Web
@@ -1306,8 +1305,8 @@ members of the following Savannah projects, depending on the case:
 We anticipate that some gnu.org translators will find this format odd or
 inconvenient, if they never happened to work with PO files before(1).
 Don't worry, you will soon get accustomed to it.  It is the established
-format for translations in the Free World, and you should have no
-problems if you have translated software before.
+format for translations in the Free World, and if you have any problems,
+other translators will help you.
 
    The most efficient way to edit a PO file is using a specialized PO
 editor, because each of them represents and treats gettext messages in a
@@ -1562,7 +1561,7 @@ license notice from the 'layout.css', with a short comment.
 
    If using the default CSS style for translations does not give the
 expected good results, or there are other problems (significant or not)
-that obstruct reading and/or worsen the look from aesthetic point of
+that obstruct reading or worsen the look from an aesthetic point of
 view, please write to <webmasters@gnu.org> with a description of the
 issue.  If there are several unrelated problems, send separate messages
 with appropriate explanation (which may include a demonstration of the

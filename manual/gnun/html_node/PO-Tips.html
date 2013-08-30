@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 4 March 2013) is for GNUnited Nations (version
+This manual (updated 30 August 2013) is for GNUnited Nations (version
 0.7), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -76,7 +76,7 @@ Next: <a href="Migrating.html#Migrating" accesskey="n" rel="next">Migrating</a>,
 <a name="index-recommendations_002c-PO-files"></a>
 
 <p>This section contains additional explanations, some in the form of
-advices and recommendations; not all of them are strictly related to
+advice and recommendations; not all of them are strictly related to
 PO files editing.
 </p>
 <ul>
@@ -113,7 +113,7 @@ comments do not appear in the generated HTML source.
 
 </li><li> Sometimes, especially when the original message contains many links,
 it is easier to copy it to <code>msgstr</code> and edit the latter by
-translating the English text.  In PO mode, this is done by <kbd>C-j</kbd>.
+translating the English text.  In PO mode of Emacs, this is done by <kbd>C-j</kbd>.
 This is useful also for large chunks of text in <code>&lt;pre&gt;</code> elements,
 which normally you would want to preserve verbatim.
 
@@ -124,7 +124,7 @@ language, just write it as &lsquo;<samp>&uuml;</samp>&rsquo; directly.
 
 </li><li> Wrapping of <code>msgstr</code> using <kbd>M-q</kbd> in Emacs (or other means) is
 considered harmful.  It is best to leave GNUN (or more precisely, Po4a)
-to do the wrapping&mdash;that way all generated HTML translations will have
+do the wrapping&mdash;that way all generated HTML translations will have
 predictable results.  This will help tremendously for the conversion to
 other formats, like Texinfo.  Also, note that not all elements are
 wrapped by default, so deliberately wrapping the text inside the

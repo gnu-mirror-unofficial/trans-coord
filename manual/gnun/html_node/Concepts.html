@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 4 March 2013) is for GNUnited Nations (version
+This manual (updated 30 August 2013) is for GNUnited Nations (version
 0.7), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -120,7 +120,7 @@ GNUN, since it is implemented as a set of recipes for GNU <code>make</code>.
 </p>
 <p>First, GNUN extracts all translatable strings from the original English
 article <samp><var>article</var>.html</samp> into <samp><var>article</var>.pot</samp>.  The
-resulted file is suitable for manipulation with the various GNU
+resulting file is suitable for manipulation with the various GNU
 &lsquo;<samp>gettext</samp>&rsquo; utilities.  It contains all original article strings and
 all translations are set to empty.  The letter <code>t</code> in <samp>.pot</samp>
 marks this as a Template PO file, not yet oriented towards any
@@ -141,7 +141,6 @@ manual.
 dedicated PO files, so called compendia.  See <a href="Compendia.html#Compendia">Compendia</a>, for more
 information.
 </p>
-
 <p>You may use any compatible PO editor to add translated messages into
 the PO file.  See <a href="http://www.gnu.org/software/gettext/manual/html_node/Editing.html#Editing">Editing</a> in <cite>GNU gettext tools</cite>,
 for more information.
@@ -176,7 +175,7 @@ automatically regenerated to reflect the changes.
 repository under a special directory <samp>po/</samp>, which is a
 sub-directory of the relevant directory in the &lsquo;www&rsquo; tree.  So, for
 &lsquo;<code>http://www.gnu.org/philosophy/free-sw.html</code>&rsquo; that is
-<samp>philosophy/po/</samp>.  Except <samp>free-sw.pot</samp>, this directory holds
+<samp>philosophy/po/</samp>.  In addition to <samp>free-sw.pot</samp>, this directory holds
 the canonical source of every translation, like <samp>free-sw.bg.po</samp>,
 <samp>free-sw.ca.po</samp>, etc. For more details,
 See <a href="Files-and-Directories.html#Files-and-Directories">Files and Directories</a>.
@@ -199,7 +198,7 @@ also handled, as well as translators&rsquo; notes, if any.
 
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>Actually, it is
-much more closer to localization of software documentation, where
+a lot closer to localization of software documentation, where
 typically strings (also known as &ldquo;messages&rdquo; in gettext&rsquo;s context) are
 longer than strings in programs.  Nevertheless, all points raised still
 apply.</p>
