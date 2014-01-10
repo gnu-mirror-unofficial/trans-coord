@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 30 August 2013) is for GNUnited Nations (version
-0.7), a suite for maintaining translations of www.gnu.org
+This manual (updated 10 January 2014) is for GNUnited Nations (version
+0.8), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -15,7 +15,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNUnited Nations: Migrating</title>
 
@@ -30,7 +30,7 @@ Documentation License." -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="PO-Files.html#PO-Files" rel="up" title="PO Files">
 <link href="Webmaster-Tips.html#Webmaster-Tips" rel="next" title="Webmaster Tips">
-<link href="PO-Tips.html#PO-Tips" rel="previous" title="PO Tips">
+<link href="PO-Tips.html#PO-Tips" rel="prev" title="PO Tips">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -67,7 +67,7 @@ ul.no-bullet {list-style: none}
 <a name="Migrating"></a>
 <div class="header">
 <p>
-Previous: <a href="PO-Tips.html#PO-Tips" accesskey="p" rel="previous">PO Tips</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="PO-Tips.html#PO-Tips" accesskey="p" rel="prev">PO Tips</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Transforming-Existing-Translation-in-PO-Format"></a>
@@ -78,7 +78,7 @@ Previous: <a href="PO-Tips.html#PO-Tips" accesskey="p" rel="previous">PO Tips</a
 <p>Migrating an existing translation to a PO file format is basically
 editing the header as described in the previous section, and
 populating each of the messages by copying the already translated text
-and/or markup from the existing translation in HTML format in the
+and markup from the existing translation in HTML format in the
 relevant message.
 </p>
 <p>Typically, you will visit <samp>po/foo.<var>lang</var>.po</samp> (in PO mode) and
@@ -99,7 +99,7 @@ from is a completely up-to-date translation.
 checkout the revision of the English page, <samp>foo.html</samp>, that
 corresponds to the latest revision of the translation,
 <samp>foo.<var>lang</var>.html</samp>.  Then you run <code>gnun-preconvert</code>
-which invokes <code>po4a-gettextize</code> (See <a href="gnun_002dpreconvert.html#gnun_002dpreconvert">gnun-preconvert</a>.):
+(see <a href="gnun_002dpreconvert.html#gnun_002dpreconvert">gnun-preconvert</a>):
 </p>
 <div class="example">
 <pre class="example">gnun-preconvert foo.lang.html foo.html
@@ -109,7 +109,7 @@ which invokes <code>po4a-gettextize</code> (See <a href="gnun_002dpreconvert.htm
 of <samp>foo.html</samp>, error messages will be displayed.  Check them,
 adjust the files and try again.  When you succeed, the result will be
 written to foo.lang.po.  After that, run
-<code>gnun-merge-preconverted</code> (See <a href="gnun_002dmerge_002dpreconverted.html#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a>.):
+<code>gnun-merge-preconverted</code> (see <a href="gnun_002dmerge_002dpreconverted.html#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a>):
 </p>
 <div class="example">
 <pre class="example">gnun-merge-preconverted -C compendium.lang.po foo.lang.po foo.pot
@@ -125,8 +125,8 @@ marks.  The script adds differences against &ldquo;previous&rdquo; <code>msgid</
 facilitate checking.
 </p>
 <p>There is no need to delete the existing HTML translation, GNUN will
-automatically overwrite it.  The only thing a translator should do is
-commit the PO file to the repository.
+automatically overwrite it.  The only thing the translator should do
+is commit the PO file to the repository.
 </p>
 <p>When an essay has been translated by several people through the years,
 it is important that this information is recorded and reflected in the
@@ -150,7 +150,7 @@ translator returned in 2008 and continued maintaining it.
 <hr>
 <div class="header">
 <p>
-Previous: <a href="PO-Tips.html#PO-Tips" accesskey="p" rel="previous">PO Tips</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="PO-Tips.html#PO-Tips" accesskey="p" rel="prev">PO Tips</a>, Up: <a href="PO-Files.html#PO-Files" accesskey="u" rel="up">PO Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

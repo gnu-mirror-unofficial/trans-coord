@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 30 August 2013) is for GNUnited Nations (version
-0.7), a suite for maintaining translations of www.gnu.org
+This manual (updated 10 January 2014) is for GNUnited Nations (version
+0.8), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -15,7 +15,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNUnited Nations: Main Variables</title>
 
@@ -29,8 +29,8 @@ Documentation License." -->
 <link href="Index.html#Index" rel="index" title="Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Usage.html#Usage" rel="up" title="Usage">
-<link href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml" rel="next" title="generic.LANG.html">
-<link href="validate_002dall.html#validate_002dall" rel="previous" title="validate-all">
+<link href="languages_002etxt.html#languages_002etxt" rel="next" title="languages.txt">
+<link href="validate_002dall.html#validate_002dall" rel="prev" title="validate-all">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -67,7 +67,7 @@ ul.no-bullet {list-style: none}
 <a name="Main-Variables"></a>
 <div class="header">
 <p>
-Next: <a href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml" accesskey="n" rel="next">generic.LANG.html</a>, Previous: <a href="Special-Targets.html#Special-Targets" accesskey="p" rel="previous">Special Targets</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="languages_002etxt.html#languages_002etxt" accesskey="n" rel="next">languages.txt</a>, Previous: <a href="Special-Targets.html#Special-Targets" accesskey="p" rel="prev">Special Targets</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Defining-Articles-to-Be-Built"></a>
@@ -82,8 +82,8 @@ behavior of the build process.
 </p>
 <p>There are two types of variables, which are specifically separated in
 order to make translators&rsquo; life easier: variables that translators are
-free to modify and variables that are modified by the web-translators
-staff<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>, ideally after performing some local tests.  A
+free to modify and variables that are modified by the
+web-translators<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>, ideally after performing some local tests.  A
 translation team leader should update only <code>FUZZY_DIFF_LINGUAS</code>
 and <code>TEMPLATE_LINGUAS</code>; everything else is supposed to be built
 automagically, without manual intervention.  If not, that is a bug that
@@ -104,19 +104,9 @@ should be reported and fixed.
 <dd><p>A space-separated list with languages.  Add here your language code
 <em>if and only if</em> you have all the SSI templates translated, and
 have already committed all template files listed in
-the <code>extra-templates</code> variable in <samp>server/gnun/gnun.mk</samp>,
-as well as the templates that are not under GNUN&rsquo;s control and are
-translated manually, like
+the <code>extra-templates</code> and <code>localized-ssis</code> variables
+in <samp>server/gnun/gnun.mk</samp>.
 </p>
-<ul class="no-bullet">
-<li>- <samp>server/header.<var>lang</var>.html</samp>
-</li><li>- <samp>server/head-include-1.<var>lang</var>.html</samp>
-</li><li>- <samp>server/html5-header.<var>lang</var>.html</samp>
-</li><li>- <samp>server/html5-head-include-1.<var>lang</var>.html</samp>
-</li><li>- <samp>server/banner.<var>lang</var>.html</samp>
-</li><li>- <samp>server/footer.<var>lang</var>.html</samp>.
-</li></ul>
-
 <a name="index-FUZZY_005fDIFF_005fLINGUAS"></a>
 <a name="FUZZY_005fDIFF_005fLINGUAS"></a><a name="index-previous_002c-diff"></a>
 </dd>
@@ -125,9 +115,27 @@ translated manually, like
 &ldquo;previous&rdquo; <code>msgid</code>s in your PO files.
 See <a href="gnun_002dadd_002dfuzzy_002ddiff.html#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a>, for more information.
 </p>
+<a name="localized_002dssis"></a><a name="index-localized_002dssis"></a>
+<a name="index-SSIs_002c-localized"></a>
+<a name="index-localized-SSIs"></a>
+</dd>
+<dt>&lsquo;<samp>localized-ssis</samp>&rsquo;</dt>
+<dd>
+<p>This variable lists the templates that are not under GNUN&rsquo;s control
+and are translated manually, like
+</p>
+<ul class="no-bullet">
+<li>- <samp>server/header.<var>lang</var>.html</samp>
+</li><li>- <samp>server/head-include-1.<var>lang</var>.html</samp>
+</li><li>- <samp>server/banner.<var>lang</var>.html</samp>
+</li><li>- <samp>server/footer.<var>lang</var>.html</samp>.
+</li></ul>
+
+<p>They contain HTML code and SSI directives; PO4A doesn&rsquo;t extract them
+to any messages in PO files.
+</p>
 <a name="index-extra_002dtemplates"></a>
 <a name="index-templates_002c-additional"></a>
-<a name="index-defining-templates-1"></a>
 <a name="extra_002dtemplates"></a></dd>
 <dt>&lsquo;<samp>extra-templates</samp>&rsquo;</dt>
 <dd>
@@ -139,7 +147,6 @@ and commits a file with empty <code>msgstr</code>s.
 </p>
 <a name="index-optional_002dtemplates"></a>
 <a name="index-templates_002c-optional"></a>
-<a name="index-defining-templates-2"></a>
 <a name="optional_002dtemplates"></a></dd>
 <dt>&lsquo;<samp>optional-templates</samp>&rsquo;</dt>
 <dd>
@@ -207,7 +214,7 @@ there is no difference.</p>
 <hr>
 <div class="header">
 <p>
-Next: <a href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml" accesskey="n" rel="next">generic.LANG.html</a>, Previous: <a href="Special-Targets.html#Special-Targets" accesskey="p" rel="previous">Special Targets</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="languages_002etxt.html#languages_002etxt" accesskey="n" rel="next">languages.txt</a>, Previous: <a href="Special-Targets.html#Special-Targets" accesskey="p" rel="prev">Special Targets</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 30 August 2013) is for GNUnited Nations (version
-0.7), a suite for maintaining translations of www.gnu.org
+This manual (updated 10 January 2014) is for GNUnited Nations (version
+0.8), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -15,7 +15,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNUnited Nations: gnun-validate-html</title>
 
@@ -30,7 +30,7 @@ Documentation License." -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Scripts.html#Scripts" rel="up" title="Scripts">
 <link href="mailfail.html#mailfail" rel="next" title="mailfail">
-<link href="gnun_002dreport.html#gnun_002dreport" rel="previous" title="gnun-report">
+<link href="gnun_002dreport.html#gnun_002dreport" rel="prev" title="gnun-report">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -67,7 +67,7 @@ ul.no-bullet {list-style: none}
 <a name="gnun_002dvalidate_002dhtml"></a>
 <div class="header">
 <p>
-Next: <a href="mailfail.html#mailfail" accesskey="n" rel="next">mailfail</a>, Previous: <a href="gnun_002dreport.html#gnun_002dreport" accesskey="p" rel="previous">gnun-report</a>, Up: <a href="Scripts.html#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="mailfail.html#mailfail" accesskey="n" rel="next">mailfail</a>, Previous: <a href="gnun_002dreport.html#gnun_002dreport" accesskey="p" rel="prev">gnun-report</a>, Up: <a href="Scripts.html#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="The-gnun_002dvalidate_002dhtml-Script"></a>
@@ -79,8 +79,7 @@ original and translated articles to make sure that they conform to the
 respective W3C standard.  Sometimes webmasters make mistakes, and
 translators too, so this tool is useful to catch errors of that kind.
 </p>
-<p>GNUN enforces HTML validation at build time if invoked with
-<code>VALIDATE=yes</code>.
+<p>GNUN enforces HTML validation at build time by default.
 </p>
 <p>The script expects only one <var>file</var> as the last argument and will exit
 with an error if it is not specified (which might be the case when an

@@ -3,7 +3,7 @@
 <!-- 
 This manual is a guide for the GNU Web Translators.
  Last updated on
-30 August 2013, for GNUnited Nations version 0.7.
+10 January 2014, for GNUnited Nations version 0.8.
 
 Copyright (C) 2009, 2010, 2011, 2012, 2013 Free Software
 Foundation, Inc.
@@ -14,7 +14,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNU Web Translators Manual: SSI</title>
 
@@ -28,7 +28,7 @@ Documentation License." -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Translation-Process.html#Translation-Process" rel="up" title="Translation Process">
 <link href="CSS.html#CSS" rel="next" title="CSS">
-<link href="Migrating.html#Migrating" rel="previous" title="Migrating">
+<link href="Migrating.html#Migrating" rel="prev" title="Migrating">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -65,11 +65,11 @@ ul.no-bullet {list-style: none}
 <a name="SSI"></a>
 <div class="header">
 <p>
-Next: <a href="CSS.html#CSS" accesskey="n" rel="next">CSS</a>, Previous: <a href="Migrating.html#Migrating" accesskey="p" rel="previous">Migrating</a>, Up: <a href="Translation-Process.html#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="CSS.html#CSS" accesskey="n" rel="next">CSS</a>, Previous: <a href="Migrating.html#Migrating" accesskey="p" rel="prev">Migrating</a>, Up: <a href="Translation-Process.html#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
 <a name="Summary-of-SSI-_0023includes"></a>
-<h3 class="section">4.10 Summary of SSI <code>#include</code>s</h3>
+<h3 class="section">4.11 Summary of SSI <code>#include</code>s</h3>
 
 <p>The GNU Project&rsquo;s website uses SSI (Server Side Includes) to manage some
 common parts that are the same in many of the articles.  With the help
@@ -104,12 +104,25 @@ infringements.
 </p>
 </dd>
 <dt><samp>server/footer-text.html</samp></dt>
-<dd><p>This is a very short file currently containing the &ldquo;back to top&rdquo; link.
-Also translatable via GNUN.
+<dd><p>This is a short file currently containing the footer links,
+the FSF mission statement and the &ldquo;back to top&rdquo; link.
 </p>
+<a name="generic_002ehtml"></a></dd>
+<dt><samp>server/generic.html</samp></dt>
+<dd><p>This file is empty; its &ldquo;localized&rdquo; versions may contain optional
+short messages providing more information about the translation
+team or where to report bugs.
+</p>
+<div class="example">
+<pre class="example">&lt;p&gt;To join the Fooish translation team, see &lt;a
+href=&quot;http://gnu.org/server/standards/translations/foo&quot;&gt;the
+Foo team homepage&lt;/a&gt;.&lt;/p&gt;
+</pre></div>
+
 </dd>
 <dt><samp>server/header.html</samp></dt>
-<dd><p>The declaration that is included in literally every file.  It is
+<dd><p>The declaration that is included in literally every file (unless
+the <samp>html5-header.html</samp> is used as the alternative).  It is
 maintained manually, as it does not make much sense to put it under
 GNUN&rsquo;s control (there are no translatable strings).  Remember to specify
 the proper <code>xml:lang</code> and <code>lang</code> attributes, and for RTL
@@ -124,21 +137,19 @@ languages, the <code>dir</code> attribute.  For example, the file
 </dd>
 <dt><samp>server/head-include-1.html</samp></dt>
 <dd><p>This file (included from <samp>server/header.html</samp>) is very important:
-the encoding is defined here.  Note that it is applicable for all
-translations, so it is not possible to have different articles in
-different encodings.  Even if a specific PO file is deliberately encoded
-in another encoding, the generated HTML will contain the encoding
-declared in the <code>&lt;meta&gt;</code> element at
+the encoding is defined here.  Even if a specific PO file is
+deliberately encoded in another encoding, the generated HTML will
+contain the encoding declared in the <code>&lt;meta&gt;</code> element at
 <samp>server/head-include-1.<var>lang</var>.html</samp>, so browsers will obey it.
 </p>
-<p>The encoding should be UTF-8.  This is required because the English text
-in the articles serves as a replacement of the translation when the latter
-is not complete, and because all translated pages share automatically
-generated lists of translations.
+<p>The encoding must be UTF-8, because the English text in the
+&ldquo;no-grace&rdquo; articles serves as a replacement of the translation when
+the latter is not complete, and because all translated pages share
+automatically generated lists of translations.
 </p>
 </dd>
 <dt><samp>server/html5-header.html</samp></dt>
-<dd><p>This file is included in newer pages using some entities introduced
+<dd><p>This file is included in pages using some entities introduced
 in HTML5 draft.  We have to distinguish those pages since some features
 of HTML4 were rejected in HTML5, and our old pages don&rsquo;t validate
 as HTML5.
@@ -172,7 +183,7 @@ and up to date translation.
 </dd>
 <dt><samp>server/skip-translations.html</samp></dt>
 <dd><p>The text for a link to the end of the autogenerated list of
-translations.
+translations.  It is not actually used as of January 2014.
 </p>
 </dd>
 <dt><samp>server/top-addendum.html</samp></dt>
@@ -212,16 +223,15 @@ them verbatim as they should not be translated.
 <p>in the <samp>server</samp> sub-directory are what webmasters call &ldquo;the
 server templates&rdquo;.  These files are included in almost every article,
 translated or not.  They are somewhat important, as an error made in
-translating them propagates everywhere.  The server templates, the
-homepages, and whatsnew (a.k.a. &ldquo;GNU News&rdquo;) are being rebuilt by
-GNUN whenever there is a change in the original English files; the
-<code>GRACE</code> variable has no effect for them.  See <a href="http://www.gnu.org/software/trans-coord/manual/gnun/html_node/Runtime-Variables.html#Runtime-Variables">Runtime
-Variables</a> in <cite>The GNUnited Nations Manual</cite>.
+translating them may break every translated page.  The server
+templates and the homepages are rebuilt by GNUN whenever the original
+English files change; the <code>GRACE</code> variable has no effect on them.
+See <a href="http://www.gnu.org/software/trans-coord/manual/gnun/html_node/Runtime-Variables.html#Runtime-Variables">Runtime Variables</a> in <cite>The GNUnited Nations Manual</cite>.
 </p>
 <hr>
 <div class="header">
 <p>
-Next: <a href="CSS.html#CSS" accesskey="n" rel="next">CSS</a>, Previous: <a href="Migrating.html#Migrating" accesskey="p" rel="previous">Migrating</a>, Up: <a href="Translation-Process.html#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="CSS.html#CSS" accesskey="n" rel="next">CSS</a>, Previous: <a href="Migrating.html#Migrating" accesskey="p" rel="prev">Migrating</a>, Up: <a href="Translation-Process.html#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 30 August 2013) is for GNUnited Nations (version
-0.7), a suite for maintaining translations of www.gnu.org
+This manual (updated 10 January 2014) is for GNUnited Nations (version
+0.8), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -15,7 +15,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 4.13.92, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNUnited Nations: Files and Directories</title>
 
@@ -30,7 +30,7 @@ Documentation License." -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Internals.html#Internals" rel="up" title="Internals">
 <link href="Scripts.html#Scripts" rel="next" title="Scripts">
-<link href="Internals.html#Internals" rel="previous" title="Internals">
+<link href="Internals.html#Internals" rel="prev" title="Internals">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -89,7 +89,6 @@ old HTML-only translations.
   |
   +--gnu/
   |   |
-  |   |
   |   +--linux-and-gnu.html #
   |   +--linux-and-gnu.<var>lang</var>.html @
   |   +--manifesto.html #
@@ -102,13 +101,12 @@ old HTML-only translations.
   +--home.<var>lang</var>.html @             +--manifesto.pot @
   +--planetfeeds.html #/@         +--manifesto.proto * @
   +--planetfeeds.<var>lang</var>.html @      +--manifesto.translist @
-  +--po/                          +--manifesto.<var>lang</var>.m4 * @
+  +--po/                          |
   |  |                            +--manifesto.<var>lang</var>-en.html @
   |  +--home.pot @                +--manifesto.<var>lang</var>-diff.html @
   |  +--home.proto * @            +--linux-and-gnu.<var>lang</var>.po %
   |  +--home.translist @          +--&hellip;
   |  +--home.<var>lang</var>.po %
-  |  +--home.<var>lang</var>.m4 * @
   |  +--home.<var>lang</var>-en.html @
   |  +--home.<var>lang</var>-diff.html @
   |  +--planetfeeds.proto * @
@@ -124,12 +122,12 @@ old HTML-only translations.
   |  +--sitemap.<var>lang</var>.html @      +--config.mk * #
   |  +--po/                      +--gnun.mk #
   |  |  |                        +--languages.txt #
-  |  |  +--sitemap.pot @         +--generic.<var>lang</var>.html #
-  |  |  +--sitemap.proto * @     +--compendia/
-  |  |  +--sitemap.<var>lang</var>.po %          |
-  |  |  +--sitemap.<var>lang</var>.m4 @          +--master.<var>lang</var>.po #
-  |  |  +--body-include-2.pot @       +--compendium.<var>lang</var>.po @
-  |  |  +--body-include-2.proto * @   +--excluded.pot #
+  |  |  +--sitemap.pot @         +--compendia/
+  |  |  +--sitemap.proto * @     |
+  |  |  +--sitemap.<var>lang</var>.po %          +--master.<var>lang</var>.po #
+  |  |  |                        +--compendium.<var>lang</var>.po @
+  |  |  +--body-include-2.pot @       +--excluded.pot #
+  |  |  +--body-include-2.proto * @
   |  |  +--body-include-2.<var>lang</var>.po %
   |  |  +--&hellip;
   |  |  
@@ -152,14 +150,13 @@ old HTML-only translations.
 </dd>
 <dt><samp>&hellip;/po/<var>file</var>.proto</samp></dt>
 <dd><p>Intermediate files generated from <samp><var>file</var>.html</samp>; they are
-used only internally.  Essentially, GNUN inserts its special slots and
-instructions to include the <samp>generic.<var>lang</var>.html</samp> file.
-See <a href="GNUN-Slots.html#GNUN-Slots">GNUN Slots</a>, and <a href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml">generic.LANG.html</a>.
+used only internally.  Essentially, GNUN inserts its special slots.
+See <a href="GNUN-Slots.html#GNUN-Slots">GNUN Slots</a>, for more details.
 </p>
 </dd>
 <dt><samp>&hellip;/po/<var>file</var>.translist</samp></dt>
 <dd><p>The list of trasnlations for <samp>&hellip;/<var>file</var>.html</samp>.  It is
-included in <samp>&hellip;/<var>file</var>.html</samp> all its translations.
+included in <samp>&hellip;/<var>file</var>.html</samp> and all its translations.
 </p>
 </dd>
 <dt><samp>&hellip;/po/<var>file</var>.pot</samp></dt>
@@ -167,18 +164,13 @@ included in <samp>&hellip;/<var>file</var>.html</samp> all its translations.
 </p>
 </dd>
 <dt><samp>&hellip;/po/<var>file</var>.pot.opt</samp></dt>
-<dd><p>POTs of optional templates (currently, <samp>planetfeeds.pot.opt</samp>).
+<dd><p>POTs of optional templates.
 See <a href="Main-Variables.html#optional_002dtemplates">optional-templates</a>, for more details.
 </p>
 </dd>
 <dt><samp>&hellip;/po/<var>file</var>.<var>lang</var>.po</samp></dt>
 <dd><p>Translations of <samp><var>file</var>.pot</samp> or <samp><var>file</var>.pot.opt</samp>
 committed by the translators and merged by GNUN.
-</p>
-</dd>
-<dt><samp>&hellip;/po/<var>file</var>.<var>lang</var>.m4</samp></dt>
-<dd><p>Intermediate files from which <samp><var>file</var>.<var>lang</var>.html</samp> are
-generated.
 </p>
 </dd>
 <dt><samp>&hellip;/po/<var>file</var>.<var>lang</var>-en.html</samp></dt>
@@ -221,11 +213,7 @@ translations.  See <a href="Invoking-GNUN.html#Invoking-GNUN">Invoking GNUN</a>.
 </p>
 </dd>
 <dt><samp>server/gnun/languages.txt</samp></dt>
-<dd><p>See <a href="languages_002etxt.html#languages_002etxt">languages.txt</a>.
-</p>
-</dd>
-<dt><samp>server/gnun/generic.<var>lang</var>.html</samp></dt>
-<dd><p>See <a href="generic_002eLANG_002ehtml.html#generic_002eLANG_002ehtml">generic.LANG.html</a>.
+<dd><p>Canonical names for languages.  See <a href="languages_002etxt.html#languages_002etxt">languages.txt</a>.
 </p>
 </dd>
 <dt><samp>server/gnun/compendia</samp></dt>
