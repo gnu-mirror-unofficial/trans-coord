@@ -42,14 +42,15 @@ GNU Web Translators Manual
     4.12.1 Localizing the 'topbanner' Image
     4.12.2 Specific Issues Related to RTL
 Appendix A GNU Free Documentation License
+Index
 GNU Web Translators Manual
 **************************
 
 This manual is a guide for the GNU Web Translators.
-Last updated on 10 January 2014, for GNUnited Nations version 0.8.
+Last updated on 20 March 2014, for GNUnited Nations version 0.8.
 
-   Copyright (C) 2009, 2010, 2011, 2012, 2013 Free Software Foundation,
-Inc.
+   Copyright (C) 2009, 2010, 2011, 2012, 2013, 2014 Free Software
+Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -93,14 +94,15 @@ rather unfortunately, there are not so many volunteers willing to
 maintain in the long term translations of the various essays that
 describe the fundamental values of the free software movement.
 
-   Translators of the <http://gnu.org> website are organized in language
-teams.  Each team has one or more co-ordinators, who are responsible for
-the respective team; they are also referred to as leaders or (when
-multiple in a single team) co-leaders.  The co-ordinators participate in
-the Savannah 'trans-coord' organizational project, which is managed by
-the GNU Web Translation Managers (also known as Translation Managers or
-web-translators).  The manual is organized in chapters that follow the
-organizational structure of the whole translation project.
+   Translators of the <https://www.gnu.org> website are organized in
+language teams.  Each team has one or more co-ordinators, who are
+responsible for the respective team; they are also referred to as
+leaders or (when multiple in a single team) co-leaders.  The
+co-ordinators participate in the Savannah 'trans-coord' organizational
+project, which is managed by the GNU Web Translation Managers (also
+known as Translation Managers or web-translators).  The manual is
+organized in chapters that follow the organizational structure of the
+whole translation project.
 
    If you wish to join a translation team or contribute a translation or
 two, *note Members::.  If your intention is to form a translation team,
@@ -118,8 +120,9 @@ terminology issues, and sometimes performing clean-up tasks.
 2.1 Joining a Team
 ==================
 
-To join a team, please first look at the existing teams at
-<http://www.gnu.org/server/standards/README.translations.html#TranslationsUnderway>.
+To join a team, please first look at the existing teams in Translations
+README
+(https://www.gnu.org/server/standards/README.translations.html#TranslationsUnderway).
 Chances are that there is already an established team.  If there is no
 team listed for your language, this means that:
 
@@ -142,8 +145,8 @@ one, please refer to the next chapter, *note Leaders::.
 has its own project, named 'www-LANG', with the project page being
 'https://savannah.gnu.org/projects/www-LANG'.  All teams should have
 mailing lists, typically in the form <www-LANG-...@gnu.org>.  Some teams
-have homepages, 'http://gnu.org/server/standards/translations/LANG' with
-additional contact details and procedures for team members.
+have homepages, 'https://www.gnu.org/server/standards/translations/LANG'
+with additional contact details and procedures for team members.
 
    You could also write directly to the team leader via the Savannah
 interface--that way your request will be recorded by Savannah and can be
@@ -178,8 +181,8 @@ Managers) to convert the translation in '.po' format.
 2.2.1 How to Submit a Translation in PO Format
 ----------------------------------------------
 
-All translations(1) are maintained via GNUN (see
-<http://www.gnu.org/software/gnun/>), which significantly eases
+All translations(1) are maintained via GNUN
+(https://www.gnu.org/software/gnun/)), which significantly eases
 maintenance and avoids the unpleasant situation where a translation is
 lagging behind the original.  *Note (gnun)Advantages::.
 
@@ -199,7 +202,7 @@ steps to produce and submit such a translation:
           cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/web/www co www/gnu
 
      This command will fetch only the '/gnu' directory--in other words,
-     all articles at <http://gnu.org/gnu>.
+     all articles at <https://www.gnu.org/gnu>.
 
      You can also fetch single files by their respective URLs.  For
      example, the URL for the template file of
@@ -265,10 +268,9 @@ the original article.  Simply save your translation in a plain text file
 editor for that--Emacs, Vim, gEdit, Kate, LibreOffice (the file should
 be saved as '.txt', not '.odt'), etc.
 
-   Translate the title, the blue heading (if it differs slightly from
-the title) and the body of the article up to the link 'back to top'.
-For example, for <http://www.gnu.org/philosophy/free-sw.html> that would
-be:
+   Translate the title, the main heading and the body of the article up
+to the footer.  For example, for the Free Software Definition
+(https://www.gnu.org/philosophy/free-sw.html) that would be:
 
      What is free software? - GNU Project - Free Software Foundation
 
@@ -297,12 +299,11 @@ historial" in the translation:
 it is already known.
 
    If you wish your name to appear in the footer as a translator of the
-article, please also provide a translation of 'Translation: YOUR NAME IN
-YOUR NATIVE LANGUAGE' or 'Translated by: YOUR NAME IN YOUR NATIVE
-LANGUAGE', as you prefer.  Please also state if you wish your email
-address to be published (some readers prefer to send suggestions
-directly to the translator, but we certainly do not require that
-translators must publish their address).
+article, please also provide a translation of 'Translation: YOUR NAME'
+or 'Translated by: YOUR NAME', as you prefer.  Please also state if you
+wish your email address to be published (some readers prefer to send
+suggestions directly to the translator, but we certainly do not require
+that translators must publish their address).
 
    Finally, send the translation to <web-translators@gnu.org>, either
 inline or as an attachment to your message.  Once online, please check
@@ -349,7 +350,8 @@ is more work and more responsibilities.
 
    You should read _all_ the documentation related to the translation
 process and at the very least all important philosophy-related articles
-listed at <http://gnu.org/server/standards/translations/priorities.html>
+listed on the Translation Priorities
+(https://gnu.org/server/standards/translations/priorities.html) page
 before you decide to form a new team, or take over an orphaned team.
 Once you have the internal feeling that having a gnu.org translation
 team for your language is a must, and you are the one for this job,
@@ -373,7 +375,7 @@ follow these steps:
      Examine the layout and structure of the repository.  Basically, it
      is mapped to the URL locations, more or less.  Take a look at the
      most important materials to translate under '/philosophy', '/gnu',
-     '/distros', '/copyleft' and '/licenses' directories just to get a
+     '/distros', '/education' and '/licenses' directories just to get a
      rough estimate about the amount of work involved(1).  If you are
      still not scared and determined to go on further, excellent.
 
@@ -408,8 +410,6 @@ follow these steps:
 
         * 'outdated.LANG.po'
 
-        * 'skip-translations.LANG.po'
-
         * 'top-addendum.LANG.po'
 
      *Note (gnun)New Translation::.
@@ -420,7 +420,7 @@ follow these steps:
           Simplified Chinese, use small caps and a dash--'pt-br' and
           'zh-cn' instead of 'pt_BR' and 'zh_CN'.
 
-        - The PO file header and initial comments should be completed as
+        - The PO file header and initial comments should be filled as
           documented.
 
   5. Any prospective team leader should submit a few translations first.
@@ -435,14 +435,14 @@ follow these steps:
           find -name \*.LANG.html
 
   6. Submit at least two translations of your own.  We maintain a list
-     with priority articles at
-     <http://www.gnu.org/server/standards/translations/priorities.html>,
-     although it is probably hard to start with one of them.  Choose
-     whatever you wish, provided it is an essay and not an auxiliary
-     page.  Avoid translating the homepage or 'planetfeeds.html'--they
-     are moving targets and keeping up would be only a distraction for
-     both parties in the process.  As usual, send the completed
-     translation to <web-translators@gnu.org>.
+     with priority articles on the Translation Priorities
+     (https://www.gnu.org/server/standards/translations/priorities.html)
+     page, although it is probably hard to start with one of them.
+     Choose whatever you wish, provided it is an essay and not an
+     auxiliary page.  Avoid translating the homepage or
+     'planetfeeds.html'--they are moving targets and keeping up would be
+     only a distraction for both parties in the process.  As usual, send
+     the completed translation to <web-translators@gnu.org>.
 
   7. The Translation Managers will review your translations, and
      eventually comment on them (mostly technical details if there is no
@@ -484,8 +484,8 @@ follow these steps:
      mailing list (don't forget to subscribe yourself!), optionally add
      a home page using Web CVS repository.
 
-     If you are taking over an orphaned team, Translation Managers will
-     make you the owner of its mailing lists (if any).
+     If you are taking over an orphaned team, the Translation Managers
+     will make you the owner of its mailing lists (if any).
 
    The whole process should not take more than two weeks or maximum a
 month--if this period turns out to be longer, it is an indication that
@@ -557,8 +557,8 @@ Too many errors are just missed (especially if they are obvious) when
 the translator does a final review of her own translation.
 
    It is good to establish a practice: Do not commit officially (i.e.
-in 'www', which will appear online at <http://gnu.org> immediately) a
-translation that is not yet reviewed by someone else who is not the
+in 'www', which will appear online at <https://www.gnu.org> immediately)
+a translation that is not yet reviewed by someone else who is not the
 translator.  Always perform a final review yourself even if the
 translation has been checked by another member of the team.  In other
 words, every translation installed at gnu.org should pass through your
@@ -595,7 +595,7 @@ slowing the translation process.
    A solution to this specific problem is to distribute the load among
 more people.  For example: Member D makes a translation of 'foo.html'
 and uploads 'foo.LANG.po' in the translation project's repository at
-Savannah, marking the relevant task as "Ready for Test" (of course, the
+Savannah, marking the relevant task as "Ready For Test" (of course, the
 equivalent is sending a message with the attached translation to the
 team's mailing list, or similar).  Then Member A, B and C (or only A and
 B if C is currently busy) review it independently and post
@@ -777,8 +777,7 @@ that every team has a mailing list at Savannah (*note Savannah Mailing
 Lists::), because it is easier to pass its management to the new
 co-ordinator when the old one steps down, and it helps to keep the
 archives at one place for future members of the team.  Likewise, it is
-better to use Savannah for the team's repository and bugs/tasks, but
-this is not mandatory.
+better to use Savannah for team's repository and bugs/tasks.
 
    However, it is important to remember that regardless of the technical
 resources which a team decides to use, the responsibility of the team
@@ -839,10 +838,11 @@ are any.  That way, you can point potential team members to the
 corresponding page containing these instructions, instead of repeatedly
 explaining every volunteer separately.
 
-   All team-specific pages should follow the usual linking criteria (see
-<http://gnu.org/server/standards/README.webmastering.html#pollinking>
-and the FSF HTML Style Sheet
-Guidelines--<http://gnu.org/server/fsf-html-style-sheet.html>).
+   All team-specific pages should follow the usual linking criteria in
+GNU Webmastering Guidelines
+(https://www.gnu.org/server/standards/README.webmastering.html#pollinking),
+and the FSF HTML Style Sheet Guidelines
+(https://www.gnu.org/server/fsf-html-style-sheet.html).
 
 3.5.3 Support Tracker
 ---------------------
@@ -983,10 +983,7 @@ good report should include:
    * Anything else you consider important or worth mentioning.
 
    The best time to send a report is near the end of the year, for
-example November.  In any case, please do not send it later than
-December 15th, as the Translation Manager has to prepare a general
-report to the FSF, and it is better if it takes into account the reports
-of the team leaders.
+example November.
 
    If there is no sensitive information in the report and you feel like
 sharing it, you can send it to <trans-coord-discuss@gnu.org> (which is
@@ -1034,20 +1031,20 @@ discuss improvements of the translation process.
 4.1 What to Translate
 =====================
 
-The page
-<http://www.gnu.org/server/standards/translations/priorities.html> lists
-the most important essays to translate.  In general, articles in the
-directories 'philosophy', 'gnu', 'education', 'distros', 'copyleft' and
-'licenses' are important.  The others may be deferred for a time when a
-team completes most of the important translations, or they can be
+The Web Translation Priorities
+(http://www.gnu.org/server/standards/translations/priorities.html) page
+lists the most important essays to translate.  In general, articles in
+the directories 'philosophy', 'gnu', 'education', 'distros', 'copyleft'
+and 'licenses' are important.  The others may be deferred for a time
+when a team completes most of the important translations, or they can be
 translated as a "rest"--in translators' parlance this means doing
 something in between which is typically easier to handle.
 
    You can find links to automatic reports about current status of
-translations of all active teams sorted by their priority in
-<http://www.gnu.org/software/gnun/reports/>.  If the page for your team
-is missing there, please ask <web-translators@gnu.org> to add it to the
-cron job.
+translations of all active teams sorted by their priority in GNUN
+Reports (https://www.gnu.org/software/gnun/reports/reports.html).  If
+the page for your team is missing there, please ask
+<web-translators@gnu.org> to add it to the cron job.
 
    _Do not_ translate articles under these directories:
 
@@ -1092,7 +1089,8 @@ process of tracking outdated translations.
      status of translations; *note (gnun)gnun-report::.  A cron job
      commits updated reports for all active teams to GNUN project web
      repository, typically twice an hour.  The links to those reports
-     are provided on <http://gnu.org/software/gnun/reports/>.
+     are provided on the GNUN Reports
+     (https://www.gnu.org/software/gnun/reports/reports.html) page.
 
    * GNUmakefile.team provides a more detailed 'report' target: unlike
      the output of the previous tools, it analyzes the status of files
@@ -1190,7 +1188,8 @@ language, and link to the English language deed.  Also, please write
 your own translation when the translation provided by CC is not
 satisfactory for some reasons--for instance, as of May, 2012, their
 German translation uses "Content", which is a word to use with caution
-(see <http://www.gnu.org/philosophy/words-to-avoid.en.html#Content>).
+(see Words to Avoid (or Use with Care)
+(https://www.gnu.org/philosophy/words-to-avoid.html#Content)).
 
    Note that translations should _not_ change the jurisdiction of the
 license; they should _always_ link to the CC BY-ND 3.0 _United States_
@@ -1205,13 +1204,16 @@ are in the United States license.
 Don't translate the word "Copyright" in copyright notices; for more
 info, *note (standards)--version::.
 
+   Also, please maintain a proper copyright notice in the translation,
+*note (maintain)Copyright Notices::.
+
 4.6 Language-specific Terminology
 =================================
 
 This is a very important topic, not yet covered by this manual.
 
-   Some tips are given on
-<http://www.gnu.org/server/standards/README.translations.en.html>.
+   Some tips are given in Translations README
+(https://www.gnu.org/server/standards/README.translations.html).
 
 4.7 Related Mailing Lists
 =========================
@@ -1245,11 +1247,10 @@ participants in the process.
      This is a private mailing list.
 
 <trans-coord-news@gnu.org>
-     This is a list for notifications about gnunews and GNUnited Nations
-     releases.  It is not mandatory to subscribe to it, although the
-     traffic is very low.  If you want to track only GNUN release
-     announcements, subscribe to the 'gnun' topic via Mailman's user
-     interface.
+     This is a list for notifications about GNUnited Nations releases.
+     It is not mandatory to subscribe to it, although the traffic is
+     very low.  If you want to track only GNUN release announcements,
+     subscribe to the 'gnun' topic via Mailman's user interface.
 
      Automatic announcements for new gnu.org translations (provided
      they're handled by GNUN) are also delivered here.  There are
@@ -1266,6 +1267,21 @@ participants in the process.
      repository are also sent to this list.
 
      This is a public list, and <bug-gnun@gnu.org> is an alias.
+
+<webmasters@gnu.org>
+     This is a tracker for GNU Webmasters.  It is used for bug reports
+     and other suggestions for (English) www.gnu.org web pages.
+
+     This is a private tracker.
+
+<web-translators@gnu.org>
+     This is the tracker and the primary contact of GNU Web Translation
+     Managers.  It is used for bug reports against www.gnu.org
+     translations and submitting new translations for the languages
+     lacking an active team, requests for help from the teams and
+     various translation-related requests from GNU people.
+
+     This is a private tracker.
 
    Every team should also use at least one mailing list on Savannah,
 *note Savannah Mailing Lists::.
@@ -1315,13 +1331,13 @@ other translators will help you.
 editor, because each of them represents and treats gettext messages in a
 consistent and predictable way.  It is possible to edit a PO file with
 an ordinary plain text editor, but extra effort would be necessary to
-make it valid.
+make the result valid.
 
    Note that recent versions of some PO editors (both offline and
 web-based) offer access to various translation services that do machine
 translation for their users.  Using a machine translation service is a
-clear example of SaaSS (see
-<https://www.gnu.org/philosophy/who-does-that-server-really-serve.html>),
+clear example of SaaSS (see Who does That Server Really Serve?
+(https://www.gnu.org/philosophy/who-does-that-server-really-serve.html)),
 so please don't use such editors unless they only submit requests to
 your (or GNU project's) own servers.
 
@@ -1352,33 +1368,26 @@ your (or GNU project's) own servers.
      who use Vim as their editor.  See
      <http://www.vim.org/scripts/script.php?script_id=2530>.
 
-   * Various web-based editors.
+   * GNU instance of Pootle, a web-based editor.
 
 4.9.1 Web-based Systems
 -----------------------
 
-An alternative way to maintain translations is to use one of the
-existing online editors.  There are plans to install a web-based system
-for managing '.po' files at Savannah, including online editing and
-statistics.  Until it happens, teams who wish to use this functionality
-may setup such a server on a host of their own, or use one of the
-existing free hosting platforms such as Launchpad
-(<http://translations.launchpad.net>).
+If your team would like to use a web-based editor, we recommend using
+the official Pootle server of the GNU project
+(https://chapters.gnu.org/pootle/).  We make sure that working with it
+will not compromise your freedom via nonfree JavaScript or SaaSS
+(https://www.gnu.org/philosophy/who-does-that-server-really-serve.html).
+If you decide to use our server, please contact GNU Web Translation
+Managers to register your team.
 
-   Here is a short and probably incomplete list of such systems:
-
-   * Vertaal--<http://code.google.com/p/vertaal>
-
-   * Narro--<http://code.google.com/p/narro>
-
-   * Launchpad--<https://dev.launchpad.net>
-
-   If you decide to use such a system, please make sure that no
-translations are published in HTML format there.
-
-   Note that to keep the '.pot' files regularly updated (assuming such a
-web-based system runs 'msgmerge' automatically), you'll have to take
-care of the one-way regular sync from the 'www' CVS repository.
+   Also, that Pootle server has a simple facility to preview your
+translations as they will appear on www.gnu.org.  In order to test a
+page, log in the server and visit
+<https://chapters.gnu.org/pootle/gnun/test.html>.  That page contains a
+menu to upload a PO file; then the server will generate the translation
+and show you the build log (including errors), and the generated web
+page (when the build is successful).
 
    ---------- Footnotes ----------
 
@@ -1404,13 +1413,14 @@ manual will be updated as needed.
 The GNU Project's website uses SSI (Server Side Includes) to manage some
 common parts that are the same in many of the articles.  With the help
 of GNUN their handling should be behind the scenes, but for some of them
-manual intervention is needed.  Here is a (possibly incomplete) list of
-the '#include''s used:
+manual intervention is needed.  Here is an incomplete list of the
+'#include''s used:
 
 'server/banner.html'
      This file contains only '#include' directives, so the "translation"
-     should be identical, with filenames modified to have the LANG
-     extension.
+     should be almost identical, with filenames modified to have the
+     LANG extension.  The only other difference is including
+     'server/top-addendum.LANG.html' at the end.
 
 'server/body-include-1.html'
      Contains the top menu with useful "skip to" links.
@@ -1439,6 +1449,9 @@ the '#include''s used:
           <p>To join the Fooish translation team, see <a
           href="http://gnu.org/server/standards/translations/foo">the
           Foo team homepage</a>.</p>
+
+     This file is not under GNUN's control, you should edit HTML
+     directly.
 
 'server/header.html'
      The declaration that is included in literally every file (unless
@@ -1476,15 +1489,19 @@ the '#include''s used:
 'server/head-include-2.html'
      Imports the standard CSS, which can be overridden.  *Note CSS::.
 
+'server/home-pkgblurbs.html'
+     This header includes short descriptions of all GNU packages; it is
+     included from the homepage and 'manual/blurbs.html'.
+
 'server/footer.html'
-     This is a very short and simple file (at least at the time of
-     writing), containing another '#include' directive.  It is
-     maintained manually, so just add LANG to the filename, in order the
-     localized 'footer-text.LANG.html' to be included.
+     This is a very short and simple file, containing another '#include'
+     directive.  It is maintained manually, so just add LANG to the
+     filename, in order the localized 'footer-text.LANG.html' to be
+     included.
 
 'server/outdated.html'
      This file is automatically included in outdated translations.  It
-     contains respective message with links to the English file and to a
+     contains a message with links to the English file and to a
      generated difference of the current revision of the English file
      against the most recent revision that has a complete translation.
      It is only included in articles affected by "grace period" because
@@ -1492,9 +1509,8 @@ the '#include''s used:
      text, and it is evident without any notices that there is no
      complete and up to date translation.
 
-'server/skip-translations.html'
-     The text for a link to the end of the autogenerated list of
-     translations.  It is not actually used as of January 2014.
+'planetfeeds.html'
+     Includes automatically extracted news items.
 
 'server/top-addendum.html'
      The text saying that the page is a translation.
@@ -1524,7 +1540,6 @@ the '#include''s used:
    - 'bottom-notes.html'
    - 'footer.html'
    - 'footer-text.html'
-   - 'skip-translations.html'
 
    in the 'server' sub-directory are what webmasters call "the server
 templates".  These files are included in almost every article,
@@ -1553,8 +1568,11 @@ in 'server/banner.LANG.html', i.e.
 
    Override only what is necessary and looks broken in your language; do
 not invent your own style.  This is important for the consistency of the
-gnu.org website.  A typical language-specific 'style.LANG.css' file
-looks like this:
+gnu.org website.  Also, please check if the issue is
+language-independent; in this case a change for 'layout.css' should be
+discussed with the webmasters.
+
+   A typical language-specific 'style.LANG.css' file looks like this:
 
      .inner { max-width: 85em; }
 
@@ -2110,4 +2128,91 @@ situation.
 recommend releasing these examples in parallel under your choice of free
 software license, such as the GNU General Public License, to permit
 their use in free software.
+
+Index
+*****
+
+* Menu:
+
+* .odt files:                            Submitting as Plain Text.
+                                                             (line  262)
+* Brave GNU World:                       Priorities.         (line 1057)
+* capitalization:                        Capitalization.     (line 1119)
+* checking out web pages:                Submitting as PO.   (line  192)
+* co-leaders:                            Co-leaders.         (line  940)
+* co-ordinators:                         Leaders.            (line  326)
+* contacting team:                       Joining.            (line  143)
+* copyright notices:                     Copyright Notices.  (line 1203)
+* Creative Commons:                      Distribution Terms. (line 1149)
+* custom CSS:                            CSS.                (line 1554)
+* CVS, using:                            Commits.            (line  679)
+* distribution terms:                    Distribution Terms. (line 1149)
+* Emacs:                                 PO Files.           (line 1345)
+* encoding:                              Submitting as Plain Text.
+                                                             (line  262)
+* encoding <1>:                          SSI.                (line 1468)
+* external resources:                    Savannah.           (line  770)
+* generic.html:                          SSI.                (line 1443)
+* GNUN:                                  Submitting as PO.   (line  183)
+* Gtranslator:                           PO Files.           (line 1354)
+* home.html:                             Priorities.         (line 1062)
+* HTML5:                                 SSI.                (line 1479)
+* language code:                         New Team.           (line  416)
+* mailing lists:                         Mailing Lists.      (line 1220)
+* native English speakers:               Managing.           (line  540)
+* news items:                            SSI.                (line 1511)
+* ODF:                                   Submitting as Plain Text.
+                                                             (line  262)
+* outdated translations:                 SSI.                (line 1501)
+* outdated translations, notification:   Updating.           (line 1099)
+* plain text:                            Submitting as Plain Text.
+                                                             (line  255)
+* planetfeeds.html:                      SSI.                (line 1511)
+* PO editors:                            PO Files.           (line 1345)
+* PO, editing:                           PO Files.           (line 1323)
+* Pootle:                                PO Files.           (line 1375)
+* previewing web pages:                  PO Files.           (line 1383)
+* review:                                Review.             (line  550)
+* right-to-left languages:               RTL.                (line 1632)
+* SaaSS:                                 PO Files.           (line 1335)
+* Savannah account:                      New Team.           (line  359)
+* Savannah projects:                     Savannah Projects.  (line 1291)
+* Savannah, registering:                 New Team.           (line  359)
+* server templates:                      Submitting as PO.   (line  226)
+* server templates <1>:                  SSI.                (line 1529)
+* SourceForge:                           Tracking Tasks.     (line  648)
+* SSI includes:                          SSI.                (line 1412)
+* tasks, tracking:                       Tracking Tasks.     (line  582)
+* team homepage:                         Savannah Homepage.  (line  829)
+* team leaders:                          Leaders.            (line  326)
+* team mailing lists:                    Savannah Mailing Lists.
+                                                             (line  902)
+* team members:                          Members.            (line  113)
+* team news:                             Savannah News.      (line  887)
+* team status:                           Savannah Members.   (line  817)
+* team status <1>:                       Reports.            (line  963)
+* team's repository:                     Savannah VCS.       (line  922)
+* team, contacting:                      Joining.            (line  143)
+* tracking changes in files:             Updating.           (line 1076)
+* tracking changes in files <1>:         Mailing Lists.      (line 1230)
+* tracking tasks:                        Tracking Tasks.     (line  582)
+* trans-coord-discuss@gnu.org:           Mailing Lists.      (line 1239)
+* translation priorities:                Priorities.         (line 1033)
+* translation priorities <1>:            Updating.           (line 1076)
+* Translations README:                   Joining.            (line  122)
+* Translations README <1>:               Terminology.        (line 1214)
+* translations, keeping current:         Updating.           (line 1076)
+* translations, review:                  Review.             (line  550)
+* translations, unreviewed:              Unreviewed Translations.
+                                                             (line  664)
+* unreviewed translations:               Unreviewed Translations.
+                                                             (line  664)
+* VCS:                                   Savannah VCS.       (line  922)
+* web pages of GNU packages:             Priorities.         (line 1051)
+* web pages, checking out:               Submitting as PO.   (line  192)
+* web pages, previewing:                 PO Files.           (line 1383)
+* web-based editing:                     PO Files.           (line 1375)
+* web-translators@gnu.org:               Mailing Lists.      (line 1276)
+* webmasters@gnu.org:                    Mailing Lists.      (line 1270)
+* www-discuss@gnu.org:                   Mailing Lists.      (line 1224)
 

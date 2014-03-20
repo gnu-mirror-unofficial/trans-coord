@@ -3,10 +3,10 @@
 <!-- 
 This manual is a guide for the GNU Web Translators.
  Last updated on
-10 January 2014, for GNUnited Nations version 0.8.
+20 March 2014, for GNUnited Nations version 0.8.
 
-Copyright (C) 2009, 2010, 2011, 2012, 2013 Free Software
-Foundation, Inc.
+Copyright (C) 2009, 2010, 2011, 2012, 2013,
+  2014 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -25,6 +25,7 @@ Documentation License." -->
 <meta name="Generator" content="makeinfo">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Leaders.html#Leaders" rel="up" title="Leaders">
 <link href="Managing.html#Managing" rel="next" title="Managing">
@@ -65,7 +66,7 @@ ul.no-bullet {list-style: none}
 <a name="New-Team"></a>
 <div class="header">
 <p>
-Next: <a href="Managing.html#Managing" accesskey="n" rel="next">Managing</a>, Up: <a href="Leaders.html#Leaders" accesskey="u" rel="up">Leaders</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Managing.html#Managing" accesskey="n" rel="next">Managing</a>, Up: <a href="Leaders.html#Leaders" accesskey="u" rel="up">Leaders</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="How-to-Form-a-New-Team"></a>
@@ -79,15 +80,17 @@ have is more work and more responsibilities.
 </p>
 <p>You should read <em>all</em> the documentation related to the
 translation process and at the very least all important
-philosophy-related articles listed at
-<a href="http://gnu.org/server/standards/translations/priorities.html">http://gnu.org/server/standards/translations/priorities.html</a>
+philosophy-related articles listed on the
+<a href="https://gnu.org/server/standards/translations/priorities.html">Translation Priorities</a> page
 before you decide to form a new team, or take over an orphaned team.
 Once you have the internal feeling that having a gnu.org translation
 team for your language is a must, and you are the one for this job,
 follow these steps:
 </p>
 <ol>
-<li> If you do not have a Savannah account, register at
+<li> <a name="index-Savannah_002c-registering"></a>
+<a name="index-Savannah-account"></a>
+If you do not have a Savannah account, register at
 <a href="https://savannah.gnu.org/account/register.php">https://savannah.gnu.org/account/register.php</a>.  Write access
 to the repository and project membership is handled via Savannah, so you
 would need an account in any case.
@@ -104,7 +107,7 @@ granted, you can use the same working copy).
 <p>Examine the layout and structure of the repository.  Basically, it is
 mapped to the URL locations, more or less.  Take a look at the most
 important materials to translate under <samp>/philosophy</samp>, <samp>/gnu</samp>,
-<samp>/distros</samp>, <samp>/copyleft</samp> and <samp>/licenses</samp> directories just
+<samp>/distros</samp>, <samp>/education</samp> and <samp>/licenses</samp> directories just
 to get a rough estimate about the amount of work involved<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>.  If you are
 still not scared and determined to go on further, excellent.
 </p>
@@ -140,21 +143,20 @@ is not, the first thing to do is to translate and submit to
 
 </li><li> <samp>outdated.<var>lang</var>.po</samp>
 
-</li><li> <samp>skip-translations.<var>lang</var>.po</samp>
-
 </li><li> <samp>top-addendum.<var>lang</var>.po</samp>
 </li></ul>
 
 <p>See <a href="http://www.gnu.org/software/trans-coord/manual/gnun/html_node/New-Translation.html#New-Translation">New Translation</a> in <cite>The GNUnited Nations Manual</cite>.
 </p>
 <ul class="no-bullet">
-<li>- The language code (<var>lang</var>) should be the ISO 639-1 code of the
+<li>- <a name="index-language-code"></a>
+The language code (<var>lang</var>) should be the ISO 639-1 code of the
 language, for example &lsquo;<samp>hy</samp>&rsquo; for Armenian or &lsquo;<samp>el</samp>&rsquo; for Greek.  If
 the language is a variant such as Brazilian Portuguese or
 Simplified Chinese, use small caps and a dash&mdash;&lsquo;<samp>pt-br</samp>&rsquo; and
 &lsquo;<samp>zh-cn</samp>&rsquo; instead of &lsquo;<samp>pt_BR</samp>&rsquo; and &lsquo;<samp>zh_CN</samp>&rsquo;.
 
-</li><li>- The PO file header and initial comments should be completed as
+</li><li>- The PO file header and initial comments should be filled as
 documented.
 </li></ul>
 
@@ -171,8 +173,8 @@ what&rsquo;s already in the repository, for example:
 </pre></div>
 
 </li><li> Submit at least two translations of your own.  We maintain a list with
-priority articles at
-<a href="http://www.gnu.org/server/standards/translations/priorities.html">http://www.gnu.org/server/standards/translations/priorities.html</a>,
+priority articles on the
+<a href="https://www.gnu.org/server/standards/translations/priorities.html">Translation Priorities</a> page,
 although it is probably hard to start with one of them.  Choose whatever
 you wish, provided it is an essay and not an auxiliary page.  Avoid
 translating the homepage or <samp>planetfeeds.html</samp>&mdash;they are moving
@@ -223,7 +225,7 @@ configuration; in particular, write its description, create a mailing
 list (don&rsquo;t forget to subscribe yourself!), optionally add a home
 page using Web CVS repository.
 
-<p>If you are taking over an orphaned team, Translation Managers will
+<p>If you are taking over an orphaned team, the Translation Managers will
 make you the owner of its mailing lists (if any).
 </p>
 </li></ol>
@@ -265,7 +267,7 @@ is also a verification if she can co-operate easily with others.</p>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Managing.html#Managing" accesskey="n" rel="next">Managing</a>, Up: <a href="Leaders.html#Leaders" accesskey="u" rel="up">Leaders</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Managing.html#Managing" accesskey="n" rel="next">Managing</a>, Up: <a href="Leaders.html#Leaders" accesskey="u" rel="up">Leaders</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

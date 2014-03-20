@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 10 January 2014) is for GNUnited Nations (version
+This manual (updated 20 March 2014) is for GNUnited Nations (version
 0.8), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
-Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013 Free
+Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Free
 Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
@@ -141,8 +141,8 @@ ul.no-bullet {list-style: none}
     </ul></li>
   </ul></li>
   <li><a name="toc-Reporting-Bugs" href="#Bugs">7 Reporting Bugs</a></li>
-  <li><a name="toc-Index-1" href="#Index">Index</a></li>
   <li><a name="toc-GNU-Free-Documentation-License" href="#Copying-This-Manual">Appendix A GNU Free Documentation License</a></li>
+  <li><a name="toc-Index-1" href="#Index">Index</a></li>
 </ul>
 </div>
 
@@ -156,11 +156,11 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a 
 <a name="GNUnited-Nations"></a>
 <h1 class="top">GNUnited Nations</h1>
 
-<p>This manual (updated 10 January 2014) is for GNUnited Nations (version
+<p>This manual (updated 20 March 2014) is for GNUnited Nations (version
 0.8), a suite for maintaining translations of www.gnu.org
 essays and other articles.<br>
 </p><br>
-<p>Copyright &copy; 2008, 2009, 2010, 2011, 2012, 2013 Free
+<p>Copyright &copy; 2008, 2009, 2010, 2011, 2012, 2013, 2014 Free
 Software Foundation, Inc.
 </p>
 <blockquote>
@@ -190,9 +190,9 @@ Documentation License.&rdquo;
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Bugs" accesskey="7">Bugs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to report bugs.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Index" accesskey="8">Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Copying-This-Manual" accesskey="8">Copying This Manual</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The GNU Free Documentation License.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Copying-This-Manual" accesskey="9">Copying This Manual</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The GNU Free Documentation License.
+<tr><td align="left" valign="top">&bull; <a href="#Index" accesskey="9">Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -206,7 +206,7 @@ Next: <a href="#Usage" accesskey="n" rel="next">Usage</a>, Previous: <a href="#T
 <h2 class="chapter">1 Introduction to GNUnited Nations</h2>
 
 <p>GNUnited Nations (abbreviated GNUN) is a collection of
-scripts that are supposed to make the life of <a href="http://gnu.org">http://gnu.org</a>
+scripts that are supposed to make the life of <a href="https://www.gnu.org">https://www.gnu.org</a>
 translators easier.  Although it is specifically developed for the GNU
 Project&rsquo;s website, it could be customized, at least in theory, to fit
 the needs of other internationalized sites.  GNUN is in early stage of
@@ -252,7 +252,7 @@ Next: <a href="#Concepts" accesskey="n" rel="next">Concepts</a>, Up: <a href="#I
 <a name="Why-GNUN-Is-Being-Developed"></a>
 <h3 class="section">1.1 Why GNUN Is Being Developed</h3>
 
-<p>The GNU Project&rsquo;s website, <a href="http://www.gnu.org">http://www.gnu.org</a>, has become
+<p>The <a href="https://www.gnu.org">GNU Project&rsquo;s website</a>, has become
 considerably large over the years.  Maintaining it requires significant
 effort, and sometimes a new web standard is developed faster than the
 time required to migrate all articles to the next widely adopted one.
@@ -298,7 +298,7 @@ infrastructure for maintaining translations using PO files.
 See <a href="http://www.gnu.org/software/gettext/manual/gettext.html#Introduction">Introduction</a> in <cite>GNU gettext tools</cite>,
 for a basic overview.
 GNUnited Nations fills the gaps to apply this infrastructure to articles
-in <a href="http://gnu.org">http://gnu.org</a> web site.<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
+in <a href="https://www.gnu.org">https://www.gnu.org</a> web site.<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
 </p>
 <p>The following diagram summarizes the relation between the files handled
 by GNUN.  It is followed by somewhat detailed explanations, which you
@@ -564,7 +564,7 @@ available in GNU Make.  Thus, invoking a build consists of typing
 deploying the software on a non-GNU machine, probably GNU Make is
 installed and available as <code>gmake</code> or <code>gnumake</code>.  If
 not, you should consider installing it, since the build will fail
-otherwise.  See <a href="http://www.gnu.org/software/make">http://www.gnu.org/software/make</a> for information
+otherwise.  See <a href="https://www.gnu.org/software/make">GNU Make homepage</a> for information
 how to download and install GNU Make.
 </p>
 <p>If you don&rsquo;t specify a target, <code>make</code> by default builds the
@@ -1708,8 +1708,8 @@ Next: <a href="#PO-Header" accesskey="n" rel="next">PO Header</a>, Up: <a href="
 <p>To start a new translation, the most simple way is to copy the
 existing POT as <samp>article.<var>lang</var>.po</samp>, where <var>lang</var> is your
 language code.  For example, to prepare for a new translation of the
-essay <a href="http://www.gnu.org/philosophy/free-sw.html">http://www.gnu.org/philosophy/free-sw.html</a>, you can
-simply do <code>cd philosophy/po; cp free-sw.pot
+essay <a href="https://www.gnu.org/philosophy/free-sw.html">https://www.gnu.org/philosophy/free-sw.html</a>, you can
+simply <code>cd philosophy/po; cp free-sw.pot
 free-sw.<var>lang</var>.po</code> and then edit the latter.  If
 <samp>free-sw.pot</samp> does not exist it is because either the article is
 not yet &ldquo;templated&rdquo; (i.e. migrated to the new style), or the GNUN
@@ -2321,8 +2321,8 @@ the working copy and substitute the strings in the HTML file of the
 translation.
 </p>
 <p>GNUN relies on URLs being absolute, starting from the root directory
-as required in 
-<a href="http://www.gnu.org/server/fsf-html-style-sheet.html#FilenameAndURLGuidelines">http://www.gnu.org/server/fsf-html-style-sheet.html#FilenameAndURLGuidelines</a>.
+as required in the
+<a href="https://www.gnu.org/server/fsf-html-style-sheet.html#FilenameAndURLGuidelines">FSF HTML Style Sheet Guidelines</a>.
 </p>
 <p>And please don&rsquo;t forget to commit the image in its source form
 (typically, in SVG format).
@@ -2606,10 +2606,12 @@ around a <code>sed</code> script used in GNUN internally.
 <dd><p>Edit the file in place.
 </p>
 </dd>
+<dt><samp>-v</samp></dt>
 <dt><samp>--version</samp></dt>
 <dd><p>Display copyright and version information and exit.
 </p>
 </dd>
+<dt><samp>-h</samp></dt>
 <dt><samp>--help</samp></dt>
 <dd><p>Display usage information and exit.
 </p></dd>
@@ -2658,7 +2660,7 @@ sets differ.
 </p>
 </dd>
 <dt><samp>--no-common</samp></dt>
-<dd><p>Don&rsquo;t output strings that don&rsquo;t differ.
+<dd><p>Suppress strings that don&rsquo;t differ.
 </p>
 </dd>
 <dt><samp>-t</samp></dt>
@@ -2666,10 +2668,12 @@ sets differ.
 <dd><p>Specify the title of the output HTML page.
 </p>
 </dd>
+<dt><samp>-v</samp></dt>
 <dt><samp>--version</samp></dt>
 <dd><p>Display copyright and version information and exit.
 </p>
 </dd>
+<dt><samp>-h</samp></dt>
 <dt><samp>--help</samp></dt>
 <dd><p>Display usage information and exit.
 </p></dd>
@@ -2723,10 +2727,12 @@ the name of the language which is used in some fields of PO file header.
 <dd><p>Specify translator.
 </p>
 </dd>
+<dt><samp>-v</samp></dt>
 <dt><samp>--version</samp></dt>
 <dd><p>Display copyright and version information and exit.
 </p>
 </dd>
+<dt><samp>-h</samp></dt>
 <dt><samp>--help</samp></dt>
 <dd><p>Display usage information and exit.
 </p></dd>
@@ -2762,10 +2768,12 @@ POT using <code>gnun-merge-preconverted</code>.
 <dd><p>Specify the encoding of TRANSLATION (if other than UTF-8).
 </p>
 </dd>
+<dt><samp>-v</samp></dt>
 <dt><samp>--version</samp></dt>
 <dd><p>Display copyright and version information and exit.
 </p>
 </dd>
+<dt><samp>-h</samp></dt>
 <dt><samp>--help</samp></dt>
 <dd><p>Display usage information and exit.
 </p></dd>
@@ -2798,10 +2806,18 @@ POT, and adds differences against &ldquo;previous&rdquo; values like
 more than once to specify multiple compendia.
 </p>
 </dd>
+<dt><samp>-d</samp></dt>
+<dt><samp>--disable-diffs</samp></dt>
+<dd><p>Don&rsquo;t add diffs to previous messages in the format of
+gnun-add-fuzzy-diff.
+</p>
+</dd>
+<dt><samp>-v</samp></dt>
 <dt><samp>--version</samp></dt>
 <dd><p>Display copyright and version information and exit.
 </p>
 </dd>
+<dt><samp>-h</samp></dt>
 <dt><samp>--help</samp></dt>
 <dd><p>Display usage information and exit.
 </p></dd>
@@ -2852,10 +2868,12 @@ is missing, <code>gnun-report</code> tries to figure out the language name
 based on the language code provided with the &ldquo;-t&rdquo; option.
 </p>
 </dd>
+<dt><samp>-v</samp></dt>
 <dt><samp>--version</samp></dt>
 <dd><p>Display copyright and version information and exit.
 </p>
 </dd>
+<dt><samp>-h</samp></dt>
 <dt><samp>--help</samp></dt>
 <dd><p>Display usage information and exit.
 </p></dd>
@@ -2863,8 +2881,8 @@ based on the language code provided with the &ldquo;-t&rdquo; option.
 
 <p>A cron job commits updated reports for all active teams to GNUN
 project web repository, typically twice an hour.  The links to those
-reports are provided on
-<a href="http://www.gnu.org/software/gnun/reports/">http://www.gnu.org/software/gnun/reports/</a>.
+reports are provided on the
+<a href="https://www.gnu.org/software/gnun/reports/reports.html">GNUN Reports</a>.
 </p>
 <p>There is also a target in <samp>GNUmakefile</samp> to generate text reports
 intended for monthly messages sent to the teams.  See <a href="#report">report</a>.
@@ -2910,16 +2928,19 @@ is <samp>../..</samp>.
 variables.
 </p>
 </dd>
-<dt><samp>-v, --verbose</samp></dt>
+<dt><samp>-V</samp></dt>
+<dt><samp>--verbose</samp></dt>
 <dd><p>Produce more detailed output intended for automatic email reports;
 essentially, it adds the expanded HTML to facilitate finding errors
 by people who receive the report.
 </p>
 </dd>
+<dt><samp>-v</samp></dt>
 <dt><samp>--version</samp></dt>
 <dd><p>Display copyright and version information and exit.
 </p>
 </dd>
+<dt><samp>-h</samp></dt>
 <dt><samp>--help</samp></dt>
 <dd><p>Display usage information and exit.
 </p></dd>
@@ -3055,10 +3076,12 @@ wrap long lines in PO files.
 </pre></div>
 
 <dl compact="compact">
+<dt><samp>-v</samp></dt>
 <dt><samp>--version</samp></dt>
 <dd><p>Print copyright and version information on the standard output.
 </p>
 </dd>
+<dt><samp>-h</samp></dt>
 <dt><samp>--help</samp></dt>
 <dd><p>Print usage information on stdout.
 </p></dd>
@@ -3068,7 +3091,7 @@ wrap long lines in PO files.
 <a name="Bugs"></a>
 <div class="header">
 <p>
-Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#Internals" accesskey="p" rel="prev">Internals</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manual</a>, Previous: <a href="#Internals" accesskey="p" rel="prev">Internals</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Reporting-Bugs"></a>
 <h2 class="chapter">7 Reporting Bugs</h2>
@@ -3082,259 +3105,13 @@ nothing about.
 </p>
 <p>If you encounter a bug, or if you have suggestions of any kind, please
 do not hesitate to report them at <a href="mailto:bug-gnun@gnu.org">bug-gnun@gnu.org</a> or
-<a href="https://savannah.gnu.org/bugs/?group=gnun">https://savannah.gnu.org/bugs/?group=gnun</a>.
+<a href="https://savannah.gnu.org/bugs/?group=gnun">GNUN Bug Tracker</a>.
 </p>
-<hr>
-<a name="Index"></a>
-<div class="header">
-<p>
-Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manual</a>, Previous: <a href="#Bugs" accesskey="p" rel="prev">Bugs</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
-</div>
-<a name="Index-1"></a>
-<h2 class="unnumbered">Index</h2>
-
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_letter-A"><b>A</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-B"><b>B</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-C"><b>C</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-D"><b>D</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-E"><b>E</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-F"><b>F</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-G"><b>G</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-I"><b>I</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-L"><b>L</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-M"><b>M</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-N"><b>N</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-O"><b>O</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-P"><b>P</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-R"><b>R</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-S"><b>S</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-T"><b>T</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-V"><b>V</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-W"><b>W</b></a>
- &nbsp; 
-</td></tr></table>
-<table class="index-cp" border="0">
-<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-A">A</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-ALL_005fDIRS">ALL_DIRS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-announce">announce</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-articles-in-root-directory_002c-defining">articles in root directory, defining</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-B">B</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Bazaar">Bazaar</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-boilerplates">boilerplates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Templates">Modifying Templates</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-bugs_002c-reporting">bugs, reporting</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bugs">Bugs</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-bzr">bzr</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-C">C</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-comments-for-translators">comments for translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Comments-for-Translators">Comments for Translators</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-comparing_002c-translations">comparing, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002ddiff_002dpo">gnun-diff-po</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-compendia">compendia</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-compendium_002epot">compendium.pot</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-config_002emk">config.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-conventional-separator-for-strings">conventional separator for strings</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Splitting-Long-Passages">Splitting Long Passages</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-conversion-of-existing-translations">conversion of existing translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Migrating">Migrating</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-conversion-of-existing-translations-1">conversion of existing translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dpreconvert">gnun-preconvert</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-conversion-of-existing-translations-2">conversion of existing translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-credits_002c-translators">credits, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUN-Slots">GNUN Slots</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-credits_002c-translators-1">credits, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Credits-Slot">Credits Slot</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-cron_002c-team-maintenance">cron, team maintenance</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-CVS">CVS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-D">D</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-deferred-generation-of-articles">deferred generation of articles</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-defining-articles-in-the-root-dir">defining articles in the root dir</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-defining-directories">defining directories</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-defining-templates">defining templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-directories_002c-defining">directories, defining</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-E">E</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-email_002daliases">email-aliases</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Targets">GNUmakefile.team Targets</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-exclude_002epot">exclude.pot</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-extra_002dtemplates">extra-templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-F">F</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-fuzzy-strings">fuzzy strings</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-FUZZY_005fDIFF_005fLINGUAS">FUZZY_DIFF_LINGUAS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-G">G</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-GNUmakefile">GNUmakefile</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-GNUmakefile_002eteam">GNUmakefile.team</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnun_002emk">gnun.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-gnun_002emk-1">gnun.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-GRACE">GRACE</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-grace-period">grace period</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-I">I</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-initializing_002c-translations">initializing, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dinit_002dpo">gnun-init-po</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-invocation">invocation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-invoking">invoking</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-L">L</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-localized-SSIs">localized SSIs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-localized-URLs">localized URLs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Localized-URLs">Localized URLs</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-localized_002dssis">localized-ssis</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-long-lines_002c-wrap">long lines, wrap</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Wrapping-Long-Lines">Wrapping Long Lines</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-long-passages_002c-avoiding">long passages, avoiding</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Splitting-Long-Passages">Splitting Long Passages</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-M">M</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-mail_002c-notifications">mail, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-mail_002c-notifications-1">mail, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-mail_002c-notifications-2">mail, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#mailfail">mailfail</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-migration_002c-translations">migration, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Migrating">Migrating</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-migration_002c-translations-1">migration, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dpreconvert">gnun-preconvert</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-migration_002c-translations-2">migration, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-N">N</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-new-translation">new translation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-new-translations_002c-notifications_002fannouncements">new translations, notifications/announcements</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-notes_002c-translators">notes, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUN-Slots">GNUN Slots</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-notes_002c-translators-1">notes, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Notes-Slot">Notes Slot</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-notification-period">notification period</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Targets">GNUmakefile.team Targets</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-notification-period_002c-default">notification period, default</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-NOTIFICATION_005fPERIOD">NOTIFICATION_PERIOD</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-NOTIFY">NOTIFY</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-NOTIFY-1">NOTIFY</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-nottab">nottab</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Targets">GNUmakefile.team Targets</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-O">O</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-optional_002dtemplates">optional-templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-outdated-translations_002c-notifications">outdated translations, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Targets">GNUmakefile.team Targets</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-OUTDATED_002dGRACE">OUTDATED-GRACE</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-output_002c-detailed">output, detailed</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-P">P</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-PO-files_002c-header">PO files, header</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Header">PO Header</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-PO-headers">PO headers</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Header">PO Header</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-POT-generation_002c-articles">POT generation, articles</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-previous_002c-diff">previous, diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-previous_002c-diff-1">previous, diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-previous_002c-manipulating-PO-files">previous, manipulating PO files</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dclear_002dprevious">gnun-clear-previous</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-priorities_002emk">priorities.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-priorities_002emk-1">priorities.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#report">report</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-priorities_002emk-2">priorities.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dreport">gnun-report</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-project-repository">project repository</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-R">R</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-recommendations_002c-PO-files">recommendations, PO files</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Tips">PO Tips</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-reminder-period">reminder period</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Targets">GNUmakefile.team Targets</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-reminder-period_002c-default">reminder period, default</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-reporting">reporting</a>:</td><td>&nbsp;</td><td valign="top"><a href="#report">report</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-reporting-1">reporting</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dreport">gnun-report</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-reporting-bugs">reporting bugs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bugs">Bugs</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-repository_002c-translation-project">repository, translation project</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-ROOT">ROOT</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-S">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-sanity-checks">sanity checks</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-sitemap">sitemap</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-sitemap-1">sitemap</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Sitemap">Sitemap</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-SSIs_002c-localized">SSIs, localized</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-status_002c-translations">status, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#report">report</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-status_002c-translations-1">status, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dreport">gnun-report</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Subversion">Subversion</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-SVN">SVN</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-T">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-TEAM">TEAM</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-team-maintenance">team maintenance</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-team-maintenance_002c-cron">team maintenance, cron</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-team-workflow">team workflow</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-templates">templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Templates">Modifying Templates</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-templates_002c-additional">templates, additional</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-templates_002c-defining">templates, defining</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-templates_002c-optional">templates, optional</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-TEMPLATE_005fLINGUAS">TEMPLATE_LINGUAS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-tips_002c-translators">tips, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Tips">PO Tips</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-tips_002c-webmasters">tips, webmasters</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Webmaster-Tips">Webmaster Tips</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-translation-memory">translation memory</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-translation_002c-new">translation, new</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-translators_0027-credits">translators&rsquo; credits</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUN-Slots">GNUN Slots</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-translators_0027-credits-1">translators&rsquo; credits</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Credits-Slot">Credits Slot</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-translators_0027-notes">translators&rsquo; notes</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUN-Slots">GNUN Slots</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-translators_0027-notes-1">translators&rsquo; notes</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Notes-Slot">Notes Slot</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-triggering_002c-build">triggering, build</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-V">V</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-VALIDATE">VALIDATE</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-validation">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-validation-1">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-validation-2">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#validate_002dall">validate-all</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-validation-3">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Templates">Modifying Templates</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-validation_002c-HTML_002c-XHTML">validation, HTML, XHTML</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-variable_002c-behavior">variable, behavior</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-variable_002c-team">variable, team</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-variables">variables</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-variables-1">variables</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-VCS">VCS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-VERBOSE">VERBOSE</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-W">W</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-webmaster-tips">webmaster tips</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Webmaster-Tips">Webmaster Tips</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-wrapping-long-lines">wrapping long lines</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Wrapping-Long-Lines">Wrapping Long Lines</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-</table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_letter-A"><b>A</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-B"><b>B</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-C"><b>C</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-D"><b>D</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-E"><b>E</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-F"><b>F</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-G"><b>G</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-I"><b>I</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-L"><b>L</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-M"><b>M</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-N"><b>N</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-O"><b>O</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-P"><b>P</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-R"><b>R</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-S"><b>S</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-T"><b>T</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-V"><b>V</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Index_cp_letter-W"><b>W</b></a>
- &nbsp; 
-</td></tr></table>
-
 <hr>
 <a name="Copying-This-Manual"></a>
 <div class="header">
 <p>
-Previous: <a href="#Index" accesskey="p" rel="prev">Index</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="#Bugs" accesskey="p" rel="prev">Bugs</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="GNU-Free-Documentation-License"></a>
 <h2 class="appendix">Appendix A GNU Free Documentation License</h2>
@@ -3809,6 +3586,252 @@ to permit their use in free software.
 </p>
 
 
+<hr>
+<a name="Index"></a>
+<div class="header">
+<p>
+Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This Manual</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Index-1"></a>
+<h2 class="unnumbered">Index</h2>
+
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-W"><b>W</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-A">A</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ALL_005fDIRS">ALL_DIRS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-announce">announce</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-articles-in-root-directory_002c-defining">articles in root directory, defining</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-B">B</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Bazaar">Bazaar</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-boilerplates">boilerplates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Templates">Modifying Templates</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-bugs_002c-reporting">bugs, reporting</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bugs">Bugs</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-bzr">bzr</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-C">C</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-comments-for-translators">comments for translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Comments-for-Translators">Comments for Translators</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-comparing_002c-translations">comparing, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002ddiff_002dpo">gnun-diff-po</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-compendia">compendia</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-compendium_002epot">compendium.pot</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-config_002emk">config.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-conventional-separator-for-strings">conventional separator for strings</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Splitting-Long-Passages">Splitting Long Passages</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-conversion-of-existing-translations">conversion of existing translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Migrating">Migrating</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-conversion-of-existing-translations-1">conversion of existing translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dpreconvert">gnun-preconvert</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-conversion-of-existing-translations-2">conversion of existing translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-credits_002c-translators">credits, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUN-Slots">GNUN Slots</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-credits_002c-translators-1">credits, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Credits-Slot">Credits Slot</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cron_002c-team-maintenance">cron, team maintenance</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-CVS">CVS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-D">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-deferred-generation-of-articles">deferred generation of articles</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-defining-articles-in-the-root-dir">defining articles in the root dir</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-defining-directories">defining directories</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-defining-templates">defining templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-directories_002c-defining">directories, defining</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-E">E</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-email_002daliases">email-aliases</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Targets">GNUmakefile.team Targets</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-exclude_002epot">exclude.pot</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-extra_002dtemplates">extra-templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-F">F</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-fuzzy-strings">fuzzy strings</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-FUZZY_005fDIFF_005fLINGUAS">FUZZY_DIFF_LINGUAS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-G">G</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-GNUmakefile">GNUmakefile</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-GNUmakefile_002eteam">GNUmakefile.team</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnun_002emk">gnun.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gnun_002emk-1">gnun.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-GRACE">GRACE</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-grace-period">grace period</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-initializing_002c-translations">initializing, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dinit_002dpo">gnun-init-po</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-invocation">invocation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-invoking">invoking</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-L">L</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-localized-SSIs">localized SSIs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-localized-URLs">localized URLs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Localized-URLs">Localized URLs</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-localized_002dssis">localized-ssis</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-long-lines_002c-wrap">long lines, wrap</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Wrapping-Long-Lines">Wrapping Long Lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-long-passages_002c-avoiding">long passages, avoiding</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Splitting-Long-Passages">Splitting Long Passages</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-M">M</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-mail_002c-notifications">mail, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-mail_002c-notifications-1">mail, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-mail_002c-notifications-2">mail, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#mailfail">mailfail</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-migration_002c-translations">migration, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Migrating">Migrating</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-migration_002c-translations-1">migration, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dpreconvert">gnun-preconvert</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-migration_002c-translations-2">migration, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-N">N</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-new-translation">new translation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-new-translations_002c-notifications_002fannouncements">new translations, notifications/announcements</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-notes_002c-translators">notes, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUN-Slots">GNUN Slots</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-notes_002c-translators-1">notes, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Notes-Slot">Notes Slot</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-notification-period">notification period</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Targets">GNUmakefile.team Targets</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-notification-period_002c-default">notification period, default</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-NOTIFICATION_005fPERIOD">NOTIFICATION_PERIOD</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-NOTIFY">NOTIFY</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-NOTIFY-1">NOTIFY</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-nottab">nottab</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Targets">GNUmakefile.team Targets</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-O">O</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-optional_002dtemplates">optional-templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-outdated-translations_002c-notifications">outdated translations, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Targets">GNUmakefile.team Targets</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-OUTDATED_002dGRACE">OUTDATED-GRACE</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-output_002c-detailed">output, detailed</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-P">P</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PO-files_002c-header">PO files, header</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Header">PO Header</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PO-headers">PO headers</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Header">PO Header</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-POT-generation_002c-articles">POT generation, articles</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-previous_002c-diff">previous, diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-previous_002c-diff-1">previous, diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-previous_002c-manipulating-PO-files">previous, manipulating PO files</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dclear_002dprevious">gnun-clear-previous</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-priorities_002emk">priorities.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-priorities_002emk-1">priorities.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#report">report</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-priorities_002emk-2">priorities.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dreport">gnun-report</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-project-repository">project repository</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-R">R</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-recommendations_002c-PO-files">recommendations, PO files</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Tips">PO Tips</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-reminder-period">reminder period</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Targets">GNUmakefile.team Targets</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-reminder-period_002c-default">reminder period, default</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-reporting">reporting</a>:</td><td>&nbsp;</td><td valign="top"><a href="#report">report</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-reporting-1">reporting</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dreport">gnun-report</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-reporting-bugs">reporting bugs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bugs">Bugs</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-repository_002c-translation-project">repository, translation project</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ROOT">ROOT</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-S">S</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sanity-checks">sanity checks</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sitemap">sitemap</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sitemap-1">sitemap</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Sitemap">Sitemap</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-SSIs_002c-localized">SSIs, localized</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-status_002c-translations">status, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#report">report</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-status_002c-translations-1">status, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dreport">gnun-report</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Subversion">Subversion</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-SVN">SVN</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-T">T</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-TEAM">TEAM</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-team-maintenance">team maintenance</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-team-maintenance_002c-cron">team maintenance, cron</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-and-Cron">GNUmakefile.team and Cron</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-team-workflow">team workflow</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-templates">templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Templates">Modifying Templates</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-templates_002c-additional">templates, additional</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-templates_002c-defining">templates, defining</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-templates_002c-optional">templates, optional</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-TEMPLATE_005fLINGUAS">TEMPLATE_LINGUAS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-tips_002c-translators">tips, translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Tips">PO Tips</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-tips_002c-webmasters">tips, webmasters</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Webmaster-Tips">Webmaster Tips</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-translation-memory">translation memory</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-translation_002c-new">translation, new</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-translators_0027-credits">translators&rsquo; credits</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUN-Slots">GNUN Slots</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-translators_0027-credits-1">translators&rsquo; credits</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Credits-Slot">Credits Slot</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-translators_0027-notes">translators&rsquo; notes</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUN-Slots">GNUN Slots</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-translators_0027-notes-1">translators&rsquo; notes</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Notes-Slot">Notes Slot</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-triggering_002c-build">triggering, build</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-V">V</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-VALIDATE">VALIDATE</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-validation">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-validation-1">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-validation-2">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#validate_002dall">validate-all</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-validation-3">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Templates">Modifying Templates</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-validation_002c-HTML_002c-XHTML">validation, HTML, XHTML</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-variable_002c-behavior">variable, behavior</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-variable_002c-team">variable, team</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-variables">variables</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-variables-1">variables</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-VCS">VCS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-VERBOSE">VERBOSE</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-W">W</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-webmaster-tips">webmaster tips</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Webmaster-Tips">Webmaster Tips</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-wrapping-long-lines">wrapping long lines</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Wrapping-Long-Lines">Wrapping Long Lines</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-W"><b>W</b></a>
+ &nbsp; 
+</td></tr></table>
+
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
@@ -3822,7 +3845,7 @@ apply.</p>
 <h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
 <p>The process of converting
 HTML to PO and the other way around is performed using po4a (&ldquo;po for
-anything&rdquo;), see <a href="http://po4a.alioth.debian.org">http://po4a.alioth.debian.org</a>.</p>
+anything&rdquo;), see <a href="http://po4a.alioth.debian.org">PO4A website</a>.</p>
 <h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
 <p>When GNU Bzr is used, files
 are added locally only; you need to take care to use <code>bzr push</code>

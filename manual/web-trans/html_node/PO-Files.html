@@ -3,10 +3,10 @@
 <!-- 
 This manual is a guide for the GNU Web Translators.
  Last updated on
-10 January 2014, for GNUnited Nations version 0.8.
+20 March 2014, for GNUnited Nations version 0.8.
 
-Copyright (C) 2009, 2010, 2011, 2012, 2013 Free Software
-Foundation, Inc.
+Copyright (C) 2009, 2010, 2011, 2012, 2013,
+  2014 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -25,6 +25,7 @@ Documentation License." -->
 <meta name="Generator" content="makeinfo">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Translation-Process.html#Translation-Process" rel="up" title="Translation Process">
 <link href="Migrating.html#Migrating" rel="next" title="Migrating">
@@ -65,7 +66,7 @@ ul.no-bullet {list-style: none}
 <a name="PO-Files"></a>
 <div class="header">
 <p>
-Next: <a href="Migrating.html#Migrating" accesskey="n" rel="next">Migrating</a>, Previous: <a href="Savannah-Projects.html#Savannah-Projects" accesskey="p" rel="prev">Savannah Projects</a>, Up: <a href="Translation-Process.html#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Migrating.html#Migrating" accesskey="n" rel="next">Migrating</a>, Previous: <a href="Savannah-Projects.html#Savannah-Projects" accesskey="p" rel="prev">Savannah Projects</a>, Up: <a href="Translation-Process.html#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Working-with-PO-Files"></a>
@@ -83,13 +84,14 @@ have any problems, other translators will help you.
 editor, because each of them represents and treats gettext messages in
 a consistent and predictable way.  It is possible to edit a PO file
 with an ordinary plain text editor, but extra effort would be
-necessary to make it valid.
+necessary to make the result valid.
 </p>
+<a name="index-SaaSS"></a>
 <p>Note that recent versions of some PO editors (both offline
 and web-based) offer access to various translation services that
 do machine translation for their users.  Using a machine translation
 service is a clear example of SaaSS (see
-<a href="https://www.gnu.org/philosophy/who-does-that-server-really-serve.html">https://www.gnu.org/philosophy/who-does-that-server-really-serve.html</a>),
+<a href="https://www.gnu.org/philosophy/who-does-that-server-really-serve.html">Who does That Server Really Serve?</a>),
 so please don&rsquo;t use such editors unless they only submit requests
 to your (or GNU project&rsquo;s) own servers.
 </p>
@@ -97,6 +99,7 @@ to your (or GNU project&rsquo;s) own servers.
 </p>
 <ul>
 <li> <a name="index-PO-editors"></a>
+<a name="index-Emacs"></a>
 PO mode.  We recommend using GNU Emacs in PO mode, because Emacs is
 the program that is suitable for performing any task when it comes to
 maintaining the GNU Project&rsquo;s website.  Provided that you have GNU
@@ -106,7 +109,8 @@ switch to PO mode.  You can enable/disable it with <code>M-x po-mode
 available in a separate package, <code>gettext-el</code>.
 See <a href="http://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html#PO-Mode">Emacs&rsquo;s PO File Editor</a> in <cite>GNU gettext tools</cite>.
 
-</li><li> Gtranslator&mdash;the GNOME PO editor.  See
+</li><li> <a name="index-Gtranslator"></a>
+Gtranslator&mdash;the GNOME PO editor.  See
 <a href="http://projects.gnome.org/gtranslator/">http://projects.gnome.org/gtranslator/</a>.
 
 </li><li> Lokalize&mdash;the KDE 4 editor.  See
@@ -122,38 +126,30 @@ graphical toolkit.  See <a href="http://www.poedit.net">http://www.poedit.net</a
 use Vim as their editor.  See
 <a href="http://www.vim.org/scripts/script.php?script_id=2530">http://www.vim.org/scripts/script.php?script_id=2530</a>.
 
-</li><li> Various web-based editors.
+</li><li> GNU instance of Pootle, a web-based editor.
 </li></ul>
 
 <a name="Web_002dbased-Systems"></a>
 <h4 class="subsection">4.9.1 Web-based Systems</h4>
 
-<p>An alternative way to maintain translations is to use one of the
-existing online editors.  There are plans to install a web-based system
-for managing <samp>.po</samp> files at Savannah, including online editing and
-statistics.  Until it happens, teams who wish to use this functionality
-may setup such a server on a host of their own, or use one of the
-existing free hosting platforms such as Launchpad
-(<a href="http://translations.launchpad.net">http://translations.launchpad.net</a>).
+<a name="index-web_002dbased-editing"></a>
+<a name="index-Pootle"></a>
+<p>If your team would like to use a web-based editor, we recommend using
+the <a href="https://chapters.gnu.org/pootle/">official Pootle server of
+the GNU project</a>.  We make sure that working with it will not
+compromise your freedom via nonfree JavaScript or
+<a href="https://www.gnu.org/philosophy/who-does-that-server-really-serve.html">SaaSS</a>.  If you decide to use our server, please contact GNU Web
+Translation Managers to register your team.
 </p>
-<p>Here is a short and probably incomplete list of such systems:
-</p>
-<ul>
-<li> Vertaal&mdash;<a href="http://code.google.com/p/vertaal">http://code.google.com/p/vertaal</a>
-
-</li><li> Narro&mdash;<a href="http://code.google.com/p/narro">http://code.google.com/p/narro</a>
-
-</li><li> Launchpad&mdash;<a href="https://dev.launchpad.net">https://dev.launchpad.net</a>
-
-</li></ul>
-
-<p>If you decide to use such a system, please make sure that no
-translations are published in HTML format there.
-</p>
-<p>Note that to keep the <samp>.pot</samp> files regularly updated (assuming such
-a web-based system runs <code>msgmerge</code> automatically), you&rsquo;ll have
-to take care of the one-way regular sync from the &lsquo;<samp>www</samp>&rsquo; CVS
-repository.
+<a name="index-previewing-web-pages"></a>
+<a name="index-web-pages_002c-previewing"></a>
+<p>Also, that Pootle server has a simple facility to preview your
+translations as they will appear on www.gnu.org.  In order to test
+a page, log in the server and visit
+<a href="https://chapters.gnu.org/pootle/gnun/test.html">https://chapters.gnu.org/pootle/gnun/test.html</a>.  That page
+contains a menu to upload a PO file; then the server will generate
+the translation and show you the build log (including errors), and the
+generated web page (when the build is successful).
 </p>
 <div class="footnote">
 <hr>
@@ -166,7 +162,7 @@ PO files, see <a href="http://www.gnu.org/software/trans-coord/manual/gnun/html_
 <hr>
 <div class="header">
 <p>
-Next: <a href="Migrating.html#Migrating" accesskey="n" rel="next">Migrating</a>, Previous: <a href="Savannah-Projects.html#Savannah-Projects" accesskey="p" rel="prev">Savannah Projects</a>, Up: <a href="Translation-Process.html#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Migrating.html#Migrating" accesskey="n" rel="next">Migrating</a>, Previous: <a href="Savannah-Projects.html#Savannah-Projects" accesskey="p" rel="prev">Savannah Projects</a>, Up: <a href="Translation-Process.html#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 
