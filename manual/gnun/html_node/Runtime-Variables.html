@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 20 March 2014) is for GNUnited Nations (version
-0.8), a suite for maintaining translations of www.gnu.org
+This manual (updated 27 June 2014) is for GNUnited Nations (version
+0.9), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -101,21 +101,12 @@ that expects assigning the value &lsquo;no&rsquo;.
 <dt>&lsquo;<samp>VCS=yes</samp>&rsquo;</dt>
 <dd><p>Automatically add any new files in the repository (CVS, Subversion or
 GNU Bazaar&mdash;the repository type is auto-determined at build time,
-<code>bzr</code> being a fallback).<a name="DOCF3" href="#FOOT3"><sup>3</sup></a> These are
+<code>bzr</code> being a fallback).<a name="DOCF4" href="#FOOT4"><sup>4</sup></a> These are
 any POT files, if they are generated for the first time, and the
 translated articles (<samp>.<var>lang</var>.html</samp>) in HTML format.  Finally,
 any missing PO and their HTML counterparts of
 the server templates will be added, computed on the basis of the
 <code>extra-templates</code> and <code>optional-templates</code> variables.
-</p>
-</dd>
-<dt>&lsquo;<samp>VCS=always</samp>&rsquo;</dt>
-<dd><p>Because GNU Make considers the targets up-to-date after a successful
-build, if it was performed with no VCS interaction, the important newly
-created files will not be added (and committed when you do
-<code>cvs|svn|bzr commit</code>) in the repository.  Assigning this value
-enables additional check and forcefully adds all files.  Use it
-sparingly, since it is very slow and generally less reliable.
 </p>
 <a name="index-VALIDATE"></a>
 <a name="index-validation"></a>
@@ -224,12 +215,6 @@ target, and is mandatory for it.  See <a href="report.html#report">report</a>.
 </dd>
 </dl>
 
-<p>Note that <code>VCS=yes,always</code> is a valid combination: because POT
-files of the server templates are not handled by <code>always</code>, running
-the build this way will commit any newly added files as specified in
-<code>TEMPLATE_LINGUAS</code> and will perform additional check at the end,
-<code>cvs|svn|bzr add</code>-ing all necessary files.
-</p>
 <a name="index-validation-1"></a>
 <p>When validation is enabled, the
 original English articles are validated first, before any commands
@@ -261,7 +246,7 @@ example:
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
+<h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
 <p>When GNU Bzr is used, files
 are added locally only; you need to take care to use <code>bzr push</code>
 manually (or via cron) to take care of effectively adding them to the

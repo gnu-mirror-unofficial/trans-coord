@@ -39,15 +39,14 @@ GNU Web Translators Manual
   4.10 Migration to the New Style
   4.11 Summary of SSI '#include's
   4.12 How to Use Custom CSS
-    4.12.1 Localizing the 'topbanner' Image
-    4.12.2 Specific Issues Related to RTL
+    4.12.1 Specific Issues Related to RTL
 Appendix A GNU Free Documentation License
 Index
 GNU Web Translators Manual
 **************************
 
 This manual is a guide for the GNU Web Translators.
-Last updated on 20 March 2014, for GNUnited Nations version 0.8.
+Last updated on 27 June 2014, for GNUnited Nations version 0.9.
 
    Copyright (C) 2009, 2010, 2011, 2012, 2013, 2014 Free Software
 Foundation, Inc.
@@ -1576,7 +1575,6 @@ discussed with the webmasters.
 
      .inner { max-width: 85em; }
 
-     #logo{background:url(/graphics/topbanner.bg.png) no-repeat;}
      #fssbox {font-size: 50%;}
 
    This widens the menu and the area where the articles are displayed
@@ -1596,38 +1594,7 @@ issue.  If there are several unrelated problems, send separate messages
 with appropriate explanation (which may include a demonstration of the
 bug, such as a screenshot).
 
-4.12.1 Localizing the 'topbanner' Image
----------------------------------------
-
-If you'd like the nice gnu image to be localized (i.e.  "GNU Operating
-System" to appear in your native language, here are the steps:
-
-  1. Copy 'graphics/topbanner.svg' as 'graphics/topbanner.LANG.svg'
-     where LANG is the language code, as usual.  Edit the file with
-     Inkscape or with a plain text editor such as GNU Emacs, translating
-     "GNU Operating System".  Then with Inkscape, save the file as
-     'graphics/topbanner.LANG.png' (File -> Export Bitmap...).  Then
-     open the PNG image with the GIMP and flatten it (Image -> Flatten
-     Image).  Don't forget to save and 'cvs add' the files(1).
-
-  2. Create a 'style.LANG.css' at the toplevel directory, if it doesn't
-     exist already.  Normally, you would need only one line in it,
-     namely:
-
-          #logo{background:url(/graphics/topbanner.LANG.png) no-repeat;}
-
-  3. If not done already for other reasons, update 'banner.LANG.html' to
-     include the language specific 'style.LANG.css'.  *Note CSS::.
-
-   If you feel uncomfortable manipulating images--don't despair!  Send a
-plea for help to <trans-coord-discuss@gnu.org>, some people would be
-happy to help you.  Failing that, write to <www-discuss@gnu.org>.
-
-   ---------- Footnotes ----------
-
-   (1) This advice applies to all new files, of course.
-
-4.12.2 Specific Issues Related to RTL
+4.12.1 Specific Issues Related to RTL
 -------------------------------------
 
 Unfortunately, the <http://gnu.org> website does not have excellent
@@ -1637,9 +1604,10 @@ made.  If your language is in this category, make sure to:
    * Set the attribute 'dir="rtl"' in the 'html' element at
      'server/header.LANG.html'.
 
-   * You _must_ have a custom CSS to override some of the pre-defined
-     values.  See 'style.ar.css' and 'style.fa.css' to understand how
-     these two languages solve some of the problems.  *Note CSS::.
+   * You must include an additional CSS, 'style.rtl.css', to override
+     some of the pre-defined values.  See template files for Arabic and
+     Farsi to understand how these two languages solve some of the
+     problems.  *Note CSS::.
 
    *Important:* Some articles contain their own '<style>' redefinitions,
 or style attributes in the form '<p style="...">'.  In such situations,
@@ -2135,84 +2103,84 @@ Index
 * Menu:
 
 * .odt files:                            Submitting as Plain Text.
-                                                             (line  262)
-* Brave GNU World:                       Priorities.         (line 1057)
-* capitalization:                        Capitalization.     (line 1119)
-* checking out web pages:                Submitting as PO.   (line  192)
-* co-leaders:                            Co-leaders.         (line  940)
-* co-ordinators:                         Leaders.            (line  326)
-* contacting team:                       Joining.            (line  143)
-* copyright notices:                     Copyright Notices.  (line 1203)
-* Creative Commons:                      Distribution Terms. (line 1149)
-* custom CSS:                            CSS.                (line 1554)
-* CVS, using:                            Commits.            (line  679)
-* distribution terms:                    Distribution Terms. (line 1149)
-* Emacs:                                 PO Files.           (line 1345)
+                                                             (line  261)
+* Brave GNU World:                       Priorities.         (line 1056)
+* capitalization:                        Capitalization.     (line 1118)
+* checking out web pages:                Submitting as PO.   (line  191)
+* co-leaders:                            Co-leaders.         (line  939)
+* co-ordinators:                         Leaders.            (line  325)
+* contacting team:                       Joining.            (line  142)
+* copyright notices:                     Copyright Notices.  (line 1202)
+* Creative Commons:                      Distribution Terms. (line 1148)
+* custom CSS:                            CSS.                (line 1553)
+* CVS, using:                            Commits.            (line  678)
+* distribution terms:                    Distribution Terms. (line 1148)
+* Emacs:                                 PO Files.           (line 1344)
 * encoding:                              Submitting as Plain Text.
-                                                             (line  262)
-* encoding <1>:                          SSI.                (line 1468)
-* external resources:                    Savannah.           (line  770)
-* generic.html:                          SSI.                (line 1443)
-* GNUN:                                  Submitting as PO.   (line  183)
-* Gtranslator:                           PO Files.           (line 1354)
-* home.html:                             Priorities.         (line 1062)
-* HTML5:                                 SSI.                (line 1479)
-* language code:                         New Team.           (line  416)
-* mailing lists:                         Mailing Lists.      (line 1220)
-* native English speakers:               Managing.           (line  540)
-* news items:                            SSI.                (line 1511)
+                                                             (line  261)
+* encoding <1>:                          SSI.                (line 1467)
+* external resources:                    Savannah.           (line  769)
+* generic.html:                          SSI.                (line 1442)
+* GNUN:                                  Submitting as PO.   (line  182)
+* Gtranslator:                           PO Files.           (line 1353)
+* home.html:                             Priorities.         (line 1061)
+* HTML5:                                 SSI.                (line 1478)
+* language code:                         New Team.           (line  415)
+* mailing lists:                         Mailing Lists.      (line 1219)
+* native English speakers:               Managing.           (line  539)
+* news items:                            SSI.                (line 1510)
 * ODF:                                   Submitting as Plain Text.
-                                                             (line  262)
-* outdated translations:                 SSI.                (line 1501)
-* outdated translations, notification:   Updating.           (line 1099)
+                                                             (line  261)
+* outdated translations:                 SSI.                (line 1500)
+* outdated translations, notification:   Updating.           (line 1098)
 * plain text:                            Submitting as Plain Text.
-                                                             (line  255)
-* planetfeeds.html:                      SSI.                (line 1511)
-* PO editors:                            PO Files.           (line 1345)
-* PO, editing:                           PO Files.           (line 1323)
-* Pootle:                                PO Files.           (line 1375)
-* previewing web pages:                  PO Files.           (line 1383)
-* review:                                Review.             (line  550)
-* right-to-left languages:               RTL.                (line 1632)
-* SaaSS:                                 PO Files.           (line 1335)
-* Savannah account:                      New Team.           (line  359)
-* Savannah projects:                     Savannah Projects.  (line 1291)
-* Savannah, registering:                 New Team.           (line  359)
-* server templates:                      Submitting as PO.   (line  226)
-* server templates <1>:                  SSI.                (line 1529)
-* SourceForge:                           Tracking Tasks.     (line  648)
-* SSI includes:                          SSI.                (line 1412)
-* tasks, tracking:                       Tracking Tasks.     (line  582)
-* team homepage:                         Savannah Homepage.  (line  829)
-* team leaders:                          Leaders.            (line  326)
+                                                             (line  254)
+* planetfeeds.html:                      SSI.                (line 1510)
+* PO editors:                            PO Files.           (line 1344)
+* PO, editing:                           PO Files.           (line 1322)
+* Pootle:                                PO Files.           (line 1374)
+* previewing web pages:                  PO Files.           (line 1382)
+* review:                                Review.             (line  549)
+* right-to-left languages:               RTL.                (line 1599)
+* SaaSS:                                 PO Files.           (line 1334)
+* Savannah account:                      New Team.           (line  358)
+* Savannah projects:                     Savannah Projects.  (line 1290)
+* Savannah, registering:                 New Team.           (line  358)
+* server templates:                      Submitting as PO.   (line  225)
+* server templates <1>:                  SSI.                (line 1528)
+* SourceForge:                           Tracking Tasks.     (line  647)
+* SSI includes:                          SSI.                (line 1411)
+* tasks, tracking:                       Tracking Tasks.     (line  581)
+* team homepage:                         Savannah Homepage.  (line  828)
+* team leaders:                          Leaders.            (line  325)
 * team mailing lists:                    Savannah Mailing Lists.
-                                                             (line  902)
-* team members:                          Members.            (line  113)
-* team news:                             Savannah News.      (line  887)
-* team status:                           Savannah Members.   (line  817)
-* team status <1>:                       Reports.            (line  963)
-* team's repository:                     Savannah VCS.       (line  922)
-* team, contacting:                      Joining.            (line  143)
-* tracking changes in files:             Updating.           (line 1076)
-* tracking changes in files <1>:         Mailing Lists.      (line 1230)
-* tracking tasks:                        Tracking Tasks.     (line  582)
-* trans-coord-discuss@gnu.org:           Mailing Lists.      (line 1239)
-* translation priorities:                Priorities.         (line 1033)
-* translation priorities <1>:            Updating.           (line 1076)
-* Translations README:                   Joining.            (line  122)
-* Translations README <1>:               Terminology.        (line 1214)
-* translations, keeping current:         Updating.           (line 1076)
-* translations, review:                  Review.             (line  550)
+                                                             (line  901)
+* team members:                          Members.            (line  112)
+* team news:                             Savannah News.      (line  886)
+* team status:                           Savannah Members.   (line  816)
+* team status <1>:                       Reports.            (line  962)
+* team's repository:                     Savannah VCS.       (line  921)
+* team, contacting:                      Joining.            (line  142)
+* tracking changes in files:             Updating.           (line 1075)
+* tracking changes in files <1>:         Mailing Lists.      (line 1229)
+* tracking tasks:                        Tracking Tasks.     (line  581)
+* trans-coord-discuss@gnu.org:           Mailing Lists.      (line 1238)
+* translation priorities:                Priorities.         (line 1032)
+* translation priorities <1>:            Updating.           (line 1075)
+* Translations README:                   Joining.            (line  121)
+* Translations README <1>:               Terminology.        (line 1213)
+* translations, keeping current:         Updating.           (line 1075)
+* translations, review:                  Review.             (line  549)
 * translations, unreviewed:              Unreviewed Translations.
-                                                             (line  664)
+                                                             (line  663)
 * unreviewed translations:               Unreviewed Translations.
-                                                             (line  664)
-* VCS:                                   Savannah VCS.       (line  922)
-* web pages of GNU packages:             Priorities.         (line 1051)
-* web pages, checking out:               Submitting as PO.   (line  192)
-* web pages, previewing:                 PO Files.           (line 1383)
-* web-based editing:                     PO Files.           (line 1375)
-* web-translators@gnu.org:               Mailing Lists.      (line 1276)
-* webmasters@gnu.org:                    Mailing Lists.      (line 1270)
-* www-discuss@gnu.org:                   Mailing Lists.      (line 1224)
+                                                             (line  663)
+* VCS:                                   Savannah VCS.       (line  921)
+* web pages of GNU packages:             Priorities.         (line 1050)
+* web pages, checking out:               Submitting as PO.   (line  191)
+* web pages, previewing:                 PO Files.           (line 1382)
+* web-based editing:                     PO Files.           (line 1374)
+* web-translators@gnu.org:               Mailing Lists.      (line 1275)
+* webmasters@gnu.org:                    Mailing Lists.      (line 1269)
+* www-discuss@gnu.org:                   Mailing Lists.      (line 1223)
 

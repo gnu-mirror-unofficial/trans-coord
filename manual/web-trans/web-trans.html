@@ -3,7 +3,7 @@
 <!-- 
 This manual is a guide for the GNU Web Translators.
  Last updated on
-20 March 2014, for GNUnited Nations version 0.8.
+27 June 2014, for GNUnited Nations version 0.9.
 
 Copyright (C) 2009, 2010, 2011, 2012, 2013,
   2014 Free Software Foundation, Inc.
@@ -125,8 +125,7 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Summary-of-SSI-_0023includes" href="#SSI">4.11 Summary of SSI <code>#include</code>s</a></li>
     <li><a name="toc-How-to-Use-Custom-CSS" href="#CSS">4.12 How to Use Custom CSS</a>
     <ul class="no-bullet">
-      <li><a name="toc-Localizing-the-topbanner-Image" href="#topbanner">4.12.1 Localizing the <samp>topbanner</samp> Image</a></li>
-      <li><a name="toc-Specific-Issues-Related-to-RTL" href="#RTL">4.12.2 Specific Issues Related to RTL</a></li>
+      <li><a name="toc-Specific-Issues-Related-to-RTL" href="#RTL">4.12.1 Specific Issues Related to RTL</a></li>
     </ul></li>
   </ul></li>
   <li><a name="toc-GNU-Free-Documentation-License" href="#Copying-This-Manual">Appendix A GNU Free Documentation License</a></li>
@@ -145,7 +144,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a 
 <h1 class="top">GNU Web Translators Manual</h1>
 
 <p>This manual is a guide for the GNU Web Translators.<br> Last updated on
-20 March 2014, for GNUnited Nations version 0.8.
+27 June 2014, for GNUnited Nations version 0.9.
 </p><br>
 <p>Copyright &copy; 2009, 2010, 2011, 2012, 2013,
   2014 Free Software Foundation, Inc.
@@ -2171,7 +2170,6 @@ like this:
 <div class="example">
 <pre class="example">.inner { max-width: 85em; }
 
-#logo{background:url(/graphics/topbanner.bg.png) no-repeat;}
 #fssbox {font-size: 50%;}
 </pre></div>
 
@@ -2195,60 +2193,18 @@ messages with appropriate explanation (which may include a demonstration
 of the bug, such as a screenshot).
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#topbanner" accesskey="1">topbanner</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to localize the topbanner image.
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#RTL" accesskey="2">RTL</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Special notes about RTL languages.
+<tr><td align="left" valign="top">&bull; <a href="#RTL" accesskey="1">RTL</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Special notes about RTL languages.
 </td></tr>
 </table>
 
 <hr>
-<a name="topbanner"></a>
-<div class="header">
-<p>
-Next: <a href="#RTL" accesskey="n" rel="next">RTL</a>, Up: <a href="#CSS" accesskey="u" rel="up">CSS</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
-</div>
-<a name="Localizing-the-topbanner-Image"></a>
-<h4 class="subsection">4.12.1 Localizing the <samp>topbanner</samp> Image</h4>
-
-<p>If you&rsquo;d like the nice gnu image to be localized (i.e. &ldquo;GNU Operating
-System&rdquo; to appear in your native language, here are the steps:
-</p>
-<ol>
-<li> Copy <samp>graphics/topbanner.svg</samp> as
-<samp>graphics/topbanner.<var>lang</var>.svg</samp> where <var>lang</var> is the
-language code, as usual.  Edit the file with Inkscape or with a plain
-text editor such as GNU Emacs, translating &ldquo;GNU Operating System&rdquo;.
-Then with Inkscape, save the file as
-<samp>graphics/topbanner.<var>lang</var>.png</samp> (File -&gt; Export Bitmap&hellip;).
-Then open the PNG image with the GIMP and flatten it (Image -&gt; Flatten
-Image).  Don&rsquo;t forget to save and <code>cvs add</code> the files<a name="DOCF8" href="#FOOT8"><sup>8</sup></a>.
-
-</li><li> Create a <samp>style.<var>lang</var>.css</samp> at the toplevel directory, if it
-doesn&rsquo;t exist already.  Normally, you would need only one line in it,
-namely:
-
-<div class="example">
-<pre class="example">#logo{background:url(/graphics/topbanner.<var>lang</var>.png) no-repeat;}
-</pre></div>
-
-</li><li> If not done already for other reasons, update
-<samp>banner.<var>lang</var>.html</samp> to include the language specific
-<samp>style.<var>lang</var>.css</samp>.  See <a href="#CSS">CSS</a>.
-</li></ol>
-
-<p>If you feel uncomfortable manipulating images&mdash;don&rsquo;t despair!  Send a
-plea for help to <a href="mailto:trans-coord-discuss@gnu.org">trans-coord-discuss@gnu.org</a>, some people would
-be happy to help you.  Failing that, write to
-<a href="mailto:www-discuss@gnu.org">www-discuss@gnu.org</a>.
-</p>
-<hr>
 <a name="RTL"></a>
 <div class="header">
 <p>
-Previous: <a href="#topbanner" accesskey="p" rel="prev">topbanner</a>, Up: <a href="#CSS" accesskey="u" rel="up">CSS</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Up: <a href="#CSS" accesskey="u" rel="up">CSS</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Specific-Issues-Related-to-RTL"></a>
-<h4 class="subsection">4.12.2 Specific Issues Related to RTL</h4>
+<h4 class="subsection">4.12.1 Specific Issues Related to RTL</h4>
 
 <a name="index-right_002dto_002dleft-languages"></a>
 <p>Unfortunately, the <a href="http://gnu.org">http://gnu.org</a> website does not have excellent
@@ -2259,9 +2215,10 @@ made.  If your language is in this category, make sure to:
 <li> Set the attribute <code>dir=&quot;rtl&quot;</code> in the <code>html</code> element at
 <samp>server/header.<var>lang</var>.html</samp>.
 
-</li><li> You <em>must</em> have a custom CSS to override some of the pre-defined
-values.  See <samp>style.ar.css</samp> and <samp>style.fa.css</samp> to understand
-how these two languages solve some of the problems.  See <a href="#CSS">CSS</a>.
+</li><li> You must include an additional CSS, <samp>style.rtl.css</samp>, to override
+some of the pre-defined values.  See template files for Arabic and
+Farsi to understand how these two languages solve some
+of the problems.  See <a href="#CSS">CSS</a>.
 </li></ul>
 
 <p><strong>Important:</strong> Some articles contain their own <code>&lt;style&gt;</code>
@@ -2986,9 +2943,6 @@ Nations Manual</cite>).</p>
 <h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
 <p>For detailed information about editing
 PO files, see <a href="http://www.gnu.org/software/trans-coord/manual/gnun/gnun.html#PO-Files">Working with PO Files</a> in <cite>The GNUnited Nations Manual</cite>.</p>
-<h3><a name="FOOT8" href="#DOCF8">(8)</a></h3>
-<p>This
-advice applies to all new files, of course.</p>
 </div>
 <hr>
 

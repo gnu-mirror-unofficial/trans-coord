@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 20 March 2014) is for GNUnited Nations (version
-0.8), a suite for maintaining translations of www.gnu.org
+This manual (updated 27 June 2014) is for GNUnited Nations (version
+0.9), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -156,8 +156,8 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a 
 <a name="GNUnited-Nations"></a>
 <h1 class="top">GNUnited Nations</h1>
 
-<p>This manual (updated 20 March 2014) is for GNUnited Nations (version
-0.8), a suite for maintaining translations of www.gnu.org
+<p>This manual (updated 27 June 2014) is for GNUnited Nations (version
+0.9), a suite for maintaining translations of www.gnu.org
 essays and other articles.<br>
 </p><br>
 <p>Copyright &copy; 2008, 2009, 2010, 2011, 2012, 2013, 2014 Free
@@ -209,19 +209,19 @@ Next: <a href="#Usage" accesskey="n" rel="next">Usage</a>, Previous: <a href="#T
 scripts that are supposed to make the life of <a href="https://www.gnu.org">https://www.gnu.org</a>
 translators easier.  Although it is specifically developed for the GNU
 Project&rsquo;s website, it could be customized, at least in theory, to fit
-the needs of other internationalized sites.  GNUN is in early stage of
+the needs of other internationalized sites.  GNUN is in an early stage of
 development, but if it proves useful, and if there is sufficient
 interest (and time), it is possible to develop a robust configuration
 interface that would be appropriate for general usage.
 </p>
 <p>It is vitally important to understand that GNUN is <em>not</em> a silver
-bullet that solves all problems.  If we have to be honest, deploying
-GNUN in fact even does create some (see <a href="#Disadvantages">Disadvantages</a>).
+bullet that solves all problems.  To be honest, deploying
+GNUN in fact even does create some <a href="#Disadvantages">Disadvantages</a>.
 </p>
 <p>GNUnited Nations is free software, available under the GNU General
 Public License.
 </p>
-<p>This manual is organized in way that is suitable both for translators
+<p>This manual is organized in a way that is suitable both for translators
 and GNU Web Translation Managers (plus eventually interested GNU
 Webmasters, if any).  It may also serve as an introductory material and
 reference for new GNUN developers and contributors.  Hopefully, it might
@@ -265,13 +265,13 @@ techniques to catch up.  Some translation teams have developed their
 own sets of scripts, but so far there has been no universal solution.
 </p>
 <p>This unpleasant situation, combined with rapid and incompatible design
-changes, have lead some teams to neglect the important work of keeping
-their translation in line with the changing original articles.  As a
+changes, have led some teams to neglect the important work of keeping
+their translations in line with the changing original articles.  As a
 consequence, the GNU Project is facing the problem of maintaining them
 in suboptimal ways, in order to keep the information updated.
 </p>
 <p>The reasons for developing GNUnited Nations are very similar to those
-that lead to the inception of GNU gettext, or GNOME Documentation
+that led to the inception of GNU gettext, or GNOME Documentation
 Utilities (<code>gnome-doc-utils</code>) some years later.
 </p>
 <hr>
@@ -283,11 +283,12 @@ Next: <a href="#Advantages" accesskey="n" rel="next">Advantages</a>, Previous: <
 <a name="What-GNUnited-Nations-Is-and-Should-Be"></a>
 <h3 class="section">1.2 What GNUnited Nations Is and Should Be</h3>
 
+<a name="index-POT"></a>
 <p>The basic concept behind GNUN is that localization of HTML articles is
 similar to localization of computer programs<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>.  In articles, like in programs, not every string is considered
 translatable, so translatable strings must be identified first, and then
 collected in a file (called &ldquo;PO template&rdquo;) for translation.  Articles,
-like programs, tend to change in time, but not every change in the
+like programs, tend to change over time, but not every change in the
 sources calls for a translation update.  Sometimes the change does not
 affect the translatable strings, but sometimes it does.  So, translators
 must have means to identify those changes and apply the appropriate
@@ -298,7 +299,7 @@ infrastructure for maintaining translations using PO files.
 See <a href="http://www.gnu.org/software/gettext/manual/gettext.html#Introduction">Introduction</a> in <cite>GNU gettext tools</cite>,
 for a basic overview.
 GNUnited Nations fills the gaps to apply this infrastructure to articles
-in <a href="https://www.gnu.org">https://www.gnu.org</a> web site.<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
+in the <a href="https://www.gnu.org">https://www.gnu.org</a> web site.<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
 </p>
 <p>The following diagram summarizes the relation between the files handled
 by GNUN.  It is followed by somewhat detailed explanations, which you
@@ -331,26 +332,27 @@ running &lsquo;<samp>make -C server/gnun</samp>&rsquo;.  This is the primary way
 GNUN, since it is implemented as a set of recipes for GNU <code>make</code>.
 </p>
 <p>First, GNUN extracts all translatable strings from the original English
-article <samp><var>article</var>.html</samp> into <samp><var>article</var>.pot</samp>.  The
+article <samp><var>article</var>.html</samp> into
+<samp><var>article</var>.pot</samp><a name="DOCF3" href="#FOOT3"><sup>3</sup></a>.  The
 resulting file is suitable for manipulation with the various GNU
 &lsquo;<samp>gettext</samp>&rsquo; utilities.  It contains all original article strings and
 all translations are set to empty.  The letter <code>t</code> in <samp>.pot</samp>
 marks this as a Template PO file, not yet oriented towards any
 particular language.
 </p>
-<p>The first time though, there is no <samp><var>article</var>.<var>lang</var>.po</samp>
-yet, so a translator must make <samp><var>article</var>.<var>lang</var>.po</samp> from
+<p>On the first run, though, there is no <samp><var>article</var>.<var>lang</var>.po</samp>
+yet, so a translator must create <samp><var>article</var>.<var>lang</var>.po</samp> from
 <samp><var>article</var>.pot</samp>, where <var>lang</var> represents the
 target language.  See <a href="#New-Translation">New Translation</a>, for details.
 </p>
 <p>Then comes the initial translation of messages in
 <samp><var>article</var>.<var>lang</var>.po</samp>.  Translation in itself is a whole
 matter, whose complexity far overwhelms the level of this manual.
-Nevertheless, a few hints are given in some other chapter of this
+Nevertheless, a few hints are given in another chapter of this
 manual.
 </p>
 <p>It is possible to make GNUN get translations for common strings from
-dedicated PO files, so called compendia.  See <a href="#Compendia">Compendia</a>, for more
+dedicated PO files, the so-called compendia.  See <a href="#Compendia">Compendia</a>, for more
 information.
 </p>
 <p>You may use any compatible PO editor to add translated messages into
@@ -360,20 +362,20 @@ for more information.
 <p>When the PO file actually exists (hopefully populated with initial
 translations), GNUN generates <samp><var>article</var>.<var>lang</var>.html</samp> file.
 It takes its structure from the original <samp><var>article</var>.html</samp>, but
-all translatable strings are replaced with their translations specified
+all translatable strings are replaced with the translations specified
 in <samp><var>article</var>.<var>lang</var>.po</samp>.
 </p>
 <p>Original articles sometimes change.  A new paragraph is being added or a
 tiny change in the wording is introduced.  Also, some articles are
-dynamic in nature, like ones containing news entries or a list of other
+dynamic in nature, like the ones containing news entries or a list of other
 articles.  If the original article changes, GNUN will automatically
-rebuild <samp><var>article</var>.pot</samp>, and will merge the changes to
+rebuild <samp><var>article</var>.pot</samp>, and will merge the changes into
 <samp><var>article</var>.<var>lang</var>.po</samp>.  Any outdated translations will be
 marked as &ldquo;fuzzy,&rdquo; any new strings will be added with empty translations,
 waiting to be translated.  In the same run
-<samp><var>article</var>.<var>lang</var>.html</samp> will be rebuilt so the relevant
+<samp><var>article</var>.<var>lang</var>.html</samp> will be rebuilt, and consequently the relevant
 strings in the translation will be substituted with the original English
-text, until the translation teams update them in
+text until the translation teams update them in
 <samp><var>article</var>.<var>lang</var>.po</samp>.
 </p>
 <p>Those changes in the original article that do not affect the
@@ -384,13 +386,13 @@ will be needed.  <samp><var>article</var>.<var>lang</var>.html</samp> will be
 automatically regenerated to reflect the changes.
 </p>
 <p>The POT for every article under GNUN&rsquo;s control is kept in the &lsquo;www&rsquo;
-repository under a special directory <samp>po/</samp>, which is a
-sub-directory of the relevant directory in the &lsquo;www&rsquo; tree.  So, for
-&lsquo;<code>http://www.gnu.org/philosophy/free-sw.html</code>&rsquo; that is
-<samp>philosophy/po/</samp>.  In addition to <samp>free-sw.pot</samp>, this directory holds
-the canonical source of every translation, like <samp>free-sw.bg.po</samp>,
-<samp>free-sw.ca.po</samp>, etc. For more details,
-see <a href="#Files-and-Directories">Files and Directories</a>.
+repository under a special sub-directory <samp>po/</samp> of the relevant
+directory in the &lsquo;www&rsquo; tree.  Thus, for
+&lsquo;<code>http://www.gnu.org/philosophy/free-sw.html</code>&rsquo; this
+sub-directory is <samp>philosophy/po/</samp>.  In addition to
+<samp>free-sw.pot</samp>, this directory holds the canonical source of every
+translation, such as <samp>free-sw.bg.po</samp>, <samp>free-sw.ca.po</samp>, etc.
+For more details, see <a href="#Files-and-Directories">Files and Directories</a>.
 </p>
 <p>Several additional features are implemented, like automatic update of
 the list of the available translations.  For example, if a new
@@ -399,11 +401,10 @@ included in <samp>free-sw.html</samp> and all translated
 <samp>free-sw.<var>lang</var>.html</samp> is updated.  This saves a lot of
 tedious, repetitive work and eliminates a source of mistakes.  There
 is a basic infrastructure to &ldquo;inject&rdquo; general information about a
-translation team&mdash;like a note how to contact the team, or how to
+translation team&mdash;like a note on how to contact the team, or how to
 report a bug/suggestion for improvement.  Translators&rsquo; credits are
 also handled, as well as translators&rsquo; notes, if any.
 </p>
-
 <hr>
 <a name="Advantages"></a>
 <div class="header">
@@ -414,7 +415,7 @@ Next: <a href="#Disadvantages" accesskey="n" rel="next">Disadvantages</a>, Previ
 <h3 class="section">1.3 Major Advantages of GNUN</h3>
 
 <p>Here is a simple list of situations where we hope this suite would
-prove to be useful.
+prove useful.
 </p>
 <ul>
 <li> Automatic rebuild of all translations when the original article
@@ -437,7 +438,7 @@ participate in an event that will happen in Boston, so translating the
 &ldquo;urgent&rdquo; notice may not be very &ldquo;urgent&rdquo; for Urdu.  However, such
 notice will appear in all translated pages and people who usually read
 gnu.org pages in their native language will see it, so they can take
-action as necessary.  When the notice is removed, often in a week or
+action as necessary.  When the notice is removed, often within a week or
 two, it will disappear without translators&rsquo; intervention, whether they
 translated it or not.
 
@@ -451,10 +452,10 @@ come from the fact that translators basically have to duplicate the
 whole HTML markup of the original.  The PO files eliminate most of the
 basic markup, which is where most of the validation errors come from.
 
-</li><li> Markup consistency site-wide&mdash;it would be substantially easier to
+</li><li> Markup consistency site-wide&mdash;it will be substantially easier to
 update the site to a future standard, because translations will
 naturally follow the changes in the original articles.  This also means
-that translation teams do not have to undergo the boring process of
+that translation teams do not have to go through the boring process of
 converting their articles to the new SSI-based layout; this will be done
 automatically.
 
@@ -507,7 +508,7 @@ Next: <a href="#Team_0027s-Repository" accesskey="n" rel="next">Team's Repositor
 &mdash;Murphy&rsquo;s Law
 </p>
 <p align="right">Murphy is an optimist.
-&mdash;O&rsquo;Rielly&rsquo;s Law
+&mdash;O&rsquo;Reilly&rsquo;s Law
 </p><br>
 
 <p>GNUN currently consists of a few makefiles, scripts and template files.
@@ -525,7 +526,7 @@ a mess in many articles, both original and translated.  Do this with
 caution, and generally only when debugging in a safe environment.
 </p>
 <p>The build process is intended to be invoked by a cron job, although
-manual intervention to a certain degree is possible.
+manual intervention is possible to a certain degree.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Invoking-GNUN" accesskey="1">Invoking GNUN</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to trigger a (re)build.
@@ -564,7 +565,7 @@ available in GNU Make.  Thus, invoking a build consists of typing
 deploying the software on a non-GNU machine, probably GNU Make is
 installed and available as <code>gmake</code> or <code>gnumake</code>.  If
 not, you should consider installing it, since the build will fail
-otherwise.  See <a href="https://www.gnu.org/software/make">GNU Make homepage</a> for information
+otherwise.  See <a href="https://www.gnu.org/software/make">GNU Make homepage</a> for information on
 how to download and install GNU Make.
 </p>
 <p>If you don&rsquo;t specify a target, <code>make</code> by default builds the
@@ -643,21 +644,12 @@ that expects assigning the value &lsquo;no&rsquo;.
 <dt>&lsquo;<samp>VCS=yes</samp>&rsquo;</dt>
 <dd><p>Automatically add any new files in the repository (CVS, Subversion or
 GNU Bazaar&mdash;the repository type is auto-determined at build time,
-<code>bzr</code> being a fallback).<a name="DOCF3" href="#FOOT3"><sup>3</sup></a> These are
+<code>bzr</code> being a fallback).<a name="DOCF4" href="#FOOT4"><sup>4</sup></a> These are
 any POT files, if they are generated for the first time, and the
 translated articles (<samp>.<var>lang</var>.html</samp>) in HTML format.  Finally,
 any missing PO and their HTML counterparts of
 the server templates will be added, computed on the basis of the
 <code>extra-templates</code> and <code>optional-templates</code> variables.
-</p>
-</dd>
-<dt>&lsquo;<samp>VCS=always</samp>&rsquo;</dt>
-<dd><p>Because GNU Make considers the targets up-to-date after a successful
-build, if it was performed with no VCS interaction, the important newly
-created files will not be added (and committed when you do
-<code>cvs|svn|bzr commit</code>) in the repository.  Assigning this value
-enables additional check and forcefully adds all files.  Use it
-sparingly, since it is very slow and generally less reliable.
 </p>
 <a name="index-VALIDATE"></a>
 <a name="index-validation"></a>
@@ -766,12 +758,6 @@ target, and is mandatory for it.  See <a href="#report">report</a>.
 </dd>
 </dl>
 
-<p>Note that <code>VCS=yes,always</code> is a valid combination: because POT
-files of the server templates are not handled by <code>always</code>, running
-the build this way will commit any newly added files as specified in
-<code>TEMPLATE_LINGUAS</code> and will perform additional check at the end,
-<code>cvs|svn|bzr add</code>-ing all necessary files.
-</p>
 <a name="index-validation-1"></a>
 <p>When validation is enabled, the
 original English articles are validated first, before any commands
@@ -935,7 +921,7 @@ generated HTML translation is supposed to be human-readable.
 <p>To summarize, for effective operation GNUN should be invoked
 automatically as <code>make; cvs|svn|bzr commit -m &hellip;; make
 triggers</code>.  To illustrate this, here is a concrete example showing the
-official job once running at fencepost.gnu.org<a name="DOCF4" href="#FOOT4"><sup>4</sup></a>:
+official job once running at fencepost.gnu.org<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>:
 </p>
 <div class="example">
 <pre class="example">25 4,12,20 * * *  cd $HOME/projects/www; cvs -q update &amp;&gt;/dev/null; \
@@ -994,7 +980,7 @@ behavior of the build process.
 <p>There are two types of variables, which are specifically separated in
 order to make translators&rsquo; life easier: variables that translators are
 free to modify and variables that are modified by the
-web-translators<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>, ideally after performing some local tests.  A
+web-translators<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>, ideally after performing some local tests.  A
 translation team leader should update only <code>FUZZY_DIFF_LINGUAS</code>
 and <code>TEMPLATE_LINGUAS</code>; everything else is supposed to be built
 automagically, without manual intervention.  If not, that is a bug that
@@ -1057,6 +1043,7 @@ when the <var>template</var>.<var>lang</var>.po file is absent, GNUN initializes
 and commits a file with empty <code>msgstr</code>s.
 </p>
 <a name="index-optional_002dtemplates"></a>
+<a name="index-_002epot_002eopt"></a>
 <a name="index-templates_002c-optional"></a>
 <a name="optional_002dtemplates"></a></dd>
 <dt>&lsquo;<samp>optional-templates</samp>&rsquo;</dt>
@@ -1119,6 +1106,7 @@ GNUN doesn&rsquo;t maintain its translations.
 <p>
 Next: <a href="#Compendia" accesskey="n" rel="next">Compendia</a>, Previous: <a href="#Main-Variables" accesskey="p" rel="prev">Main Variables</a>, Up: <a href="#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
+<a name="index-languages_002etxt"></a>
 <a name="The-languages_002etxt-File"></a>
 <h3 class="section">2.5 The <samp>languages.txt</samp> File</h3>
 
@@ -1162,6 +1150,7 @@ Next: <a href="#Sitemap" accesskey="n" rel="next">Sitemap</a>, Previous: <a href
 <a name="index-compendia"></a>
 <a name="index-translation-memory"></a>
 <a name="index-exclude_002epot"></a>
+<a name="index-master_002elang_002epo"></a>
 <a name="index-compendium_002epot"></a>
 
 <p>Compendium is a PO file including translations for common strings; it is
@@ -1288,10 +1277,10 @@ for small, medium and large teams:
 <p>All members and the team leader commit in their project&rsquo;s
 repository&mdash;when a translation is ready, the leader checks it in the
 official &lsquo;www&rsquo; repository.  If an original article changes, a build
-could be invoked to synchronize (i.e. merge) the changes and
+can be invoked to synchronize (i.e. merge) the changes and
 optionally automatically commit them so that the draft PO files are
 updated; at the same time, automatic notifications are sent to the
-persons interested in particular translations<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>.  A translator would then normally update the PO file, and
+persons interested in particular translations<a name="DOCF7" href="#FOOT7"><sup>7</sup></a>.  A translator will then normally update the PO file, and
 commit it again in the project&rsquo;s Sources repository, from where the
 co-ordinator will pick it up and install it in &lsquo;www&rsquo;.
 </p>
@@ -2473,7 +2462,7 @@ See <a href="#GNUN-Slots">GNUN Slots</a>, for more details.
 </p>
 </dd>
 <dt><samp>&hellip;/po/<var>file</var>.translist</samp></dt>
-<dd><p>The list of trasnlations for <samp>&hellip;/<var>file</var>.html</samp>.  It is
+<dd><p>The list of translations for <samp>&hellip;/<var>file</var>.html</samp>.  It is
 included in <samp>&hellip;/<var>file</var>.html</samp> and all its translations.
 </p>
 </dd>
@@ -2689,7 +2678,7 @@ Next: <a href="#gnun_002dpreconvert" accesskey="n" rel="next">gnun-preconvert</a
 <h4 class="subsection">6.2.3 The <code>gnun-init-po</code> Script</h4>
 <a name="index-initializing_002c-translations"></a>
 
-<p>This script initializes a PO file using POT generated with GNUN,
+<p>This script initializes a PO file using the POT generated with GNUN,
 and fills some fields in the header.  It also optionally uses
 a compendium (or compendia) to fill translations.
 </p>
@@ -3595,7 +3584,10 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <a name="Index-1"></a>
 <h2 class="unnumbered">Index</h2>
 
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_letter-A"><b>A</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_symbol-1"><b>.</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="#Index_cp_letter-A"><b>A</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_cp_letter-B"><b>B</b></a>
  &nbsp; 
@@ -3634,6 +3626,9 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 </td></tr></table>
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_symbol-1">.</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_002epot_002eopt">.pot.opt</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-A">A</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ALL_005fDIRS">ALL_DIRS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
@@ -3691,6 +3686,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-invoking">invoking</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-L">L</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-languages_002etxt">languages.txt</a>:</td><td>&nbsp;</td><td valign="top"><a href="#languages_002etxt">languages.txt</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-localized-SSIs">localized SSIs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-localized-URLs">localized URLs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Localized-URLs">Localized URLs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-localized_002dssis">localized-ssis</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
@@ -3701,6 +3697,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-mail_002c-notifications">mail, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mail_002c-notifications-1">mail, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mail_002c-notifications-2">mail, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#mailfail">mailfail</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-master_002elang_002epo">master.lang.po</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-migration_002c-translations">migration, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Migrating">Migrating</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-migration_002c-translations-1">migration, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dpreconvert">gnun-preconvert</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-migration_002c-translations-2">migration, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a></td></tr>
@@ -3726,6 +3723,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><th><a name="Index_cp_letter-P">P</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PO-files_002c-header">PO files, header</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Header">PO Header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PO-headers">PO headers</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Header">PO Header</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-POT">POT</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Concepts">Concepts</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-POT-generation_002c-articles">POT generation, articles</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-previous_002c-diff">previous, diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-previous_002c-diff-1">previous, diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a></td></tr>
@@ -3794,7 +3792,10 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-wrapping-long-lines">wrapping long lines</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Wrapping-Long-Lines">Wrapping Long Lines</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_letter-A"><b>A</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_symbol-1"><b>.</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="#Index_cp_letter-A"><b>A</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_cp_letter-B"><b>B</b></a>
  &nbsp; 
@@ -3844,26 +3845,31 @@ longer than strings in programs.  Nevertheless, all points raised still
 apply.</p>
 <h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
 <p>The process of converting
-HTML to PO and the other way around is performed using po4a (&ldquo;po for
+HTML to PO and the other way around is performed using po4a (&ldquo;PO for
 anything&rdquo;), see <a href="http://po4a.alioth.debian.org">PO4A website</a>.</p>
 <h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
+<p>A special group of templates, so
+called optional-templates, have names like
+<samp><var>article</var>.pot.opt</samp>.  The PO file for them is still
+<samp><var>article</var>.<var>lang</var>.po</samp>.  See <a href="#optional_002dtemplates">optional-templates</a>.</p>
+<h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
 <p>When GNU Bzr is used, files
 are added locally only; you need to take care to use <code>bzr push</code>
 manually (or via cron) to take care of effectively adding them to the
 public repository.  See <a href="#triggers">triggers</a>, for a short explanation.</p>
-<h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
+<h3><a name="FOOT5" href="#DOCF5">(5)</a></h3>
 <p>These days we
 run a more complicated script instead of this cron job in order
 to address some exceptional situations like concurrent builds.</p>
-<h3><a name="FOOT5" href="#DOCF5">(5)</a></h3>
+<h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
 <p>Only because presumably, they are more familiar with
 GNUnited Nations&rsquo; internals.  From a purely technical point of view,
 there is no difference.</p>
-<h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
+<h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
 <p>The following
 sections describe in more details how to setup these automatic
 actions; however, if you have any difficulties with that, please ask
-the GNU Web Translation Managers to setup them for your team on our
+the GNU Web Translation Managers to set them up for your team on our
 server.</p>
 </div>
 <hr>

@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 20 March 2014) is for GNUnited Nations (version
-0.8), a suite for maintaining translations of www.gnu.org
+This manual (updated 27 June 2014) is for GNUnited Nations (version
+0.9), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
@@ -73,11 +73,12 @@ Next: <a href="Advantages.html#Advantages" accesskey="n" rel="next">Advantages</
 <a name="What-GNUnited-Nations-Is-and-Should-Be"></a>
 <h3 class="section">1.2 What GNUnited Nations Is and Should Be</h3>
 
+<a name="index-POT"></a>
 <p>The basic concept behind GNUN is that localization of HTML articles is
 similar to localization of computer programs<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>.  In articles, like in programs, not every string is considered
 translatable, so translatable strings must be identified first, and then
 collected in a file (called &ldquo;PO template&rdquo;) for translation.  Articles,
-like programs, tend to change in time, but not every change in the
+like programs, tend to change over time, but not every change in the
 sources calls for a translation update.  Sometimes the change does not
 affect the translatable strings, but sometimes it does.  So, translators
 must have means to identify those changes and apply the appropriate
@@ -88,7 +89,7 @@ infrastructure for maintaining translations using PO files.
 See <a href="http://www.gnu.org/software/gettext/manual/html_node/Introduction.html#Introduction">Introduction</a> in <cite>GNU gettext tools</cite>,
 for a basic overview.
 GNUnited Nations fills the gaps to apply this infrastructure to articles
-in <a href="https://www.gnu.org">https://www.gnu.org</a> web site.<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
+in the <a href="https://www.gnu.org">https://www.gnu.org</a> web site.<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
 </p>
 <p>The following diagram summarizes the relation between the files handled
 by GNUN.  It is followed by somewhat detailed explanations, which you
@@ -121,26 +122,27 @@ running &lsquo;<samp>make -C server/gnun</samp>&rsquo;.  This is the primary way
 GNUN, since it is implemented as a set of recipes for GNU <code>make</code>.
 </p>
 <p>First, GNUN extracts all translatable strings from the original English
-article <samp><var>article</var>.html</samp> into <samp><var>article</var>.pot</samp>.  The
+article <samp><var>article</var>.html</samp> into
+<samp><var>article</var>.pot</samp><a name="DOCF3" href="#FOOT3"><sup>3</sup></a>.  The
 resulting file is suitable for manipulation with the various GNU
 &lsquo;<samp>gettext</samp>&rsquo; utilities.  It contains all original article strings and
 all translations are set to empty.  The letter <code>t</code> in <samp>.pot</samp>
 marks this as a Template PO file, not yet oriented towards any
 particular language.
 </p>
-<p>The first time though, there is no <samp><var>article</var>.<var>lang</var>.po</samp>
-yet, so a translator must make <samp><var>article</var>.<var>lang</var>.po</samp> from
+<p>On the first run, though, there is no <samp><var>article</var>.<var>lang</var>.po</samp>
+yet, so a translator must create <samp><var>article</var>.<var>lang</var>.po</samp> from
 <samp><var>article</var>.pot</samp>, where <var>lang</var> represents the
 target language.  See <a href="New-Translation.html#New-Translation">New Translation</a>, for details.
 </p>
 <p>Then comes the initial translation of messages in
 <samp><var>article</var>.<var>lang</var>.po</samp>.  Translation in itself is a whole
 matter, whose complexity far overwhelms the level of this manual.
-Nevertheless, a few hints are given in some other chapter of this
+Nevertheless, a few hints are given in another chapter of this
 manual.
 </p>
 <p>It is possible to make GNUN get translations for common strings from
-dedicated PO files, so called compendia.  See <a href="Compendia.html#Compendia">Compendia</a>, for more
+dedicated PO files, the so-called compendia.  See <a href="Compendia.html#Compendia">Compendia</a>, for more
 information.
 </p>
 <p>You may use any compatible PO editor to add translated messages into
@@ -150,20 +152,20 @@ for more information.
 <p>When the PO file actually exists (hopefully populated with initial
 translations), GNUN generates <samp><var>article</var>.<var>lang</var>.html</samp> file.
 It takes its structure from the original <samp><var>article</var>.html</samp>, but
-all translatable strings are replaced with their translations specified
+all translatable strings are replaced with the translations specified
 in <samp><var>article</var>.<var>lang</var>.po</samp>.
 </p>
 <p>Original articles sometimes change.  A new paragraph is being added or a
 tiny change in the wording is introduced.  Also, some articles are
-dynamic in nature, like ones containing news entries or a list of other
+dynamic in nature, like the ones containing news entries or a list of other
 articles.  If the original article changes, GNUN will automatically
-rebuild <samp><var>article</var>.pot</samp>, and will merge the changes to
+rebuild <samp><var>article</var>.pot</samp>, and will merge the changes into
 <samp><var>article</var>.<var>lang</var>.po</samp>.  Any outdated translations will be
 marked as &ldquo;fuzzy,&rdquo; any new strings will be added with empty translations,
 waiting to be translated.  In the same run
-<samp><var>article</var>.<var>lang</var>.html</samp> will be rebuilt so the relevant
+<samp><var>article</var>.<var>lang</var>.html</samp> will be rebuilt, and consequently the relevant
 strings in the translation will be substituted with the original English
-text, until the translation teams update them in
+text until the translation teams update them in
 <samp><var>article</var>.<var>lang</var>.po</samp>.
 </p>
 <p>Those changes in the original article that do not affect the
@@ -174,13 +176,13 @@ will be needed.  <samp><var>article</var>.<var>lang</var>.html</samp> will be
 automatically regenerated to reflect the changes.
 </p>
 <p>The POT for every article under GNUN&rsquo;s control is kept in the &lsquo;www&rsquo;
-repository under a special directory <samp>po/</samp>, which is a
-sub-directory of the relevant directory in the &lsquo;www&rsquo; tree.  So, for
-&lsquo;<code>http://www.gnu.org/philosophy/free-sw.html</code>&rsquo; that is
-<samp>philosophy/po/</samp>.  In addition to <samp>free-sw.pot</samp>, this directory holds
-the canonical source of every translation, like <samp>free-sw.bg.po</samp>,
-<samp>free-sw.ca.po</samp>, etc. For more details,
-see <a href="Files-and-Directories.html#Files-and-Directories">Files and Directories</a>.
+repository under a special sub-directory <samp>po/</samp> of the relevant
+directory in the &lsquo;www&rsquo; tree.  Thus, for
+&lsquo;<code>http://www.gnu.org/philosophy/free-sw.html</code>&rsquo; this
+sub-directory is <samp>philosophy/po/</samp>.  In addition to
+<samp>free-sw.pot</samp>, this directory holds the canonical source of every
+translation, such as <samp>free-sw.bg.po</samp>, <samp>free-sw.ca.po</samp>, etc.
+For more details, see <a href="Files-and-Directories.html#Files-and-Directories">Files and Directories</a>.
 </p>
 <p>Several additional features are implemented, like automatic update of
 the list of the available translations.  For example, if a new
@@ -189,11 +191,10 @@ included in <samp>free-sw.html</samp> and all translated
 <samp>free-sw.<var>lang</var>.html</samp> is updated.  This saves a lot of
 tedious, repetitive work and eliminates a source of mistakes.  There
 is a basic infrastructure to &ldquo;inject&rdquo; general information about a
-translation team&mdash;like a note how to contact the team, or how to
+translation team&mdash;like a note on how to contact the team, or how to
 report a bug/suggestion for improvement.  Translators&rsquo; credits are
 also handled, as well as translators&rsquo; notes, if any.
 </p>
-
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
@@ -206,8 +207,13 @@ longer than strings in programs.  Nevertheless, all points raised still
 apply.</p>
 <h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
 <p>The process of converting
-HTML to PO and the other way around is performed using po4a (&ldquo;po for
+HTML to PO and the other way around is performed using po4a (&ldquo;PO for
 anything&rdquo;), see <a href="http://po4a.alioth.debian.org">PO4A website</a>.</p>
+<h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
+<p>A special group of templates, so
+called optional-templates, have names like
+<samp><var>article</var>.pot.opt</samp>.  The PO file for them is still
+<samp><var>article</var>.<var>lang</var>.po</samp>.  See <a href="Main-Variables.html#optional_002dtemplates">optional-templates</a>.</p>
 </div>
 <hr>
 <div class="header">

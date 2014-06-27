@@ -3,7 +3,7 @@
 <!-- 
 This manual is a guide for the GNU Web Translators.
  Last updated on
-20 March 2014, for GNUnited Nations version 0.8.
+27 June 2014, for GNUnited Nations version 0.9.
 
 Copyright (C) 2009, 2010, 2011, 2012, 2013,
   2014 Free Software Foundation, Inc.
@@ -29,7 +29,7 @@ Documentation License." -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="CSS.html#CSS" rel="up" title="CSS">
 <link href="Copying-This-Manual.html#Copying-This-Manual" rel="next" title="Copying This Manual">
-<link href="topbanner.html#topbanner" rel="prev" title="topbanner">
+<link href="CSS.html#CSS" rel="prev" title="CSS">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -66,11 +66,11 @@ ul.no-bullet {list-style: none}
 <a name="RTL"></a>
 <div class="header">
 <p>
-Previous: <a href="topbanner.html#topbanner" accesskey="p" rel="prev">topbanner</a>, Up: <a href="CSS.html#CSS" accesskey="u" rel="up">CSS</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+Up: <a href="CSS.html#CSS" accesskey="u" rel="up">CSS</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Specific-Issues-Related-to-RTL"></a>
-<h4 class="subsection">4.12.2 Specific Issues Related to RTL</h4>
+<h4 class="subsection">4.12.1 Specific Issues Related to RTL</h4>
 
 <a name="index-right_002dto_002dleft-languages"></a>
 <p>Unfortunately, the <a href="http://gnu.org">http://gnu.org</a> website does not have excellent
@@ -81,9 +81,10 @@ made.  If your language is in this category, make sure to:
 <li> Set the attribute <code>dir=&quot;rtl&quot;</code> in the <code>html</code> element at
 <samp>server/header.<var>lang</var>.html</samp>.
 
-</li><li> You <em>must</em> have a custom CSS to override some of the pre-defined
-values.  See <samp>style.ar.css</samp> and <samp>style.fa.css</samp> to understand
-how these two languages solve some of the problems.  See <a href="CSS.html#CSS">CSS</a>.
+</li><li> You must include an additional CSS, <samp>style.rtl.css</samp>, to override
+some of the pre-defined values.  See template files for Arabic and
+Farsi to understand how these two languages solve some
+of the problems.  See <a href="CSS.html#CSS">CSS</a>.
 </li></ul>
 
 <p><strong>Important:</strong> Some articles contain their own <code>&lt;style&gt;</code>
