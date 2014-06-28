@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 27 June 2014) is for GNUnited Nations (version
+This manual (updated 28 June 2014) is for GNUnited Nations (version
 0.9), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -72,15 +72,22 @@ Next: <a href="PO-Header.html#PO-Header" accesskey="n" rel="next">PO Header</a>,
 <hr>
 <a name="Starting-a-New-Translation"></a>
 <h3 class="section">4.1 Starting a New Translation</h3>
+<a name="index-starting-translation"></a>
+<a name="index-initializing-PO-files"></a>
 <a name="index-translation_002c-new"></a>
 <a name="index-new-translation"></a>
 
 <p>To start a new translation, the most simple way is to copy the
-existing POT as <samp>article.<var>lang</var>.po</samp>, where <var>lang</var> is your
-language code.  For example, to prepare for a new translation of the
-essay <a href="https://www.gnu.org/philosophy/free-sw.html">https://www.gnu.org/philosophy/free-sw.html</a>, you can
-simply <code>cd philosophy/po; cp free-sw.pot
-free-sw.<var>lang</var>.po</code> and then edit the latter.  If
+existing POT as <samp><var>article</var>.<var>lang</var>.po</samp>, where <var>lang</var> is your
+language code.  The name of the POT is <samp><var>article</var>.pot</samp> or,
+when you are translating an optional template, <samp><var>article</var>.pot.opt</samp>
+(see <a href="Main-Variables.html#optional_002dtemplates">optional-templates</a>).  All these files are situated in the
+<samp>po/</samp> subdirectory of the directory containing the HTML file
+of the article.  See <a href="Files-and-Directories.html#Files-and-Directories">Files and Directories</a>, for more info on GNUN
+directory layout.  For example, to prepare for a new translation
+of the essay <a href="https://www.gnu.org/philosophy/free-sw.html">https://www.gnu.org/philosophy/free-sw.html</a>
+in Manx, you can simply <code>cd philosophy/po; cp free-sw.pot
+free-sw.gv.po</code> and then edit the latter.  If
 <samp>free-sw.pot</samp> does not exist it is because either the article is
 not yet &ldquo;templated&rdquo; (i.e. migrated to the new style), or the GNUN
 maintainers have not yet added it to the value of the appropriate

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 27 June 2014) is for GNUnited Nations (version
+This manual (updated 28 June 2014) is for GNUnited Nations (version
 0.9), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -72,6 +72,7 @@ Next: <a href="Scripts.html#Scripts" accesskey="n" rel="next">Scripts</a>, Up: <
 <hr>
 <a name="Files-and-Directories-1"></a>
 <h3 class="section">6.1 Files and Directories</h3>
+<a name="index-GNUN-directory-layout"></a>
 
 <p>This is a brief diagram of <em>www</em> working copy; note that in this
 section we don&rsquo;t describe the files out of GNUN control, including the
@@ -121,14 +122,14 @@ old HTML-only translations.
   |  +--sitemap.html #/@         +--GNUmakefile * #
   |  +--sitemap.<var>lang</var>.html @      +--config.mk * #
   |  +--po/                      +--gnun.mk #
-  |  |  |                        +--languages.txt #
-  |  |  +--sitemap.pot @         +--compendia/
-  |  |  +--sitemap.proto * @     |
-  |  |  +--sitemap.<var>lang</var>.po %          +--master.<var>lang</var>.po #
-  |  |  |                        +--compendium.<var>lang</var>.po @
-  |  |  +--body-include-2.pot @       +--excluded.pot #
-  |  |  +--body-include-2.proto * @
-  |  |  +--body-include-2.<var>lang</var>.po %
+  |  |  |                        +--priorities.mk #
+  |  |  +--sitemap.pot @         +--languages.txt #
+  |  |  +--sitemap.proto * @     +--compendia/
+  |  |  +--sitemap.<var>lang</var>.po %          |
+  |  |  |                             +--master.<var>lang</var>.po #
+  |  |  +--body-include-2.pot @       +--compendium.<var>lang</var>.po @
+  |  |  +--body-include-2.proto * @   +--compendium.pot @
+  |  |  +--body-include-2.<var>lang</var>.po %   +--excluded.pot #
   |  |  +--&hellip;
   |  |  
   |  +--body-include-2.html #
@@ -210,6 +211,11 @@ translations.  See <a href="Invoking-GNUN.html#Invoking-GNUN">Invoking GNUN</a>.
 </dd>
 <dt><samp>server/gnun/gnun.mk</samp></dt>
 <dd><p>The file that defines the list of files to build.  See <a href="Main-Variables.html#Main-Variables">Main Variables</a>.
+</p>
+</dd>
+<dt><samp>server/gnun/priorities.mk</samp></dt>
+<dd><p>This file defines the list of translation priorities.
+See <a href="report.html#priorities_002emk">priorities.mk</a>.
 </p>
 </dd>
 <dt><samp>server/gnun/languages.txt</samp></dt>

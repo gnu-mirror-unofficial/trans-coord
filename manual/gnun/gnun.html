@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 27 June 2014) is for GNUnited Nations (version
+This manual (updated 28 June 2014) is for GNUnited Nations (version
 0.9), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -156,7 +156,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a 
 <a name="GNUnited-Nations"></a>
 <h1 class="top">GNUnited Nations</h1>
 
-<p>This manual (updated 27 June 2014) is for GNUnited Nations (version
+<p>This manual (updated 28 June 2014) is for GNUnited Nations (version
 0.9), a suite for maintaining translations of www.gnu.org
 essays and other articles.<br>
 </p><br>
@@ -874,7 +874,7 @@ to check if they are up-to-date.  In fact, this is one of the main
 reasons GNUN is being developed, if you recall.
 </p>
 <a name="index-priorities_002emk-1"></a>
-<p>When present, <samp>priorities.mk</samp> defines four classes of articles by
+<a name="priorities_002emk"></a><p>When present, <samp>priorities.mk</samp> defines four classes of articles by
 priority: <var>priority-articles</var> for the most important translations,
 <var>important-articles</var> for the second priority level,
 <var>important-directories</var> for the directories with important articles;
@@ -1074,10 +1074,10 @@ when updating them.  See <a href="#Sitemap">Sitemap</a>, for more information.
 <a name="index-defining-articles-in-the-root-dir"></a>
 </dd>
 <dt>&lsquo;<samp>ROOT</samp>&rsquo;</dt>
-<dd><p>Add here articles that are in the server root, like <samp>home.html</samp>,
-<samp>keepingup.html</samp> and <samp>provide.html</samp>.  Always write only the
+<dd><p>Add here articles that are in the server root, like <samp>home.html</samp>
+and <samp>keepingup.html</samp>.  Always write only the
 basename of the article, i.e. if you add these two articles, the value
-of <code>ROOT</code> should be <code>keepingup provide</code>.  This is true for
+of <code>ROOT</code> should be <code>home keepingup</code>.  This is true for
 all the variables that expect values in the form of article names.
 </p>
 <a name="index-ALL_005fDIRS"></a>
@@ -1691,15 +1691,22 @@ Next: <a href="#PO-Header" accesskey="n" rel="next">PO Header</a>, Up: <a href="
 </div>
 <a name="Starting-a-New-Translation"></a>
 <h3 class="section">4.1 Starting a New Translation</h3>
+<a name="index-starting-translation"></a>
+<a name="index-initializing-PO-files"></a>
 <a name="index-translation_002c-new"></a>
 <a name="index-new-translation"></a>
 
 <p>To start a new translation, the most simple way is to copy the
-existing POT as <samp>article.<var>lang</var>.po</samp>, where <var>lang</var> is your
-language code.  For example, to prepare for a new translation of the
-essay <a href="https://www.gnu.org/philosophy/free-sw.html">https://www.gnu.org/philosophy/free-sw.html</a>, you can
-simply <code>cd philosophy/po; cp free-sw.pot
-free-sw.<var>lang</var>.po</code> and then edit the latter.  If
+existing POT as <samp><var>article</var>.<var>lang</var>.po</samp>, where <var>lang</var> is your
+language code.  The name of the POT is <samp><var>article</var>.pot</samp> or,
+when you are translating an optional template, <samp><var>article</var>.pot.opt</samp>
+(see <a href="#optional_002dtemplates">optional-templates</a>).  All these files are situated in the
+<samp>po/</samp> subdirectory of the directory containing the HTML file
+of the article.  See <a href="#Files-and-Directories">Files and Directories</a>, for more info on GNUN
+directory layout.  For example, to prepare for a new translation
+of the essay <a href="https://www.gnu.org/philosophy/free-sw.html">https://www.gnu.org/philosophy/free-sw.html</a>
+in Manx, you can simply <code>cd philosophy/po; cp free-sw.pot
+free-sw.gv.po</code> and then edit the latter.  If
 <samp>free-sw.pot</samp> does not exist it is because either the article is
 not yet &ldquo;templated&rdquo; (i.e. migrated to the new style), or the GNUN
 maintainers have not yet added it to the value of the appropriate
@@ -2379,6 +2386,7 @@ Next: <a href="#Scripts" accesskey="n" rel="next">Scripts</a>, Up: <a href="#Int
 </div>
 <a name="Files-and-Directories-1"></a>
 <h3 class="section">6.1 Files and Directories</h3>
+<a name="index-GNUN-directory-layout"></a>
 
 <p>This is a brief diagram of <em>www</em> working copy; note that in this
 section we don&rsquo;t describe the files out of GNUN control, including the
@@ -2428,14 +2436,14 @@ old HTML-only translations.
   |  +--sitemap.html #/@         +--GNUmakefile * #
   |  +--sitemap.<var>lang</var>.html @      +--config.mk * #
   |  +--po/                      +--gnun.mk #
-  |  |  |                        +--languages.txt #
-  |  |  +--sitemap.pot @         +--compendia/
-  |  |  +--sitemap.proto * @     |
-  |  |  +--sitemap.<var>lang</var>.po %          +--master.<var>lang</var>.po #
-  |  |  |                        +--compendium.<var>lang</var>.po @
-  |  |  +--body-include-2.pot @       +--excluded.pot #
-  |  |  +--body-include-2.proto * @
-  |  |  +--body-include-2.<var>lang</var>.po %
+  |  |  |                        +--priorities.mk #
+  |  |  +--sitemap.pot @         +--languages.txt #
+  |  |  +--sitemap.proto * @     +--compendia/
+  |  |  +--sitemap.<var>lang</var>.po %          |
+  |  |  |                             +--master.<var>lang</var>.po #
+  |  |  +--body-include-2.pot @       +--compendium.<var>lang</var>.po @
+  |  |  +--body-include-2.proto * @   +--compendium.pot @
+  |  |  +--body-include-2.<var>lang</var>.po %   +--excluded.pot #
   |  |  +--&hellip;
   |  |  
   |  +--body-include-2.html #
@@ -2517,6 +2525,11 @@ translations.  See <a href="#Invoking-GNUN">Invoking GNUN</a>.
 </dd>
 <dt><samp>server/gnun/gnun.mk</samp></dt>
 <dd><p>The file that defines the list of files to build.  See <a href="#Main-Variables">Main Variables</a>.
+</p>
+</dd>
+<dt><samp>server/gnun/priorities.mk</samp></dt>
+<dd><p>This file defines the list of translation priorities.
+See <a href="#priorities_002emk">priorities.mk</a>.
 </p>
 </dd>
 <dt><samp>server/gnun/languages.txt</samp></dt>
@@ -3675,12 +3688,14 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><th><a name="Index_cp_letter-G">G</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-GNUmakefile">GNUmakefile</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-GNUmakefile_002eteam">GNUmakefile.team</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-GNUN-directory-layout">GNUN directory layout</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Files-and-Directories">Files and Directories</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnun_002emk">gnun.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnun_002emk-1">gnun.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-GRACE">GRACE</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-grace-period">grace period</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-initializing-PO-files">initializing PO files</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-initializing_002c-translations">initializing, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dinit_002dpo">gnun-init-po</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-invocation">invocation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-invoking">invoking</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
@@ -3748,6 +3763,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-sitemap">sitemap</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sitemap-1">sitemap</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Sitemap">Sitemap</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-SSIs_002c-localized">SSIs, localized</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-starting-translation">starting translation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-status_002c-translations">status, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#report">report</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-status_002c-translations-1">status, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dreport">gnun-report</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Subversion">Subversion</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
@@ -3849,7 +3865,7 @@ HTML to PO and the other way around is performed using po4a (&ldquo;PO for
 anything&rdquo;), see <a href="http://po4a.alioth.debian.org">PO4A website</a>.</p>
 <h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
 <p>A special group of templates, so
-called optional-templates, have names like
+called optional templates, have names like
 <samp><var>article</var>.pot.opt</samp>.  The PO file for them is still
 <samp><var>article</var>.<var>lang</var>.po</samp>.  See <a href="#optional_002dtemplates">optional-templates</a>.</p>
 <h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
