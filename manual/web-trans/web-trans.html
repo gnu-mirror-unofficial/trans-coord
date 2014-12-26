@@ -3,7 +3,7 @@
 <!-- 
 This manual is a guide for the GNU Web Translators.
  Last updated on
-27 June 2014, for GNUnited Nations version 0.9.
+25 December 2014, for GNUnited Nations version 0.9.
 
 Copyright (C) 2009, 2010, 2011, 2012, 2013,
   2014 Free Software Foundation, Inc.
@@ -111,21 +111,22 @@ ul.no-bullet {list-style: none}
   <ul class="no-bullet">
     <li><a name="toc-What-to-Translate" href="#Priorities">4.1 What to Translate</a></li>
     <li><a name="toc-Keeping-Translations-Current" href="#Updating">4.2 Keeping Translations Current</a></li>
-    <li><a name="toc-When-to-CAPITALIZE" href="#Capitalization">4.3 When to CAPITALIZE</a></li>
-    <li><a name="toc-Distribution-Terms-1" href="#Distribution-Terms">4.4 Distribution Terms</a></li>
-    <li><a name="toc-Copyright-Notices-1" href="#Copyright-Notices">4.5 Copyright Notices</a></li>
-    <li><a name="toc-Language_002dspecific-Terminology" href="#Terminology">4.6 Language-specific Terminology</a></li>
-    <li><a name="toc-Related-Mailing-Lists" href="#Mailing-Lists">4.7 Related Mailing Lists</a></li>
-    <li><a name="toc-Savannah-Projects-Membership" href="#Savannah-Projects">4.8 Savannah Projects Membership</a></li>
-    <li><a name="toc-Working-with-PO-Files" href="#PO-Files">4.9 Working with PO Files</a>
+    <li><a name="toc-Language_002dspecific-Terminology" href="#Terminology">4.3 Language-specific Terminology</a></li>
+    <li><a name="toc-When-to-CAPITALIZE" href="#Capitalization">4.4 When to CAPITALIZE</a></li>
+    <li><a name="toc-How-to-Handle-Internal-Links" href="#Internal-Links">4.5 How to Handle Internal Links</a></li>
+    <li><a name="toc-Distribution-Terms-1" href="#Distribution-Terms">4.6 Distribution Terms</a></li>
+    <li><a name="toc-Copyright-Notices-1" href="#Copyright-Notices">4.7 Copyright Notices</a></li>
+    <li><a name="toc-Editing-PO-Files" href="#PO-Editors">4.8 Editing PO Files</a>
     <ul class="no-bullet">
-      <li><a name="toc-Web_002dbased-Systems" href="#Web_002dbased-Systems">4.9.1 Web-based Systems</a></li>
+      <li><a name="toc-Web_002dbased-Systems" href="#Web_002dbased-Systems">4.8.1 Web-based Systems</a></li>
     </ul></li>
-    <li><a name="toc-Migration-to-the-New-Style" href="#Migrating">4.10 Migration to the New Style</a></li>
+    <li><a name="toc-Related-Mailing-Lists" href="#Mailing-Lists">4.9 Related Mailing Lists</a></li>
+    <li><a name="toc-Savannah-Projects-Membership" href="#Savannah-Projects">4.10 Savannah Projects Membership</a></li>
     <li><a name="toc-Summary-of-SSI-_0023includes" href="#SSI">4.11 Summary of SSI <code>#include</code>s</a></li>
-    <li><a name="toc-How-to-Use-Custom-CSS" href="#CSS">4.12 How to Use Custom CSS</a>
+    <li><a name="toc-Migration-to-the-New-Style" href="#Migrating">4.12 Migration to the New Style</a></li>
+    <li><a name="toc-How-to-Use-Custom-CSS" href="#CSS">4.13 How to Use Custom CSS</a>
     <ul class="no-bullet">
-      <li><a name="toc-Specific-Issues-Related-to-RTL" href="#RTL">4.12.1 Specific Issues Related to RTL</a></li>
+      <li><a name="toc-Specific-Issues-Related-to-RTL" href="#RTL">4.13.1 Specific Issues Related to RTL</a></li>
     </ul></li>
   </ul></li>
   <li><a name="toc-GNU-Free-Documentation-License" href="#Copying-This-Manual">Appendix A GNU Free Documentation License</a></li>
@@ -144,7 +145,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a 
 <h1 class="top">GNU Web Translators Manual</h1>
 
 <p>This manual is a guide for the GNU Web Translators.<br> Last updated on
-27 June 2014, for GNUnited Nations version 0.9.
+25 December 2014, for GNUnited Nations version 0.9.
 </p><br>
 <p>Copyright &copy; 2009, 2010, 2011, 2012, 2013,
   2014 Free Software Foundation, Inc.
@@ -224,6 +225,11 @@ organizational project, which is managed by the GNU Web Translation
 Managers (also known as Translation Managers or web-translators).
 The manual is organized in chapters that follow the
 organizational structure of the whole translation project.
+</p>
+<p>For the issues common for all translators,
+see <a href="#Translation-Process">Translation Process</a>. The sections of that chapter are sorted
+so that those interesting for less involved people (like occasional
+contributors) come first; the technical details tend to be at the end.
 </p>
 <p>If you wish to join a translation team or contribute a translation or
 two, see <a href="#Members">Members</a>.  If your intention is to form a translation team,
@@ -395,7 +401,7 @@ its <var>lang</var> PO file (when available) is always
 </li><li> Assuming you already know the article you want to translate, you have to
 create an empty <samp><var>article</var>.<var>lang</var>.po</samp> file and then
 translate all messages with a PO editor.  See <a href="http://www.gnu.org/software/trans-coord/manual/gnun/gnun.html#New-Translation">New Translation</a> in <cite>The GNUnited Nations Manual</cite>.  For an almost complete list of PO
-editors, see <a href="#PO-Files">PO Files</a>.
+editors, see <a href="#PO-Editors">PO Editors</a>.
 
 </li><li> When you are pleased with the translation, check that the PO file is
 valid and submit it to <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a>, attached to
@@ -1034,7 +1040,7 @@ history.
 <p>If you add a binary file (for example, <samp>.png</samp>), do it with
 <code>cvs commit -kb <var>file</var></code>.  This turns off keyword substitution,
 which prevents RCS keywords like &lsquo;<samp>$<!-- /@w -->Id$</samp>&rsquo; to get expanded,
-subsequently corrupting the file.  See <a href="cvs.html#Substitution-Modes">Substitution Modes</a> in <cite>Version Management with CVS</cite>.  More importantly, using <samp>-kb</samp>
+subsequently corrupting the file.  See <a href="cvs.html#Substitution-modes">Substitution modes</a> in <cite>Version Management with CVS</cite>.  More importantly, using <samp>-kb</samp>
 prevents corruption of the binary when people using CVS clients under
 infamous OS checkout modify the file, and then commit it with
 messed ends of lines.<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>
@@ -1435,23 +1441,25 @@ process.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Updating" accesskey="2">Updating</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Keeping translations current is a priority.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Capitalization" accesskey="3">Capitalization</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">To CAPITALIZE or not?
+<tr><td align="left" valign="top">&bull; <a href="#Terminology" accesskey="3">Terminology</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Dealing with terminology issues.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Distribution-Terms" accesskey="4">Distribution Terms</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Translating distribution terms.
+<tr><td align="left" valign="top">&bull; <a href="#Capitalization" accesskey="4">Capitalization</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">To CAPITALIZE or not?
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Copyright-Notices" accesskey="5">Copyright Notices</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How not to translate copyright notices.
+<tr><td align="left" valign="top">&bull; <a href="#Internal-Links" accesskey="5">Internal Links</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to handle links to www.gnu.org articles.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Terminology" accesskey="6">Terminology</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Dealing with terminology issues.
+<tr><td align="left" valign="top">&bull; <a href="#Distribution-Terms" accesskey="6">Distribution Terms</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Translating distribution terms.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Mailing-Lists" accesskey="7">Mailing Lists</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Summary of mailing lists.
+<tr><td align="left" valign="top">&bull; <a href="#Copyright-Notices" accesskey="7">Copyright Notices</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How not to translate copyright notices.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Savannah-Projects" accesskey="8">Savannah Projects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Projects membership.
+<tr><td align="left" valign="top">&bull; <a href="#PO-Editors" accesskey="8">PO Editors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Working with PO files.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#PO-Files" accesskey="9">PO Files</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Working with PO files.
+<tr><td align="left" valign="top">&bull; <a href="#Mailing-Lists" accesskey="9">Mailing Lists</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Summary of mailing lists.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Savannah-Projects">Savannah Projects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Projects membership.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#SSI">SSI</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Overview of files included via SSI.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Migrating">Migrating</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to migrate to the new style.
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#SSI">SSI</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Overview of SSI #include directives.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#CSS">CSS</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">General advice how to use CSS.
 </td></tr>
@@ -1521,7 +1529,7 @@ GNUN 0.9 release.
 <a name="Updating"></a>
 <div class="header">
 <p>
-Next: <a href="#Capitalization" accesskey="n" rel="next">Capitalization</a>, Previous: <a href="#Priorities" accesskey="p" rel="prev">Priorities</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Terminology" accesskey="n" rel="next">Terminology</a>, Previous: <a href="#Priorities" accesskey="p" rel="prev">Priorities</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Keeping-Translations-Current"></a>
 <h3 class="section">4.2 Keeping Translations Current</h3>
@@ -1575,13 +1583,28 @@ see <a href="http://www.gnu.org/software/trans-coord/manual/gnun/gnun.html#gnun_
 </li></ul>
 
 <hr>
+<a name="Terminology"></a>
+<div class="header">
+<p>
+Next: <a href="#Capitalization" accesskey="n" rel="next">Capitalization</a>, Previous: <a href="#Updating" accesskey="p" rel="prev">Updating</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Language_002dspecific-Terminology"></a>
+<h3 class="section">4.3 Language-specific Terminology</h3>
+
+<p>This is a very important topic, not yet covered by this manual.
+</p>
+<a name="index-Translations-README-1"></a>
+<p>Some tips are given in
+<a href="https://www.gnu.org/server/standards/README.translations.html">Translations README</a>.
+</p>
+<hr>
 <a name="Capitalization"></a>
 <div class="header">
 <p>
-Next: <a href="#Distribution-Terms" accesskey="n" rel="next">Distribution Terms</a>, Previous: <a href="#Updating" accesskey="p" rel="prev">Updating</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Internal-Links" accesskey="n" rel="next">Internal Links</a>, Previous: <a href="#Terminology" accesskey="p" rel="prev">Terminology</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="When-to-CAPITALIZE"></a>
-<h3 class="section">4.3 When to CAPITALIZE</h3>
+<h3 class="section">4.4 When to CAPITALIZE</h3>
 
 <a name="index-capitalization"></a>
 <p>The English language has some rules for capitalization of titles,
@@ -1607,13 +1630,52 @@ languages are capitalized), but not &lsquo;<samp>Fran&ccedil;ais</samp>&rsquo; o
 &lsquo;<samp>portugu&ecirc;s</samp>&rsquo;, respectively.
 </p>
 <hr>
+<a name="Internal-Links"></a>
+<div class="header">
+<p>
+Next: <a href="#Distribution-Terms" accesskey="n" rel="next">Distribution Terms</a>, Previous: <a href="#Capitalization" accesskey="p" rel="prev">Capitalization</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="How-to-Handle-Internal-Links"></a>
+<h3 class="section">4.5 How to Handle Internal Links</h3>
+
+<a name="index-links_002c-internal"></a>
+<a name="index-internal-links"></a>
+<p>In short, you should leave the URLs in links to other articles of
+www.gnu.org as they appear in the English text.
+</p>
+<p>These days www.gnu.org uses HTTP content negotiation to provide the
+most preferred translation available according to user&rsquo;s browser
+settings.  The texts of articles use generic URLs like
+&lsquo;<samp>/directory/article.html</samp>&rsquo; (note no language suffix).  When the
+visitor follows such links, www.gnu.org chooses the best translated
+version, or the English version if there is no suitable translation.
+</p>
+<p>Once upon a time, there was a practice to link to the respective
+translation (&lsquo;<samp>/directory/article.<var>lang</var>.html</samp>&rsquo;) when
+available.  You shouldn&rsquo;t do this any more.  First, new translations
+are added, and occasionally even removed, and timely updating the
+links in all existing translations is not feasible.  Second, and more
+important, visiting a translation doesn&rsquo;t really imply that its
+language is the most preferable one.
+</p>
+<p>For instance, let us imagine that visitor&rsquo;s native language is
+Serbian, and she can also understand Bulgarian.  Then (as of Dec 2014)
+the best version of
+<a href="https://www.gnu.org/gnu/initial-announcement.html">the
+Initial Announcement of the GNU Project</a> is Bulgarian; however, that
+page links to <a href="https://www.gnu.org/philosophy/free-sw.html">the Free Software Definition</a>, which is available both in Serbian and
+in Bulgarian.  If the Bulgarian translation of the announcement linked
+to the Bulgarian version of the definition, the visitor would be
+directed to a wrong translation.
+</p>
+<hr>
 <a name="Distribution-Terms"></a>
 <div class="header">
 <p>
-Next: <a href="#Copyright-Notices" accesskey="n" rel="next">Copyright Notices</a>, Previous: <a href="#Capitalization" accesskey="p" rel="prev">Capitalization</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Copyright-Notices" accesskey="n" rel="next">Copyright Notices</a>, Previous: <a href="#Internal-Links" accesskey="p" rel="prev">Internal Links</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Distribution-Terms-1"></a>
-<h3 class="section">4.4 Distribution Terms</h3>
+<h3 class="section">4.6 Distribution Terms</h3>
 
 <a name="index-Creative-Commons"></a>
 <a name="index-distribution-terms"></a>
@@ -1679,10 +1741,10 @@ terms that are in the United States license.
 <a name="Copyright-Notices"></a>
 <div class="header">
 <p>
-Next: <a href="#Terminology" accesskey="n" rel="next">Terminology</a>, Previous: <a href="#Distribution-Terms" accesskey="p" rel="prev">Distribution Terms</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#PO-Editors" accesskey="n" rel="next">PO Editors</a>, Previous: <a href="#Distribution-Terms" accesskey="p" rel="prev">Distribution Terms</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Copyright-Notices-1"></a>
-<h3 class="section">4.5 Copyright Notices</h3>
+<h3 class="section">4.7 Copyright Notices</h3>
 
 <a name="index-copyright-notices"></a>
 <p>Don&rsquo;t translate the word &ldquo;Copyright&rdquo; in copyright notices; for more
@@ -1693,28 +1755,101 @@ see <a href="http://www.gnu.org/prep/maintain/maintain.html#Copyright-Notices">C
 GNU software</cite>.
 </p>
 <hr>
-<a name="Terminology"></a>
+<a name="PO-Editors"></a>
 <div class="header">
 <p>
 Next: <a href="#Mailing-Lists" accesskey="n" rel="next">Mailing Lists</a>, Previous: <a href="#Copyright-Notices" accesskey="p" rel="prev">Copyright Notices</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Language_002dspecific-Terminology"></a>
-<h3 class="section">4.6 Language-specific Terminology</h3>
+<a name="Editing-PO-Files"></a>
+<h3 class="section">4.8 Editing PO Files</h3>
+<a name="index-PO_002c-editing"></a>
 
-<p>This is a very important topic, not yet covered by this manual.
+<p>We anticipate that some gnu.org translators will find this format odd
+or inconvenient, if they never happened to work with PO files
+before<a name="DOCF7" href="#FOOT7"><sup>7</sup></a>.
+Don&rsquo;t worry, you will soon get accustomed to it.  It is the
+established format for translations in the Free World, and if you 
+have any problems, other translators will help you.
 </p>
-<a name="index-Translations-README-1"></a>
-<p>Some tips are given in
-<a href="https://www.gnu.org/server/standards/README.translations.html">Translations README</a>.
+<p>The most efficient way to edit a PO file is using a specialized PO
+editor, because each of them represents and treats gettext messages in
+a consistent and predictable way.  It is possible to edit a PO file
+with an ordinary plain text editor, but extra effort would be
+necessary to make the result valid.
+</p>
+<a name="index-SaaSS"></a>
+<p>Note that recent versions of some PO editors (both offline
+and web-based) offer access to various translation services that
+do machine translation for their users.  Using a machine translation
+service is a clear example of SaaSS (see
+<a href="https://www.gnu.org/philosophy/who-does-that-server-really-serve.html">Who does That Server Really Serve?</a>),
+so please don&rsquo;t use such editors unless they only submit requests
+to your (or GNU project&rsquo;s) own servers.
+</p>
+<p>Here is a list of widely used PO editors we can recommend:
+</p>
+<ul>
+<li> <a name="index-PO-editors"></a>
+<a name="index-Emacs"></a>
+PO mode.  We recommend using GNU Emacs in PO mode, because Emacs is
+the program that is suitable for performing any task when it comes to
+maintaining the GNU Project&rsquo;s website.  Provided that you have GNU
+gettext installed, any <samp>.po</samp> file you visit should automatically
+switch to PO mode.  You can enable/disable it with <code>M-x po-mode
+<span class="key">RET</span></code>.  On some GNU/Linux distros such as gNewSense, PO mode is
+available in a separate package, <code>gettext-el</code>.
+See <a href="http://www.gnu.org/software/gettext/manual/gettext.html#PO-Mode">Emacs&rsquo;s PO File Editor</a> in <cite>GNU gettext tools</cite>.
+
+</li><li> <a name="index-Gtranslator"></a>
+Gtranslator&mdash;the GNOME PO editor.  See
+<a href="http://projects.gnome.org/gtranslator/">http://projects.gnome.org/gtranslator/</a>.
+
+</li><li> Lokalize&mdash;the KDE 4 editor.  See
+<a href="http://userbase.kde.org/Lokalize">http://userbase.kde.org/Lokalize</a>.
+
+</li><li> KBabel&mdash;the KDE 3 editor.  No longer supported, but might be
+available on some old systems.
+
+</li><li> Poedit&mdash;another popular editor that is based on the <code>wxWidgets</code>
+graphical toolkit.  See <a href="http://www.poedit.net">http://www.poedit.net</a>.
+
+</li><li> po.vim&mdash;ftplugin for the Vim editor.  The best option for people who
+use Vim as their editor.  See
+<a href="http://www.vim.org/scripts/script.php?script_id=2530">http://www.vim.org/scripts/script.php?script_id=2530</a>.
+
+</li><li> GNU instance of Pootle, a web-based editor.
+</li></ul>
+
+<a name="Web_002dbased-Systems"></a>
+<h4 class="subsection">4.8.1 Web-based Systems</h4>
+
+<a name="index-web_002dbased-editing"></a>
+<a name="index-Pootle"></a>
+<p>If your team would like to use a web-based editor, we recommend using
+the <a href="https://chapters.gnu.org/pootle/">official Pootle server of
+the GNU project</a>.  We make sure that working with it will not
+compromise your freedom via nonfree JavaScript or
+<a href="https://www.gnu.org/philosophy/who-does-that-server-really-serve.html">SaaSS</a>.  If you decide to use our server, please contact GNU Web
+Translation Managers to register your team.
+</p>
+<a name="index-previewing-web-pages"></a>
+<a name="index-web-pages_002c-previewing"></a>
+<p>Also, that Pootle server has a simple facility to preview your
+translations as they will appear on www.gnu.org.  In order to test
+a page, log in the server and visit
+<a href="https://chapters.gnu.org/gnun/test.html">https://chapters.gnu.org/gnun/test.html</a>.  That page
+contains a menu to upload a PO file; then the server will generate
+the translation and show you the build log (including errors), and the
+generated web page (when the build is successful).
 </p>
 <hr>
 <a name="Mailing-Lists"></a>
 <div class="header">
 <p>
-Next: <a href="#Savannah-Projects" accesskey="n" rel="next">Savannah Projects</a>, Previous: <a href="#Terminology" accesskey="p" rel="prev">Terminology</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Savannah-Projects" accesskey="n" rel="next">Savannah Projects</a>, Previous: <a href="#PO-Editors" accesskey="p" rel="prev">PO Editors</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Related-Mailing-Lists"></a>
-<h3 class="section">4.7 Related Mailing Lists</h3>
+<h3 class="section">4.9 Related Mailing Lists</h3>
 <a name="index-mailing-lists"></a>
 
 <p>Here is a summary of the mailing lists relevant to the translation
@@ -1804,10 +1939,10 @@ see <a href="#Savannah-Mailing-Lists">Savannah Mailing Lists</a>.
 <a name="Savannah-Projects"></a>
 <div class="header">
 <p>
-Next: <a href="#PO-Files" accesskey="n" rel="next">PO Files</a>, Previous: <a href="#Mailing-Lists" accesskey="p" rel="prev">Mailing Lists</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#SSI" accesskey="n" rel="next">SSI</a>, Previous: <a href="#Mailing-Lists" accesskey="p" rel="prev">Mailing Lists</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Savannah-Projects-Membership"></a>
-<h3 class="section">4.8 Savannah Projects Membership</h3>
+<h3 class="section">4.10 Savannah Projects Membership</h3>
 
 <a name="index-Savannah-projects"></a>
 <p>Participants in the www.gnu.org translation process normally have to be
@@ -1844,118 +1979,10 @@ for team&rsquo;s internal reasons.
 </dl>
 
 <hr>
-<a name="PO-Files"></a>
-<div class="header">
-<p>
-Next: <a href="#Migrating" accesskey="n" rel="next">Migrating</a>, Previous: <a href="#Savannah-Projects" accesskey="p" rel="prev">Savannah Projects</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
-</div>
-<a name="Working-with-PO-Files"></a>
-<h3 class="section">4.9 Working with PO Files</h3>
-<a name="index-PO_002c-editing"></a>
-
-<p>We anticipate that some gnu.org translators will find this format odd
-or inconvenient, if they never happened to work with PO files
-before<a name="DOCF7" href="#FOOT7"><sup>7</sup></a>.
-Don&rsquo;t worry, you will soon get accustomed to it.  It is the
-established format for translations in the Free World, and if you 
-have any problems, other translators will help you.
-</p>
-<p>The most efficient way to edit a PO file is using a specialized PO
-editor, because each of them represents and treats gettext messages in
-a consistent and predictable way.  It is possible to edit a PO file
-with an ordinary plain text editor, but extra effort would be
-necessary to make the result valid.
-</p>
-<a name="index-SaaSS"></a>
-<p>Note that recent versions of some PO editors (both offline
-and web-based) offer access to various translation services that
-do machine translation for their users.  Using a machine translation
-service is a clear example of SaaSS (see
-<a href="https://www.gnu.org/philosophy/who-does-that-server-really-serve.html">Who does That Server Really Serve?</a>),
-so please don&rsquo;t use such editors unless they only submit requests
-to your (or GNU project&rsquo;s) own servers.
-</p>
-<p>Here is a list of widely used PO editors we can recommend:
-</p>
-<ul>
-<li> <a name="index-PO-editors"></a>
-<a name="index-Emacs"></a>
-PO mode.  We recommend using GNU Emacs in PO mode, because Emacs is
-the program that is suitable for performing any task when it comes to
-maintaining the GNU Project&rsquo;s website.  Provided that you have GNU
-gettext installed, any <samp>.po</samp> file you visit should automatically
-switch to PO mode.  You can enable/disable it with <code>M-x po-mode
-<span class="key">RET</span></code>.  On some GNU/Linux distros such as gNewSense, PO mode is
-available in a separate package, <code>gettext-el</code>.
-See <a href="http://www.gnu.org/software/gettext/manual/gettext.html#PO-Mode">Emacs&rsquo;s PO File Editor</a> in <cite>GNU gettext tools</cite>.
-
-</li><li> <a name="index-Gtranslator"></a>
-Gtranslator&mdash;the GNOME PO editor.  See
-<a href="http://projects.gnome.org/gtranslator/">http://projects.gnome.org/gtranslator/</a>.
-
-</li><li> Lokalize&mdash;the KDE 4 editor.  See
-<a href="http://userbase.kde.org/Lokalize">http://userbase.kde.org/Lokalize</a>.
-
-</li><li> KBabel&mdash;the KDE 3 editor.  No longer supported, but might be
-available on some old systems.
-
-</li><li> Poedit&mdash;another popular editor that is based on the <code>wxWidgets</code>
-graphical toolkit.  See <a href="http://www.poedit.net">http://www.poedit.net</a>.
-
-</li><li> po.vim&mdash;ftplugin for the Vim editor.  The best option for people who
-use Vim as their editor.  See
-<a href="http://www.vim.org/scripts/script.php?script_id=2530">http://www.vim.org/scripts/script.php?script_id=2530</a>.
-
-</li><li> GNU instance of Pootle, a web-based editor.
-</li></ul>
-
-<a name="Web_002dbased-Systems"></a>
-<h4 class="subsection">4.9.1 Web-based Systems</h4>
-
-<a name="index-web_002dbased-editing"></a>
-<a name="index-Pootle"></a>
-<p>If your team would like to use a web-based editor, we recommend using
-the <a href="https://chapters.gnu.org/pootle/">official Pootle server of
-the GNU project</a>.  We make sure that working with it will not
-compromise your freedom via nonfree JavaScript or
-<a href="https://www.gnu.org/philosophy/who-does-that-server-really-serve.html">SaaSS</a>.  If you decide to use our server, please contact GNU Web
-Translation Managers to register your team.
-</p>
-<a name="index-previewing-web-pages"></a>
-<a name="index-web-pages_002c-previewing"></a>
-<p>Also, that Pootle server has a simple facility to preview your
-translations as they will appear on www.gnu.org.  In order to test
-a page, log in the server and visit
-<a href="https://chapters.gnu.org/pootle/gnun/test.html">https://chapters.gnu.org/pootle/gnun/test.html</a>.  That page
-contains a menu to upload a PO file; then the server will generate
-the translation and show you the build log (including errors), and the
-generated web page (when the build is successful).
-</p>
-<hr>
-<a name="Migrating"></a>
-<div class="header">
-<p>
-Next: <a href="#SSI" accesskey="n" rel="next">SSI</a>, Previous: <a href="#PO-Files" accesskey="p" rel="prev">PO Files</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
-</div>
-<a name="Migration-to-the-New-Style"></a>
-<h3 class="section">4.10 Migration to the New Style</h3>
-
-<p>Migration to the new style should be straightforward, and this is one of
-the problems GNUN set out to solve.  If you have to migrate old-style
-translations, see <a href="http://www.gnu.org/software/trans-coord/manual/gnun/gnun.html#Migrating">Migrating</a> in <cite>The GNUnited Nations Manual</cite>.
-If the old translation is HTML 2.0 (or 3.2), you still have to take care
-about the inner markup.  Overall, it is substantially easier than doing
-all of it manually.
-</p>
-<p>Subsequent migrations to newer HTML standards and newer look and feel
-of the website are supposed to happen semi-automatically, although
-this manual will be updated as needed.
-</p>
-<hr>
 <a name="SSI"></a>
 <div class="header">
 <p>
-Next: <a href="#CSS" accesskey="n" rel="next">CSS</a>, Previous: <a href="#Migrating" accesskey="p" rel="prev">Migrating</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Migrating" accesskey="n" rel="next">Migrating</a>, Previous: <a href="#Savannah-Projects" accesskey="p" rel="prev">Savannah Projects</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Summary-of-SSI-_0023includes"></a>
 <h3 class="section">4.11 Summary of SSI <code>#include</code>s</h3>
@@ -2132,13 +2159,33 @@ English files change; the <code>GRACE</code> variable has no effect on them.
 See <a href="http://www.gnu.org/software/trans-coord/manual/gnun/gnun.html#Runtime-Variables">Runtime Variables</a> in <cite>The GNUnited Nations Manual</cite>.
 </p>
 <hr>
+<a name="Migrating"></a>
+<div class="header">
+<p>
+Next: <a href="#CSS" accesskey="n" rel="next">CSS</a>, Previous: <a href="#SSI" accesskey="p" rel="prev">SSI</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Migration-to-the-New-Style"></a>
+<h3 class="section">4.12 Migration to the New Style</h3>
+
+<p>Migration to the new style should be straightforward, and this is one of
+the problems GNUN set out to solve.  If you have to migrate old-style
+translations, see <a href="http://www.gnu.org/software/trans-coord/manual/gnun/gnun.html#Migrating">Migrating</a> in <cite>The GNUnited Nations Manual</cite>.
+If the old translation is HTML 2.0 (or 3.2), you still have to take care
+about the inner markup.  Overall, it is substantially easier than doing
+all of it manually.
+</p>
+<p>Subsequent migrations to newer HTML standards and newer look and feel
+of the website are supposed to happen semi-automatically, although
+this manual will be updated as needed.
+</p>
+<hr>
 <a name="CSS"></a>
 <div class="header">
 <p>
-Previous: <a href="#SSI" accesskey="p" rel="prev">SSI</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#Migrating" accesskey="p" rel="prev">Migrating</a>, Up: <a href="#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="How-to-Use-Custom-CSS"></a>
-<h3 class="section">4.12 How to Use Custom CSS</h3>
+<h3 class="section">4.13 How to Use Custom CSS</h3>
 
 <a name="index-custom-CSS"></a>
 <p>The CSS file <samp>layout.css</samp> gets included (with three other CSS files)
@@ -2204,12 +2251,13 @@ of the bug, such as a screenshot).
 Up: <a href="#CSS" accesskey="u" rel="up">CSS</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Specific-Issues-Related-to-RTL"></a>
-<h4 class="subsection">4.12.1 Specific Issues Related to RTL</h4>
+<h4 class="subsection">4.13.1 Specific Issues Related to RTL</h4>
 
 <a name="index-right_002dto_002dleft-languages"></a>
-<p>Unfortunately, the <a href="http://gnu.org">http://gnu.org</a> website does not have excellent
-support for RTL (right-to-left) languages, although best efforts are
-made.  If your language is in this category, make sure to:
+<p>Unfortunately, the <a href="https://www.gnu.org">https://www.gnu.org</a> website does not have
+excellent support for languages using right-to-left scripts,
+although best efforts are made.  If your language is in this
+category, make sure to:
 </p>
 <ul>
 <li> Set the attribute <code>dir=&quot;rtl&quot;</code> in the <code>html</code> element at
@@ -2231,7 +2279,6 @@ for both cases&mdash;so much the better.  For general issues that affect
 your language and require a general solution, write to
 <a href="mailto:webmasters@gnu.org">webmasters@gnu.org</a> as well, precisely describing the problem.
 </p>
-
 <hr>
 <a name="Copying-This-Manual"></a>
 <div class="header">
@@ -2735,6 +2782,8 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
  &nbsp; 
 <a class="summary-letter" href="#Index_cp_letter-H"><b>H</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-I"><b>I</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Index_cp_letter-L"><b>L</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_cp_letter-M"><b>M</b></a>
@@ -2782,7 +2831,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-distribution-terms">distribution terms</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Distribution-Terms">Distribution Terms</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-E">E</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Emacs">Emacs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Files">PO Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Emacs">Emacs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-encoding">encoding</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submitting-as-Plain-Text">Submitting as Plain Text</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-encoding-1">encoding</a>:</td><td>&nbsp;</td><td valign="top"><a href="#SSI">SSI</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-external-resources">external resources</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Savannah">Savannah</a></td></tr>
@@ -2790,14 +2839,18 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><th><a name="Index_cp_letter-G">G</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-generic_002ehtml">generic.html</a>:</td><td>&nbsp;</td><td valign="top"><a href="#SSI">SSI</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-GNUN">GNUN</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submitting-as-PO">Submitting as PO</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Gtranslator">Gtranslator</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Files">PO Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Gtranslator">Gtranslator</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-H">H</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-home_002ehtml">home.html</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Priorities">Priorities</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-HTML5">HTML5</a>:</td><td>&nbsp;</td><td valign="top"><a href="#SSI">SSI</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Index_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-internal-links">internal links</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-Links">Internal Links</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-L">L</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-language-code">language code</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Team">New Team</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-links_002c-internal">links, internal</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-Links">Internal Links</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-M">M</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mailing-lists">mailing lists</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Mailing-Lists">Mailing Lists</a></td></tr>
@@ -2814,17 +2867,17 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><th><a name="Index_cp_letter-P">P</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-plain-text">plain text</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submitting-as-Plain-Text">Submitting as Plain Text</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-planetfeeds_002ehtml">planetfeeds.html</a>:</td><td>&nbsp;</td><td valign="top"><a href="#SSI">SSI</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-PO-editors">PO editors</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Files">PO Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-PO_002c-editing">PO, editing</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Files">PO Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Pootle">Pootle</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Files">PO Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-previewing-web-pages">previewing web pages</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Files">PO Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PO-editors">PO editors</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-PO_002c-editing">PO, editing</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Pootle">Pootle</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-previewing-web-pages">previewing web pages</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-R">R</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-review">review</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Review">Review</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-right_002dto_002dleft-languages">right-to-left languages</a>:</td><td>&nbsp;</td><td valign="top"><a href="#RTL">RTL</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-S">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-SaaSS">SaaSS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Files">PO Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-SaaSS">SaaSS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Savannah-account">Savannah account</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Team">New Team</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Savannah-projects">Savannah projects</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Savannah-Projects">Savannah Projects</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Savannah_002c-registering">Savannah, registering</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Team">New Team</a></td></tr>
@@ -2865,8 +2918,8 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><th><a name="Index_cp_letter-W">W</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-web-pages-of-GNU-packages">web pages of GNU packages</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Priorities">Priorities</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-web-pages_002c-checking-out">web pages, checking out</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submitting-as-PO">Submitting as PO</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-web-pages_002c-previewing">web pages, previewing</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Files">PO Files</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-web_002dbased-editing">web-based editing</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Files">PO Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-web-pages_002c-previewing">web pages, previewing</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-web_002dbased-editing">web-based editing</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-web_002dtranslators_0040gnu_002eorg">web-translators@gnu.org</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Mailing-Lists">Mailing Lists</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-webmasters_0040gnu_002eorg">webmasters@gnu.org</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Mailing-Lists">Mailing Lists</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-www_002ddiscuss_0040gnu_002eorg">www-discuss@gnu.org</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Mailing-Lists">Mailing Lists</a></td></tr>
@@ -2886,6 +2939,8 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <a class="summary-letter" href="#Index_cp_letter-G"><b>G</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_cp_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Index_cp_letter-I"><b>I</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_cp_letter-L"><b>L</b></a>
  &nbsp; 

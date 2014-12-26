@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+This manual is a guide for the GNU Web Translators.
+ Last updated on
+25 December 2014, for GNUnited Nations version 0.9.
+
+Copyright (C) 2009, 2010, 2011, 2012, 2013,
+  2014 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GNU Web Translators Manual: Internal Links</title>
+
+<meta name="description" content="GNU Web Translators Manual: Internal Links">
+<meta name="keywords" content="GNU Web Translators Manual: Internal Links">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Translation-Process.html#Translation-Process" rel="up" title="Translation Process">
+<link href="Distribution-Terms.html#Distribution-Terms" rel="next" title="Distribution Terms">
+<link href="Capitalization.html#Capitalization" rel="prev" title="Capitalization">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Internal-Links"></a>
+<div class="header">
+<p>
+Next: <a href="Distribution-Terms.html#Distribution-Terms" accesskey="n" rel="next">Distribution Terms</a>, Previous: <a href="Capitalization.html#Capitalization" accesskey="p" rel="prev">Capitalization</a>, Up: <a href="Translation-Process.html#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="How-to-Handle-Internal-Links"></a>
+<h3 class="section">4.5 How to Handle Internal Links</h3>
+
+<a name="index-links_002c-internal"></a>
+<a name="index-internal-links"></a>
+<p>In short, you should leave the URLs in links to other articles of
+www.gnu.org as they appear in the English text.
+</p>
+<p>These days www.gnu.org uses HTTP content negotiation to provide the
+most preferred translation available according to user&rsquo;s browser
+settings.  The texts of articles use generic URLs like
+&lsquo;<samp>/directory/article.html</samp>&rsquo; (note no language suffix).  When the
+visitor follows such links, www.gnu.org chooses the best translated
+version, or the English version if there is no suitable translation.
+</p>
+<p>Once upon a time, there was a practice to link to the respective
+translation (&lsquo;<samp>/directory/article.<var>lang</var>.html</samp>&rsquo;) when
+available.  You shouldn&rsquo;t do this any more.  First, new translations
+are added, and occasionally even removed, and timely updating the
+links in all existing translations is not feasible.  Second, and more
+important, visiting a translation doesn&rsquo;t really imply that its
+language is the most preferable one.
+</p>
+<p>For instance, let us imagine that visitor&rsquo;s native language is
+Serbian, and she can also understand Bulgarian.  Then (as of Dec 2014)
+the best version of
+<a href="https://www.gnu.org/gnu/initial-announcement.html">the
+Initial Announcement of the GNU Project</a> is Bulgarian; however, that
+page links to <a href="https://www.gnu.org/philosophy/free-sw.html">the Free Software Definition</a>, which is available both in Serbian and
+in Bulgarian.  If the Bulgarian translation of the announcement linked
+to the Bulgarian version of the definition, the visitor would be
+directed to a wrong translation.
+</p>
+
+
+
+</body>
+</html>

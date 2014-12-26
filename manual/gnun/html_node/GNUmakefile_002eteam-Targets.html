@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 28 June 2014) is for GNUnited Nations (version
+This manual (updated 25 December 2014) is for GNUnited Nations (version
 0.9), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
@@ -74,8 +74,16 @@ Next: <a href="GNUmakefile_002eteam-and-Cron.html#GNUmakefile_002eteam-and-Cron"
 <h3 class="section">3.2 Targets in <samp>GNUmakefile.team</samp></h3>
 
 <dl compact="compact">
+<dt><code>update-team</code></dt>
+<dd><p>Updates the working copy of team&rsquo;s repository.
+</p>
+</dd>
+<dt><code>update-www</code></dt>
+<dd><p>Updates the working copy of <em>www</em>.
+</p>
+</dd>
 <dt><code>update</code></dt>
-<dd><p>Updates the repositories.  Does nothing unless <code>VCS=yes</code>.
+<dd><p>A shortcut for making <code>update-team</code> and <code>update-www</code>.
 </p>
 </dd>
 <dt><code>sync</code></dt>
