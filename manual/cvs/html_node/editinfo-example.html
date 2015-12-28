@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: editinfo example</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: editinfo example">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: editinfo example">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="editinfo.html#editinfo" rel="up" title="editinfo">
+<link href="loginfo.html#loginfo" rel="next" title="loginfo">
+<link href="editinfo.html#editinfo" rel="prev" title="editinfo">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="editinfo-example"></a>
+<div class="header">
+<p>
+Up: <a href="editinfo.html#editinfo" accesskey="u" rel="up">editinfo</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Editinfo-example"></a>
+<h4 class="appendixsubsubsec">C.4.3.1 Editinfo example</h4>
+
+<p>The following is a little silly example of a
+<samp>editinfo</samp> file, together with the corresponding
+<samp>rcsinfo</samp> file, the log message template and an
+editor script.  We begin with the log message template.
+We want to always record a bug-id number on the first
+line of the log message.  The rest of log message is
+free text.  The following template is found in the file
+<samp>/usr/cvssupport/tc.template</samp>.
+</p>
+<div class="example">
+<pre class="example">BugId:
+</pre></div>
+
+<p>The script <samp>/usr/cvssupport/bugid.edit</samp> is used to
+edit the log message.
+</p>
+<div class="example">
+<pre class="example">#!/bin/sh
+#
+#       bugid.edit filename
+#
+#  Call $EDITOR on FILENAME, and verify that the
+#  resulting file contains a valid bugid on the first
+#  line.
+if [ &quot;x$EDITOR&quot; = &quot;x&quot; ]; then EDITOR=vi; fi
+if [ &quot;x$CVSEDITOR&quot; = &quot;x&quot; ]; then CVSEDITOR=$EDITOR; fi
+$CVSEDITOR $1
+until head -1|grep '^BugId:[ ]*[0-9][0-9]*$' &lt; $1
+do  echo -n  &quot;No BugId found.  Edit again? ([y]/n)&quot;
+    read ans
+    case ${ans} in
+        n*) exit 1;;
+    esac
+    $CVSEDITOR $1
+done
+</pre></div>
+
+<p>The <samp>editinfo</samp> file contains this line:
+</p>
+<div class="example">
+<pre class="example">^tc     /usr/cvssupport/bugid.edit
+</pre></div>
+
+<p>The <samp>rcsinfo</samp> file contains this line:
+</p>
+<div class="example">
+<pre class="example">^tc     /usr/cvssupport/tc.template
+</pre></div>
+
+
+
+
+</body>
+</html>

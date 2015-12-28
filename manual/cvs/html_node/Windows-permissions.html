@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Windows permissions</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Windows permissions">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Windows permissions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository-storage.html#Repository-storage" rel="up" title="Repository storage">
+<link href="Attic.html#Attic" rel="next" title="Attic">
+<link href="File-permissions.html#File-permissions" rel="prev" title="File permissions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Windows-permissions"></a>
+<div class="header">
+<p>
+Next: <a href="Attic.html#Attic" accesskey="n" rel="next">Attic</a>, Previous: <a href="File-permissions.html#File-permissions" accesskey="p" rel="prev">File permissions</a>, Up: <a href="Repository-storage.html#Repository-storage" accesskey="u" rel="up">Repository storage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="File-Permission-issues-specific-to-Windows"></a>
+<h4 class="subsection">2.2.3 File Permission issues specific to Windows</h4>
+<a name="index-Windows_002c-and-permissions"></a>
+<a name="index-File-permissions_002c-Windows_002dspecific"></a>
+<a name="index-Permissions_002c-Windows_002dspecific"></a>
+
+<p>Some file permission issues are specific to Windows
+operating systems (Windows 95, Windows NT, and
+presumably future operating systems in this family.
+Some of the following might apply to OS/2 but I&rsquo;m not
+sure).
+</p>
+<p>If you are using local <small>CVS</small> and the repository is on a
+networked file system which is served by the Samba SMB
+server, some people have reported problems with
+permissions.  Enabling WRITE=YES in the samba
+configuration is said to fix/workaround it.
+Disclaimer: I haven&rsquo;t investigated enough to know the
+implications of enabling that option, nor do I know
+whether there is something which <small>CVS</small> could be doing
+differently in order to avoid the problem.  If you find
+something out, please let us know as described in
+<a href="BUGS.html#BUGS">BUGS</a>.
+</p>
+
+
+
+</body>
+</html>

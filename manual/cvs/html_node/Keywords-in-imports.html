@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Keywords in imports</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Keywords in imports">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Keywords in imports">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Tracking-sources.html#Tracking-sources" rel="up" title="Tracking sources">
+<link href="Multiple-vendor-branches.html#Multiple-vendor-branches" rel="next" title="Multiple vendor branches">
+<link href="Binary-files-in-imports.html#Binary-files-in-imports" rel="prev" title="Binary files in imports">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Keywords-in-imports"></a>
+<div class="header">
+<p>
+Next: <a href="Multiple-vendor-branches.html#Multiple-vendor-branches" accesskey="n" rel="next">Multiple vendor branches</a>, Previous: <a href="Binary-files-in-imports.html#Binary-files-in-imports" accesskey="p" rel="prev">Binary files in imports</a>, Up: <a href="Tracking-sources.html#Tracking-sources" accesskey="u" rel="up">Tracking sources</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="How-to-handle-keyword-substitution-with-cvs-import"></a>
+<h3 class="section">13.5 How to handle keyword substitution with cvs import</h3>
+
+<p>The sources which you are importing may contain
+keywords (see <a href="Keyword-substitution.html#Keyword-substitution">Keyword substitution</a>).  For example,
+the vendor may use <small>CVS</small> or some other system
+which uses similar keyword expansion syntax.  If you
+just import the files in the default fashion, then
+the keyword expansions supplied by the vendor will
+be replaced by keyword expansions supplied by your
+own copy of <small>CVS</small>.  It may be more convenient to
+maintain the expansions supplied by the vendor, so
+that this information can supply information about
+the sources that you imported from the vendor.
+</p>
+<p>To maintain the keyword expansions supplied by the
+vendor, supply the &lsquo;<samp>-ko</samp>&rsquo; option to <code>cvs
+import</code> the first time you import the file.
+This will turn off keyword expansion
+for that file entirely, so if you want to be more
+selective you&rsquo;ll have to think about what you want
+and use the &lsquo;<samp>-k</samp>&rsquo; option to <code>cvs update</code> or
+<code>cvs admin</code> as appropriate.
+</p>
+
+
+
+</body>
+</html>

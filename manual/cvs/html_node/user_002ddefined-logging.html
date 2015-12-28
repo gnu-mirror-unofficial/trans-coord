@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: user-defined logging</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: user-defined logging">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: user-defined logging">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="History-browsing.html#History-browsing" rel="up" title="History browsing">
+<link href="Binary-files.html#Binary-files" rel="next" title="Binary files">
+<link href="history-database.html#history-database" rel="prev" title="history database">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="user_002ddefined-logging"></a>
+<div class="header">
+<p>
+Previous: <a href="history-database.html#history-database" accesskey="p" rel="prev">history database</a>, Up: <a href="History-browsing.html#History-browsing" accesskey="u" rel="up">History browsing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="User_002ddefined-logging"></a>
+<h3 class="section">8.3 User-defined logging</h3>
+
+<p>You can customize <small>CVS</small> to log various kinds of
+actions, in whatever manner you choose.  These
+mechanisms operate by executing a script at various
+times.  The script might append a message to a file
+listing the information and the programmer who created
+it, or send mail to a group of developers, or, perhaps,
+post a message to a particular newsgroup.  To log
+commits, use the <samp>loginfo</samp> file (see <a href="loginfo.html#loginfo">loginfo</a>).
+To log tags, use the <samp>taginfo</samp> file (see <a href="taginfo.html#taginfo">taginfo</a>).
+To log checkouts, exports, and tags,
+respectively, you can also use the
+&lsquo;<samp>-o</samp>&rsquo;, &lsquo;<samp>-e</samp>&rsquo;, and &lsquo;<samp>-t</samp>&rsquo; options in the
+modules file.  For a more flexible way of giving
+notifications to various users, which requires less in
+the way of keeping centralized scripts up to date, use
+the <code>cvs watch add</code> command (see <a href="Getting-Notified.html#Getting-Notified">Getting Notified</a>); this command is useful even if you are not
+using <code>cvs watch on</code>.
+</p>
+
+
+
+</body>
+</html>

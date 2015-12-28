@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Intro administrative files</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Intro administrative files">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Intro administrative files">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository.html#Repository" rel="up" title="Repository">
+<link href="Multiple-repositories.html#Multiple-repositories" rel="next" title="Multiple repositories">
+<link href="Working-directory-storage.html#Working-directory-storage" rel="prev" title="Working directory storage">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Intro-administrative-files"></a>
+<div class="header">
+<p>
+Next: <a href="Multiple-repositories.html#Multiple-repositories" accesskey="n" rel="next">Multiple repositories</a>, Previous: <a href="Working-directory-storage.html#Working-directory-storage" accesskey="p" rel="prev">Working directory storage</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-administrative-files"></a>
+<h3 class="section">2.4 The administrative files</h3>
+<a name="index-Administrative-files-_0028intro_0029"></a>
+<a name="index-Modules-file"></a>
+<a name="index-CVSROOT_002c-module-name"></a>
+<a name="index-Defining-modules-_0028intro_0029"></a>
+
+
+<p>The directory <samp>$CVSROOT/CVSROOT</samp> contains some <em>administrative
+files</em>.  See <a href="Administrative-files.html#Administrative-files">Administrative files</a>, for a complete description.
+You can use <small>CVS</small> without any of these files, but
+some commands work better when at least the
+<samp>modules</samp> file is properly set up.
+</p>
+<p>The most important of these files is the <samp>modules</samp>
+file.  It defines all modules in the repository.  This
+is a sample <samp>modules</samp> file.
+</p>
+<div class="example">
+<pre class="example">CVSROOT         CVSROOT
+modules         CVSROOT modules
+cvs             gnu/cvs
+rcs             gnu/rcs
+diff            gnu/diff
+tc              yoyodyne/tc
+</pre></div>
+
+<p>The <samp>modules</samp> file is line oriented.  In its
+simplest form each line contains the name of the
+module, whitespace, and the directory where the module
+resides.  The directory is a path relative to
+<code>$CVSROOT</code>.  The last four lines in the example
+above are examples of such lines.
+</p>
+
+<p>The line that defines the module called &lsquo;<samp>modules</samp>&rsquo;
+uses features that are not explained here.
+See <a href="modules.html#modules">modules</a>, for a full explanation of all the
+available features.
+</p>
+<a name="Editing-administrative-files"></a>
+<h4 class="subsection">2.4.1 Editing administrative files</h4>
+<a name="index-Editing-administrative-files"></a>
+<a name="index-Administrative-files_002c-editing-them"></a>
+
+<p>You edit the administrative files in the same way that you would edit
+any other module.  Use &lsquo;<samp>cvs checkout CVSROOT</samp>&rsquo; to get a working
+copy, edit it, and commit your changes in the normal way.
+</p>
+<p>It is possible to commit an erroneous administrative
+file.  You can often fix the error and check in a new
+revision, but sometimes a particularly bad error in the
+administrative file makes it impossible to commit new
+revisions.  If and when this happens, you can correct
+the problem by temporarily copying a corrected administrative file
+directly into the <code>$CVSROOT/CVSROOT</code> repository directory,
+then committing the same correction via a checkout of the <samp>CVSROOT</samp>
+module.  It is important that the correction also be made via the
+checked out copy, or the next checkout and commit to the
+&lt;code&gt;CVSROOT&lt;/code&gt; module will overwrite the correction that was
+copied directly into the repository, possibly breaking things in such
+a way as to prevent commits again.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Multiple-repositories.html#Multiple-repositories" accesskey="n" rel="next">Multiple repositories</a>, Previous: <a href="Working-directory-storage.html#Working-directory-storage" accesskey="p" rel="prev">Working directory storage</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

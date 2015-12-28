@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Multiple repositories</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Multiple repositories">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Multiple repositories">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository.html#Repository" rel="up" title="Repository">
+<link href="Creating-a-repository.html#Creating-a-repository" rel="next" title="Creating a repository">
+<link href="Intro-administrative-files.html#Intro-administrative-files" rel="prev" title="Intro administrative files">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Multiple-repositories"></a>
+<div class="header">
+<p>
+Next: <a href="Creating-a-repository.html#Creating-a-repository" accesskey="n" rel="next">Creating a repository</a>, Previous: <a href="Intro-administrative-files.html#Intro-administrative-files" accesskey="p" rel="prev">Intro administrative files</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Multiple-repositories-1"></a>
+<h3 class="section">2.5 Multiple repositories</h3>
+<a name="index-Multiple-repositories"></a>
+<a name="index-Repositories_002c-multiple"></a>
+<a name="index-Many-repositories"></a>
+<a name="index-Parallel-repositories"></a>
+<a name="index-Disjoint-repositories"></a>
+<a name="index-CVSROOT_002c-multiple-repositories"></a>
+
+<p>In some situations it is a good idea to have more than
+one repository, for instance if you have two
+development groups that work on separate projects
+without sharing any code.  All you have to do to have
+several repositories is to specify the appropriate
+repository, using the <code>CVSROOT</code> environment
+variable, the &lsquo;<samp>-d</samp>&rsquo; option to <small>CVS</small>, or (once
+you have checked out a working directory) by simply
+allowing <small>CVS</small> to use the repository that was used
+to check out the working directory
+(see <a href="Specifying-a-repository.html#Specifying-a-repository">Specifying a repository</a>).
+</p>
+<p>The big advantage of having multiple repositories is
+that they can reside on different servers.  With <small>CVS</small>
+version 1.10, a single command cannot recurse into
+directories from different repositories.  With development
+versions of <small>CVS</small>, you can check out code from multiple
+servers into your working directory.  <small>CVS</small> will
+recurse and handle all the details of making
+connections to as many server machines as necessary to
+perform the requested command.  Here is an example of
+how to set up a working directory:
+</p>
+<div class="example">
+<pre class="example">cvs -d server1:/cvs co dir1
+cd dir1
+cvs -d server2:/root co sdir
+cvs update
+</pre></div>
+
+<p>The <code>cvs co</code> commands set up the working
+directory, and then the <code>cvs update</code> command will
+contact server2, to update the dir1/sdir subdirectory,
+and server1, to update everything else.
+</p>
+
+
+
+
+</body>
+</html>

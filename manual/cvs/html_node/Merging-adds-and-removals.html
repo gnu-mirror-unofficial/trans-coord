@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Merging adds and removals</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Merging adds and removals">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Merging adds and removals">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Branching-and-merging.html#Branching-and-merging" rel="up" title="Branching and merging">
+<link href="Merging-and-keywords.html#Merging-and-keywords" rel="next" title="Merging and keywords">
+<link href="Merging-two-revisions.html#Merging-two-revisions" rel="prev" title="Merging two revisions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Merging-adds-and-removals"></a>
+<div class="header">
+<p>
+Next: <a href="Merging-and-keywords.html#Merging-and-keywords" accesskey="n" rel="next">Merging and keywords</a>, Previous: <a href="Merging-two-revisions.html#Merging-two-revisions" accesskey="p" rel="prev">Merging two revisions</a>, Up: <a href="Branching-and-merging.html#Branching-and-merging" accesskey="u" rel="up">Branching and merging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Merging-can-add-or-remove-files"></a>
+<h3 class="section">5.9 Merging can add or remove files</h3>
+
+<p>If the changes which you are merging involve removing
+or adding some files, <code>update -j</code> will reflect
+such additions or removals.
+</p>
+<p>For example:
+</p><div class="example">
+<pre class="example">cvs update -A
+touch a b c
+cvs add a b c ; cvs ci -m &quot;added&quot; a b c
+cvs tag -b branchtag
+cvs update -r branchtag
+touch d ; cvs add d
+rm a ; cvs rm a
+cvs ci -m &quot;added d, removed a&quot;
+cvs update -A
+cvs update -jbranchtag
+</pre></div>
+
+<p>After these commands are executed and a &lsquo;<samp>cvs commit</samp>&rsquo; is done,
+file <samp>a</samp> will be removed and file <samp>d</samp> added in the main branch.
+</p>
+<p>Note that using a single static tag (&lsquo;<samp>-j <var>tagname</var></samp>&rsquo;)
+rather than a dynamic tag (&lsquo;<samp>-j <var>branchname</var></samp>&rsquo;) to merge
+changes from a branch will usually not remove files which were removed on the
+branch since <small>CVS</small> does not automatically add static tags to dead revisions.
+The exception to this rule occurs when
+a static tag has been attached to a dead revision manually.  Use the branch tag
+to merge all changes from the branch or use two static tags as merge endpoints
+to be sure that all intended changes are propagated in the merge.
+</p>
+
+
+
+</body>
+</html>

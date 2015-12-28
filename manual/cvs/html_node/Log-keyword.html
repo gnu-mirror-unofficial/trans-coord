@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Log keyword</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Log keyword">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Log keyword">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Keyword-substitution.html#Keyword-substitution" rel="up" title="Keyword substitution">
+<link href="Tracking-sources.html#Tracking-sources" rel="next" title="Tracking sources">
+<link href="Substitution-modes.html#Substitution-modes" rel="prev" title="Substitution modes">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Log-keyword"></a>
+<div class="header">
+<p>
+Previous: <a href="Substitution-modes.html#Substitution-modes" accesskey="p" rel="prev">Substitution modes</a>, Up: <a href="Keyword-substitution.html#Keyword-substitution" accesskey="u" rel="up">Keyword substitution</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Problems-with-the-_0024Log_0024-keyword_002e"></a>
+<h3 class="section">12.5 Problems with the $<i></i>Log$ keyword.</h3>
+
+<p>The <code>$<i></i>Log$</code> keyword is somewhat
+controversial.  As long as you are working on your
+development system the information is easily accessible
+even if you do not use the <code>$<i></i>Log$</code>
+keyword&mdash;just do a <code>cvs log</code>.  Once you export
+the file the history information might be useless
+anyhow.
+</p>
+<p>A more serious concern is that <small>CVS</small> is not good at
+handling <code>$<i></i>Log$</code> entries when a branch is
+merged onto the main trunk.  Conflicts often result
+from the merging operation.
+</p>
+<p>People also tend to &quot;fix&quot; the log entries in the file
+(correcting spelling mistakes and maybe even factual
+errors).  If that is done the information from
+<code>cvs log</code> will not be consistent with the
+information inside the file.  This may or may not be a
+problem in real life.
+</p>
+<p>It has been suggested that the <code>$<i></i>Log$</code>
+keyword should be inserted <em>last</em> in the file, and
+not in the files header, if it is to be used at all.
+That way the long list of change messages will not
+interfere with everyday source file browsing.
+</p>
+
+
+
+</body>
+</html>

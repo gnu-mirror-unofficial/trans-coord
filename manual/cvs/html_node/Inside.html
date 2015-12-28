@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Inside</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Inside">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Inside">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Moving-files.html#Moving-files" rel="up" title="Moving files">
+<link href="Rename-by-copying.html#Rename-by-copying" rel="next" title="Rename by copying">
+<link href="Outside.html#Outside" rel="prev" title="Outside">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Inside"></a>
+<div class="header">
+<p>
+Next: <a href="Rename-by-copying.html#Rename-by-copying" accesskey="n" rel="next">Rename by copying</a>, Previous: <a href="Outside.html#Outside" accesskey="p" rel="prev">Outside</a>, Up: <a href="Moving-files.html#Moving-files" accesskey="u" rel="up">Moving files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Moving-the-history-file"></a>
+<h4 class="subsection">7.4.2 Moving the history file</h4>
+
+<p>This method is more dangerous, since it involves moving
+files inside the repository.  Read this entire section
+before trying it out!
+</p>
+<div class="example">
+<pre class="example">$ cd $CVSROOT/<var>dir</var>
+$ mv <var>old</var>,v <var>new</var>,v
+</pre></div>
+
+<p>Advantages:
+</p>
+<ul>
+<li> The log of changes is maintained intact.
+
+</li><li> The revision numbers are not affected.
+</li></ul>
+
+<p>Disadvantages:
+</p>
+<ul>
+<li> Old releases cannot easily be fetched from the
+repository.  (The file will show up as <var>new</var> even
+in revisions from the time before it was renamed).
+
+</li><li> There is no log information of when the file was renamed.
+
+</li><li> Nasty things might happen if someone accesses the history file
+while you are moving it.  Make sure no one else runs any of the <small>CVS</small>
+commands while you move it.
+</li></ul>
+
+
+
+
+</body>
+</html>

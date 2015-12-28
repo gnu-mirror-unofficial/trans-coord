@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Structure</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Structure">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Structure">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="CVS-commands.html#CVS-commands" rel="up" title="CVS commands">
+<link href="Exit-status.html#Exit-status" rel="next" title="Exit status">
+<link href="CVS-commands.html#CVS-commands" rel="prev" title="CVS commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Structure"></a>
+<div class="header">
+<p>
+Next: <a href="Exit-status.html#Exit-status" accesskey="n" rel="next">Exit status</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Overall-structure-of-CVS-commands"></a>
+<h3 class="appendixsec">A.1 Overall structure of CVS commands</h3>
+<a name="index-Structure"></a>
+<a name="index-CVS-command-structure"></a>
+<a name="index-Command-structure"></a>
+<a name="index-Format-of-CVS-commands"></a>
+
+<p>The overall format of all <small>CVS</small> commands is:
+</p>
+<div class="example">
+<pre class="example">cvs [ cvs_options ] cvs_command [ command_options ] [ command_args ]
+</pre></div>
+
+<dl compact="compact">
+<dt><code>cvs</code></dt>
+<dd><p>The name of the <small>CVS</small> program.
+</p>
+</dd>
+<dt><code>cvs_options</code></dt>
+<dd><p>Some options that affect all sub-commands of <small>CVS</small>.  These are
+described below.
+</p>
+</dd>
+<dt><code>cvs_command</code></dt>
+<dd><p>One of several different sub-commands.  Some of the commands have
+aliases that can be used instead; those aliases are noted in the
+reference manual for that command.  There are only two situations
+where you may omit &lsquo;<samp>cvs_command</samp>&rsquo;: &lsquo;<samp>cvs -H</samp>&rsquo; elicits a
+list of available commands, and &lsquo;<samp>cvs -v</samp>&rsquo; displays version
+information on <small>CVS</small> itself.
+</p>
+</dd>
+<dt><code>command_options</code></dt>
+<dd><p>Options that are specific for the command.
+</p>
+</dd>
+<dt><code>command_args</code></dt>
+<dd><p>Arguments to the commands.
+</p></dd>
+</dl>
+
+<p>There is unfortunately some confusion between
+<code>cvs_options</code> and <code>command_options</code>.
+When given as a <code>cvs_option</code>, some options only
+affect some of the commands.  When given as a
+<code>command_option</code> it may have a different meaning, and
+be accepted by more commands.  In other words, do not
+take the above categorization too seriously.  Look at
+the documentation instead.
+</p>
+
+
+
+</body>
+</html>

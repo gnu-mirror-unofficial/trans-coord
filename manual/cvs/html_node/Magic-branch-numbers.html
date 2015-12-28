@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Magic branch numbers</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Magic branch numbers">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Magic branch numbers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Branching-and-merging.html#Branching-and-merging" rel="up" title="Branching and merging">
+<link href="Merging-a-branch.html#Merging-a-branch" rel="next" title="Merging a branch">
+<link href="Branches-and-revisions.html#Branches-and-revisions" rel="prev" title="Branches and revisions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Magic-branch-numbers"></a>
+<div class="header">
+<p>
+Next: <a href="Merging-a-branch.html#Merging-a-branch" accesskey="n" rel="next">Merging a branch</a>, Previous: <a href="Branches-and-revisions.html#Branches-and-revisions" accesskey="p" rel="prev">Branches and revisions</a>, Up: <a href="Branching-and-merging.html#Branching-and-merging" accesskey="u" rel="up">Branching and merging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Magic-branch-numbers-1"></a>
+<h3 class="section">5.5 Magic branch numbers</h3>
+
+
+<p>This section describes a <small>CVS</small> feature called
+<em>magic branches</em>.  For most purposes, you need not
+worry about magic branches; <small>CVS</small> handles them for
+you.  However, they are visible to you in certain
+circumstances, so it may be useful to have some idea of
+how it works.
+</p>
+<p>Externally, branch numbers consist of an odd number of
+dot-separated decimal integers.  See <a href="Revision-numbers.html#Revision-numbers">Revision numbers</a>.  That is not the whole truth, however.  For
+efficiency reasons <small>CVS</small> sometimes inserts an extra 0
+in the second rightmost position (1.2.4 becomes
+1.2.0.4, 8.9.10.11.12 becomes 8.9.10.11.0.12 and so
+on).
+</p>
+<p><small>CVS</small> does a pretty good job at hiding these so
+called magic branches, but in a few places the hiding
+is incomplete:
+</p>
+<ul>
+<li> The magic branch number appears in the output from
+<code>cvs log</code>.
+
+</li><li> You cannot specify a symbolic branch name to <code>cvs
+admin</code>.
+
+</li></ul>
+
+<p>You can use the <code>admin</code> command to reassign a
+symbolic name to a branch the way <small>RCS</small> expects it
+to be.  If <code>R4patches</code> is assigned to the branch
+1.4.2 (magic branch number 1.4.0.2) in file
+<samp>numbers.c</samp> you can do this:
+</p>
+<div class="example">
+<pre class="example">$ cvs admin -NR4patches:1.4.2 numbers.c
+</pre></div>
+
+<p>It only works if at least one revision is already
+committed on the branch.  Be very careful so that you
+do not assign the tag to the wrong number.  (There is
+no way to see how the tag was assigned yesterday).
+</p>
+
+
+
+</body>
+</html>

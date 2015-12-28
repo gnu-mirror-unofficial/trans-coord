@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: ~/.cvsrc</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: ~/.cvsrc">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: ~/.cvsrc">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="CVS-commands.html#CVS-commands" rel="up" title="CVS commands">
+<link href="Global-options.html#Global-options" rel="next" title="Global options">
+<link href="Exit-status.html#Exit-status" rel="prev" title="Exit status">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="g_t_007e_002f_002ecvsrc"></a>
+<div class="header">
+<p>
+Next: <a href="Global-options.html#Global-options" accesskey="n" rel="next">Global options</a>, Previous: <a href="Exit-status.html#Exit-status" accesskey="p" rel="prev">Exit status</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Default-options-and-the-_007e_002f_002ecvsrc-file"></a>
+<h3 class="appendixsec">A.3 Default options and the ~/.cvsrc file</h3>
+<a name="index-_002ecvsrc-file"></a>
+<a name="index-Option-defaults"></a>
+
+<p>There are some <code>command_options</code> that are used so
+often that you might have set up an alias or some other
+means to make sure you always specify that option.  One
+example (the one that drove the implementation of the
+<samp>.cvsrc</samp> support, actually) is that many people find the
+default output of the &lsquo;<samp>diff</samp>&rsquo; command to be very
+hard to read, and that either context diffs or unidiffs
+are much easier to understand.
+</p>
+<p>The <samp>~/.cvsrc</samp> file is a way that you can add
+default options to <code>cvs_commands</code> within cvs,
+instead of relying on aliases or other shell scripts.
+</p>
+<p>The format of the <samp>~/.cvsrc</samp> file is simple.  The
+file is searched for a line that begins with the same
+name as the <code>cvs_command</code> being executed.  If a
+match is found, then the remainder of the line is split
+up (at whitespace characters) into separate options and
+added to the command arguments <em>before</em> any
+options from the command line.
+</p>
+<p>If a command has two names (e.g., <code>checkout</code> and
+<code>co</code>), the official name, not necessarily the one
+used on the command line, will be used to match against
+the file.  So if this is the contents of the user&rsquo;s
+<samp>~/.cvsrc</samp> file:
+</p>
+<div class="example">
+<pre class="example">log -N
+diff -uN
+rdiff -u
+update -Pd
+checkout -P
+release -d
+</pre></div>
+
+<p>the command &lsquo;<samp>cvs checkout foo</samp>&rsquo; would have the
+&lsquo;<samp>-P</samp>&rsquo; option added to the arguments, as well as
+&lsquo;<samp>cvs co foo</samp>&rsquo;.
+</p>
+<p>With the example file above, the output from &lsquo;<samp>cvs
+diff foobar</samp>&rsquo; will be in unidiff format.  &lsquo;<samp>cvs diff
+-c foobar</samp>&rsquo; will provide context diffs, as usual.
+Getting &quot;old&quot; format diffs would be slightly more
+complicated, because <code>diff</code> doesn&rsquo;t have an option
+to specify use of the &quot;old&quot; format, so you would need
+&lsquo;<samp>cvs -f diff foobar</samp>&rsquo;.
+</p>
+<p>In place of the command name you can use <code>cvs</code> to
+specify global options (see <a href="Global-options.html#Global-options">Global options</a>).  For
+example the following line in <samp>.cvsrc</samp>
+</p>
+<div class="example">
+<pre class="example">cvs -z6
+</pre></div>
+
+<p>causes <small>CVS</small> to use compression level 6.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Global-options.html#Global-options" accesskey="n" rel="next">Global options</a>, Previous: <a href="Exit-status.html#Exit-status" accesskey="p" rel="prev">Exit status</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

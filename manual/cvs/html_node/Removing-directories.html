@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Removing directories</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Removing directories">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Removing directories">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Adding-and-removing.html#Adding-and-removing" rel="up" title="Adding and removing">
+<link href="Moving-files.html#Moving-files" rel="next" title="Moving files">
+<link href="Removing-files.html#Removing-files" rel="prev" title="Removing files">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Removing-directories"></a>
+<div class="header">
+<p>
+Next: <a href="Moving-files.html#Moving-files" accesskey="n" rel="next">Moving files</a>, Previous: <a href="Removing-files.html#Removing-files" accesskey="p" rel="prev">Removing files</a>, Up: <a href="Adding-and-removing.html#Adding-and-removing" accesskey="u" rel="up">Adding and removing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Removing-directories-1"></a>
+<h3 class="section">7.3 Removing directories</h3>
+<a name="index-Removing-directories"></a>
+<a name="index-Directories_002c-removing"></a>
+
+<p>In concept, removing directories is somewhat similar to
+removing files&mdash;you want the directory to not exist in
+your current working directories, but you also want to
+be able to retrieve old releases in which the directory
+existed.
+</p>
+<p>The way that you remove a directory is to remove all
+the files in it.  You don&rsquo;t remove the directory
+itself; there is no way to do that.
+Instead you specify the &lsquo;<samp>-P</samp>&rsquo; option to
+<code>cvs update</code> or <code>cvs checkout</code>,
+which will cause <small>CVS</small> to remove empty
+directories from working directories.
+(Note that <code>cvs export</code> always removes empty directories.)
+Probably the
+best way to do this is to always specify &lsquo;<samp>-P</samp>&rsquo;; if
+you want an empty directory then put a dummy file (for
+example <samp>.keepme</samp>) in it to prevent &lsquo;<samp>-P</samp>&rsquo; from
+removing it.
+</p>
+<p>Note that &lsquo;<samp>-P</samp>&rsquo; is implied by the &lsquo;<samp>-r</samp>&rsquo; or &lsquo;<samp>-D</samp>&rsquo;
+options of <code>checkout</code>.  This way,
+<small>CVS</small> will be able to correctly create the directory
+or not depending on whether the particular version you
+are checking out contains any files in that directory.
+</p>
+
+
+
+</body>
+</html>

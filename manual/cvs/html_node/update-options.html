@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: update options</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: update options">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: update options">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="update.html#update" rel="up" title="update">
+<link href="update-output.html#update-output" rel="next" title="update output">
+<link href="update.html#update" rel="prev" title="update">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="update-options"></a>
+<div class="header">
+<p>
+Next: <a href="update-output.html#update-output" accesskey="n" rel="next">update output</a>, Up: <a href="update.html#update" accesskey="u" rel="up">update</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="update-options-1"></a>
+<h4 class="appendixsubsec">A.19.1 update options</h4>
+
+<p>These standard options are available with <code>update</code>
+(see <a href="Common-options.html#Common-options">Common options</a> for a complete description of
+them):
+</p>
+<dl compact="compact">
+<dt><code>-D date</code></dt>
+<dd><p>Use the most recent revision no later than <var>date</var>.
+This option is sticky, and implies &lsquo;<samp>-P</samp>&rsquo;.
+See <a href="Sticky-tags.html#Sticky-tags">Sticky tags</a> for more information on sticky tags/dates.
+</p>
+</dd>
+<dt><code>-f</code></dt>
+<dd><p>Only useful with the &lsquo;<samp>-D <var>date</var></samp>&rsquo; or &lsquo;<samp>-r
+<var>tag</var></samp>&rsquo; flags.  If no matching revision is found,
+retrieve the most recent revision (instead of ignoring
+the file).
+</p>
+</dd>
+<dt><code>-k <var>kflag</var></code></dt>
+<dd><p>Process keywords according to <var>kflag</var>.  See
+<a href="Keyword-substitution.html#Keyword-substitution">Keyword substitution</a>.
+This option is sticky; future updates of
+this file in this working directory will use the same
+<var>kflag</var>.  The <code>status</code> command can be viewed
+to see the sticky options.  See <a href="Invoking-CVS.html#Invoking-CVS">Invoking CVS</a> for
+more information on the <code>status</code> command.
+</p>
+</dd>
+<dt><code>-l</code></dt>
+<dd><p>Local; run only in current working directory.  See <a href="Recursive-behavior.html#Recursive-behavior">Recursive behavior</a>.
+</p>
+</dd>
+<dt><code>-P</code></dt>
+<dd><p>Prune empty directories.  See <a href="Moving-directories.html#Moving-directories">Moving directories</a>.
+</p>
+</dd>
+<dt><code>-p</code></dt>
+<dd><p>Pipe files to the standard output.
+</p>
+</dd>
+<dt><code>-R</code></dt>
+<dd><p>Update directories recursively (default).  See <a href="Recursive-behavior.html#Recursive-behavior">Recursive behavior</a>.
+</p>
+</dd>
+<dt><code>-r rev</code></dt>
+<dd><p>Retrieve revision/tag <var>rev</var>.  This option is sticky,
+and implies &lsquo;<samp>-P</samp>&rsquo;.
+See <a href="Sticky-tags.html#Sticky-tags">Sticky tags</a>, for more information on sticky tags/dates.
+</p></dd>
+</dl>
+
+<p>These special options are also available with
+<code>update</code>.
+</p>
+<dl compact="compact">
+<dt><code>-A</code></dt>
+<dd><p>Reset any sticky tags, dates, or &lsquo;<samp>-k</samp>&rsquo; options.
+Does not reset sticky &lsquo;<samp>-k</samp>&rsquo; options on modified files.
+See <a href="Sticky-tags.html#Sticky-tags">Sticky tags</a> for more information on sticky tags/dates.
+</p>
+</dd>
+<dt><code>-C</code></dt>
+<dd><p>Overwrite locally modified files with clean copies from
+the repository (the modified file is saved in
+<samp>.#<var>file</var>.<var>revision</var></samp>, however).
+</p>
+</dd>
+<dt><code>-d</code></dt>
+<dd><p>Create any directories that exist in the repository if
+they&rsquo;re missing from the working directory.  Normally,
+<code>update</code> acts only on directories and files that
+were already enrolled in your working directory.
+</p>
+<p>This is useful for updating directories that were
+created in the repository since the initial checkout;
+but it has an unfortunate side effect.  If you
+deliberately avoided certain directories in the
+repository when you created your working directory
+(either through use of a module name or by listing
+explicitly the files and directories you wanted on the
+command line), then updating with &lsquo;<samp>-d</samp>&rsquo; will create
+those directories, which may not be what you want.
+</p>
+</dd>
+<dt><code>-I <var>name</var></code></dt>
+<dd><p>Ignore files whose names match <var>name</var> (in your
+working directory) during the update.  You can specify
+&lsquo;<samp>-I</samp>&rsquo; more than once on the command line to specify
+several files to ignore.  Use &lsquo;<samp>-I !</samp>&rsquo; to avoid
+ignoring any files at all.  See <a href="cvsignore.html#cvsignore">cvsignore</a> for other
+ways to make <small>CVS</small> ignore some files.
+</p>
+</dd>
+<dt><code>-W<var>spec</var></code></dt>
+<dd><p>Specify file names that should be filtered during
+update.  You can use this option repeatedly.
+</p>
+<p><var>spec</var> can be a file name pattern of the same type
+that you can specify in the <samp>.cvswrappers</samp>
+file.  See <a href="Wrappers.html#Wrappers">Wrappers</a>.
+</p>
+</dd>
+<dt><code>-j<var>revision</var></code></dt>
+<dd><p>With two &lsquo;<samp>-j</samp>&rsquo; options, merge changes from the
+revision specified with the first &lsquo;<samp>-j</samp>&rsquo; option to
+the revision specified with the second &lsquo;<samp>j</samp>&rsquo; option,
+into the working directory.
+</p>
+<p>With one &lsquo;<samp>-j</samp>&rsquo; option, merge changes from the
+ancestor revision to the revision specified with the
+&lsquo;<samp>-j</samp>&rsquo; option, into the working directory.  The
+ancestor revision is the common ancestor of the
+revision which the working directory is based on, and
+the revision specified in the &lsquo;<samp>-j</samp>&rsquo; option.
+</p>
+<p>Note that using a single &lsquo;<samp>-j <var>tagname</var></samp>&rsquo; option rather than
+&lsquo;<samp>-j <var>branchname</var></samp>&rsquo; to merge changes from a branch will
+often not remove files which were removed on the branch.
+See <a href="Merging-adds-and-removals.html#Merging-adds-and-removals">Merging adds and removals</a> for more information.
+</p>
+<p>In addition, each &lsquo;<samp>-j</samp>&rsquo; option can contain an optional
+date specification which, when used with branches, can
+limit the chosen revision to one within a specific
+date.  An optional date is specified by adding a colon
+(:) to the tag:
+&lsquo;<samp>-j<var>Symbolic_Tag</var>:<var>Date_Specifier</var></samp>&rsquo;.
+</p>
+<p>See <a href="Branching-and-merging.html#Branching-and-merging">Branching and merging</a>.
+</p>
+</dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="update-output.html#update-output" accesskey="n" rel="next">update output</a>, Up: <a href="update.html#update" accesskey="u" rel="up">update</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

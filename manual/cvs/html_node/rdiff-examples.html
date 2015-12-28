@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: rdiff examples</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: rdiff examples">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: rdiff examples">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="rdiff.html#rdiff" rel="up" title="rdiff">
+<link href="release.html#release" rel="next" title="release">
+<link href="rdiff-options.html#rdiff-options" rel="prev" title="rdiff options">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="rdiff-examples"></a>
+<div class="header">
+<p>
+Previous: <a href="rdiff-options.html#rdiff-options" accesskey="p" rel="prev">rdiff options</a>, Up: <a href="rdiff.html#rdiff" accesskey="u" rel="up">rdiff</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="rdiff-examples-1"></a>
+<h4 class="appendixsubsec">A.16.2 rdiff examples</h4>
+
+<p>Suppose you receive mail from <tt>foo@example.net</tt> asking for an
+update from release 1.2 to 1.4 of the tc compiler.  You
+have no such patches on hand, but with <small>CVS</small> that can
+easily be fixed with a command such as this:
+</p>
+<div class="example">
+<pre class="example">$ cvs rdiff -c -r FOO1_2 -r FOO1_4 tc | \
+&gt; Mail -s 'The patches you asked for' foo@example.net
+</pre></div>
+
+<p>Suppose you have made release 1.3, and forked a branch
+called &lsquo;<samp>R_1_3fix</samp>&rsquo; for bug fixes.  &lsquo;<samp>R_1_3_1</samp>&rsquo;
+corresponds to release 1.3.1, which was made some time
+ago.  Now, you want to see how much development has been
+done on the branch.  This command can be used:
+</p>
+<div class="example">
+<pre class="example">$ cvs patch -s -r R_1_3_1 -r R_1_3fix module-name
+cvs rdiff: Diffing module-name
+File ChangeLog,v changed from revision 1.52.2.5 to 1.52.2.6
+File foo.c,v changed from revision 1.52.2.3 to 1.52.2.4
+File bar.h,v changed from revision 1.29.2.1 to 1.2
+</pre></div>
+
+
+
+
+</body>
+</html>

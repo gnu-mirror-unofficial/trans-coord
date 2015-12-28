@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Trigger Scripts</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Trigger Scripts">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Trigger Scripts">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Administrative-files.html#Administrative-files" rel="up" title="Administrative files">
+<link href="syntax.html#syntax" rel="next" title="syntax">
+<link href="Wrappers.html#Wrappers" rel="prev" title="Wrappers">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Trigger-Scripts"></a>
+<div class="header">
+<p>
+Next: <a href="commit-files.html#commit-files" accesskey="n" rel="next">commit files</a>, Previous: <a href="Wrappers.html#Wrappers" accesskey="p" rel="prev">Wrappers</a>, Up: <a href="Administrative-files.html#Administrative-files" accesskey="u" rel="up">Administrative files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-Trigger-Scripts"></a>
+<h3 class="appendixsec">C.3 The Trigger Scripts</h3>
+<a name="index-Info-files"></a>
+<a name="index-Trigger-scripts"></a>
+
+<p>Several of the administrative files support triggers, or the launching external
+scripts or programs at specific times before or after particular events.  The
+individual files are discussed in the later sections, <a href="commit-files.html#commit-files">commit files</a> and
+<a href="taginfo.html#taginfo">taginfo</a>, but some of the common elements are discussed here.
+</p>
+<p>All the trigger scripts are launched in a copy of the user sandbox being
+committed, on the server, in client-server mode.  In local mode, the scripts
+are actually launched directly from the user sandbox directory being committed.
+For most intents and purposes, the same scripts can be run in both locations
+without alteration.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="syntax.html#syntax" accesskey="1">syntax</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The common syntax
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Trigger-Script-Security.html#Trigger-Script-Security" accesskey="2">Trigger Script Security</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Trigger script security
+</td></tr>
+</table>
+
+
+
+
+</body>
+</html>

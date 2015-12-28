@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Update imports</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Update imports">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Update imports">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Tracking-sources.html#Tracking-sources" rel="up" title="Tracking sources">
+<link href="Reverting-local-changes.html#Reverting-local-changes" rel="next" title="Reverting local changes">
+<link href="First-import.html#First-import" rel="prev" title="First import">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Update-imports"></a>
+<div class="header">
+<p>
+Next: <a href="Reverting-local-changes.html#Reverting-local-changes" accesskey="n" rel="next">Reverting local changes</a>, Previous: <a href="First-import.html#First-import" accesskey="p" rel="prev">First import</a>, Up: <a href="Tracking-sources.html#Tracking-sources" accesskey="u" rel="up">Tracking sources</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Updating-with-the-import-command"></a>
+<h3 class="section">13.2 Updating with the import command</h3>
+
+<p>When a new release of the source arrives, you import it into the
+repository with the same <code>import</code> command that you used to set up
+the repository in the first place.  The only difference is that you
+specify a different release tag this time:
+</p>
+<div class="example">
+<pre class="example">$ tar xfz wdiff-0.05.tar.gz
+$ cd wdiff-0.05
+$ cvs import -m &quot;Import of FSF v. 0.05&quot; fsf/wdiff FSF_DIST WDIFF_0_05
+</pre></div>
+
+<p><strong>WARNING:  If you use a release tag that already exists in one of the
+repository archives, files removed by an import may not be detected.</strong>
+</p>
+<p>For files that have not been modified locally, the newly created
+revision becomes the head revision.  If you have made local
+changes, <code>import</code> will warn you that you must merge the changes
+into the main trunk, and tell you to use &lsquo;<samp>checkout -j</samp>&rsquo; to do so:
+</p>
+<div class="example">
+<pre class="example">$ cvs checkout -jFSF_DIST:yesterday -jFSF_DIST wdiff
+</pre></div>
+
+<p>The above command will check out the latest revision of
+&lsquo;<samp>wdiff</samp>&rsquo;, merging the changes made on the vendor branch &lsquo;<samp>FSF_DIST</samp>&rsquo;
+since yesterday into the working copy.  If any conflicts arise during
+the merge they should be resolved in the normal way (see <a href="Conflicts-example.html#Conflicts-example">Conflicts example</a>).  Then, the modified files may be committed.
+</p>
+<p>However, it is much better to use the two release tags rather than using
+a date on the branch as suggested above:
+</p>
+<div class="example">
+<pre class="example">$ cvs checkout -jWDIFF_0_04 -jWDIFF_0_05 wdiff
+</pre></div>
+
+<p>The reason this is better is that
+using a date, as suggested above, assumes that you do
+not import more than one release of a product per day.
+More importantly, using the release tags allows <small>CVS</small> to detect files
+that were removed between the two vendor releases and mark them for
+removal.  Since <code>import</code> has no way to detect removed files, you
+should do a merge like this even if <code>import</code> doesn&rsquo;t tell you to.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Reverting-local-changes.html#Reverting-local-changes" accesskey="n" rel="next">Reverting local changes</a>, Previous: <a href="First-import.html#First-import" accesskey="p" rel="prev">First import</a>, Up: <a href="Tracking-sources.html#Tracking-sources" accesskey="u" rel="up">Tracking sources</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Substitution modes</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Substitution modes">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Substitution modes">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Keyword-substitution.html#Keyword-substitution" rel="up" title="Keyword substitution">
+<link href="Log-keyword.html#Log-keyword" rel="next" title="Log keyword">
+<link href="Avoiding-substitution.html#Avoiding-substitution" rel="prev" title="Avoiding substitution">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Substitution-modes"></a>
+<div class="header">
+<p>
+Next: <a href="Log-keyword.html#Log-keyword" accesskey="n" rel="next">Log keyword</a>, Previous: <a href="Avoiding-substitution.html#Avoiding-substitution" accesskey="p" rel="prev">Avoiding substitution</a>, Up: <a href="Keyword-substitution.html#Keyword-substitution" accesskey="u" rel="up">Keyword substitution</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Substitution-modes-1"></a>
+<h3 class="section">12.4 Substitution modes</h3>
+<a name="index-Keyword-substitution_002c-changing-modes"></a>
+<a name="index-_002dk-_0028keyword-substitution_0029"></a>
+<a name="index-Kflag"></a>
+
+<p>Each file has a stored default substitution mode, and
+each working directory copy of a file also has a
+substitution mode.  The former is set by the &lsquo;<samp>-k</samp>&rsquo;
+option to <code>cvs add</code> and <code>cvs admin</code>; the
+latter is set by the &lsquo;<samp>-k</samp>&rsquo; or &lsquo;<samp>-A</samp>&rsquo; options to <code>cvs
+checkout</code> or <code>cvs update</code>.
+<code>cvs diff</code> and <code>cvs rdiff</code> also
+have &lsquo;<samp>-k</samp>&rsquo; options.
+For some examples,
+see <a href="Binary-files.html#Binary-files">Binary files</a>, and <a href="Merging-and-keywords.html#Merging-and-keywords">Merging and keywords</a>.
+</p>
+<p>The modes available are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>-kkv</samp>&rsquo;</dt>
+<dd><p>Generate keyword strings using the default form, e.g.
+<code>$<i></i>Revision: 5.7 $</code> for the <code>Revision</code>
+keyword.
+</p>
+</dd>
+<dt>&lsquo;<samp>-kkvl</samp>&rsquo;</dt>
+<dd><p>Like &lsquo;<samp>-kkv</samp>&rsquo;, except that a locker&rsquo;s name is always
+inserted if the given revision is currently locked.
+The locker&rsquo;s name is only relevant if <code>cvs admin
+-l</code> is in use.
+</p>
+</dd>
+<dt>&lsquo;<samp>-kk</samp>&rsquo;</dt>
+<dd><p>Generate only keyword names in keyword strings; omit
+their values.  For example, for the <code>Revision</code>
+keyword, generate the string <code>$<i></i>Revision$</code>
+instead of <code>$<i></i>Revision: 5.7 $</code>.  This option
+is useful to ignore differences due to keyword
+substitution when comparing different revisions of a
+file (see <a href="Merging-and-keywords.html#Merging-and-keywords">Merging and keywords</a>).
+</p>
+</dd>
+<dt>&lsquo;<samp>-ko</samp>&rsquo;</dt>
+<dd><p>Generate the old keyword string, present in the working
+file just before it was checked in.  For example, for
+the <code>Revision</code> keyword, generate the string
+<code>$<i></i>Revision: 1.1 $</code> instead of
+<code>$<i></i>Revision: 5.7 $</code> if that is how the
+string appeared when the file was checked in.
+</p>
+</dd>
+<dt>&lsquo;<samp>-kb</samp>&rsquo;</dt>
+<dd><p>Like &lsquo;<samp>-ko</samp>&rsquo;, but also inhibit conversion of line
+endings between the canonical form in which they are
+stored in the repository (linefeed only), and the form
+appropriate to the operating system in use on the
+client.  For systems, like unix, which use linefeed
+only to terminate lines, this is the same as
+&lsquo;<samp>-ko</samp>&rsquo;.  For more information on binary files, see
+<a href="Binary-files.html#Binary-files">Binary files</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp>-kv</samp>&rsquo;</dt>
+<dd><p>Generate only keyword values for keyword strings.  For
+example, for the <code>Revision</code> keyword, generate the string
+<code>5.7</code> instead of <code>$<i></i>Revision: 5.7 $</code>.
+This can help generate files in programming languages
+where it is hard to strip keyword delimiters like
+<code>$<i></i>Revision: $</code> from a string.  However,
+further keyword substitution cannot be performed once
+the keyword names are removed, so this option should be
+used with care.
+</p>
+<p>One often would like to use &lsquo;<samp>-kv</samp>&rsquo; with <code>cvs
+export</code>&mdash;see <a href="export.html#export">export</a>.  But be aware that doesn&rsquo;t
+handle an export containing binary files correctly.
+</p>
+</dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Log-keyword.html#Log-keyword" accesskey="n" rel="next">Log keyword</a>, Previous: <a href="Avoiding-substitution.html#Avoiding-substitution" accesskey="p" rel="prev">Avoiding substitution</a>, Up: <a href="Keyword-substitution.html#Keyword-substitution" accesskey="u" rel="up">Keyword substitution</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: verifymsg</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: verifymsg">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: verifymsg">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="commit-files.html#commit-files" rel="up" title="commit files">
+<link href="editinfo.html#editinfo" rel="next" title="editinfo">
+<link href="commitinfo.html#commitinfo" rel="prev" title="commitinfo">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="verifymsg"></a>
+<div class="header">
+<p>
+Next: <a href="editinfo.html#editinfo" accesskey="n" rel="next">editinfo</a>, Previous: <a href="commitinfo.html#commitinfo" accesskey="p" rel="prev">commitinfo</a>, Up: <a href="commit-files.html#commit-files" accesskey="u" rel="up">commit files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Verifying-log-messages"></a>
+<h4 class="appendixsubsec">C.4.2 Verifying log messages</h4>
+<a name="index-verifymsg-_0028admin-file_0029"></a>
+<a name="index-Log-message_002c-verifying"></a>
+
+<p>Once you have entered a log message, you can evaluate
+that message to check for specific content, such as
+a bug ID.  Use the <samp>verifymsg</samp> file to
+specify a program that is used to verify the log message.
+This program could be a simple script that checks
+that the entered message contains the required fields.
+</p>
+<p>The <samp>verifymsg</samp> file is often most useful together
+with the <samp>rcsinfo</samp> file, which can be used to
+specify a log message template.
+</p>
+<p>Each line in the <samp>verifymsg</samp> file consists of a
+regular expression and a command-line template.  The
+template must include a program name, and can include
+any number of arguments.  The full path to the current
+log message template file is appended to the template.
+</p>
+<p>One thing that should be noted is that the &lsquo;<samp>ALL</samp>&rsquo;
+keyword is not supported.  If more than one matching
+line is found, the first one is used.  This can be
+useful for specifying a default verification script in a
+directory, and then overriding it in a subdirectory.
+</p>
+<a name="index-DEFAULT-in-verifymsg"></a>
+<p>If the repository name does not match any of the
+regular expressions in this file, the &lsquo;<samp>DEFAULT</samp>&rsquo;
+line is used, if it is specified.
+</p>
+<a name="index-Exit-status_002c-of-verifymsg"></a>
+<p>If the verification script exits with a non-zero exit status,
+the commit is aborted.
+</p>
+<a name="index-verifymsg_002c-changing-the-log-message"></a>
+<p>In the default configuration, CVS allows the
+verification script to change the log message. This is
+controlled via the RereadLogAfterVerify CVSROOT/config
+option.
+</p>
+<p>When &lsquo;<samp>RereadLogAfterVerify=always</samp>&rsquo; or
+&lsquo;<samp>RereadLogAfterVerify=stat</samp>&rsquo;, the log message will
+either always be reread after the verification script
+is run or reread only if the log message file status
+has changed.
+</p>
+<p>See <a href="config.html#config">config</a>, for more on CVSROOT/config options.
+</p>
+<p>It is NOT a good idea for a <samp>verifymsg</samp> script to
+interact directly with the user in the various
+client/server methods. For the <code>pserver</code> method,
+there is no protocol support for communicating between
+<samp>verifymsg</samp> and the client on the remote end. For the
+<code>ext</code> and <code>server</code> methods, it is possible
+for CVS to become confused by the characters going
+along the same channel as the CVS protocol
+messages. See <a href="Remote-repositories.html#Remote-repositories">Remote repositories</a>, for more
+information on client/server setups.  In addition, at the time
+the <samp>verifymsg</samp> script runs, the CVS
+server has locks in place in the repository.  If control is
+returned to the user here then other users may be stuck waiting
+for access to the repository.
+</p>
+<p>This option can be useful if you find yourself using an
+rcstemplate that needs to be modified to remove empty
+elements or to fill in default values.  It can also be
+useful if the rcstemplate has changed in the repository
+and the CVS/Template was not updated, but is able to be
+adapted to the new format by the verification script
+that is run by <samp>verifymsg</samp>.
+</p>
+<p>An example of an update might be to change all
+occurrences of &rsquo;BugId:&rsquo; to be &rsquo;DefectId:&rsquo; (which can be
+useful if the rcstemplate has recently been changed and
+there are still checked-out user trees with cached
+copies in the CVS/Template file of the older version).
+</p>
+<p>Another example of an update might be to delete a line
+that contains &rsquo;BugID: none&rsquo; from the log message after
+validation of that value as being allowed is made.
+</p>
+<p>The following is a little silly example of a
+<samp>verifymsg</samp> file, together with the corresponding
+<samp>rcsinfo</samp> file, the log message template and an
+verification  script.  We begin with the log message template.
+We want to always record a bug-id number on the first
+line of the log message.  The rest of log message is
+free text.  The following template is found in the file
+<samp>/usr/cvssupport/tc.template</samp>.
+</p>
+<div class="example">
+<pre class="example">BugId:
+</pre></div>
+
+<p>The script <samp>/usr/cvssupport/bugid.verify</samp> is used to
+evaluate the log message.
+</p>
+<div class="example">
+<pre class="example">#!/bin/sh
+#
+#       bugid.verify filename
+#
+#  Verify that the log message contains a valid bugid
+#  on the first line.
+#
+if sed 1q &lt; $1 | grep '^BugId:[ ]*[0-9][0-9]*$' &gt; /dev/null; then
+    exit 0
+elif sed 1q &lt; $1 | grep '^BugId:[ ]*none$' &gt; /dev/null; then
+    # It is okay to allow commits with 'BugId: none',
+    # but do not put that text into the real log message.
+    grep -v '^BugId:[ ]*none$' &gt; $1.rewrite
+    mv $1.rewrite $1
+    exit 0
+else
+    echo &quot;No BugId found.&quot;
+    exit 1
+fi
+</pre></div>
+
+<p>The <samp>verifymsg</samp> file contains this line:
+</p>
+<div class="example">
+<pre class="example">^tc     /usr/cvssupport/bugid.verify
+</pre></div>
+
+<p>The <samp>rcsinfo</samp> file contains this line:
+</p>
+<div class="example">
+<pre class="example">^tc     /usr/cvssupport/tc.template
+</pre></div>
+
+<p>The <samp>config</samp> file contains this line:
+</p>
+<div class="example">
+<pre class="example">RereadLogAfterVerify=always
+</pre></div>
+
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="editinfo.html#editinfo" accesskey="n" rel="next">editinfo</a>, Previous: <a href="commitinfo.html#commitinfo" accesskey="p" rel="prev">commitinfo</a>, Up: <a href="commit-files.html#commit-files" accesskey="u" rel="up">commit files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

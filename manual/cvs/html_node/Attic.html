@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Attic</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Attic">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Attic">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository-storage.html#Repository-storage" rel="up" title="Repository storage">
+<link href="CVS-in-repository.html#CVS-in-repository" rel="next" title="CVS in repository">
+<link href="Windows-permissions.html#Windows-permissions" rel="prev" title="Windows permissions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Attic"></a>
+<div class="header">
+<p>
+Next: <a href="CVS-in-repository.html#CVS-in-repository" accesskey="n" rel="next">CVS in repository</a>, Previous: <a href="Windows-permissions.html#Windows-permissions" accesskey="p" rel="prev">Windows permissions</a>, Up: <a href="Repository-storage.html#Repository-storage" accesskey="u" rel="up">Repository storage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-attic"></a>
+<h4 class="subsection">2.2.4 The attic</h4>
+<a name="index-Attic"></a>
+
+<p>You will notice that sometimes <small>CVS</small> stores an
+<small>RCS</small> file in the <code>Attic</code>.  For example, if the
+<small>CVSROOT</small> is <samp>/usr/local/cvsroot</samp> and we are
+talking about the file <samp>backend.c</samp> in the
+directory <samp>yoyodyne/tc</samp>, then the file normally
+would be in
+</p>
+<div class="example">
+<pre class="example">/usr/local/cvsroot/yoyodyne/tc/backend.c,v
+</pre></div>
+
+<p>but if it goes in the attic, it would be in
+</p>
+<div class="example">
+<pre class="example">/usr/local/cvsroot/yoyodyne/tc/Attic/backend.c,v
+</pre></div>
+
+<a name="index-Dead-state"></a>
+<p>instead.  It should not matter from a user point of
+view whether a file is in the attic; <small>CVS</small> keeps
+track of this and looks in the attic when it needs to.
+But in case you want to know, the rule is that the RCS
+file is stored in the attic if and only if the head
+revision on the trunk has state <code>dead</code>.  A
+<code>dead</code> state means that file has been removed, or
+never added, for that revision.  For example, if you
+add a file on a branch, it will have a trunk revision
+in <code>dead</code> state, and a branch revision in a
+non-<code>dead</code> state.
+</p>
+
+
+
+</body>
+</html>

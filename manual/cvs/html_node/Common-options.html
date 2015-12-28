@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Common options</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Common options">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Common options">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="CVS-commands.html#CVS-commands" rel="up" title="CVS commands">
+<link href="add.html#add" rel="next" title="add">
+<link href="Global-options.html#Global-options" rel="prev" title="Global options">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Common-options"></a>
+<div class="header">
+<p>
+Next: <a href="add.html#add" accesskey="n" rel="next">add</a>, Previous: <a href="Global-options.html#Global-options" accesskey="p" rel="prev">Global options</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Common-command-options"></a>
+<h3 class="appendixsec">A.5 Common command options</h3>
+<a name="index-Common-options"></a>
+<a name="index-Right_002dhand-options"></a>
+
+<p>This section describes the &lsquo;<samp>command_options</samp>&rsquo; that
+are available across several <small>CVS</small> commands.  These
+options are always given to the right of
+&lsquo;<samp>cvs_command</samp>&rsquo;. Not all
+commands support all of these options; each option is
+only supported for commands where it makes sense.
+However, when a command has one of these options you
+can almost always count on the same behavior of the
+option as in other commands.  (Other command options,
+which are listed with the individual commands, may have
+different behavior from one <small>CVS</small> command to the other).
+</p>
+<p><strong>The &lsquo;<samp>history</samp>&rsquo; command is an exception; it supports
+many options that conflict even with these standard options.</strong>
+</p>
+<dl compact="compact">
+<dd><a name="index-Dates"></a>
+<a name="index-Time"></a>
+<a name="index-Specifying-dates"></a>
+</dd>
+<dt><code>-D <var>date_spec</var></code></dt>
+<dd><p>Use the most recent revision no later than <var>date_spec</var>.
+<var>date_spec</var> is a single argument, a date description
+specifying a date in the past.
+</p>
+<p>The specification is <em>sticky</em> when you use it to make a
+private copy of a source file; that is, when you get a working
+file using &lsquo;<samp>-D</samp>&rsquo;, <small>CVS</small> records the date you specified, so that
+further updates in the same directory will use the same date
+(for more information on sticky tags/dates, see <a href="Sticky-tags.html#Sticky-tags">Sticky tags</a>).
+</p>
+<p>&lsquo;<samp>-D</samp>&rsquo; is available with the <code>annotate</code>, <code>checkout</code>,
+<code>diff</code>, <code>export</code>, <code>history</code>,
+<code>rdiff</code>, <code>rtag</code>, and <code>update</code> commands.
+(The <code>history</code> command uses this option in a
+slightly different way; see <a href="history-options.html#history-options">history options</a>).
+</p>
+
+<a name="index-Timezone_002c-in-input"></a>
+<a name="index-Zone_002c-time_002c-in-input"></a>
+<p>A wide variety of date formats are supported by
+<small>CVS</small>.  The most standard ones are ISO8601 (from the
+International Standards Organization) and the Internet
+e-mail standard (specified in RFC822 as amended by
+RFC1123).
+</p>
+<p>ISO8601 dates have many variants but a few examples
+are:
+</p>
+<div class="example">
+<pre class="example">1972-09-24
+1972-09-24 20:05
+</pre></div>
+
+<p>There are a lot more ISO8601 date formats, and <small>CVS</small>
+accepts many of them, but you probably don&rsquo;t want to
+hear the <em>whole</em> long story :-).
+</p>
+
+<p>In addition to the dates allowed in Internet e-mail
+itself, <small>CVS</small> also allows some of the fields to be
+omitted.  For example:
+</p>
+<div class="example">
+<pre class="example">24 Sep 1972 20:05
+24 Sep
+</pre></div>
+
+<p>The date is interpreted as being in the
+local timezone, unless a specific timezone is
+specified.
+</p>
+<p>These two date formats are preferred.  However,
+<small>CVS</small> currently accepts a wide variety of other date
+formats.  They are intentionally not documented here in
+any detail, and future versions of <small>CVS</small> might not
+accept all of them.
+</p>
+<p>One such format is
+<code><var>month</var>/<var>day</var>/<var>year</var></code>.  This may
+confuse people who are accustomed to having the month
+and day in the other order; &lsquo;<samp>1/4/96</samp>&rsquo; is January 4,
+not April 1.
+</p>
+<p>Remember to quote the argument to the &lsquo;<samp>-D</samp>&rsquo;
+flag so that your shell doesn&rsquo;t interpret spaces as
+argument separators.  A command using the &lsquo;<samp>-D</samp>&rsquo;
+flag can look like this:
+</p>
+<div class="example">
+<pre class="example">$ cvs diff -D &quot;1 hour ago&quot; cvs.texinfo
+</pre></div>
+
+<a name="index-Forcing-a-tag-match"></a>
+</dd>
+<dt><code>-f</code></dt>
+<dd><p>When you specify a particular date or tag to <small>CVS</small> commands, they
+normally ignore files that do not contain the tag (or did not
+exist prior to the date) that you specified.  Use the &lsquo;<samp>-f</samp>&rsquo; option
+if you want files retrieved even when there is no match for the
+tag or date.  (The most recent revision of the file
+will be used).
+</p>
+<p>Note that even with &lsquo;<samp>-f</samp>&rsquo;, a tag that you specify
+must exist (that is, in some file, not necessary in
+every file).  This is so that <small>CVS</small> will continue to
+give an error if you mistype a tag name.
+</p>
+<p>&lsquo;<samp>-f</samp>&rsquo; is available with these commands:
+<code>annotate</code>, <code>checkout</code>, <code>export</code>,
+<code>rdiff</code>, <code>rtag</code>, and <code>update</code>.
+</p>
+<p><strong>WARNING:  The <code>commit</code> and <code>remove</code>
+commands also have a
+&lsquo;<samp>-f</samp>&rsquo; option, but it has a different behavior for
+those commands.  See <a href="commit-options.html#commit-options">commit options</a>, and
+<a href="Removing-files.html#Removing-files">Removing files</a>.</strong>
+</p>
+</dd>
+<dt><code>-k <var>kflag</var></code></dt>
+<dd><p>Alter the default processing of keywords.
+See <a href="Keyword-substitution.html#Keyword-substitution">Keyword substitution</a>, for the meaning of
+<var>kflag</var>.  Your <var>kflag</var> specification is
+<em>sticky</em> when you use it to create a private copy
+of a source file; that is, when you use this option
+with the <code>checkout</code> or <code>update</code> commands,
+<small>CVS</small> associates your selected <var>kflag</var> with the
+file, and continues to use it with future update
+commands on the same file until you specify otherwise.
+</p>
+<p>The &lsquo;<samp>-k</samp>&rsquo; option is available with the <code>add</code>,
+<code>checkout</code>, <code>diff</code>, <code>rdiff</code>, <code>import</code> and
+<code>update</code> commands.
+</p>
+</dd>
+<dt><code>-l</code></dt>
+<dd><p>Local; run only in current working directory, rather than
+recursing through subdirectories.
+</p>
+<p>Available with the following commands: <code>annotate</code>, <code>checkout</code>,
+<code>commit</code>, <code>diff</code>, <code>edit</code>, <code>editors</code>, <code>export</code>,
+<code>log</code>, <code>rdiff</code>, <code>remove</code>, <code>rtag</code>,
+<code>status</code>, <code>tag</code>, <code>unedit</code>, <code>update</code>, <code>watch</code>,
+and <code>watchers</code>.
+</p>
+<a name="index-Editor_002c-avoiding-invocation-of"></a>
+<a name="index-Avoiding-editor-invocation"></a>
+</dd>
+<dt><code>-m <var>message</var></code></dt>
+<dd><p>Use <var>message</var> as log information, instead of
+invoking an editor.
+</p>
+<p>Available with the following commands: <code>add</code>,
+<code>commit</code> and <code>import</code>.
+</p>
+</dd>
+<dt><code>-n</code></dt>
+<dd><p>Do not run any tag program.  (A program can be
+specified to run in the modules
+database (see <a href="modules.html#modules">modules</a>); this option bypasses it).
+</p>
+<p><strong>This is not the same as the &lsquo;<samp>cvs -n</samp>&rsquo;
+program option, which you can specify to the left of a cvs command!</strong>
+</p>
+<p>Available with the <code>checkout</code>, <code>export</code>,
+and <code>rtag</code> commands.
+</p>
+</dd>
+<dt><code>-P</code></dt>
+<dd><p>Prune empty directories.  See <a href="Removing-directories.html#Removing-directories">Removing directories</a>.
+</p>
+</dd>
+<dt><code>-p</code></dt>
+<dd><p>Pipe the files retrieved from the repository to standard output,
+rather than writing them in the current directory.  Available
+with the <code>checkout</code> and <code>update</code> commands.
+</p>
+</dd>
+<dt><code>-R</code></dt>
+<dd><p>Process directories recursively.  This is on by default.
+</p>
+<p>Available with the following commands: <code>annotate</code>, <code>checkout</code>,
+<code>commit</code>, <code>diff</code>, <code>edit</code>, <code>editors</code>, <code>export</code>,
+<code>rdiff</code>, <code>remove</code>, <code>rtag</code>,
+<code>status</code>, <code>tag</code>, <code>unedit</code>, <code>update</code>, <code>watch</code>,
+and <code>watchers</code>.
+</p>
+</dd>
+<dt><code>-r <var>tag</var></code></dt>
+<dd><a name="index-HEAD_002c-special-tag"></a>
+<a name="index-BASE_002c-special-tag"></a>
+<p>Use the revision specified by the <var>tag</var> argument instead of the
+default <em>head</em> revision.  As well as arbitrary tags defined
+with the <code>tag</code> or <code>rtag</code> command, two special tags are
+always available: &lsquo;<samp>HEAD</samp>&rsquo; refers to the most recent version
+available in the repository, and &lsquo;<samp>BASE</samp>&rsquo; refers to the
+revision you last checked out into the current working directory.
+</p>
+
+<p>The tag specification is sticky when you use this
+with <code>checkout</code> or <code>update</code> to make your own
+copy of a file: <small>CVS</small> remembers the tag and continues to use it on
+future update commands, until you specify otherwise (for more information
+on sticky tags/dates, see <a href="Sticky-tags.html#Sticky-tags">Sticky tags</a>).
+</p>
+<p>The tag can be either a symbolic or numeric tag, as
+described in <a href="Tags.html#Tags">Tags</a>, or the name of a branch, as
+described in <a href="Branching-and-merging.html#Branching-and-merging">Branching and merging</a>.
+When a command expects a specific revision,
+the name of a branch is interpreted as the most recent
+revision on that branch.
+</p>
+<p>Specifying the &lsquo;<samp>-q</samp>&rsquo; global option along with the
+&lsquo;<samp>-r</samp>&rsquo; command option is often useful, to suppress
+the warning messages when the <small>RCS</small> file
+does not contain the specified tag.
+</p>
+<p><strong>This is not the same as the overall &lsquo;<samp>cvs -r</samp>&rsquo; option,
+which you can specify to the left of a <small>CVS</small> command!</strong>
+</p>
+<p>&lsquo;<samp>-r</samp>&rsquo; is available with the <code>annotate</code>, <code>checkout</code>,
+<code>commit</code>, <code>diff</code>, <code>history</code>, <code>export</code>, <code>rdiff</code>, 
+<code>rtag</code>, and <code>update</code> commands.
+</p>
+</dd>
+<dt><code>-W</code></dt>
+<dd><p>Specify file names that should be filtered.  You can
+use this option repeatedly.  The spec can be a file
+name pattern of the same type that you can specify in
+the <samp>.cvswrappers</samp> file.
+Available with the following commands: <code>import</code>,
+and <code>update</code>.
+</p>
+</dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="add.html#add" accesskey="n" rel="next">add</a>, Previous: <a href="Global-options.html#Global-options" accesskey="p" rel="prev">Global options</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

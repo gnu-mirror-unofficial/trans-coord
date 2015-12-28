@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Connecting via rsh</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Connecting via rsh">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Connecting via rsh">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Remote-repositories.html#Remote-repositories" rel="up" title="Remote repositories">
+<link href="Password-authenticated.html#Password-authenticated" rel="next" title="Password authenticated">
+<link href="Server-requirements.html#Server-requirements" rel="prev" title="Server requirements">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Connecting-via-rsh"></a>
+<div class="header">
+<p>
+Next: <a href="Password-authenticated.html#Password-authenticated" accesskey="n" rel="next">Password authenticated</a>, Previous: <a href="Server-requirements.html#Server-requirements" accesskey="p" rel="prev">Server requirements</a>, Up: <a href="Remote-repositories.html#Remote-repositories" accesskey="u" rel="up">Remote repositories</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Connecting-with-rsh-or-ssh"></a>
+<h4 class="subsection">2.9.2 Connecting with rsh or ssh</h4>
+
+<a name="index-ssh"></a>
+<p><small>CVS</small> may use the &lsquo;<samp>ssh</samp>&rsquo; protocol to perform
+these operations, so the remote user host needs to have
+a either an agent like <code>ssh-agent</code> to hold
+credentials or a <samp>.shosts</samp> file which grants
+access to the local user. Note that the program that
+<small>CVS</small> uses for this purpose may be specified using
+the <samp>--with-ssh</samp> flag to configure.
+</p>
+<a name="index-rsh"></a>
+<p><small>CVS</small> uses the &lsquo;<samp>rsh</samp>&rsquo; protocol to perform these
+operations, so the remote user host needs to have a
+<samp>.rhosts</samp> file which grants access to the local
+user. Note that the program that <small>CVS</small> uses for this
+purpose may be specified using the <samp>--with-rsh</samp>
+flag to configure.
+</p>
+<p>For example, suppose you are the user &lsquo;<samp>mozart</samp>&rsquo; on
+the local machine &lsquo;<samp>toe.example.com</samp>&rsquo;, and the
+server machine is &lsquo;<samp>faun.example.org</samp>&rsquo;.  On
+faun, put the following line into the file
+<samp>.rhosts</samp> in &lsquo;<samp>bach</samp>&rsquo;&rsquo;s home directory:
+</p>
+<div class="example">
+<pre class="example">toe.example.com  mozart
+</pre></div>
+
+<p>Then test that &lsquo;<samp>rsh</samp>&rsquo; is working with
+</p>
+<div class="example">
+<pre class="example">rsh -l bach faun.example.org 'echo $PATH'
+</pre></div>
+
+<p>To test that &lsquo;<samp>ssh</samp>&rsquo; is working use
+</p>
+<div class="example">
+<pre class="example">ssh -l bach faun.example.org 'echo $PATH'
+</pre></div>
+
+<a name="index-CVS_005fSERVER_002c-environment-variable"></a>
+<p>Next you have to make sure that <code>rsh</code> will be able
+to find the server.  Make sure that the path which
+<code>rsh</code> printed in the above example includes the
+directory containing a program named <code>cvs</code> which
+is the server.  You need to set the path in
+<samp>.bashrc</samp>, <samp>.cshrc</samp>, etc., not <samp>.login</samp>
+or <samp>.profile</samp>.  Alternately, you can set the
+environment variable <code>CVS_SERVER</code> on the client
+machine to the filename of the server you want to use,
+for example <samp>/usr/local/bin/cvs-1.6</samp>.
+</p>
+<p>There is no need to edit <samp>inetd.conf</samp> or start a
+<small>CVS</small> server daemon.
+</p>
+<a name="index-_003aserver_003a_002c-setting-up"></a>
+<a name="index-_003aext_003a_002c-setting-up"></a>
+<a name="index-_003aextssh_003a_002c-setting-up"></a>
+<a name="index-Kerberos_002c-using-kerberized-rsh"></a>
+<a name="index-SSH-_0028rsh-replacement_0029"></a>
+<a name="index-rsh-replacements-_0028Kerberized_002c-SSH_002c-_0026c_0029"></a>
+<p>There are three access methods that you use in <code>CVSROOT</code>
+for rsh or ssh.  <code>:server:</code> specifies an internal rsh
+client, which is supported only by some <small>CVS</small> ports.
+<code>:extssh:</code> specifies an external ssh program. By
+default this is <code>ssh</code> (unless otherwise specified
+by the <samp>--with-ssh</samp> flag to configure) but you may set the
+<code>CVS_SSH</code> environment variable to invoke another
+program or wrapper script.
+<code>:ext:</code> specifies an external rsh program.  By
+default this is <code>rsh</code> (unless otherwise specified
+by the <samp>--with-rsh</samp> flag to configure) but you may set the
+<code>CVS_RSH</code> environment variable to invoke another
+program which can access the remote server (for
+example, <code>remsh</code> on HP-UX 9 because <code>rsh</code> is
+something different).  It must be a program which can
+transmit data to and from the server without modifying
+it; for example the Windows NT <code>rsh</code> is not
+suitable since it by default translates between CRLF
+and LF.  The OS/2 <small>CVS</small> port has a hack to pass &lsquo;<samp>-b</samp>&rsquo;
+to <code>rsh</code> to get around this, but since this could
+potentially cause problems for programs other than the
+standard <code>rsh</code>, it may change in the future.  If
+you set <code>CVS_RSH</code> to <code>SSH</code> or some other rsh
+replacement, the instructions in the rest of this
+section concerning <samp>.rhosts</samp> and so on are likely
+to be inapplicable; consult the documentation for your rsh
+replacement.
+</p>
+<p>Continuing our example, supposing you want to access
+the module <samp>foo</samp> in the repository
+<samp>/usr/local/cvsroot/</samp>, on machine
+<samp>faun.example.org</samp>, you are ready to go:
+</p>
+<div class="example">
+<pre class="example">cvs -d :ext:bach@faun.example.org:/usr/local/cvsroot checkout foo
+</pre></div>
+
+<p>(The <samp>bach@</samp> can be omitted if the username is
+the same on both the local and remote hosts.)
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Password-authenticated.html#Password-authenticated" accesskey="n" rel="next">Password authenticated</a>, Previous: <a href="Server-requirements.html#Server-requirements" accesskey="p" rel="prev">Server requirements</a>, Up: <a href="Remote-repositories.html#Remote-repositories" accesskey="u" rel="up">Remote repositories</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: File status</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: File status">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: File status">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Multiple-developers.html#Multiple-developers" rel="up" title="Multiple developers">
+<link href="Updating-a-file.html#Updating-a-file" rel="next" title="Updating a file">
+<link href="Multiple-developers.html#Multiple-developers" rel="prev" title="Multiple developers">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="File-status"></a>
+<div class="header">
+<p>
+Next: <a href="Updating-a-file.html#Updating-a-file" accesskey="n" rel="next">Updating a file</a>, Up: <a href="Multiple-developers.html#Multiple-developers" accesskey="u" rel="up">Multiple developers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="File-status-1"></a>
+<h3 class="section">10.1 File status</h3>
+<a name="index-File-status"></a>
+<a name="index-Status-of-a-file"></a>
+
+<p>Based on what operations you have performed on a
+checked out file, and what operations others have
+performed to that file in the repository, one can
+classify a file in a number of states.  The states, as
+reported by the <code>status</code> command, are:
+</p>
+<dl compact="compact">
+<dd><a name="index-Up_002dto_002ddate"></a>
+</dd>
+<dt>Up-to-date</dt>
+<dd><p>The file is identical with the latest revision in the
+repository for the branch in use.
+</p>
+</dd>
+<dt>Locally Modified</dt>
+<dd><a name="index-Locally-Modified"></a>
+<p>You have edited the file, and not yet committed your changes.
+</p>
+</dd>
+<dt>Locally Added</dt>
+<dd><a name="index-Locally-Added"></a>
+<p>You have added the file with <code>add</code>, and not yet
+committed your changes.
+</p>
+</dd>
+<dt>Locally Removed</dt>
+<dd><a name="index-Locally-Removed"></a>
+<p>You have removed the file with <code>remove</code>, and not yet
+committed your changes.
+</p>
+</dd>
+<dt>Needs Checkout</dt>
+<dd><a name="index-Needs-Checkout"></a>
+<p>Someone else has committed a newer revision to the
+repository.  The name is slightly misleading; you will
+ordinarily use <code>update</code> rather than
+<code>checkout</code> to get that newer revision.
+</p>
+</dd>
+<dt>Needs Patch</dt>
+<dd><a name="index-Needs-Patch"></a>
+<p>Like Needs Checkout, but the <small>CVS</small> server will send
+a patch rather than the entire file.  Sending a patch or
+sending an entire file accomplishes the same thing.
+</p>
+</dd>
+<dt>Needs Merge</dt>
+<dd><a name="index-Needs-Merge"></a>
+<p>Someone else has committed a newer revision to the repository, and you
+have also made modifications to the file.
+</p>
+</dd>
+<dt>Unresolved Conflict</dt>
+<dd><a name="index-Unresolved-Conflict"></a>
+<p>A file with the same name as this new file has been added to the repository
+from a second workspace.  This file will need to be moved out of the way
+to allow an <code>update</code> to complete.
+</p>
+</dd>
+<dt>File had conflicts on merge</dt>
+<dd><a name="index-File-had-conflicts-on-merge"></a>
+<p>This is like Locally Modified, except that a previous
+<code>update</code> command gave a conflict.  If you have not
+already done so, you need to
+resolve the conflict as described in <a href="Conflicts-example.html#Conflicts-example">Conflicts example</a>.
+</p>
+</dd>
+<dt>Unknown</dt>
+<dd><a name="index-Unknown"></a>
+<p><small>CVS</small> doesn&rsquo;t know anything about this file.  For
+example, you have created a new file and have not run
+<code>add</code>.
+</p>
+</dd>
+</dl>
+
+<p>To help clarify the file status, <code>status</code> also
+reports the <code>Working revision</code> which is the
+revision that the file in the working directory derives
+from, and the <code>Repository revision</code> which is the
+latest revision in the repository for the branch in
+use.
+</p>
+<p>The options to <code>status</code> are listed in
+<a href="Invoking-CVS.html#Invoking-CVS">Invoking CVS</a>.  For information on its <code>Sticky tag</code>
+and <code>Sticky date</code> output, see <a href="Sticky-tags.html#Sticky-tags">Sticky tags</a>.
+For information on its <code>Sticky options</code> output,
+see the &lsquo;<samp>-k</samp>&rsquo; option in <a href="update-options.html#update-options">update options</a>.
+</p>
+<p>You can think of the <code>status</code> and <code>update</code>
+commands as somewhat complementary.  You use
+<code>update</code> to bring your files up to date, and you
+can use <code>status</code> to give you some idea of what an
+<code>update</code> would do (of course, the state of the
+repository might change before you actually run
+<code>update</code>).  In fact, if you want a command to
+display file status in a more brief format than is
+displayed by the <code>status</code> command, you can invoke
+</p>
+<a name="index-update_002c-to-display-file-status"></a>
+<div class="example">
+<pre class="example">$ cvs -n -q update
+</pre></div>
+
+<p>The &lsquo;<samp>-n</samp>&rsquo; option means to not actually do the
+update, but merely to display statuses; the &lsquo;<samp>-q</samp>&rsquo;
+option avoids printing the name of each directory.  For
+more information on the <code>update</code> command, and
+these options, see <a href="Invoking-CVS.html#Invoking-CVS">Invoking CVS</a>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Updating-a-file.html#Updating-a-file" accesskey="n" rel="next">Updating a file</a>, Up: <a href="Multiple-developers.html#Multiple-developers" accesskey="u" rel="up">Multiple developers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

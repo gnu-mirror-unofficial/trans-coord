@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Connection</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Connection">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Connection">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Troubleshooting.html#Troubleshooting" rel="up" title="Troubleshooting">
+<link href="Other-problems.html#Other-problems" rel="next" title="Other problems">
+<link href="Error-messages.html#Error-messages" rel="prev" title="Error messages">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Connection"></a>
+<div class="header">
+<p>
+Next: <a href="Other-problems.html#Other-problems" accesskey="n" rel="next">Other problems</a>, Previous: <a href="Error-messages.html#Error-messages" accesskey="p" rel="prev">Error messages</a>, Up: <a href="Troubleshooting.html#Troubleshooting" accesskey="u" rel="up">Troubleshooting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Trouble-making-a-connection-to-a-CVS-server"></a>
+<h3 class="appendixsec">F.2 Trouble making a connection to a CVS server</h3>
+
+<p>This section concerns what to do if you are having
+trouble making a connection to a <small>CVS</small> server.  If
+you are running the <small>CVS</small> command line client
+running on Windows, first upgrade the client to
+<small>CVS</small> 1.9.12 or later.  The error reporting in
+earlier versions provided much less information about
+what the problem was.  If the client is non-Windows,
+<small>CVS</small> 1.9 should be fine.
+</p>
+<p>If the error messages are not sufficient to track down
+the problem, the next steps depend largely on which
+access method you are using.
+</p>
+<dl compact="compact">
+<dd><a name="index-_003aext_003a_002c-troubleshooting"></a>
+</dd>
+<dt><code>:ext:</code></dt>
+<dd><p>Try running the rsh program from the command line.  For
+example: &quot;rsh servername cvs -v&quot; should print <small>CVS</small>
+version information.  If this doesn&rsquo;t work, you need to
+fix it before you can worry about <small>CVS</small> problems.
+</p>
+<a name="index-_003aserver_003a_002c-troubleshooting"></a>
+</dd>
+<dt><code>:server:</code></dt>
+<dd><p>You don&rsquo;t need a command line rsh program to use this
+access method, but if you have an rsh program around,
+it may be useful as a debugging tool.  Follow the
+directions given for :ext:.
+</p>
+<a name="index-_003apserver_003a_002c-troubleshooting"></a>
+</dd>
+<dt><code>:pserver:</code></dt>
+<dd><p>Errors along the lines of &quot;connection refused&quot; typically indicate
+that inetd isn&rsquo;t even listening for connections on port 2401
+whereas errors like &quot;connection reset by peer&quot;,
+&quot;received broken pipe signal&quot;, &quot;recv() from server: EOF&quot;,
+or &quot;end of file from server&quot;
+typically indicate that inetd is listening for
+connections but is unable to start <small>CVS</small> (this is frequently
+caused by having an incorrect path in <samp>inetd.conf</samp>
+or by firewall software rejecting the connection).
+&quot;unrecognized auth response&quot; errors are caused by a bad command
+line in <samp>inetd.conf</samp>, typically an invalid option or forgetting
+to put the &lsquo;<samp>pserver</samp>&rsquo; command at the end of the line.
+Another less common problem is invisible control characters that
+your editor &quot;helpfully&quot; added without you noticing.
+</p>
+<p>One good debugging tool is to &quot;telnet servername
+2401&quot;.  After connecting, send any text (for example
+&quot;foo&quot; followed by return).  If <small>CVS</small> is working
+correctly, it will respond with
+</p>
+<div class="example">
+<pre class="example">cvs [pserver aborted]: bad auth protocol start: foo
+</pre></div>
+
+<p>If instead you get:
+</p>
+<div class="example">
+<pre class="example">Usage: cvs [cvs-options] command [command-options-and-arguments]
+...
+</pre></div>
+
+<p>then you&rsquo;re missing the &lsquo;<samp>pserver</samp>&rsquo; command at the end of the
+line in <samp>inetd.conf</samp>; check to make sure that the entire command
+is on one line and that it&rsquo;s complete.
+</p>
+<p>Likewise, if you get something like:
+</p>
+<div class="example">
+<pre class="example">Unknown command: `pserved'
+
+CVS commands are:
+        add          Add a new file/directory to the repository
+...
+</pre></div>
+
+<p>then you&rsquo;ve misspelled &lsquo;<samp>pserver</samp>&rsquo; in some way.  If it isn&rsquo;t
+obvious, check for invisible control characters (particularly
+carriage returns) in <samp>inetd.conf</samp>.
+</p>
+<p>If it fails to work at all, then make sure inetd is working
+right.  Change the invocation in <samp>inetd.conf</samp> to run the
+echo program instead of cvs.  For example:
+</p>
+<div class="example">
+<pre class="example">2401  stream  tcp  nowait  root /bin/echo echo hello
+</pre></div>
+
+<p>After making that change and instructing inetd to
+re-read its configuration file, &quot;telnet servername
+2401&quot; should show you the text hello and then the
+server should close the connection.  If this doesn&rsquo;t
+work, you need to fix it before you can worry about
+<small>CVS</small> problems.
+</p>
+<p>On AIX systems, the system will often have its own
+program trying to use port 2401.  This is AIX&rsquo;s problem
+in the sense that port 2401 is registered for use with
+<small>CVS</small>.  I hear that there is an AIX patch available
+to address this problem.
+</p>
+<p>Another good debugging tool is the &lsquo;<samp>-d</samp>&rsquo;
+(debugging) option to inetd.  Consult your system
+documentation for more information.
+</p>
+<p>If you seem to be connecting but get errors like:
+</p>
+<div class="example">
+<pre class="example">cvs server: cannot open /root/.cvsignore: Permission denied
+cvs [server aborted]: can't chdir(/root): Permission denied
+</pre></div>
+
+<p>then you probably haven&rsquo;t specified &lsquo;<samp>-f</samp>&rsquo; in <samp>inetd.conf</samp>.
+(In releases prior to <small>CVS</small> 1.11.1, this problem can be caused by
+your system setting the <code>$HOME</code> environment variable
+for programs being run by inetd.  In this case, you can either
+have inetd run a shell script that unsets <code>$HOME</code> and then runs
+<small>CVS</small>, or you can use <code>env</code> to run <small>CVS</small> with a pristine
+environment.)
+</p>
+<p>If you can connect successfully for a while but then can&rsquo;t,
+you&rsquo;ve probably hit inetd&rsquo;s rate limit.
+(If inetd receives too many requests for the same service
+in a short period of time, it assumes that something is wrong
+and temporarily disables the service.)
+Check your inetd documentation to find out how to adjust the
+rate limit (some versions of inetd have a single rate limit,
+others allow you to set the limit for each service separately.)
+</p></dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Other-problems.html#Other-problems" accesskey="n" rel="next">Other problems</a>, Previous: <a href="Error-messages.html#Error-messages" accesskey="p" rel="prev">Error messages</a>, Up: <a href="Troubleshooting.html#Troubleshooting" accesskey="u" rel="up">Troubleshooting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

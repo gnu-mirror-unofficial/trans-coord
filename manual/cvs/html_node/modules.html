@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: modules</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: modules">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: modules">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Administrative-files.html#Administrative-files" rel="up" title="Administrative files">
+<link href="Alias-modules.html#Alias-modules" rel="next" title="Alias modules">
+<link href="Administrative-files.html#Administrative-files" rel="prev" title="Administrative files">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="modules"></a>
+<div class="header">
+<p>
+Next: <a href="Wrappers.html#Wrappers" accesskey="n" rel="next">Wrappers</a>, Up: <a href="Administrative-files.html#Administrative-files" accesskey="u" rel="up">Administrative files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-modules-file"></a>
+<h3 class="appendixsec">C.1 The modules file</h3>
+<a name="index-Modules-_0028admin-file_0029"></a>
+<a name="index-Defining-modules-_0028reference-manual_0029"></a>
+
+<p>The <samp>modules</samp> file records your definitions of
+names for collections of source code.  <small>CVS</small> will
+use these definitions if you use <small>CVS</small> to update the
+modules file (use normal commands like <code>add</code>,
+<code>commit</code>, etc).
+</p>
+<p>The <samp>modules</samp> file may contain blank lines and
+comments (lines beginning with &lsquo;<samp>#</samp>&rsquo;) as well as
+module definitions.  Long lines can be continued on the
+next line by specifying a backslash (&lsquo;<samp>\</samp>&rsquo;) as the
+last character on the line.
+</p>
+<p>There are three basic types of modules: alias modules,
+regular modules, and ampersand modules.  The difference
+between them is the way that they map files in the
+repository to files in the working directory.  In all
+of the following examples, the top-level repository
+contains a directory called <samp>first-dir</samp>, which
+contains two files, <samp>file1</samp> and <samp>file2</samp>, and a
+directory <samp>sdir</samp>.  <samp>first-dir/sdir</samp> contains
+a file <samp>sfile</samp>.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Alias-modules.html#Alias-modules" accesskey="1">Alias modules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The simplest kind of module
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Regular-modules.html#Regular-modules" accesskey="2">Regular modules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Ampersand-modules.html#Ampersand-modules" accesskey="3">Ampersand modules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Excluding-directories.html#Excluding-directories" accesskey="4">Excluding directories</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Excluding directories from a module
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Module-options.html#Module-options" accesskey="5">Module options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Regular and ampersand modules can take options
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Module-program-options.html#Module-program-options" accesskey="6">Module program options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How the modules &ldquo;program options&rdquo; programs
+                              are run. 
+</td></tr>
+</table>
+
+
+
+
+</body>
+</html>

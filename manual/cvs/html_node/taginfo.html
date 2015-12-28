@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: taginfo</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: taginfo">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: taginfo">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Administrative-files.html#Administrative-files" rel="up" title="Administrative files">
+<link href="cvsignore.html#cvsignore" rel="next" title="cvsignore">
+<link href="rcsinfo.html#rcsinfo" rel="prev" title="rcsinfo">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="taginfo"></a>
+<div class="header">
+<p>
+Next: <a href="cvsignore.html#cvsignore" accesskey="n" rel="next">cvsignore</a>, Previous: <a href="rcsinfo.html#rcsinfo" accesskey="p" rel="prev">rcsinfo</a>, Up: <a href="Administrative-files.html#Administrative-files" accesskey="u" rel="up">Administrative files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Taginfo"></a>
+<h3 class="appendixsec">C.6 Taginfo</h3>
+<a name="index-taginfo-_0028admin-file_0029"></a>
+<a name="index-Tags_002c-logging"></a>
+<a name="index-Tags_002c-verifying"></a>
+<p>The <samp>taginfo</samp> file defines programs to execute
+when someone executes a <code>tag</code> or <code>rtag</code>
+command.  The <samp>taginfo</samp> file has the standard form
+for trigger scripts (see <a href="Trigger-Scripts.html#Trigger-Scripts">Trigger Scripts</a>),
+where each line is a regular expression
+followed by a command to execute (see <a href="syntax.html#syntax">syntax</a>).  The arguments passed
+to the command are, in order, the <var>tagname</var>,
+<var>operation</var> (<code>add</code> for <code>tag</code>,
+<code>mov</code> for <code>tag -F</code>, and <code>del</code> for
+<code>tag -d</code>), <var>repository</var>, and any remaining are
+pairs of <var>filename</var> <var>revision</var>.  A non-zero
+exit of the filter program will cause the tag to be
+aborted.
+</p>
+<p>Here is an example of using the <samp>taginfo</samp> file
+to log <code>tag</code> and <code>rtag</code>
+commands.  In the <samp>taginfo</samp> file put:
+</p>
+<div class="example">
+<pre class="example">ALL /usr/local/cvsroot/CVSROOT/loggit
+</pre></div>
+
+<p>Where <samp>/usr/local/cvsroot/CVSROOT/loggit</samp> contains the
+following script:
+</p>
+<div class="example">
+<pre class="example">#!/bin/sh
+echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
+</pre></div>
+
+
+
+
+</body>
+</html>

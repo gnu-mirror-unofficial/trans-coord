@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Defining the module</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Defining the module">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Defining the module">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Starting-a-new-project.html#Starting-a-new-project" rel="up" title="Starting a new project">
+<link href="Revisions.html#Revisions" rel="next" title="Revisions">
+<link href="From-scratch.html#From-scratch" rel="prev" title="From scratch">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Defining-the-module"></a>
+<div class="header">
+<p>
+Previous: <a href="Setting-up-the-files.html#Setting-up-the-files" accesskey="p" rel="prev">Setting up the files</a>, Up: <a href="Starting-a-new-project.html#Starting-a-new-project" accesskey="u" rel="up">Starting a new project</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Defining-the-module-1"></a>
+<h3 class="section">3.2 Defining the module</h3>
+<a name="index-Defining-a-module"></a>
+<a name="index-Editing-the-modules-file"></a>
+<a name="index-Module_002c-defining"></a>
+<a name="index-Modules-file_002c-changing"></a>
+
+<p>The next step is to define the module in the
+<samp>modules</samp> file.  This is not strictly necessary,
+but modules can be convenient in grouping together
+related files and directories.
+</p>
+<p>In simple cases these steps are sufficient to define a module.
+</p>
+<ol>
+<li> Get a working copy of the modules file.
+
+<div class="example">
+<pre class="example">$ cvs checkout CVSROOT/modules
+$ cd CVSROOT
+</pre></div>
+
+</li><li> Edit the file and insert a line that defines the module.  See <a href="Intro-administrative-files.html#Intro-administrative-files">Intro administrative files</a>, for an introduction.  See <a href="modules.html#modules">modules</a>, for a full
+description of the modules file.  You can use the
+following line to define the module &lsquo;<samp>tc</samp>&rsquo;:
+
+<div class="example">
+<pre class="example">tc   yoyodyne/tc
+</pre></div>
+
+</li><li> Commit your changes to the modules file.
+
+<div class="example">
+<pre class="example">$ cvs commit -m &quot;Added the tc module.&quot; modules
+</pre></div>
+
+</li><li> Release the modules module.
+
+<div class="example">
+<pre class="example">$ cd ..
+$ cvs release -d CVSROOT
+</pre></div>
+</li></ol>
+
+
+
+
+</body>
+</html>

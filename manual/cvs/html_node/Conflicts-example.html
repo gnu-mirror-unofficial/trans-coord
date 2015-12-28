@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Conflicts example</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Conflicts example">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Conflicts example">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Multiple-developers.html#Multiple-developers" rel="up" title="Multiple developers">
+<link href="Informing-others.html#Informing-others" rel="next" title="Informing others">
+<link href="Updating-a-file.html#Updating-a-file" rel="prev" title="Updating a file">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Conflicts-example"></a>
+<div class="header">
+<p>
+Next: <a href="Informing-others.html#Informing-others" accesskey="n" rel="next">Informing others</a>, Previous: <a href="Updating-a-file.html#Updating-a-file" accesskey="p" rel="prev">Updating a file</a>, Up: <a href="Multiple-developers.html#Multiple-developers" accesskey="u" rel="up">Multiple developers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Conflicts-example-1"></a>
+<h3 class="section">10.3 Conflicts example</h3>
+<a name="index-Merge_002c-an-example"></a>
+<a name="index-Example-of-merge"></a>
+<a name="index-driver_002ec-_0028merge-example_0029"></a>
+
+<p>Suppose revision 1.4 of <samp>driver.c</samp> contains this:
+</p>
+<div class="example">
+<pre class="example">#include &lt;stdio.h&gt;
+
+void main()
+{
+    parse();
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, &quot;No code generated.\n&quot;);
+    exit(nerr == 0 ? 0 : 1);
+}
+</pre></div>
+
+<p>Revision 1.6 of <samp>driver.c</samp> contains this:
+</p>
+<div class="example">
+<pre class="example">#include &lt;stdio.h&gt;
+
+int main(int argc,
+         char **argv)
+{
+    parse();
+    if (argc != 1)
+    {
+        fprintf(stderr, &quot;tc: No args expected.\n&quot;);
+        exit(1);
+    }
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, &quot;No code generated.\n&quot;);
+    exit(!!nerr);
+}
+</pre></div>
+
+<p>Your working copy of <samp>driver.c</samp>, based on revision
+1.4, contains this before you run &lsquo;<samp>cvs update</samp>&rsquo;:
+</p>
+<div class="example">
+<pre class="example">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+void main()
+{
+    init_scanner();
+    parse();
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, &quot;No code generated.\n&quot;);
+    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+}
+</pre></div>
+
+<p>You run &lsquo;<samp>cvs update</samp>&rsquo;:
+</p>
+<div class="example">
+<pre class="example">$ cvs update driver.c
+RCS file: /usr/local/cvsroot/yoyodyne/tc/driver.c,v
+retrieving revision 1.4
+retrieving revision 1.6
+Merging differences between 1.4 and 1.6 into driver.c
+rcsmerge warning: overlaps during merge
+cvs update: conflicts found in driver.c
+C driver.c
+</pre></div>
+
+<a name="index-Conflicts-_0028merge-example_0029"></a>
+<p><small>CVS</small> tells you that there were some conflicts.
+Your original working file is saved unmodified in
+<samp>.#driver.c.1.4</samp>.  The new version of
+<samp>driver.c</samp> contains this:
+</p>
+<div class="example">
+<pre class="example">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(int argc,
+         char **argv)
+{
+    init_scanner();
+    parse();
+    if (argc != 1)
+    {
+        fprintf(stderr, &quot;tc: No args expected.\n&quot;);
+        exit(1);
+    }
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, &quot;No code generated.\n&quot;);
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; driver.c
+    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+=======
+    exit(!!nerr);
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.6
+}
+</pre></div>
+
+<a name="index-Markers_002c-conflict"></a>
+<a name="index-Conflict-markers"></a>
+<a name="index-_003c_003c_003c_003c_003c_003c_003c"></a>
+<a name="index-_003e_003e_003e_003e_003e_003e_003e"></a>
+<a name="index-_003d_003d_003d_003d_003d_003d_003d"></a>
+
+<p>Note how all non-overlapping modifications are incorporated in your working
+copy, and that the overlapping section is clearly marked with
+&lsquo;<samp>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>&rsquo;, &lsquo;<samp>=======</samp>&rsquo; and &lsquo;<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>&rsquo;.
+</p>
+<a name="index-Resolving-a-conflict"></a>
+<a name="index-Conflict-resolution"></a>
+<p>You resolve the conflict by editing the file, removing the markers and
+the erroneous line.  Suppose you end up with this file:
+</p><div class="example">
+<pre class="example">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(int argc,
+         char **argv)
+{
+    init_scanner();
+    parse();
+    if (argc != 1)
+    {
+        fprintf(stderr, &quot;tc: No args expected.\n&quot;);
+        exit(1);
+    }
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, &quot;No code generated.\n&quot;);
+    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+}
+</pre></div>
+
+<p>You can now go ahead and commit this as revision 1.7.
+</p>
+<div class="example">
+<pre class="example">$ cvs commit -m &quot;Initialize scanner. Use symbolic exit values.&quot; driver.c
+Checking in driver.c;
+/usr/local/cvsroot/yoyodyne/tc/driver.c,v  &lt;--  driver.c
+new revision: 1.7; previous revision: 1.6
+done
+</pre></div>
+
+<p>For your protection, <small>CVS</small> will refuse to check in a
+file if a conflict occurred and you have not resolved
+the conflict.  Currently to resolve a conflict, you
+must change the timestamp on the file.  In previous
+versions of <small>CVS</small>, you also needed to
+insure that the file contains no conflict markers.
+Because
+your file may legitimately contain conflict markers (that
+is, occurrences of &lsquo;<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt; </samp>&rsquo; at the start of a
+line that don&rsquo;t mark a conflict), the current
+version of <small>CVS</small> will print a warning and proceed to
+check in the file.
+</p>
+<a name="index-emerge"></a>
+<p>If you use release 1.04 or later of pcl-cvs (a <small>GNU</small>
+Emacs front-end for <small>CVS</small>) you can use an Emacs
+package called emerge to help you resolve conflicts.
+See the documentation for pcl-cvs.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Informing-others.html#Informing-others" accesskey="n" rel="next">Informing others</a>, Previous: <a href="Updating-a-file.html#Updating-a-file" accesskey="p" rel="prev">Updating a file</a>, Up: <a href="Multiple-developers.html#Multiple-developers" accesskey="u" rel="up">Multiple developers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

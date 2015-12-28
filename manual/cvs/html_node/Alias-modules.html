@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Alias modules</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Alias modules">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Alias modules">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="modules.html#modules" rel="up" title="modules">
+<link href="Regular-modules.html#Regular-modules" rel="next" title="Regular modules">
+<link href="modules.html#modules" rel="prev" title="modules">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Alias-modules"></a>
+<div class="header">
+<p>
+Next: <a href="Regular-modules.html#Regular-modules" accesskey="n" rel="next">Regular modules</a>, Up: <a href="modules.html#modules" accesskey="u" rel="up">modules</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Alias-modules-1"></a>
+<h4 class="appendixsubsec">C.1.1 Alias modules</h4>
+<a name="index-Alias-modules"></a>
+<a name="index-_002da_002c-in-modules-file"></a>
+
+<p>Alias modules are the simplest kind of module:
+</p>
+<dl compact="compact">
+<dt><code><var>mname</var> -a <var>aliases</var>&hellip;</code></dt>
+<dd><p>This represents the simplest way of defining a module
+<var>mname</var>.  The &lsquo;<samp>-a</samp>&rsquo; flags the definition as a
+simple alias: <small>CVS</small> will treat any use of <var>mname</var> (as
+a command argument) as if the list of names
+<var>aliases</var> had been specified instead.
+<var>aliases</var> may contain either other module names or
+paths.  When you use paths in aliases, <code>checkout</code>
+creates all intermediate directories in the working
+directory, just as if the path had been specified
+explicitly in the <small>CVS</small> arguments.
+</p></dd>
+</dl>
+
+<p>For example, if the modules file contains:
+</p>
+<div class="example">
+<pre class="example">amodule -a first-dir
+</pre></div>
+
+<p>then the following two commands are equivalent:
+</p>
+<div class="example">
+<pre class="example">$ cvs co amodule
+$ cvs co first-dir
+</pre></div>
+
+<p>and they each would provide output such as:
+</p>
+<div class="example">
+<pre class="example">cvs checkout: Updating first-dir
+U first-dir/file1
+U first-dir/file2
+cvs checkout: Updating first-dir/sdir
+U first-dir/sdir/sfile
+</pre></div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Top</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Top">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Top">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="../dir/index.html" rel="up" title="(dir)">
+<link href="Overview.html#Overview" rel="next" title="Overview">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h1 class="settitle" align="center">CVS&mdash;Concurrent Versions System v1.11.23</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="SEC_Overview"></a>
+<h2 class="shortcontents-heading">Short Table of Contents</h2>
+
+<div class="shortcontents">
+<ul class="no-bullet">
+<li><a name="stoc-Overview-1" href="#toc-Overview-1">1 Overview</a></li>
+<li><a name="stoc-The-Repository" href="#toc-The-Repository">2 The Repository</a></li>
+<li><a name="stoc-Starting-a-project-with-CVS" href="#toc-Starting-a-project-with-CVS">3 Starting a project with CVS</a></li>
+<li><a name="stoc-Revisions-1" href="#toc-Revisions-1">4 Revisions</a></li>
+<li><a name="stoc-Branching-and-merging-1" href="#toc-Branching-and-merging-1">5 Branching and merging</a></li>
+<li><a name="stoc-Recursive-behavior-1" href="#toc-Recursive-behavior-1">6 Recursive behavior</a></li>
+<li><a name="stoc-Adding_002c-removing_002c-and-renaming-files-and-directories" href="#toc-Adding_002c-removing_002c-and-renaming-files-and-directories">7 Adding, removing, and renaming files and directories</a></li>
+<li><a name="stoc-History-browsing-1" href="#toc-History-browsing-1">8 History browsing</a></li>
+<li><a name="stoc-Handling-binary-files" href="#toc-Handling-binary-files">9 Handling binary files</a></li>
+<li><a name="stoc-Multiple-developers-1" href="#toc-Multiple-developers-1">10 Multiple developers</a></li>
+<li><a name="stoc-Revision-management-1" href="#toc-Revision-management-1">11 Revision management</a></li>
+<li><a name="stoc-Keyword-substitution-1" href="#toc-Keyword-substitution-1">12 Keyword substitution</a></li>
+<li><a name="stoc-Tracking-third_002dparty-sources" href="#toc-Tracking-third_002dparty-sources">13 Tracking third-party sources</a></li>
+<li><a name="stoc-How-your-build-system-interacts-with-CVS" href="#toc-How-your-build-system-interacts-with-CVS">14 How your build system interacts with CVS</a></li>
+<li><a name="stoc-Special-Files-1" href="#toc-Special-Files-1">15 Special Files</a></li>
+<li><a name="stoc-Guide-to-CVS-commands" href="#toc-Guide-to-CVS-commands">Appendix A Guide to CVS commands</a></li>
+<li><a name="stoc-Quick-reference-to-CVS-commands" href="#toc-Quick-reference-to-CVS-commands">Appendix B Quick reference to CVS commands</a></li>
+<li><a name="stoc-Reference-manual-for-Administrative-files" href="#toc-Reference-manual-for-Administrative-files">Appendix C Reference manual for Administrative files</a></li>
+<li><a name="stoc-All-environment-variables-which-affect-CVS" href="#toc-All-environment-variables-which-affect-CVS">Appendix D All environment variables which affect CVS</a></li>
+<li><a name="stoc-Compatibility-between-CVS-Versions" href="#toc-Compatibility-between-CVS-Versions">Appendix E Compatibility between CVS Versions</a></li>
+<li><a name="stoc-Troubleshooting-1" href="#toc-Troubleshooting-1">Appendix F Troubleshooting</a></li>
+<li><a name="stoc-Credits-1" href="#toc-Credits-1">Appendix G Credits</a></li>
+<li><a name="stoc-Dealing-with-bugs-in-CVS-or-this-manual" href="#toc-Dealing-with-bugs-in-CVS-or-this-manual">Appendix H Dealing with bugs in CVS or this manual</a></li>
+<li><a name="stoc-Index-1" href="#toc-Index-1">Index</a></li>
+</ul>
+</div>
+
+
+<a name="SEC_Contents"></a>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a name="toc-Overview-1" href="Overview.html#Overview">1 Overview</a>
+  <ul class="no-bullet">
+    <li><a name="toc-What-is-CVS_003f-1" href="What-is-CVS_003f.html#What-is-CVS_003f">1.1 What is CVS?</a></li>
+    <li><a name="toc-What-is-CVS-not_003f-1" href="What-is-CVS-not_003f.html#What-is-CVS-not_003f">1.2 What is CVS not?</a></li>
+    <li><a name="toc-A-sample-session-1" href="A-sample-session.html#A-sample-session">1.3 A sample session</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Getting-the-source-1" href="Getting-the-source.html#Getting-the-source">1.3.1 Getting the source</a></li>
+      <li><a name="toc-Committing-your-changes-1" href="Committing-your-changes.html#Committing-your-changes">1.3.2 Committing your changes</a></li>
+      <li><a name="toc-Cleaning-up-1" href="Cleaning-up.html#Cleaning-up">1.3.3 Cleaning up</a></li>
+      <li><a name="toc-Viewing-differences-1" href="Viewing-differences.html#Viewing-differences">1.3.4 Viewing differences</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a name="toc-The-Repository" href="Repository.html#Repository">2 The Repository</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Telling-CVS-where-your-repository-is" href="Specifying-a-repository.html#Specifying-a-repository">2.1 Telling CVS where your repository is</a></li>
+    <li><a name="toc-How-data-is-stored-in-the-repository" href="Repository-storage.html#Repository-storage">2.2 How data is stored in the repository</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Where-files-are-stored-within-the-repository" href="Repository-files.html#Repository-files">2.2.1 Where files are stored within the repository</a></li>
+      <li><a name="toc-File-permissions-1" href="File-permissions.html#File-permissions">2.2.2 File permissions</a></li>
+      <li><a name="toc-File-Permission-issues-specific-to-Windows" href="Windows-permissions.html#Windows-permissions">2.2.3 File Permission issues specific to Windows</a></li>
+      <li><a name="toc-The-attic" href="Attic.html#Attic">2.2.4 The attic</a></li>
+      <li><a name="toc-The-CVS-directory-in-the-repository" href="CVS-in-repository.html#CVS-in-repository">2.2.5 The CVS directory in the repository</a></li>
+      <li><a name="toc-CVS-locks-in-the-repository" href="Locks.html#Locks">2.2.6 CVS locks in the repository</a></li>
+      <li><a name="toc-How-files-are-stored-in-the-CVSROOT-directory" href="CVSROOT-storage.html#CVSROOT-storage">2.2.7 How files are stored in the CVSROOT directory</a></li>
+    </ul></li>
+    <li><a name="toc-How-data-is-stored-in-the-working-directory" href="Working-directory-storage.html#Working-directory-storage">2.3 How data is stored in the working directory</a></li>
+    <li><a name="toc-The-administrative-files" href="Intro-administrative-files.html#Intro-administrative-files">2.4 The administrative files</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Editing-administrative-files" href="Intro-administrative-files.html#Editing-administrative-files">2.4.1 Editing administrative files</a></li>
+    </ul></li>
+    <li><a name="toc-Multiple-repositories-1" href="Multiple-repositories.html#Multiple-repositories">2.5 Multiple repositories</a></li>
+    <li><a name="toc-Creating-a-repository-1" href="Creating-a-repository.html#Creating-a-repository">2.6 Creating a repository</a></li>
+    <li><a name="toc-Backing-up-a-repository" href="Backing-up.html#Backing-up">2.7 Backing up a repository</a></li>
+    <li><a name="toc-Moving-a-repository-1" href="Moving-a-repository.html#Moving-a-repository">2.8 Moving a repository</a></li>
+    <li><a name="toc-Remote-repositories-1" href="Remote-repositories.html#Remote-repositories">2.9 Remote repositories</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Server-requirements-1" href="Server-requirements.html#Server-requirements">2.9.1 Server requirements</a></li>
+      <li><a name="toc-Connecting-with-rsh-or-ssh" href="Connecting-via-rsh.html#Connecting-via-rsh">2.9.2 Connecting with rsh or ssh</a></li>
+      <li><a name="toc-Direct-connection-with-password-authentication" href="Password-authenticated.html#Password-authenticated">2.9.3 Direct connection with password authentication</a>
+      <ul class="no-bullet">
+        <li><a name="toc-Setting-up-the-server-for-password-authentication" href="Password-authentication-server.html#Password-authentication-server">2.9.3.1 Setting up the server for password authentication</a></li>
+        <li><a name="toc-Using-the-client-with-password-authentication" href="Password-authentication-client.html#Password-authentication-client">2.9.3.2 Using the client with password authentication</a></li>
+        <li><a name="toc-Security-considerations-with-password-authentication" href="Password-authentication-security.html#Password-authentication-security">2.9.3.3 Security considerations with password authentication</a></li>
+      </ul></li>
+      <li><a name="toc-Direct-connection-with-GSSAPI" href="GSSAPI-authenticated.html#GSSAPI-authenticated">2.9.4 Direct connection with GSSAPI</a></li>
+      <li><a name="toc-Direct-connection-with-Kerberos" href="Kerberos-authenticated.html#Kerberos-authenticated">2.9.5 Direct connection with Kerberos</a></li>
+      <li><a name="toc-Connecting-with-fork" href="Connecting-via-fork.html#Connecting-via-fork">2.9.6 Connecting with fork</a></li>
+    </ul></li>
+    <li><a name="toc-Read_002donly-repository-access" href="Read_002donly-access.html#Read_002donly-access">2.10 Read-only repository access</a></li>
+    <li><a name="toc-Temporary-directories-for-the-server" href="Server-temporary-directory.html#Server-temporary-directory">2.11 Temporary directories for the server</a></li>
+  </ul></li>
+  <li><a name="toc-Starting-a-project-with-CVS" href="Starting-a-new-project.html#Starting-a-new-project">3 Starting a project with CVS</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Setting-up-the-files-1" href="Setting-up-the-files.html#Setting-up-the-files">3.1 Setting up the files</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Creating-a-directory-tree-from-a-number-of-files" href="From-files.html#From-files">3.1.1 Creating a directory tree from a number of files</a></li>
+      <li><a name="toc-Creating-Files-From-Other-Version-Control-Systems" href="From-other-version-control-systems.html#From-other-version-control-systems">3.1.2 Creating Files From Other Version Control Systems</a></li>
+      <li><a name="toc-Creating-a-directory-tree-from-scratch" href="From-scratch.html#From-scratch">3.1.3 Creating a directory tree from scratch</a></li>
+    </ul></li>
+    <li><a name="toc-Defining-the-module-1" href="Defining-the-module.html#Defining-the-module">3.2 Defining the module</a></li>
+  </ul></li>
+  <li><a name="toc-Revisions-1" href="Revisions.html#Revisions">4 Revisions</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Revision-numbers-1" href="Revision-numbers.html#Revision-numbers">4.1 Revision numbers</a></li>
+    <li><a name="toc-Versions_002c-revisions-and-releases" href="Versions-revisions-releases.html#Versions-revisions-releases">4.2 Versions, revisions and releases</a></li>
+    <li><a name="toc-Assigning-revisions-1" href="Assigning-revisions.html#Assigning-revisions">4.3 Assigning revisions</a></li>
+    <li><a name="toc-Tags_002d_002dSymbolic-revisions" href="Tags.html#Tags">4.4 Tags&ndash;Symbolic revisions</a></li>
+    <li><a name="toc-Specifying-what-to-tag-from-the-working-directory" href="Tagging-the-working-directory.html#Tagging-the-working-directory">4.5 Specifying what to tag from the working directory</a></li>
+    <li><a name="toc-Specifying-what-to-tag-by-date-or-revision" href="Tagging-by-date_002ftag.html#Tagging-by-date_002ftag">4.6 Specifying what to tag by date or revision</a></li>
+    <li><a name="toc-Deleting_002c-moving_002c-and-renaming-tags" href="Modifying-tags.html#Modifying-tags">4.7 Deleting, moving, and renaming tags</a></li>
+    <li><a name="toc-Tagging-and-adding-and-removing-files" href="Tagging-add_002fremove.html#Tagging-add_002fremove">4.8 Tagging and adding and removing files</a></li>
+    <li><a name="toc-Sticky-tags-1" href="Sticky-tags.html#Sticky-tags">4.9 Sticky tags</a></li>
+  </ul></li>
+  <li><a name="toc-Branching-and-merging-1" href="Branching-and-merging.html#Branching-and-merging">5 Branching and merging</a>
+  <ul class="no-bullet">
+    <li><a name="toc-What-branches-are-good-for" href="Branches-motivation.html#Branches-motivation">5.1 What branches are good for</a></li>
+    <li><a name="toc-Creating-a-branch-1" href="Creating-a-branch.html#Creating-a-branch">5.2 Creating a branch</a></li>
+    <li><a name="toc-Accessing-branches-1" href="Accessing-branches.html#Accessing-branches">5.3 Accessing branches</a></li>
+    <li><a name="toc-Branches-and-revisions-1" href="Branches-and-revisions.html#Branches-and-revisions">5.4 Branches and revisions</a></li>
+    <li><a name="toc-Magic-branch-numbers-1" href="Magic-branch-numbers.html#Magic-branch-numbers">5.5 Magic branch numbers</a></li>
+    <li><a name="toc-Merging-an-entire-branch" href="Merging-a-branch.html#Merging-a-branch">5.6 Merging an entire branch</a></li>
+    <li><a name="toc-Merging-from-a-branch-several-times" href="Merging-more-than-once.html#Merging-more-than-once">5.7 Merging from a branch several times</a></li>
+    <li><a name="toc-Merging-differences-between-any-two-revisions" href="Merging-two-revisions.html#Merging-two-revisions">5.8 Merging differences between any two revisions</a></li>
+    <li><a name="toc-Merging-can-add-or-remove-files" href="Merging-adds-and-removals.html#Merging-adds-and-removals">5.9 Merging can add or remove files</a></li>
+    <li><a name="toc-Merging-and-keywords-1" href="Merging-and-keywords.html#Merging-and-keywords">5.10 Merging and keywords</a></li>
+  </ul></li>
+  <li><a name="toc-Recursive-behavior-1" href="Recursive-behavior.html#Recursive-behavior">6 Recursive behavior</a></li>
+  <li><a name="toc-Adding_002c-removing_002c-and-renaming-files-and-directories" href="Adding-and-removing.html#Adding-and-removing">7 Adding, removing, and renaming files and directories</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Adding-files-to-a-directory" href="Adding-files.html#Adding-files">7.1 Adding files to a directory</a></li>
+    <li><a name="toc-Removing-files-1" href="Removing-files.html#Removing-files">7.2 Removing files</a></li>
+    <li><a name="toc-Removing-directories-1" href="Removing-directories.html#Removing-directories">7.3 Removing directories</a></li>
+    <li><a name="toc-Moving-and-renaming-files" href="Moving-files.html#Moving-files">7.4 Moving and renaming files</a>
+    <ul class="no-bullet">
+      <li><a name="toc-The-Normal-way-to-Rename" href="Outside.html#Outside">7.4.1 The Normal way to Rename</a></li>
+      <li><a name="toc-Moving-the-history-file" href="Inside.html#Inside">7.4.2 Moving the history file</a></li>
+      <li><a name="toc-Copying-the-history-file" href="Rename-by-copying.html#Rename-by-copying">7.4.3 Copying the history file</a></li>
+    </ul></li>
+    <li><a name="toc-Moving-and-renaming-directories" href="Moving-directories.html#Moving-directories">7.5 Moving and renaming directories</a></li>
+  </ul></li>
+  <li><a name="toc-History-browsing-1" href="History-browsing.html#History-browsing">8 History browsing</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Log-messages" href="log-messages.html#log-messages">8.1 Log messages</a></li>
+    <li><a name="toc-The-history-database" href="history-database.html#history-database">8.2 The history database</a></li>
+    <li><a name="toc-User_002ddefined-logging" href="user_002ddefined-logging.html#user_002ddefined-logging">8.3 User-defined logging</a></li>
+  </ul></li>
+  <li><a name="toc-Handling-binary-files" href="Binary-files.html#Binary-files">9 Handling binary files</a>
+  <ul class="no-bullet">
+    <li><a name="toc-The-issues-with-binary-files" href="Binary-why.html#Binary-why">9.1 The issues with binary files</a></li>
+    <li><a name="toc-How-to-store-binary-files" href="Binary-howto.html#Binary-howto">9.2 How to store binary files</a></li>
+  </ul></li>
+  <li><a name="toc-Multiple-developers-1" href="Multiple-developers.html#Multiple-developers">10 Multiple developers</a>
+  <ul class="no-bullet">
+    <li><a name="toc-File-status-1" href="File-status.html#File-status">10.1 File status</a></li>
+    <li><a name="toc-Bringing-a-file-up-to-date" href="Updating-a-file.html#Updating-a-file">10.2 Bringing a file up to date</a></li>
+    <li><a name="toc-Conflicts-example-1" href="Conflicts-example.html#Conflicts-example">10.3 Conflicts example</a></li>
+    <li><a name="toc-Informing-others-about-commits" href="Informing-others.html#Informing-others">10.4 Informing others about commits</a></li>
+    <li><a name="toc-Several-developers-simultaneously-attempting-to-run-CVS" href="Concurrency.html#Concurrency">10.5 Several developers simultaneously attempting to run CVS</a></li>
+    <li><a name="toc-Mechanisms-to-track-who-is-editing-files" href="Watches.html#Watches">10.6 Mechanisms to track who is editing files</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Telling-CVS-to-watch-certain-files" href="Setting-a-watch.html#Setting-a-watch">10.6.1 Telling CVS to watch certain files</a></li>
+      <li><a name="toc-Telling-CVS-to-notify-you" href="Getting-Notified.html#Getting-Notified">10.6.2 Telling CVS to notify you</a></li>
+      <li><a name="toc-How-to-edit-a-file-which-is-being-watched" href="Editing-files.html#Editing-files">10.6.3 How to edit a file which is being watched</a></li>
+      <li><a name="toc-Information-about-who-is-watching-and-editing" href="Watch-information.html#Watch-information">10.6.4 Information about who is watching and editing</a></li>
+      <li><a name="toc-Using-watches-with-old-versions-of-CVS" href="Watches-Compatibility.html#Watches-Compatibility">10.6.5 Using watches with old versions of CVS</a></li>
+    </ul></li>
+    <li><a name="toc-Choosing-between-reserved-or-unreserved-checkouts" href="Choosing-a-model.html#Choosing-a-model">10.7 Choosing between reserved or unreserved checkouts</a></li>
+  </ul></li>
+  <li><a name="toc-Revision-management-1" href="Revision-management.html#Revision-management">11 Revision management</a>
+  <ul class="no-bullet">
+    <li><a name="toc-When-to-commit_003f" href="When-to-commit.html#When-to-commit">11.1 When to commit?</a></li>
+  </ul></li>
+  <li><a name="toc-Keyword-substitution-1" href="Keyword-substitution.html#Keyword-substitution">12 Keyword substitution</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Keyword-List" href="Keyword-list.html#Keyword-list">12.1 Keyword List</a></li>
+    <li><a name="toc-Using-keywords-1" href="Using-keywords.html#Using-keywords">12.2 Using keywords</a></li>
+    <li><a name="toc-Avoiding-substitution-1" href="Avoiding-substitution.html#Avoiding-substitution">12.3 Avoiding substitution</a></li>
+    <li><a name="toc-Substitution-modes-1" href="Substitution-modes.html#Substitution-modes">12.4 Substitution modes</a></li>
+    <li><a name="toc-Problems-with-the-_0024Log_0024-keyword_002e" href="Log-keyword.html#Log-keyword">12.5 Problems with the $<i></i>Log$ keyword.</a></li>
+  </ul></li>
+  <li><a name="toc-Tracking-third_002dparty-sources" href="Tracking-sources.html#Tracking-sources">13 Tracking third-party sources</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Importing-for-the-first-time" href="First-import.html#First-import">13.1 Importing for the first time</a></li>
+    <li><a name="toc-Updating-with-the-import-command" href="Update-imports.html#Update-imports">13.2 Updating with the import command</a></li>
+    <li><a name="toc-Reverting-to-the-latest-vendor-release" href="Reverting-local-changes.html#Reverting-local-changes">13.3 Reverting to the latest vendor release</a></li>
+    <li><a name="toc-How-to-handle-binary-files-with-cvs-import" href="Binary-files-in-imports.html#Binary-files-in-imports">13.4 How to handle binary files with cvs import</a></li>
+    <li><a name="toc-How-to-handle-keyword-substitution-with-cvs-import" href="Keywords-in-imports.html#Keywords-in-imports">13.5 How to handle keyword substitution with cvs import</a></li>
+    <li><a name="toc-Multiple-vendor-branches-1" href="Multiple-vendor-branches.html#Multiple-vendor-branches">13.6 Multiple vendor branches</a></li>
+  </ul></li>
+  <li><a name="toc-How-your-build-system-interacts-with-CVS" href="Builds.html#Builds">14 How your build system interacts with CVS</a></li>
+  <li><a name="toc-Special-Files-1" href="Special-Files.html#Special-Files">15 Special Files</a></li>
+  <li><a name="toc-Guide-to-CVS-commands" href="CVS-commands.html#CVS-commands">Appendix A Guide to CVS commands</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Overall-structure-of-CVS-commands" href="Structure.html#Structure">A.1 Overall structure of CVS commands</a></li>
+    <li><a name="toc-CVS_0027s-exit-status" href="Exit-status.html#Exit-status">A.2 CVS&rsquo;s exit status</a></li>
+    <li><a name="toc-Default-options-and-the-_007e_002f_002ecvsrc-file" href="_007e_002f_002ecvsrc.html#g_t_007e_002f_002ecvsrc">A.3 Default options and the ~/.cvsrc file</a></li>
+    <li><a name="toc-Global-options-1" href="Global-options.html#Global-options">A.4 Global options</a></li>
+    <li><a name="toc-Common-command-options" href="Common-options.html#Common-options">A.5 Common command options</a></li>
+    <li><a name="toc-add_002d_002d_002dAdd-files-and-directories-to-the-repository" href="add.html#add">A.6 add&mdash;Add files and directories to the repository</a>
+    <ul class="no-bullet">
+      <li><a name="toc-add-options-1" href="add-options.html#add-options">A.6.1 add options</a></li>
+      <li><a name="toc-add-examples-1" href="add-examples.html#add-examples">A.6.2 add examples</a>
+      <ul class="no-bullet">
+        <li><a name="toc-Adding-a-directory" href="add-examples.html#Adding-a-directory">A.6.2.1 Adding a directory</a></li>
+        <li><a name="toc-Adding-a-file" href="add-examples.html#Adding-a-file">A.6.2.2 Adding a file</a></li>
+        <li><a name="toc-Undoing-a-remove-command" href="add-examples.html#Undoing-a-remove-command">A.6.2.3 Undoing a <code>remove</code> command</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a name="toc-admin_002d_002d_002dAdministration" href="admin.html#admin">A.7 admin&mdash;Administration</a>
+    <ul class="no-bullet">
+      <li><a name="toc-admin-options-1" href="admin-options.html#admin-options">A.7.1 admin options</a></li>
+    </ul></li>
+    <li><a name="toc-annotate_002d_002d_002dWhat-revision-modified-each-line-of-a-file_003f" href="annotate.html#annotate">A.8 annotate&mdash;What revision modified each line of a file?</a>
+    <ul class="no-bullet">
+      <li><a name="toc-annotate-options-1" href="annotate-options.html#annotate-options">A.8.1 annotate options</a></li>
+      <li><a name="toc-annotate-example-1" href="annotate-example.html#annotate-example">A.8.2 annotate example</a></li>
+    </ul></li>
+    <li><a name="toc-checkout_002d_002d_002dCheck-out-sources-for-editing" href="checkout.html#checkout">A.9 checkout&mdash;Check out sources for editing</a>
+    <ul class="no-bullet">
+      <li><a name="toc-checkout-options-1" href="checkout-options.html#checkout-options">A.9.1 checkout options</a></li>
+      <li><a name="toc-checkout-examples-1" href="checkout-examples.html#checkout-examples">A.9.2 checkout examples</a></li>
+    </ul></li>
+    <li><a name="toc-commit_002d_002d_002dCheck-files-into-the-repository" href="commit.html#commit">A.10 commit&mdash;Check files into the repository</a>
+    <ul class="no-bullet">
+      <li><a name="toc-commit-options-1" href="commit-options.html#commit-options">A.10.1 commit options</a></li>
+      <li><a name="toc-commit-examples-1" href="commit-examples.html#commit-examples">A.10.2 commit examples</a>
+      <ul class="no-bullet">
+        <li><a name="toc-Committing-to-a-branch" href="commit-examples.html#Committing-to-a-branch">A.10.2.1 Committing to a branch</a></li>
+        <li><a name="toc-Creating-the-branch-after-editing" href="commit-examples.html#Creating-the-branch-after-editing">A.10.2.2 Creating the branch after editing</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a name="toc-diff_002d_002d_002dShow-differences-between-revisions" href="diff.html#diff">A.11 diff&mdash;Show differences between revisions</a>
+    <ul class="no-bullet">
+      <li><a name="toc-diff-options-1" href="diff-options.html#diff-options">A.11.1 diff options</a>
+      <ul class="no-bullet">
+        <li><a name="toc-Line-group-formats-1" href="Line-group-formats.html#Line-group-formats">A.11.1.1 Line group formats</a></li>
+        <li><a name="toc-Line-formats-1" href="Line-formats.html#Line-formats">A.11.1.2 Line formats</a></li>
+      </ul></li>
+      <li><a name="toc-diff-examples-1" href="diff-examples.html#diff-examples">A.11.2 diff examples</a></li>
+    </ul></li>
+    <li><a name="toc-export_002d_002d_002dExport-sources-from-CVS_002c-similar-to-checkout" href="export.html#export">A.12 export&mdash;Export sources from CVS, similar to checkout</a>
+    <ul class="no-bullet">
+      <li><a name="toc-export-options-1" href="export-options.html#export-options">A.12.1 export options</a></li>
+    </ul></li>
+    <li><a name="toc-history_002d_002d_002dShow-status-of-files-and-users" href="history.html#history">A.13 history&mdash;Show status of files and users</a>
+    <ul class="no-bullet">
+      <li><a name="toc-history-options-1" href="history-options.html#history-options">A.13.1 history options</a></li>
+    </ul></li>
+    <li><a name="toc-import_002d_002d_002dImport-sources-into-CVS_002c-using-vendor-branches" href="import.html#import">A.14 import&mdash;Import sources into CVS, using vendor branches</a>
+    <ul class="no-bullet">
+      <li><a name="toc-import-options-1" href="import-options.html#import-options">A.14.1 import options</a></li>
+      <li><a name="toc-import-output-1" href="import-output.html#import-output">A.14.2 import output</a></li>
+      <li><a name="toc-import-examples-1" href="import-examples.html#import-examples">A.14.3 import examples</a></li>
+    </ul></li>
+    <li><a name="toc-log_002d_002d_002dPrint-out-log-information-for-files" href="log.html#log">A.15 log&mdash;Print out log information for files</a>
+    <ul class="no-bullet">
+      <li><a name="toc-log-options-1" href="log-options.html#log-options">A.15.1 log options</a></li>
+      <li><a name="toc-log-examples-1" href="log-examples.html#log-examples">A.15.2 log examples</a></li>
+    </ul></li>
+    <li><a name="toc-rdiff_002d_002d_002d_0027patch_0027-format-diffs-between-releases" href="rdiff.html#rdiff">A.16 rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases</a>
+    <ul class="no-bullet">
+      <li><a name="toc-rdiff-options-1" href="rdiff-options.html#rdiff-options">A.16.1 rdiff options</a></li>
+      <li><a name="toc-rdiff-examples-1" href="rdiff-examples.html#rdiff-examples">A.16.2 rdiff examples</a></li>
+    </ul></li>
+    <li><a name="toc-release_002d_002d_002dIndicate-that-a-Module-is-no-longer-in-use" href="release.html#release">A.17 release&mdash;Indicate that a Module is no longer in use</a>
+    <ul class="no-bullet">
+      <li><a name="toc-release-options-1" href="release-options.html#release-options">A.17.1 release options</a></li>
+      <li><a name="toc-release-output-1" href="release-output.html#release-output">A.17.2 release output</a></li>
+      <li><a name="toc-release-examples-1" href="release-examples.html#release-examples">A.17.3 release examples</a></li>
+    </ul></li>
+    <li><a name="toc-remove_002d_002d_002dRemove-files-from-active-use" href="remove.html#remove">A.18 remove&mdash;Remove files from active use</a>
+    <ul class="no-bullet">
+      <li><a name="toc-remove-options-1" href="remove-options.html#remove-options">A.18.1 remove options</a></li>
+      <li><a name="toc-remove-examples-1" href="remove-examples.html#remove-examples">A.18.2 remove examples</a>
+      <ul class="no-bullet">
+        <li><a name="toc-Removing-a-file" href="remove-examples.html#Removing-a-file">A.18.2.1 Removing a file</a></li>
+        <li><a name="toc-Removing-entire-directories" href="remove-examples.html#Removing-entire-directories">A.18.2.2 Removing entire directories</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a name="toc-update_002d_002d_002dBring-work-tree-in-sync-with-repository" href="update.html#update">A.19 update&mdash;Bring work tree in sync with repository</a>
+    <ul class="no-bullet">
+      <li><a name="toc-update-options-1" href="update-options.html#update-options">A.19.1 update options</a></li>
+      <li><a name="toc-update-output-1" href="update-output.html#update-output">A.19.2 update output</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a name="toc-Quick-reference-to-CVS-commands" href="Invoking-CVS.html#Invoking-CVS">Appendix B Quick reference to CVS commands</a></li>
+  <li><a name="toc-Reference-manual-for-Administrative-files" href="Administrative-files.html#Administrative-files">Appendix C Reference manual for Administrative files</a>
+  <ul class="no-bullet">
+    <li><a name="toc-The-modules-file" href="modules.html#modules">C.1 The modules file</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Alias-modules-1" href="Alias-modules.html#Alias-modules">C.1.1 Alias modules</a></li>
+      <li><a name="toc-Regular-modules-1" href="Regular-modules.html#Regular-modules">C.1.2 Regular modules</a></li>
+      <li><a name="toc-Ampersand-modules-1" href="Ampersand-modules.html#Ampersand-modules">C.1.3 Ampersand modules</a></li>
+      <li><a name="toc-Excluding-directories-1" href="Excluding-directories.html#Excluding-directories">C.1.4 Excluding directories</a></li>
+      <li><a name="toc-Module-options-1" href="Module-options.html#Module-options">C.1.5 Module options</a></li>
+      <li><a name="toc-How-the-modules-file-_0060_0060program-options_0027_0027-programs-are-run" href="Module-program-options.html#Module-program-options">C.1.6 How the modules file &ldquo;program options&rdquo; programs are run</a></li>
+    </ul></li>
+    <li><a name="toc-The-cvswrappers-file" href="Wrappers.html#Wrappers">C.2 The cvswrappers file</a></li>
+    <li><a name="toc-The-Trigger-Scripts" href="Trigger-Scripts.html#Trigger-Scripts">C.3 The Trigger Scripts</a>
+    <ul class="no-bullet">
+      <li><a name="toc-The-common-syntax" href="syntax.html#syntax">C.3.1 The common syntax</a></li>
+      <li><a name="toc-Security-and-the-Trigger-Scripts" href="Trigger-Script-Security.html#Trigger-Script-Security">C.3.2 Security and the Trigger Scripts</a></li>
+    </ul></li>
+    <li><a name="toc-The-commit-support-files" href="commit-files.html#commit-files">C.4 The commit support files</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Commitinfo" href="commitinfo.html#commitinfo">C.4.1 Commitinfo</a></li>
+      <li><a name="toc-Verifying-log-messages" href="verifymsg.html#verifymsg">C.4.2 Verifying log messages</a></li>
+      <li><a name="toc-Editinfo" href="editinfo.html#editinfo">C.4.3 Editinfo</a>
+      <ul class="no-bullet">
+        <li><a name="toc-Editinfo-example" href="editinfo-example.html#editinfo-example">C.4.3.1 Editinfo example</a></li>
+      </ul></li>
+      <li><a name="toc-Loginfo" href="loginfo.html#loginfo">C.4.4 Loginfo</a>
+      <ul class="no-bullet">
+        <li><a name="toc-Loginfo-example" href="loginfo-example.html#loginfo-example">C.4.4.1 Loginfo example</a></li>
+        <li><a name="toc-Keeping-a-checked-out-copy-1" href="Keeping-a-checked-out-copy.html#Keeping-a-checked-out-copy">C.4.4.2 Keeping a checked out copy</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a name="toc-Rcsinfo" href="rcsinfo.html#rcsinfo">C.5 Rcsinfo</a></li>
+    <li><a name="toc-Taginfo" href="taginfo.html#taginfo">C.6 Taginfo</a></li>
+    <li><a name="toc-Ignoring-files-via-cvsignore" href="cvsignore.html#cvsignore">C.7 Ignoring files via cvsignore</a></li>
+    <li><a name="toc-The-checkoutlist-file" href="checkoutlist.html#checkoutlist">C.8 The checkoutlist file</a></li>
+    <li><a name="toc-The-history-file" href="history-file.html#history-file">C.9 The history file</a></li>
+    <li><a name="toc-Expansions-in-administrative-files" href="Variables.html#Variables">C.10 Expansions in administrative files</a></li>
+    <li><a name="toc-The-CVSROOT_002fconfig-configuration-file" href="config.html#config">C.11 The CVSROOT/config configuration file</a></li>
+  </ul></li>
+  <li><a name="toc-All-environment-variables-which-affect-CVS" href="Environment-variables.html#Environment-variables">Appendix D All environment variables which affect CVS</a></li>
+  <li><a name="toc-Compatibility-between-CVS-Versions" href="Compatibility.html#Compatibility">Appendix E Compatibility between CVS Versions</a></li>
+  <li><a name="toc-Troubleshooting-1" href="Troubleshooting.html#Troubleshooting">Appendix F Troubleshooting</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Partial-list-of-error-messages" href="Error-messages.html#Error-messages">F.1 Partial list of error messages</a></li>
+    <li><a name="toc-Trouble-making-a-connection-to-a-CVS-server" href="Connection.html#Connection">F.2 Trouble making a connection to a CVS server</a></li>
+    <li><a name="toc-Other-common-problems" href="Other-problems.html#Other-problems">F.3 Other common problems</a></li>
+  </ul></li>
+  <li><a name="toc-Credits-1" href="Credits.html#Credits">Appendix G Credits</a></li>
+  <li><a name="toc-Dealing-with-bugs-in-CVS-or-this-manual" href="BUGS.html#BUGS">Appendix H Dealing with bugs in CVS or this manual</a></li>
+  <li><a name="toc-Index-1" href="Index.html#Index">Index</a></li>
+</ul>
+</div>
+
+
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="Overview.html#Overview" accesskey="n" rel="next">Overview</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="SEC_Top"></a>
+
+<p>This info manual describes how to use and administer
+<small>CVS</small> version 1.11.23.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Overview.html#Overview" accesskey="1">Overview</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An introduction to CVS
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Repository.html#Repository" accesskey="2">Repository</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Where all your sources are stored
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Starting-a-new-project.html#Starting-a-new-project" accesskey="3">Starting a new project</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Starting a project with CVS
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Revisions.html#Revisions" accesskey="4">Revisions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Numeric and symbolic names for revisions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Branching-and-merging.html#Branching-and-merging" accesskey="5">Branching and merging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Diverging/rejoining branches of development
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Recursive-behavior.html#Recursive-behavior" accesskey="6">Recursive behavior</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">CVS descends directories
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Adding-and-removing.html#Adding-and-removing" accesskey="7">Adding and removing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Adding/removing/renaming files/directories
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="History-browsing.html#History-browsing" accesskey="8">History browsing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Viewing the history of files in various ways
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+CVS and the Real World.
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Binary-files.html#Binary-files" accesskey="9">Binary files</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">CVS can handle binary files
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Multiple-developers.html#Multiple-developers">Multiple developers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How CVS helps a group of developers
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Revision-management.html#Revision-management">Revision management</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Policy questions for revision management
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Keyword-substitution.html#Keyword-substitution">Keyword substitution</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">CVS can include the revision inside the file
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tracking-sources.html#Tracking-sources">Tracking sources</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tracking third-party sources
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Builds.html#Builds">Builds</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Issues related to CVS and builds
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Special-Files.html#Special-Files">Special Files</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Devices, links and other non-regular files
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+References.
+&mdash;&mdash;&mdash;&ndash;
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="CVS-commands.html#CVS-commands">CVS commands</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">CVS commands share some things
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Invoking-CVS.html#Invoking-CVS">Invoking CVS</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Quick reference to CVS commands
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Administrative-files.html#Administrative-files">Administrative files</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Reference manual for the Administrative files
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Environment-variables.html#Environment-variables">Environment variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">All environment variables which affect CVS
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Compatibility.html#Compatibility">Compatibility</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Upgrading CVS versions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Troubleshooting.html#Troubleshooting">Troubleshooting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Some tips when nothing works
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Credits.html#Credits">Credits</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Some of the contributors to this manual
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="BUGS.html#BUGS">BUGS</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Dealing with bugs in CVS or this manual
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Index.html#Index">Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Index
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Overview.html#Overview" accesskey="n" rel="next">Overview</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

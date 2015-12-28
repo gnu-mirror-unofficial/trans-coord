@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Other problems</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Other problems">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Other problems">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Troubleshooting.html#Troubleshooting" rel="up" title="Troubleshooting">
+<link href="Credits.html#Credits" rel="next" title="Credits">
+<link href="Connection.html#Connection" rel="prev" title="Connection">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Other-problems"></a>
+<div class="header">
+<p>
+Previous: <a href="Connection.html#Connection" accesskey="p" rel="prev">Connection</a>, Up: <a href="Troubleshooting.html#Troubleshooting" accesskey="u" rel="up">Troubleshooting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Other-common-problems"></a>
+<h3 class="appendixsec">F.3 Other common problems</h3>
+
+<p>Here is a list of problems which do not fit into the
+above categories.  They are in no particular order.
+</p>
+<ul>
+<li> On Windows, if there is a 30 second or so delay when
+you run a <small>CVS</small> command, it may mean that you have
+your home directory set to <samp>C:/</samp>, for example (see
+<code>HOMEDRIVE</code> and <code>HOMEPATH</code> in
+<a href="Environment-variables.html#Environment-variables">Environment variables</a>).  <small>CVS</small> expects the home
+directory to not end in a slash, for example <samp>C:</samp>
+or <samp>C:\cvs</samp>.
+
+</li><li> If you are running <small>CVS</small> 1.9.18 or older, and
+<code>cvs update</code> finds a conflict and tries to
+merge, as described in <a href="Conflicts-example.html#Conflicts-example">Conflicts example</a>, but
+doesn&rsquo;t tell you there were conflicts, then you may
+have an old version of <small>RCS</small>.  The easiest solution
+probably is to upgrade to a current version of
+<small>CVS</small>, which does not rely on external <small>RCS</small>
+programs.
+</li></ul>
+
+
+
+
+</body>
+</html>

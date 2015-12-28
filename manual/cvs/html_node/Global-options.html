@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Global options</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Global options">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Global options">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="CVS-commands.html#CVS-commands" rel="up" title="CVS commands">
+<link href="Common-options.html#Common-options" rel="next" title="Common options">
+<link href="_007e_002f_002ecvsrc.html#g_t_007e_002f_002ecvsrc" rel="prev" title="~/.cvsrc">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Global-options"></a>
+<div class="header">
+<p>
+Next: <a href="Common-options.html#Common-options" accesskey="n" rel="next">Common options</a>, Previous: <a href="_007e_002f_002ecvsrc.html#g_t_007e_002f_002ecvsrc" accesskey="p" rel="prev">~/.cvsrc</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Global-options-1"></a>
+<h3 class="appendixsec">A.4 Global options</h3>
+<a name="index-Options_002c-global"></a>
+<a name="index-Global-options"></a>
+<a name="index-Left_002dhand-options"></a>
+
+<p>The available &lsquo;<samp>cvs_options</samp>&rsquo; (that are given to the
+left of &lsquo;<samp>cvs_command</samp>&rsquo;) are:
+</p>
+<dl compact="compact">
+<dt><code>--allow-root=<var>rootdir</var></code></dt>
+<dd><p>Specify legal <small>CVSROOT</small> directory.  See
+<a href="Password-authentication-server.html#Password-authentication-server">Password authentication server</a>.
+</p>
+<a name="index-Authentication_002c-stream"></a>
+<a name="index-Stream-authentication"></a>
+</dd>
+<dt><code>-a</code></dt>
+<dd><p>Authenticate all communication between the client and
+the server.  Only has an effect on the <small>CVS</small> client.
+As of this writing, this is only implemented when using
+a GSSAPI connection (see <a href="GSSAPI-authenticated.html#GSSAPI-authenticated">GSSAPI authenticated</a>).
+Authentication prevents certain sorts of attacks
+involving hijacking the active <small>TCP</small> connection.
+Enabling authentication does not enable encryption.
+</p>
+<a name="index-RCSBIN_002c-overriding"></a>
+<a name="index-Overriding-RCSBIN"></a>
+</dd>
+<dt><code>-b <var>bindir</var></code></dt>
+<dd><p>In <small>CVS</small> 1.9.18 and older, this specified that
+<small>RCS</small> programs are in the <var>bindir</var> directory.
+Current versions of <small>CVS</small> do not run <small>RCS</small>
+programs; for compatibility this option is accepted,
+but it does nothing.
+</p>
+<a name="index-TMPDIR_002c-overriding"></a>
+<a name="index-Overriding-TMPDIR"></a>
+</dd>
+<dt><code>-T <var>tempdir</var></code></dt>
+<dd><p>Use <var>tempdir</var> as the directory where temporary files are
+located.  Overrides the setting of the <code>$TMPDIR</code> environment
+variable and any precompiled directory.  This parameter should be
+specified as an absolute pathname.
+(When running client/server, &lsquo;<samp>-T</samp>&rsquo; affects only the local process;
+specifying &lsquo;<samp>-T</samp>&rsquo; for the client has no effect on the server and
+vice versa.)
+</p>
+<a name="index-CVSROOT_002c-overriding"></a>
+<a name="index-Overriding-CVSROOT"></a>
+</dd>
+<dt><code>-d <var>cvs_root_directory</var></code></dt>
+<dd><p>Use <var>cvs_root_directory</var> as the root directory
+pathname of the repository.  Overrides the setting of
+the <code>$CVSROOT</code> environment variable.  See <a href="Repository.html#Repository">Repository</a>.
+</p>
+<a name="index-EDITOR_002c-overriding"></a>
+<a name="index-Overriding-EDITOR"></a>
+</dd>
+<dt><code>-e <var>editor</var></code></dt>
+<dd><p>Use <var>editor</var> to enter revision log information.  Overrides the
+setting of the <code>$CVSEDITOR</code> and <code>$EDITOR</code>
+environment variables.  For more information, see
+<a href="Committing-your-changes.html#Committing-your-changes">Committing your changes</a>.
+</p>
+</dd>
+<dt><code>-f</code></dt>
+<dd><p>Do not read the <samp>~/.cvsrc</samp> file.  This
+option is most often used because of the
+non-orthogonality of the <small>CVS</small> option set.  For
+example, the &lsquo;<samp>cvs log</samp>&rsquo; option &lsquo;<samp>-N</samp>&rsquo; (turn off
+display of tag names) does not have a corresponding
+option to turn the display on.  So if you have
+&lsquo;<samp>-N</samp>&rsquo; in the <samp>~/.cvsrc</samp> entry for &lsquo;<samp>log</samp>&rsquo;,
+you may need to use &lsquo;<samp>-f</samp>&rsquo; to show the tag names.
+</p>
+</dd>
+<dt><code>-H</code></dt>
+<dt><code>--help</code></dt>
+<dd><p>Display usage information about the specified &lsquo;<samp>cvs_command</samp>&rsquo;
+(but do not actually execute the command).  If you don&rsquo;t specify
+a command name, &lsquo;<samp>cvs -H</samp>&rsquo; displays overall help for
+<small>CVS</small>, including a list of other help options.
+</p>
+<a name="index-Read_002donly-mode"></a>
+</dd>
+<dt><code>-n</code></dt>
+<dd><p>Do not change any files.  Attempt to execute the
+&lsquo;<samp>cvs_command</samp>&rsquo;, but only to issue reports; do not remove,
+update, or merge any existing files, or create any new files.
+</p>
+<p>Note that <small>CVS</small> will not necessarily produce exactly
+the same output as without &lsquo;<samp>-n</samp>&rsquo;.  In some cases
+the output will be the same, but in other cases
+<small>CVS</small> will skip some of the processing that would
+have been required to produce the exact same output.
+</p>
+</dd>
+<dt><code>-Q</code></dt>
+<dd><p>Cause the command to be really quiet; the command will only
+generate output for serious problems.
+</p>
+</dd>
+<dt><code>-q</code></dt>
+<dd><p>Cause the command to be somewhat quiet; informational messages,
+such as reports of recursion through subdirectories, are
+suppressed.
+</p>
+<a name="index-Read_002donly-files_002c-and-_002dr"></a>
+</dd>
+<dt><code>-r</code></dt>
+<dd><p>Make new working files read-only.  Same effect
+as if the <code>$CVSREAD</code> environment variable is set
+(see <a href="Environment-variables.html#Environment-variables">Environment variables</a>).  The default is to
+make working files writable, unless watches are on
+(see <a href="Watches.html#Watches">Watches</a>).
+</p>
+</dd>
+<dt><code>-s <var>variable</var>=<var>value</var></code></dt>
+<dd><p>Set a user variable (see <a href="Variables.html#Variables">Variables</a>).
+</p>
+<a name="index-Trace"></a>
+</dd>
+<dt><code>-t</code></dt>
+<dd><p>Trace program execution; display messages showing the steps of
+<small>CVS</small> activity.  Particularly useful with &lsquo;<samp>-n</samp>&rsquo; to explore the
+potential impact of an unfamiliar command.
+</p>
+</dd>
+<dt><code>-v</code></dt>
+<dt><code>--version</code></dt>
+<dd><p>Display version and copyright information for <small>CVS</small>.
+</p>
+<a name="index-CVSREAD_002c-overriding"></a>
+<a name="index-Overriding-CVSREAD"></a>
+</dd>
+<dt><code>-w</code></dt>
+<dd><p>Make new working files read-write.  Overrides the
+setting of the <code>$CVSREAD</code> environment variable.
+Files are created read-write by default, unless <code>$CVSREAD</code> is
+set or &lsquo;<samp>-r</samp>&rsquo; is given.
+</p>
+</dd>
+<dt><code>-x</code></dt>
+<dd><a name="index-Encryption"></a>
+<p>Encrypt all communication between the client and the
+server.  Only has an effect on the <small>CVS</small> client.  As
+of this writing, this is only implemented when using a
+GSSAPI connection (see <a href="GSSAPI-authenticated.html#GSSAPI-authenticated">GSSAPI authenticated</a>) or a
+Kerberos connection (see <a href="Kerberos-authenticated.html#Kerberos-authenticated">Kerberos authenticated</a>).
+Enabling encryption implies that message traffic is
+also authenticated.  Encryption support is not
+available by default; it must be enabled using a
+special configure option, <samp>--enable-encryption</samp>,
+when you build <small>CVS</small>.
+</p>
+</dd>
+<dt><code>-z <var>gzip-level</var></code></dt>
+<dd><a name="index-Compression"></a>
+<a name="index-Gzip"></a>
+<p>Set the compression level.
+Valid levels are 1 (high speed, low compression) to
+9 (low speed, high compression), or 0 to disable
+compression (the default).
+Only has an effect on the <small>CVS</small> client.
+</p>
+</dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Common-options.html#Common-options" accesskey="n" rel="next">Common options</a>, Previous: <a href="_007e_002f_002ecvsrc.html#g_t_007e_002f_002ecvsrc" accesskey="p" rel="prev">~/.cvsrc</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

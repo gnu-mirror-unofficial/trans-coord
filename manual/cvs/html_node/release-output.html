@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: release output</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: release output">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: release output">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="release.html#release" rel="up" title="release">
+<link href="release-examples.html#release-examples" rel="next" title="release examples">
+<link href="release-options.html#release-options" rel="prev" title="release options">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="release-output"></a>
+<div class="header">
+<p>
+Next: <a href="release-examples.html#release-examples" accesskey="n" rel="next">release examples</a>, Previous: <a href="release-options.html#release-options" accesskey="p" rel="prev">release options</a>, Up: <a href="release.html#release" accesskey="u" rel="up">release</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="release-output-1"></a>
+<h4 class="appendixsubsec">A.17.2 release output</h4>
+
+<p>Before <code>release</code> releases your sources it will
+print a one-line message for any file that is not
+up-to-date.
+</p>
+<dl compact="compact">
+<dt><code>U <var>file</var></code></dt>
+<dt><code>P <var>file</var></code></dt>
+<dd><p>There exists a newer revision of this file in the
+repository, and you have not modified your local copy
+of the file (&lsquo;<samp>U</samp>&rsquo; and &lsquo;<samp>P</samp>&rsquo; mean the same thing).
+</p>
+</dd>
+<dt><code>A <var>file</var></code></dt>
+<dd><p>The file has been added to your private copy of the
+sources, but has not yet been committed to the
+repository.  If you delete your copy of the sources
+this file will be lost.
+</p>
+</dd>
+<dt><code>R <var>file</var></code></dt>
+<dd><p>The file has been removed from your private copy of the
+sources, but has not yet been removed from the
+repository, since you have not yet committed the
+removal.  See <a href="commit.html#commit">commit</a>.
+</p>
+</dd>
+<dt><code>M <var>file</var></code></dt>
+<dd><p>The file is modified in your working directory.  There
+might also be a newer revision inside the repository.
+</p>
+</dd>
+<dt><code>? <var>file</var></code></dt>
+<dd><p><var>file</var> is in your working directory, but does not
+correspond to anything in the source repository, and is
+not in the list of files for <small>CVS</small> to ignore (see the
+description of the &lsquo;<samp>-I</samp>&rsquo; option, and
+see <a href="cvsignore.html#cvsignore">cvsignore</a>).  If you remove your working
+sources, this file will be lost.
+</p></dd>
+</dl>
+
+
+
+
+</body>
+</html>

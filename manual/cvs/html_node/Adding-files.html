@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Adding files</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Adding files">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Adding files">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Adding-and-removing.html#Adding-and-removing" rel="up" title="Adding and removing">
+<link href="Removing-files.html#Removing-files" rel="next" title="Removing files">
+<link href="Adding-and-removing.html#Adding-and-removing" rel="prev" title="Adding and removing">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Adding-files"></a>
+<div class="header">
+<p>
+Next: <a href="Removing-files.html#Removing-files" accesskey="n" rel="next">Removing files</a>, Up: <a href="Adding-and-removing.html#Adding-and-removing" accesskey="u" rel="up">Adding and removing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Adding-files-to-a-directory"></a>
+<h3 class="section">7.1 Adding files to a directory</h3>
+<a name="index-Adding-files"></a>
+
+<p>To add a new file to a directory, follow these steps.
+</p>
+<ul>
+<li> You must have a working copy of the directory.
+See <a href="Getting-the-source.html#Getting-the-source">Getting the source</a>.
+
+</li><li> Create the new file inside your working copy of the directory.
+
+</li><li> Use &lsquo;<samp>cvs add <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that you
+want to version control the file.  If the file contains
+binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see <a href="Binary-files.html#Binary-files">Binary files</a>).
+
+</li><li> Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually check
+in the file into the repository.  Other developers
+cannot see the file until you perform this step.
+</li></ul>
+
+<p>You can also use the <code>add</code> command to add a new
+directory.
+</p>
+<p>Unlike most other commands, the <code>add</code> command is
+not recursive.  You have to explicitly name files and
+directories that you wish to add to the repository.
+However, each directory will need to be added
+separately before you will be able to add new files
+to those directories.
+</p>
+<div class="example">
+<pre class="example">$ mkdir -p foo/bar
+$ cp ~/myfile foo/bar/myfile
+$ cvs add foo foo/bar
+$ cvs add foo/bar/myfile
+</pre></div>
+
+<a name="index-add-_0028subcommand_0029"></a>
+<dl>
+<dt><a name="index-cvs-add"></a>Command: <strong>cvs add</strong> <em>[<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</em></dt>
+<dd>
+<p>Schedule <var>files</var> to be added to the repository.
+The files or directories specified with <code>add</code> must
+already exist in the current directory.  To add a whole
+new directory hierarchy to the source repository (for
+example, files received from a third-party vendor), use
+the <code>import</code> command instead.  See <a href="import.html#import">import</a>.
+</p>
+<p>The added files are not placed in the source repository
+until you use <code>commit</code> to make the change
+permanent.  Doing an <code>add</code> on a file that was
+removed with the <code>remove</code> command will undo the
+effect of the <code>remove</code>, unless a <code>commit</code>
+command intervened.  See <a href="Removing-files.html#Removing-files">Removing files</a>, for an
+example.
+</p>
+<p>The &lsquo;<samp>-k</samp>&rsquo; option specifies the default way that
+this file will be checked out; for more information see
+<a href="Substitution-modes.html#Substitution-modes">Substitution modes</a>.
+</p>
+<p>The &lsquo;<samp>-m</samp>&rsquo; option specifies a description for the
+file.  This description appears in the history log (if
+it is enabled, see <a href="history-file.html#history-file">history file</a>).  It will also be
+saved in the version history inside the repository when
+the file is committed.  The <code>log</code> command displays
+this description.  The description can be changed using
+&lsquo;<samp>admin -t</samp>&rsquo;.  See <a href="admin.html#admin">admin</a>.  If you omit the
+&lsquo;<samp>-m <var>description</var></samp>&rsquo; flag, an empty string will
+be used.  You will not be prompted for a description.
+</p></dd></dl>
+
+<p>For example, the following commands add the file
+<samp>backend.c</samp> to the repository:
+</p>
+<div class="example">
+<pre class="example">$ cvs add backend.c
+$ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
+</pre></div>
+
+<p>When you add a file it is added only on the branch
+which you are working on (see <a href="Branching-and-merging.html#Branching-and-merging">Branching and merging</a>).  You can
+later merge the additions to another branch if you want
+(see <a href="Merging-adds-and-removals.html#Merging-adds-and-removals">Merging adds and removals</a>).
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Removing-files.html#Removing-files" accesskey="n" rel="next">Removing files</a>, Up: <a href="Adding-and-removing.html#Adding-and-removing" accesskey="u" rel="up">Adding and removing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

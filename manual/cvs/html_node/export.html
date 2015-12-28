@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: export</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: export">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: export">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="CVS-commands.html#CVS-commands" rel="up" title="CVS commands">
+<link href="export-options.html#export-options" rel="next" title="export options">
+<link href="diff-examples.html#diff-examples" rel="prev" title="diff examples">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="export"></a>
+<div class="header">
+<p>
+Next: <a href="history.html#history" accesskey="n" rel="next">history</a>, Previous: <a href="diff.html#diff" accesskey="p" rel="prev">diff</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="export_002d_002d_002dExport-sources-from-CVS_002c-similar-to-checkout"></a>
+<h3 class="appendixsec">A.12 export&mdash;Export sources from CVS, similar to checkout</h3>
+<a name="index-export-_0028subcommand_0029"></a>
+
+<ul>
+<li> Synopsis: export [-flNnR] [-r rev|-D date] [-k subst] [-d dir] module&hellip;
+</li><li> Requires: repository.
+</li><li> Changes: current directory.
+</li></ul>
+
+<p>This command is a variant of <code>checkout</code>; use it
+when you want a copy of the source for module without
+the <small>CVS</small> administrative directories.  For example, you
+might use <code>export</code> to prepare source for shipment
+off-site.  This command requires that you specify a
+date or tag (with &lsquo;<samp>-D</samp>&rsquo; or &lsquo;<samp>-r</samp>&rsquo;), so that you
+can count on reproducing the source you ship to others
+(and thus it always prunes empty directories).
+</p>
+<p>One often would like to use &lsquo;<samp>-kv</samp>&rsquo; with <code>cvs
+export</code>.  This causes any keywords to be
+expanded such that an import done at some other site
+will not lose the keyword revision information.  But be
+aware that doesn&rsquo;t handle an export containing binary
+files correctly.  Also be aware that after having used
+&lsquo;<samp>-kv</samp>&rsquo;, one can no longer use the <code>ident</code>
+command (which is part of the <small>RCS</small> suite&mdash;see
+ident(1)) which looks for keyword strings.  If
+you want to be able to use <code>ident</code> you must not
+use &lsquo;<samp>-kv</samp>&rsquo;.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="export-options.html#export-options" accesskey="1">export options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">export options
+</td></tr>
+</table>
+
+
+
+
+</body>
+</html>

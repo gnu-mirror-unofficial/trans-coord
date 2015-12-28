@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Tagging add/remove</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Tagging add/remove">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Tagging add/remove">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Revisions.html#Revisions" rel="up" title="Revisions">
+<link href="Sticky-tags.html#Sticky-tags" rel="next" title="Sticky tags">
+<link href="Modifying-tags.html#Modifying-tags" rel="prev" title="Modifying tags">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Tagging-add_002fremove"></a>
+<div class="header">
+<p>
+Next: <a href="Sticky-tags.html#Sticky-tags" accesskey="n" rel="next">Sticky tags</a>, Previous: <a href="Modifying-tags.html#Modifying-tags" accesskey="p" rel="prev">Modifying tags</a>, Up: <a href="Revisions.html#Revisions" accesskey="u" rel="up">Revisions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Tagging-and-adding-and-removing-files"></a>
+<h3 class="section">4.8 Tagging and adding and removing files</h3>
+
+<p>The subject of exactly how tagging interacts with
+adding and removing files is somewhat obscure; for the
+most part <small>CVS</small> will keep track of whether files
+exist or not without too much fussing.  By default,
+tags are applied to only files which have a revision
+corresponding to what is being tagged.  Files which did
+not exist yet, or which were already removed, simply
+omit the tag, and <small>CVS</small> knows to treat the absence
+of a tag as meaning that the file didn&rsquo;t exist as of
+that tag.
+</p>
+<p>However, this can lose a small amount of information.
+For example, suppose a file was added and then removed.
+Then, if the tag is missing for that file, there is no
+way to know whether the tag refers to the time before
+the file was added, or the time after it was removed.
+If you specify the &lsquo;<samp>-r</samp>&rsquo; option to <code>cvs rtag</code>,
+then <small>CVS</small> tags the files which have been removed,
+and thereby avoids this problem.  For example, one
+might specify <code>-r HEAD</code> to tag the head.
+</p>
+<p>On the subject of adding and removing files, the
+<code>cvs rtag</code> command has a &lsquo;<samp>-a</samp>&rsquo; option which
+means to clear the tag from removed files that would
+not otherwise be tagged.  For example, one might
+specify this option in conjunction with &lsquo;<samp>-F</samp>&rsquo; when
+moving a tag.  If one moved a tag without &lsquo;<samp>-a</samp>&rsquo;,
+then the tag in the removed files might still refer to
+the old revision, rather than reflecting the fact that
+the file had been removed.  I don&rsquo;t think this is
+necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Sticky-tags.html#Sticky-tags" accesskey="n" rel="next">Sticky tags</a>, Previous: <a href="Modifying-tags.html#Modifying-tags" accesskey="p" rel="prev">Modifying tags</a>, Up: <a href="Revisions.html#Revisions" accesskey="u" rel="up">Revisions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

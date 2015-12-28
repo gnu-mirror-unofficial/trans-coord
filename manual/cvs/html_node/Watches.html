@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Watches</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Watches">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Watches">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Multiple-developers.html#Multiple-developers" rel="up" title="Multiple developers">
+<link href="Setting-a-watch.html#Setting-a-watch" rel="next" title="Setting a watch">
+<link href="Concurrency.html#Concurrency" rel="prev" title="Concurrency">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Watches"></a>
+<div class="header">
+<p>
+Next: <a href="Choosing-a-model.html#Choosing-a-model" accesskey="n" rel="next">Choosing a model</a>, Previous: <a href="Concurrency.html#Concurrency" accesskey="p" rel="prev">Concurrency</a>, Up: <a href="Multiple-developers.html#Multiple-developers" accesskey="u" rel="up">Multiple developers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Mechanisms-to-track-who-is-editing-files"></a>
+<h3 class="section">10.6 Mechanisms to track who is editing files</h3>
+<a name="index-Watches"></a>
+
+<p>For many groups, use of <small>CVS</small> in its default mode is
+perfectly satisfactory.  Users may sometimes go to
+check in a modification only to find that another
+modification has intervened, but they deal with it and
+proceed with their check in.  Other groups prefer to be
+able to know who is editing what files, so that if two
+people try to edit the same file they can choose to
+talk about who is doing what when rather than be
+surprised at check in time.  The features in this
+section allow such coordination, while retaining the
+ability of two developers to edit the same file at the
+same time.
+</p>
+<p>For maximum benefit developers should use <code>cvs
+edit</code> (not <code>chmod</code>) to make files read-write to
+edit them, and <code>cvs release</code> (not <code>rm</code>) to
+discard a working directory which is no longer in use,
+but <small>CVS</small> is not able to enforce this behavior.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Setting-a-watch.html#Setting-a-watch" accesskey="1">Setting a watch</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Telling CVS to watch certain files
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Getting-Notified.html#Getting-Notified" accesskey="2">Getting Notified</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Telling CVS to notify you
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Editing-files.html#Editing-files" accesskey="3">Editing files</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to edit a file which is being watched
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Watch-information.html#Watch-information" accesskey="4">Watch information</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Information about who is watching and editing
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Watches-Compatibility.html#Watches-Compatibility" accesskey="5">Watches Compatibility</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Watches interact poorly with CVS 1.6 or earlier
+</td></tr>
+</table>
+
+
+
+
+</body>
+</html>

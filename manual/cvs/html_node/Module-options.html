@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Module options</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Module options">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Module options">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="modules.html#modules" rel="up" title="modules">
+<link href="Module-program-options.html#Module-program-options" rel="next" title="Module program options">
+<link href="Excluding-directories.html#Excluding-directories" rel="prev" title="Excluding directories">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Module-options"></a>
+<div class="header">
+<p>
+Next: <a href="Module-program-options.html#Module-program-options" accesskey="n" rel="next">Module program options</a>, Previous: <a href="Excluding-directories.html#Excluding-directories" accesskey="p" rel="prev">Excluding directories</a>, Up: <a href="modules.html#modules" accesskey="u" rel="up">modules</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Module-options-1"></a>
+<h4 class="appendixsubsec">C.1.5 Module options</h4>
+<a name="index-Options_002c-in-modules-file"></a>
+
+<p>Either regular modules or ampersand modules can contain
+options, which supply additional information concerning
+the module.
+</p>
+<dl compact="compact">
+<dd><a name="index-_002dd_002c-in-modules-file"></a>
+</dd>
+<dt><code>-d <var>name</var></code></dt>
+<dd><p>Name the working directory something other than the
+module name.
+</p>
+<a name="index-Export-program"></a>
+<a name="index-_002de_002c-in-modules-file"></a>
+</dd>
+<dt><code>-e <var>prog</var></code></dt>
+<dd><p>Specify a program <var>prog</var> to run whenever files in a
+module are exported.  <var>prog</var> runs with a single
+argument, the module name.
+</p>
+<a name="index-Checkout-program"></a>
+<a name="index-_002do_002c-in-modules-file"></a>
+</dd>
+<dt><code>-o <var>prog</var></code></dt>
+<dd><p>Specify a program <var>prog</var> to run whenever files in a
+module are checked out.  <var>prog</var> runs with a single
+argument, the module name.  See <a href="Module-program-options.html#Module-program-options">Module program options</a> for
+information on how <var>prog</var> is called.
+</p>
+<a name="index-Status-of-a-module"></a>
+<a name="index-Module-status"></a>
+<a name="index-_002ds_002c-in-modules-file"></a>
+</dd>
+<dt><code>-s <var>status</var></code></dt>
+<dd><p>Assign a status to the module.  When the module file is
+printed with &lsquo;<samp>cvs checkout -s</samp>&rsquo; the modules are
+sorted according to primarily module status, and
+secondarily according to the module name.  This option
+has no other meaning.  You can use this option for
+several things besides status: for instance, list the
+person that is responsible for this module.
+</p>
+<a name="index-Tag-program"></a>
+<a name="index-_002dt_002c-in-modules-file"></a>
+</dd>
+<dt><code>-t <var>prog</var></code></dt>
+<dd><p>Specify a program <var>prog</var> to run whenever files in a
+module are tagged with <code>rtag</code>.  <var>prog</var> runs
+with two arguments: the module name and the symbolic
+tag specified to <code>rtag</code>.  It is not run
+when <code>tag</code> is executed.  Generally you will find
+that the <samp>taginfo</samp> file is a better solution (see <a href="taginfo.html#taginfo">taginfo</a>).
+</p></dd>
+</dl>
+
+<p>You should also see see <a href="Module-program-options.html#Module-program-options">Module program options</a> about how the
+&ldquo;program options&rdquo; programs are run.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Module-program-options.html#Module-program-options" accesskey="n" rel="next">Module program options</a>, Previous: <a href="Excluding-directories.html#Excluding-directories" accesskey="p" rel="prev">Excluding directories</a>, Up: <a href="modules.html#modules" accesskey="u" rel="up">modules</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

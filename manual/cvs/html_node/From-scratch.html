@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: From scratch</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: From scratch">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: From scratch">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Setting-up-the-files.html#Setting-up-the-files" rel="up" title="Setting up the files">
+<link href="Defining-the-module.html#Defining-the-module" rel="next" title="Defining the module">
+<link href="From-other-version-control-systems.html#From-other-version-control-systems" rel="prev" title="From other version control systems">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="From-scratch"></a>
+<div class="header">
+<p>
+Previous: <a href="From-other-version-control-systems.html#From-other-version-control-systems" accesskey="p" rel="prev">From other version control systems</a>, Up: <a href="Setting-up-the-files.html#Setting-up-the-files" accesskey="u" rel="up">Setting up the files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Creating-a-directory-tree-from-scratch"></a>
+<h4 class="subsection">3.1.3 Creating a directory tree from scratch</h4>
+
+<p>For a new project, the easiest thing to do is probably
+to create an empty directory structure, like this:
+</p>
+<div class="example">
+<pre class="example">$ mkdir tc
+$ mkdir tc/man
+$ mkdir tc/testing
+</pre></div>
+
+<p>After that, you use the <code>import</code> command to create
+the corresponding (empty) directory structure inside
+the repository:
+</p>
+<div class="example">
+<pre class="example">$ cd tc
+$ cvs import -m &quot;Created directory structure&quot; yoyodyne/<var>dir</var> yoyo start
+</pre></div>
+
+<p>This will add yoyodyne/<var>dir</var> as a directory under
+<code>$CVSROOT</code>.
+</p>
+<p>Use <code>checkout</code> to get the new project.  Then, use <code>add</code>
+to add files (and new directories) as needed.
+</p>
+<div class="example">
+<pre class="example">$ cd ..
+$ cvs co yoyodyne/<var>dir</var>
+</pre></div>
+
+<p>Check that the permissions <small>CVS</small> sets on the
+directories inside <code>$CVSROOT</code> are reasonable.
+</p>
+
+
+
+</body>
+</html>

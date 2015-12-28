@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Server requirements</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Server requirements">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Server requirements">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Remote-repositories.html#Remote-repositories" rel="up" title="Remote repositories">
+<link href="Connecting-via-rsh.html#Connecting-via-rsh" rel="next" title="Connecting via rsh">
+<link href="Remote-repositories.html#Remote-repositories" rel="prev" title="Remote repositories">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Server-requirements"></a>
+<div class="header">
+<p>
+Next: <a href="Connecting-via-rsh.html#Connecting-via-rsh" accesskey="n" rel="next">Connecting via rsh</a>, Up: <a href="Remote-repositories.html#Remote-repositories" accesskey="u" rel="up">Remote repositories</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Server-requirements-1"></a>
+<h4 class="subsection">2.9.1 Server requirements</h4>
+
+<p>The quick answer to what sort of machine is suitable as
+a server is that requirements are modest&mdash;a server
+with 32M of memory or even less can handle a fairly
+large source tree with a fair amount of activity.
+</p>
+<p>The real answer, of course, is more complicated.
+Estimating the known areas of large memory consumption
+should be sufficient to estimate memory requirements.
+There are two such areas documented here; other memory
+consumption should be small by comparison (if you find
+that is not the case, let us know, as described in
+<a href="BUGS.html#BUGS">BUGS</a>, so we can update this documentation).
+</p>
+<p>The first area of big memory consumption is large
+checkouts, when using the <small>CVS</small> server.  The server
+consists of two processes for each client that it is
+serving.  Memory consumption on the child process
+should remain fairly small.  Memory consumption on the
+parent process, particularly if the network connection
+to the client is slow, can be expected to grow to
+slightly more than the size of the sources in a single
+directory, or two megabytes, whichever is larger.
+</p>
+<p>Multiplying the size of each <small>CVS</small> server by the
+number of servers which you expect to have active at
+one time should give an idea of memory requirements for
+the server.  For the most part, the memory consumed by
+the parent process probably can be swap space rather
+than physical memory.
+</p>
+
+<p>The second area of large memory consumption is
+<code>diff</code>, when checking in large files.  This is
+required even for binary files.  The rule of thumb is
+to allow about ten times the size of the largest file
+you will want to check in, although five times may be
+adequate.  For example, if you want to check in a file
+which is 10 megabytes, you should have 100 megabytes of
+memory on the machine doing the checkin (the server
+machine for client/server, or the machine running
+<small>CVS</small> for non-client/server).  This can be swap
+space rather than physical memory.  Because the memory
+is only required briefly, there is no particular need
+to allow memory for more than one such checkin at a
+time.
+</p>
+<p>Resource consumption for the client is even more
+modest&mdash;any machine with enough capacity to run the
+operating system in question should have little
+trouble.
+</p>
+<p>For information on disk space requirements, see
+<a href="Creating-a-repository.html#Creating-a-repository">Creating a repository</a>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Connecting-via-rsh.html#Connecting-via-rsh" accesskey="n" rel="next">Connecting via rsh</a>, Up: <a href="Remote-repositories.html#Remote-repositories" accesskey="u" rel="up">Remote repositories</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: add</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: add">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: add">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="CVS-commands.html#CVS-commands" rel="up" title="CVS commands">
+<link href="add-options.html#add-options" rel="next" title="add options">
+<link href="Common-options.html#Common-options" rel="prev" title="Common options">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="add"></a>
+<div class="header">
+<p>
+Next: <a href="admin.html#admin" accesskey="n" rel="next">admin</a>, Previous: <a href="Common-options.html#Common-options" accesskey="p" rel="prev">Common options</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="add_002d_002d_002dAdd-files-and-directories-to-the-repository"></a>
+<h3 class="appendixsec">A.6 add&mdash;Add files and directories to the repository</h3>
+<a name="index-add-_0028subcommand_0029-1"></a>
+
+<ul>
+<li> Synopsis: add [-k rcs-kflag] [-m message] files...
+</li><li> Requires: repository, working directory.
+</li><li> Changes: repository, working directory.
+</li></ul>
+
+<p>The <code>add</code> command is used to present new files
+and directories for addition into the <small>CVS</small>
+repository.  When <code>add</code> is used on a directory,
+a new directory is created in the repository
+immediately.  When used on a file, only the working
+directory is updated.  Changes to the repository are
+not made until the <code>commit</code> command is used on
+the newly added file. 
+</p>
+<p>The <code>add</code> command also resurrects files that
+have been previously removed.  This can be done
+before or after the <code>commit</code> command is used
+to finalize the removal of files.  Resurrected files
+are restored into the working directory at the time
+the <code>add</code> command is executed.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="add-options.html#add-options" accesskey="1">add options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">add options
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="add-examples.html#add-examples" accesskey="2">add examples</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">add examples
+</td></tr>
+</table>
+
+
+
+
+</body>
+</html>

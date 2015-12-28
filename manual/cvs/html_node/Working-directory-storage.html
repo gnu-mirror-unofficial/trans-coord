@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Working directory storage</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Working directory storage">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Working directory storage">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository.html#Repository" rel="up" title="Repository">
+<link href="Intro-administrative-files.html#Intro-administrative-files" rel="next" title="Intro administrative files">
+<link href="CVSROOT-storage.html#CVSROOT-storage" rel="prev" title="CVSROOT storage">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Working-directory-storage"></a>
+<div class="header">
+<p>
+Next: <a href="Intro-administrative-files.html#Intro-administrative-files" accesskey="n" rel="next">Intro administrative files</a>, Previous: <a href="Repository-storage.html#Repository-storage" accesskey="p" rel="prev">Repository storage</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="How-data-is-stored-in-the-working-directory"></a>
+<h3 class="section">2.3 How data is stored in the working directory</h3>
+
+
+<a name="index-CVS-directory_002c-in-working-directory"></a>
+<p>While we are discussing <small>CVS</small> internals which may
+become visible from time to time, we might as well talk
+about what <small>CVS</small> puts in the <samp>CVS</samp> directories
+in the working directories.  As with the repository,
+<small>CVS</small> handles this information and one can usually
+access it via <small>CVS</small> commands.  But in some cases it
+may be useful to look at it, and other programs, such
+as the <code>jCVS</code> graphical user interface or the
+<code>VC</code> package for emacs, may need to look at it.
+Such programs should follow the recommendations in this
+section if they hope to be able to work with other
+programs which use those files, including future
+versions of the programs just mentioned and the
+command-line <small>CVS</small> client.
+</p>
+<p>The <samp>CVS</samp> directory contains several files.
+Programs which are reading this directory should
+silently ignore files which are in the directory but
+which are not documented here, to allow for future
+expansion.
+</p>
+<p>The files are stored according to the text file
+convention for the system in question.  This means that
+working directories are not portable between systems
+with differing conventions for storing text files.
+This is intentional, on the theory that the files being
+managed by <small>CVS</small> probably will not be portable between
+such systems either.
+</p>
+<dl compact="compact">
+<dt><samp>Root</samp></dt>
+<dd><p>This file contains the current <small>CVS</small> root, as
+described in <a href="Specifying-a-repository.html#Specifying-a-repository">Specifying a repository</a>.
+</p>
+<a name="index-Repository-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fRepository-file"></a>
+</dd>
+<dt><samp>Repository</samp></dt>
+<dd><p>This file contains the directory within the repository
+which the current directory corresponds with.  It can
+be either an absolute pathname or a relative pathname;
+<small>CVS</small> has had the ability to read either format
+since at least version 1.3 or so.  The relative
+pathname is relative to the root, and is the more
+sensible approach, but the absolute pathname is quite
+common and implementations should accept either.  For
+example, after the command
+</p>
+<div class="example">
+<pre class="example">cvs -d :local:/usr/local/cvsroot checkout yoyodyne/tc
+</pre></div>
+
+<p><samp>Root</samp> will contain
+</p>
+<div class="example">
+<pre class="example">:local:/usr/local/cvsroot
+</pre></div>
+
+<p>and <samp>Repository</samp> will contain either
+</p>
+<div class="example">
+<pre class="example">/usr/local/cvsroot/yoyodyne/tc
+</pre></div>
+
+<p>or
+</p>
+<div class="example">
+<pre class="example">yoyodyne/tc
+</pre></div>
+
+<p>If the particular working directory does not correspond
+to a directory in the repository, then <samp>Repository</samp>
+should contain <samp>CVSROOT/Emptydir</samp>.
+<a name="index-Emptydir_002c-in-CVSROOT-directory"></a>
+<a name="index-CVSROOT_002fEmptydir-directory"></a>
+</p>
+<a name="index-Entries-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fEntries-file"></a>
+</dd>
+<dt><samp>Entries</samp></dt>
+<dd><p>This file lists the files and directories in the
+working directory.
+The first character of each line indicates what sort of
+line it is.  If the character is unrecognized, programs
+reading the file should silently skip that line, to
+allow for future expansion.
+</p>
+<p>If the first character is &lsquo;<samp>/</samp>&rsquo;, then the format is:
+</p>
+<div class="example">
+<pre class="example">/<var>name</var>/<var>revision</var>/<var>timestamp</var>[+<var>conflict</var>]/<var>options</var>/<var>tagdate</var>
+</pre></div>
+
+<p>where &lsquo;<samp>[</samp>&rsquo; and &lsquo;<samp>]</samp>&rsquo; are not part of the entry,
+but instead indicate that the &lsquo;<samp>+</samp>&rsquo; and conflict
+marker are optional.  <var>name</var> is the name of the
+file within the directory.  <var>revision</var> is the
+revision that the file in the working derives from, or
+&lsquo;<samp>0</samp>&rsquo; for an added file, or &lsquo;<samp>-</samp>&rsquo; followed by a
+revision for a removed file.  <var>timestamp</var> is the
+timestamp of the file at the time that <small>CVS</small> created
+it; if the timestamp differs with the actual
+modification time of the file it means the file has
+been modified.  It is stored in
+the format used by the ISO C asctime() function (for
+example, &lsquo;<samp>Sun Apr  7 01:29:26 1996</samp>&rsquo;).  One may
+write a string which is not in that format, for
+example, &lsquo;<samp>Result of merge</samp>&rsquo;, to indicate that the
+file should always be considered to be modified.  This
+is not a special case; to see whether a file is
+modified a program should take the timestamp of the file
+and simply do a string compare with <var>timestamp</var>.
+If there was a conflict, <var>conflict</var> can be set to
+the modification time of the file after the file has been
+written with conflict markers (see <a href="Conflicts-example.html#Conflicts-example">Conflicts example</a>).
+Thus if <var>conflict</var> is subsequently the same as the actual
+modification time of the file it means that the user
+has obviously not resolved the conflict.  <var>options</var>
+contains sticky options (for example &lsquo;<samp>-kb</samp>&rsquo; for a
+binary file).  <var>tagdate</var> contains &lsquo;<samp>T</samp>&rsquo; followed
+by a tag name, or &lsquo;<samp>D</samp>&rsquo; for a date, followed by a
+sticky tag or date.  Note that if <var>timestamp</var>
+contains a pair of timestamps separated by a space,
+rather than a single timestamp, you are dealing with a
+version of <small>CVS</small> earlier than <small>CVS</small> 1.5 (not
+documented here).
+</p>
+<p>The timezone on the timestamp in CVS/Entries (local or
+universal) should be the same as the operating system
+stores for the timestamp of the file itself.  For
+example, on Unix the file&rsquo;s timestamp is in universal
+time (UT), so the timestamp in CVS/Entries should be
+too.  On <small>VMS</small>, the file&rsquo;s timestamp is in local
+time, so <small>CVS</small> on <small>VMS</small> should use local time.
+This rule is so that files do not appear to be modified
+merely because the timezone changed (for example, to or
+from summer time).
+</p>
+<p>If the first character of a line in <samp>Entries</samp> is
+&lsquo;<samp>D</samp>&rsquo;, then it indicates a subdirectory.  &lsquo;<samp>D</samp>&rsquo;
+on a line all by itself indicates that the program
+which wrote the <samp>Entries</samp> file does record
+subdirectories (therefore, if there is such a line and
+no other lines beginning with &lsquo;<samp>D</samp>&rsquo;, one knows there
+are no subdirectories).  Otherwise, the line looks
+like:
+</p>
+<div class="example">
+<pre class="example">D/<var>name</var>/<var>filler1</var>/<var>filler2</var>/<var>filler3</var>/<var>filler4</var>
+</pre></div>
+
+<p>where <var>name</var> is the name of the subdirectory, and
+all the <var>filler</var> fields should be silently ignored,
+for future expansion.  Programs which modify
+<code>Entries</code> files should preserve these fields.
+</p>
+<p>The lines in the <samp>Entries</samp> file can be in any order.
+</p>
+<a name="index-Entries_002eLog-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fEntries_002eLog-file"></a>
+</dd>
+<dt><samp>Entries.Log</samp></dt>
+<dd><p>This file does not record any information beyond that
+in <samp>Entries</samp>, but it does provide a way to update
+the information without having to rewrite the entire
+<samp>Entries</samp> file, including the ability to preserve
+the information even if the program writing
+<samp>Entries</samp> and <samp>Entries.Log</samp> abruptly aborts.
+Programs which are reading the <samp>Entries</samp> file
+should also check for <samp>Entries.Log</samp>.  If the latter
+exists, they should read <samp>Entries</samp> and then apply
+the changes mentioned in <samp>Entries.Log</samp>.  After
+applying the changes, the recommended practice is to
+rewrite <samp>Entries</samp> and then delete <samp>Entries.Log</samp>.
+The format of a line in <samp>Entries.Log</samp> is a single
+character command followed by a space followed by a
+line in the format specified for a line in
+<samp>Entries</samp>.  The single character command is
+&lsquo;<samp>A</samp>&rsquo; to indicate that the entry is being added,
+&lsquo;<samp>R</samp>&rsquo; to indicate that the entry is being removed,
+or any other character to indicate that the entire line
+in <samp>Entries.Log</samp> should be silently ignored (for
+future expansion).  If the second character of the line
+in <samp>Entries.Log</samp> is not a space, then it was
+written by an older version of <small>CVS</small> (not documented
+here).
+</p>
+<p>Programs which are writing rather than reading can
+safely ignore <samp>Entries.Log</samp> if they so choose.
+</p>
+<a name="index-Entries_002eBackup-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fEntries_002eBackup-file"></a>
+</dd>
+<dt><samp>Entries.Backup</samp></dt>
+<dd><p>This is a temporary file.  Recommended usage is to
+write a new entries file to <samp>Entries.Backup</samp>, and
+then to rename it (atomically, where possible) to <samp>Entries</samp>.
+</p>
+<a name="index-Entries_002eStatic-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fEntries_002eStatic-file"></a>
+</dd>
+<dt><samp>Entries.Static</samp></dt>
+<dd><p>The only relevant thing about this file is whether it
+exists or not.  If it exists, then it means that only
+part of a directory was gotten and <small>CVS</small> will
+not create additional files in that directory.  To
+clear it, use the <code>update</code> command with the
+&lsquo;<samp>-d</samp>&rsquo; option, which will get the additional files
+and remove <samp>Entries.Static</samp>.
+</p>
+<a name="index-Tag-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fTag-file"></a>
+<a name="index-Sticky-tags_002fdates_002c-per_002ddirectory"></a>
+<a name="index-Per_002ddirectory-sticky-tags_002fdates"></a>
+</dd>
+<dt><samp>Tag</samp></dt>
+<dd><p>This file contains per-directory sticky tags or dates.
+The first character is &lsquo;<samp>T</samp>&rsquo; for a branch tag,
+&lsquo;<samp>N</samp>&rsquo; for a non-branch tag, or &lsquo;<samp>D</samp>&rsquo; for a date,
+or another character to mean the file should be
+silently ignored, for future expansion.  This character
+is followed by the tag or date.  Note that
+per-directory sticky tags or dates are used for things
+like applying to files which are newly added; they
+might not be the same as the sticky tags or dates on
+individual files.  For general information on sticky
+tags and dates, see <a href="Sticky-tags.html#Sticky-tags">Sticky tags</a>.
+</p>
+<a name="index-Notify-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fNotify-file"></a>
+</dd>
+<dt><samp>Notify</samp></dt>
+<dd><p>This file stores notifications (for example, for
+<code>edit</code> or <code>unedit</code>) which have not yet been
+sent to the server.  Its format is not yet documented
+here.
+</p>
+<a name="index-Notify_002etmp-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fNotify_002etmp-file"></a>
+</dd>
+<dt><samp>Notify.tmp</samp></dt>
+<dd><p>This file is to <samp>Notify</samp> as <samp>Entries.Backup</samp>
+is to <samp>Entries</samp>.  That is, to write <samp>Notify</samp>,
+first write the new contents to <samp>Notify.tmp</samp> and
+then (atomically where possible), rename it to
+<samp>Notify</samp>.
+</p>
+<a name="index-Base-directory_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fBase-directory"></a>
+</dd>
+<dt><samp>Base</samp></dt>
+<dd><p>If watches are in use, then an <code>edit</code> command
+stores the original copy of the file in the <samp>Base</samp>
+directory.  This allows the <code>unedit</code> command to
+operate even if it is unable to communicate with the
+server.
+</p>
+<a name="index-Baserev-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fBaserev-file"></a>
+</dd>
+<dt><samp>Baserev</samp></dt>
+<dd><p>The file lists the revision for each of the files in
+the <samp>Base</samp> directory.  The format is:
+</p>
+<div class="example">
+<pre class="example">B<var>name</var>/<var>rev</var>/<var>expansion</var>
+</pre></div>
+
+<p>where <var>expansion</var> should be ignored, to allow for
+future expansion.
+</p>
+<a name="index-Baserev_002etmp-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fBaserev_002etmp-file"></a>
+</dd>
+<dt><samp>Baserev.tmp</samp></dt>
+<dd><p>This file is to <samp>Baserev</samp> as <samp>Entries.Backup</samp>
+is to <samp>Entries</samp>.  That is, to write <samp>Baserev</samp>,
+first write the new contents to <samp>Baserev.tmp</samp> and
+then (atomically where possible), rename it to
+<samp>Baserev</samp>.
+</p>
+<a name="index-Template-file_002c-in-CVS-directory"></a>
+<a name="index-CVS_002fTemplate-file"></a>
+</dd>
+<dt><samp>Template</samp></dt>
+<dd><p>This file contains the template specified by the
+<samp>rcsinfo</samp> file (see <a href="rcsinfo.html#rcsinfo">rcsinfo</a>).  It is only used
+by the client; the non-client/server <small>CVS</small> consults
+<samp>rcsinfo</samp> directly.
+</p></dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Intro-administrative-files.html#Intro-administrative-files" accesskey="n" rel="next">Intro administrative files</a>, Previous: <a href="Repository-storage.html#Repository-storage" accesskey="p" rel="prev">Repository storage</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

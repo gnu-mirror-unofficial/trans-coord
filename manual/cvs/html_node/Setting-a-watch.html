@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Setting a watch</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Setting a watch">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Setting a watch">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Watches.html#Watches" rel="up" title="Watches">
+<link href="Getting-Notified.html#Getting-Notified" rel="next" title="Getting Notified">
+<link href="Watches.html#Watches" rel="prev" title="Watches">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Setting-a-watch"></a>
+<div class="header">
+<p>
+Next: <a href="Getting-Notified.html#Getting-Notified" accesskey="n" rel="next">Getting Notified</a>, Up: <a href="Watches.html#Watches" accesskey="u" rel="up">Watches</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Telling-CVS-to-watch-certain-files"></a>
+<h4 class="subsection">10.6.1 Telling CVS to watch certain files</h4>
+
+<p>To enable the watch features, you first specify that
+certain files are to be watched.
+</p>
+<a name="index-watch-on-_0028subcommand_0029"></a>
+<dl>
+<dt><a name="index-cvs-watch-on"></a>Command: <strong>cvs watch on</strong> <em>[<code>-lR</code>] [<var>files</var>]&hellip;</em></dt>
+<dd>
+<a name="index-Read_002donly-files_002c-and-watches"></a>
+<p>Specify that developers should run <code>cvs edit</code>
+before editing <var>files</var>.  <small>CVS</small> will create working
+copies of <var>files</var> read-only, to remind developers
+to run the <code>cvs edit</code> command before working on
+them.
+</p>
+<p>If <var>files</var> includes the name of a directory, <small>CVS</small>
+arranges to watch all files added to the corresponding
+repository directory, and sets a default for files
+added in the future; this allows the user to set
+notification policies on a per-directory basis.  The
+contents of the directory are processed recursively,
+unless the <code>-l</code> option is given.
+The <code>-R</code> option can be used to force recursion if the <code>-l</code>
+option is set in <samp>~/.cvsrc</samp> (see <a href="_007e_002f_002ecvsrc.html#g_t_007e_002f_002ecvsrc">~/.cvsrc</a>).
+</p>
+<p>If <var>files</var> is omitted, it defaults to the current directory.
+</p>
+<a name="index-watch-off-_0028subcommand_0029"></a>
+</dd></dl>
+
+<dl>
+<dt><a name="index-cvs-watch-off"></a>Command: <strong>cvs watch off</strong> <em>[<code>-lR</code>] [<var>files</var>]&hellip;</em></dt>
+<dd>
+<p>Do not create <var>files</var> read-only on checkout; thus,
+developers will not be reminded to use <code>cvs edit</code>
+and <code>cvs unedit</code>.
+</p>
+<p>The <var>files</var> and options are processed as for <code>cvs
+watch on</code>.
+</p>
+</dd></dl>
+
+
+
+
+</body>
+</html>

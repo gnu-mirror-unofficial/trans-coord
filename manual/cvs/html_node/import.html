@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: import</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: import">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: import">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="CVS-commands.html#CVS-commands" rel="up" title="CVS commands">
+<link href="import-options.html#import-options" rel="next" title="import options">
+<link href="history-options.html#history-options" rel="prev" title="history options">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="import"></a>
+<div class="header">
+<p>
+Next: <a href="log.html#log" accesskey="n" rel="next">log</a>, Previous: <a href="history.html#history" accesskey="p" rel="prev">history</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="import_002d_002d_002dImport-sources-into-CVS_002c-using-vendor-branches"></a>
+<h3 class="appendixsec">A.14 import&mdash;Import sources into CVS, using vendor branches</h3>
+<a name="index-import-_0028subcommand_0029"></a>
+
+
+<ul>
+<li> Synopsis: import [-options] repository vendortag releasetag&hellip;
+</li><li> Requires: Repository, source distribution directory.
+</li><li> Changes: repository.
+</li></ul>
+
+<p>Use <code>import</code> to incorporate an entire source
+distribution from an outside source (e.g., a source
+vendor) into your source repository directory.  You can
+use this command both for initial creation of a
+repository, and for wholesale updates to the module
+from the outside source.  See <a href="Tracking-sources.html#Tracking-sources">Tracking sources</a> for
+a discussion on this subject.
+</p>
+<p>The <var>repository</var> argument gives a directory name
+(or a path to a directory) under the <small>CVS</small> root directory
+for repositories; if the directory did not exist,
+import creates it.
+</p>
+<p>When you use import for updates to source that has been
+modified in your source repository (since a prior
+import), it will notify you of any files that conflict
+in the two branches of development; use &lsquo;<samp>checkout
+-j</samp>&rsquo; to reconcile the differences, as import instructs
+you to do.
+</p>
+<p>If <small>CVS</small> decides a file should be ignored
+(see <a href="cvsignore.html#cvsignore">cvsignore</a>), it does not import it and prints
+&lsquo;<samp>I </samp>&rsquo; followed by the filename (see <a href="import-output.html#import-output">import output</a> for a
+complete description of the output).
+</p>
+<p>If the file <samp>$CVSROOT/CVSROOT/cvswrappers</samp> exists,
+any file whose names match the specifications in that
+file will be treated as packages and the appropriate
+filtering will be performed on the file/directory
+before being imported.  See <a href="Wrappers.html#Wrappers">Wrappers</a>.
+</p>
+<p>The outside source is saved in a first-level
+branch, by default 1.1.1.  Updates are leaves of this
+branch; for example, files from the first imported
+collection of source will be revision 1.1.1.1, then
+files from the first imported update will be revision
+1.1.1.2, and so on.
+</p>
+<p>At least three arguments are required.
+<var>repository</var> is needed to identify the collection
+of source.  <var>vendortag</var> is a tag for the entire
+branch (e.g., for 1.1.1).  You must also specify at
+least one <var>releasetag</var> to uniquely identify the files at
+the leaves created each time you execute <code>import</code>.  The
+<var>releasetag</var> should be new, not previously existing in the
+repository file, and uniquely identify the imported release,
+</p>
+<p>Note that <code>import</code> does <em>not</em> change the
+directory in which you invoke it.  In particular, it
+does not set up that directory as a <small>CVS</small> working
+directory; if you want to work with the sources import
+them first and then check them out into a different
+directory (see <a href="Getting-the-source.html#Getting-the-source">Getting the source</a>).
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="import-options.html#import-options" accesskey="1">import options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">import options
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="import-output.html#import-output" accesskey="2">import output</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">import output
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="import-examples.html#import-examples" accesskey="3">import examples</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">import examples
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="log.html#log" accesskey="n" rel="next">log</a>, Previous: <a href="history.html#history" accesskey="p" rel="prev">history</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: release</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: release">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: release">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="CVS-commands.html#CVS-commands" rel="up" title="CVS commands">
+<link href="release-options.html#release-options" rel="next" title="release options">
+<link href="rdiff-examples.html#rdiff-examples" rel="prev" title="rdiff examples">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="release"></a>
+<div class="header">
+<p>
+Next: <a href="remove.html#remove" accesskey="n" rel="next">remove</a>, Previous: <a href="rdiff.html#rdiff" accesskey="p" rel="prev">rdiff</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="release_002d_002d_002dIndicate-that-a-Module-is-no-longer-in-use"></a>
+<h3 class="appendixsec">A.17 release&mdash;Indicate that a Module is no longer in use</h3>
+<a name="index-release-_0028subcommand_0029"></a>
+
+<ul>
+<li> release [-d] directories&hellip;
+</li><li> Requires: Working directory.
+</li><li> Changes: Working directory, history log.
+</li></ul>
+
+<p>This command is meant to safely cancel the effect of
+&lsquo;<samp>cvs checkout</samp>&rsquo;.  Since <small>CVS</small> doesn&rsquo;t lock files, it
+isn&rsquo;t strictly necessary to use this command.  You can
+always simply delete your working directory, if you
+like; but you risk losing changes you may have
+forgotten, and you leave no trace in the <small>CVS</small> history
+file (see <a href="history-file.html#history-file">history file</a>) that you&rsquo;ve abandoned your
+checkout.
+</p>
+<p>Use &lsquo;<samp>cvs release</samp>&rsquo; to avoid these problems.  This
+command checks that no uncommitted changes are
+present; that you are executing it from immediately
+above a <small>CVS</small> working directory; and that the repository
+recorded for your files is the same as the repository
+defined in the module database.
+</p>
+<p>If all these conditions are true, &lsquo;<samp>cvs release</samp>&rsquo;
+leaves a record of its execution (attesting to your
+intentionally abandoning your checkout) in the <small>CVS</small>
+history log.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="release-options.html#release-options" accesskey="1">release options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">release options
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="release-output.html#release-output" accesskey="2">release output</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">release output
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="release-examples.html#release-examples" accesskey="3">release examples</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">release examples
+</td></tr>
+</table>
+
+
+
+
+</body>
+</html>

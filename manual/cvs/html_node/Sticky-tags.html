@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Sticky tags</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Sticky tags">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Sticky tags">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Revisions.html#Revisions" rel="up" title="Revisions">
+<link href="Branching-and-merging.html#Branching-and-merging" rel="next" title="Branching and merging">
+<link href="Tagging-add_002fremove.html#Tagging-add_002fremove" rel="prev" title="Tagging add/remove">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Sticky-tags"></a>
+<div class="header">
+<p>
+Previous: <a href="Tagging-add_002fremove.html#Tagging-add_002fremove" accesskey="p" rel="prev">Tagging add/remove</a>, Up: <a href="Revisions.html#Revisions" accesskey="u" rel="up">Revisions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Sticky-tags-1"></a>
+<h3 class="section">4.9 Sticky tags</h3>
+<a name="index-Sticky-tags"></a>
+<a name="index-Tags_002c-sticky"></a>
+
+
+<p>Sometimes a working copy&rsquo;s revision has extra data
+associated with it, for example it might be on a branch
+(see <a href="Branching-and-merging.html#Branching-and-merging">Branching and merging</a>), or restricted to
+versions prior to a certain date by &lsquo;<samp>checkout -D</samp>&rsquo;
+or &lsquo;<samp>update -D</samp>&rsquo;.  Because this data persists &ndash;
+that is, it applies to subsequent commands in the
+working copy &ndash; we refer to it as <em>sticky</em>.
+</p>
+<p>Most of the time, stickiness is an obscure aspect of
+<small>CVS</small> that you don&rsquo;t need to think about.  However,
+even if you don&rsquo;t want to use the feature, you may need
+to know <em>something</em> about sticky tags (for
+example, how to avoid them!).
+</p>
+<p>You can use the <code>status</code> command to see if any
+sticky tags or dates are set:
+</p>
+<div class="example">
+<pre class="example">$ cvs status driver.c
+===================================================================
+File: driver.c          Status: Up-to-date
+
+    Version:            1.7.2.1 Sat Dec  5 19:35:03 1992
+    RCS Version:        1.7.2.1 /u/cvsroot/yoyodyne/tc/driver.c,v
+    Sticky Tag:         rel-1-0-patches (branch: 1.7.2)
+    Sticky Date:        (none)
+    Sticky Options:     (none)
+
+</pre></div>
+
+<a name="index-Resetting-sticky-tags"></a>
+<a name="index-Sticky-tags_002c-resetting"></a>
+<a name="index-Deleting-sticky-tags"></a>
+<p>The sticky tags will remain on your working files until
+you delete them with &lsquo;<samp>cvs update -A</samp>&rsquo;.  The
+&lsquo;<samp>-A</samp>&rsquo; option merges local changes into the version of the
+file from the head of the trunk, removing any sticky tags,
+dates, or options (other than sticky &lsquo;<samp>-k</samp>&rsquo; options on locally
+modified files).  See <a href="update.html#update">update</a> for more on the operation
+of <code>cvs update</code>.
+</p>
+<a name="index-Sticky-date"></a>
+<p>The most common use of sticky tags is to identify which
+branch one is working on, as described in
+<a href="Accessing-branches.html#Accessing-branches">Accessing branches</a>.  However, non-branch
+sticky tags have uses as well.  For example,
+suppose that you want to avoid updating your working
+directory, to isolate yourself from possibly
+destabilizing changes other people are making.  You
+can, of course, just refrain from running <code>cvs
+update</code>.  But if you want to avoid updating only a
+portion of a larger tree, then sticky tags can help.
+If you check out a certain revision (such as 1.4) it
+will become sticky.  Subsequent <code>cvs update</code>
+commands will
+not retrieve the latest revision until you reset the
+tag with <code>cvs update -A</code>.  Likewise, use of the
+&lsquo;<samp>-D</samp>&rsquo; option to <code>update</code> or <code>checkout</code>
+sets a <em>sticky date</em>, which, similarly, causes that
+date to be used for future retrievals.
+</p>
+<p>People often want to retrieve an old version of
+a file without setting a sticky tag.  This can
+be done with the &lsquo;<samp>-p</samp>&rsquo; option to <code>checkout</code> or
+<code>update</code>, which sends the contents of the file to
+standard output.  For example:
+</p><div class="example">
+<pre class="example">$ cvs update -p -r 1.1 file1 &gt;file1
+===================================================================
+Checking out file1
+RCS:  /tmp/cvs-sanity/cvsroot/first-dir/Attic/file1,v
+VERS: 1.1
+***************
+$
+</pre></div>
+
+<p>However, this isn&rsquo;t the easiest way, if you are asking
+how to undo a previous checkin (in this example, put
+<samp>file1</samp> back to the way it was as of revision
+1.1).  In that case you are better off using the
+&lsquo;<samp>-j</samp>&rsquo; option to <code>update</code>; for further
+discussion see <a href="Merging-two-revisions.html#Merging-two-revisions">Merging two revisions</a>.
+</p>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Tagging-add_002fremove.html#Tagging-add_002fremove" accesskey="p" rel="prev">Tagging add/remove</a>, Up: <a href="Revisions.html#Revisions" accesskey="u" rel="up">Revisions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

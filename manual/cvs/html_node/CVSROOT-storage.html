@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: CVSROOT storage</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: CVSROOT storage">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: CVSROOT storage">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository-storage.html#Repository-storage" rel="up" title="Repository storage">
+<link href="Working-directory-storage.html#Working-directory-storage" rel="next" title="Working directory storage">
+<link href="Locks.html#Locks" rel="prev" title="Locks">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="CVSROOT-storage"></a>
+<div class="header">
+<p>
+Previous: <a href="Locks.html#Locks" accesskey="p" rel="prev">Locks</a>, Up: <a href="Repository-storage.html#Repository-storage" accesskey="u" rel="up">Repository storage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="How-files-are-stored-in-the-CVSROOT-directory"></a>
+<h4 class="subsection">2.2.7 How files are stored in the CVSROOT directory</h4>
+<a name="index-CVSROOT_002c-storage-of-files"></a>
+
+<p>The <samp>$CVSROOT/CVSROOT</samp> directory contains the
+various administrative files.  In some ways this
+directory is just like any other directory in the
+repository; it contains <small>RCS</small> files whose names end
+in &lsquo;<samp>,v</samp>&rsquo;, and many of the <small>CVS</small> commands operate
+on it the same way.  However, there are a few
+differences.
+</p>
+<p>For each administrative file, in addition to the
+<small>RCS</small> file, there is also a checked out copy of the
+file.  For example, there is an <small>RCS</small> file
+<samp>loginfo,v</samp> and a file <samp>loginfo</samp> which
+contains the latest revision contained in
+<samp>loginfo,v</samp>.  When you check in an administrative
+file, <small>CVS</small> should print
+</p>
+<div class="example">
+<pre class="example">cvs commit: Rebuilding administrative file database
+</pre></div>
+
+<p>and update the checked out copy in
+<samp>$CVSROOT/CVSROOT</samp>.  If it does not, there is
+something wrong (see <a href="BUGS.html#BUGS">BUGS</a>).  To add your own files
+to the files to be updated in this fashion, you can add
+them to the <samp>checkoutlist</samp> administrative file
+(see <a href="checkoutlist.html#checkoutlist">checkoutlist</a>).
+</p>
+<a name="index-modules_002edb"></a>
+<a name="index-modules_002epag"></a>
+<a name="index-modules_002edir"></a>
+<p>By default, the <samp>modules</samp> file behaves as
+described above.  If the modules file is very large,
+storing it as a flat text file may make looking up
+modules slow (I&rsquo;m not sure whether this is as much of a
+concern now as when <small>CVS</small> first evolved this
+feature; I haven&rsquo;t seen benchmarks).  Therefore, by
+making appropriate edits to the <small>CVS</small> source code
+one can store the modules file in a database which
+implements the <code>ndbm</code> interface, such as Berkeley
+db or GDBM.  If this option is in use, then the modules
+database will be stored in the files <samp>modules.db</samp>,
+<samp>modules.pag</samp>, and/or <samp>modules.dir</samp>.
+</p>
+<p>For information on the meaning of the various
+administrative files, see <a href="Administrative-files.html#Administrative-files">Administrative files</a>.
+</p>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Locks.html#Locks" accesskey="p" rel="prev">Locks</a>, Up: <a href="Repository-storage.html#Repository-storage" accesskey="u" rel="up">Repository storage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

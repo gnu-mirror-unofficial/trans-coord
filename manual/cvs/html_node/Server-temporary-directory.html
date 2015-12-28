@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Server temporary directory</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Server temporary directory">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Server temporary directory">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository.html#Repository" rel="up" title="Repository">
+<link href="Starting-a-new-project.html#Starting-a-new-project" rel="next" title="Starting a new project">
+<link href="Read_002donly-access.html#Read_002donly-access" rel="prev" title="Read-only access">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Server-temporary-directory"></a>
+<div class="header">
+<p>
+Previous: <a href="Read_002donly-access.html#Read_002donly-access" accesskey="p" rel="prev">Read-only access</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Temporary-directories-for-the-server"></a>
+<h3 class="section">2.11 Temporary directories for the server</h3>
+<a name="index-Temporary-directories_002c-and-server"></a>
+<a name="index-Server_002c-temporary-directories"></a>
+
+<p>While running, the <small>CVS</small> server creates temporary
+directories.  They are named
+</p>
+<div class="example">
+<pre class="example">cvs-serv<var>pid</var>
+</pre></div>
+
+<p>where <var>pid</var> is the process identification number of
+the server.
+They are located in the directory specified by 
+the &lsquo;<samp>-T</samp>&rsquo; global option (see <a href="Global-options.html#Global-options">Global options</a>), 
+the <code>TMPDIR</code> environment variable (see <a href="Environment-variables.html#Environment-variables">Environment variables</a>), 
+or, failing that, <samp>/tmp</samp>.
+</p>
+<p>In most cases the server will remove the temporary
+directory when it is done, whether it finishes normally
+or abnormally.  However, there are a few cases in which
+the server does not or cannot remove the temporary
+directory, for example:
+</p>
+<ul>
+<li> If the server aborts due to an internal server error,
+it may preserve the directory to aid in debugging
+
+</li><li> If the server is killed in a way that it has no way of
+cleaning up (most notably, &lsquo;<samp>kill -KILL</samp>&rsquo; on unix).
+
+</li><li> If the system shuts down without an orderly shutdown,
+which tells the server to clean up.
+</li></ul>
+
+<p>In cases such as this, you will need to manually remove
+the <samp>cvs-serv<var>pid</var></samp> directories.  As long as
+there is no server running with process identification
+number <var>pid</var>, it is safe to do so.
+</p>
+
+
+
+</body>
+</html>

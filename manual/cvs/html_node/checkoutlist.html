@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: checkoutlist</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: checkoutlist">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: checkoutlist">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Administrative-files.html#Administrative-files" rel="up" title="Administrative files">
+<link href="history-file.html#history-file" rel="next" title="history file">
+<link href="cvsignore.html#cvsignore" rel="prev" title="cvsignore">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="checkoutlist"></a>
+<div class="header">
+<p>
+Next: <a href="history-file.html#history-file" accesskey="n" rel="next">history file</a>, Previous: <a href="cvsignore.html#cvsignore" accesskey="p" rel="prev">cvsignore</a>, Up: <a href="Administrative-files.html#Administrative-files" accesskey="u" rel="up">Administrative files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-checkoutlist-file"></a>
+<h3 class="appendixsec">C.8 The checkoutlist file</h3>
+<a name="index-checkoutlist"></a>
+
+<p>It may be helpful to use <small>CVS</small> to maintain your own
+files in the <samp>CVSROOT</samp> directory.  For example,
+suppose that you have a script <samp>logcommit.pl</samp>
+which you run by including the following line in the
+<samp>commitinfo</samp> administrative file:
+</p>
+<div class="example">
+<pre class="example">ALL   $CVSROOT/CVSROOT/logcommit.pl
+</pre></div>
+
+<p>To maintain <samp>logcommit.pl</samp> with <small>CVS</small> you would
+add the following line to the <samp>checkoutlist</samp>
+administrative file:
+</p>
+<div class="example">
+<pre class="example">logcommit.pl
+</pre></div>
+
+<p>The format of <samp>checkoutlist</samp> is one line for each
+file that you want to maintain using <small>CVS</small>, giving
+the name of the file, followed optionally by more whitespace
+and any error message that should print if the file cannot be
+checked out into CVSROOT after a commit:
+</p>
+<div class="example">
+<pre class="example">logcommit.pl	Could not update CVSROOT/logcommit.pl.
+</pre></div>
+
+<p>After setting up <samp>checkoutlist</samp> in this fashion,
+the files listed there will function just like
+<small>CVS</small>&rsquo;s built-in administrative files.  For example,
+when checking in one of the files you should get a
+message such as:
+</p>
+<div class="example">
+<pre class="example">cvs commit: Rebuilding administrative file database
+</pre></div>
+
+<p>and the checked out copy in the <samp>CVSROOT</samp>
+directory should be updated.
+</p>
+<p>Note that listing <samp>passwd</samp> (see <a href="Password-authentication-server.html#Password-authentication-server">Password authentication server</a>) in <samp>checkoutlist</samp> is not
+recommended for security reasons.
+</p>
+<p>For information about keeping a checkout out copy in a
+more general context than the one provided by
+<samp>checkoutlist</samp>, see <a href="Keeping-a-checked-out-copy.html#Keeping-a-checked-out-copy">Keeping a checked out copy</a>.
+</p>
+
+
+
+</body>
+</html>

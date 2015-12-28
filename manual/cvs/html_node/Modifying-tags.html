@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Modifying tags</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Modifying tags">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Modifying tags">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Revisions.html#Revisions" rel="up" title="Revisions">
+<link href="Tagging-add_002fremove.html#Tagging-add_002fremove" rel="next" title="Tagging add/remove">
+<link href="Tagging-by-date_002ftag.html#Tagging-by-date_002ftag" rel="prev" title="Tagging by date/tag">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Modifying-tags"></a>
+<div class="header">
+<p>
+Next: <a href="Tagging-add_002fremove.html#Tagging-add_002fremove" accesskey="n" rel="next">Tagging add/remove</a>, Previous: <a href="Tagging-by-date_002ftag.html#Tagging-by-date_002ftag" accesskey="p" rel="prev">Tagging by date/tag</a>, Up: <a href="Revisions.html#Revisions" accesskey="u" rel="up">Revisions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Deleting_002c-moving_002c-and-renaming-tags"></a>
+<h3 class="section">4.7 Deleting, moving, and renaming tags</h3>
+
+
+<p>Normally one does not modify tags.  They exist in order
+to record the history of the repository and so deleting
+them or changing their meaning would, generally, not be
+what you want.
+</p>
+<p>However, there might be cases in which one uses a tag
+temporarily or accidentally puts one in the wrong
+place.  Therefore, one might delete, move, or rename a
+tag.
+</p>
+<p><strong>WARNING:  The commands in this section are
+dangerous; they permanently discard historical
+information and it can be difficult or impossible to
+recover from errors.  If you are a <small>CVS</small>
+administrator, you may consider restricting these
+commands with the <samp>taginfo</samp> file (see <a href="taginfo.html#taginfo">taginfo</a>).</strong>
+</p>
+<a name="index-Deleting-tags"></a>
+<a name="index-Deleting-branch-tags"></a>
+<a name="index-Removing-tags"></a>
+<a name="index-Removing-branch-tags"></a>
+<a name="index-Tags_002c-deleting"></a>
+<a name="index-Branch-tags_002c-deleting"></a>
+<p>To delete a tag, specify the &lsquo;<samp>-d</samp>&rsquo; option to either
+<code>cvs tag</code> or <code>cvs rtag</code>.  For example:
+</p>
+<div class="example">
+<pre class="example">cvs rtag -d rel-0-4 tc
+</pre></div>
+
+<p>deletes the non-branch tag <code>rel-0-4</code> from the module <code>tc</code>.
+In the event that branch tags are encountered within the repository
+with the given name, a warning message will be issued and the branch 
+tag will not be deleted.  If you are absolutely certain you know what
+you are doing, the <code>-B</code> option may be specified to allow deletion
+of branch tags.  In that case, any non-branch tags encountered will
+trigger warnings and will not be deleted.
+</p>
+<p><strong>WARNING:  Moving branch tags is very dangerous!  If you think
+you need the <code>-B</code> option, think again and ask your <small>CVS</small>
+administrator about it (if that isn&rsquo;t you).  There is almost certainly
+another way to accomplish what you want to accomplish.</strong>
+</p>
+<a name="index-Moving-tags"></a>
+<a name="index-Moving-branch-tags"></a>
+<a name="index-Tags_002c-moving"></a>
+<a name="index-Branch-tags_002c-moving"></a>
+<p>When we say <em>move</em> a tag, we mean to make the same
+name point to different revisions.  For example, the
+<code>stable</code> tag may currently point to revision 1.4
+of <samp>backend.c</samp> and perhaps we want to make it
+point to revision 1.6.  To move a non-branch tag, specify the
+&lsquo;<samp>-F</samp>&rsquo; option to either <code>cvs tag</code> or <code>cvs
+rtag</code>.  For example, the task just mentioned might be
+accomplished as:
+</p>
+<div class="example">
+<pre class="example">cvs tag -r 1.6 -F stable backend.c
+</pre></div>
+
+<p>If any branch tags are encountered in the repository 
+with the given name, a warning is issued and the branch
+tag is not disturbed.  If you are absolutely certain you
+wish to move the branch tag, the <code>-B</code> option may be specified.
+In that case, non-branch tags encountered with the given
+name are ignored with a warning message.
+</p>
+<p><strong>WARNING:  Moving branch tags is very dangerous!  If you think you
+need the <code>-B</code> option, think again and ask your <small>CVS</small>
+administrator about it (if that isn&rsquo;t you).  There is almost certainly
+another way to accomplish what you want to accomplish.</strong>
+</p>
+<a name="index-Renaming-tags"></a>
+<a name="index-Tags_002c-renaming"></a>
+<p>When we say <em>rename</em> a tag, we mean to make a
+different name point to the same revisions as the old
+tag.  For example, one may have misspelled the tag name
+and want to correct it (hopefully before others are
+relying on the old spelling).  To rename a tag, first
+create a new tag using the &lsquo;<samp>-r</samp>&rsquo; option to
+<code>cvs rtag</code>, and then delete the old name.  (Caution:
+this method will not work with branch tags.) 
+This leaves the new tag on exactly the 
+same files as the old tag.  For example:
+</p>
+<div class="example">
+<pre class="example">cvs rtag -r old-name-0-4 rel-0-4 tc
+cvs rtag -d old-name-0-4 tc
+</pre></div>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Tagging-add_002fremove.html#Tagging-add_002fremove" accesskey="n" rel="next">Tagging add/remove</a>, Previous: <a href="Tagging-by-date_002ftag.html#Tagging-by-date_002ftag" accesskey="p" rel="prev">Tagging by date/tag</a>, Up: <a href="Revisions.html#Revisions" accesskey="u" rel="up">Revisions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

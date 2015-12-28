@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: What is CVS?</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: What is CVS?">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: What is CVS?">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Overview.html#Overview" rel="up" title="Overview">
+<link href="What-is-CVS-not_003f.html#What-is-CVS-not_003f" rel="next" title="What is CVS not?">
+<link href="Overview.html#Overview" rel="prev" title="Overview">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="What-is-CVS_003f"></a>
+<div class="header">
+<p>
+Next: <a href="What-is-CVS-not_003f.html#What-is-CVS-not_003f" accesskey="n" rel="next">What is CVS not?</a>, Up: <a href="Overview.html#Overview" accesskey="u" rel="up">Overview</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="What-is-CVS_003f-1"></a>
+<h3 class="section">1.1 What is CVS?</h3>
+<a name="index-What-is-CVS_003f"></a>
+<a name="index-Introduction-to-CVS"></a>
+<a name="index-CVS_002c-introduction-to"></a>
+
+<p><small>CVS</small> is a version control system.  Using it, you can
+record the history of your source files.
+</p>
+
+<p>For example, bugs sometimes creep in when
+software is modified, and you might not detect the bug
+until a long time after you make the modification.
+With <small>CVS</small>, you can easily retrieve old versions to see
+exactly which change caused the bug.  This can
+sometimes be a big help.
+</p>
+<p>You could of course save every version of every file
+you have ever created.  This would
+however waste an enormous amount of disk space.  <small>CVS</small>
+stores all the versions of a file in a single file in a
+clever way that only stores the differences between
+versions.
+</p>
+<p><small>CVS</small> also helps you if you are part of a group of people working
+on the same project.  It is all too easy to overwrite
+each others&rsquo; changes unless you are extremely careful.
+Some editors, like <small>GNU</small> Emacs, try to make sure that
+two people never modify the same file at the
+same time.  Unfortunately, if someone is using another
+editor, that safeguard will not work.  <small>CVS</small> solves this problem
+by insulating the different developers from each other.  Every
+developer works in his own directory, and <small>CVS</small> merges
+the work when each developer is done.
+</p>
+<a name="index-History-of-CVS"></a>
+<a name="index-CVS_002c-history-of"></a>
+<a name="index-Credits-_0028CVS-program_0029"></a>
+<a name="index-Contributors-_0028CVS-program_0029"></a>
+<p><small>CVS</small> started out as a bunch of shell scripts written by
+Dick Grune, posted to the newsgroup
+<code>comp.sources.unix</code> in the volume 6
+release of July, 1986.  While no actual code from
+these shell scripts is present in the current version
+of <small>CVS</small> much of the <small>CVS</small> conflict resolution algorithms
+come from them.
+</p>
+<p>In April, 1989, Brian Berliner designed and coded <small>CVS</small>.
+Jeff Polk later helped Brian with the design of the <small>CVS</small>
+module and vendor branch support.
+</p>
+<a name="index-Source_002c-getting-CVS-source"></a>
+<p>You can get <small>CVS</small> in a variety of ways, including
+free download from the Internet.  For more information
+on downloading <small>CVS</small> and other <small>CVS</small> topics, see:
+</p>
+<div class="example">
+<pre class="example"><a href="http://cvs.nongnu.org/">http://cvs.nongnu.org/</a>
+</pre></div>
+
+<a name="index-Mailing-list"></a>
+<a name="index-List_002c-mailing-list"></a>
+<a name="index-Newsgroups"></a>
+<p>There is a mailing list, known as <a href="mailto:info-cvs@nongnu.org">info-cvs@nongnu.org</a>,
+devoted to <small>CVS</small>.  To subscribe or
+unsubscribe
+write to
+<a href="mailto:info-cvs-request@nongnu.org">info-cvs-request@nongnu.org</a>.
+If you prefer a Usenet group, there is a one-way mirror (posts to the email
+list are usually sent to the news group, but not vice versa) of
+<a href="mailto:info-cvs@nongnu.org">info-cvs@nongnu.org</a> at <a href="news:gnu.cvs.help">news:gnu.cvs.help</a>.  The right
+Usenet group for posts is <a href="news:comp.software.config-mgmt">news:comp.software.config-mgmt</a> which is for
+<small>CVS</small> discussions (along with other configuration
+management systems).  In the future, it might be
+possible to create a
+<code>comp.software.config-mgmt.cvs</code>, but probably only
+if there is sufficient <small>CVS</small> traffic on
+<a href="news:comp.software.config-mgmt">news:comp.software.config-mgmt</a>.
+</p>
+<p>You can also subscribe to the <a href="mailto:bug-cvs@nongnu.org">bug-cvs@nongnu.org</a> mailing list,
+described in more detail in <a href="BUGS.html#BUGS">BUGS</a>.  To subscribe
+send mail to <a href="mailto:bug-cvs-request@nongnu.org">bug-cvs-request@nongnu.org</a>.  There is a two-way
+Usenet mirror (posts to the Usenet group are usually sent to the email list and
+vice versa) of <a href="mailto:bug-cvs@nongnu.org">bug-cvs@nongnu.org</a> named <a href="news:gnu.cvs.bug">news:gnu.cvs.bug</a>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="What-is-CVS-not_003f.html#What-is-CVS-not_003f" accesskey="n" rel="next">What is CVS not?</a>, Up: <a href="Overview.html#Overview" accesskey="u" rel="up">Overview</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

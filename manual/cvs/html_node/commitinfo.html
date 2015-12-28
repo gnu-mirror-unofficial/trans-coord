@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: commitinfo</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: commitinfo">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: commitinfo">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="commit-files.html#commit-files" rel="up" title="commit files">
+<link href="verifymsg.html#verifymsg" rel="next" title="verifymsg">
+<link href="commit-files.html#commit-files" rel="prev" title="commit files">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="commitinfo"></a>
+<div class="header">
+<p>
+Next: <a href="verifymsg.html#verifymsg" accesskey="n" rel="next">verifymsg</a>, Up: <a href="commit-files.html#commit-files" accesskey="u" rel="up">commit files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Commitinfo"></a>
+<h4 class="appendixsubsec">C.4.1 Commitinfo</h4>
+<a name="index-commitinfo"></a>
+<a name="index-Commits_002c-precommit-verification-of"></a>
+<a name="index-Precommit-checking"></a>
+
+<p>The <samp>commitinfo</samp> file defines programs to execute
+whenever &lsquo;<samp>cvs commit</samp>&rsquo; is about to execute.  These
+programs are used for pre-commit checking to verify
+that the modified, added and removed files are really
+ready to be committed.  This could be used, for
+instance, to verify that the changed files conform to
+to your site&rsquo;s standards for coding practice.
+</p>
+<p>As mentioned earlier, each line in the
+<samp>commitinfo</samp> file consists of a regular expression
+and a command-line template.  The template can include
+a program name and any number of arguments you wish to
+supply to it.  The full path to the current source
+repository is appended to the template, followed by the
+file names of any files involved in the commit (added,
+removed, and modified files).
+</p>
+<a name="index-Exit-status_002c-of-commitinfo"></a>
+<p>The first line with a regular expression matching the
+directory within the repository will be used.  If the
+command returns a non-zero exit status the commit will
+be aborted.
+</p>
+<a name="index-DEFAULT-in-commitinfo"></a>
+<p>If the repository name does not match any of the
+regular expressions in this file, the &lsquo;<samp>DEFAULT</samp>&rsquo;
+line is used, if it is specified.
+</p>
+<a name="index-ALL-in-commitinfo"></a>
+<p>All occurrences of the name &lsquo;<samp>ALL</samp>&rsquo; appearing as a
+regular expression are used in addition to the first
+matching regular expression or the name &lsquo;<samp>DEFAULT</samp>&rsquo;.
+</p>
+<a name="index-commitinfo_002c-working-directory"></a>
+<a name="index-commitinfo_002c-command-environment"></a>
+<p>The command will be run in the root of the workspace
+containing the new versions of any files the user would like
+to modify (commit), <em>or in a copy of the workspace on
+the server (see <a href="Remote-repositories.html#Remote-repositories">Remote repositories</a>)</em>.  If a file is
+being removed, there will be no copy of the file under the
+current directory.  If a file is being added, there will be
+no corresponding archive file in the repository unless the
+file is being resurrected.
+</p>
+<p>Note that both the repository directory and the corresponding
+Attic (see <a href="Attic.html#Attic">Attic</a>) directory may need to be checked to
+locate the archive file corresponding to any given file being
+committed.  Much of the information about the specific commit
+request being made, including the destination branch, commit
+message, and command line options specified, is not available
+to the command.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="verifymsg.html#verifymsg" accesskey="n" rel="next">verifymsg</a>, Up: <a href="commit-files.html#commit-files" accesskey="u" rel="up">commit files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

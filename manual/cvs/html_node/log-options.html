@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: log options</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: log options">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: log options">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="log.html#log" rel="up" title="log">
+<link href="log-examples.html#log-examples" rel="next" title="log examples">
+<link href="log.html#log" rel="prev" title="log">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="log-options"></a>
+<div class="header">
+<p>
+Next: <a href="log-examples.html#log-examples" accesskey="n" rel="next">log examples</a>, Up: <a href="log.html#log" accesskey="u" rel="up">log</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="log-options-1"></a>
+<h4 class="appendixsubsec">A.15.1 log options</h4>
+
+<p>By default, <code>log</code> prints all information that is
+available.  All other options restrict the output.  Note that the revision
+selection options (<code>-b</code>, <code>-d</code>, <code>-r</code>, <code>-s</code>, and <code>-w</code>)
+have no
+effect, other than possibly causing a search for files in Attic directories,
+when used in conjunction with the options that restrict the output to only
+<code>log</code> header fields (<code>-h</code>, <code>-R</code>, and <code>-t</code>)
+unless the <code>-S</code> option is also specified.
+</p>
+<dl compact="compact">
+<dt><code>-b</code></dt>
+<dd><p>Print information about the revisions on the default
+branch, normally the highest branch on the trunk.
+</p>
+</dd>
+<dt><code>-d <var>dates</var></code></dt>
+<dd><p>Print information about revisions with a checkin
+date/time in the range given by the
+semicolon-separated list of dates.  The date formats
+accepted are those accepted by the &lsquo;<samp>-D</samp>&rsquo; option to
+many other <small>CVS</small> commands (see <a href="Common-options.html#Common-options">Common options</a>).
+Dates can be combined into ranges as follows:
+</p>
+<dl compact="compact">
+<dt><code><var>d1</var>&lt;<var>d2</var></code></dt>
+<dt><code><var>d2</var>&gt;<var>d1</var></code></dt>
+<dd><p>Select the revisions that were deposited between
+<var>d1</var> and <var>d2</var>.
+</p>
+</dd>
+<dt><code>&lt;<var>d</var></code></dt>
+<dt><code><var>d</var>&gt;</code></dt>
+<dd><p>Select all revisions dated <var>d</var> or earlier.
+</p>
+</dd>
+<dt><code><var>d</var>&lt;</code></dt>
+<dt><code>&gt;<var>d</var></code></dt>
+<dd><p>Select all revisions dated <var>d</var> or later.
+</p>
+</dd>
+<dt><code><var>d</var></code></dt>
+<dd><p>Select the single, latest revision dated <var>d</var> or
+earlier.
+</p></dd>
+</dl>
+
+<p>The &lsquo;<samp>&gt;</samp>&rsquo; or &lsquo;<samp>&lt;</samp>&rsquo; characters may be followed by
+&lsquo;<samp>=</samp>&rsquo; to indicate an inclusive range rather than an
+exclusive one.
+</p>
+<p>Note that the separator is a semicolon (;).
+</p>
+</dd>
+<dt><code>-h</code></dt>
+<dd><p>Print only the name of the <small>RCS</small> file, name
+of the file in the working directory, head,
+default branch, access list, locks, symbolic names, and
+suffix.
+</p>
+</dd>
+<dt><code>-l</code></dt>
+<dd><p>Local; run only in current working directory.  (Default
+is to run recursively).
+</p>
+</dd>
+<dt><code>-N</code></dt>
+<dd><p>Do not print the list of tags for this file.  This
+option can be very useful when your site uses a lot of
+tags, so rather than &quot;more&quot;&rsquo;ing over 3 pages of tag
+information, the log information is presented without
+tags at all.
+</p>
+</dd>
+<dt><code>-n</code></dt>
+<dd><p>Print the list of tags for this file. This option can
+be very useful when your <samp>.cvsrc</samp> file has a
+&lsquo;<samp>log -N</samp>&rsquo; entry as a way to get a full list of all
+of the tags.
+</p>
+</dd>
+<dt><code>-R</code></dt>
+<dd><p>Print only the name of the <small>RCS</small> file.
+</p>
+</dd>
+<dt><code>-r<var>revisions</var></code></dt>
+<dd><p>Print information about revisions given in the
+comma-separated list <var>revisions</var> of revisions and
+ranges.  The following table explains the available
+range formats:
+</p>
+<dl compact="compact">
+<dt><code><var>rev1</var>:<var>rev2</var></code></dt>
+<dd><p>Revisions <var>rev1</var> to <var>rev2</var> (which must be on
+the same branch).
+</p>
+</dd>
+<dt><code><var>rev1</var>::<var>rev2</var></code></dt>
+<dd><p>The same, but excluding <var>rev1</var>.
+</p>
+</dd>
+<dt><code>:<var>rev</var></code></dt>
+<dt><code>::<var>rev</var></code></dt>
+<dd><p>Revisions from the beginning of the branch up to
+and including <var>rev</var>.
+</p>
+</dd>
+<dt><code><var>rev</var>:</code></dt>
+<dd><p>Revisions starting with <var>rev</var> to the end of the
+branch containing <var>rev</var>.
+</p>
+</dd>
+<dt><code><var>rev</var>::</code></dt>
+<dd><p>Revisions starting just after <var>rev</var> to the end of the
+branch containing <var>rev</var>.
+</p>
+</dd>
+<dt><code><var>branch</var></code></dt>
+<dd><p>An argument that is a branch means all revisions on
+that branch.
+</p>
+</dd>
+<dt><code><var>branch1</var>:<var>branch2</var></code></dt>
+<dt><code><var>branch1</var>::<var>branch2</var></code></dt>
+<dd><p>A range of branches means all revisions
+on the branches in that range.
+</p>
+</dd>
+<dt><code><var>branch</var>.</code></dt>
+<dd><p>The latest revision in <var>branch</var>.
+</p></dd>
+</dl>
+
+<p>A bare &lsquo;<samp>-r</samp>&rsquo; with no revisions means the latest
+revision on the default branch, normally the trunk.
+There can be no space between the &lsquo;<samp>-r</samp>&rsquo; option and
+its argument.
+</p>
+</dd>
+<dt><code>-S</code></dt>
+<dd><p>Suppress the header if no revisions are selected.
+</p>
+</dd>
+<dt><code>-s <var>states</var></code></dt>
+<dd><p>Print information about revisions whose state
+attributes match one of the states given in the
+comma-separated list <var>states</var>.  Individual states may
+be any text string, though <small>CVS</small> commonly only uses two
+states, &lsquo;<samp>Exp</samp>&rsquo; and &lsquo;<samp>dead</samp>&rsquo;.  See <a href="admin-options.html#admin-options">admin options</a>
+for more information.
+</p>
+</dd>
+<dt><code>-t</code></dt>
+<dd><p>Print the same as &lsquo;<samp>-h</samp>&rsquo;, plus the descriptive text.
+</p>
+</dd>
+<dt><code>-w<var>logins</var></code></dt>
+<dd><p>Print information about revisions checked in by users
+with login names appearing in the comma-separated list
+<var>logins</var>.  If <var>logins</var> is omitted, the user&rsquo;s
+login is assumed.  There can be no space between the
+&lsquo;<samp>-w</samp>&rsquo; option and its argument.
+</p></dd>
+</dl>
+
+<p><code>log</code> prints the intersection of the revisions
+selected with the options &lsquo;<samp>-d</samp>&rsquo;, &lsquo;<samp>-s</samp>&rsquo;, and
+&lsquo;<samp>-w</samp>&rsquo;, intersected with the union of the revisions
+selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="log-examples.html#log-examples" accesskey="n" rel="next">log examples</a>, Up: <a href="log.html#log" accesskey="u" rel="up">log</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

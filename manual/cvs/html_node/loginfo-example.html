@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: loginfo example</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: loginfo example">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: loginfo example">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="loginfo.html#loginfo" rel="up" title="loginfo">
+<link href="Keeping-a-checked-out-copy.html#Keeping-a-checked-out-copy" rel="next" title="Keeping a checked out copy">
+<link href="loginfo.html#loginfo" rel="prev" title="loginfo">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="loginfo-example"></a>
+<div class="header">
+<p>
+Next: <a href="Keeping-a-checked-out-copy.html#Keeping-a-checked-out-copy" accesskey="n" rel="next">Keeping a checked out copy</a>, Up: <a href="loginfo.html#loginfo" accesskey="u" rel="up">loginfo</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Loginfo-example"></a>
+<h4 class="appendixsubsubsec">C.4.4.1 Loginfo example</h4>
+
+<p>The following <samp>loginfo</samp> file, together with the
+tiny shell-script below, appends all log messages
+to the file <samp>$CVSROOT/CVSROOT/commitlog</samp>,
+and any commits to the administrative files (inside
+the <samp>CVSROOT</samp> directory) are also logged in
+<samp>/usr/adm/cvsroot-log</samp>.
+Commits to the <samp>prog1</samp> directory are mailed to <tt>ceder</tt>.
+</p>
+<div class="example">
+<pre class="example">ALL             /usr/local/bin/cvs-log $CVSROOT/CVSROOT/commitlog $USER
+^CVSROOT        /usr/local/bin/cvs-log /usr/adm/cvsroot-log
+^prog1          Mail -s %s ceder
+</pre></div>
+
+<p>The shell-script <samp>/usr/local/bin/cvs-log</samp> looks
+like this:
+</p>
+<div class="example">
+<pre class="example">#!/bin/sh
+(echo &quot;------------------------------------------------------&quot;;
+ echo -n $2&quot;  &quot;;
+ date;
+ echo;
+ cat) &gt;&gt; $1
+</pre></div>
+
+
+
+
+</body>
+</html>

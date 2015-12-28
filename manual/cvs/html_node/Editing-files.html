@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Editing files</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Editing files">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Editing files">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Watches.html#Watches" rel="up" title="Watches">
+<link href="Watch-information.html#Watch-information" rel="next" title="Watch information">
+<link href="Getting-Notified.html#Getting-Notified" rel="prev" title="Getting Notified">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Editing-files"></a>
+<div class="header">
+<p>
+Next: <a href="Watch-information.html#Watch-information" accesskey="n" rel="next">Watch information</a>, Previous: <a href="Getting-Notified.html#Getting-Notified" accesskey="p" rel="prev">Getting Notified</a>, Up: <a href="Watches.html#Watches" accesskey="u" rel="up">Watches</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="How-to-edit-a-file-which-is-being-watched"></a>
+<h4 class="subsection">10.6.3 How to edit a file which is being watched</h4>
+
+<a name="index-Checkout_002c-as-term-for-getting-ready-to-edit"></a>
+<p>Since a file which is being watched is checked out
+read-only, you cannot simply edit it.  To make it
+read-write, and inform others that you are planning to
+edit it, use the <code>cvs edit</code> command.  Some systems
+call this a <em>checkout</em>, but <small>CVS</small> uses that term
+for obtaining a copy of the sources (see <a href="Getting-the-source.html#Getting-the-source">Getting the source</a>), an operation which those systems call a
+<em>get</em> or a <em>fetch</em>.
+</p>
+<a name="index-edit-_0028subcommand_0029"></a>
+<dl>
+<dt><a name="index-cvs-edit"></a>Command: <strong>cvs edit</strong> <em>[<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</em></dt>
+<dd>
+<p>Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the
+<var>files</var> read-write, and notifies users who have requested
+<code>edit</code> notification for any of <var>files</var>.
+</p>
+<p>The <code>cvs edit</code> command accepts the same options as the
+<code>cvs watch add</code> command, and establishes a temporary watch for the
+user on <var>files</var>; <small>CVS</small> will remove the watch when <var>files</var> are
+<code>unedit</code>ed or <code>commit</code>ted.  If the user does not wish to
+receive notifications, she should specify <code>-a none</code>.
+</p>
+<p>The <var>files</var> and the options are processed as for the <code>cvs
+watch</code> commands.
+</p>
+
+</dd></dl>
+
+<p>Normally when you are done with a set of changes, you
+use the <code>cvs commit</code> command, which checks in your
+changes and returns the watched files to their usual
+read-only state.  But if you instead decide to abandon
+your changes, or not to make any changes, you can use
+the <code>cvs unedit</code> command.
+</p>
+<a name="index-unedit-_0028subcommand_0029"></a>
+<a name="index-Abandoning-work"></a>
+<a name="index-Reverting-to-repository-version"></a>
+<dl>
+<dt><a name="index-cvs-unedit"></a>Command: <strong>cvs unedit</strong> <em>[<code>-lR</code>] [<var>files</var>]&hellip;</em></dt>
+<dd>
+<p>Abandon work on the working files <var>files</var>, and revert them to the
+repository versions on which they are based.  <small>CVS</small> makes those
+<var>files</var> read-only for which users have requested notification using
+<code>cvs watch on</code>.  <small>CVS</small> notifies users who have requested <code>unedit</code>
+notification for any of <var>files</var>.
+</p>
+<p>The <var>files</var> and options are processed as for the
+<code>cvs watch</code> commands.
+</p>
+<p>If watches are not in use, the <code>unedit</code> command
+probably does not work, and the way to revert to the
+repository version is with the command <code>cvs update -C file</code>
+(see <a href="update.html#update">update</a>).
+The meaning is
+not precisely the same; the latter may also
+bring in some changes which have been made in the
+repository since the last time you updated.
+</p></dd></dl>
+
+<p>When using client/server <small>CVS</small>, you can use the
+<code>cvs edit</code> and <code>cvs unedit</code> commands even if
+<small>CVS</small> is unable to successfully communicate with the
+server; the notifications will be sent upon the next
+successful <small>CVS</small> command.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Watch-information.html#Watch-information" accesskey="n" rel="next">Watch information</a>, Previous: <a href="Getting-Notified.html#Getting-Notified" accesskey="p" rel="prev">Getting Notified</a>, Up: <a href="Watches.html#Watches" accesskey="u" rel="up">Watches</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

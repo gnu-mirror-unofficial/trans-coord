@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Administrative files</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Administrative files">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Administrative files">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="modules.html#modules" rel="next" title="modules">
+<link href="Invoking-CVS.html#Invoking-CVS" rel="prev" title="Invoking CVS">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Administrative-files"></a>
+<div class="header">
+<p>
+Next: <a href="Environment-variables.html#Environment-variables" accesskey="n" rel="next">Environment variables</a>, Previous: <a href="Invoking-CVS.html#Invoking-CVS" accesskey="p" rel="prev">Invoking CVS</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Reference-manual-for-Administrative-files"></a>
+<h2 class="appendix">Appendix C Reference manual for Administrative files</h2>
+<a name="index-Administrative-files-_0028reference_0029"></a>
+<a name="index-Files_002c-reference-manual"></a>
+<a name="index-Reference-manual-_0028files_0029"></a>
+<a name="index-CVSROOT-_0028file_0029"></a>
+
+<p>Inside the repository, in the directory
+<samp>$CVSROOT/CVSROOT</samp>, there are a number of
+supportive files for <small>CVS</small>.  You can use <small>CVS</small> in a limited
+fashion without any of them, but if they are set up
+properly they can help make life easier.  For a
+discussion of how to edit them, see <a href="Intro-administrative-files.html#Intro-administrative-files">Intro administrative files</a>.
+</p>
+<p>The most important of these files is the <samp>modules</samp>
+file, which defines the modules inside the repository.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="modules.html#modules" accesskey="1">modules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defining modules
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Wrappers.html#Wrappers" accesskey="2">Wrappers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specify binary-ness based on file name
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Trigger-Scripts.html#Trigger-Scripts" accesskey="3">Trigger Scripts</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Some notes on the commit support files and
+				taginfo, referenced below.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="commit-files.html#commit-files" accesskey="4">commit files</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The commit support files (commitinfo,
+                                verifymsg, editinfo, loginfo)
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="taginfo.html#taginfo" accesskey="5">taginfo</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Verifying/Logging tags
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="rcsinfo.html#rcsinfo" accesskey="6">rcsinfo</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Templates for the log messages
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="cvsignore.html#cvsignore" accesskey="7">cvsignore</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Ignoring files via cvsignore
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="checkoutlist.html#checkoutlist" accesskey="8">checkoutlist</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Adding your own administrative files
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="history-file.html#history-file" accesskey="9">history file</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">History information
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Variables.html#Variables">Variables</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Various variables are expanded
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="config.html#config">config</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Miscellaneous CVS configuration
+</td></tr>
+</table>
+
+
+
+
+</body>
+</html>

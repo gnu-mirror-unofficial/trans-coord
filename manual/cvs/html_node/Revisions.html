@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Revisions</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Revisions">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Revisions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Revision-numbers.html#Revision-numbers" rel="next" title="Revision numbers">
+<link href="Defining-the-module.html#Defining-the-module" rel="prev" title="Defining the module">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Revisions"></a>
+<div class="header">
+<p>
+Next: <a href="Branching-and-merging.html#Branching-and-merging" accesskey="n" rel="next">Branching and merging</a>, Previous: <a href="Starting-a-new-project.html#Starting-a-new-project" accesskey="p" rel="prev">Starting a new project</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Revisions-1"></a>
+<h2 class="chapter">4 Revisions</h2>
+
+<p>For many uses of <small>CVS</small>, one doesn&rsquo;t need to worry
+too much about revision numbers; <small>CVS</small> assigns
+numbers such as <code>1.1</code>, <code>1.2</code>, and so on, and
+that is all one needs to know.  However, some people
+prefer to have more knowledge and control concerning
+how <small>CVS</small> assigns revision numbers.
+</p>
+<p>If one wants to keep track of a set of revisions
+involving more than one file, such as which revisions
+went into a particular release, one uses a <em>tag</em>,
+which is a symbolic revision which can be assigned to a
+numeric revision in each file.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Revision-numbers.html#Revision-numbers" accesskey="1">Revision numbers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The meaning of a revision number
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Versions-revisions-releases.html#Versions-revisions-releases" accesskey="2">Versions revisions releases</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Terminology used in this manual
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Assigning-revisions.html#Assigning-revisions" accesskey="3">Assigning revisions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Assigning revisions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tags.html#Tags" accesskey="4">Tags</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tags&ndash;Symbolic revisions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tagging-the-working-directory.html#Tagging-the-working-directory" accesskey="5">Tagging the working directory</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The cvs tag command
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tagging-by-date_002ftag.html#Tagging-by-date_002ftag" accesskey="6">Tagging by date/tag</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The cvs rtag command
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Modifying-tags.html#Modifying-tags" accesskey="7">Modifying tags</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Adding, renaming, and deleting tags
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tagging-add_002fremove.html#Tagging-add_002fremove" accesskey="8">Tagging add/remove</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tags with adding and removing files
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Sticky-tags.html#Sticky-tags" accesskey="9">Sticky tags</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Certain tags are persistent
+</td></tr>
+</table>
+
+
+
+
+</body>
+</html>

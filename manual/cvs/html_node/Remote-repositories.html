@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Remote repositories</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Remote repositories">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Remote repositories">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository.html#Repository" rel="up" title="Repository">
+<link href="Server-requirements.html#Server-requirements" rel="next" title="Server requirements">
+<link href="Moving-a-repository.html#Moving-a-repository" rel="prev" title="Moving a repository">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Remote-repositories"></a>
+<div class="header">
+<p>
+Next: <a href="Read_002donly-access.html#Read_002donly-access" accesskey="n" rel="next">Read-only access</a>, Previous: <a href="Moving-a-repository.html#Moving-a-repository" accesskey="p" rel="prev">Moving a repository</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Remote-repositories-1"></a>
+<h3 class="section">2.9 Remote repositories</h3>
+<a name="index-Repositories_002c-remote"></a>
+<a name="index-Remote-repositories"></a>
+<a name="index-Client_002fServer-Operation"></a>
+<a name="index-Server_002c-CVS"></a>
+<a name="index-Remote-repositories_002c-port-specification"></a>
+<a name="index-Repositories_002c-remote_002c-port-specification"></a>
+<a name="index-Client_002fServer-Operation_002c-port-specification"></a>
+<a name="index-pserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></a>
+<a name="index-kserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></a>
+<a name="index-gserver-_0028client_002fserver-connection-method_0029_002c-port-specification"></a>
+<a name="index-port_002c-specifying-for-remote-repositories"></a>
+
+<p>Your working copy of the sources can be on a
+different machine than the repository.  Using <small>CVS</small>
+in this manner is known as <em>client/server</em>
+operation.  You run <small>CVS</small> on a machine which can
+mount your working directory, known as the
+<em>client</em>, and tell it to communicate to a machine
+which can mount the repository, known as the
+<em>server</em>.  Generally, using a remote
+repository is just like using a local one, except that
+the format of the repository name is:
+</p>
+<div class="example">
+<pre class="example">[:<var>method</var>:][[<var>user</var>][:<var>password</var>]@]<var>hostname</var>[:[<var>port</var>]]/path/to/repository
+</pre></div>
+
+<p>Specifying a password in the repository name is not recommended during
+checkout, since this will cause <small>CVS</small> to store a cleartext copy of the
+password in each created directory.  <code>cvs login</code> first instead
+(see <a href="Password-authentication-client.html#Password-authentication-client">Password authentication client</a>).
+</p>
+<p>The details of exactly what needs to be set up depend
+on how you are connecting to the server.
+</p>
+<p>If <var>method</var> is not specified, and the repository
+name contains &lsquo;<samp>:</samp>&rsquo;, then the default is <code>ext</code>
+or <code>server</code>, depending on your platform; both are
+described in <a href="Connecting-via-rsh.html#Connecting-via-rsh">Connecting via rsh</a>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Server-requirements.html#Server-requirements" accesskey="1">Server requirements</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Memory and other resources for servers
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Connecting-via-rsh.html#Connecting-via-rsh" accesskey="2">Connecting via rsh</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Using the <code>rsh</code> program to connect
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Password-authenticated.html#Password-authenticated" accesskey="3">Password authenticated</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Direct connections using passwords
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="GSSAPI-authenticated.html#GSSAPI-authenticated" accesskey="4">GSSAPI authenticated</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Direct connections using GSSAPI
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Kerberos-authenticated.html#Kerberos-authenticated" accesskey="5">Kerberos authenticated</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Direct connections with Kerberos
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Connecting-via-fork.html#Connecting-via-fork" accesskey="6">Connecting via fork</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Using a forked <code>cvs server</code> to connect
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Read_002donly-access.html#Read_002donly-access" accesskey="n" rel="next">Read-only access</a>, Previous: <a href="Moving-a-repository.html#Moving-a-repository" accesskey="p" rel="prev">Moving a repository</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

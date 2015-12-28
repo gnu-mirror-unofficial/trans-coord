@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Backing up</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Backing up">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Backing up">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository.html#Repository" rel="up" title="Repository">
+<link href="Moving-a-repository.html#Moving-a-repository" rel="next" title="Moving a repository">
+<link href="Creating-a-repository.html#Creating-a-repository" rel="prev" title="Creating a repository">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Backing-up"></a>
+<div class="header">
+<p>
+Next: <a href="Moving-a-repository.html#Moving-a-repository" accesskey="n" rel="next">Moving a repository</a>, Previous: <a href="Creating-a-repository.html#Creating-a-repository" accesskey="p" rel="prev">Creating a repository</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Backing-up-a-repository"></a>
+<h3 class="section">2.7 Backing up a repository</h3>
+<a name="index-Repository_002c-backing-up"></a>
+<a name="index-Backing-up_002c-repository"></a>
+
+<p>There is nothing particularly magical about the files
+in the repository; for the most part it is possible to
+back them up just like any other files.  However, there
+are a few issues to consider.
+</p>
+<a name="index-Locks_002c-cvs_002c-and-backups"></a>
+<a name="index-_0023cvs_002erfl_002c-and-backups"></a>
+<p>The first is that to be paranoid, one should either not
+use <small>CVS</small> during the backup, or have the backup
+program lock <small>CVS</small> while doing the backup.  To not
+use <small>CVS</small>, you might forbid logins to machines which
+can access the repository, turn off your <small>CVS</small>
+server, or similar mechanisms.  The details would
+depend on your operating system and how you have
+<small>CVS</small> set up.  To lock <small>CVS</small>, you would create
+<samp>#cvs.rfl</samp> locks in each repository directory.
+See <a href="Concurrency.html#Concurrency">Concurrency</a>, for more on <small>CVS</small> locks.
+Having said all this, if you just back up without any
+of these precautions, the results are unlikely to be
+particularly dire.  Restoring from backup, the
+repository might be in an inconsistent state, but this
+would not be particularly hard to fix manually.
+</p>
+<p>When you restore a repository from backup, assuming
+that changes in the repository were made after the time
+of the backup, working directories which were not
+affected by the failure may refer to revisions which no
+longer exist in the repository.  Trying to run <small>CVS</small>
+in such directories will typically produce an error
+message.  One way to get those changes back into the
+repository is as follows:
+</p>
+<ul>
+<li> Get a new working directory.
+
+</li><li> Copy the files from the working directory from before
+the failure over to the new working directory (do not
+copy the contents of the <samp>CVS</samp> directories, of
+course).
+
+</li><li> Working in the new working directory, use commands such
+as <code>cvs update</code> and <code>cvs diff</code> to figure out
+what has changed, and then when you are ready, commit
+the changes into the repository.
+</li></ul>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Moving-a-repository.html#Moving-a-repository" accesskey="n" rel="next">Moving a repository</a>, Previous: <a href="Creating-a-repository.html#Creating-a-repository" accesskey="p" rel="prev">Creating a repository</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

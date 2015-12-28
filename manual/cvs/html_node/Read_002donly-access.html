@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Read-only access</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Read-only access">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Read-only access">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository.html#Repository" rel="up" title="Repository">
+<link href="Server-temporary-directory.html#Server-temporary-directory" rel="next" title="Server temporary directory">
+<link href="Connecting-via-fork.html#Connecting-via-fork" rel="prev" title="Connecting via fork">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Read_002donly-access"></a>
+<div class="header">
+<p>
+Next: <a href="Server-temporary-directory.html#Server-temporary-directory" accesskey="n" rel="next">Server temporary directory</a>, Previous: <a href="Remote-repositories.html#Remote-repositories" accesskey="p" rel="prev">Remote repositories</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Read_002donly-repository-access"></a>
+<h3 class="section">2.10 Read-only repository access</h3>
+<a name="index-Read_002donly-repository-access"></a>
+<a name="index-readers-_0028admin-file_0029"></a>
+<a name="index-writers-_0028admin-file_0029"></a>
+
+<p>It is possible to grant read-only repository
+access to people using the password-authenticated
+server (see <a href="Password-authenticated.html#Password-authenticated">Password authenticated</a>).  (The
+other access methods do not have explicit support for
+read-only users because those methods all assume login
+access to the repository machine anyway, and therefore
+the user can do whatever local file permissions allow
+her to do.)
+</p>
+<p>A user who has read-only access can do only
+those <small>CVS</small> operations which do not modify the
+repository, except for certain &ldquo;administrative&rdquo; files
+(such as lock files and the history file).  It may be
+desirable to use this feature in conjunction with
+user-aliasing (see <a href="Password-authentication-server.html#Password-authentication-server">Password authentication server</a>).
+</p>
+<p>Unlike with previous versions of <small>CVS</small>, read-only
+users should be able merely to read the repository, and
+not to execute programs on the server or otherwise gain
+unexpected levels of access.  Or to be more accurate,
+the <em>known</em> holes have been plugged.  Because this
+feature is new and has not received a comprehensive
+security audit, you should use whatever level of
+caution seems warranted given your attitude concerning
+security.
+</p>
+<p>There are two ways to specify read-only access
+for a user: by inclusion, and by exclusion.
+</p>
+<p>&quot;Inclusion&quot; means listing that user
+specifically in the <samp>$CVSROOT/CVSROOT/readers</samp>
+file, which is simply a newline-separated list of
+users.  Here is a sample <samp>readers</samp> file:
+</p>
+<div class="example">
+<pre class="example">melissa
+splotnik
+jrandom
+</pre></div>
+
+<p>(Don&rsquo;t forget the newline after the last user.)
+</p>
+<p>&quot;Exclusion&quot; means explicitly listing everyone
+who has <em>write</em> access&mdash;if the file
+</p>
+<div class="example">
+<pre class="example">$CVSROOT/CVSROOT/writers
+</pre></div>
+
+<p>exists, then only
+those users listed in it have write access, and
+everyone else has read-only access (of course, even the
+read-only users still need to be listed in the
+<small>CVS</small> <samp>passwd</samp> file).  The
+<samp>writers</samp> file has the same format as the
+<samp>readers</samp> file.
+</p>
+<p>Note: if your <small>CVS</small> <samp>passwd</samp>
+file maps cvs users onto system users (see <a href="Password-authentication-server.html#Password-authentication-server">Password authentication server</a>), make sure you deny or grant
+read-only access using the <em>cvs</em> usernames, not
+the system usernames.  That is, the <samp>readers</samp> and
+<samp>writers</samp> files contain cvs usernames, which may
+or may not be the same as system usernames.
+</p>
+<p>Here is a complete description of the server&rsquo;s
+behavior in deciding whether to grant read-only or
+read-write access:
+</p>
+<p>If <samp>readers</samp> exists, and this user is
+listed in it, then she gets read-only access.  Or if
+<samp>writers</samp> exists, and this user is NOT listed in
+it, then she also gets read-only access (this is true
+even if <samp>readers</samp> exists but she is not listed
+there).  Otherwise, she gets full read-write access.
+</p>
+<p>Of course there is a conflict if the user is
+listed in both files.  This is resolved in the more
+conservative way, it being better to protect the
+repository too much than too little: such a user gets
+read-only access.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Server-temporary-directory.html#Server-temporary-directory" accesskey="n" rel="next">Server temporary directory</a>, Previous: <a href="Remote-repositories.html#Remote-repositories" accesskey="p" rel="prev">Remote repositories</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

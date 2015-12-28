@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: editinfo</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: editinfo">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: editinfo">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="commit-files.html#commit-files" rel="up" title="commit files">
+<link href="editinfo-example.html#editinfo-example" rel="next" title="editinfo example">
+<link href="verifymsg.html#verifymsg" rel="prev" title="verifymsg">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="editinfo"></a>
+<div class="header">
+<p>
+Next: <a href="loginfo.html#loginfo" accesskey="n" rel="next">loginfo</a>, Previous: <a href="verifymsg.html#verifymsg" accesskey="p" rel="prev">verifymsg</a>, Up: <a href="commit-files.html#commit-files" accesskey="u" rel="up">commit files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Editinfo"></a>
+<h4 class="appendixsubsec">C.4.3 Editinfo</h4>
+<a name="index-editinfo-_0028admin-file_0029"></a>
+<a name="index-Editor_002c-specifying-per-module"></a>
+<a name="index-Per_002dmodule-editor"></a>
+<a name="index-Log-messages_002c-editing"></a>
+
+<p><strong>The <samp>editinfo</samp> feature has been
+rendered obsolete.  To set a default editor for log
+messages use the <code>CVSEDITOR</code>, <code>EDITOR</code> environment variables
+(see <a href="Environment-variables.html#Environment-variables">Environment variables</a>) or the &lsquo;<samp>-e</samp>&rsquo; global
+option (see <a href="Global-options.html#Global-options">Global options</a>).  See <a href="verifymsg.html#verifymsg">verifymsg</a>,
+for information on the use of the <samp>verifymsg</samp>
+feature for evaluating log messages.</strong>
+</p>
+<p>If you want to make sure that all log messages look the
+same way, you can use the <samp>editinfo</samp> file to
+specify a program that is used to edit the log message.
+This program could be a custom-made editor that always
+enforces a certain style of the log message, or maybe a
+simple shell script that calls an editor, and checks
+that the entered message contains the required fields.
+</p>
+<p>If no matching line is found in the <samp>editinfo</samp>
+file, the editor specified in the environment variable
+<code>$CVSEDITOR</code> is used instead.  If that variable is
+not set, then the environment variable <code>$EDITOR</code>
+is used instead.  If that variable is not
+set a default will be used.  See <a href="Committing-your-changes.html#Committing-your-changes">Committing your changes</a>.
+</p>
+<p>The <samp>editinfo</samp> file is often most useful together
+with the <samp>rcsinfo</samp> file, which can be used to
+specify a log message template.
+</p>
+<p>Each line in the <samp>editinfo</samp> file consists of a
+regular expression and a command-line template.  The
+template must include a program name, and can include
+any number of arguments.  The full path to the current
+log message template file is appended to the template.
+</p>
+<p>One thing that should be noted is that the &lsquo;<samp>ALL</samp>&rsquo;
+keyword is not supported.  If more than one matching
+line is found, the first one is used.  This can be
+useful for specifying a default edit script in a
+module, and then overriding it in a subdirectory.
+</p>
+<a name="index-DEFAULT-in-editinfo"></a>
+<p>If the repository name does not match any of the
+regular expressions in this file, the &lsquo;<samp>DEFAULT</samp>&rsquo;
+line is used, if it is specified.
+</p>
+<p>If the edit script exits with a non-zero exit status,
+the commit is aborted.
+</p>
+<p>Note: when <small>CVS</small> is accessing a remote repository,
+or when the &lsquo;<samp>-m</samp>&rsquo; or &lsquo;<samp>-F</samp>&rsquo; options to <code>cvs
+commit</code> are used, <samp>editinfo</samp> will not be consulted.
+There is no good workaround for this; use
+<samp>verifymsg</samp> instead.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="editinfo-example.html#editinfo-example" accesskey="1">editinfo example</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Editinfo example
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="loginfo.html#loginfo" accesskey="n" rel="next">loginfo</a>, Previous: <a href="verifymsg.html#verifymsg" accesskey="p" rel="prev">verifymsg</a>, Up: <a href="commit-files.html#commit-files" accesskey="u" rel="up">commit files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

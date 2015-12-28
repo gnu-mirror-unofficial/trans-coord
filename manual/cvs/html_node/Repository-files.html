@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Repository files</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Repository files">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Repository files">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository-storage.html#Repository-storage" rel="up" title="Repository storage">
+<link href="File-permissions.html#File-permissions" rel="next" title="File permissions">
+<link href="Repository-storage.html#Repository-storage" rel="prev" title="Repository storage">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Repository-files"></a>
+<div class="header">
+<p>
+Next: <a href="File-permissions.html#File-permissions" accesskey="n" rel="next">File permissions</a>, Up: <a href="Repository-storage.html#Repository-storage" accesskey="u" rel="up">Repository storage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Where-files-are-stored-within-the-repository"></a>
+<h4 class="subsection">2.2.1 Where files are stored within the repository</h4>
+
+
+<p>The overall structure of the repository is a directory
+tree corresponding to the directories in the working
+directory.  For example, supposing the repository is in
+</p>
+<div class="example">
+<pre class="example">/usr/local/cvsroot
+</pre></div>
+
+<p>here is a possible directory tree (showing only the
+directories):
+</p>
+<div class="example">
+<pre class="example"><tt>/usr</tt>
+ |
+ +--<tt>local</tt>
+ |   |
+ |   +--<tt>cvsroot</tt>
+ |   |    |
+ |   |    +--<tt>CVSROOT</tt>
+          |      (administrative files)
+          |
+          +--<tt>gnu</tt>
+          |   |
+          |   +--<tt>diff</tt>
+          |   |   (source code to GNU diff)
+          |   |
+          |   +--<tt>rcs</tt>
+          |   |   (source code to RCS)
+          |   |
+          |   +--<tt>cvs</tt>
+          |       (source code to CVS)
+          |
+          +--<tt>yoyodyne</tt>
+              |
+              +--<tt>tc</tt>
+              |    |
+              |    +--<tt>man</tt>
+              |    |
+              |    +--<tt>testing</tt>
+              |
+              +--(other Yoyodyne software)
+</pre></div>
+
+<p>With the directories are <em>history files</em> for each file
+under version control.  The name of the history file is
+the name of the corresponding file with &lsquo;<samp>,v</samp>&rsquo;
+appended to the end.  Here is what the repository for
+the <samp>yoyodyne/tc</samp> directory might look like:
+</p><div class="example">
+<pre class="example">  <code>$CVSROOT</code>
+    |
+    +--<tt>yoyodyne</tt>
+    |   |
+    |   +--<tt>tc</tt>
+    |   |   |
+            +--<tt>Makefile,v</tt>
+            +--<tt>backend.c,v</tt>
+            +--<tt>driver.c,v</tt>
+            +--<tt>frontend.c,v</tt>
+            +--<tt>parser.c,v</tt>
+            +--<tt>man</tt>
+            |    |
+            |    +--<tt>tc.1,v</tt>
+            |
+            +--<tt>testing</tt>
+                 |
+                 +--<tt>testpgm.t,v</tt>
+                 +--<tt>test2.t,v</tt>
+</pre></div>
+
+<a name="index-History-files"></a>
+<a name="index-RCS-history-files"></a>
+<p>The history files contain, among other things, enough
+information to recreate any revision of the file, a log
+of all commit messages and the user-name of the person
+who committed the revision.  The history files are
+known as <em>RCS files</em>, because the first program to
+store files in that format was a version control system
+known as <small>RCS</small>.  For a full
+description of the file format, see the <code>man</code> page
+<cite>rcsfile(5)</cite>, distributed with <small>RCS</small>, or the
+file <samp>doc/RCSFILES</samp> in the <small>CVS</small> source
+distribution.  This
+file format has become very common&mdash;many systems other
+than <small>CVS</small> or <small>RCS</small> can at least import history
+files in this format.
+</p>
+<p>The <small>RCS</small> files used in <small>CVS</small> differ in a few
+ways from the standard format.  The biggest difference
+is magic branches; for more information see <a href="Magic-branch-numbers.html#Magic-branch-numbers">Magic branch numbers</a>.  Also in <small>CVS</small> the valid tag names
+are a subset of what <small>RCS</small> accepts; for <small>CVS</small>&rsquo;s
+rules see <a href="Tags.html#Tags">Tags</a>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="File-permissions.html#File-permissions" accesskey="n" rel="next">File permissions</a>, Up: <a href="Repository-storage.html#Repository-storage" accesskey="u" rel="up">Repository storage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

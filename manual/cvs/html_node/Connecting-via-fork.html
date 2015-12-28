@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Connecting via fork</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Connecting via fork">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Connecting via fork">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Remote-repositories.html#Remote-repositories" rel="up" title="Remote repositories">
+<link href="Read_002donly-access.html#Read_002donly-access" rel="next" title="Read-only access">
+<link href="Kerberos-authenticated.html#Kerberos-authenticated" rel="prev" title="Kerberos authenticated">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Connecting-via-fork"></a>
+<div class="header">
+<p>
+Previous: <a href="Kerberos-authenticated.html#Kerberos-authenticated" accesskey="p" rel="prev">Kerberos authenticated</a>, Up: <a href="Remote-repositories.html#Remote-repositories" accesskey="u" rel="up">Remote repositories</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Connecting-with-fork"></a>
+<h4 class="subsection">2.9.6 Connecting with fork</h4>
+
+<a name="index-fork_002c-access-method"></a>
+<a name="index-_003afork_003a_002c-setting-up"></a>
+<p>This access method allows you to connect to a
+repository on your local disk via the remote protocol.
+In other words it does pretty much the same thing as
+<code>:local:</code>, but various quirks, bugs and the like are
+those of the remote <small>CVS</small> rather than the local
+<small>CVS</small>.
+</p>
+<p>For day-to-day operations you might prefer either
+<code>:local:</code> or <code>:fork:</code>, depending on your
+preferences.  Of course <code>:fork:</code> comes in
+particularly handy in testing or
+debugging <code>cvs</code> and the remote protocol.
+Specifically, we avoid all of the network-related
+setup/configuration, timeouts, and authentication
+inherent in the other remote access methods but still
+create a connection which uses the remote protocol.
+</p>
+<p>To connect using the <code>fork</code> method, use
+&lsquo;<samp>:fork:</samp>&rsquo; and the pathname to your local
+repository.  For example:
+</p>
+<div class="example">
+<pre class="example">cvs -d :fork:/usr/local/cvsroot checkout foo
+</pre></div>
+
+<a name="index-CVS_005fSERVER_002c-and-_003afork_003a"></a>
+<p>As with <code>:ext:</code>, the server is called &lsquo;<samp>cvs</samp>&rsquo;
+by default, or the value of the <code>CVS_SERVER</code>
+environment variable.
+</p>
+
+
+
+</body>
+</html>

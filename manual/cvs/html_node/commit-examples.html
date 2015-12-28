@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: commit examples</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: commit examples">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: commit examples">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="commit.html#commit" rel="up" title="commit">
+<link href="diff.html#diff" rel="next" title="diff">
+<link href="commit-options.html#commit-options" rel="prev" title="commit options">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="commit-examples"></a>
+<div class="header">
+<p>
+Previous: <a href="commit-options.html#commit-options" accesskey="p" rel="prev">commit options</a>, Up: <a href="commit.html#commit" accesskey="u" rel="up">commit</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="commit-examples-1"></a>
+<h4 class="appendixsubsec">A.10.2 commit examples</h4>
+
+
+<a name="Committing-to-a-branch"></a>
+<h4 class="appendixsubsubsec">A.10.2.1 Committing to a branch</h4>
+
+<p>You can commit to a branch revision (one that has an
+even number of dots) with the &lsquo;<samp>-r</samp>&rsquo; option.  To
+create a branch revision, use the &lsquo;<samp>-b</samp>&rsquo; option
+of the <code>rtag</code> or <code>tag</code> commands
+(see <a href="Branching-and-merging.html#Branching-and-merging">Branching and merging</a>).  Then, either <code>checkout</code> or
+<code>update</code> can be used to base your sources on the
+newly created branch.  From that point on, all
+<code>commit</code> changes made within these working sources
+will be automatically added to a branch revision,
+thereby not disturbing main-line development in any
+way.  For example, if you had to create a patch to the
+1.2 version of the product, even though the 2.0 version
+is already under development, you might do:
+</p>
+<div class="example">
+<pre class="example">$ cvs rtag -b -r FCS1_2 FCS1_2_Patch product_module
+$ cvs checkout -r FCS1_2_Patch product_module
+$ cd product_module
+[[ hack away ]]
+$ cvs commit
+</pre></div>
+
+<p>This works automatically since the &lsquo;<samp>-r</samp>&rsquo; option is
+sticky.
+</p>
+<a name="Creating-the-branch-after-editing"></a>
+<h4 class="appendixsubsubsec">A.10.2.2 Creating the branch after editing</h4>
+
+<p>Say you have been working on some extremely
+experimental software, based on whatever revision you
+happened to checkout last week.  If others in your
+group would like to work on this software with you, but
+without disturbing main-line development, you could
+commit your change to a new branch.  Others can then
+checkout your experimental stuff and utilize the full
+benefit of <small>CVS</small> conflict resolution.  The scenario might
+look like:
+</p>
+<div class="example">
+<pre class="example">[[ hacked sources are present ]]
+$ cvs tag -b EXPR1
+$ cvs update -r EXPR1
+$ cvs commit
+</pre></div>
+
+<p>The <code>update</code> command will make the &lsquo;<samp>-r
+EXPR1</samp>&rsquo; option sticky on all files.  Note that your
+changes to the files will never be removed by the
+<code>update</code> command.  The <code>commit</code> will
+automatically commit to the correct branch, because the
+&lsquo;<samp>-r</samp>&rsquo; is sticky.  You could also do like this:
+</p>
+<div class="example">
+<pre class="example">[[ hacked sources are present ]]
+$ cvs tag -b EXPR1
+$ cvs commit -r EXPR1
+</pre></div>
+
+<p>but then, only those files that were changed by you
+will have the &lsquo;<samp>-r EXPR1</samp>&rsquo; sticky flag.  If you hack
+away, and commit without specifying the &lsquo;<samp>-r EXPR1</samp>&rsquo;
+flag, some files may accidentally end up on the main
+trunk.
+</p>
+<p>To work with you on the experimental change, others
+would simply do
+</p>
+<div class="example">
+<pre class="example">$ cvs checkout -r EXPR1 whatever_module
+</pre></div>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="commit-options.html#commit-options" accesskey="p" rel="prev">commit options</a>, Up: <a href="commit.html#commit" accesskey="u" rel="up">commit</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

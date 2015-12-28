@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Keyword list</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Keyword list">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Keyword list">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Keyword-substitution.html#Keyword-substitution" rel="up" title="Keyword substitution">
+<link href="Using-keywords.html#Using-keywords" rel="next" title="Using keywords">
+<link href="Keyword-substitution.html#Keyword-substitution" rel="prev" title="Keyword substitution">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Keyword-list"></a>
+<div class="header">
+<p>
+Next: <a href="Using-keywords.html#Using-keywords" accesskey="n" rel="next">Using keywords</a>, Up: <a href="Keyword-substitution.html#Keyword-substitution" accesskey="u" rel="up">Keyword substitution</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Keyword-List"></a>
+<h3 class="section">12.1 Keyword List</h3>
+<a name="index-Keyword-List"></a>
+
+
+<p>This is a list of the keywords:
+</p>
+<dl compact="compact">
+<dd><a name="index-Author-keyword"></a>
+</dd>
+<dt><code>$<i></i>Author$</code></dt>
+<dd><p>The login name of the user who checked in the revision.
+</p>
+<a name="index-Date-keyword"></a>
+</dd>
+<dt><code>$<i></i>Date$</code></dt>
+<dd><p>The date and time (UTC) the revision was checked in.
+</p>
+<a name="index-Header-keyword"></a>
+</dd>
+<dt><code>$<i></i>Header$</code></dt>
+<dd><p>A standard header containing the full pathname of the
+<small>RCS</small> file, the revision number, the date (UTC), the
+author, the state, and the locker (if locked).  Files
+will normally never be locked when you use <small>CVS</small>.
+</p>
+<a name="index-Id-keyword"></a>
+</dd>
+<dt><code>$<i></i>Id$</code></dt>
+<dd><p>Same as <code>$<i></i>Header$</code>, except that the <small>RCS</small>
+filename is without a path.
+</p>
+<a name="index-Name-keyword"></a>
+</dd>
+<dt><code>$<i></i>Name$</code></dt>
+<dd><p>Tag name used to check out this file.  The keyword is
+expanded only if one checks out with an explicit tag
+name.  For example, when running the command <code>cvs
+co -r first</code>, the keyword expands to &lsquo;<samp>Name: first</samp>&rsquo;.
+</p>
+<a name="index-Locker-keyword"></a>
+</dd>
+<dt><code>$<i></i>Locker$</code></dt>
+<dd><p>The login name of the user who locked the revision
+(empty if not locked, which is the normal case unless
+<code>cvs admin -l</code> is in use).
+</p>
+<a name="index-Log-keyword"></a>
+</dd>
+<dt><code>$<i></i>Log$</code></dt>
+<dd><p>The log message supplied during commit, preceded by a
+header containing the <small>RCS</small> filename, the revision
+number, the author, and the date (UTC).  Existing log
+messages are <em>not</em> replaced.  Instead, the new log
+message is inserted after <code>$<i></i>Log:&hellip;$</code>.
+Each new line is prefixed with the same string which
+precedes the <code>$Log</code> keyword.  For example, if the
+file contains:
+</p>
+<div class="example">
+<pre class="example">  /* Here is what people have been up to:
+   *
+   * $<i></i>Log: frob.c,v $
+   * Revision 1.1  1997/01/03 14:23:51  joe
+   * Add the superfrobnicate option
+   *
+   */
+</pre></div>
+
+<p>then additional lines which are added when expanding
+the <code>$Log</code> keyword will be preceded by &lsquo;<samp>   * </samp>&rsquo;.
+Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the
+<em>comment leader</em> from the <small>RCS</small> file is not used.
+The <code>$Log</code> keyword is useful for
+accumulating a complete change log in a source file,
+but for several reasons it can be problematic.
+See <a href="Log-keyword.html#Log-keyword">Log keyword</a>.
+</p>
+<a name="index-RCSfile-keyword"></a>
+</dd>
+<dt><code>$<i></i>RCSfile$</code></dt>
+<dd><p>The name of the RCS file without a path.
+</p>
+<a name="index-Revision-keyword"></a>
+</dd>
+<dt><code>$<i></i>Revision$</code></dt>
+<dd><p>The revision number assigned to the revision.
+</p>
+<a name="index-Source-keyword"></a>
+</dd>
+<dt><code>$<i></i>Source$</code></dt>
+<dd><p>The full pathname of the RCS file.
+</p>
+<a name="index-State-keyword"></a>
+</dd>
+<dt><code>$<i></i>State$</code></dt>
+<dd><p>The state assigned to the revision.  States can be
+assigned with <code>cvs admin -s</code>&mdash;see <a href="admin-options.html#admin-options">admin options</a>.
+</p>
+</dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Using-keywords.html#Using-keywords" accesskey="n" rel="next">Using keywords</a>, Up: <a href="Keyword-substitution.html#Keyword-substitution" accesskey="u" rel="up">Keyword substitution</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

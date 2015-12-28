@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Multiple developers</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Multiple developers">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Multiple developers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="File-status.html#File-status" rel="next" title="File status">
+<link href="Binary-howto.html#Binary-howto" rel="prev" title="Binary howto">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Multiple-developers"></a>
+<div class="header">
+<p>
+Next: <a href="Revision-management.html#Revision-management" accesskey="n" rel="next">Revision management</a>, Previous: <a href="Binary-files.html#Binary-files" accesskey="p" rel="prev">Binary files</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Multiple-developers-1"></a>
+<h2 class="chapter">10 Multiple developers</h2>
+<a name="index-Multiple-developers"></a>
+<a name="index-Team-of-developers"></a>
+<a name="index-File-locking"></a>
+<a name="index-Locking-files"></a>
+<a name="index-Working-copy"></a>
+<a name="index-Reserved-checkouts"></a>
+<a name="index-Unreserved-checkouts"></a>
+<a name="index-RCS_002dstyle-locking"></a>
+
+<p>When more than one person works on a software project
+things often get complicated.  Often, two people try to
+edit the same file simultaneously.  One solution, known
+as <em>file locking</em> or <em>reserved checkouts</em>, is
+to allow only one person to edit each file at a time.
+This is the only solution with some version control
+systems, including <small>RCS</small> and <small>SCCS</small>.  Currently
+the usual way to get reserved checkouts with <small>CVS</small>
+is the <code>cvs admin -l</code> command (see <a href="admin-options.html#admin-options">admin options</a>).  This is not as nicely integrated into
+<small>CVS</small> as the watch features, described below, but it
+seems that most people with a need for reserved
+checkouts find it adequate.
+It also may be possible to use the watches
+features described below, together with suitable
+procedures (not enforced by software), to avoid having
+two people edit at the same time.
+</p>
+<p>The default model with <small>CVS</small> is known as
+<em>unreserved checkouts</em>.  In this model, developers
+can edit their own <em>working copy</em> of a file
+simultaneously.  The first person that commits his
+changes has no automatic way of knowing that another
+has started to edit it.  Others will get an error
+message when they try to commit the file.  They must
+then use <small>CVS</small> commands to bring their working copy
+up to date with the repository revision.  This process
+is almost automatic.
+</p>
+<p><small>CVS</small> also supports mechanisms which facilitate
+various kinds of communication, without actually
+enforcing rules like reserved checkouts do.
+</p>
+<p>The rest of this chapter describes how these various
+models work, and some of the issues involved in
+choosing between them.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="File-status.html#File-status" accesskey="1">File status</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A file can be in several states
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Updating-a-file.html#Updating-a-file" accesskey="2">Updating a file</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Bringing a file up-to-date
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Conflicts-example.html#Conflicts-example" accesskey="3">Conflicts example</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An informative example
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Informing-others.html#Informing-others" accesskey="4">Informing others</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">To cooperate you must inform
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Concurrency.html#Concurrency" accesskey="5">Concurrency</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Simultaneous repository access
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Watches.html#Watches" accesskey="6">Watches</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Mechanisms to track who is editing files
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Choosing-a-model.html#Choosing-a-model" accesskey="7">Choosing a model</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Reserved or unreserved checkouts?
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Revision-management.html#Revision-management" accesskey="n" rel="next">Revision management</a>, Previous: <a href="Binary-files.html#Binary-files" accesskey="p" rel="prev">Binary files</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

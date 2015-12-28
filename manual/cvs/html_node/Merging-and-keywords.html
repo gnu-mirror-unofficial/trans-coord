@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Merging and keywords</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Merging and keywords">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Merging and keywords">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Branching-and-merging.html#Branching-and-merging" rel="up" title="Branching and merging">
+<link href="Recursive-behavior.html#Recursive-behavior" rel="next" title="Recursive behavior">
+<link href="Merging-adds-and-removals.html#Merging-adds-and-removals" rel="prev" title="Merging adds and removals">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Merging-and-keywords"></a>
+<div class="header">
+<p>
+Previous: <a href="Merging-adds-and-removals.html#Merging-adds-and-removals" accesskey="p" rel="prev">Merging adds and removals</a>, Up: <a href="Branching-and-merging.html#Branching-and-merging" accesskey="u" rel="up">Branching and merging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Merging-and-keywords-1"></a>
+<h3 class="section">5.10 Merging and keywords</h3>
+<a name="index-Merging_002c-and-keyword-substitution"></a>
+<a name="index-Keyword-substitution_002c-and-merging"></a>
+<a name="index-_002dj-_0028merging-branches_0029_002c-and-keyword-substitution"></a>
+<a name="index-_002dkk_002c-to-avoid-conflicts-during-a-merge"></a>
+
+<p>If you merge files containing keywords (see <a href="Keyword-substitution.html#Keyword-substitution">Keyword substitution</a>), you will normally get numerous
+conflicts during the merge, because the keywords are
+expanded differently in the revisions which you are
+merging.
+</p>
+<p>Therefore, you will often want to specify the
+&lsquo;<samp>-kk</samp>&rsquo; (see <a href="Substitution-modes.html#Substitution-modes">Substitution modes</a>) switch to the
+merge command line.  By substituting just the name of
+the keyword, not the expanded value of that keyword,
+this option ensures that the revisions which you are
+merging will be the same as each other, and avoid
+spurious conflicts.
+</p>
+<p>For example, suppose you have a file like this:
+</p>
+<div class="example">
+<pre class="example">       +---------+
+      _! 1.1.2.1 !   &lt;-  br1
+     / +---------+
+    /
+   /
++-----+    +-----+
+! 1.1 !----! 1.2 !
++-----+    +-----+
+</pre></div>
+
+<p>and your working directory is currently on the trunk
+(revision 1.2).  Then you might get the following
+results from a merge:
+</p>
+<div class="example">
+<pre class="example">$ cat file1
+key $<i></i>Revision: 1.2 $
+. . .
+$ cvs update -j br1
+U file1
+RCS file: /cvsroot/first-dir/file1,v
+retrieving revision 1.1
+retrieving revision 1.1.2.1
+Merging differences between 1.1 and 1.1.2.1 into file1
+rcsmerge: warning: conflicts during merge
+$ cat file1
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; file1
+key $<i></i>Revision: 1.2 $
+=======
+key $<i></i>Revision: 1.1.2.1 $
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.1.2.1
+. . .
+</pre></div>
+
+<p>What happened was that the merge tried to merge the
+differences between 1.1 and 1.1.2.1 into your working
+directory.  So, since the keyword changed from
+<code>Revision: 1.1</code> to <code>Revision: 1.1.2.1</code>,
+<small>CVS</small> tried to merge that change into your working
+directory, which conflicted with the fact that your
+working directory had contained <code>Revision: 1.2</code>.
+</p>
+<p>Here is what happens if you had used &lsquo;<samp>-kk</samp>&rsquo;:
+</p>
+<div class="example">
+<pre class="example">$ cat file1
+key $<i></i>Revision: 1.2 $
+. . .
+$ cvs update -kk -j br1
+U file1
+RCS file: /cvsroot/first-dir/file1,v
+retrieving revision 1.1
+retrieving revision 1.1.2.1
+Merging differences between 1.1 and 1.1.2.1 into file1
+$ cat file1
+key $<i></i>Revision$
+. . .
+</pre></div>
+
+<p>What is going on here is that revision 1.1 and 1.1.2.1
+both expand as plain <code>Revision</code>, and therefore
+merging the changes between them into the working
+directory need not change anything.  Therefore, there
+is no conflict.
+</p>
+<p>There is, however, one major caveat with using
+&lsquo;<samp>-kk</samp>&rsquo; on merges.  Namely, it overrides whatever
+keyword expansion mode <small>CVS</small> would normally have
+used.  In particular, this is a problem if the mode had
+been &lsquo;<samp>-kb</samp>&rsquo; for a binary file.  Therefore, if your
+repository contains binary files, you will need to deal
+with the conflicts rather than using &lsquo;<samp>-kk</samp>&rsquo;.
+</p>
+
+<p>As a result of using &lsquo;<samp>-kk</samp>&rsquo; during the merge, each file examined by the
+update will have &lsquo;<samp>-kk</samp>&rsquo; set as sticky options.  Running <code>update -A</code>
+will clear the sticky options on unmodified files, but it will not clear
+the sticky options on modified files.  To get back to the default keyword
+substitution for modified files, you must commit the results of the merge
+and then run <code>update -A</code>.
+</p>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Merging-adds-and-removals.html#Merging-adds-and-removals" accesskey="p" rel="prev">Merging adds and removals</a>, Up: <a href="Branching-and-merging.html#Branching-and-merging" accesskey="u" rel="up">Branching and merging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

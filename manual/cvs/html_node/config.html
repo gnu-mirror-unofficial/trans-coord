@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: config</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: config">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: config">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Administrative-files.html#Administrative-files" rel="up" title="Administrative files">
+<link href="Environment-variables.html#Environment-variables" rel="next" title="Environment variables">
+<link href="Variables.html#Variables" rel="prev" title="Variables">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="config"></a>
+<div class="header">
+<p>
+Previous: <a href="Variables.html#Variables" accesskey="p" rel="prev">Variables</a>, Up: <a href="Administrative-files.html#Administrative-files" accesskey="u" rel="up">Administrative files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-CVSROOT_002fconfig-configuration-file"></a>
+<h3 class="appendixsec">C.11 The CVSROOT/config configuration file</h3>
+
+<a name="index-config_002c-in-CVSROOT"></a>
+<a name="index-CVSROOT_002fconfig"></a>
+
+<p>The administrative file <samp>config</samp> contains various
+miscellaneous settings which affect the behavior of
+<small>CVS</small>.  The syntax is slightly different from the
+other administrative files.  Variables are not
+expanded.  Lines which start with &lsquo;<samp>#</samp>&rsquo; are
+considered comments.
+Other lines consist of a keyword, &lsquo;<samp>=</samp>&rsquo;, and a
+value.  Note that this syntax is very strict.
+Extraneous spaces or tabs are not permitted.
+</p>
+<p>Currently defined keywords are:
+</p>
+<dl compact="compact">
+<dd><a name="index-RCSBIN_002c-in-CVSROOT_002fconfig"></a>
+</dd>
+<dt><code>RCSBIN=<var>bindir</var></code></dt>
+<dd><p>For <small>CVS</small> 1.9.12 through 1.9.18, this setting told
+<small>CVS</small> to look for <small>RCS</small> programs in the
+<var>bindir</var> directory.  Current versions of <small>CVS</small>
+do not run <small>RCS</small> programs; for compatibility this
+setting is accepted, but it does nothing.
+</p>
+<a name="index-SystemAuth_002c-in-CVSROOT_002fconfig"></a>
+</dd>
+<dt><code>SystemAuth=<var>value</var></code></dt>
+<dd><p>If <var>value</var> is &lsquo;<samp>yes</samp>&rsquo;, then pserver should check
+for users in the system&rsquo;s user database if not found in
+<samp>CVSROOT/passwd</samp>.  If it is &lsquo;<samp>no</samp>&rsquo;, then all
+pserver users must exist in <samp>CVSROOT/passwd</samp>.
+The default is &lsquo;<samp>yes</samp>&rsquo;.  For more on pserver, see
+<a href="Password-authenticated.html#Password-authenticated">Password authenticated</a>.
+</p>
+
+<a name="index-TopLevelAdmin_002c-in-CVSROOT_002fconfig"></a>
+</dd>
+<dt><code>TopLevelAdmin=<var>value</var></code></dt>
+<dd><p>Modify the &lsquo;<samp>checkout</samp>&rsquo; command to create a
+&lsquo;<samp>CVS</samp>&rsquo; directory at the top level of the new
+working directory, in addition to &lsquo;<samp>CVS</samp>&rsquo;
+directories created within checked-out directories.
+The default value is &lsquo;<samp>no</samp>&rsquo;.
+</p>
+<p>This option is useful if you find yourself performing
+many commands at the top level of your working
+directory, rather than in one of the checked out
+subdirectories.  The <samp>CVS</samp> directory created there
+will mean you don&rsquo;t have to specify <code>CVSROOT</code> for
+each command.  It also provides a place for the
+<samp>CVS/Template</samp> file (see <a href="Working-directory-storage.html#Working-directory-storage">Working directory storage</a>).
+</p>
+<a name="index-LockDir_002c-in-CVSROOT_002fconfig"></a>
+</dd>
+<dt><code>LockDir=<var>directory</var></code></dt>
+<dd><p>Put <small>CVS</small> lock files in <var>directory</var> rather than
+directly in the repository.  This is useful if you want
+to let users read from the repository while giving them
+write access only to <var>directory</var>, not to the
+repository.
+It can also be used to put the locks on a very fast
+in-memory file system to speed up locking and unlocking
+the repository.
+You need to create <var>directory</var>, but
+<small>CVS</small> will create subdirectories of <var>directory</var> as it
+needs them.  For information on <small>CVS</small> locks, see
+<a href="Concurrency.html#Concurrency">Concurrency</a>.
+</p>
+<p>Before enabling the LockDir option, make sure that you
+have tracked down and removed any copies of <small>CVS</small> 1.9 or
+older.  Such versions neither support LockDir, nor will
+give an error indicating that they don&rsquo;t support it.
+The result, if this is allowed to happen, is that some
+<small>CVS</small> users will put the locks one place, and others will
+put them another place, and therefore the repository
+could become corrupted.  <small>CVS</small> 1.10 does not support
+LockDir but it will print a warning if run on a
+repository with LockDir enabled.
+</p>
+<a name="index-LogHistory_002c-in-CVSROOT_002fconfig"></a>
+</dd>
+<dt><code>LogHistory=<var>value</var></code></dt>
+<dd><p>Control what is logged to the <samp>CVSROOT/history</samp> file (see <a href="history.html#history">history</a>).
+Default of &lsquo;<samp>TOEFWUPCGMAR</samp>&rsquo; (or simply &lsquo;<samp>all</samp>&rsquo;) will log
+all transactions.  Any subset of the default is
+legal.  (For example, to only log transactions that modify the
+<samp>*,v</samp> files, use &lsquo;<samp>LogHistory=TMAR</samp>&rsquo;.)
+</p>
+<a name="index-RereadLogAfterVerify_002c-in-CVSROOT_002fconfig"></a>
+<a name="index-verifymsg_002c-changing-the-log-message-1"></a>
+</dd>
+<dt><code>RereadLogAfterVerify=<var>value</var></code></dt>
+<dd><p>Modify the &lsquo;<samp>commit</samp>&rsquo; command such that CVS will reread the
+log message after running the program specified by <samp>verifymsg</samp>.
+<var>value</var> may be one of &lsquo;<samp>yes</samp>&rsquo; or &lsquo;<samp>always</samp>&rsquo;, indicating that
+the log message should always be reread; &lsquo;<samp>no</samp>&rsquo;
+or &lsquo;<samp>never</samp>&rsquo;, indicating that it should never be
+reread; or <var>value</var> may be &lsquo;<samp>stat</samp>&rsquo;, indicating
+that the file should be checked with the file system
+&lsquo;<samp>stat()</samp>&rsquo; function to see if it has changed (see warning below)
+before rereading.  The default value is &lsquo;<samp>always</samp>&rsquo;.
+</p>
+<p><strong>The &lsquo;stat&rsquo; mode can cause CVS to pause for up to
+one extra second per directory committed.  This can be less IO and
+CPU intensive but is not recommended for use with large repositories</strong>
+</p>
+<p>See <a href="verifymsg.html#verifymsg">verifymsg</a>, for more information on how verifymsg
+may be used.
+</p>
+<a name="index-IgnoreUnknownConfigKeys_002c-in-CVSROOT_002fconfig"></a>
+</dd>
+<dt><code>IgnoreUnknownConfigKeys=<var>value</var></code></dt>
+<dd><p>If <var>value</var> is &lsquo;<samp>yes</samp>&rsquo;, then <small>CVS</small> should
+ignore any keywords in <samp>CVSROOT/config</samp> which it
+does not recognize. This option is intended primarily
+for transitions between versions of <small>CVS</small> which
+support more configuration options in an environment
+where a read-only mirror of the current <small>CVS</small> server
+may be maintained by someone else who is not yet ready
+to upgrade to the same version. It is recommended that
+this option be used only for a short time so that
+problems with the <samp>CVSROOT/config</samp> file will be
+found quickly. The default is &lsquo;<samp>no</samp>&rsquo;.
+</p></dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Variables.html#Variables" accesskey="p" rel="prev">Variables</a>, Up: <a href="Administrative-files.html#Administrative-files" accesskey="u" rel="up">Administrative files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

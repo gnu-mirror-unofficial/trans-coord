@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Moving a repository</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Moving a repository">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Moving a repository">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository.html#Repository" rel="up" title="Repository">
+<link href="Remote-repositories.html#Remote-repositories" rel="next" title="Remote repositories">
+<link href="Backing-up.html#Backing-up" rel="prev" title="Backing up">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Moving-a-repository"></a>
+<div class="header">
+<p>
+Next: <a href="Remote-repositories.html#Remote-repositories" accesskey="n" rel="next">Remote repositories</a>, Previous: <a href="Backing-up.html#Backing-up" accesskey="p" rel="prev">Backing up</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Moving-a-repository-1"></a>
+<h3 class="section">2.8 Moving a repository</h3>
+<a name="index-Repository_002c-moving"></a>
+<a name="index-Moving-a-repository"></a>
+<a name="index-Copying-a-repository"></a>
+
+<p>Just as backing up the files in the repository is
+pretty much like backing up any other files, if you
+need to move a repository from one place to another it
+is also pretty much like just moving any other
+collection of files.
+</p>
+<p>The main thing to consider is that working directories
+point to the repository.  The simplest way to deal with
+a moved repository is to just get a fresh working
+directory after the move.  Of course, you&rsquo;ll want to
+make sure that the old working directory had been
+checked in before the move, or you figured out some
+other way to make sure that you don&rsquo;t lose any
+changes.  If you really do want to reuse the existing
+working directory, it should be possible with manual
+surgery on the <samp>CVS/Repository</samp> files.  You can
+see <a href="Working-directory-storage.html#Working-directory-storage">Working directory storage</a>, for information on
+the <samp>CVS/Repository</samp> and <samp>CVS/Root</samp> files, but
+unless you are sure you want to bother, it probably
+isn&rsquo;t worth it.
+</p>
+
+
+
+</body>
+</html>

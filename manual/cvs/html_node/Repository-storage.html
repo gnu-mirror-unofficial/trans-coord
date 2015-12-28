@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Repository storage</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Repository storage">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Repository storage">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository.html#Repository" rel="up" title="Repository">
+<link href="Repository-files.html#Repository-files" rel="next" title="Repository files">
+<link href="Specifying-a-repository.html#Specifying-a-repository" rel="prev" title="Specifying a repository">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Repository-storage"></a>
+<div class="header">
+<p>
+Next: <a href="Working-directory-storage.html#Working-directory-storage" accesskey="n" rel="next">Working directory storage</a>, Previous: <a href="Specifying-a-repository.html#Specifying-a-repository" accesskey="p" rel="prev">Specifying a repository</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="How-data-is-stored-in-the-repository"></a>
+<h3 class="section">2.2 How data is stored in the repository</h3>
+<a name="index-Repository_002c-how-data-is-stored"></a>
+
+<p>For most purposes it isn&rsquo;t important <em>how</em>
+<small>CVS</small> stores information in the repository.  In
+fact, the format has changed in the past, and is likely
+to change in the future.  Since in almost all cases one
+accesses the repository via <small>CVS</small> commands, such
+changes need not be disruptive.
+</p>
+<p>However, in some cases it may be necessary to
+understand how <small>CVS</small> stores data in the repository,
+for example you might need to track down <small>CVS</small> locks
+(see <a href="Concurrency.html#Concurrency">Concurrency</a>) or you might need to deal with
+the file permissions appropriate for the repository.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Repository-files.html#Repository-files" accesskey="1">Repository files</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What files are stored in the repository
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="File-permissions.html#File-permissions" accesskey="2">File permissions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">File permissions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Windows-permissions.html#Windows-permissions" accesskey="3">Windows permissions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Issues specific to Windows
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Attic.html#Attic" accesskey="4">Attic</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Some files are stored in the Attic
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="CVS-in-repository.html#CVS-in-repository" accesskey="5">CVS in repository</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Additional information in CVS directory
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Locks.html#Locks" accesskey="6">Locks</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">CVS locks control concurrent accesses
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="CVSROOT-storage.html#CVSROOT-storage" accesskey="7">CVSROOT storage</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A few things about CVSROOT are different
+</td></tr>
+</table>
+
+
+
+
+</body>
+</html>

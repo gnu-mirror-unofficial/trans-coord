@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Trigger Script Security</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Trigger Script Security">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Trigger Script Security">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Trigger-Scripts.html#Trigger-Scripts" rel="up" title="Trigger Scripts">
+<link href="commit-files.html#commit-files" rel="next" title="commit files">
+<link href="syntax.html#syntax" rel="prev" title="syntax">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Trigger-Script-Security"></a>
+<div class="header">
+<p>
+Previous: <a href="syntax.html#syntax" accesskey="p" rel="prev">syntax</a>, Up: <a href="Trigger-Scripts.html#Trigger-Scripts" accesskey="u" rel="up">Trigger Scripts</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Security-and-the-Trigger-Scripts"></a>
+<h4 class="appendixsubsec">C.3.2 Security and the Trigger Scripts</h4>
+<a name="index-Info-files_002c-security"></a>
+<a name="index-Trigger-scripts_002c-security"></a>
+
+<p>Security is a huge subject, and implementing a secure system is a non-trivial
+task.  This section will barely touch on all the issues involved, but it is
+well to note that, as with any script you will be allowing an untrusted
+user to run on your server, there are measures you can take to help prevent
+your trigger scripts from being abused.
+</p>
+<p>For instance, since the CVS trigger scripts all run in a copy of the user&rsquo;s
+sandbox on the server, a naively coded Perl trigger script which attempts to
+use a Perl module that is not installed on the system can be hijacked by any
+user with commit access who is checking in a file with the correct name.  Other
+scripting languages may be vulnerable to similar hacks.
+</p>
+<p>One way to make a script more secure, at least with Perl, is to use scripts
+which invoke the <code>-T</code>, or &quot;taint-check&quot; switch on their <code>#!</code> line.
+In the most basic terms, this causes Perl to avoid running code that may have
+come from an external source.  Please run the <code>perldoc perlsec</code> command
+for more on Perl security.  Again, other languages may implement other security
+verification hooks which look more or less like Perl&rsquo;s &quot;taint-check&quot; mechanism.
+</p>
+
+
+
+</body>
+</html>

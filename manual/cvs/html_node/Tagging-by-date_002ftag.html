@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Tagging by date/tag</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Tagging by date/tag">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Tagging by date/tag">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Revisions.html#Revisions" rel="up" title="Revisions">
+<link href="Modifying-tags.html#Modifying-tags" rel="next" title="Modifying tags">
+<link href="Tagging-the-working-directory.html#Tagging-the-working-directory" rel="prev" title="Tagging the working directory">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Tagging-by-date_002ftag"></a>
+<div class="header">
+<p>
+Next: <a href="Modifying-tags.html#Modifying-tags" accesskey="n" rel="next">Modifying tags</a>, Previous: <a href="Tagging-the-working-directory.html#Tagging-the-working-directory" accesskey="p" rel="prev">Tagging the working directory</a>, Up: <a href="Revisions.html#Revisions" accesskey="u" rel="up">Revisions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Specifying-what-to-tag-by-date-or-revision"></a>
+<h3 class="section">4.6 Specifying what to tag by date or revision</h3>
+<a name="index-rtag-_0028subcommand_0029"></a>
+
+<p>The <code>cvs rtag</code> command tags the repository as of a
+certain date or time (or can be used to tag the latest
+revision).  <code>rtag</code> works directly on the
+repository contents (it requires no prior checkout and
+does not look for a working directory).
+</p>
+<p>The following options specify which date or revision to
+tag.  See <a href="Common-options.html#Common-options">Common options</a>, for a complete
+description of them.
+</p>
+<dl compact="compact">
+<dt><code>-D <var>date</var></code></dt>
+<dd><p>Tag the most recent revision no later than <var>date</var>.
+</p>
+</dd>
+<dt><code>-f</code></dt>
+<dd><p>Only useful with the &lsquo;<samp>-D <var>date</var></samp>&rsquo; or &lsquo;<samp>-r <var>tag</var></samp>&rsquo;
+flags.  If no matching revision is found, use the most
+recent revision (instead of ignoring the file).
+</p>
+</dd>
+<dt><code>-r <var>tag</var></code></dt>
+<dd><p>Only tag those files that contain existing tag <var>tag</var>.
+</p></dd>
+</dl>
+
+<p>The <code>cvs tag</code> command also allows one to specify
+files by revision or date, using the same &lsquo;<samp>-r</samp>&rsquo;,
+&lsquo;<samp>-D</samp>&rsquo;, and &lsquo;<samp>-f</samp>&rsquo; options.  However, this
+feature is probably not what you want.  The reason is
+that <code>cvs tag</code> chooses which files to tag based on
+the files that exist in the working directory, rather
+than the files which existed as of the given tag/date.
+Therefore, you are generally better off using <code>cvs
+rtag</code>.  The exceptions might be cases like:
+</p>
+<div class="example">
+<pre class="example">cvs tag -r 1.4 backend.c
+</pre></div>
+
+
+
+
+</body>
+</html>

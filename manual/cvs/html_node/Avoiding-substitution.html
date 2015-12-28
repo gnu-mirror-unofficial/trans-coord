@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Avoiding substitution</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Avoiding substitution">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Avoiding substitution">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Keyword-substitution.html#Keyword-substitution" rel="up" title="Keyword substitution">
+<link href="Substitution-modes.html#Substitution-modes" rel="next" title="Substitution modes">
+<link href="Using-keywords.html#Using-keywords" rel="prev" title="Using keywords">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Avoiding-substitution"></a>
+<div class="header">
+<p>
+Next: <a href="Substitution-modes.html#Substitution-modes" accesskey="n" rel="next">Substitution modes</a>, Previous: <a href="Using-keywords.html#Using-keywords" accesskey="p" rel="prev">Using keywords</a>, Up: <a href="Keyword-substitution.html#Keyword-substitution" accesskey="u" rel="up">Keyword substitution</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Avoiding-substitution-1"></a>
+<h3 class="section">12.3 Avoiding substitution</h3>
+
+<p>Keyword substitution has its disadvantages.  Sometimes
+you might want the literal text string
+&lsquo;<samp>$<i></i>Author$</samp>&rsquo; to appear inside a file without
+<small>CVS</small> interpreting it as a keyword and expanding it
+into something like &lsquo;<samp>$<i></i>Author: ceder $</samp>&rsquo;.
+</p>
+<p>There is unfortunately no way to selectively turn off
+keyword substitution.  You can use &lsquo;<samp>-ko</samp>&rsquo;
+(see <a href="Substitution-modes.html#Substitution-modes">Substitution modes</a>) to turn off keyword
+substitution entirely.
+</p>
+<p>In many cases you can avoid using keywords in
+the source, even though they appear in the final
+product.  For example, the source for this manual
+contains &lsquo;<samp>$@asis{}Author$</samp>&rsquo; whenever the text
+&lsquo;<samp>$<i></i>Author$</samp>&rsquo; should appear.  In <code>nroff</code>
+and <code>troff</code> you can embed the null-character
+<code>\&amp;</code> inside the keyword for a similar effect.
+</p>
+
+
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: BUGS</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: BUGS">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: BUGS">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Index.html#Index" rel="next" title="Index">
+<link href="Credits.html#Credits" rel="prev" title="Credits">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="BUGS"></a>
+<div class="header">
+<p>
+Next: <a href="Index.html#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="Credits.html#Credits" accesskey="p" rel="prev">Credits</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Dealing-with-bugs-in-CVS-or-this-manual"></a>
+<h2 class="appendix">Appendix H Dealing with bugs in CVS or this manual</h2>
+
+<a name="index-Bugs-in-this-manual-or-CVS"></a>
+<p>Neither <small>CVS</small> nor this manual is perfect, and they
+probably never will be.  If you are having trouble
+using <small>CVS</small>, or think you have found a bug, there
+are a number of things you can do about it.  Note that
+if the manual is unclear, that can be considered a bug
+in the manual, so these problems are often worth doing
+something about as well as problems with <small>CVS</small> itself.
+</p>
+<a name="index-Reporting-bugs"></a>
+<a name="index-Bugs_002c-reporting"></a>
+<a name="index-Errors_002c-reporting"></a>
+<ul>
+<li> If you want someone to help you and fix bugs that you
+report, there are companies which will do that for a
+fee.  One such company is:
+
+<a name="index-Ximbiot"></a>
+<a name="index-Support_002c-getting-CVS-support"></a>
+<div class="example">
+<pre class="example">Ximbiot LLC
+Suite 230
+200 Diversion St.
+Rochester Hills, MI  48307-6636
+USA
+Email: info@ximbiot.com
+Phone: (248) 835-1260
+Fax:   (248) 835-1263
+<a href="http://ximbiot.com/">http://ximbiot.com/</a>
+
+</pre></div>
+
+</li><li> If you got <small>CVS</small> through a distributor, such as an
+operating system vendor or a vendor of freeware
+<small>CD-ROM</small>s, you may wish to see whether the
+distributor provides support.  Often, they will provide
+no support or minimal support, but this may vary from
+distributor to distributor.
+
+</li><li> If you have the skills and time to do so, you may wish
+to fix the bug yourself.  If you wish to submit your
+fix for inclusion in future releases of <small>CVS</small>, see
+the file <small>HACKING</small> in the <small>CVS</small> source
+distribution.  It contains much more information on the
+process of submitting fixes.
+
+</li><li> There may be resources on the net which can help.  A
+good place to start is:
+
+<div class="example">
+<pre class="example"><a href="http://cvs.nongnu.org/">http://cvs.nongnu.org/</a>
+</pre></div>
+
+<p>If you are so inspired, increasing the information
+available on the net is likely to be appreciated.  For
+example, before the standard <small>CVS</small> distribution
+worked on Windows 95, there was a web page with some
+explanation and patches for running <small>CVS</small> on Windows
+95, and various people helped out by mentioning this
+page on mailing lists or newsgroups when the subject
+came up.
+</p>
+</li><li> It is also possible to report bugs to <a href="mailto:bug-cvs@nongnu.org">bug-cvs@nongnu.org</a>.
+Note that someone may or may not want to do anything
+with your bug report&mdash;if you need a solution consider
+one of the options mentioned above.  People probably do
+want to hear about bugs which are particularly severe
+in consequences and/or easy to fix, however.  You can
+also increase your odds by being as clear as possible
+about the exact nature of the bug and any other
+relevant information.  The way to report bugs is to
+send email to <a href="mailto:bug-cvs@nongnu.org">bug-cvs@nongnu.org</a>.  Note
+that submissions to <a href="mailto:bug-cvs@nongnu.org">bug-cvs@nongnu.org</a> may be distributed
+under the terms of the <small>GNU</small> Public License, so if
+you don&rsquo;t like this, don&rsquo;t submit them.  There is
+usually no justification for sending mail directly to
+one of the <small>CVS</small> maintainers rather than to
+<a href="mailto:bug-cvs@nongnu.org">bug-cvs@nongnu.org</a>; those maintainers who want to hear
+about such bug reports read <a href="mailto:bug-cvs@nongnu.org">bug-cvs@nongnu.org</a>.  Also note
+that sending a bug report to other mailing lists or
+newsgroups is <em>not</em> a substitute for sending it to
+<a href="mailto:bug-cvs@nongnu.org">bug-cvs@nongnu.org</a>.  It is fine to discuss <small>CVS</small> bugs on
+whatever forum you prefer, but there are not
+necessarily any maintainers reading bug reports sent
+anywhere except <a href="mailto:bug-cvs@nongnu.org">bug-cvs@nongnu.org</a>.
+</li></ul>
+
+<a name="index-Known-bugs-in-this-manual-or-CVS"></a>
+<p>People often ask if there is a list of known bugs or
+whether a particular bug is a known one.  The file
+<small>BUGS</small> in the <small>CVS</small> source distribution is one
+list of known bugs, but it doesn&rsquo;t necessarily try to
+be comprehensive.  Perhaps there will never be a
+comprehensive, detailed list of known bugs.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Index.html#Index" accesskey="n" rel="next">Index</a>, Previous: <a href="Credits.html#Credits" accesskey="p" rel="prev">Credits</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

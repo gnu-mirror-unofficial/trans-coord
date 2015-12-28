@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Removing files</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Removing files">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Removing files">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Adding-and-removing.html#Adding-and-removing" rel="up" title="Adding and removing">
+<link href="Removing-directories.html#Removing-directories" rel="next" title="Removing directories">
+<link href="Adding-files.html#Adding-files" rel="prev" title="Adding files">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Removing-files"></a>
+<div class="header">
+<p>
+Next: <a href="Removing-directories.html#Removing-directories" accesskey="n" rel="next">Removing directories</a>, Previous: <a href="Adding-files.html#Adding-files" accesskey="p" rel="prev">Adding files</a>, Up: <a href="Adding-and-removing.html#Adding-and-removing" accesskey="u" rel="up">Adding and removing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Removing-files-1"></a>
+<h3 class="section">7.2 Removing files</h3>
+<a name="index-Removing-files"></a>
+<a name="index-Deleting-files"></a>
+
+<p>Directories change.  New files are added, and old files
+disappear.  Still, you want to be able to retrieve an
+exact copy of old releases.
+</p>
+<p>Here is what you can do to remove a file,
+but remain able to retrieve old revisions:
+</p>
+<ul>
+<li> Make sure that you have not made any uncommitted
+modifications to the file.  See <a href="Viewing-differences.html#Viewing-differences">Viewing differences</a>,
+for one way to do that.  You can also use the
+<code>status</code> or <code>update</code> command.  If you remove
+the file without committing your changes, you will of
+course not be able to retrieve the file as it was
+immediately before you deleted it.
+
+</li><li> Remove the file from your working copy of the directory.
+You can for instance use <code>rm</code>.
+
+</li><li> Use &lsquo;<samp>cvs remove <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that
+you really want to delete the file.
+
+</li><li> Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually
+perform the removal of the file from the repository.
+</li></ul>
+
+<p>When you commit the removal of the file, <small>CVS</small>
+records the fact that the file no longer exists.  It is
+possible for a file to exist on only some branches and
+not on others, or to re-add another file with the same
+name later.  <small>CVS</small> will correctly create or not create
+the file, based on the &lsquo;<samp>-r</samp>&rsquo; and &lsquo;<samp>-D</samp>&rsquo; options
+specified to <code>checkout</code> or <code>update</code>.
+</p>
+<a name="index-Remove-_0028subcommand_0029"></a>
+<dl>
+<dt><a name="index-cvs-remove"></a>Command: <strong>cvs remove</strong> <em>[options] files &hellip;</em></dt>
+<dd>
+<p>Schedule file(s) to be removed from the repository
+(files which have not already been removed from the
+working directory are not processed).  This command
+does not actually remove the file from the repository
+until you commit the removal.  For a full list of
+options, see <a href="Invoking-CVS.html#Invoking-CVS">Invoking CVS</a>.
+</p></dd></dl>
+
+<p>Here is an example of removing several files:
+</p>
+<div class="example">
+<pre class="example">$ cd test
+$ rm *.c
+$ cvs remove
+cvs remove: Removing .
+cvs remove: scheduling a.c for removal
+cvs remove: scheduling b.c for removal
+cvs remove: use 'cvs commit' to remove these files permanently
+$ cvs ci -m &quot;Removed unneeded files&quot;
+cvs commit: Examining .
+cvs commit: Committing .
+</pre></div>
+
+<p>As a convenience you can remove the file and <code>cvs
+remove</code> it in one step, by specifying the &lsquo;<samp>-f</samp>&rsquo;
+option.  For example, the above example could also be
+done like this:
+</p>
+<div class="example">
+<pre class="example">$ cd test
+$ cvs remove -f *.c
+cvs remove: scheduling a.c for removal
+cvs remove: scheduling b.c for removal
+cvs remove: use 'cvs commit' to remove these files permanently
+$ cvs ci -m &quot;Removed unneeded files&quot;
+cvs commit: Examining .
+cvs commit: Committing .
+</pre></div>
+
+<p>If you execute <code>remove</code> for a file, and then
+change your mind before you commit, you can undo the
+<code>remove</code> with an <code>add</code> command.
+</p>
+
+<div class="example">
+<pre class="example">$ ls
+CVS   ja.h  oj.c
+$ rm oj.c
+$ cvs remove oj.c
+cvs remove: scheduling oj.c for removal
+cvs remove: use 'cvs commit' to remove this file permanently
+$ cvs add oj.c
+U oj.c
+cvs add: oj.c, version 1.1.1.1, resurrected
+</pre></div>
+
+<p>If you realize your mistake before you run the
+<code>remove</code> command you can use <code>update</code> to
+resurrect the file:
+</p>
+<div class="example">
+<pre class="example">$ rm oj.c
+$ cvs update oj.c
+cvs update: warning: oj.c was lost
+U oj.c
+</pre></div>
+
+<p>When you remove a file it is removed only on the branch
+which you are working on (see <a href="Branching-and-merging.html#Branching-and-merging">Branching and merging</a>).  You can
+later merge the removals to another branch if you want
+(see <a href="Merging-adds-and-removals.html#Merging-adds-and-removals">Merging adds and removals</a>).
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Removing-directories.html#Removing-directories" accesskey="n" rel="next">Removing directories</a>, Previous: <a href="Adding-files.html#Adding-files" accesskey="p" rel="prev">Adding files</a>, Up: <a href="Adding-and-removing.html#Adding-and-removing" accesskey="u" rel="up">Adding and removing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

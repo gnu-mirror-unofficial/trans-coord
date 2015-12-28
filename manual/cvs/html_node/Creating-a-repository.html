@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Creating a repository</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Creating a repository">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Creating a repository">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Repository.html#Repository" rel="up" title="Repository">
+<link href="Backing-up.html#Backing-up" rel="next" title="Backing up">
+<link href="Multiple-repositories.html#Multiple-repositories" rel="prev" title="Multiple repositories">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Creating-a-repository"></a>
+<div class="header">
+<p>
+Next: <a href="Backing-up.html#Backing-up" accesskey="n" rel="next">Backing up</a>, Previous: <a href="Multiple-repositories.html#Multiple-repositories" accesskey="p" rel="prev">Multiple repositories</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Creating-a-repository-1"></a>
+<h3 class="section">2.6 Creating a repository</h3>
+
+<a name="index-Repository_002c-setting-up"></a>
+<a name="index-Creating-a-repository"></a>
+<a name="index-Setting-up-a-repository"></a>
+
+<p>This section describes how to set up a <small>CVS</small> repository for any
+sort of access method.  After completing the setup described in this
+section, you should be able to access your <small>CVS</small> repository immediately
+via the local access method and several remote access methods.  For
+more information on setting up remote access to the repository you create
+in this section, please read the section on See <a href="Remote-repositories.html#Remote-repositories">Remote repositories</a>.
+</p>
+<p>To set up a <small>CVS</small> repository, first choose the
+machine and disk on which you want to store the
+revision history of the source files.  CPU and memory
+requirements are modest, so most machines should be
+adequate.  For details see <a href="Server-requirements.html#Server-requirements">Server requirements</a>.
+</p>
+<p>To estimate disk space
+requirements, if you are importing RCS files from
+another system, the size of those files is the
+approximate initial size of your repository, or if you
+are starting without any version history, a rule of
+thumb is to allow for the server approximately three
+times the size of the code to be under <small>CVS</small> for the
+repository (you will eventually outgrow this, but not
+for a while).  On the machines on which the developers
+will be working, you&rsquo;ll want disk space for
+approximately one working directory for each developer
+(either the entire tree or a portion of it, depending
+on what each developer uses).
+</p>
+<p>The repository should be accessible
+(directly or via a networked file system) from all
+machines which want to use <small>CVS</small> in server or local
+mode; the client machines need not have any access to
+it other than via the <small>CVS</small> protocol.  It is not
+possible to use <small>CVS</small> to read from a repository
+which one only has read access to; <small>CVS</small> needs to be
+able to create lock files (see <a href="Concurrency.html#Concurrency">Concurrency</a>).
+</p>
+<a name="index-init-_0028subcommand_0029"></a>
+<p>To create a repository, run the <code>cvs init</code>
+command.  It will set up an empty repository in the
+<small>CVS</small> root specified in the usual way
+(see <a href="Repository.html#Repository">Repository</a>).  For example,
+</p>
+<div class="example">
+<pre class="example">cvs -d /usr/local/cvsroot init
+</pre></div>
+
+<p><code>cvs init</code> is careful to never overwrite any
+existing files in the repository, so no harm is done if
+you run <code>cvs init</code> on an already set-up
+repository.
+</p>
+<p><code>cvs init</code> will enable history logging; if you
+don&rsquo;t want that, remove the history file after running
+<code>cvs init</code>.  See <a href="history-file.html#history-file">history file</a>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Backing-up.html#Backing-up" accesskey="n" rel="next">Backing up</a>, Previous: <a href="Multiple-repositories.html#Multiple-repositories" accesskey="p" rel="prev">Multiple repositories</a>, Up: <a href="Repository.html#Repository" accesskey="u" rel="up">Repository</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

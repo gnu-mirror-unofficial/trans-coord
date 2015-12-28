@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: log</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: log">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: log">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="CVS-commands.html#CVS-commands" rel="up" title="CVS commands">
+<link href="log-options.html#log-options" rel="next" title="log options">
+<link href="import-examples.html#import-examples" rel="prev" title="import examples">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="log"></a>
+<div class="header">
+<p>
+Next: <a href="rdiff.html#rdiff" accesskey="n" rel="next">rdiff</a>, Previous: <a href="import.html#import" accesskey="p" rel="prev">import</a>, Up: <a href="CVS-commands.html#CVS-commands" accesskey="u" rel="up">CVS commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="log_002d_002d_002dPrint-out-log-information-for-files"></a>
+<h3 class="appendixsec">A.15 log&mdash;Print out log information for files</h3>
+<a name="index-log-_0028subcommand_0029"></a>
+
+<ul>
+<li> Synopsis: log [options] [files&hellip;]
+</li><li> Requires: repository, working directory.
+</li><li> Changes: nothing.
+</li></ul>
+
+<p>Display log information for files.  <code>log</code> used to
+call the <small>RCS</small> utility <code>rlog</code>.  Although this
+is no longer true in the current sources, this history
+determines the format of the output and the options,
+which are not quite in the style of the other <small>CVS</small>
+commands.
+</p>
+<a name="index-Timezone_002c-in-output"></a>
+<a name="index-Zone_002c-time_002c-in-output"></a>
+<p>The output includes the location of the <small>RCS</small> file,
+the <em>head</em> revision (the latest revision on the
+trunk), all symbolic names (tags) and some other
+things.  For each revision, the revision number, the
+author, the number of lines added/deleted and the log
+message are printed.  All times are displayed in
+Coordinated Universal Time (UTC).  (Other parts of
+<small>CVS</small> print times in the local timezone).
+</p>
+<p><strong><code>log</code> uses &lsquo;<samp>-R</samp>&rsquo; in a way that conflicts
+with the normal use inside <small>CVS</small> (see <a href="Common-options.html#Common-options">Common options</a>).</strong>
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="log-options.html#log-options" accesskey="1">log options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">log options
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="log-examples.html#log-examples" accesskey="2">log examples</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">log examples
+</td></tr>
+</table>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: CVS commands</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: CVS commands">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: CVS commands">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Structure.html#Structure" rel="next" title="Structure">
+<link href="Special-Files.html#Special-Files" rel="prev" title="Special Files">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="CVS-commands"></a>
+<div class="header">
+<p>
+Next: <a href="Invoking-CVS.html#Invoking-CVS" accesskey="n" rel="next">Invoking CVS</a>, Previous: <a href="Special-Files.html#Special-Files" accesskey="p" rel="prev">Special Files</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Guide-to-CVS-commands"></a>
+<h2 class="appendix">Appendix A Guide to CVS commands</h2>
+
+<p>This appendix describes the overall structure of
+<small>CVS</small> commands, and describes some commands in
+detail (others are described elsewhere; for a quick
+reference to <small>CVS</small> commands, see <a href="Invoking-CVS.html#Invoking-CVS">Invoking CVS</a>).
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Structure.html#Structure" accesskey="1">Structure</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Overall structure of CVS commands
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Exit-status.html#Exit-status" accesskey="2">Exit status</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating CVS&rsquo;s success or failure
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_007e_002f_002ecvsrc.html#g_t_007e_002f_002ecvsrc" accesskey="3">~/.cvsrc</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Default options with the ~/.cvsrc file
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Global-options.html#Global-options" accesskey="4">Global options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Options you give to the left of cvs_command
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Common-options.html#Common-options" accesskey="5">Common options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Options you give to the right of cvs_command
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="add.html#add" accesskey="6">add</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Add files and directories to the repository
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="admin.html#admin" accesskey="7">admin</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Administration
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="annotate.html#annotate" accesskey="8">annotate</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What revision modified each line of a file?
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="checkout.html#checkout" accesskey="9">checkout</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Checkout sources for editing
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="commit.html#commit">commit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Check files into the repository
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="diff.html#diff">diff</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Show differences between revisions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="export.html#export">export</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Export sources from CVS, similar to checkout
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="history.html#history">history</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Show status of files and users
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="import.html#import">import</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Import sources into CVS, using vendor branches
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="log.html#log">log</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Show log messages for files
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="rdiff.html#rdiff">rdiff</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">&rsquo;patch&rsquo; format diffs between releases
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="release.html#release">release</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicate that a directory is no longer in use
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="remove.html#remove">remove</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Remove files from active development
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="update.html#update">update</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Bring work tree in sync with repository
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Invoking-CVS.html#Invoking-CVS" accesskey="n" rel="next">Invoking CVS</a>, Previous: <a href="Special-Files.html#Special-Files" accesskey="p" rel="prev">Special Files</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

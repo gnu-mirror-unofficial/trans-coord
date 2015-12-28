@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Using keywords</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Using keywords">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Using keywords">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Keyword-substitution.html#Keyword-substitution" rel="up" title="Keyword substitution">
+<link href="Avoiding-substitution.html#Avoiding-substitution" rel="next" title="Avoiding substitution">
+<link href="Keyword-list.html#Keyword-list" rel="prev" title="Keyword list">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Using-keywords"></a>
+<div class="header">
+<p>
+Next: <a href="Avoiding-substitution.html#Avoiding-substitution" accesskey="n" rel="next">Avoiding substitution</a>, Previous: <a href="Keyword-list.html#Keyword-list" accesskey="p" rel="prev">Keyword list</a>, Up: <a href="Keyword-substitution.html#Keyword-substitution" accesskey="u" rel="up">Keyword substitution</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Using-keywords-1"></a>
+<h3 class="section">12.2 Using keywords</h3>
+
+<p>To include a keyword string you simply include the
+relevant text string, such as <code>$<i></i>Id$</code>, inside the
+file, and commit the file.  <small>CVS</small> will automatically (Or,
+more accurately, as part of the update run that
+automatically happens after a commit.)
+expand the string as part of the commit operation.
+</p>
+<p>It is common to embed the <code>$<i></i>Id$</code> string in
+the source files so that it gets passed through to
+generated files.  For example, if you are managing
+computer program source code, you might include a
+variable which is initialized to contain that string.
+Or some C compilers may provide a <code>#pragma ident</code>
+directive.  Or a document management system might
+provide a way to pass a string through to generated
+files.
+</p>
+
+<a name="index-Ident-_0028shell-command_0029"></a>
+<p>The <code>ident</code> command (which is part of the <small>RCS</small>
+package) can be used to extract keywords and their
+values from a file.  This can be handy for text files,
+but it is even more useful for extracting keywords from
+binary files.
+</p>
+<div class="example">
+<pre class="example">$ ident samp.c
+samp.c:
+     $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
+$ gcc samp.c
+$ ident a.out
+a.out:
+     $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
+</pre></div>
+
+<a name="index-What-_0028shell-command_0029"></a>
+<p>S<small>CCS</small> is another popular revision control system.
+It has a command, <code>what</code>, which is very similar to
+<code>ident</code> and used for the same purpose.  Many sites
+without <small>RCS</small> have <small>SCCS</small>.  Since <code>what</code>
+looks for the character sequence <code>@(#)</code> it is
+easy to include keywords that are detected by either
+command.  Simply prefix the keyword with the
+magic <small>SCCS</small> phrase, like this:
+</p>
+<div class="example">
+<pre class="example">static char *id=&quot;@(#) $<i></i>Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp $&quot;;
+</pre></div>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Avoiding-substitution.html#Avoiding-substitution" accesskey="n" rel="next">Avoiding substitution</a>, Previous: <a href="Keyword-list.html#Keyword-list" accesskey="p" rel="prev">Keyword list</a>, Up: <a href="Keyword-substitution.html#Keyword-substitution" accesskey="u" rel="up">Keyword substitution</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CVS&mdash;Concurrent Versions System v1.11.23: Cleaning up</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v1.11.23: Cleaning up">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v1.11.23: Cleaning up">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="A-sample-session.html#A-sample-session" rel="up" title="A sample session">
+<link href="Viewing-differences.html#Viewing-differences" rel="next" title="Viewing differences">
+<link href="Committing-your-changes.html#Committing-your-changes" rel="prev" title="Committing your changes">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Cleaning-up"></a>
+<div class="header">
+<p>
+Next: <a href="Viewing-differences.html#Viewing-differences" accesskey="n" rel="next">Viewing differences</a>, Previous: <a href="Committing-your-changes.html#Committing-your-changes" accesskey="p" rel="prev">Committing your changes</a>, Up: <a href="A-sample-session.html#A-sample-session" accesskey="u" rel="up">A sample session</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Cleaning-up-1"></a>
+<h4 class="subsection">1.3.3 Cleaning up</h4>
+<a name="index-Cleaning-up"></a>
+<a name="index-Working-copy_002c-removing"></a>
+<a name="index-Removing-your-working-copy"></a>
+<a name="index-Releasing-your-working-copy"></a>
+
+<p>Before you turn to other tasks you decide to remove your working copy of
+tc.  One acceptable way to do that is of course
+</p>
+<div class="example">
+<pre class="example">$ cd ..
+$ rm -r tc
+</pre></div>
+
+<p>but a better way is to use the <code>release</code> command (see <a href="release.html#release">release</a>):
+</p>
+<div class="example">
+<pre class="example">$ cd ..
+$ cvs release -d tc
+M driver.c
+? tc
+You have [1] altered files in this repository.
+Are you sure you want to release (and delete) directory `tc': n
+** `release' aborted by user choice.
+</pre></div>
+
+<p>The <code>release</code> command checks that all your modifications have been
+committed.  If history logging is enabled it also makes a note in the
+history file.  See <a href="history-file.html#history-file">history file</a>.
+</p>
+<p>When you use the &lsquo;<samp>-d</samp>&rsquo; flag with <code>release</code>, it
+also removes your working copy.
+</p>
+<p>In the example above, the <code>release</code> command wrote a couple of lines
+of output.  &lsquo;<samp>? tc</samp>&rsquo; means that the file <samp>tc</samp> is unknown to <small>CVS</small>.
+That is nothing to worry about: <samp>tc</samp> is the executable compiler,
+and it should not be stored in the repository.  See <a href="cvsignore.html#cvsignore">cvsignore</a>,
+for information about how to make that warning go away.
+See <a href="release-output.html#release-output">release output</a>, for a complete explanation of
+all possible output from <code>release</code>.
+</p>
+<p>&lsquo;<samp>M driver.c</samp>&rsquo; is more serious.  It means that the
+file <samp>driver.c</samp> has been modified since it was
+checked out.
+</p>
+<p>The <code>release</code> command always finishes by telling
+you how many modified files you have in your working
+copy of the sources, and then asks you for confirmation
+before deleting any files or making any note in the
+history file.
+</p>
+<p>You decide to play it safe and answer <kbd>n <span class="key">RET</span></kbd>
+when <code>release</code> asks for confirmation.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Viewing-differences.html#Viewing-differences" accesskey="n" rel="next">Viewing differences</a>, Previous: <a href="Committing-your-changes.html#Committing-your-changes" accesskey="p" rel="prev">Committing your changes</a>, Up: <a href="A-sample-session.html#A-sample-session" accesskey="u" rel="up">A sample session</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
