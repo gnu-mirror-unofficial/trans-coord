@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 25 December 2014) is for GNUnited Nations (version
-0.10), a suite for maintaining translations of www.gnu.org
+This manual (updated 30 September 2016) is for GNUnited Nations (version
+0.11), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
-Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Free
-Software Foundation, Inc.
+Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016
+Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -164,6 +164,11 @@ Previous: <a href="Copying-This-Manual.html#Copying-This-Manual" accesskey="p" r
 <tr><td></td><td valign="top"><a href="Invoking-GNUN.html#index-GNUmakefile">GNUmakefile</a>:</td><td>&nbsp;</td><td valign="top"><a href="Invoking-GNUN.html#Invoking-GNUN">Invoking GNUN</a></td></tr>
 <tr><td></td><td valign="top"><a href="Team_0027s-Repository.html#index-GNUmakefile_002eteam">GNUmakefile.team</a>:</td><td>&nbsp;</td><td valign="top"><a href="Team_0027s-Repository.html#Team_0027s-Repository">Team's Repository</a></td></tr>
 <tr><td></td><td valign="top"><a href="Files-and-Directories.html#index-GNUN-directory-layout">GNUN directory layout</a>:</td><td>&nbsp;</td><td valign="top"><a href="Files-and-Directories.html#Files-and-Directories">Files and Directories</a></td></tr>
+<tr><td></td><td valign="top"><a href="Sorting-Lists.html#index-GNUN_002dSORT_002dBEGIN_002dKEY">GNUN-SORT-BEGIN-KEY</a>:</td><td>&nbsp;</td><td valign="top"><a href="Sorting-Lists.html#Sorting-Lists">Sorting Lists</a></td></tr>
+<tr><td></td><td valign="top"><a href="Sorting-Lists.html#index-GNUN_002dSORT_002dEND_002dKEY">GNUN-SORT-END-KEY</a>:</td><td>&nbsp;</td><td valign="top"><a href="Sorting-Lists.html#Sorting-Lists">Sorting Lists</a></td></tr>
+<tr><td></td><td valign="top"><a href="Sorting-Lists.html#index-GNUN_002dSORT_002dNEXT_002dITEM">GNUN-SORT-NEXT-ITEM</a>:</td><td>&nbsp;</td><td valign="top"><a href="Sorting-Lists.html#Sorting-Lists">Sorting Lists</a></td></tr>
+<tr><td></td><td valign="top"><a href="Sorting-Lists.html#index-GNUN_002dSORT_002dSTART">GNUN-SORT-START</a>:</td><td>&nbsp;</td><td valign="top"><a href="Sorting-Lists.html#Sorting-Lists">Sorting Lists</a></td></tr>
+<tr><td></td><td valign="top"><a href="Sorting-Lists.html#index-GNUN_002dSORT_002dSTOP">GNUN-SORT-STOP</a>:</td><td>&nbsp;</td><td valign="top"><a href="Sorting-Lists.html#Sorting-Lists">Sorting Lists</a></td></tr>
 <tr><td></td><td valign="top"><a href="Invoking-GNUN.html#index-gnun_002emk">gnun.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="Invoking-GNUN.html#Invoking-GNUN">Invoking GNUN</a></td></tr>
 <tr><td></td><td valign="top"><a href="Main-Variables.html#index-gnun_002emk-1">gnun.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="Main-Variables.html#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="Runtime-Variables.html#index-GRACE">GRACE</a>:</td><td>&nbsp;</td><td valign="top"><a href="Runtime-Variables.html#Runtime-Variables">Runtime Variables</a></td></tr>
@@ -217,7 +222,6 @@ Previous: <a href="Copying-This-Manual.html#Copying-This-Manual" accesskey="p" r
 <tr><td></td><td valign="top"><a href="Main-Variables.html#index-POT-generation_002c-articles">POT generation, articles</a>:</td><td>&nbsp;</td><td valign="top"><a href="Main-Variables.html#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="Main-Variables.html#index-previous_002c-diff">previous, diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="Main-Variables.html#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="gnun_002dadd_002dfuzzy_002ddiff.html#index-previous_002c-diff-1">previous, diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="gnun_002dadd_002dfuzzy_002ddiff.html#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a></td></tr>
-<tr><td></td><td valign="top"><a href="gnun_002dclear_002dprevious.html#index-previous_002c-manipulating-PO-files">previous, manipulating PO files</a>:</td><td>&nbsp;</td><td valign="top"><a href="gnun_002dclear_002dprevious.html#gnun_002dclear_002dprevious">gnun-clear-previous</a></td></tr>
 <tr><td></td><td valign="top"><a href="Invoking-GNUN.html#index-priorities_002emk">priorities.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="Invoking-GNUN.html#Invoking-GNUN">Invoking GNUN</a></td></tr>
 <tr><td></td><td valign="top"><a href="report.html#index-priorities_002emk-1">priorities.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="report.html#report">report</a></td></tr>
 <tr><td></td><td valign="top"><a href="gnun_002dreport.html#index-priorities_002emk-2">priorities.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="gnun_002dreport.html#gnun_002dreport">gnun-report</a></td></tr>
@@ -237,6 +241,7 @@ Previous: <a href="Copying-This-Manual.html#Copying-This-Manual" accesskey="p" r
 <tr><td></td><td valign="top"><a href="Runtime-Variables.html#index-sanity-checks">sanity checks</a>:</td><td>&nbsp;</td><td valign="top"><a href="Runtime-Variables.html#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="Main-Variables.html#index-sitemap">sitemap</a>:</td><td>&nbsp;</td><td valign="top"><a href="Main-Variables.html#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="Sitemap.html#index-sitemap-1">sitemap</a>:</td><td>&nbsp;</td><td valign="top"><a href="Sitemap.html#Sitemap">Sitemap</a></td></tr>
+<tr><td></td><td valign="top"><a href="Sorting-Lists.html#index-sorting-translated-lists">sorting translated lists</a>:</td><td>&nbsp;</td><td valign="top"><a href="Sorting-Lists.html#Sorting-Lists">Sorting Lists</a></td></tr>
 <tr><td></td><td valign="top"><a href="Main-Variables.html#index-SSIs_002c-localized">SSIs, localized</a>:</td><td>&nbsp;</td><td valign="top"><a href="Main-Variables.html#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="New-Translation.html#index-starting-translation">starting translation</a>:</td><td>&nbsp;</td><td valign="top"><a href="New-Translation.html#New-Translation">New Translation</a></td></tr>
 <tr><td></td><td valign="top"><a href="report.html#index-status_002c-translations">status, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="report.html#report">report</a></td></tr>

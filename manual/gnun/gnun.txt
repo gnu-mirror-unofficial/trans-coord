@@ -35,6 +35,7 @@ GNUnited Nations
   5.2 Comments for Translators
   5.3 Localized URLs
   5.4 Splitting Long Passages
+  5.5 Sorting Lists
 6 Unexciting Information for GNUN's Operation
   6.1 Files and Directories
   6.2 GNUN Scripts
@@ -47,19 +48,18 @@ GNUnited Nations
     6.2.7 The 'gnun-validate-html' Script
     6.2.8 The 'mailfail' Script
     6.2.9 The 'validate-html-notify' Script
-    6.2.10 The 'gnun-clear-previous' Script
 7 Reporting Bugs
 Appendix A GNU Free Documentation License
 Index
 GNUnited Nations
 ****************
 
-This manual (updated 25 December 2014) is for GNUnited Nations (version
-0.10), a suite for maintaining translations of www.gnu.org essays and
+This manual (updated 30 September 2016) is for GNUnited Nations (version
+0.11), a suite for maintaining translations of www.gnu.org essays and
 other articles.
 
-   Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Free Software
-Foundation, Inc.
+   Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016 Free
+Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -219,7 +219,7 @@ automatically regenerated to reflect the changes.
    The POT for every article under GNUN's control is kept in the 'www'
 repository under a special sub-directory 'po/' of the relevant directory
 in the 'www' tree.  Thus, for
-'http://www.gnu.org/philosophy/free-sw.html' this sub-directory is
+'https://www.gnu.org/philosophy/free-sw.html' this sub-directory is
 'philosophy/po/'.  In addition to 'free-sw.pot', this directory holds
 the canonical source of every translation, such as 'free-sw.bg.po',
 'free-sw.ca.po', etc.  For more details, *note Files and Directories::.
@@ -320,10 +320,10 @@ certain limitations and annoyances of this semi-automatic system.
      errors interrupt the build so they have to be fixed before the next
      articles are processed.
 
-   * In some rare cases (most notably, for alphabetically sorted lists)
-     the structure of the translation should diverge from the structure
-     of the original document.  So far, our system has developed no
-     means of taking such issues into account.
+   * In very rare cases the structure of the translation should diverge
+     from the structure of the original document.  So far, our system
+     has developed no means of taking such issues into account (apart
+     from alphabetically sorted lists).
 
 2 General Usage
 ***************
@@ -371,7 +371,7 @@ the variables in the next section apply to them, and some do not.
 
    Note that GNUN expects 'GNUmakefile', 'config.mk' and 'gnun.mk' to be
 _present_ under 'server/gnun' of the 'www' web repository, otherwise
-'make' has no way to know what to built, and how.  Another file,
+'make' has no way to know what to build, and how.  Another file,
 'priorities.mk', is expected to be present under 'server/gnun' in order
 to define the priorities when reporting about the outdated translations.
 If absent, the 'report' target will not sort the translations by
@@ -1284,7 +1284,7 @@ here is a list with all fields explained:
 
    Here is an example of a properly edited header:
 
-     # Bulgarian translation of http://www.gnu.org/philosophy/free-sw.html
+     # Bulgarian translation of https://www.gnu.org/philosophy/free-sw.html
      # Copyright (C) 2008 Free Software Foundation, Inc.
      # This file is distributed under the same license as the gnu.org article.
      # Yavor Doganov <yavor@gnu.org>, 2008.
@@ -1558,7 +1558,7 @@ the FSF to check who translated a particular article, and when.
 
    A recommended way to do this is as follows:
 
-     # French translation of http://www.gnu.org/philosophy/bsd.html
+     # French translation of https://www.gnu.org/philosophy/bsd.html
      # Copyright (C) 2006, 2007, 2008 Free Software Foundation, Inc.
      # This file is distributed under the same license as the gnu.org article.
      # Ce'dric Corazza <cedric.corazza@wanadoo.fr>, 2006, 2008.
@@ -1680,6 +1680,73 @@ separator, '<span class="gnun-split"></span>':
 sentences, because different languages may require different orders of
 parts of the sentence, and the translator has no control over the
 sequence of the strings in the translation.
+
+5.5 Sorting Lists
+=================
+
+Sometimes a list is sorted alphabetically to make search easier for the
+visitors, and this property should be preserved in translations.  GNUN
+has specific marks for such lists.
+
+     <!-- GNUN-SORT-START -->
+
+   This HTML comment marks the begin of the list.
+
+     <!-- GNUN-SORT-STOP -->
+
+   This comment marks the end of the list.
+
+     <!-- GNUN-SORT-NEXT-ITEM -->
+
+   This mark separates list items.
+
+   The next two marks are optional, they delimit the key to sort items.
+
+     <!-- GNUN-SORT-BEGIN-KEY -->
+
+     <!-- GNUN-SORT-END-KEY -->
+
+   When extracting the keys, all HTML tags are removed, leading and
+trailing whitespace is trimmed.
+
+   Since the items are reordered in translations, webmasters should
+carefully choose places for the separators: reordering shouldn't break
+the page.
+
+   The translators can modify the sorting order using HTML comments if
+needed.  For example, let the English text say
+
+     <!-- GNUN-SORT-BEGIN-KEY -->
+     <h3>Afrikaans</h3>
+     <!-- GNUN-SORT-END-KEY -->
+
+   In the PO file, this transforms to an 'msgstr' like
+
+     Afrikaans
+
+   The translator inserts a comment in the translation:
+
+     <!-- boer --> afrikaans
+
+   Now the item sorts like 'boer afrikaans'.
+
+   Additional care should be taken when the items have a separator like
+
+     <!-- GNUN-SORT-START -->
+     A |
+     <!-- GNUN-SORT-NEXT-ITEM -->
+     B |
+     <!-- GNUN-SORT-NEXT-ITEM -->
+     ...
+     <!-- GNUN-SORT-NEXT-ITEM -->
+     Y |
+     <!-- GNUN-SORT-NEXT-ITEM -->
+     Z
+     <!-- GNUN-SORT-STOP -->
+
+   Note that the last item has no separator ('|').  When translating,
+make sure that the item to be last _in your translation_ has no
+separator, and all other items have it.
 
 6 Unexciting Information for GNUN's Operation
 *********************************************
@@ -2153,30 +2220,6 @@ another program that it runs.
    The subject of the message is hardcoded in the script, since this
 wrapper has a specific task and cannot be used to invoke an arbitrary
 command--use 'mailfail' for that.  *Note mailfail::.
-
-6.2.10 The 'gnun-clear-previous' Script
----------------------------------------
-
-This simple script is not used internally in GNUN. It is merely for
-convenience only, for those who find it hard to remember the various
-'gettext' tools and their options.
-
-   'gnun-clear-previous' deletes the "previous" messages in a PO file,
-which is a good thing to do after the corresponding translation is
-updated and the "fuzzy" marker removed.  It can also be used to wrap
-long lines in PO files.
-
-   Usage:
-
-     gnun-clear-previous FILE
-
-'-v'
-'--version'
-     Print copyright and version information on the standard output.
-
-'-h'
-'--help'
-     Print usage information on stdout.
 
 7 Reporting Bugs
 ****************
@@ -2681,20 +2724,20 @@ Index
 * Bazaar:                                Runtime Variables.  (line  406)
 * boilerplates:                          Modifying Templates.
                                                              (line 1590)
-* bugs, reporting:                       Bugs.               (line 2183)
+* bugs, reporting:                       Bugs.               (line 2226)
 * bzr:                                   Runtime Variables.  (line  406)
 * comments for translators:              Comments for Translators.
                                                              (line 1609)
-* comparing, translations:               gnun-diff-po.       (line 1865)
+* comparing, translations:               gnun-diff-po.       (line 1932)
 * compendia:                             Compendia.          (line  782)
 * compendium.pot:                        Compendia.          (line  782)
 * config.mk:                             Invoking GNUN.      (line  371)
 * conventional separator for strings:    Splitting Long Passages.
                                                              (line 1662)
 * conversion of existing translations:   Migrating.          (line 1507)
-* conversion of existing translations <1>: gnun-preconvert.  (line 1950)
+* conversion of existing translations <1>: gnun-preconvert.  (line 2017)
 * conversion of existing translations <2>: gnun-merge-preconverted.
-                                                             (line 1973)
+                                                             (line 2040)
 * credits, translators:                  GNUN Slots.         (line 1325)
 * credits, translators <1>:              Credits Slot.       (line 1381)
 * cron, team maintenance:                GNUmakefile.team and Cron.
@@ -2714,13 +2757,18 @@ Index
 * GNUmakefile:                           Invoking GNUN.      (line  355)
 * GNUmakefile.team:                      Team's Repository.  (line  845)
 * GNUN directory layout:                 Files and Directories.
-                                                             (line 1694)
+                                                             (line 1761)
+* GNUN-SORT-BEGIN-KEY:                   Sorting Lists.      (line 1704)
+* GNUN-SORT-END-KEY:                     Sorting Lists.      (line 1706)
+* GNUN-SORT-NEXT-ITEM:                   Sorting Lists.      (line 1698)
+* GNUN-SORT-START:                       Sorting Lists.      (line 1690)
+* GNUN-SORT-STOP:                        Sorting Lists.      (line 1694)
 * gnun.mk:                               Invoking GNUN.      (line  371)
 * gnun.mk <1>:                           Main Variables.     (line  657)
 * GRACE:                                 Runtime Variables.  (line  478)
 * grace period:                          Runtime Variables.  (line  478)
 * initializing PO files:                 New Translation.    (line 1198)
-* initializing, translations:            gnun-init-po.       (line 1905)
+* initializing, translations:            gnun-init-po.       (line 1972)
 * invocation:                            Invoking GNUN.      (line  355)
 * invoking:                              Invoking GNUN.      (line  355)
 * languages.txt:                         languages.txt.      (line  751)
@@ -2734,12 +2782,12 @@ Index
 * mail, notifications:                   Runtime Variables.  (line  445)
 * mail, notifications <1>:               GNUmakefile.team Variables.
                                                              (line  974)
-* mail, notifications <2>:               mailfail.           (line 2087)
+* mail, notifications <2>:               mailfail.           (line 2154)
 * master.lang.po:                        Compendia.          (line  782)
 * migration, translations:               Migrating.          (line 1507)
-* migration, translations <1>:           gnun-preconvert.    (line 1950)
+* migration, translations <1>:           gnun-preconvert.    (line 2017)
 * migration, translations <2>:           gnun-merge-preconverted.
-                                                             (line 1973)
+                                                             (line 2040)
 * new translation:                       New Translation.    (line 1198)
 * new translations, notifications/announcements: Runtime Variables.
                                                              (line  458)
@@ -2767,12 +2815,10 @@ Index
 * POT generation, articles:              Main Variables.     (line  738)
 * previous, diff:                        Main Variables.     (line  682)
 * previous, diff <1>:                    gnun-add-fuzzy-diff.
-                                                             (line 1837)
-* previous, manipulating PO files:       gnun-clear-previous.
-                                                             (line 2159)
+                                                             (line 1904)
 * priorities.mk:                         Invoking GNUN.      (line  371)
 * priorities.mk <1>:                     report.             (line  579)
-* priorities.mk <2>:                     gnun-report.        (line 2005)
+* priorities.mk <2>:                     gnun-report.        (line 2072)
 * project repository:                    Team's Repository.  (line  845)
 * recommendations, PO files:             PO Tips.            (line 1450)
 * reminder period:                       GNUmakefile.team Targets.
@@ -2780,17 +2826,18 @@ Index
 * reminder period, default:              GNUmakefile.team Variables.
                                                              (line  972)
 * reporting:                             report.             (line  566)
-* reporting <1>:                         gnun-report.        (line 2000)
-* reporting bugs:                        Bugs.               (line 2183)
+* reporting <1>:                         gnun-report.        (line 2067)
+* reporting bugs:                        Bugs.               (line 2226)
 * repository, translation project:       Team's Repository.  (line  845)
 * ROOT:                                  Main Variables.     (line  727)
 * sanity checks:                         Runtime Variables.  (line  423)
 * sitemap:                               Main Variables.     (line  722)
 * sitemap <1>:                           Sitemap.            (line  820)
+* sorting translated lists:              Sorting Lists.      (line 1686)
 * SSIs, localized:                       Main Variables.     (line  687)
 * starting translation:                  New Translation.    (line 1198)
 * status, translations:                  report.             (line  566)
-* status, translations <1>:              gnun-report.        (line 2000)
+* status, translations <1>:              gnun-report.        (line 2067)
 * Subversion:                            Runtime Variables.  (line  406)
 * SVN:                                   Runtime Variables.  (line  406)
 * TEAM:                                  Runtime Variables.  (line  499)
@@ -2819,7 +2866,7 @@ Index
 * validation <2>:                        validate-all.       (line  648)
 * validation <3>:                        Modifying Templates.
                                                              (line 1597)
-* validation, HTML, XHTML:               gnun-validate-html. (line 2045)
+* validation, HTML, XHTML:               gnun-validate-html. (line 2112)
 * variable, behavior:                    Runtime Variables.  (line  399)
 * variable, team:                        Runtime Variables.  (line  499)
 * variables:                             Runtime Variables.  (line  399)
