@@ -35,7 +35,6 @@ GNU Web Translators Manual
   4.7 Distribution Terms
   4.8 Copyright Notices
   4.9 Editing PO Files
-    4.9.1 Web-based Systems
   4.10 Related Mailing Lists
   4.11 Savannah Project Membership
   4.12 Summary of SSI '#include's
@@ -51,8 +50,8 @@ GNU Web Translators Manual
 This manual is a guide for the GNU Web Translators.
 Last updated on 9 June 2017, for GNUnited Nations version 0.11.
 
-   Copyright (C) 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017,
+2018 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -1249,7 +1248,7 @@ possible.  To do that, follow these steps:
      bottom of the translated deed page--it's in distinct yellow text.
 
    * The textarea on that page provides standard HTML. Note that we're
-     not using the graphic, just the text.
+     not using the graphic, just the text, and that we modify the URL.
 
    For example, here's the text they provide for Dutch:
 
@@ -1336,27 +1335,6 @@ your (or GNU project's) own servers.
    * po.vim--ftplugin for the Vim editor.  The best option for people
      who use Vim as their editor.  See
      <http://www.vim.org/scripts/script.php?script_id=2530>.
-
-   * GNU instance of Pootle, a web-based editor.
-
-4.9.1 Web-based Systems
------------------------
-
-If your team would like to use a web-based editor, we recommend using
-the official Pootle server of the GNU project
-(https://chapters.gnu.org/pootle/).  We make sure that working with it
-will not compromise your freedom via nonfree JavaScript or SaaSS
-(https://www.gnu.org/philosophy/who-does-that-server-really-serve.html).
-If you decide to use our server, please contact GNU Web Translation
-Managers to register your team.
-
-   Also, that Pootle server has a simple facility to preview your
-translations as they will appear on www.gnu.org.  In order to test a
-page, log in the server and visit
-<https://chapters.gnu.org/gnun/test.html>.  That page contains a menu to
-upload a PO file; then the server will generate the translation and show
-you the build log (including errors), and the generated web page (when
-the build is successful).
 
    ---------- Footnotes ----------
 
@@ -2187,91 +2165,87 @@ Index
 * Menu:
 
 * .odt files:                            Submitting as Plain Text.
-                                                             (line  269)
-* Brave GNU World:                       Priorities.         (line 1068)
-* capitalization:                        Capitalization.     (line 1138)
-* checking out web pages:                Submitting as PO.   (line  199)
-* co-leaders:                            Co-leaders.         (line  951)
-* co-ordinators:                         Leaders.            (line  333)
-* contacting team:                       Joining.            (line  150)
-* copyright notices:                     Copyright Notices.  (line 1283)
-* Creative Commons:                      Distribution Terms. (line 1229)
-* custom CSS:                            CSS.                (line 1628)
-* CVS, using:                            Commits.            (line  690)
-* distribution terms:                    Distribution Terms. (line 1229)
-* Emacs:                                 PO Editors.         (line 1314)
+                                                             (line  268)
+* Brave GNU World:                       Priorities.         (line 1067)
+* capitalization:                        Capitalization.     (line 1137)
+* checking out web pages:                Submitting as PO.   (line  198)
+* co-leaders:                            Co-leaders.         (line  950)
+* co-ordinators:                         Leaders.            (line  332)
+* contacting team:                       Joining.            (line  149)
+* copyright notices:                     Copyright Notices.  (line 1282)
+* Creative Commons:                      Distribution Terms. (line 1228)
+* custom CSS:                            CSS.                (line 1606)
+* CVS, using:                            Commits.            (line  689)
+* distribution terms:                    Distribution Terms. (line 1228)
+* Emacs:                                 PO Editors.         (line 1313)
 * encoding:                              Submitting as Plain Text.
-                                                             (line  269)
-* encoding <1>:                          SSI.                (line 1527)
-* external resources:                    Savannah.           (line  781)
-* generic.html:                          SSI.                (line 1502)
-* gnu-404.html:                          Technical Pages.    (line 1617)
-* GNUN:                                  Submitting as PO.   (line  190)
-* Gtranslator:                           PO Editors.         (line 1323)
-* home.html:                             Priorities.         (line 1073)
-* HTML5:                                 SSI.                (line 1538)
-* internal links:                        Internal Links.     (line 1198)
-* language code:                         New Team.           (line  423)
-* language negotiation:                  Internal Links.     (line 1201)
-* language negotiation <1>:              Technical Pages.    (line 1621)
-* links, internal:                       Internal Links.     (line 1198)
-* mailing lists:                         Mailing Lists.      (line 1368)
-* native English speakers:               Managing.           (line  551)
-* news items:                            SSI.                (line 1570)
+                                                             (line  268)
+* encoding <1>:                          SSI.                (line 1505)
+* external resources:                    Savannah.           (line  780)
+* generic.html:                          SSI.                (line 1480)
+* gnu-404.html:                          Technical Pages.    (line 1595)
+* GNUN:                                  Submitting as PO.   (line  189)
+* Gtranslator:                           PO Editors.         (line 1322)
+* home.html:                             Priorities.         (line 1072)
+* HTML5:                                 SSI.                (line 1516)
+* internal links:                        Internal Links.     (line 1197)
+* language code:                         New Team.           (line  422)
+* language negotiation:                  Internal Links.     (line 1200)
+* language negotiation <1>:              Technical Pages.    (line 1599)
+* links, internal:                       Internal Links.     (line 1197)
+* mailing lists:                         Mailing Lists.      (line 1346)
+* native English speakers:               Managing.           (line  550)
+* news items:                            SSI.                (line 1548)
 * ODF:                                   Submitting as Plain Text.
-                                                             (line  269)
-* outdated translations:                 SSI.                (line 1560)
-* outdated translations, notification:   Updating.           (line 1110)
+                                                             (line  268)
+* outdated translations:                 SSI.                (line 1538)
+* outdated translations, notification:   Updating.           (line 1109)
 * plain text:                            Submitting as Plain Text.
-                                                             (line  262)
-* planetfeeds.html:                      SSI.                (line 1570)
-* PO editors:                            PO Editors.         (line 1314)
-* PO, editing:                           PO Editors.         (line 1292)
-* Pootle:                                PO Editors.         (line 1344)
-* previewing web pages:                  PO Editors.         (line 1352)
-* review:                                Review.             (line  561)
-* right-to-left languages:               RTL.                (line 1674)
-* SaaSS:                                 PO Editors.         (line 1304)
-* Savannah account:                      New Team.           (line  366)
-* Savannah projects:                     Savannah Projects.  (line 1439)
-* Savannah, registering:                 New Team.           (line  366)
-* server templates:                      Submitting as PO.   (line  233)
-* server templates <1>:                  SSI.                (line 1588)
-* server/language.html:                  Technical Pages.    (line 1621)
-* SourceForge:                           Tracking Tasks.     (line  659)
-* SSI includes:                          SSI.                (line 1471)
-* tasks, tracking:                       Tracking Tasks.     (line  593)
-* team homepage:                         Savannah Homepage.  (line  840)
-* team leaders:                          Leaders.            (line  333)
+                                                             (line  261)
+* planetfeeds.html:                      SSI.                (line 1548)
+* PO editors:                            PO Editors.         (line 1313)
+* PO, editing:                           PO Editors.         (line 1291)
+* review:                                Review.             (line  560)
+* right-to-left languages:               RTL.                (line 1652)
+* SaaSS:                                 PO Editors.         (line 1303)
+* Savannah account:                      New Team.           (line  365)
+* Savannah projects:                     Savannah Projects.  (line 1417)
+* Savannah, registering:                 New Team.           (line  365)
+* server templates:                      Submitting as PO.   (line  232)
+* server templates <1>:                  SSI.                (line 1566)
+* server/language.html:                  Technical Pages.    (line 1599)
+* SourceForge:                           Tracking Tasks.     (line  658)
+* SSI includes:                          SSI.                (line 1449)
+* tasks, tracking:                       Tracking Tasks.     (line  592)
+* team homepage:                         Savannah Homepage.  (line  839)
+* team leaders:                          Leaders.            (line  332)
 * team mailing lists:                    Savannah Mailing Lists.
-                                                             (line  913)
-* team members:                          Members.            (line  120)
-* team news:                             Savannah News.      (line  898)
-* team status:                           Savannah Members.   (line  828)
-* team status <1>:                       Reports.            (line  974)
-* team's repository:                     Savannah VCS.       (line  933)
-* team, contacting:                      Joining.            (line  150)
-* technical pages:                       Technical Pages.    (line 1613)
-* tracking changes in files:             Updating.           (line 1087)
-* tracking changes in files <1>:         Mailing Lists.      (line 1378)
-* tracking tasks:                        Tracking Tasks.     (line  593)
-* trans-coord-discuss@gnu.org:           Mailing Lists.      (line 1387)
-* translation priorities:                Priorities.         (line 1044)
-* translation priorities <1>:            Updating.           (line 1087)
-* Translations README:                   Joining.            (line  129)
-* Translations README <1>:               Terminology.        (line 1132)
-* translations, keeping current:         Updating.           (line 1087)
-* translations, review:                  Review.             (line  561)
+                                                             (line  912)
+* team members:                          Members.            (line  119)
+* team news:                             Savannah News.      (line  897)
+* team status:                           Savannah Members.   (line  827)
+* team status <1>:                       Reports.            (line  973)
+* team's repository:                     Savannah VCS.       (line  932)
+* team, contacting:                      Joining.            (line  149)
+* technical pages:                       Technical Pages.    (line 1591)
+* tracking changes in files:             Updating.           (line 1086)
+* tracking changes in files <1>:         Mailing Lists.      (line 1356)
+* tracking tasks:                        Tracking Tasks.     (line  592)
+* trans-coord-discuss@gnu.org:           Mailing Lists.      (line 1365)
+* translation priorities:                Priorities.         (line 1043)
+* translation priorities <1>:            Updating.           (line 1086)
+* Translations README:                   Joining.            (line  128)
+* Translations README <1>:               Terminology.        (line 1131)
+* translations, keeping current:         Updating.           (line 1086)
+* translations, review:                  Review.             (line  560)
 * translations, unreviewed:              Unreviewed Translations.
-                                                             (line  675)
+                                                             (line  674)
 * unreviewed translations:               Unreviewed Translations.
-                                                             (line  675)
-* VCS:                                   Savannah VCS.       (line  933)
-* web pages of GNU packages:             Priorities.         (line 1062)
-* web pages, checking out:               Submitting as PO.   (line  199)
-* web pages, previewing:                 PO Editors.         (line 1352)
-* web-based editing:                     PO Editors.         (line 1344)
-* web-translators@gnu.org:               Mailing Lists.      (line 1424)
-* webmasters@gnu.org:                    Mailing Lists.      (line 1418)
-* www-discuss@gnu.org:                   Mailing Lists.      (line 1372)
+                                                             (line  674)
+* VCS:                                   Savannah VCS.       (line  932)
+* web pages of GNU packages:             Priorities.         (line 1061)
+* web pages, checking out:               Submitting as PO.   (line  198)
+* web-translators@gnu.org:               Mailing Lists.      (line 1402)
+* webmasters@gnu.org:                    Mailing Lists.      (line 1396)
+* www-discuss@gnu.org:                   Mailing Lists.      (line 1350)
 

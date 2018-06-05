@@ -132,12 +132,13 @@ ul.no-bullet {list-style: none}
       <li><a name="toc-The-gnun_002dadd_002dfuzzy_002ddiff-Script" href="#gnun_002dadd_002dfuzzy_002ddiff">6.2.1 The <code>gnun-add-fuzzy-diff</code> Script</a></li>
       <li><a name="toc-The-gnun_002ddiff_002dpo-Script" href="#gnun_002ddiff_002dpo">6.2.2 The <code>gnun-diff-po</code> Script</a></li>
       <li><a name="toc-The-gnun_002dinit_002dpo-Script" href="#gnun_002dinit_002dpo">6.2.3 The <code>gnun-init-po</code> Script</a></li>
-      <li><a name="toc-The-gnun_002dpreconvert-Script" href="#gnun_002dpreconvert">6.2.4 The <code>gnun-preconvert</code> Script</a></li>
-      <li><a name="toc-The-gnun_002dmerge_002dpreconverted-Script" href="#gnun_002dmerge_002dpreconverted">6.2.5 The <code>gnun-merge-preconverted</code> Script</a></li>
-      <li><a name="toc-The-gnun_002dreport-Script" href="#gnun_002dreport">6.2.6 The <code>gnun-report</code> Script</a></li>
-      <li><a name="toc-The-gnun_002dvalidate_002dhtml-Script" href="#gnun_002dvalidate_002dhtml">6.2.7 The <code>gnun-validate-html</code> Script</a></li>
-      <li><a name="toc-The-mailfail-Script" href="#mailfail">6.2.8 The <code>mailfail</code> Script</a></li>
-      <li><a name="toc-The-validate_002dhtml_002dnotify-Script" href="#validate_002dhtml_002dnotify">6.2.9 The <code>validate-html-notify</code> Script</a></li>
+      <li><a name="toc-The-gnun_002dlink_002ddiff-Script" href="#gnun_002dlink_002ddiff">6.2.4 The <code>gnun-link-diff</code> Script</a></li>
+      <li><a name="toc-The-gnun_002dpreconvert-Script" href="#gnun_002dpreconvert">6.2.5 The <code>gnun-preconvert</code> Script</a></li>
+      <li><a name="toc-The-gnun_002dmerge_002dpreconverted-Script" href="#gnun_002dmerge_002dpreconverted">6.2.6 The <code>gnun-merge-preconverted</code> Script</a></li>
+      <li><a name="toc-The-gnun_002dreport-Script" href="#gnun_002dreport">6.2.7 The <code>gnun-report</code> Script</a></li>
+      <li><a name="toc-The-gnun_002dvalidate_002dhtml-Script" href="#gnun_002dvalidate_002dhtml">6.2.8 The <code>gnun-validate-html</code> Script</a></li>
+      <li><a name="toc-The-mailfail-Script" href="#mailfail">6.2.9 The <code>mailfail</code> Script</a></li>
+      <li><a name="toc-The-validate_002dhtml_002dnotify-Script" href="#validate_002dhtml_002dnotify">6.2.10 The <code>validate-html-notify</code> Script</a></li>
     </ul></li>
   </ul></li>
   <li><a name="toc-Reporting-Bugs" href="#Bugs">7 Reporting Bugs</a></li>
@@ -2031,6 +2032,8 @@ wrap all long lines:
 
 <p>It is highly desirable that you check if the PO file you finished
 translating (or editing) is valid, before committing it.  This is done
+<a name="index-running-checks"></a>
+<a name="index-validation_002c-PO-files"></a>
 by running <code>msgfmt -cv -o /dev/null <var>file</var></code> or by simply
 pressing <kbd>V</kbd> in PO mode.  The build system automatically verifies
 each PO file when invoked with <code>VALIDATE=yes</code>, but you won&rsquo;t get a
@@ -2673,18 +2676,20 @@ They all can be invoked separately, as stand-alone programs.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#gnun_002dinit_002dpo" accesskey="3">gnun-init-po</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Initialize a new translation.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#gnun_002dpreconvert" accesskey="4">gnun-preconvert</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Invoke the first step in converting
+<tr><td align="left" valign="top">&bull; <a href="#gnun_002dlink_002ddiff" accesskey="4">gnun-link-diff</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Figure out mismatched links.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#gnun_002dpreconvert" accesskey="5">gnun-preconvert</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Invoke the first step in converting
                                HTML translation to PO format.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#gnun_002dmerge_002dpreconverted" accesskey="5">gnun-merge-preconverted</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Run the second step of the conversion.
+<tr><td align="left" valign="top">&bull; <a href="#gnun_002dmerge_002dpreconverted" accesskey="6">gnun-merge-preconverted</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Run the second step of the conversion.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#gnun_002dreport" accesskey="6">gnun-report</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Generate report in HTML format.
+<tr><td align="left" valign="top">&bull; <a href="#gnun_002dreport" accesskey="7">gnun-report</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Generate report in HTML format.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#gnun_002dvalidate_002dhtml" accesskey="7">gnun-validate-html</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Validate HTML file.
+<tr><td align="left" valign="top">&bull; <a href="#gnun_002dvalidate_002dhtml" accesskey="8">gnun-validate-html</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Validate HTML file.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#mailfail" accesskey="8">mailfail</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#mailfail" accesskey="9">mailfail</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#validate_002dhtml_002dnotify" accesskey="9">validate-html-notify</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#validate_002dhtml_002dnotify">validate-html-notify</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -2792,7 +2797,7 @@ sets differ.
 <a name="gnun_002dinit_002dpo"></a>
 <div class="header">
 <p>
-Next: <a href="#gnun_002dpreconvert" accesskey="n" rel="next">gnun-preconvert</a>, Previous: <a href="#gnun_002ddiff_002dpo" accesskey="p" rel="prev">gnun-diff-po</a>, Up: <a href="#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#gnun_002dlink_002ddiff" accesskey="n" rel="next">gnun-link-diff</a>, Previous: <a href="#gnun_002ddiff_002dpo" accesskey="p" rel="prev">gnun-diff-po</a>, Up: <a href="#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-gnun_002dinit_002dpo-Script"></a>
 <h4 class="subsection">6.2.3 The <code>gnun-init-po</code> Script</h4>
@@ -2851,13 +2856,68 @@ the name of the language which is used in some fields of PO file header.
 suffix; the file is created in the current working directory.
 </p>
 <hr>
+<a name="gnun_002dlink_002ddiff"></a>
+<div class="header">
+<p>
+Next: <a href="#gnun_002dpreconvert" accesskey="n" rel="next">gnun-preconvert</a>, Previous: <a href="#gnun_002dinit_002dpo" accesskey="p" rel="prev">gnun-init-po</a>, Up: <a href="#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="The-gnun_002dlink_002ddiff-Script"></a>
+<h4 class="subsection">6.2.4 The <code>gnun-link-diff</code> Script</h4>
+<a name="index-running-checks-1"></a>
+
+<p>This script finds mismatched links and anchors
+and fills some fields in the header.  Usually this is a typo,
+though in <em>very</em> rare cases changes in links are justified.
+</p>
+<p>The script takes into account possible translator&rsquo;s notes
+and changes in links to Creative Commons licenses.
+See <a href="http://www.gnu.org/software/trans-coord/manual/web-trans/web-trans.html#Distribution-Terms">Distribution Terms</a> in <cite>GNU Web Translators Manual</cite>.
+</p>
+<p>The output is a HTML page with highlighted differences.
+In the beginning, numbers of mismatched links and anchors
+are written. Links starting with &quot;mailto:&quot; are not counted,
+but highlighted.
+</p>
+<p>The exit status of the script is 0 when the counts of mismatched
+links and anchors are zero, 1 when their sum is not zero,
+2 when an error occurred.
+</p>
+<div class="example">
+<pre class="example">gnun-link-diff [OPTION...] FILE
+</pre></div>
+
+<dl compact="compact">
+<dt><samp>-l</samp></dt>
+<dt><samp>--language=<var>lang</var></samp></dt>
+<dd><p>Specify language suffix, e.g &ldquo;bg&rdquo;.  The suffix is used
+to adjust links to Creative Commons licenses.
+When unspecified, it is filled from the file name.
+</p>
+</dd>
+<dt><samp>-t</samp></dt>
+<dt><samp>--title=&quot;<var>page title</var>&quot;</samp></dt>
+<dd><p>Specify title.  When unspecified, the file name is used.
+</p>
+</dd>
+<dt><samp>-v</samp></dt>
+<dt><samp>--version</samp></dt>
+<dd><p>Display copyright and version information and exit.
+</p>
+</dd>
+<dt><samp>-h</samp></dt>
+<dt><samp>--help</samp></dt>
+<dd><p>Display usage information and exit.
+</p></dd>
+</dl>
+
+<hr>
 <a name="gnun_002dpreconvert"></a>
 <div class="header">
 <p>
-Next: <a href="#gnun_002dmerge_002dpreconverted" accesskey="n" rel="next">gnun-merge-preconverted</a>, Previous: <a href="#gnun_002dinit_002dpo" accesskey="p" rel="prev">gnun-init-po</a>, Up: <a href="#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#gnun_002dmerge_002dpreconverted" accesskey="n" rel="next">gnun-merge-preconverted</a>, Previous: <a href="#gnun_002dlink_002ddiff" accesskey="p" rel="prev">gnun-link-diff</a>, Up: <a href="#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-gnun_002dpreconvert-Script"></a>
-<h4 class="subsection">6.2.4 The <code>gnun-preconvert</code> Script</h4>
+<h4 class="subsection">6.2.5 The <code>gnun-preconvert</code> Script</h4>
 <a name="index-migration_002c-translations-1"></a>
 <a name="index-conversion-of-existing-translations-1"></a>
 
@@ -2895,7 +2955,7 @@ POT using <code>gnun-merge-preconverted</code>.
 Next: <a href="#gnun_002dreport" accesskey="n" rel="next">gnun-report</a>, Previous: <a href="#gnun_002dpreconvert" accesskey="p" rel="prev">gnun-preconvert</a>, Up: <a href="#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-gnun_002dmerge_002dpreconverted-Script"></a>
-<h4 class="subsection">6.2.5 The <code>gnun-merge-preconverted</code> Script</h4>
+<h4 class="subsection">6.2.6 The <code>gnun-merge-preconverted</code> Script</h4>
 <a name="index-migration_002c-translations-2"></a>
 <a name="index-conversion-of-existing-translations-2"></a>
 
@@ -2939,7 +2999,7 @@ gnun-add-fuzzy-diff.
 Next: <a href="#gnun_002dvalidate_002dhtml" accesskey="n" rel="next">gnun-validate-html</a>, Previous: <a href="#gnun_002dmerge_002dpreconverted" accesskey="p" rel="prev">gnun-merge-preconverted</a>, Up: <a href="#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-gnun_002dreport-Script"></a>
-<h4 class="subsection">6.2.6 The <code>gnun-report</code> Script</h4>
+<h4 class="subsection">6.2.7 The <code>gnun-report</code> Script</h4>
 <a name="index-reporting-1"></a>
 <a name="index-status_002c-translations-1"></a>
 
@@ -3003,7 +3063,7 @@ intended for monthly messages sent to the teams.  See <a href="#report">report</
 Next: <a href="#mailfail" accesskey="n" rel="next">mailfail</a>, Previous: <a href="#gnun_002dreport" accesskey="p" rel="prev">gnun-report</a>, Up: <a href="#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-gnun_002dvalidate_002dhtml-Script"></a>
-<h4 class="subsection">6.2.7 The <code>gnun-validate-html</code> Script</h4>
+<h4 class="subsection">6.2.8 The <code>gnun-validate-html</code> Script</h4>
 <a name="index-validation_002c-HTML_002c-XHTML"></a>
 
 <p>This is a Bash script whose purpose is to &ldquo;validate&rdquo; both the
@@ -3062,7 +3122,7 @@ by people who receive the report.
 Next: <a href="#validate_002dhtml_002dnotify" accesskey="n" rel="next">validate-html-notify</a>, Previous: <a href="#gnun_002dvalidate_002dhtml" accesskey="p" rel="prev">gnun-validate-html</a>, Up: <a href="#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-mailfail-Script"></a>
-<h4 class="subsection">6.2.8 The <code>mailfail</code> Script</h4>
+<h4 class="subsection">6.2.9 The <code>mailfail</code> Script</h4>
 <a name="index-mail_002c-notifications-2"></a>
 
 <p>This is a helper script that runs a command, and mails the output of
@@ -3124,7 +3184,7 @@ standard output and the exit code is 1.
 Previous: <a href="#mailfail" accesskey="p" rel="prev">mailfail</a>, Up: <a href="#Scripts" accesskey="u" rel="up">Scripts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="The-validate_002dhtml_002dnotify-Script"></a>
-<h4 class="subsection">6.2.9 The <code>validate-html-notify</code> Script</h4>
+<h4 class="subsection">6.2.10 The <code>validate-html-notify</code> Script</h4>
 
 <p>This script is a wrapper around <code>gnun-validate-html</code>
 (see <a href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a>); it is necessary because it is hard to
@@ -3831,6 +3891,8 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-reporting-bugs">reporting bugs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bugs">Bugs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-repository_002c-translation-project">repository, translation project</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Team_0027s-Repository">Team's Repository</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ROOT">ROOT</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-running-checks">running checks</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Wrapping-Long-Lines">Wrapping Long Lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-running-checks-1">running checks</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dlink_002ddiff">gnun-link-diff</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-S">S</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sanity-checks">sanity checks</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
@@ -3871,6 +3933,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-validation-2">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#validate_002dall">validate-all</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-validation-3">validation</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Templates">Modifying Templates</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-validation_002c-HTML_002c-XHTML">validation, HTML, XHTML</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dvalidate_002dhtml">gnun-validate-html</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-validation_002c-PO-files">validation, PO files</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Wrapping-Long-Lines">Wrapping Long Lines</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-variable_002c-behavior">variable, behavior</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-variable_002c-team">variable, team</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-variables">variables</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>

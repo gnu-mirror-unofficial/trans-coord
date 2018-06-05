@@ -6,7 +6,7 @@ This manual is a guide for the GNU Web Translators.
 9 June 2017, for GNUnited Nations version 0.11.
 
 Copyright (C) 2009, 2010, 2011, 2012, 2013,
-  2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+  2014, 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -117,10 +117,7 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-How-to-Handle-Internal-Links" href="#Internal-Links">4.6 How to Handle Internal Links</a></li>
     <li><a name="toc-Distribution-Terms-1" href="#Distribution-Terms">4.7 Distribution Terms</a></li>
     <li><a name="toc-Copyright-Notices-1" href="#Copyright-Notices">4.8 Copyright Notices</a></li>
-    <li><a name="toc-Editing-PO-Files" href="#PO-Editors">4.9 Editing PO Files</a>
-    <ul class="no-bullet">
-      <li><a name="toc-Web_002dbased-Systems" href="#Web_002dbased-Systems">4.9.1 Web-based Systems</a></li>
-    </ul></li>
+    <li><a name="toc-Editing-PO-Files" href="#PO-Editors">4.9 Editing PO Files</a></li>
     <li><a name="toc-Related-Mailing-Lists" href="#Mailing-Lists">4.10 Related Mailing Lists</a></li>
     <li><a name="toc-Savannah-Project-Membership" href="#Savannah-Projects">4.11 Savannah Project Membership</a></li>
     <li><a name="toc-Summary-of-SSI-_0023includes" href="#SSI">4.12 Summary of SSI <code>#include</code>s</a></li>
@@ -150,7 +147,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a 
 9 June 2017, for GNUnited Nations version 0.11.
 </p><br>
 <p>Copyright &copy; 2009, 2010, 2011, 2012, 2013,
-  2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+  2014, 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
 </p>
 <blockquote>
 <p>Permission is granted to copy, distribute and/or modify this document
@@ -1753,7 +1750,7 @@ translation for, if available.
 of the translated deed page&mdash;it&rsquo;s in distinct yellow text.
 
 </li><li> The textarea on that page provides standard HTML.  Note that we&rsquo;re not
-using the graphic, just the text.
+using the graphic, just the text, and that we modify the URL.
 
 </li></ul>
 
@@ -1867,31 +1864,9 @@ graphical toolkit.  See <a href="http://www.poedit.net">http://www.poedit.net</a
 use Vim as their editor.  See
 <a href="http://www.vim.org/scripts/script.php?script_id=2530">http://www.vim.org/scripts/script.php?script_id=2530</a>.
 
-</li><li> GNU instance of Pootle, a web-based editor.
 </li></ul>
 
-<a name="Web_002dbased-Systems"></a>
-<h4 class="subsection">4.9.1 Web-based Systems</h4>
 
-<a name="index-web_002dbased-editing"></a>
-<a name="index-Pootle"></a>
-<p>If your team would like to use a web-based editor, we recommend using
-the <a href="https://chapters.gnu.org/pootle/">official Pootle server of
-the GNU project</a>.  We make sure that working with it will not
-compromise your freedom via nonfree JavaScript or
-<a href="https://www.gnu.org/philosophy/who-does-that-server-really-serve.html">SaaSS</a>.  If you decide to use our server, please contact GNU Web
-Translation Managers to register your team.
-</p>
-<a name="index-previewing-web-pages"></a>
-<a name="index-web-pages_002c-previewing"></a>
-<p>Also, that Pootle server has a simple facility to preview your
-translations as they will appear on www.gnu.org.  In order to test
-a page, log in the server and visit
-<a href="https://chapters.gnu.org/gnun/test.html">https://chapters.gnu.org/gnun/test.html</a>.  That page
-contains a menu to upload a PO file; then the server will generate
-the translation and show you the build log (including errors), and the
-generated web page (when the build is successful).
-</p>
 <hr>
 <a name="Mailing-Lists"></a>
 <div class="header">
@@ -2944,8 +2919,6 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-planetfeeds_002ehtml">planetfeeds.html</a>:</td><td>&nbsp;</td><td valign="top"><a href="#SSI">SSI</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PO-editors">PO editors</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PO_002c-editing">PO, editing</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Pootle">Pootle</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-previewing-web-pages">previewing web pages</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-R">R</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-review">review</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Review">Review</a></td></tr>
@@ -2995,8 +2968,6 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><th><a name="Index_cp_letter-W">W</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-web-pages-of-GNU-packages">web pages of GNU packages</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Priorities">Priorities</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-web-pages_002c-checking-out">web pages, checking out</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submitting-as-PO">Submitting as PO</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-web-pages_002c-previewing">web pages, previewing</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-web_002dbased-editing">web-based editing</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-web_002dtranslators_0040gnu_002eorg">web-translators@gnu.org</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Mailing-Lists">Mailing Lists</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-webmasters_0040gnu_002eorg">webmasters@gnu.org</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Mailing-Lists">Mailing Lists</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-www_002ddiscuss_0040gnu_002eorg">www-discuss@gnu.org</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Mailing-Lists">Mailing Lists</a></td></tr>
