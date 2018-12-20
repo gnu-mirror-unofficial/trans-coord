@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+This manual (updated 20 December 2018) is for GNUnited Nations (version
+0.12), a suite for maintaining translations of www.gnu.org
+essays and other articles.
+
+
+Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016,
+2018 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GNUnited Nations: Site-Wide Compendia</title>
+
+<meta name="description" content="GNUnited Nations: Site-Wide Compendia">
+<meta name="keywords" content="GNUnited Nations: Site-Wide Compendia">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Compendia.html#Compendia" rel="up" title="Compendia">
+<link href="Per_002dDirectory-Templates.html#Per_002dDirectory-Templates" rel="next" title="Per-Directory Templates">
+<link href="Compendia.html#Compendia" rel="prev" title="Compendia">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Site_002dWide-Compendia"></a>
+<div class="header">
+<p>
+Next: <a href="Per_002dDirectory-Templates.html#Per_002dDirectory-Templates" accesskey="n" rel="next">Per-Directory Templates</a>, Up: <a href="Compendia.html#Compendia" accesskey="u" rel="up">Compendia</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Site_002dWide-Compendia-1"></a>
+<h4 class="subsection">2.6.1 Site-Wide Compendia</h4>
+<a name="index-compendia_002c-site_002dwide"></a>
+<a name="index-site_002dwide-compendia"></a>
+<a name="index-exclude_002epot"></a>
+<a name="index-master_002elang_002epo"></a>
+<a name="index-compendium_002elang_002epo"></a>
+<a name="index-compendium_002epot"></a>
+
+<p>Site-wide compendia are located in the <samp>server/gnun/compendia</samp>
+directory of the &lsquo;www&rsquo; web repository.  There are two kinds of
+compendia: <samp>master.<var>lang</var>.po</samp> and
+<samp>compendium.<var>lang</var>.po</samp>.
+</p>
+<p>The first kind, <samp>master.<var>lang</var>.po</samp>, can be used to
+simultaneously update all occurrences of the translations of a given
+string.  Translations from this file will override the translations from
+<samp><var>article</var>.<var>lang</var>.po</samp>.  When <samp>master.<var>lang</var>.po</samp> is
+updated, the translations will be rebuilt.  GNUN doesn&rsquo;t modify this
+kind of compendia.
+</p>
+<p>The second kind, <samp>compendium.<var>lang</var>.po</samp>, is updated
+automatically.  GNUN finds strings that repeat many times in POTs of
+articles and collects them in <samp>compendium.pot</samp>.  Then it checks
+all available <samp><var>article</var>.<var>lang</var>.po</samp> files for
+translations of those strings and generates
+<samp>compendium.<var>lang</var>.po</samp>.  This file is also used to fill
+missing translations, but it doesn&rsquo;t override the translations from
+<samp><var>article</var>.<var>lang</var>.po</samp>, and the strings coming from
+<samp>compendium.<var>lang</var>.po</samp> are always marked as &ldquo;fuzzy&rdquo; to
+prevent propagation of translations that may be wrong in a different
+context.
+</p>
+<p>When updating <samp>compendium.pot</samp>, some strings should be excluded
+even though they repeat in the POT files many times&mdash;for instance,
+GNUN slots for translators&rsquo; notes.  See <a href="Notes-Slot.html#Notes-Slot">Notes Slot</a>.  They are not
+real translations, this is why they are likely to be different for
+different articles.  In order to avoid including them in compendia,
+GNUN checks a specific file, <samp>exclude.pot</samp>, and when that file
+contains the string, it won&rsquo;t be added to <samp>compendium.pot</samp>.
+</p>
+
+
+
+</body>
+</html>

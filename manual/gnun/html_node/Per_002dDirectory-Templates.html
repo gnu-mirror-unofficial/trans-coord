@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+This manual (updated 20 December 2018) is for GNUnited Nations (version
+0.12), a suite for maintaining translations of www.gnu.org
+essays and other articles.
+
+
+Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016,
+2018 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>GNUnited Nations: Per-Directory Templates</title>
+
+<meta name="description" content="GNUnited Nations: Per-Directory Templates">
+<meta name="keywords" content="GNUnited Nations: Per-Directory Templates">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Compendia.html#Compendia" rel="up" title="Compendia">
+<link href="Sitemap.html#Sitemap" rel="next" title="Sitemap">
+<link href="Site_002dWide-Compendia.html#Site_002dWide-Compendia" rel="prev" title="Site-Wide Compendia">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Per_002dDirectory-Templates"></a>
+<div class="header">
+<p>
+Previous: <a href="Site_002dWide-Compendia.html#Site_002dWide-Compendia" accesskey="p" rel="prev">Site-Wide Compendia</a>, Up: <a href="Compendia.html#Compendia" accesskey="u" rel="up">Compendia</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Per_002dDirectory-Templates-1"></a>
+<h4 class="subsection">2.6.2 Per-Directory Templates</h4>
+<a name="index-compendia_002c-per_002ddirectory"></a>
+<a name="index-per_002ddirectory-compendia"></a>
+<a name="index-pot"></a>
+<a name="index-lang_002epo"></a>
+
+<p>When GNUN detects a file named <samp>pot</samp> in some <samp>po</samp> directory,
+it writes to it all strings from all articles in the same directory;
+it also merges translations of those strings to files named
+<samp><var>lang</var>.po</samp>, for all languages available in that directory.
+In its turn, files <samp><var>lang</var>.po</samp> are used to update
+translations in articles from that directory.
+</p>
+<p>This helps updating translations in sets of articles like
+<samp>proprietary/</samp> section, where an item may belong to many files
+at once.  The translator can only update <samp><var>lang</var>.po</samp>,
+or any article where the outdated item is listed.  Then GNUN
+will copy the translation to all other places.
+</p>
+
+
+
+</body>
+</html>
