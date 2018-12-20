@@ -16,6 +16,8 @@ GNUnited Nations
   2.4 Defining Articles to Be Built
   2.5 The 'languages.txt' File
   2.6 Using Compendia
+    2.6.1 Site-Wide Compendia
+    2.6.2 Per-Directory Templates
   2.7 Building Sitemap
 3 Maintaining Translations in Your Team's Repository
   3.1 Adopting 'GNUmakefile.team' for a Specific Team
@@ -55,12 +57,12 @@ Index
 GNUnited Nations
 ****************
 
-This manual (updated 30 September 2016) is for GNUnited Nations (version
-0.11), a suite for maintaining translations of www.gnu.org essays and
+This manual (updated 20 December 2018) is for GNUnited Nations (version
+0.12), a suite for maintaining translations of www.gnu.org essays and
 other articles.
 
-   Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016 Free
-Software Foundation, Inc.
+   Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016, 2018
+Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -434,13 +436,6 @@ features will be implemented in a similar fashion.
      tedious to fix the errors that are reported as a result of
      enforcing validation.
 
-     Articles defined in the variable 'no-validate-articles' are never
-     checked for HTML validity.  Its purpose was to skip validation of
-     HTML5 articles, until the command-line validation tools are updated
-     to parse files that comply with this new standard.  As of version
-     0.5 GNUN supports HTML5, so resorting to 'no-validate-articles'
-     should not be necessary.
-
      This is the default, and not defining this variable has the same
      effect.
 
@@ -477,26 +472,25 @@ features will be implemented in a similar fashion.
      general since it will show a bug in the computation of the basic
      variables.
 
-'GRACE=DAYS'
-     If defined, ordinary articles that have "fuzzy" strings and are not
-     older than DAYS will not be regenerated.  This functionality is
-     implemented specifically to prevent gratuitous replacement of
-     translated strings with the English text when there are only minor
-     formatting changes in the original.  The translator has time (the
-     "grace" period as defined in this variable) to review the changes
-     and clear the "fuzzy" mark from the strings, while keeping the
-     online translation intact.  Note that this variable has no effect
-     on the server templates and all articles defined in the variable
-     'no-grace-articles'.
+'GRACE'
+     If defined, ordinary articles that have "fuzzy" strings will not be
+     regenerated.  This functionality is implemented specifically to
+     prevent gratuitous replacement of translated strings with the
+     English text when there are only minor formatting changes in the
+     original.  The translator should review the changes, update the
+     translation and clear the "fuzzy" mark from the strings, while
+     keeping the online translation intact(2).  Note that this variable
+     has no effect on the server templates and all articles defined in
+     the variable 'no-grace-articles'.
 
 'OUTDATED-GRACE=DAYS'
      Grace period for the out-of-date notice.  When the variable 'GRACE'
-     is defined, 'OUTDATED-GRACE' defaults to 60 days (*note grace
-     period: GRACE.).  The out-of-date notice is a special text
-     ('server/outdated.html' in the 'www' repository) that is inserted
-     into every outdated translation when the period defined in this
-     variable is over; its purpose is to inform the reader that the
-     translation may not correspond to the original English article.
+     is defined, 'OUTDATED-GRACE' defaults to 60 days.  The out-of-date
+     notice is a special text ('server/outdated.html' in the 'www'
+     repository) that is inserted into every outdated translation when
+     the period defined in this variable is over; its purpose is to
+     inform the reader that the translation may not correspond to the
+     original English article.
 
 'TEAM=LANG'
      The translation team whose articles need to be checked for
@@ -531,6 +525,11 @@ take care to use 'bzr push' manually (or via cron) to take care of
 effectively adding them to the public repository.  *Note triggers::, for
 a short explanation.
 
+   (2) This variable used to define the "grace period" in days to let
+the translator update the strings before the English text propagates to
+the translated page, but in practice that period has always been
+unlimited
+
 2.3 Targets Specified on the Command Line
 =========================================
 
@@ -545,9 +544,9 @@ defined, one way or another.
 ---------------------------------
 
 The 'no-grace-items' target regenerates a limited set of articles that
-are not affected by the grace period, namely, the server templates, and
-all articles defined in the variable 'no-grace-articles' (*note grace
-period: GRACE.).
+are not affected by the 'GRACE' variable, namely, the server templates,
+and all articles defined in the variable 'no-grace-articles' (*note
+grace flag: GRACE.).
 
    This target can be rebuilt more often than 'all'; however, currently
 we just build all with the same period.
@@ -788,7 +787,19 @@ bugs and sending inquiries: when a webmaster updates footer texts in an
 article, GNUN will use compendia to automatically fill the translations
 for the new version of the strings.
 
-   GNUN uses compendia located in the 'server/gnun/compendia' directory
+   GNUN has two types of compendia:
+
+  1. Site-Wide Compendia This type is used for all articles, and only
+     contains common strings.
+
+  2. Per-Directory Compedia These files accumulate all strings from all
+     articles in the directory, even if these strings are not repeated
+     in different articles.
+
+2.6.1 Site-Wide Compendia
+-------------------------
+
+Site-wide compendia are located in the 'server/gnun/compendia' directory
 of the 'www' web repository.  There are two kinds of compendia:
 'master.LANG.po' and 'compendium.LANG.po'.
 
@@ -815,6 +826,21 @@ translations, this is why they are likely to be different for different
 articles.  In order to avoid including them in compendia, GNUN checks a
 specific file, 'exclude.pot', and when that file contains the string, it
 won't be added to 'compendium.pot'.
+
+2.6.2 Per-Directory Templates
+-----------------------------
+
+When GNUN detects a file named 'pot' in some 'po' directory, it writes
+to it all strings from all articles in the same directory; it also
+merges translations of those strings to files named 'LANG.po', for all
+languages available in that directory.  In its turn, files 'LANG.po' are
+used to update translations in articles from that directory.
+
+   This helps updating translations in sets of articles like
+'proprietary/' section, where an item may belong to many files at once.
+The translator can only update 'LANG.po', or any article where the
+outdated item is listed.  Then GNUN will copy the translation to all
+other places.
 
 2.7 Building Sitemap
 ====================
@@ -1773,27 +1799,27 @@ HTML-only translations.
 
      Root/
        |
-       +--gnu/
+       +--proprietary/
        |   |
-       |   +--linux-and-gnu.html #
-       |   +--linux-and-gnu.LANG.html @
-       |   +--manifesto.html #
-       |   +--manifesto.LANG.html @
+       |   +--proprietary.html #
+       |   +--proprietary.LANG.html @
+       |   +--malware-cars.html #
+       |   +--malware-cars.LANG.html @
        |   +--...
        |   |
        |   +--------------------------po/
        |                               |
-       +--home.html #                  +--manifesto.LANG.po %
-       +--home.LANG.html @             +--manifesto.pot @
-       +--planetfeeds.html #/@         +--manifesto.proto * @
-       +--planetfeeds.LANG.html @      +--manifesto.translist @
+       +--home.html #                  +--malware-cars.LANG.po %
+       +--home.LANG.html @             +--malware-cars.pot @
+       +--planetfeeds.html #/@         +--malware-cars.proto * @
+       +--planetfeeds.LANG.html @      +--malware-cars.translist @
        +--po/                          |
-       |  |                            +--manifesto.LANG-en.html @
-       |  +--home.pot @                +--manifesto.LANG-diff.html @
-       |  +--home.proto * @            +--linux-and-gnu.LANG.po %
-       |  +--home.translist @          +--...
-       |  +--home.LANG.po %
-       |  +--home.LANG-en.html @
+       |  |                            +--malware-cars.LANG-en.html @
+       |  +--home.pot @                +--malware-cars.LANG-diff.html @
+       |  +--home.proto * @            +--proprietary.LANG.po %
+       |  +--home.translist @          +--pot @
+       |  +--home.LANG.po %            +--LANG.po %
+       |  +--home.LANG-en.html @       +--...
        |  +--home.LANG-diff.html @
        |  +--planetfeeds.proto * @
        |  +--planetfeeds.pot.opt @
@@ -1857,6 +1883,14 @@ HTML-only translations.
 '.../po/FILE.LANG-diff.html'
      The highlighted differences between the current version of
      '...FILE.html' and '.../po/FILE.LANG-en.html'.
+
+'.../po/pot'
+     Per-directory template.  It contains all strings from all articles
+     in this directory.  *Note Per-Directory Templates::.
+
+'.../po/LANG.po'
+     Per-directory compendium.  It is only used and regenerated when
+     '.../po/pot' exists.  *Note Per-Directory Templates::.
 
 'planetfeeds.html'
      A list of news; it is automatically generated outside of GNUN. For
@@ -2757,168 +2791,185 @@ Index
 
 * Menu:
 
-* .pot.opt:                              Main Variables.     (line  708)
-* ALL_DIRS:                              Main Variables.     (line  735)
-* announce:                              Runtime Variables.  (line  459)
-* articles in root directory, defining:  Main Variables.     (line  728)
-* Bazaar:                                Runtime Variables.  (line  407)
+* .pot.opt:                              Main Variables.     (line  707)
+* ALL_DIRS:                              Main Variables.     (line  734)
+* announce:                              Runtime Variables.  (line  454)
+* articles in root directory, defining:  Main Variables.     (line  727)
+* Bazaar:                                Runtime Variables.  (line  409)
 * boilerplates:                          Modifying Templates.
-                                                             (line 1591)
-* bugs, reporting:                       Bugs.               (line 2266)
-* bzr:                                   Runtime Variables.  (line  407)
+                                                             (line 1617)
+* bugs, reporting:                       Bugs.               (line 2300)
+* bzr:                                   Runtime Variables.  (line  409)
 * comments for translators:              Comments for Translators.
-                                                             (line 1610)
-* comparing, translations:               gnun-diff-po.       (line 1933)
-* compendia:                             Compendia.          (line  783)
-* compendium.pot:                        Compendia.          (line  783)
-* config.mk:                             Invoking GNUN.      (line  372)
+                                                             (line 1636)
+* comparing, translations:               gnun-diff-po.       (line 1967)
+* compendia:                             Compendia.          (line  782)
+* compendia, per-directory:              Per-Directory Templates.
+                                                             (line  832)
+* compendia, site-wide:                  Site-Wide Compendia.
+                                                             (line  801)
+* compendium.lang.po:                    Site-Wide Compendia.
+                                                             (line  801)
+* compendium.pot:                        Site-Wide Compendia.
+                                                             (line  801)
+* config.mk:                             Invoking GNUN.      (line  374)
 * conventional separator for strings:    Splitting Long Passages.
-                                                             (line 1663)
-* conversion of existing translations:   Migrating.          (line 1508)
-* conversion of existing translations <1>: gnun-preconvert.  (line 2057)
+                                                             (line 1689)
+* conversion of existing translations:   Migrating.          (line 1534)
+* conversion of existing translations <1>: gnun-preconvert.  (line 2091)
 * conversion of existing translations <2>: gnun-merge-preconverted.
-                                                             (line 2080)
-* credits, translators:                  GNUN Slots.         (line 1326)
-* credits, translators <1>:              Credits Slot.       (line 1382)
+                                                             (line 2114)
+* credits, translators:                  GNUN Slots.         (line 1352)
+* credits, translators <1>:              Credits Slot.       (line 1408)
 * cron, team maintenance:                GNUmakefile.team and Cron.
-                                                             (line 1166)
-* CVS:                                   Runtime Variables.  (line  407)
-* deferred generation of articles:       Runtime Variables.  (line  479)
-* defining articles in the root dir:     Main Variables.     (line  728)
-* defining directories:                  Main Variables.     (line  735)
-* defining templates:                    Main Variables.     (line  676)
-* directories, defining:                 Main Variables.     (line  735)
+                                                             (line 1192)
+* CVS:                                   Runtime Variables.  (line  409)
+* deferred generation of articles:       Runtime Variables.  (line  474)
+* defining articles in the root dir:     Main Variables.     (line  727)
+* defining directories:                  Main Variables.     (line  734)
+* defining templates:                    Main Variables.     (line  675)
+* directories, defining:                 Main Variables.     (line  734)
 * email-aliases:                         GNUmakefile.team Targets.
-                                                             (line 1052)
-* exclude.pot:                           Compendia.          (line  783)
-* extra-templates:                       Main Variables.     (line  701)
-* fuzzy strings:                         Runtime Variables.  (line  479)
-* FUZZY_DIFF_LINGUAS:                    Main Variables.     (line  683)
-* GNUmakefile:                           Invoking GNUN.      (line  356)
-* GNUmakefile.team:                      Team's Repository.  (line  846)
+                                                             (line 1078)
+* exclude.pot:                           Site-Wide Compendia.
+                                                             (line  801)
+* extra-templates:                       Main Variables.     (line  700)
+* fuzzy strings:                         Runtime Variables.  (line  474)
+* FUZZY_DIFF_LINGUAS:                    Main Variables.     (line  682)
+* GNUmakefile:                           Invoking GNUN.      (line  358)
+* GNUmakefile.team:                      Team's Repository.  (line  872)
 * GNUN directory layout:                 Files and Directories.
-                                                             (line 1762)
-* GNUN-SORT-BEGIN-KEY:                   Sorting Lists.      (line 1705)
-* GNUN-SORT-END-KEY:                     Sorting Lists.      (line 1707)
-* GNUN-SORT-NEXT-ITEM:                   Sorting Lists.      (line 1699)
-* GNUN-SORT-START:                       Sorting Lists.      (line 1691)
-* GNUN-SORT-STOP:                        Sorting Lists.      (line 1695)
-* gnun.mk:                               Invoking GNUN.      (line  372)
-* gnun.mk <1>:                           Main Variables.     (line  658)
-* GRACE:                                 Runtime Variables.  (line  479)
-* grace period:                          Runtime Variables.  (line  479)
-* initializing PO files:                 New Translation.    (line 1199)
-* initializing, translations:            gnun-init-po.       (line 1973)
-* invocation:                            Invoking GNUN.      (line  356)
-* invoking:                              Invoking GNUN.      (line  356)
-* languages.txt:                         languages.txt.      (line  752)
-* localized SSIs:                        Main Variables.     (line  688)
-* localized URLs:                        Localized URLs.     (line 1633)
-* localized-ssis:                        Main Variables.     (line  688)
+                                                             (line 1788)
+* GNUN-SORT-BEGIN-KEY:                   Sorting Lists.      (line 1731)
+* GNUN-SORT-END-KEY:                     Sorting Lists.      (line 1733)
+* GNUN-SORT-NEXT-ITEM:                   Sorting Lists.      (line 1725)
+* GNUN-SORT-START:                       Sorting Lists.      (line 1717)
+* GNUN-SORT-STOP:                        Sorting Lists.      (line 1721)
+* gnun.mk:                               Invoking GNUN.      (line  374)
+* gnun.mk <1>:                           Main Variables.     (line  657)
+* GRACE:                                 Runtime Variables.  (line  474)
+* grace flag:                            Runtime Variables.  (line  474)
+* initializing PO files:                 New Translation.    (line 1225)
+* initializing, translations:            gnun-init-po.       (line 2007)
+* invocation:                            Invoking GNUN.      (line  358)
+* invoking:                              Invoking GNUN.      (line  358)
+* lang.po:                               Per-Directory Templates.
+                                                             (line  832)
+* languages.txt:                         languages.txt.      (line  751)
+* localized SSIs:                        Main Variables.     (line  687)
+* localized URLs:                        Localized URLs.     (line 1659)
+* localized-ssis:                        Main Variables.     (line  687)
 * long lines, wrap:                      Wrapping Long Lines.
-                                                             (line 1405)
+                                                             (line 1431)
 * long passages, avoiding:               Splitting Long Passages.
-                                                             (line 1663)
-* mail, notifications:                   Runtime Variables.  (line  446)
+                                                             (line 1689)
+* mail, notifications:                   Runtime Variables.  (line  441)
 * mail, notifications <1>:               GNUmakefile.team Variables.
-                                                             (line  975)
-* mail, notifications <2>:               mailfail.           (line 2194)
-* master.lang.po:                        Compendia.          (line  783)
-* migration, translations:               Migrating.          (line 1508)
-* migration, translations <1>:           gnun-preconvert.    (line 2057)
+                                                             (line 1001)
+* mail, notifications <2>:               mailfail.           (line 2228)
+* master.lang.po:                        Site-Wide Compendia.
+                                                             (line  801)
+* migration, translations:               Migrating.          (line 1534)
+* migration, translations <1>:           gnun-preconvert.    (line 2091)
 * migration, translations <2>:           gnun-merge-preconverted.
-                                                             (line 2080)
-* new translation:                       New Translation.    (line 1199)
+                                                             (line 2114)
+* new translation:                       New Translation.    (line 1225)
 * new translations, notifications/announcements: Runtime Variables.
-                                                             (line  459)
-* notes, translators:                    GNUN Slots.         (line 1317)
-* notes, translators <1>:                Notes Slot.         (line 1335)
+                                                             (line  454)
+* notes, translators:                    GNUN Slots.         (line 1343)
+* notes, translators <1>:                Notes Slot.         (line 1361)
 * notification period:                   GNUmakefile.team Targets.
-                                                             (line 1060)
+                                                             (line 1086)
 * notification period, default:          GNUmakefile.team Variables.
-                                                             (line  973)
+                                                             (line  999)
 * NOTIFICATION_PERIOD:                   GNUmakefile.team Variables.
-                                                             (line  973)
-* NOTIFY:                                Runtime Variables.  (line  446)
+                                                             (line  999)
+* NOTIFY:                                Runtime Variables.  (line  441)
 * NOTIFY <1>:                            GNUmakefile.team Variables.
-                                                             (line  975)
+                                                             (line 1001)
 * nottab:                                GNUmakefile.team Targets.
-                                                             (line 1035)
-* optional-templates:                    Main Variables.     (line  708)
+                                                             (line 1061)
+* optional-templates:                    Main Variables.     (line  707)
 * outdated translations, notifications:  GNUmakefile.team Targets.
-                                                             (line 1027)
-* OUTDATED-GRACE:                        Runtime Variables.  (line  491)
-* output, detailed:                      Runtime Variables.  (line  472)
-* PO files, header:                      PO Header.          (line 1224)
-* PO headers:                            PO Header.          (line 1247)
-* POT:                                   Concepts.           (line  130)
-* POT generation, articles:              Main Variables.     (line  739)
-* previous, diff:                        Main Variables.     (line  683)
+                                                             (line 1053)
+* OUTDATED-GRACE:                        Runtime Variables.  (line  485)
+* output, detailed:                      Runtime Variables.  (line  467)
+* per-directory compendia:               Per-Directory Templates.
+                                                             (line  832)
+* PO files, header:                      PO Header.          (line 1250)
+* PO headers:                            PO Header.          (line 1273)
+* POT:                                   Concepts.           (line  132)
+* pot:                                   Per-Directory Templates.
+                                                             (line  832)
+* POT generation, articles:              Main Variables.     (line  738)
+* previous, diff:                        Main Variables.     (line  682)
 * previous, diff <1>:                    gnun-add-fuzzy-diff.
-                                                             (line 1905)
-* priorities.mk:                         Invoking GNUN.      (line  372)
-* priorities.mk <1>:                     report.             (line  580)
-* priorities.mk <2>:                     gnun-report.        (line 2112)
-* project repository:                    Team's Repository.  (line  846)
-* recommendations, PO files:             PO Tips.            (line 1451)
+                                                             (line 1939)
+* priorities.mk:                         Invoking GNUN.      (line  374)
+* priorities.mk <1>:                     report.             (line  579)
+* priorities.mk <2>:                     gnun-report.        (line 2146)
+* project repository:                    Team's Repository.  (line  872)
+* recommendations, PO files:             PO Tips.            (line 1477)
 * reminder period:                       GNUmakefile.team Targets.
-                                                             (line 1060)
+                                                             (line 1086)
 * reminder period, default:              GNUmakefile.team Variables.
-                                                             (line  973)
-* reporting:                             report.             (line  567)
-* reporting <1>:                         gnun-report.        (line 2107)
-* reporting bugs:                        Bugs.               (line 2266)
-* repository, translation project:       Team's Repository.  (line  846)
-* ROOT:                                  Main Variables.     (line  728)
+                                                             (line  999)
+* reporting:                             report.             (line  566)
+* reporting <1>:                         gnun-report.        (line 2141)
+* reporting bugs:                        Bugs.               (line 2300)
+* repository, translation project:       Team's Repository.  (line  872)
+* ROOT:                                  Main Variables.     (line  727)
 * running checks:                        Wrapping Long Lines.
-                                                             (line 1440)
-* running checks <1>:                    gnun-link-diff.     (line 2018)
-* sanity checks:                         Runtime Variables.  (line  424)
-* sitemap:                               Main Variables.     (line  723)
-* sitemap <1>:                           Sitemap.            (line  821)
-* sorting translated lists:              Sorting Lists.      (line 1687)
-* SSIs, localized:                       Main Variables.     (line  688)
-* starting translation:                  New Translation.    (line 1199)
-* status, translations:                  report.             (line  567)
-* status, translations <1>:              gnun-report.        (line 2107)
-* Subversion:                            Runtime Variables.  (line  407)
-* SVN:                                   Runtime Variables.  (line  407)
-* TEAM:                                  Runtime Variables.  (line  500)
-* team maintenance:                      Team's Repository.  (line  846)
+                                                             (line 1466)
+* running checks <1>:                    gnun-link-diff.     (line 2052)
+* sanity checks:                         Runtime Variables.  (line  426)
+* site-wide compendia:                   Site-Wide Compendia.
+                                                             (line  801)
+* sitemap:                               Main Variables.     (line  722)
+* sitemap <1>:                           Sitemap.            (line  847)
+* sorting translated lists:              Sorting Lists.      (line 1713)
+* SSIs, localized:                       Main Variables.     (line  687)
+* starting translation:                  New Translation.    (line 1225)
+* status, translations:                  report.             (line  566)
+* status, translations <1>:              gnun-report.        (line 2141)
+* Subversion:                            Runtime Variables.  (line  409)
+* SVN:                                   Runtime Variables.  (line  409)
+* TEAM:                                  Runtime Variables.  (line  494)
+* team maintenance:                      Team's Repository.  (line  872)
 * team maintenance, cron:                GNUmakefile.team and Cron.
-                                                             (line 1166)
-* team workflow:                         Team's Repository.  (line  864)
+                                                             (line 1192)
+* team workflow:                         Team's Repository.  (line  890)
 * templates:                             Modifying Templates.
-                                                             (line 1591)
-* templates, additional:                 Main Variables.     (line  701)
-* templates, defining:                   Main Variables.     (line  676)
-* templates, optional:                   Main Variables.     (line  708)
-* TEMPLATE_LINGUAS:                      Main Variables.     (line  676)
-* tips, translators:                     PO Tips.            (line 1451)
-* tips, webmasters:                      Webmaster Tips.     (line 1574)
-* translation memory:                    Compendia.          (line  783)
-* translation, new:                      New Translation.    (line 1199)
-* translators' credits:                  GNUN Slots.         (line 1326)
-* translators' credits <1>:              Credits Slot.       (line 1382)
-* translators' notes:                    GNUN Slots.         (line 1317)
-* translators' notes <1>:                Notes Slot.         (line 1335)
-* triggering, build:                     Invoking GNUN.      (line  356)
-* VALIDATE:                              Runtime Variables.  (line  424)
-* validation:                            Runtime Variables.  (line  424)
-* validation <1>:                        Runtime Variables.  (line  505)
-* validation <2>:                        validate-all.       (line  649)
+                                                             (line 1617)
+* templates, additional:                 Main Variables.     (line  700)
+* templates, defining:                   Main Variables.     (line  675)
+* templates, optional:                   Main Variables.     (line  707)
+* TEMPLATE_LINGUAS:                      Main Variables.     (line  675)
+* tips, translators:                     PO Tips.            (line 1477)
+* tips, webmasters:                      Webmaster Tips.     (line 1600)
+* translation memory:                    Compendia.          (line  782)
+* translation, new:                      New Translation.    (line 1225)
+* translators' credits:                  GNUN Slots.         (line 1352)
+* translators' credits <1>:              Credits Slot.       (line 1408)
+* translators' notes:                    GNUN Slots.         (line 1343)
+* translators' notes <1>:                Notes Slot.         (line 1361)
+* triggering, build:                     Invoking GNUN.      (line  358)
+* VALIDATE:                              Runtime Variables.  (line  426)
+* validation:                            Runtime Variables.  (line  426)
+* validation <1>:                        Runtime Variables.  (line  499)
+* validation <2>:                        validate-all.       (line  648)
 * validation <3>:                        Modifying Templates.
-                                                             (line 1598)
-* validation, HTML, XHTML:               gnun-validate-html. (line 2152)
+                                                             (line 1624)
+* validation, HTML, XHTML:               gnun-validate-html. (line 2186)
 * validation, PO files:                  Wrapping Long Lines.
-                                                             (line 1440)
-* variable, behavior:                    Runtime Variables.  (line  400)
-* variable, team:                        Runtime Variables.  (line  500)
-* variables:                             Runtime Variables.  (line  400)
-* variables <1>:                         Main Variables.     (line  658)
-* VCS:                                   Runtime Variables.  (line  407)
-* VERBOSE:                               Runtime Variables.  (line  472)
-* webmaster tips:                        Webmaster Tips.     (line 1574)
+                                                             (line 1466)
+* variable, behavior:                    Runtime Variables.  (line  402)
+* variable, team:                        Runtime Variables.  (line  494)
+* variables:                             Runtime Variables.  (line  402)
+* variables <1>:                         Main Variables.     (line  657)
+* VCS:                                   Runtime Variables.  (line  409)
+* VERBOSE:                               Runtime Variables.  (line  467)
+* webmaster tips:                        Webmaster Tips.     (line 1600)
 * wrapping long lines:                   Wrapping Long Lines.
-                                                             (line 1405)
+                                                             (line 1431)
 

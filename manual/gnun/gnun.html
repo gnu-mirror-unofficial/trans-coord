@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 30 September 2016) is for GNUnited Nations (version
-0.11), a suite for maintaining translations of www.gnu.org
+This manual (updated 20 December 2018) is for GNUnited Nations (version
+0.12), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
-Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016
-Free Software Foundation, Inc.
+Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016,
+2018 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -94,7 +94,11 @@ ul.no-bullet {list-style: none}
     </ul></li>
     <li><a name="toc-Defining-Articles-to-Be-Built" href="#Main-Variables">2.4 Defining Articles to Be Built</a></li>
     <li><a name="toc-The-languages_002etxt-File" href="#languages_002etxt">2.5 The <samp>languages.txt</samp> File</a></li>
-    <li><a name="toc-Using-Compendia" href="#Compendia">2.6 Using Compendia</a></li>
+    <li><a name="toc-Using-Compendia" href="#Compendia">2.6 Using Compendia</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Site_002dWide-Compendia-1" href="#Site_002dWide-Compendia">2.6.1 Site-Wide Compendia</a></li>
+      <li><a name="toc-Per_002dDirectory-Templates-1" href="#Per_002dDirectory-Templates">2.6.2 Per-Directory Templates</a></li>
+    </ul></li>
     <li><a name="toc-Building-Sitemap" href="#Sitemap">2.7 Building Sitemap</a></li>
   </ul></li>
   <li><a name="toc-Maintaining-Translations-in-Your-Team_0027s-Repository" href="#Team_0027s-Repository">3 Maintaining Translations in Your Team&rsquo;s Repository</a>
@@ -157,12 +161,12 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a 
 <a name="GNUnited-Nations"></a>
 <h1 class="top">GNUnited Nations</h1>
 
-<p>This manual (updated 30 September 2016) is for GNUnited Nations (version
-0.11), a suite for maintaining translations of www.gnu.org
+<p>This manual (updated 20 December 2018) is for GNUnited Nations (version
+0.12), a suite for maintaining translations of www.gnu.org
 essays and other articles.<br>
 </p><br>
-<p>Copyright &copy; 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016
-Free Software Foundation, Inc.
+<p>Copyright &copy; 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016,
+2018 Free Software Foundation, Inc.
 </p>
 <blockquote>
 <p>Permission is granted to copy, distribute and/or modify this document
@@ -669,13 +673,6 @@ generated translations in HTML format and all PO files.  It is highly
 recommended to run the build this way, even if it is a bit tedious to
 fix the errors that are reported as a result of enforcing validation.
 </p>
-<p>Articles defined in the variable <code>no-validate-articles</code> are never
-checked for HTML validity.  Its purpose was to skip validation of HTML5
-articles, until the command-line validation tools are updated to
-parse files that comply with this new standard.  As of version 0.5
-GNUN supports HTML5, so resorting to <code>no-validate-articles</code>
-should not be necessary.
-</p>
 <p>This is the default, and not defining this variable has the same effect.
 </p>
 <a name="index-NOTIFY"></a>
@@ -723,18 +720,17 @@ computation of the basic variables.
 </p>
 <a name="index-GRACE"></a>
 <a name="index-fuzzy-strings"></a>
-<a name="index-grace-period"></a>
+<a name="index-grace-flag"></a>
 <a name="index-deferred-generation-of-articles"></a>
 <a name="GRACE"></a></dd>
-<dt>&lsquo;<samp>GRACE=<var>days</var></samp>&rsquo;</dt>
-<dd><p>If defined, ordinary articles that have &ldquo;fuzzy&rdquo; strings and are not older
-than <var>days</var> will not be regenerated.  This functionality is
+<dt>&lsquo;<samp>GRACE</samp>&rsquo;</dt>
+<dd><p>If defined, ordinary articles that have &ldquo;fuzzy&rdquo; strings
+will not be regenerated.  This functionality is
 implemented specifically to prevent gratuitous replacement of translated
 strings with the English text when there are only minor formatting
-changes in the original.  The translator has time (the &ldquo;grace&rdquo; period
-as defined in this variable) to review the changes and clear the &ldquo;fuzzy&rdquo;
-mark from the
-strings, while keeping the online translation intact.  Note that this
+changes in the original.  The translator should review the changes,
+update the translation and clear the &ldquo;fuzzy&rdquo; mark from the
+strings, while keeping the online translation intact<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>.  Note that this
 variable has no effect on the server templates
 and all articles defined in the variable <code>no-grace-articles</code>.
 </p>
@@ -742,8 +738,8 @@ and all articles defined in the variable <code>no-grace-articles</code>.
 </dd>
 <dt>&lsquo;<samp>OUTDATED-GRACE=<var>days</var></samp>&rsquo;</dt>
 <dd><p>Grace period for the out-of-date notice.  When the variable
-<code>GRACE</code> is defined, <code>OUTDATED-GRACE</code> defaults to 60 days
-(see <a href="#GRACE">grace period</a>).  The out-of-date notice is a special
+<code>GRACE</code> is defined, <code>OUTDATED-GRACE</code> defaults to 60 days.
+The out-of-date notice is a special
 text (<samp>server/outdated.html</samp> in the &lsquo;www&rsquo; repository) that is
 inserted into every outdated translation when the period defined in
 this variable is over; its purpose is to inform the reader that the
@@ -826,9 +822,9 @@ Next: <a href="#update_002dlocalized_002dURLs" accesskey="n" rel="next">update-l
 <h4 class="subsection">2.3.1 The <code>no-grace-items</code> Target</h4>
 
 <p>The <code>no-grace-items</code> target regenerates a limited set of articles
-that are not affected by the grace period, namely, the
+that are not affected by the <code>GRACE</code> variable, namely, the
 server templates, and all articles defined in the variable
-<code>no-grace-articles</code> (see <a href="#GRACE">grace period</a>).
+<code>no-grace-articles</code> (see <a href="#GRACE">grace flag</a>).
 </p>
 <p>This target can be rebuilt more often than <code>all</code>; however,
 currently we just build all with the same period.
@@ -923,7 +919,7 @@ generated HTML translation is supposed to be human-readable.
 <p>To summarize, for effective operation GNUN should be invoked
 automatically as <code>make; cvs|svn|bzr commit -m &hellip;; make
 triggers</code>.  To illustrate this, here is a concrete example showing the
-official job once running at fencepost.gnu.org<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>:
+official job once running at fencepost.gnu.org<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>:
 </p>
 <div class="example">
 <pre class="example">25 4,12,20 * * *  cd $HOME/projects/www; cvs -q update &amp;&gt;/dev/null; \
@@ -982,7 +978,7 @@ behavior of the build process.
 <p>There are two types of variables, which are specifically separated in
 order to make translators&rsquo; life easier: variables that translators are
 free to modify and variables that are modified by the
-web-translators<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>, ideally after performing some local tests.  A
+web-translators<a name="DOCF7" href="#FOOT7"><sup>7</sup></a>, ideally after performing some local tests.  A
 translation team leader should update only <code>FUZZY_DIFF_LINGUAS</code>
 and <code>TEMPLATE_LINGUAS</code>; everything else is supposed to be built
 automagically, without manual intervention.  If not, that is a bug that
@@ -1151,9 +1147,6 @@ Next: <a href="#Sitemap" accesskey="n" rel="next">Sitemap</a>, Previous: <a href
 <h3 class="section">2.6 Using Compendia</h3>
 <a name="index-compendia"></a>
 <a name="index-translation-memory"></a>
-<a name="index-exclude_002epot"></a>
-<a name="index-master_002elang_002epo"></a>
-<a name="index-compendium_002epot"></a>
 
 <p>Compendium is a PO file including translations for common strings; it is
 used to fill other PO files.  See <a href="http://www.gnu.org/software/gettext/manual/gettext.html#Compendium">Using
@@ -1163,7 +1156,41 @@ text about reporting bugs and sending inquiries: when a webmaster
 updates footer texts in an article, GNUN will use compendia to
 automatically fill the translations for the new version of the strings.
 </p>
-<p>GNUN uses compendia located in the <samp>server/gnun/compendia</samp>
+<p>GNUN has two types of compendia:
+</p>
+<ol>
+<li> Site-Wide Compendia
+This type is used for all articles, and only contains common strings.
+
+</li><li> Per-Directory Compedia
+These files accumulate all strings from all articles in the directory,
+even if these strings are not repeated in different articles.
+</li></ol>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Site_002dWide-Compendia" accesskey="1">Site-Wide Compendia</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Common translations for all articles
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Per_002dDirectory-Templates" accesskey="2">Per-Directory Templates</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Files that contain all strings
+                                   from all articles in the directory
+</td></tr>
+</table>
+
+<hr>
+<a name="Site_002dWide-Compendia"></a>
+<div class="header">
+<p>
+Next: <a href="#Per_002dDirectory-Templates" accesskey="n" rel="next">Per-Directory Templates</a>, Up: <a href="#Compendia" accesskey="u" rel="up">Compendia</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Site_002dWide-Compendia-1"></a>
+<h4 class="subsection">2.6.1 Site-Wide Compendia</h4>
+<a name="index-compendia_002c-site_002dwide"></a>
+<a name="index-site_002dwide-compendia"></a>
+<a name="index-exclude_002epot"></a>
+<a name="index-master_002elang_002epo"></a>
+<a name="index-compendium_002elang_002epo"></a>
+<a name="index-compendium_002epot"></a>
+
+<p>Site-wide compendia are located in the <samp>server/gnun/compendia</samp>
 directory of the &lsquo;www&rsquo; web repository.  There are two kinds of
 compendia: <samp>master.<var>lang</var>.po</samp> and
 <samp>compendium.<var>lang</var>.po</samp>.
@@ -1194,6 +1221,32 @@ real translations, this is why they are likely to be different for
 different articles.  In order to avoid including them in compendia,
 GNUN checks a specific file, <samp>exclude.pot</samp>, and when that file
 contains the string, it won&rsquo;t be added to <samp>compendium.pot</samp>.
+</p>
+<hr>
+<a name="Per_002dDirectory-Templates"></a>
+<div class="header">
+<p>
+Previous: <a href="#Site_002dWide-Compendia" accesskey="p" rel="prev">Site-Wide Compendia</a>, Up: <a href="#Compendia" accesskey="u" rel="up">Compendia</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Per_002dDirectory-Templates-1"></a>
+<h4 class="subsection">2.6.2 Per-Directory Templates</h4>
+<a name="index-compendia_002c-per_002ddirectory"></a>
+<a name="index-per_002ddirectory-compendia"></a>
+<a name="index-pot"></a>
+<a name="index-lang_002epo"></a>
+
+<p>When GNUN detects a file named <samp>pot</samp> in some <samp>po</samp> directory,
+it writes to it all strings from all articles in the same directory;
+it also merges translations of those strings to files named
+<samp><var>lang</var>.po</samp>, for all languages available in that directory.
+In its turn, files <samp><var>lang</var>.po</samp> are used to update
+translations in articles from that directory.
+</p>
+<p>This helps updating translations in sets of articles like
+<samp>proprietary/</samp> section, where an item may belong to many files
+at once.  The translator can only update <samp><var>lang</var>.po</samp>,
+or any article where the outdated item is listed.  Then GNUN
+will copy the translation to all other places.
 </p>
 <hr>
 <a name="Sitemap"></a>
@@ -1282,7 +1335,7 @@ official &lsquo;www&rsquo; repository.  If an original article changes, a build
 can be invoked to synchronize (i.e. merge) the changes and
 optionally automatically commit them so that the draft PO files are
 updated; at the same time, automatic notifications are sent to the
-persons interested in particular translations<a name="DOCF7" href="#FOOT7"><sup>7</sup></a>.  A translator will then normally update the PO file, and
+persons interested in particular translations<a name="DOCF8" href="#FOOT8"><sup>8</sup></a>.  A translator will then normally update the PO file, and
 commit it again in the project&rsquo;s Sources repository, from where the
 co-ordinator will pick it up and install it in &lsquo;www&rsquo;.
 </p>
@@ -2514,27 +2567,27 @@ old HTML-only translations.
 
 </pre><pre class="example">Root/
   |
-  +--gnu/
+  +--proprietary/
   |   |
-  |   +--linux-and-gnu.html #
-  |   +--linux-and-gnu.<var>lang</var>.html @
-  |   +--manifesto.html #
-  |   +--manifesto.<var>lang</var>.html @
+  |   +--proprietary.html #
+  |   +--proprietary.<var>lang</var>.html @
+  |   +--malware-cars.html #
+  |   +--malware-cars.<var>lang</var>.html @
   |   +--&hellip;
   |   |
   |   +--------------------------po/
   |                               |
-  +--home.html #                  +--manifesto.<var>lang</var>.po %
-  +--home.<var>lang</var>.html @             +--manifesto.pot @
-  +--planetfeeds.html #/@         +--manifesto.proto * @
-  +--planetfeeds.<var>lang</var>.html @      +--manifesto.translist @
+  +--home.html #                  +--malware-cars.<var>lang</var>.po %
+  +--home.<var>lang</var>.html @             +--malware-cars.pot @
+  +--planetfeeds.html #/@         +--malware-cars.proto * @
+  +--planetfeeds.<var>lang</var>.html @      +--malware-cars.translist @
   +--po/                          |
-  |  |                            +--manifesto.<var>lang</var>-en.html @
-  |  +--home.pot @                +--manifesto.<var>lang</var>-diff.html @
-  |  +--home.proto * @            +--linux-and-gnu.<var>lang</var>.po %
-  |  +--home.translist @          +--&hellip;
-  |  +--home.<var>lang</var>.po %
-  |  +--home.<var>lang</var>-en.html @
+  |  |                            +--malware-cars.<var>lang</var>-en.html @
+  |  +--home.pot @                +--malware-cars.<var>lang</var>-diff.html @
+  |  +--home.proto * @            +--proprietary.<var>lang</var>.po %
+  |  +--home.translist @          +--pot @
+  |  +--home.<var>lang</var>.po %            +--<var>lang</var>.po %
+  |  +--home.<var>lang</var>-en.html @       +--&hellip;
   |  +--home.<var>lang</var>-diff.html @
   |  +--planetfeeds.proto * @
   |  +--planetfeeds.pot.opt @
@@ -2609,6 +2662,16 @@ into <var>lang</var> language was provided.
 <dd><p>The highlighted differences between the current version of
 <samp>&hellip;<var>file</var>.html</samp> and
 <samp>&hellip;/po/<var>file</var>.<var>lang</var>-en.html</samp>.
+</p>
+</dd>
+<dt><samp>&hellip;/po/pot</samp></dt>
+<dd><p>Per-directory template.  It contains all strings from all articles
+in this directory.  See <a href="#Per_002dDirectory-Templates">Per-Directory Templates</a>.
+</p>
+</dd>
+<dt><samp>&hellip;/po/<var>lang</var>.po</samp></dt>
+<dd><p>Per-directory compendium.  It is only used and regenerated when
+<samp>&hellip;/po/pot</samp> exists.  See <a href="#Per_002dDirectory-Templates">Per-Directory Templates</a>.
 </p>
 </dd>
 <dt><samp>planetfeeds.html</samp></dt>
@@ -3788,7 +3851,10 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-comments-for-translators">comments for translators</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Comments-for-Translators">Comments for Translators</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-comparing_002c-translations">comparing, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002ddiff_002dpo">gnun-diff-po</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-compendia">compendia</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-compendium_002epot">compendium.pot</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-compendia_002c-per_002ddirectory">compendia, per-directory</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Per_002dDirectory-Templates">Per-Directory Templates</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-compendia_002c-site_002dwide">compendia, site-wide</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Site_002dWide-Compendia">Site-Wide Compendia</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-compendium_002elang_002epo">compendium.lang.po</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Site_002dWide-Compendia">Site-Wide Compendia</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-compendium_002epot">compendium.pot</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Site_002dWide-Compendia">Site-Wide Compendia</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-config_002emk">config.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-conventional-separator-for-strings">conventional separator for strings</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Splitting-Long-Passages">Splitting Long Passages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-conversion-of-existing-translations">conversion of existing translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Migrating">Migrating</a></td></tr>
@@ -3808,7 +3874,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-E">E</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-email_002daliases">email-aliases</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Targets">GNUmakefile.team Targets</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-exclude_002epot">exclude.pot</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-exclude_002epot">exclude.pot</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Site_002dWide-Compendia">Site-Wide Compendia</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-extra_002dtemplates">extra-templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-F">F</a></th><td></td><td></td></tr>
@@ -3827,7 +3893,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-gnun_002emk">gnun.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-gnun_002emk-1">gnun.mk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-GRACE">GRACE</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-grace-period">grace period</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-grace-flag">grace flag</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-I">I</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-initializing-PO-files">initializing PO files</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Translation">New Translation</a></td></tr>
@@ -3836,6 +3902,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-invoking">invoking</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Invoking-GNUN">Invoking GNUN</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-L">L</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-lang_002epo">lang.po</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Per_002dDirectory-Templates">Per-Directory Templates</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-languages_002etxt">languages.txt</a>:</td><td>&nbsp;</td><td valign="top"><a href="#languages_002etxt">languages.txt</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-localized-SSIs">localized SSIs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-localized-URLs">localized URLs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Localized-URLs">Localized URLs</a></td></tr>
@@ -3847,7 +3914,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-mail_002c-notifications">mail, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mail_002c-notifications-1">mail, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GNUmakefile_002eteam-Variables">GNUmakefile.team Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mail_002c-notifications-2">mail, notifications</a>:</td><td>&nbsp;</td><td valign="top"><a href="#mailfail">mailfail</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-master_002elang_002epo">master.lang.po</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Compendia">Compendia</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-master_002elang_002epo">master.lang.po</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Site_002dWide-Compendia">Site-Wide Compendia</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-migration_002c-translations">migration, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Migrating">Migrating</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-migration_002c-translations-1">migration, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dpreconvert">gnun-preconvert</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-migration_002c-translations-2">migration, translations</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dmerge_002dpreconverted">gnun-merge-preconverted</a></td></tr>
@@ -3871,9 +3938,11 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-output_002c-detailed">output, detailed</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-P">P</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-per_002ddirectory-compendia">per-directory compendia</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Per_002dDirectory-Templates">Per-Directory Templates</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PO-files_002c-header">PO files, header</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Header">PO Header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-PO-headers">PO headers</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Header">PO Header</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-POT">POT</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Concepts">Concepts</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-pot">pot</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Per_002dDirectory-Templates">Per-Directory Templates</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-POT-generation_002c-articles">POT generation, articles</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-previous_002c-diff">previous, diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-previous_002c-diff-1">previous, diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#gnun_002dadd_002dfuzzy_002ddiff">gnun-add-fuzzy-diff</a></td></tr>
@@ -3896,6 +3965,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-S">S</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sanity-checks">sanity checks</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Runtime-Variables">Runtime Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-site_002dwide-compendia">site-wide compendia</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Site_002dWide-Compendia">Site-Wide Compendia</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sitemap">sitemap</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Main-Variables">Main Variables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sitemap-1">sitemap</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Sitemap">Sitemap</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sorting-translated-lists">sorting translated lists</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Sorting-Lists">Sorting Lists</a></td></tr>
@@ -4012,14 +4082,20 @@ are added locally only; you need to take care to use <code>bzr push</code>
 manually (or via cron) to take care of effectively adding them to the
 public repository.  See <a href="#triggers">triggers</a>, for a short explanation.</p>
 <h3><a name="FOOT5" href="#DOCF5">(5)</a></h3>
+<p>This
+variable used to define the &ldquo;grace period&rdquo; in days to let
+the translator update the strings before the English text propagates
+to the translated page, but in practice that period has always been
+unlimited</p>
+<h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
 <p>These days we
 run a more complicated script instead of this cron job in order
 to address some exceptional situations like concurrent builds.</p>
-<h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
+<h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
 <p>Only because presumably, they are more familiar with
 GNUnited Nations&rsquo; internals.  From a purely technical point of view,
 there is no difference.</p>
-<h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
+<h3><a name="FOOT8" href="#DOCF8">(8)</a></h3>
 <p>The following
 sections describe in more details how to setup these automatic
 actions; however, if you have any difficulties with that, please ask

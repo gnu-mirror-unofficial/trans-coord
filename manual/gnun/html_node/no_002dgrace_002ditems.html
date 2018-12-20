@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- 
-This manual (updated 30 September 2016) is for GNUnited Nations (version
-0.11), a suite for maintaining translations of www.gnu.org
+This manual (updated 20 December 2018) is for GNUnited Nations (version
+0.12), a suite for maintaining translations of www.gnu.org
 essays and other articles.
 
 
-Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016
-Free Software Foundation, Inc.
+Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016,
+2018 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -74,9 +74,9 @@ Next: <a href="update_002dlocalized_002dURLs.html#update_002dlocalized_002dURLs"
 <h4 class="subsection">2.3.1 The <code>no-grace-items</code> Target</h4>
 
 <p>The <code>no-grace-items</code> target regenerates a limited set of articles
-that are not affected by the grace period, namely, the
+that are not affected by the <code>GRACE</code> variable, namely, the
 server templates, and all articles defined in the variable
-<code>no-grace-articles</code> (see <a href="Runtime-Variables.html#GRACE">grace period</a>).
+<code>no-grace-articles</code> (see <a href="Runtime-Variables.html#GRACE">grace flag</a>).
 </p>
 <p>This target can be rebuilt more often than <code>all</code>; however,
 currently we just build all with the same period.
