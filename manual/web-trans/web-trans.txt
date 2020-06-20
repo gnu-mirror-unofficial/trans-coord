@@ -27,6 +27,11 @@ GNU Web Translators Manual
   3.8 How to Retire Painlessly
 4 Translation Process
   4.1 What to Translate
+    4.1.1 First priority
+    4.1.2 Second priority
+    4.1.3 Important Directories
+    4.1.4 Other Directories
+    4.1.5 Important Languages
   4.2 Keeping Translations Current
   4.3 Language-specific Terminology
   4.4 When to CAPITALIZE
@@ -48,10 +53,10 @@ GNU Web Translators Manual
 **************************
 
 This manual is a guide for the GNU Web Translators.
-Last updated on 5 June 2018, for GNUnited Nations version 0.12.
+Last updated on 20 June 2020, for GNUnited Nations version 1.0.
 
    Copyright (C) 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017,
-2018 Free Software Foundation, Inc.
+2018, 2019, 2020 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -183,6 +188,10 @@ team formed.  There are two ways to do that--following the existing
 procedures, which is the preferred way, and sending it as plain text,
 which means more work for a limited group of volunteers (the Translation
 Managers) to convert the translation in '.po' format.
+
+   To make the work with PO files easier, team co-ordinators can write a
+team-specific guide for people who are not familiar with that format,
+like <https://www.gnu.org/server/standards/translations/po-how-to.html>.
 
 2.2.1 How to Submit a Translation in PO Format
 ----------------------------------------------
@@ -1041,45 +1050,141 @@ discuss improvements of the translation process.
 4.1 What to Translate
 =====================
 
-The Web Translation Priorities
-(https://www.gnu.org/server/standards/translations/priorities.html) page
-lists the most important essays to translate.  In general, articles in
-the directories 'philosophy', 'gnu', 'licenses', 'education', 'distros',
-'copyleft', and 'proprietary' are important.  The others may be deferred
-for a time when a team completes most of the important translations, or
-they can be translated as a "rest"--in translators' parlance this means
-doing something in between which is typically easier to handle.
+This section lists translation priorities.  You can find links to
+automatic reports about current status of translations of all active
+teams sorted by their priority in GNUN Reports
+(https://www.gnu.org/software/gnun/reports/reports.html).  If the page
+for your team is missing there, please ask <web-translators@gnu.org> to
+add it to the cron job.
 
-   You can find links to automatic reports about current status of
-translations of all active teams sorted by their priority in GNUN
-Reports (https://www.gnu.org/software/gnun/reports/reports.html).  If
-the page for your team is missing there, please ask
-<web-translators@gnu.org> to add it to the cron job.
+4.1.1 First priority
+--------------------
 
-   _Do not_ translate articles under these directories:
+This list of web pages from <https://www.gnu.org> that have been
+selected as translation priorities (in no particular order).
 
-'software/PKG/'
-     These pages are maintained by the respective PKG maintainers.  GNUN
-     does not support them for the time being, as they reside in
-     separate repositories.  The procedures for contributing
-     translations of such articles are not yet settled.
+   * The Free Software Definition
+     (https://www.gnu.org/philosophy/free-sw.html)
+   * Free Software Is Even More Important Now
+     (https://www.gnu.org/philosophy/free-software-even-more-important.html)
+   * How Much Surveillance Can Democracy Withstand?
+     (https://www.gnu.org/philosophy/surveillance-vs-democracy.html)
+   * Why Software Should Not Have Owners
+     (https://www.gnu.org/philosophy/why-free.html)
+   * Why Open Source misses the point of Free Software
+     (https://www.gnu.org/philosophy/open-source-misses-the-point.html)
+   * Did You Say "Intellectual Property"?  It's a Seductive Mirage
+     (https://www.gnu.org/philosophy/not-ipr.html)
+   * Avoiding Ruinous Compromises
+     (https://www.gnu.org/philosophy/compromise.html)
+   * Free Software and Education
+     (https://www.gnu.org/education/education.html)
+   * Why Schools Should Exclusively Use Free Software
+     (https://www.gnu.org/education/edu-schools.html)
+   * Vocational Higher Secondary School Irimpanam
+     (https://www.gnu.org/education/edu-cases-india-irimpanam.html)
+   * Tux Paint
+     (https://www.gnu.org/education/edu-software-tuxpaint.html)
+   * The GNU Project (https://www.gnu.org/gnu/thegnuproject.html)
+   * GNU/Linux Distros (https://www.gnu.org/distros/distros.html)
+   * Guidelines for Free System Distributions
+     (https://www.gnu.org/distros/free-system-distribution-guidelines.html)
+   * Explaining Why We Don't Endorse Other Systems
+     (https://www.gnu.org/distros/common-distros.html)
+   * How to choose a license for your own work
+     (https://www.gnu.org/licenses/license-recommendations.html)
 
-'brave-gnu-world'
-     The Brave GNU World initiative has been abandoned long time ago,
-     and it's in a separate repository--thus not supported by the
-     automatic GNUN build job.
+4.1.2 Second priority
+---------------------
 
-'home.html'
-     There is no problem to translate this page, but don't make the
-     mistake to pick it up as your first translation.  It is modified
-     often, sometimes intensively, and only active team members should
-     take that road.
+These pages are the second level of priority.  Once the pages in the
+list above are done, please translate these next.
 
-'server/whatsnew.html'
-     This is "What's New", also known as "GNU's Flashes", also known as
-     "GNU News".  Historically, it was processed separately, and its
-     support was dropped.  It may be added as an ordinary page after
-     GNUN 0.9 release.
+   * What is Copyleft?  (https://www.gnu.org/licenses/copyleft.html)
+   * Copyleft: Pragmatic Idealism
+     (https://www.gnu.org/philosophy/pragmatic.html)
+   * Selling Free Software (https://www.gnu.org/philosophy/selling.html)
+   * Who does that server really serve?
+     (https://www.gnu.org/philosophy/who-does-that-server-really-serve.html)
+   * The JavaScript Trap
+     (https://www.gnu.org/philosophy/javascript-trap.html)
+   * Why Educational Institutions Should Use and Teach Free Software
+     (https://www.gnu.org/education/edu-why.html)
+   * Escuela Cristiana Evangelica de Neuquen (ECEN)
+     (https://www.gnu.org/education/edu-cases-argentina-ecen.html)
+   * Ambedkar Community Computing Center (AC3)
+     (https://www.gnu.org/education/edu-cases-india-ambedkar.html)
+   * Educational Free Software
+     (https://www.gnu.org/education/edu-software.html)
+   * GCompris (https://www.gnu.org/education/edu-software-gcompris.html)
+   * Educational Frequently Asked Questions
+     (https://www.gnu.org/education/edu-faq.html)
+   * The Education Team (https://www.gnu.org/education/edu-team.html)
+   * Linux and the GNU Project
+     (https://www.gnu.org/gnu/linux-and-gnu.html)
+   * The Right to Read
+     (https://www.gnu.org/philosophy/right-to-read.html)
+   * Why Free Software needs Free Documentation
+     (https://www.gnu.org/philosophy/free-doc.html)
+
+4.1.3 Important Directories
+---------------------------
+
+Essays and articles in the following directories should be translated in
+all available languages:
+
+   * '/education'
+   * '/gnu'
+   * '/licenses'
+   * '/philosophy'
+   * '/proprietary'
+
+   In these important directories, however, there are articles of
+historical or peripheral interest only, for which new translations are
+not necessary.  For instance, '/philosophy/sco/*',
+'/philosophy/*-old.html', '/licenses/*_seminar.html',
+'/philosophy/economics_frank/frank.html', etc.  Please use your
+judgment.  (The existing translations of these articles should be
+maintained, though.)
+
+   The '/proprietary' directory is important, but it changes as fast as
+a newsfeed.  Don't start translating it unless you intend to update the
+translated pages over the long term.
+
+4.1.4 Other Directories
+-----------------------
+
+Don't bother translating the pages in '/people', except perhaps
+speakers.html.  Experience shows that translations of the other pages in
+that directory require too much maintenance work, and they don't provide
+much benefit.  Translating '/thankgnus' may likewise be considered a
+waste of time.
+
+   There is no problem to translate '/home.html' if you have a very
+active team, but don't make the mistake to pick it up as your first
+translation.  It is modified often, sometimes intensively, and only
+active team members should take that road.
+
+   The material in the '/software' directory pertains to individual GNU
+packages.  If you would like to translate something in that directory,
+please talk with the maintainers of the package to see what they would
+like to do.
+
+4.1.5 Important Languages
+-------------------------
+
+We welcome translations of essays into any language, but the following
+are particularly important:
+
+   * French
+   * Spanish
+   * Portuguese
+   * Chinese
+   * Arabic
+   * Indonesian
+   * Russian
+   * Japanese
+   * Hindi
 
 4.2 Keeping Translations Current
 ================================
@@ -2165,87 +2270,84 @@ Index
 * Menu:
 
 * .odt files:                            Submitting as Plain Text.
-                                                             (line  268)
-* Brave GNU World:                       Priorities.         (line 1067)
-* capitalization:                        Capitalization.     (line 1137)
-* checking out web pages:                Submitting as PO.   (line  198)
-* co-leaders:                            Co-leaders.         (line  950)
-* co-ordinators:                         Leaders.            (line  332)
-* contacting team:                       Joining.            (line  149)
-* copyright notices:                     Copyright Notices.  (line 1282)
-* Creative Commons:                      Distribution Terms. (line 1228)
-* custom CSS:                            CSS.                (line 1606)
-* CVS, using:                            Commits.            (line  689)
-* distribution terms:                    Distribution Terms. (line 1228)
-* Emacs:                                 PO Editors.         (line 1313)
+                                                             (line  277)
+* capitalization:                        Capitalization.     (line 1242)
+* checking out web pages:                Submitting as PO.   (line  207)
+* co-leaders:                            Co-leaders.         (line  959)
+* co-ordinators:                         Leaders.            (line  341)
+* contacting team:                       Joining.            (line  154)
+* copyright notices:                     Copyright Notices.  (line 1387)
+* Creative Commons:                      Distribution Terms. (line 1333)
+* custom CSS:                            CSS.                (line 1711)
+* CVS, using:                            Commits.            (line  698)
+* distribution terms:                    Distribution Terms. (line 1333)
+* Emacs:                                 PO Editors.         (line 1418)
 * encoding:                              Submitting as Plain Text.
-                                                             (line  268)
-* encoding <1>:                          SSI.                (line 1505)
-* external resources:                    Savannah.           (line  780)
-* generic.html:                          SSI.                (line 1480)
-* gnu-404.html:                          Technical Pages.    (line 1595)
-* GNUN:                                  Submitting as PO.   (line  189)
-* Gtranslator:                           PO Editors.         (line 1322)
-* home.html:                             Priorities.         (line 1072)
-* HTML5:                                 SSI.                (line 1516)
-* internal links:                        Internal Links.     (line 1197)
-* language code:                         New Team.           (line  422)
-* language negotiation:                  Internal Links.     (line 1200)
-* language negotiation <1>:              Technical Pages.    (line 1599)
-* links, internal:                       Internal Links.     (line 1197)
-* mailing lists:                         Mailing Lists.      (line 1346)
-* native English speakers:               Managing.           (line  550)
-* news items:                            SSI.                (line 1548)
+                                                             (line  277)
+* encoding <1>:                          SSI.                (line 1610)
+* external resources:                    Savannah.           (line  789)
+* generic.html:                          SSI.                (line 1585)
+* gnu-404.html:                          Technical Pages.    (line 1700)
+* GNUN:                                  Submitting as PO.   (line  198)
+* Gtranslator:                           PO Editors.         (line 1427)
+* HTML5:                                 SSI.                (line 1621)
+* internal links:                        Internal Links.     (line 1302)
+* language code:                         New Team.           (line  431)
+* language negotiation:                  Internal Links.     (line 1305)
+* language negotiation <1>:              Technical Pages.    (line 1704)
+* links, internal:                       Internal Links.     (line 1302)
+* mailing lists:                         Mailing Lists.      (line 1451)
+* native English speakers:               Managing.           (line  559)
+* news items:                            SSI.                (line 1653)
 * ODF:                                   Submitting as Plain Text.
-                                                             (line  268)
-* outdated translations:                 SSI.                (line 1538)
-* outdated translations, notification:   Updating.           (line 1109)
+                                                             (line  277)
+* outdated translations:                 SSI.                (line 1643)
+* outdated translations, notification:   Updating.           (line 1214)
 * plain text:                            Submitting as Plain Text.
-                                                             (line  261)
-* planetfeeds.html:                      SSI.                (line 1548)
-* PO editors:                            PO Editors.         (line 1313)
-* PO, editing:                           PO Editors.         (line 1291)
-* review:                                Review.             (line  560)
-* right-to-left languages:               RTL.                (line 1652)
-* SaaSS:                                 PO Editors.         (line 1303)
-* Savannah account:                      New Team.           (line  365)
-* Savannah projects:                     Savannah Projects.  (line 1417)
-* Savannah, registering:                 New Team.           (line  365)
-* server templates:                      Submitting as PO.   (line  232)
-* server templates <1>:                  SSI.                (line 1566)
-* server/language.html:                  Technical Pages.    (line 1599)
-* SourceForge:                           Tracking Tasks.     (line  658)
-* SSI includes:                          SSI.                (line 1449)
-* tasks, tracking:                       Tracking Tasks.     (line  592)
-* team homepage:                         Savannah Homepage.  (line  839)
-* team leaders:                          Leaders.            (line  332)
+                                                             (line  270)
+* planetfeeds.html:                      SSI.                (line 1653)
+* PO editors:                            PO Editors.         (line 1418)
+* PO, editing:                           PO Editors.         (line 1396)
+* review:                                Review.             (line  569)
+* right-to-left languages:               RTL.                (line 1757)
+* SaaSS:                                 PO Editors.         (line 1408)
+* Savannah account:                      New Team.           (line  374)
+* Savannah projects:                     Savannah Projects.  (line 1522)
+* Savannah, registering:                 New Team.           (line  374)
+* server templates:                      Submitting as PO.   (line  241)
+* server templates <1>:                  SSI.                (line 1671)
+* server/language.html:                  Technical Pages.    (line 1704)
+* SourceForge:                           Tracking Tasks.     (line  667)
+* SSI includes:                          SSI.                (line 1554)
+* tasks, tracking:                       Tracking Tasks.     (line  601)
+* team homepage:                         Savannah Homepage.  (line  848)
+* team leaders:                          Leaders.            (line  341)
 * team mailing lists:                    Savannah Mailing Lists.
-                                                             (line  912)
-* team members:                          Members.            (line  119)
-* team news:                             Savannah News.      (line  897)
-* team status:                           Savannah Members.   (line  827)
-* team status <1>:                       Reports.            (line  973)
-* team's repository:                     Savannah VCS.       (line  932)
-* team, contacting:                      Joining.            (line  149)
-* technical pages:                       Technical Pages.    (line 1591)
-* tracking changes in files:             Updating.           (line 1086)
-* tracking changes in files <1>:         Mailing Lists.      (line 1356)
-* tracking tasks:                        Tracking Tasks.     (line  592)
-* trans-coord-discuss@gnu.org:           Mailing Lists.      (line 1365)
-* translation priorities:                Priorities.         (line 1043)
-* translation priorities <1>:            Updating.           (line 1086)
-* Translations README:                   Joining.            (line  128)
-* Translations README <1>:               Terminology.        (line 1131)
-* translations, keeping current:         Updating.           (line 1086)
-* translations, review:                  Review.             (line  560)
+                                                             (line  921)
+* team members:                          Members.            (line  124)
+* team news:                             Savannah News.      (line  906)
+* team status:                           Savannah Members.   (line  836)
+* team status <1>:                       Reports.            (line  982)
+* team's repository:                     Savannah VCS.       (line  941)
+* team, contacting:                      Joining.            (line  154)
+* technical pages:                       Technical Pages.    (line 1696)
+* tracking changes in files:             Updating.           (line 1191)
+* tracking changes in files <1>:         Mailing Lists.      (line 1461)
+* tracking tasks:                        Tracking Tasks.     (line  601)
+* trans-coord-discuss@gnu.org:           Mailing Lists.      (line 1470)
+* translation priorities:                Priorities.         (line 1052)
+* translation priorities <1>:            Updating.           (line 1191)
+* Translations README:                   Joining.            (line  133)
+* Translations README <1>:               Terminology.        (line 1236)
+* translations, keeping current:         Updating.           (line 1191)
+* translations, review:                  Review.             (line  569)
 * translations, unreviewed:              Unreviewed Translations.
-                                                             (line  674)
+                                                             (line  683)
 * unreviewed translations:               Unreviewed Translations.
-                                                             (line  674)
-* VCS:                                   Savannah VCS.       (line  932)
-* web pages of GNU packages:             Priorities.         (line 1061)
-* web pages, checking out:               Submitting as PO.   (line  198)
-* web-translators@gnu.org:               Mailing Lists.      (line 1402)
-* webmasters@gnu.org:                    Mailing Lists.      (line 1396)
-* www-discuss@gnu.org:                   Mailing Lists.      (line 1350)
+                                                             (line  683)
+* VCS:                                   Savannah VCS.       (line  941)
+* web pages, checking out:               Submitting as PO.   (line  207)
+* web-translators@gnu.org:               Mailing Lists.      (line 1507)
+* webmasters@gnu.org:                    Mailing Lists.      (line 1501)
+* www-discuss@gnu.org:                   Mailing Lists.      (line 1455)
 

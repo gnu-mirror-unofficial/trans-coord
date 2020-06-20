@@ -3,10 +3,10 @@
 <!-- 
 This manual is a guide for the GNU Web Translators.
  Last updated on
-5 June 2018, for GNUnited Nations version 0.12.
+20 June 2020, for GNUnited Nations version 1.0.
 
 Copyright (C) 2009, 2010, 2011, 2012, 2013,
-  2014, 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
+  2014, 2015, 2016, 2017, 2018, 2019, 2020 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,7 +14,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNU Web Translators Manual: Priorities</title>
 
@@ -28,21 +28,21 @@ Documentation License." -->
 <link href="Index.html#Index" rel="index" title="Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Translation-Process.html#Translation-Process" rel="up" title="Translation Process">
-<link href="Updating.html#Updating" rel="next" title="Updating">
+<link href="First-Priority.html#First-Priority" rel="next" title="First Priority">
 <link href="Translation-Process.html#Translation-Process" rel="prev" title="Translation Process">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -51,10 +51,9 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -62,7 +61,7 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="Priorities"></a>
 <div class="header">
 <p>
@@ -73,61 +72,26 @@ Next: <a href="Updating.html#Updating" accesskey="n" rel="next">Updating</a>, Up
 <h3 class="section">4.1 What to Translate</h3>
 
 <a name="index-translation-priorities"></a>
-<p>The
-<a href="https://www.gnu.org/server/standards/translations/priorities.html">Web Translation Priorities</a> page
-lists the most important essays to translate.  In general, articles in
-the directories <samp>philosophy</samp>, <samp>gnu</samp>, <samp>licenses</samp>,
-<samp>education</samp>, <samp>distros</samp>, <samp>copyleft</samp>,
-and <samp>proprietary</samp> are important.  The others may be
-deferred for a time when a team completes most of the important
-translations, or they can be translated as a &ldquo;rest&rdquo;&mdash;in translators&rsquo;
-parlance this means doing something in between which is typically easier
-to handle.
-</p>
-<p>You can find links to automatic reports about current status of
+
+<p>This section lists translation priorities.  You can find links
+to automatic reports about current status of
 translations of all active teams sorted by their priority in
 <a href="https://www.gnu.org/software/gnun/reports/reports.html">GNUN Reports</a>.  If the page for your team is missing there, please ask
 <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> to add it to the cron job.
 </p>
-<p><em>Do not</em> translate articles under these directories:
-</p>
-<dl compact="compact">
-<dt><samp>software/<var>pkg</var>/</samp></dt>
-<dd><a name="index-web-pages-of-GNU-packages"></a>
-<p>These pages are maintained by the respective <var>pkg</var> maintainers.
-GNUN does not support them for the time being, as they reside in
-separate repositories.  The procedures for contributing translations of
-such articles are not yet settled.
-</p>
-</dd>
-<dt><samp>brave-gnu-world</samp></dt>
-<dd><a name="index-Brave-GNU-World"></a>
-<p>The Brave GNU World initiative has been abandoned long time ago, and
-it&rsquo;s in a separate repository&mdash;thus not supported by the automatic GNUN
-build job.
-</p>
-</dd>
-<dt><samp>home.html</samp></dt>
-<dd><a name="index-home_002ehtml"></a>
-<p>There is no problem to translate this page, but don&rsquo;t make the mistake
-to pick it up as your first translation.  It is modified often,
-sometimes intensively, and only active team members should take that
-road.
-</p>
-</dd>
-<dt><samp>server/whatsnew.html</samp></dt>
-<dd><p>This is &ldquo;What&rsquo;s New&rdquo;, also known as &ldquo;GNU&rsquo;s Flashes&rdquo;, also known as
-&ldquo;GNU News&rdquo;.  Historically, it was processed separately, and its
-support was dropped.  It may be added as an ordinary page after
-GNUN 0.9 release.
-</p></dd>
-</dl>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="First-Priority.html#First-Priority" accesskey="1">First Priority</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Second-Priority.html#Second-Priority" accesskey="2">Second Priority</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Important-Directories.html#Important-Directories" accesskey="3">Important Directories</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Other-Directories.html#Other-Directories" accesskey="4">Other Directories</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Important-Languages.html#Important-Languages" accesskey="5">Important Languages</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
-<hr>
-<div class="header">
-<p>
-Next: <a href="Updating.html#Updating" accesskey="n" rel="next">Updating</a>, Up: <a href="Translation-Process.html#Translation-Process" accesskey="u" rel="up">Translation Process</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
-</div>
 
 
 

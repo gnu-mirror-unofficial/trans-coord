@@ -3,10 +3,10 @@
 <!-- 
 This manual is a guide for the GNU Web Translators.
  Last updated on
-5 June 2018, for GNUnited Nations version 0.12.
+20 June 2020, for GNUnited Nations version 1.0.
 
 Copyright (C) 2009, 2010, 2011, 2012, 2013,
-  2014, 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
+  2014, 2015, 2016, 2017, 2018, 2019, 2020 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -14,7 +14,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>GNU Web Translators Manual</title>
 
@@ -31,16 +31,16 @@ Documentation License." -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -49,10 +49,9 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -60,7 +59,7 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <h1 class="settitle" align="center">GNU Web Translators Manual</h1>
 
 
@@ -109,7 +108,14 @@ ul.no-bullet {list-style: none}
   </ul></li>
   <li><a name="toc-Translation-Process-1" href="#Translation-Process">4 Translation Process</a>
   <ul class="no-bullet">
-    <li><a name="toc-What-to-Translate" href="#Priorities">4.1 What to Translate</a></li>
+    <li><a name="toc-What-to-Translate" href="#Priorities">4.1 What to Translate</a>
+    <ul class="no-bullet">
+      <li><a name="toc-First-priority" href="#First-Priority">4.1.1 First priority</a></li>
+      <li><a name="toc-Second-priority" href="#Second-Priority">4.1.2 Second priority</a></li>
+      <li><a name="toc-Important-Directories-1" href="#Important-Directories">4.1.3 Important Directories</a></li>
+      <li><a name="toc-Other-Directories-1" href="#Other-Directories">4.1.4 Other Directories</a></li>
+      <li><a name="toc-Important-Languages-1" href="#Important-Languages">4.1.5 Important Languages</a></li>
+    </ul></li>
     <li><a name="toc-Keeping-Translations-Current" href="#Updating">4.2 Keeping Translations Current</a></li>
     <li><a name="toc-Language_002dspecific-Terminology" href="#Terminology">4.3 Language-specific Terminology</a></li>
     <li><a name="toc-When-to-CAPITALIZE" href="#Capitalization">4.4 When to CAPITALIZE</a></li>
@@ -144,10 +150,10 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a 
 <h1 class="top">GNU Web Translators Manual</h1>
 
 <p>This manual is a guide for the GNU Web Translators.<br> Last updated on
-5 June 2018, for GNUnited Nations version 0.12.
+20 June 2020, for GNUnited Nations version 1.0.
 </p><br>
 <p>Copyright &copy; 2009, 2010, 2011, 2012, 2013,
-  2014, 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
+  2014, 2015, 2016, 2017, 2018, 2019, 2020 Free Software Foundation, Inc.
 </p>
 <blockquote>
 <p>Permission is granted to copy, distribute and/or modify this document
@@ -338,6 +344,11 @@ team formed.  There are two ways to do that&mdash;following the existing
 procedures, which is the preferred way, and sending it as plain text,
 which means more work for a limited group of volunteers (the Translation
 Managers) to convert the translation in <samp>.po</samp> format.
+</p>
+<p>To make the work with PO files easier, team co-ordinators can write
+a team-specific guide for people who are not familiar with that format,
+like
+<a href="https://www.gnu.org/server/standards/translations/po-how-to.html">https://www.gnu.org/server/standards/translations/po-how-to.html</a>.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Submitting-as-PO" accesskey="1">Submitting as PO</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1482,55 +1493,167 @@ Next: <a href="#Updating" accesskey="n" rel="next">Updating</a>, Up: <a href="#T
 <h3 class="section">4.1 What to Translate</h3>
 
 <a name="index-translation-priorities"></a>
-<p>The
-<a href="https://www.gnu.org/server/standards/translations/priorities.html">Web Translation Priorities</a> page
-lists the most important essays to translate.  In general, articles in
-the directories <samp>philosophy</samp>, <samp>gnu</samp>, <samp>licenses</samp>,
-<samp>education</samp>, <samp>distros</samp>, <samp>copyleft</samp>,
-and <samp>proprietary</samp> are important.  The others may be
-deferred for a time when a team completes most of the important
-translations, or they can be translated as a &ldquo;rest&rdquo;&mdash;in translators&rsquo;
-parlance this means doing something in between which is typically easier
-to handle.
-</p>
-<p>You can find links to automatic reports about current status of
+
+<p>This section lists translation priorities.  You can find links
+to automatic reports about current status of
 translations of all active teams sorted by their priority in
 <a href="https://www.gnu.org/software/gnun/reports/reports.html">GNUN Reports</a>.  If the page for your team is missing there, please ask
 <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> to add it to the cron job.
 </p>
-<p><em>Do not</em> translate articles under these directories:
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#First-Priority" accesskey="1">First Priority</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Second-Priority" accesskey="2">Second Priority</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Important-Directories" accesskey="3">Important Directories</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Other-Directories" accesskey="4">Other Directories</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Important-Languages" accesskey="5">Important Languages</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="First-Priority"></a>
+<div class="header">
+<p>
+Next: <a href="#Second-Priority" accesskey="n" rel="next">Second Priority</a>, Up: <a href="#Priorities" accesskey="u" rel="up">Priorities</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="First-priority"></a>
+<h4 class="subsection">4.1.1 First priority</h4>
+
+<p>This list of web pages from <a href="https://www.gnu.org">https://www.gnu.org</a> that
+have been selected as translation priorities (in no particular order).
 </p>
-<dl compact="compact">
-<dt><samp>software/<var>pkg</var>/</samp></dt>
-<dd><a name="index-web-pages-of-GNU-packages"></a>
-<p>These pages are maintained by the respective <var>pkg</var> maintainers.
-GNUN does not support them for the time being, as they reside in
-separate repositories.  The procedures for contributing translations of
-such articles are not yet settled.
+<ul>
+<li> <a href="https://www.gnu.org/philosophy/free-sw.html">The Free Software Definition</a>
+</li><li> <a href="https://www.gnu.org/philosophy/free-software-even-more-important.html">Free Software Is Even More Important Now</a>
+</li><li> <a href="https://www.gnu.org/philosophy/surveillance-vs-democracy.html">How Much Surveillance Can Democracy Withstand?</a>
+</li><li> <a href="https://www.gnu.org/philosophy/why-free.html">Why Software Should Not Have Owners</a>
+</li><li> <a href="https://www.gnu.org/philosophy/open-source-misses-the-point.html">Why Open Source misses the point of Free Software</a>
+</li><li> <a href="https://www.gnu.org/philosophy/not-ipr.html">Did You Say &quot;Intellectual Property&quot;? It&rsquo;s a Seductive Mirage</a>
+</li><li> <a href="https://www.gnu.org/philosophy/compromise.html">Avoiding Ruinous Compromises</a>
+</li><li> <a href="https://www.gnu.org/education/education.html">Free Software and Education</a>
+</li><li> <a href="https://www.gnu.org/education/edu-schools.html">Why Schools Should Exclusively Use Free Software</a>
+</li><li> <a href="https://www.gnu.org/education/edu-cases-india-irimpanam.html">Vocational Higher Secondary School Irimpanam</a>
+</li><li> <a href="https://www.gnu.org/education/edu-software-tuxpaint.html">Tux Paint</a>
+</li><li> <a href="https://www.gnu.org/gnu/thegnuproject.html">The GNU Project</a>
+</li><li> <a href="https://www.gnu.org/distros/distros.html">GNU/Linux Distros</a>
+</li><li> <a href="https://www.gnu.org/distros/free-system-distribution-guidelines.html">Guidelines for Free System Distributions</a>
+</li><li> <a href="https://www.gnu.org/distros/common-distros.html">Explaining Why We Don&rsquo;t Endorse Other Systems</a>
+</li><li> <a href="https://www.gnu.org/licenses/license-recommendations.html">How to choose a license for your own work</a>
+</li></ul>
+
+<hr>
+<a name="Second-Priority"></a>
+<div class="header">
+<p>
+Next: <a href="#Important-Directories" accesskey="n" rel="next">Important Directories</a>, Previous: <a href="#First-Priority" accesskey="p" rel="prev">First Priority</a>, Up: <a href="#Priorities" accesskey="u" rel="up">Priorities</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Second-priority"></a>
+<h4 class="subsection">4.1.2 Second priority</h4>
+
+<p>These pages are the second level of priority.  Once the pages in
+the list above are done, please translate these next.
 </p>
-</dd>
-<dt><samp>brave-gnu-world</samp></dt>
-<dd><a name="index-Brave-GNU-World"></a>
-<p>The Brave GNU World initiative has been abandoned long time ago, and
-it&rsquo;s in a separate repository&mdash;thus not supported by the automatic GNUN
-build job.
+<ul>
+<li> <a href="https://www.gnu.org/licenses/copyleft.html">What is Copyleft?</a>
+</li><li> <a href="https://www.gnu.org/philosophy/pragmatic.html">Copyleft: Pragmatic Idealism</a>
+</li><li> <a href="https://www.gnu.org/philosophy/selling.html">Selling Free Software</a>
+</li><li> <a href="https://www.gnu.org/philosophy/who-does-that-server-really-serve.html">Who does that server really serve?</a>
+</li><li> <a href="https://www.gnu.org/philosophy/javascript-trap.html">The JavaScript Trap</a>
+</li><li> <a href="https://www.gnu.org/education/edu-why.html">Why Educational Institutions Should Use and Teach Free Software</a>
+</li><li> <a href="https://www.gnu.org/education/edu-cases-argentina-ecen.html">Escuela Cristiana Evangelica de Neuquen (ECEN)</a>
+</li><li> <a href="https://www.gnu.org/education/edu-cases-india-ambedkar.html">Ambedkar Community Computing Center (AC3)</a>
+</li><li> <a href="https://www.gnu.org/education/edu-software.html">Educational Free Software</a>
+</li><li> <a href="https://www.gnu.org/education/edu-software-gcompris.html">GCompris</a>
+</li><li> <a href="https://www.gnu.org/education/edu-faq.html">Educational Frequently Asked Questions</a>
+</li><li> <a href="https://www.gnu.org/education/edu-team.html">The Education Team</a>
+</li><li> <a href="https://www.gnu.org/gnu/linux-and-gnu.html">Linux and the GNU Project</a>
+</li><li> <a href="https://www.gnu.org/philosophy/right-to-read.html">The Right to Read</a>
+</li><li> <a href="https://www.gnu.org/philosophy/free-doc.html">Why Free Software needs Free Documentation</a>
+</li></ul>
+
+<hr>
+<a name="Important-Directories"></a>
+<div class="header">
+<p>
+Next: <a href="#Other-Directories" accesskey="n" rel="next">Other Directories</a>, Previous: <a href="#Second-Priority" accesskey="p" rel="prev">Second Priority</a>, Up: <a href="#Priorities" accesskey="u" rel="up">Priorities</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Important-Directories-1"></a>
+<h4 class="subsection">4.1.3 Important Directories</h4>
+
+<p>Essays and articles in the following directories should be translated 
+in all available languages:
 </p>
-</dd>
-<dt><samp>home.html</samp></dt>
-<dd><a name="index-home_002ehtml"></a>
-<p>There is no problem to translate this page, but don&rsquo;t make the mistake
-to pick it up as your first translation.  It is modified often,
-sometimes intensively, and only active team members should take that
-road.
+<ul>
+<li> <samp>/education</samp>
+</li><li> <samp>/gnu</samp>
+</li><li> <samp>/licenses</samp>
+</li><li> <samp>/philosophy</samp>
+</li><li> <samp>/proprietary</samp>
+</li></ul>
+
+<p>In these important directories, however, there are articles of
+historical or peripheral interest only, for which new translations are
+not necessary.  For instance, <samp>/philosophy/sco/*</samp>, 
+<samp>/philosophy/*-old.html</samp>, <samp>/licenses/*_seminar.html</samp>,
+<samp>/philosophy/economics_frank/frank.html</samp>, etc.  Please use your
+judgment. (The existing translations of these articles should be maintained,
+though.)
 </p>
-</dd>
-<dt><samp>server/whatsnew.html</samp></dt>
-<dd><p>This is &ldquo;What&rsquo;s New&rdquo;, also known as &ldquo;GNU&rsquo;s Flashes&rdquo;, also known as
-&ldquo;GNU News&rdquo;.  Historically, it was processed separately, and its
-support was dropped.  It may be added as an ordinary page after
-GNUN 0.9 release.
-</p></dd>
-</dl>
+<p>The <samp>/proprietary</samp> directory is important, but it changes
+as fast as a newsfeed.  Don&rsquo;t start translating it unless you intend
+to update the translated pages over the long term.
+</p>
+<hr>
+<a name="Other-Directories"></a>
+<div class="header">
+<p>
+Next: <a href="#Important-Languages" accesskey="n" rel="next">Important Languages</a>, Previous: <a href="#Important-Directories" accesskey="p" rel="prev">Important Directories</a>, Up: <a href="#Priorities" accesskey="u" rel="up">Priorities</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Other-Directories-1"></a>
+<h4 class="subsection">4.1.4 Other Directories</h4>
+
+<p>Don&rsquo;t bother translating the pages in <samp>/people</samp>, except perhaps
+speakers.html.  Experience shows that translations of the other pages
+in that directory require too much maintenance work, and they don&rsquo;t
+provide much benefit.  Translating <samp>/thankgnus</samp> may likewise
+be considered a waste of time.
+</p>
+<p>There is no problem to translate <samp>/home.html</samp> if you have
+a very active team, but don&rsquo;t make the mistake to pick it up
+as your first translation.  It is modified often, sometimes
+intensively, and only active team members should take that road.
+</p>
+<p>The material in the <samp>/software</samp> directory pertains to individual
+GNU packages.  If you would like to translate something
+in that directory, please talk with the maintainers of the package
+to see what they would like to do.
+</p>
+<hr>
+<a name="Important-Languages"></a>
+<div class="header">
+<p>
+Previous: <a href="#Other-Directories" accesskey="p" rel="prev">Other Directories</a>, Up: <a href="#Priorities" accesskey="u" rel="up">Priorities</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Important-Languages-1"></a>
+<h4 class="subsection">4.1.5 Important Languages</h4>
+
+<p>We welcome translations of essays into any language, but the following
+are particularly important:
+</p>
+<ul>
+<li> French
+</li><li> Spanish
+</li><li> Portuguese
+</li><li> Chinese
+</li><li> Arabic
+</li><li> Indonesian
+</li><li> Russian
+</li><li> Japanese
+</li><li> Hindi
+</li></ul>
 
 <hr>
 <a name="Updating"></a>
@@ -2817,8 +2940,6 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_symbol-1"><b>.</b></a>
  &nbsp; 
 <br>
-<a class="summary-letter" href="#Index_cp_letter-B"><b>B</b></a>
- &nbsp; 
 <a class="summary-letter" href="#Index_cp_letter-C"><b>C</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_cp_letter-D"><b>D</b></a>
@@ -2860,9 +2981,6 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><th><a name="Index_cp_symbol-1">.</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002eodt-files">.odt files</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submitting-as-Plain-Text">Submitting as Plain Text</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Index_cp_letter-B">B</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Brave-GNU-World">Brave GNU World</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Priorities">Priorities</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-C">C</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-capitalization">capitalization</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Capitalization">Capitalization</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-checking-out-web-pages">checking out web pages</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submitting-as-PO">Submitting as PO</a></td></tr>
@@ -2890,7 +3008,6 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-Gtranslator">Gtranslator</a>:</td><td>&nbsp;</td><td valign="top"><a href="#PO-Editors">PO Editors</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-H">H</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-home_002ehtml">home.html</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Priorities">Priorities</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-HTML5">HTML5</a>:</td><td>&nbsp;</td><td valign="top"><a href="#SSI">SSI</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-I">I</a></th><td></td><td></td></tr>
@@ -2966,7 +3083,6 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-VCS">VCS</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Savannah-VCS">Savannah VCS</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-W">W</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-web-pages-of-GNU-packages">web pages of GNU packages</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Priorities">Priorities</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-web-pages_002c-checking-out">web pages, checking out</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submitting-as-PO">Submitting as PO</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-web_002dtranslators_0040gnu_002eorg">web-translators@gnu.org</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Mailing-Lists">Mailing Lists</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-webmasters_0040gnu_002eorg">webmasters@gnu.org</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Mailing-Lists">Mailing Lists</a></td></tr>
@@ -2976,8 +3092,6 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Index_cp_symbol-1"><b>.</b></a>
  &nbsp; 
 <br>
-<a class="summary-letter" href="#Index_cp_letter-B"><b>B</b></a>
- &nbsp; 
 <a class="summary-letter" href="#Index_cp_letter-C"><b>C</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Index_cp_letter-D"><b>D</b></a>
