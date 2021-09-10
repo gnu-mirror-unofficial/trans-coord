@@ -3,10 +3,10 @@
 <!-- 
 This manual is a guide for the GNU Web Translators.
  Last updated on
-20 June 2020, for GNUnited Nations version 1.0.
+6 September 2021, for GNUnited Nations version 1.1.
 
 Copyright (C) 2009, 2010, 2011, 2012, 2013,
-  2014, 2015, 2016, 2017, 2018, 2019, 2020 Free Software Foundation, Inc.
+  2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -150,10 +150,10 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a 
 <h1 class="top">GNU Web Translators Manual</h1>
 
 <p>This manual is a guide for the GNU Web Translators.<br> Last updated on
-20 June 2020, for GNUnited Nations version 1.0.
+6 September 2021, for GNUnited Nations version 1.1.
 </p><br>
 <p>Copyright &copy; 2009, 2010, 2011, 2012, 2013,
-  2014, 2015, 2016, 2017, 2018, 2019, 2020 Free Software Foundation, Inc.
+  2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021 Free Software Foundation, Inc.
 </p>
 <blockquote>
 <p>Permission is granted to copy, distribute and/or modify this document
@@ -615,8 +615,7 @@ to the repository and project membership is handled via Savannah, so you
 would need an account in any case.
 
 </li><li> Checkout a complete working copy of the CVS Web repository as described
-at <a href="https://savannah.gnu.org/cvs/?group=www">https://savannah.gnu.org/cvs/?group=www</a>.  If you still
-don&rsquo;t have a Savannah account or if you have registered one, but are not
+at <a href="https://savannah.gnu.org/cvs/?group=www">https://savannah.gnu.org/cvs/?group=www</a>.  If you are not
 yet member of any Savannah project, refer to the instructions under
 &ldquo;Anonymous CVS Access&rdquo;.  If you are already a member of (any) Savannah
 project, you can proceed with &ldquo;Project Member CVS Access via SSH&rdquo;,
@@ -644,7 +643,9 @@ is important, as we consider it crucial for any translation team
 co-ordinator to have a good understanding of the philosophy of the free
 software movement.
 
-</li><li> Check if your language code is present in the variable
+</li><li> <a name="index-initial-server-templates"></a>
+<a name="index-server-templates_002c-initial"></a>
+Check if your language code is present in the variable
 <code>TEMPLATE_LINGUAS</code> in the file <samp>server/gnun/gnun.mk</samp>.  If it
 is not, the first thing to do is to translate and submit to
 <a href="mailto:web-translators@gnu.org">web-translators@gnu.org</a> the following files (all in the
@@ -759,11 +760,10 @@ you do not have the required time and resources for this job, or
 web-translators are badly lagging behind and do not process the requests
 with the expected pace.
 </p>
-<p>Applications for new teams are sometimes processed in
-parallel<a name="DOCF3" href="#FOOT3"><sup>3</sup></a>&mdash;the
-most suitable candidate is chosen in this case.  This is, undoubtedly,
-based on a subjective judgment made by the Translation Managers, and
-many factors are important.
+<p>In general, we try to avoid processing applications for new teams
+in parallel and direct all new volunteers to the person who is
+already establishing the team&mdash;this is also a verification
+if the prospective leader can co-operate easily with others.
 </p>
 <p>The procedure for taking over an orphaned team is the same.  Once
 completed, you will be made an admin of the respective
@@ -1020,7 +1020,7 @@ specific changes, synchronize with the working repository of the team
 coherent, please do it as a single commit.  This will generate only one
 message to <a href="mailto:www-commits@gnu.org">www-commits@gnu.org</a>, which is better than 5 messages
 for 5 files about semantically the same change.  Always write commit
-logs in English<a name="DOCF4" href="#FOOT4"><sup>4</sup></a>, providing a short
+logs in English<a name="DOCF3" href="#FOOT3"><sup>3</sup></a>, providing a short
 description of the change.  If you modify a file that is not an article
 but a script or part of software (such as <samp>server/gnun/gnun.mk</samp>),
 it would be nice to follow the GNU Coding Standards and describe the
@@ -1057,7 +1057,7 @@ which prevents RCS keywords like &lsquo;<samp>$<!-- /@w -->Id$</samp>&rsquo; to 
 subsequently corrupting the file.  See <a href="cvs.html#Substitution-modes">Substitution modes</a> in <cite>Version Management with CVS</cite>.  More importantly, using <samp>-kb</samp>
 prevents corruption of the binary when people using CVS clients under
 infamous OS checkout modify the file, and then commit it with
-messed ends of lines.<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>
+messed ends of lines.<a name="DOCF4" href="#FOOT4"><sup>4</sup></a>
 </p>
 <p>Although not absolutely compulsory, it is recommended that every team
 leader subscribes to <a href="mailto:www-commits@gnu.org">www-commits@gnu.org</a>.  It is useful to
@@ -1539,7 +1539,7 @@ have been selected as translation priorities (in no particular order).
 </li><li> <a href="https://www.gnu.org/education/edu-software-tuxpaint.html">Tux Paint</a>
 </li><li> <a href="https://www.gnu.org/gnu/thegnuproject.html">The GNU Project</a>
 </li><li> <a href="https://www.gnu.org/distros/distros.html">GNU/Linux Distros</a>
-</li><li> <a href="https://www.gnu.org/distros/free-system-distribution-guidelines.html">Guidelines for Free System Distributions</a>
+</li><li> <a href="https://www.gnu.org/distros/free-system-distribution-guidelines.html">Free System Distribution Guidelines</a>
 </li><li> <a href="https://www.gnu.org/distros/common-distros.html">Explaining Why We Don&rsquo;t Endorse Other Systems</a>
 </li><li> <a href="https://www.gnu.org/licenses/license-recommendations.html">How to choose a license for your own work</a>
 </li></ul>
@@ -1753,7 +1753,7 @@ Wolne&rdquo; (Polish) or &ldquo;Fondation Pour Le Logiciel Libre&rdquo; (French)
 <p>Another prominent and widely spread mistake is to write your own
 language with a capital letter in the list of translations when
 languages are written beginning with a small letter according to your
-own rules<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>.  In other words, it is right to write
+own rules<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>.  In other words, it is right to write
 &lsquo;<samp>English</samp>&rsquo; or &lsquo;<samp>Deutsch</samp>&rsquo; (because in English and German
 languages are capitalized), but not &lsquo;<samp>Fran&ccedil;ais</samp>&rsquo; or
 &lsquo;<samp>Portugu&ecirc;s</samp>&rsquo;&mdash;write them as &lsquo;<samp>fran&ccedil;ais</samp>&rsquo; or
@@ -1936,7 +1936,7 @@ Next: <a href="#Mailing-Lists" accesskey="n" rel="next">Mailing Lists</a>, Previ
 
 <p>We anticipate that some gnu.org translators will find this format odd
 or inconvenient, if they never happened to work with PO files
-before<a name="DOCF7" href="#FOOT7"><sup>7</sup></a>.
+before<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>.
 Don&rsquo;t worry, you will soon get accustomed to it.  It is the
 established format for translations in the Free World, and if you 
 have any problems, other translators will help you.
@@ -3011,6 +3011,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-HTML5">HTML5</a>:</td><td>&nbsp;</td><td valign="top"><a href="#SSI">SSI</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-initial-server-templates">initial server templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Team">New Team</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-internal-links">internal links</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-Links">Internal Links</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-L">L</a></th><td></td><td></td></tr>
@@ -3048,6 +3049,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-Savannah_002c-registering">Savannah, registering</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Team">New Team</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-server-templates">server templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submitting-as-PO">Submitting as PO</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-server-templates-1">server templates</a>:</td><td>&nbsp;</td><td valign="top"><a href="#SSI">SSI</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-server-templates_002c-initial">server templates, initial</a>:</td><td>&nbsp;</td><td valign="top"><a href="#New-Team">New Team</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-server_002flanguage_002ehtml">server/language.html</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Technical-Pages">Technical Pages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-SourceForge">SourceForge</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Tracking-Tasks">Tracking Tasks</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-SSI-includes">SSI includes</a>:</td><td>&nbsp;</td><td valign="top"><a href="#SSI">SSI</a></td></tr>
@@ -3137,27 +3139,23 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 all of them.</p>
 <h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
 <p>As of
-December 2013, there are over 250 files to translate in &ldquo;important&rdquo;
-directories; their volume is about 4 MB.</p>
+January 2021, there are over 300 files to translate in &ldquo;important&rdquo;
+directories; their volume is about 5 MB.</p>
 <h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
-<p>In general, we try to avoid this and direct all new
-volunteers to the person who is already carrying out the process&mdash;this
-is also a verification if she can co-operate easily with others.</p>
-<h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
 <p>This advice is applicable for the &lsquo;<samp>www</samp>&rsquo;
 repository only&mdash;feel free to write logs in your native language when
 committing in your team&rsquo;s repositories.</p>
-<h3><a name="FOOT5" href="#DOCF5">(5)</a></h3>
+<h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
 <p>Few years ago there still were
 committers using nonfree operating systems&mdash;we don&rsquo;t dictate what
 OS people use, but we can at least prevent this technical kind
 of damage.</p>
-<h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
+<h3><a name="FOOT5" href="#DOCF5">(5)</a></h3>
 <p>The lists of translations are generated
 automatically.  The names of the languages are defined in a specific
 file, languages.txt (see <a href="http://www.gnu.org/software/trans-coord/manual/gnun/gnun.html#languages_002etxt">languages.txt</a> in <cite>The GNUnited
 Nations Manual</cite>).</p>
-<h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
+<h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
 <p>For detailed information about editing
 PO files, see <a href="http://www.gnu.org/software/trans-coord/manual/gnun/gnun.html#PO-Files">Working with PO Files</a> in <cite>The GNUnited Nations Manual</cite>.</p>
 </div>
